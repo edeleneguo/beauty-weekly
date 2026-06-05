@@ -794,19 +794,86 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC"
 .lang-switch-btn.en-active .lang-dot { background: #ffd700; }
 .lang-switch-btn.cn-active .lang-dot { background: #ff6b81; }
 @media (max-width: 768px) { .lang-switch-bar { top: 10px; right: 12px; } .lang-switch-btn { padding: 5px 12px; font-size: 12px; } }
+
+/* ═══ Week Selector Dropdown ═══ */
+.week-selector { position: relative; display: inline-block; margin-left: 10px; vertical-align: middle; z-index: 20; }
+.week-selector-btn {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 4px 12px; border-radius: 16px;
+  font-size: 12px; font-weight: 600; cursor: pointer;
+  border: 1.5px solid rgba(255,255,255,0.55);
+  background: rgba(255,255,255,0.18);
+  backdrop-filter: blur(10px);
+  color: #fff;
+  transition: all 0.25s;
+  letter-spacing: 0.3px;
+}
+.week-selector-btn:hover { background: rgba(255,255,255,0.30); border-color: rgba(255,255,255,0.85); }
+.week-selector-btn .week-arrow { font-size: 10px; transition: transform 0.25s; opacity: 0.85; }
+.week-selector.open .week-selector-btn .week-arrow { transform: rotate(180deg); }
+.week-dropdown {
+  position: absolute; top: calc(100% + 6px); left: 50%; transform: translateX(-50%) scale(0.96);
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(16px);
+  border-radius: 14px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  padding: 8px 6px;
+  min-width: 140px;
+  opacity: 0; visibility: hidden;
+  transform-origin: top center;
+  transition: all 0.2s ease;
+  max-height: 280px;
+  overflow-y: auto;
+}
+.week-selector.open .week-dropdown { opacity: 1; visibility: visible; transform: translateX(-50%) scale(1); }
+.week-dropdown-item {
+  display: block; width: 100%;
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-size: 13px; font-weight: 500;
+  color: #444;
+  text-decoration: none;
+  transition: all 0.15s;
+  text-align: center;
+  border: none; background: none; cursor: pointer;
+}
+.week-dropdown-item:hover { background: rgba(200,93,162,0.10); color: #b85bae; }
+.week-dropdown-item.current { background: rgba(200,93,162,0.15); color: #b85bae; font-weight: 700; }
+.week-dropdown-divider {
+  height: 1px; background: rgba(0,0,0,0.08);
+  margin: 6px 10px;
+}
+.fragrance-banner .week-dropdown-item:hover { background: rgba(29,154,133,0.10); color: #1d9a85; }
+.fragrance-banner .week-dropdown-item.current { background: rgba(29,154,133,0.15); color: #1d9a85; }
+@media (max-width: 768px) {
+  .week-selector { margin-left: 6px; }
+  .week-selector-btn { padding: 3px 9px; font-size: 11px; }
+  .week-dropdown { min-width: 120px; padding: 6px 4px; }
+  .week-dropdown-item { padding: 7px 10px; font-size: 12px; }
+}
 </style>
 </head>
 <body>
 
 <div class="container">
 
-<!-- ==================== 报告一：彩妆 ==================== -->
+<!-- ==================== Report 1: Makeup ==================== -->
 <div class="section-banner makeup-banner">
   <div class="lang-switch-bar">
     <a href="index-cn.html" class="lang-switch-btn cn-active"><span class="lang-dot"></span>中文</a>
   </div>
   <h2>💄 Makeup Industry Weekly</h2>
-  <div class="banner-sub">May 27 – Jun 2, 2026 · Week 23 · China × US</div>
+  <div class="banner-sub">
+    May 27 – Jun 2, 2026 · Week 23 · China × US
+    <div class="week-selector" id="weekSelectorMakeup">
+      <button class="week-selector-btn" onclick="toggleWeekDropdown('weekSelectorMakeup')">
+        Past Issues ▾
+      </button>
+      <div class="week-dropdown">
+        <button class="week-dropdown-item current" disabled>Week 23 (Current)</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="section-shell makeup-shell">
@@ -1463,7 +1530,17 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC"
 <!-- ═══════════════ 报告二：香水 ═══════════════ -->
 <div class="section-banner fragrance-banner">
   <h2>🌸 Fragrance Industry Weekly</h2>
-  <div class="banner-sub">May 27 – Jun 2, 2026 · Week 23 · China × US</div>
+  <div class="banner-sub">
+    May 27 – Jun 2, 2026 · Week 23 · China × US
+    <div class="week-selector" id="weekSelectorFragrance">
+      <button class="week-selector-btn" onclick="toggleWeekDropdown('weekSelectorFragrance')">
+        Past Issues ▾
+      </button>
+      <div class="week-dropdown">
+        <button class="week-dropdown-item current" disabled>Week 23 (Current)</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="section-shell fragrance-shell">
@@ -2188,6 +2265,22 @@ document.querySelectorAll('.radar-item-header').forEach(function(header) {
   header.addEventListener('click', function() {
     this.parentElement.classList.toggle('open');
   });
+});
+
+// ═══ Week Selector Dropdown ═══
+function toggleWeekDropdown(selectorId) {
+  var selector = document.getElementById(selectorId);
+  var wasOpen = selector.classList.contains('open');
+  // Close all week selectors
+  document.querySelectorAll('.week-selector').forEach(function(el) { el.classList.remove('open'); });
+  // Toggle clicked one
+  if (!wasOpen) selector.classList.add('open');
+}
+// Close dropdown when clicking outside
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.week-selector')) {
+    document.querySelectorAll('.week-selector').forEach(function(el) { el.classList.remove('open'); });
+  }
 });
 </script>
 
