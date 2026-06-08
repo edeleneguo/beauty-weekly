@@ -822,7 +822,18 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC"
     <a href="index.html" class="lang-switch-btn en-active"><span class="lang-dot"></span>EN</a>
   </div>
   <h2>💄 彩妆行业周报</h2>
-  <div class="banner-sub">2026年5月27日 – 6月2日 · 第23周 · 中国 × 美国</div>
+  <div class="banner-sub">2026年5月27日 – 6月2日 · 第23周 · 中国 × 美国
+    <div class="week-selector" id="weekSelectorMakeup">
+      <button class="week-selector-btn" onclick="toggleWeekDropdown('weekSelectorMakeup')">
+        选择往期 <span class="week-arrow">▾</span>
+      </button>
+      <div class="week-dropdown">
+        <button class="week-dropdown-item current" disabled>第23周（本周）</button>
+        <div class="week-dropdown-divider"></div>
+        <a class="week-dropdown-item" href="../../index-cn.html">第24周（最新）</a>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="section-shell makeup-shell">
@@ -2212,6 +2223,22 @@ document.querySelectorAll('.radar-item-header').forEach(function(header) {
   header.addEventListener('click', function() {
     this.parentElement.classList.toggle('open');
   });
+});
+
+// Week Selector Dropdown
+function toggleWeekDropdown(id) {
+  var selector = document.getElementById(id);
+  if (!selector) return;
+  selector.classList.toggle('open');
+}
+
+// Close dropdowns when clicking outside
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.week-selector')) {
+    document.querySelectorAll('.week-selector.open').forEach(function(sel) {
+      sel.classList.remove('open');
+    });
+  }
 });
 </script>
 
