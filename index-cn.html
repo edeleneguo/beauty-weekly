@@ -340,6 +340,55 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC"
 .fragrance-banner .week-dropdown-item:hover { background: rgba(29,154,133,0.10); color: #1d9a85; }
 .fragrance-banner .week-dropdown-item.current { background: rgba(29,154,133,0.15); color: #1d9a85; }
 @media (max-width: 768px) { .week-selector { margin-left: 6px; } .week-selector-btn { padding: 3px 9px; font-size: 11px; } .week-dropdown { min-width: 120px; padding: 6px 4px; } .week-dropdown-item { padding: 7px 10px; font-size: 12px; } .signal-strip { grid-template-columns: repeat(2, 1fr); } .heat-section { grid-template-columns: 1fr; } }
+
+/* ═══ Fragrance layout fixes ── missing classes ═══ */
+.heat-title { font-size: 18px; font-weight: 700; margin-bottom: 16px; grid-column: 1 / -1; }
+.heat-panels { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; grid-column: 1 / -1; }
+.heat-panel.cn-panel { order: 2; }
+.heat-panel.us-panel { order: 1; }
+.panel-title { font-size: 15px; font-weight: 700; margin-bottom: 14px; }
+.heat-list { list-style: none; padding: 0; margin: 0; }
+.heat-list li { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-bottom: 1px solid #f0f0f0; font-size: 14px; transition: background 0.15s; }
+.heat-list li:hover { background: rgba(45,138,122,0.04); }
+.heat-list li:last-child { border-bottom: none; }
+.rank-num { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 50%; background: var(--teal); color: #fff; font-size: 11px; font-weight: 700; flex-shrink: 0; }
+.heat-list li:nth-child(1) .rank-num { background: #c41e3a; }
+.heat-list li:nth-child(2) .rank-num { background: #d4654a; }
+.heat-list li:nth-child(3) .rank-num { background: #d4b96a; }
+.rank-brand { font-weight: 700; color: var(--text); }
+.rank-score { margin-left: auto; font-weight: 700; color: var(--teal); font-size: 15px; }
+
+.radar-title { font-size: 18px; font-weight: 700; margin-bottom: 16px; }
+.radar-tier { margin-bottom: 20px; }
+.tier-label { font-size: 15px; font-weight: 700; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 2px solid transparent; }
+.tier-label.luxury { border-image: linear-gradient(90deg, #b8943a 0%, transparent 100%) 1; }
+.tier-label.masstige { border-image: linear-gradient(90deg, #d4654a 0%, transparent 100%) 1; }
+.radar-grid { display: flex; flex-direction: column; gap: 10px; }
+.global-tag { background: #f3f0f8; color: #6b5b8a; box-shadow: 0 1px 3px rgba(107,91,138,0.12); }
+.trend-region-header { font-size: 16px; font-weight: 700; margin: 24px 0 14px; padding: 10px 16px; border-radius: 10px; letter-spacing: 0.3px; }
+.trend-region-header.cn-header { background: linear-gradient(90deg, #fff0f3, #fce4ea); color: var(--rose); border-left: 4px solid var(--rose); }
+.trend-region-header.us-header { background: linear-gradient(90deg, #eef7f5, #cdf0e3); color: #147a6a; border-left: 4px solid var(--teal); }
+.radar-detail { font-size: 13px; color: var(--text-secondary); line-height: 1.6; padding-top: 6px; }
+.radar-item .radar-head { display: flex; align-items: center; gap: 12px; padding: 14px 16px; cursor: pointer; user-select: none; background: linear-gradient(135deg, #fefdfe 0%, #fcf8fa 100%); border: 1px solid #f0e8ec; border-radius: 12px; transition: all 0.25s; flex-wrap: wrap; }
+.radar-item .radar-head:hover { border-color: #e8cdd6; box-shadow: 0 2px 12px rgba(201, 75, 108, 0.08); }
+.radar-item .radar-head .radar-brand { font-size: 15px; font-weight: 700; color: #3a2a30; width: 155px; flex-shrink: 0; letter-spacing: -0.2px; }
+.radar-item .radar-head .radar-name { font-size: 14px; font-weight: 500; color: #4a3a40; flex: 1; line-height: 1.4; }
+.radar-item .radar-body { padding: 0 16px 14px; border: 1px solid #f0e8ec; border-top: none; border-radius: 0 0 12px 12px; margin-top: -6px; background: #fff; }
+.radar-tags { display: flex; gap: 6px; margin-bottom: 8px; flex-wrap: wrap; }
+
+.frag-woody { background: #fdf3ed; color: #b8683a; border: 1px solid #f2dcc8; }
+.frag-floral { background: #fef0f7; color: #c4587a; border: 1px solid #f8d0e2; }
+.frag-fruity { background: #fef5ed; color: #d4753e; border: 1px solid #fad8ba; }
+.frag-gourmand { background: #fdf3e8; color: #b87a30; border: 1px solid #f0d4b0; }
+.frag-aquatic { background: #eef7f5; color: #338278; border: 1px solid #c2e0da; }
+.frag-green { background: #eef6ea; color: #4e8040; border: 1px solid #c8e0bc; }
+.frag-musk { background: #f4eef8; color: #7a56a8; border: 1px solid #dac8f0; }
+.frag-tea { background: #f5f2e8; color: #7a6a4a; border: 1px solid #e4d8c0; }
+
+@media (max-width: 768px) {
+  .heat-panels { grid-template-columns: 1fr; }
+  .radar-item .radar-head .radar-brand { width: auto; flex: 1 1 100%; margin-bottom: 4px; }
+}
 </style>
 </head>
 <body>
@@ -355,10 +404,10 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC"
   <div class="banner-sub">
     2026年6月2日 – 6月8日 · 第24周 · 中国 × 美国
     <div class="week-selector" id="weekSelectorMakeup">
-      <button class="week-selector-btn" onclick="toggleWeekDropdown('weekSelectorMakeup')">
+      <button class="week-selector-btn" onclick="event.stopPropagation();toggleWeekDropdown('weekSelectorMakeup')">
         选择往期 ▾
       </button>
-      <div class="week-dropdown">
+      <div class="week-dropdown" onclick="event.stopPropagation()">
         <button class="week-dropdown-item current" disabled>第24周（本周）</button>
         <div class="week-dropdown-divider"></div>
         <a class="week-dropdown-item" href="archive/week-23/index-cn.html">第23周</a>
@@ -442,22 +491,6 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC"
       </div>
     </div>
 
-    <div class="news-card">
-      <div class="news-card-header">
-        <span class="news-card-title">🍦 开心果美食调称霸夏季 — 同比<span class="hl-num">+852.5%</span></span>
-        <span class="news-card-tag shared">GLOBAL</span>
-        <span class="news-card-tag data">香调</span>
-        <span class="news-card-chevron">▾</span>
-      </div>
-      <div class="news-card-brief">开心果香调同比+852.5%，焦糖+764.7%；Kayali开心果冰淇淋33、Sol de Janeiro Cheirosa '62引领趋势。</div>
-      <div class="news-card-body">
-        <div class="news-card-body-inner">
-          美食调2.0浪潮全面爆发：开心果搜索增长<span class="hl-num">+852.5%</span>（中国），焦糖+764.7%（中国）。<br><br>
-          <b>标杆产品：</b>Kayali开心果冰淇淋33在TikTok爆火；Sol de Janeiro Cheirosa '62持续Sephora热销。#gourmandperfume TikTok 18亿浏览。<br><br>
-          来源：PerfumeStars / Scent-Wise
-        </div>
-      </div>
-    </div>
   </div>
 </div>
 
@@ -465,30 +498,30 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC"
 <div class="section-title">💄 彩妆趋势</div>
 
 <div class="common-trends-section">
-<div class="common-trends-header"><span class="common-badge">🌐 共享趋势</span><span class="common-subtitle">美食调2.0 × 迷你化可穿戴 — 2026夏季中美核心方向</span></div>
+<div class="common-trends-header"><span class="common-badge">🌐 共享趋势</span><span class="common-subtitle">护肤级唇妆 × 迷你化可穿戴 — 2026夏季中美核心方向</span></div>
 
 <div class="trend-v-card common">
-<h4>🍦 趋势#1：美食调2.0 — 从香草到开心果与焦糖</h4>
+<h4>💧 趋势#1：护肤级唇妆革命 — 从"上色"到"养唇"</h4>
 <div class="trend-v-body">
-<div class="driver-summary">开心果搜索增长<span style="color:var(--rose);font-weight:700">+852.5%</span>（中国），焦糖<span style="color:var(--rose);font-weight:700">+764.7%</span>（中国）。Kayali开心果冰淇淋33在TikTok爆火；Sol de Janeiro Cheirosa '62 Sephora热销。#gourmandperfume 18亿浏览。</div>
+<div class="driver-summary">消费者拒绝干燥唇膏，要求一步到位的保湿+显色；神经酰胺+胜肽成核心配方方向。Givenchy"宝石糖"唇油天猫首周搜索<span style="color:var(--rose);font-weight:700">+1,200%</span>；PRADA唇釉首周<span style="color:var(--rose);font-weight:700">1,000+</span>支。</div>
 <div class="driver-bullets">
-<div class="bullet-group cn-group"><div class="bullet-point"><span class="region-tag" style="background:#f3f0f8;color:#6b5b8a;">GLOBAL</span><span> 后疫情时代的舒适追求 + 食物相关的香调带来即时的愉悦感和社交分享欲</span></div></div>
-<div class="bullet-group cn-group"><div class="bullet-point"><span class="region-tag cn-tag">CN</span><span> 开心果+<span class="hl-rose">852.5%</span>，焦糖+<span class="hl-rose">764.7%</span>；Kayali开心果冰淇淋33 TikTok爆火；Sol de Janeiro Cheirosa '62 Sephora热销</span></div></div>
-<div class="bullet-group cn-group"><div class="bullet-point"><span class="region-tag us-tag">US</span><span> #gourmandperfume TikTok <span class="hl-teal">18亿</span>浏览；开心果桥接美食调清新感与木质深度</span></div></div>
+<div class="bullet-group cn-group"><div class="bullet-point"><span class="region-tag" style="background:#f3f0f8;color:#6b5b8a;">GLOBAL</span><span> 消费者拒绝干燥唇膏 → 要求一步到位的保湿+显色；"护肤级唇色"成为新品核心定位</span></div></div>
+<div class="bullet-group cn-group"><div class="bullet-point"><span class="region-tag cn-tag">CN</span><span> <b>Givenchy"宝石糖"唇油</b>天猫首周搜索<span class="hl-rose">+1,200%</span>；99%唇部养护成分宣称占主导</span></div></div>
+<div class="bullet-group cn-group"><div class="bullet-point"><span class="region-tag us-tag">US</span><span> <b>Tower 28唇蜜</b>Z世代Clean Beauty明星；<b>Rhode胜肽唇釉</b>手机壳捆绑套装爆火</span></div></div>
 </div></div>
 <div class="signal-strip">
-<div class="signal-chip tt"><div class="chip-icon">🎵 TikTok</div><div class="chip-hashtag tt-hash" style="color:var(--rose);">#gourmandperfume</div><div class="chip-num">18亿</div><div class="chip-desc">美食调香水话题浏览</div><div class="chip-trend chip-hot">🔥 跨市场爆发</div></div>
-<div class="signal-chip seph"><div class="chip-icon">🛒 Sephora</div><div class="chip-num" style="color:var(--teal);">#2</div><div class="chip-desc">Cheirosa '62 排名</div><div class="chip-trend chip-up">↑ 叠穿明星</div></div>
-<div class="signal-chip gtrends"><div class="chip-icon">📈 中国搜索</div><div class="chip-num" style="color:var(--rose);">+852%</div><div class="chip-desc">开心果香调增长</div><div class="chip-trend chip-up">↑ 爆发式增长</div></div>
-<div class="signal-chip wgsn"><div class="chip-icon">🔮 香调</div><div class="chip-num">开心果+焦糖</div><div class="chip-desc">2026夏季定义香调</div><div class="chip-trend chip-hot">🔥 年度香调</div></div>
+<div class="signal-chip tt"><div class="chip-icon">🎵 天猫</div><div class="chip-num" style="color:var(--rose);">+1,200%</div><div class="chip-desc">Givenchy唇油首周搜索</div><div class="chip-trend chip-hot">🔥 爆发式增长</div></div>
+<div class="signal-chip seph"><div class="chip-icon">🛒 天猫</div><div class="chip-num" style="color:var(--teal);">1,000+</div><div class="chip-desc">PRADA唇釉首周销量</div><div class="chip-trend chip-up">↑ 高端功效</div></div>
+<div class="signal-chip ig"><div class="chip-icon">🔬 成分</div><div class="chip-num">99%</div><div class="chip-desc">唇部养护成分宣称</div><div class="chip-trend chip-hot">🔥 成分创新</div></div>
+<div class="signal-chip wgsn"><div class="chip-icon">🔮 配方</div><div class="chip-num">神经酰胺+胜肽</div><div class="chip-desc">核心配方方向</div><div class="chip-trend chip-up">↑ 护肤级彩妆</div></div>
 </div>
 <div class="action-block">
 <div class="act-header">
 <span class="act-label">🎯 行动</span>
-<span class="act-direction">开心果-焦糖美食调EDP · 木质基底增深度</span>
+<span class="act-direction">神经酰胺+胜肽唇油 · "护肤级唇色"定位</span>
 <span class="act-strength strong">强烈推荐</span>
 </div>
-<div class="act-content">开发开心果-焦糖美食调EDP，木质基底（檀香/雪松）增添结构深度；搭配身体喷雾实现叠穿组合。</div>
+<div class="act-content">开发神经酰胺+胜肽唇油，可叠加显色；定位为"护肤级唇色"；对标Givenchy宝石糖99%养护概念。</div>
 </div>
 </div>
 
@@ -698,10 +731,10 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC"
   <div class="banner-sub">
     2026年6月2日 – 6月8日 · 第24周 · 中国 × 美国
     <div class="week-selector" id="weekSelectorFragrance">
-      <button class="week-selector-btn" onclick="toggleWeekDropdown('weekSelectorFragrance')">
+      <button class="week-selector-btn" onclick="event.stopPropagation();toggleWeekDropdown('weekSelectorFragrance')">
         选择往期 ▾
       </button>
-      <div class="week-dropdown">
+      <div class="week-dropdown" onclick="event.stopPropagation()">
         <button class="week-dropdown-item current" disabled>第24周（本周）</button>
         <div class="week-dropdown-divider"></div>
         <a class="week-dropdown-item" href="archive/week-23/index-cn.html">第23周</a>
@@ -1279,10 +1312,19 @@ document.querySelectorAll('.radar-item').forEach(item=>{
 });
 
 /* ── 周选择器 ── */
-document.querySelectorAll('.week-dropdown').forEach(dd=>{
-  dd.addEventListener('change',function(){
-    if(this.value)window.location.href=this.value;
-  });
+function toggleWeekDropdown(id) {
+  var selector = document.getElementById(id);
+  if (!selector) return;
+  selector.classList.toggle('open');
+}
+
+// Close dropdowns when clicking outside
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.week-selector')) {
+    document.querySelectorAll('.week-selector.open').forEach(function(sel) {
+      sel.classList.remove('open');
+    });
+  }
 });
 </script>
 </body>
