@@ -7,8 +7,8 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
-<meta name="version" content="2026-06-08-1830">
-<!-- Cache-bust: 2026 06 08-1830 CST -->
+<meta name="version" content="2026-06-08-1855">
+<!-- Cache-bust: 2026 06 08-1855 CST -->
 <style>
 :root {
   --rose: #c94b6c;
@@ -696,80 +696,72 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC"
 
 
 <div class="appendix-section">
-<h3 class="appendix-title">📋 附录与方法论</h3>
-
-<div class="appendix-block">
-<h4>数据来源</h4>
-<table class="appendix-table">
-<thead><tr><th>平台/工具</th><th>数据类型</th><th>覆盖范围</th></tr></thead>
-<tbody>
-<tr><td>TikTok / 抖音</td><td>话题浏览量、趋势标签、达人内容</td><td>全球</td></tr>
-<tr><td>小红书</td><td>笔记数、互动量、种草排名</td><td>中国</td></tr>
-<tr><td>Sephora.com / 天猫美妆</td><td>品类排名、新品上架、销售指标</td><td>美国 / 中国</td></tr>
-<tr><td>Google Trends</td><td>搜索趋势、同比变化</td><td>全球</td></tr>
-<tr><td>WGSN</td><td>趋势预测、色彩/成分方向</td><td>全球</td></tr>
-<tr><td>Instagram</td><td>品牌内容互动、话题传播</td><td>全球</td></tr>
-<tr><td>YouTube</td><td>测评视频、开箱内容</td><td>全球</td></tr>
-<tr><td>IT之家 / 新浪财经</td><td>电商大促数据、行业新闻</td><td>中国</td></tr>
-<tr><td>Qogita TikTok趋势</td><td>TikTok hashtag趋势分析</td><td>美国</td></tr>
-<tr><td>搜狐 / 百度行业数据</td><td>行业趋势报道、搜索大数据</td><td>中国</td></tr>
-<tr><td>飞瓜数据 / 蝉妈妈</td><td>抖音/小红书达人数据、直播电商</td><td>中国</td></tr>
-<tr><td>魔镜洞察 / CBNData</td><td>天猫/淘宝品类销售数据</td><td>中国</td></tr>
-</tbody>
-</table>
+<h4 style="margin-bottom:12px;font-size:15px;">🔖 Source Overview</h4>
+<table class="appendix-table"><thead><tr><th>Source</th><th>Market</th><th>Type</th><th>Coverage</th><th>Notes</th></tr></thead><tbody>
+<tr class="cat-divider"><td colspan="5">📊 E-Commerce & Social Media Data</td></tr>
+<tr><td class="app-name">天猫新品创新中心（TMIC）</td><td><span class="app-mkt cn">🇨🇳</span></td><td class="app-type">电商趋势</td><td class="app-desc">品类增长、消费者画像、价格带分析</td><td class="app-note">—</td></tr>
+<tr><td class="app-name">CBNData 第一财经商业数据中心</td><td><span class="app-mkt cn">🇨🇳</span></td><td class="app-type">Consumer Data</td><td class="app-desc">Domestic vs global brand share, annual beauty trends</td><td class="app-note">—</td></tr>
+<tr><td class="app-name">魔镜洞察</td><td><span class="app-mkt cn">🇨🇳</span></td><td class="app-type">Omni-Channel Ecom</td><td class="app-desc">天猫/JD/Douyin category growth, brand rankings</td><td class="app-note">—</td></tr>
+<tr><td class="app-name">Circana（原NPD）</td><td><span class="app-mkt us">🇺🇸</span></td><td class="app-type">POS Retail</td><td class="app-desc">US prestige beauty POS sales data</td><td class="app-note">—</td></tr>
+<tr><td class="app-name">Sephora Bestsellers</td><td><span class="app-mkt us">🇺🇸</span></td><td class="app-type">Retailer</td><td class="app-desc">Prestige beauty bestseller lists, new launches</td><td class="app-note">—</td></tr>
+<tr><td class="app-name">Ulta Beauty</td><td><span class="app-mkt us">🇺🇸</span></td><td class="app-type">Retailer</td><td class="app-desc">Mass + prestige beauty new arrivals</td><td class="app-note">—</td></tr>
+<tr class="cat-divider"><td colspan="5">📱 Social Media & KOL Data</td></tr>
+<tr><td class="app-name">飞瓜数据</td><td><span class="app-mkt cn">🇨🇳</span></td><td class="app-type">Douyin Data</td><td class="app-desc">Short video/livestream commerce trends, category heat</td><td class="app-note">—</td></tr>
+<tr><td class="app-name">蝉妈妈</td><td><span class="app-mkt cn">🇨🇳</span></td><td class="app-type">Douyin KOL</td><td class="app-desc">KOL seeding effectiveness, livestream conversion</td><td class="app-note">—</td></tr>
+<tr><td class="app-name">Accio</td><td><span class="app-mkt cn">🇨🇳</span></td><td class="app-type">Social Trends</td><td class="app-desc">Douyin/XHS trending categories, ingredient trends</td><td class="app-note">—</td></tr>
+<tr><td class="app-name">美修大数据（美丽修行）</td><td><span class="app-mkt cn">🇨🇳</span></td><td class="app-type">Ingredient Reputation</td><td class="app-desc">Ingredient trends, safety scores, user reviews</td><td class="app-note">—</td></tr>
+<tr class="cat-divider"><td colspan="5">📖 Industry Research & Consumer Insights</td></tr>
+<tr><td class="app-name">艾瑞咨询</td><td><span class="app-mkt cn">🇨🇳</span></td><td class="app-type">Industry Research</td><td class="app-desc">China beauty ecom/social media industry reports</td><td class="app-note">—</td></tr>
+<tr><td class="app-name">Daxue Consulting</td><td><span class="app-mkt cn">🇨🇳</span></td><td class="app-type">Consumer Research</td><td class="app-desc">China beauty consumer behavior</td><td class="app-note">—</td></tr>
+<tr><td class="app-name">Mintel 英敏特（中国）</td><td><span class="app-mkt cn">🇨🇳</span></td><td class="app-type">Consumer Insights</td><td class="app-desc">Consumer behavior, category innovation cases</td><td class="app-note">—</td></tr>
+<tr><td class="app-name">凯度 Kantar</td><td><span class="app-mkt cn">🇨🇳</span></td><td class="app-type">Brand Equity</td><td class="app-desc">China beauty brand equity index</td><td class="app-note">—</td></tr>
+<tr><td class="app-name">经济参考报 / 新华网</td><td><span class="app-mkt cn">🇨🇳</span></td><td class="app-type">官方媒体</td><td class="app-desc">行业并购、监管</td><td class="app-note">—</td></tr>
+<tr><td class="app-name">新浪财经</td><td><span class="app-mkt cn">🇨🇳</span></td><td class="app-type">Financial Media</td><td class="app-desc">Luxury beauty bestseller lists, brand financials</td><td class="app-note">—</td></tr>
+<tr><td class="app-name">WGSN</td><td><span class="app-mkt us">🇺🇸</span></td><td class="app-type">Trend Forecasting</td><td class="app-desc">Global color/materials/beauty trend forecasting</td><td class="app-note">—</td></tr>
+<tr><td class="app-name">Euromonitor</td><td><span class="app-mkt us">🇺🇸</span></td><td class="app-type">Market Sizing</td><td class="app-desc">Global makeup/fragrance market size & forecasts</td><td class="app-note">—</td></tr>
+<tr><td class="app-name">Mintel GNPD</td><td><span class="app-mkt us">🇺🇸</span></td><td class="app-type">New Product DB</td><td class="app-desc">Global new product ingredient/claim/packaging analysis</td><td class="app-note">—</td></tr>
+<tr><td class="app-name">BeautyMatter</td><td><span class="app-mkt us">🇺🇸</span></td><td class="app-type">Industry Media</td><td class="app-desc">Annual beauty trend reports, brand strategy</td><td class="app-note">—</td></tr>
+<tr><td class="app-name">FridayCharm</td><td><span class="app-mkt us">🇺🇸</span></td><td class="app-type">Fragrance Forecasting</td><td class="app-desc">Annual fragrance note trend forecasting</td><td class="app-note">—</td></tr>
+<tr><td class="app-name">Fragrantica</td><td><span class="app-mkt us">🇺🇸</span></td><td class="app-type">Fragrance Community</td><td class="app-desc">Note analysis, user ratings, new product tracking</td><td class="app-note">—</td></tr>
+<tr><td class="app-name">The Business Research Company</td><td><span class="app-mkt us">🇺🇸</span></td><td class="app-type">Market Research</td><td class="app-desc">Clean Beauty and other category market sizing</td><td class="app-note">—</td></tr>
+<tr><td class="app-name">W Magazine</td><td><span class="app-mkt us">🇺🇸</span></td><td class="app-type">Fashion Media</td><td class="app-desc">Annual best fragrance/makeup editor picks</td><td class="app-note">—</td></tr>
+<tr class="cat-divider"><td colspan="5">📰 Media & Editor Recommendations</td></tr>
+<tr><td class="app-name">NewBeauty</td><td><span class="app-mkt us">🇺🇸</span></td><td class="app-type">Beauty Media</td><td class="app-desc">Monthly new launch lists, editor reviews</td><td class="app-note">—</td></tr>
+<tr><td class="app-name">Bustle</td><td><span class="app-mkt us">🇺🇸</span></td><td class="app-type">Consumer Media</td><td class="app-desc">Editor-recommended new products</td><td class="app-note">—</td></tr>
+<tr><td class="app-name">Who What Wear</td><td><span class="app-mkt us">🇺🇸</span></td><td class="app-type">Fashion & Beauty</td><td class="app-desc">Sephora new product trends, editor curation</td><td class="app-note">—</td></tr>
+</tbody></table>
 </div>
+<div style="background:#fafafa;border:1px solid #eee;border-radius:12px;padding:20px;margin-top:20px;">
+<h4 style="margin-top:0;">📐 Scoring Methodology</h4>
+<p style="font-size:13px;color:var(--text-secondary);line-height:1.8;margin:0;">
+Heat ranking is based on <span style="font-weight:700;color:var(--text);">Sales 50% + Buzz 50%</span> dual-dimension scoring system:<br>
+<br>
+<span class="mkt-tag cn" style="font-size:12px;">China Market</span><br>
+<strong>📊 Sales 50%:</strong> 天猫 GMV <span style="color:var(--rose);font-weight:700">30%</span> · Douyin Sales <span style="color:var(--rose);font-weight:700">20%</span><br>
+<strong>📣 Buzz 50%:</strong> Douyin Search + Views <span style="color:var(--rose);font-weight:700">25%</span> · 小红书 Notes + Search <span style="color:var(--rose);font-weight:700">15%</span> · Topic Discussion & Engagement <span style="color:var(--rose);font-weight:700">10%</span><br>
+<br>
+<span class="mkt-tag us" style="font-size:12px;">US Market</span><br>
+<strong>📊 Sales 50%:</strong> Sephora Bestsellers <span style="color:var(--teal);font-weight:700">25%</span> · Ulta Beauty Bestsellers <span style="color:var(--teal);font-weight:700">25%</span><br>
+<strong>📣 Buzz 50%:</strong> TikTok Search + Views <span style="color:var(--teal);font-weight:700">25%</span> · YouTube Search & Discussion <span style="color:var(--teal);font-weight:700">15%</span> · Post Discussion & Engagement <span style="color:var(--teal);font-weight:700">10%</span><br>
+<br>
+Rank conversion uses segmented linear mapping (TOP1=100%, TOP5=90%, TOP10=80%, etc.); social buzz is log-normalized by views/engagement; scoring draws exclusively from platform-native data (sales rank, views, note count, engagement), excluding editorial recommendations or magazine lists.
+</p></div>
 
-<div class="appendix-block">
-<h4>热度评分方法论</h4>
-<p>热度评分（0–100）基于加权综合模型：</p>
-<div class="methodology-formula-cn">
-<b>彩妆中国评分</b> = 天猫(30%) + 抖音(15%) + 京东(10%) + 小红书(15%) + 社媒声量(15%) + 常青度(15%)<br>
-<b>彩妆美国评分</b> = Sephora(25%) + Ulta(25%) + TikTok(25%) + YouTube(10%) + 互动量(10%) + 趋势匹配(5%)
+<div style="background:linear-gradient(135deg,#fefdfe,#fcf8fa);border:1px solid #f0e8ec;border-radius:12px;padding:20px;margin-top:20px;">
+<h4 style="margin-top:0;">📋 This Week's Sources</h4>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;font-size:13px;color:var(--text-secondary);line-height:1.8;">
+<div><h5 style="margin:0 0 6px 0;"><span class="mkt-tag cn">China Market</span></h5>
+飞瓜数据 · 世研消费指数 · 艾媒咨询 · 品观网/有米有数 · 界面新闻 · 雪球 · 美修大数据</div>
+<div><h5 style="margin:0 0 6px 0;"><span class="mkt-tag us">US Market</span></h5>
+Who What Wear · Marie Claire · W Magazine · The Ethos · Beauty World News · Sephora · Professional Beauty · The Industry</div>
 </div>
-<table class="appendix-table methodology-table">
-<thead><tr><th>权重</th><th>数据来源</th><th>采集指标</th><th>更新频率</th></tr></thead>
-<tbody>
-<tr><td>30% / 25%</td><td>天猫 / Sephora</td><td>GMV、搜索量、转化率</td><td>周度</td></tr>
-<tr><td>15% / 25%</td><td>抖音 / TikTok</td><td>话题浏览、互动量、趋势速度</td><td>周度</td></tr>
-<tr><td>15% / 10%</td><td>小红书 / YouTube</td><td>笔记量、收藏分享、达人内容</td><td>周度</td></tr>
-<tr><td>15% / 10%</td><td>社媒声量 / 互动量</td><td>跨平台情感、声量份额</td><td>周度</td></tr>
-<tr><td>15% / 5%</td><td>常青度 / 趋势匹配</td><td>历史持久力、趋势契合度</td><td>双周</td></tr>
-</tbody>
-</table>
-</div>
-
-<div class="appendix-block">
-<h4>品牌参考</h4>
-<table class="appendix-table">
-<thead><tr><th>品牌</th><th>类型</th><th>母公司</th><th>主要市场</th><th>备注</th></tr></thead>
-<tbody>
-<tr><td class="app-name">YSL</td><td class="app-type">高端美妆</td><td>欧莱雅高端</td><td><span class="app-mkt global">全球</span></td><td class="app-desc">天猫618彩妆香水品牌TOP1</td></tr>
-<tr><td class="app-name">Dior</td><td class="app-type">高端美妆+香水</td><td>LVMH</td><td><span class="app-mkt global">全球</span></td><td class="app-desc">#999口红天猫口红#1；Sauvage全球男士#1</td></tr>
-<tr><td class="app-name">Chanel</td><td class="app-type">高端美妆+香水</td><td>Chanel S.A.（私有）</td><td><span class="app-mkt global">全球</span></td><td class="app-desc">牛仔蓝系列售罄；Bleu L'Exclusif新香精版上市</td></tr>
-<tr><td class="app-name">Givenchy</td><td class="app-type">高端美妆</td><td>LVMH</td><td><span class="app-mkt global">全球</span></td><td class="app-desc">Gem Candy唇油首周搜索+1,200%</td></tr>
-<tr><td class="app-name">Armani</td><td class="app-type">高端美妆</td><td>欧莱雅高端</td><td><span class="app-mkt global">全球</span></td><td class="app-desc">Lip Maestro Velvet高端定位</td></tr>
-<tr><td class="app-name">PRADA</td><td class="app-type">高端美妆</td><td>欧莱雅（授权）</td><td><span class="app-mkt global">全球</span></td><td class="app-desc">唇釉首周1,000+件</td></tr>
-<tr><td class="app-name">MAC</td><td class="app-type">轻奢美妆</td><td>雅诗兰黛</td><td><span class="app-mkt global">全球</span></td><td class="app-desc">Chili常青款+15%怀旧趋势</td></tr>
-<tr><td class="app-name">Fenty Beauty</td><td class="app-type">轻奢美妆</td><td>LVMH / Kendo</td><td><span class="app-mkt us">美国</span></td><td class="app-desc">Sun Stalk'r慕思修容Sephora 3次售罄</td></tr>
-<tr><td class="app-name">Rare Beauty</td><td class="app-type">轻奢美妆</td><td>Rare Beauty Brands</td><td><span class="app-mkt us">美国</span></td><td class="app-desc">Soft Pinch腮红Sephora #1，TikTok常青</td></tr>
-<tr><td class="app-name">Patrick Ta</td><td class="app-type">轻奢美妆</td><td>Patrick Ta Beauty</td><td><span class="app-mkt us">美国</span></td><td class="app-desc">Liquid Transition腮红50K+候补</td></tr>
-<tr><td class="app-name">Sol de Janeiro</td><td class="app-type">轻奢身体+香水</td><td>欧舒丹集团</td><td><span class="app-mkt global">全球</span></td><td class="app-desc">Cheirosa '62 Sephora #2；叠穿#1品牌</td></tr>
-<tr><td class="app-name">Kayali</td><td class="app-type">小众香水</td><td>Huda Beauty</td><td><span class="app-mkt global">全球</span></td><td class="app-desc">Yum Pistachio Gelato 33全球爆火</td></tr>
-<tr><td class="app-name">花知晓</td><td class="app-type">国货美妆</td><td>珀莱雅（51%股权）</td><td><span class="app-mkt cn">中国</span></td><td class="app-desc">珀莱雅收购；Teddy唇釉驱动关注</td></tr>
-<tr><td class="app-name">毛戈平</td><td class="app-type">国货轻奢</td><td>毛戈平化妆品</td><td><span class="app-mkt cn">中国</span></td><td class="app-desc">天猫618彩妆品牌前五首秀</td></tr>
-<tr><td class="app-name">Colorkey</td><td class="app-type">国货大众</td><td>Colorkey Inc.</td><td><span class="app-mkt cn">中国</span></td><td class="app-desc">大众市场爆款，抖音唇釉#1</td></tr>
-<tr><td class="app-name">MFK</td><td class="app-type">小众香水</td><td>LVMH</td><td><span class="app-mkt global">全球</span></td><td class="app-desc">Baccarat Rouge 540 618高端香水明星</td></tr>
-<tr><td class="app-name">Le Labo</td><td class="app-type">小众香水</td><td>雅诗兰黛</td><td><span class="app-mkt global">全球</span></td><td class="app-desc">Santal 33常青款，社交媒体必备</td></tr>
-</tbody>
-</table>
+<p style="font-size:11px;color:#bbb;margin:12px 0 0 0;">Authority Trends: WGSN × Coloro SS2026 · Pantone 2026 COTY: Cloud Dancer · Beauty World News</p>
 </div>
 
-<div class="appendix-block">
-<h4>免责声明</h4>
-<p>本报告数据来源于公开渠道与第三方平台，仅供参考。品牌排名不代表投资建议。数据截止日期为 2026年6月8日。过往趋势不保证未来表现。</p>
+<div style="text-align:center;margin-top:32px;padding:24px;background:linear-gradient(135deg,#e8516e15,#8b5cf615,#3b9bcc15);border-radius:16px;border:1px solid #f0e8f0;">
+<p style="font-size:14px;color:var(--text-secondary);margin:0;">📅 Next Week Preview：2026年6月16日（周一）自动推送 · 📬 如需调整报告内容或频率，请随时反馈</p>
 </div>
 </div>
-
 </div><!-- /report-container -->
 
 <script>
