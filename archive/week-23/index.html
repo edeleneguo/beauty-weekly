@@ -824,7 +824,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC"
   <h2>💄 Makeup Industry Weekly</h2>
   <div class="banner-sub">May 27 – Jun 2, 2026 · Week 23 · China × US
     <div class="week-selector" id="weekSelectorMakeup">
-      <button class="week-selector-btn" onclick="toggleWeekDropdown('weekSelectorMakeup')">
+      <button class="week-selector-btn" onclick="event.stopPropagation();toggleWeekDropdown('weekSelectorMakeup')">
         Past Issues <span class="week-arrow">▾</span>
       </button>
       <div class="week-dropdown">
@@ -1492,7 +1492,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC"
   <h2>🌸 Fragrance Industry Weekly</h2>
   <div class="banner-sub">May 27 – Jun 2, 2026 · Week 23 · China × US
     <div class="week-selector" id="weekSelectorFragrance">
-      <button class="week-selector-btn" onclick="toggleWeekDropdown('weekSelectorFragrance')">
+      <button class="week-selector-btn" onclick="event.stopPropagation();toggleWeekDropdown('weekSelectorFragrance')">
         Past Issues <span class="week-arrow">▾</span>
       </button>
       <div class="week-dropdown">
@@ -2223,6 +2223,22 @@ document.querySelectorAll('.radar-item-header').forEach(function(header) {
   header.addEventListener('click', function() {
     this.parentElement.classList.toggle('open');
   });
+});
+
+// Week Selector Dropdown
+function toggleWeekDropdown(id) {
+  var selector = document.getElementById(id);
+  if (!selector) return;
+  selector.classList.toggle('open');
+}
+
+// Close dropdowns when clicking outside
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.week-selector')) {
+    document.querySelectorAll('.week-selector.open').forEach(function(sel) {
+      sel.classList.remove('open');
+    });
+  }
 });
 </script>
 
