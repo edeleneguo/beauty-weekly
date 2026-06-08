@@ -848,10 +848,10 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC"
   <div class="banner-sub">
     June 2 - Jun 8, 2026 · Week 24 · China × US
     <div class="week-selector" id="weekSelectorMakeup">
-      <button class="week-selector-btn" onclick="toggleWeekDropdown('weekSelectorMakeup')">
+      <button class="week-selector-btn" onclick="event.stopPropagation();toggleWeekDropdown('weekSelectorMakeup')">
         Past Issues
       </button>
-      <div class="week-dropdown">
+      <div class="week-dropdown" onclick="event.stopPropagation()">
         <button class="week-dropdown-item current" disabled>Week 24 (Current)</button>
         <div class="week-dropdown-divider"></div>
         <a class="week-dropdown-item" href="archive/week-23/index.html">Week 23</a>
@@ -901,24 +901,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC"
       </div>
     </div>
 
-    <!-- News 3: Pistachio Gourmand -->
-    <div class="news-card">
-      <div class="news-card-header">
-        <span class="news-card-title">Pistachio Gourmand Dominates Summer — Pistachio <span class="hl-num">+852.5% YoY</span></span>
-        <span class="news-card-tag shared">GLOBAL</span>
-        <span class="news-card-tag data">Trend</span>
-        <span class="news-card-chevron"></span>
-      </div>
-      <div class="news-card-brief">Pistachio scent +852.5% YoY (CN), caramel +764.7% YoY; Kayali Yum Pistachio Gelato 33, Sol de Janeiro Cheirosa '62 lead the trend. Source: PerfumeStars / Scent-Wise</div>
-      <div class="news-card-body">
-        <div class="news-card-body-inner">
-          Pistachio has become the defining scent note of Summer 2026, with <span class="hl-num">+852.5% YoY</span> search growth in China and caramel following at <span class="hl-num">+764.7% YoY</span>.<br><br>
-          <b>Hero products:</b> Kayali Yum Pistachio Gelato 33 viral globally; Sol de Janeiro Cheirosa '62 ranked Sephora #2 overall; D.S. & Durga Pistachio EDP gaining cult status. TikTok #pistachioperfume approaching 980M views.
-        </div>
-      </div>
-    </div>
-
-    <!-- News 4: Mini & Wearable Cosmetics -->
+    <!-- News 3: Mini & Wearable Cosmetics -->
     <div class="news-card">
       <div class="news-card-header">
         <span class="news-card-title">Mini & Wearable Cosmetics Trend — Products Becoming Accessories</span>
@@ -935,7 +918,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC"
       </div>
     </div>
 
-    <!-- News 5: Butter Yellow Nails -->
+    <!-- News 4: Butter Yellow Nails -->
     <div class="news-card">
       <div class="news-card-header">
         <span class="news-card-title">Butter Yellow Nails Search <span class="hl-num">+1,043%</span> — Yellow as New Neutral</span>
@@ -958,31 +941,31 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC"
 <div class="section-title">Makeup Trends</div>
 
 <div class="common-trends-section">
-<div class="common-trends-header"><span class="common-badge">GLOBAL Shared Trends</span><span class="common-subtitle">Gourmand 2.0 x Mini & Wearable — Cross-market viral consumption reshaping product innovation</span></div>
+<div class="common-trends-header"><span class="common-badge">GLOBAL Shared Trends</span><span class="common-subtitle">Lip Oil Revolution x Mini & Wearable — Cross-market viral consumption reshaping product innovation</span></div>
 
-<!-- Shared Trend 1: Gourmand 2.0 -->
+<!-- Shared Trend 1: Lip Oil Revolution -->
 <div class="trend-v-card common">
-<h4>Trend 1: Gourmand 2.0 — From Vanilla to Pistachio & Caramel</h4>
+<h4>Trend 1: Lip Oil Revolution — Skincare-Meets-Color</h4>
 <div class="trend-v-body">
-<div class="driver-summary">Post-pandemic comfort-seeking + food-adjacent scents feel approachable and nostalgic. Pistachio and caramel are replacing vanilla as the hero gourmand notes across fragrance and makeup categories.</div>
+<div class="driver-summary">Consumers rejecting dry lipsticks; demanding one-step hydration + color. Ceramide + peptide becoming core formulation directions. Givenchy "Jewel Sugar" lip oil +1,200% Tmall search first week; PRADA lip glaze 1,000+ units first week.</div>
 <div class="driver-bullets">
-<div class="bullet-group cn-group"><div class="bullet-point"><span class="region-tag" style="background:#f3f0f8;color:#6b5b8a;">GLOBAL</span><span> Pistachio <span class="hl-rose">+852.5% YoY</span> (CN), caramel <span class="hl-rose">+764.7% YoY</span> (CN); Kayali Yum Pistachio Gelato 33 viral on TikTok; Sol de Janeiro Cheirosa '62 Sephora best-seller; #gourmandperfume <span class="hl-teal">1.8B views</span></span></div></div>
-<div class="bullet-group cn-group"><div class="bullet-point"><span class="region-tag cn-tag">CN</span><span> Douyin gourmand scent search doubling month-over-month; Xiaohongshu "food perfume" posts trending; dessert-inspired lip tints and cream blushes driving TikTok commerce</span></div></div>
-<div class="bullet-group cn-group"><div class="bullet-point"><span class="region-tag us-tag">US</span><span> TikTok #gourmandperfume 1.8B views; Sephora gourmand category search +156%; pistachio ice cream and caramel lattes inspiring cross-category NPD across fragrance and makeup</span></div></div>
+<div class="bullet-group cn-group"><div class="bullet-point"><span class="region-tag" style="background:#f3f0f8;color:#6b5b8a;">GLOBAL</span><span> Consumers rejecting dry lipsticks → demanding one-step hydration + color; "skincare-grade lip color" becoming the core positioning for new launches</span></div></div>
+<div class="bullet-group cn-group"><div class="bullet-point"><span class="region-tag cn-tag">CN</span><span> Givenchy "Jewel Sugar" lip oil <span class="hl-rose">+1,200%</span> Tmall search first week; 99% lip care ingredient claims dominating new launches</span></div></div>
+<div class="bullet-group cn-group"><div class="bullet-point"><span class="region-tag us-tag">US</span><span> Tower 28 lip gloss Z-gen Clean Beauty star; Rhode peptide lip tint phone case bundle viral; Merit and other clean brands pushing skincare-grade lip color</span></div></div>
 </div></div>
 <div class="signal-strip">
-<div class="signal-chip tt"><div class="chip-icon">Douyin</div><div class="chip-num" style="color:#c94b6c;">+852.5%</div><div class="chip-desc">Pistachio scent YoY</div><div class="chip-trend chip-up">Explosive Growth</div></div>
-<div class="signal-chip tt"><div class="chip-icon">Douyin</div><div class="chip-num" style="color:#c94b6c;">+764.7%</div><div class="chip-desc">Caramel scent YoY</div><div class="chip-trend chip-up">Explosive Growth</div></div>
-<div class="signal-chip tt"><div class="chip-icon">TikTok</div><div class="chip-hashtag tt-hash">#gourmandperfume</div><div class="chip-num" style="color:var(--teal);">1.8B</div><div class="chip-desc">Views globally</div><div class="chip-trend chip-hot">Cross-market</div></div>
-<div class="signal-chip seph"><div class="chip-icon">Kayali</div><div class="chip-num" style="color:var(--teal);">VIRAL</div><div class="chip-desc">Yum Pistachio Gelato 33</div><div class="chip-trend chip-hot">Global Sensation</div></div>
+<div class="signal-chip tt"><div class="chip-icon">Tmall</div><div class="chip-num" style="color:#c94b6c;">+1,200%</div><div class="chip-desc">Givenchy Lip Oil Search</div><div class="chip-trend chip-up">Explosive Growth</div></div>
+<div class="signal-chip tt"><div class="chip-icon">Tmall</div><div class="chip-num" style="color:var(--teal);">1,000+</div><div class="chip-desc">PRADA Lip Glaze First Week</div><div class="chip-trend chip-up">Premium Efficacy</div></div>
+<div class="signal-chip seph"><div class="chip-icon">Ingredients</div><div class="chip-num">99%</div><div class="chip-desc">Lip Care Ingredient Claims</div><div class="chip-trend chip-hot">Formula Innovation</div></div>
+<div class="signal-chip wgsn"><div class="chip-icon">Formula</div><div class="chip-num">Ceramide+Peptide</div><div class="chip-desc">Core Direction</div><div class="chip-trend chip-up">Skincare-Makeup</div></div>
 </div>
 <div class="action-block">
 <div class="act-header">
 <span class="act-label">Action</span>
-<span class="act-direction">Pistachio-caramel gourmand EDP with woody base</span>
+<span class="act-direction">Ceramide + peptide lip oil · "Skincare-grade lip color" positioning</span>
 <span class="act-strength strong">Strong - Cross-Market Surge</span>
 </div>
-<div class="act-content">Develop <b>pistachio-caramel gourmand EDP</b> with woody base (sandalwood/cedar) for structural depth. This is the defining scent direction of 2026, validated by explosive search growth across both China and US markets.</div>
+<div class="act-content">Develop <b>ceramide + peptide lip oil</b> with buildable color; position as "skincare-grade lip color". Benchmark against Givenchy's 99% care concept. The lip oil revolution represents a structural upgrade from pure color to color + care.</div>
 </div>
 </div>
 
@@ -1451,10 +1434,10 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC"
   <div class="banner-sub">
     June 2 - Jun 8, 2026 &#183; Week 24 &#183; China &#215; US
     <div class="week-selector" id="weekSelectorFragrance">
-      <button class="week-selector-btn" onclick="toggleWeekDropdown('weekSelectorFragrance')">
+      <button class="week-selector-btn" onclick="event.stopPropagation();toggleWeekDropdown('weekSelectorFragrance')">
         Past Issues
       </button>
-      <div class="week-dropdown">
+      <div class="week-dropdown" onclick="event.stopPropagation()">
         <button class="week-dropdown-item current" disabled>Week 24 (Current)</button>
         <div class="week-dropdown-divider"></div>
         <a class="week-dropdown-item" href="archive/week-23/index.html">Week 23</a>
