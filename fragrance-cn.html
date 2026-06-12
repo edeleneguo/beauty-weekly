@@ -7,57 +7,59 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
-<meta name="version" content="2026-06-13-1511">
+<meta name="version" content="2026-06-12-1528">
 <!-- Cache-bust: 2026-06-12-1458 CST -->
 <style>
 :root {
-  /* === ZURU EDGE Dark Tech Design System === */
+  /* === ZURU EDGE Light Design System === */
   --zuru-red: #E60012;
   --zuru-red-dark: #C4000A;
-  --zuru-red-light: rgba(230, 0, 18, 0.15);
-  --zuru-red-glow: rgba(230, 0, 18, 0.4);
+  --zuru-red-light: rgba(230, 0, 18, 0.08);
+  --zuru-red-glow: rgba(230, 0, 18, 0.15);
+  --monday-pink: #E8527A;
+  --monday-pink-light: rgba(232, 82, 122, 0.10);
   --teal: #00C9A7;
-  --teal-light: rgba(0, 201, 167, 0.15);
-  --teal-glow: rgba(0, 201, 167, 0.4);
+  --teal-light: rgba(0, 201, 167, 0.08);
+  --teal-glow: rgba(0, 201, 167, 0.15);
   --gold: #FFB800;
   --coral: #FF6B6B;
   --lavender: #7B61FF;
   --purple: #7B61FF;
 
-  /* Dark surfaces */
-  --bg-primary: #0D0D0D;
-  --bg-secondary: #161622;
-  --bg-elevated: #1F1F2F;
-  --bg-card: #1A1A2E;
-  --bg-hover: #252540;
+  /* Light surfaces */
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F5F5F7;
+  --bg-elevated: #F8F8FA;
+  --bg-card: #FFFFFF;
+  --bg-hover: #F0F0F5;
 
   /* Borders */
-  --border-subtle: rgba(255, 255, 255, 0.06);
-  --border-medium: rgba(255, 255, 255, 0.10);
-  --border-hover: rgba(230, 0, 18, 0.4);
+  --border-subtle: rgba(0, 0, 0, 0.06);
+  --border-medium: rgba(0, 0, 0, 0.10);
+  --border-hover: rgba(230, 0, 18, 0.40);
 
   /* Text */
-  --text: #F0F0F5;
-  --text-secondary: #A0A0B8;
-  --text-tertiary: #6B6B80;
+  --text: #1A1A1A;
+  --text-secondary: #666666;
+  --text-tertiary: #999999;
 
   /* Shadows */
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
-  --shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-  --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.5);
-  --glow-red: 0 4px 20px rgba(230, 0, 18, 0.3);
-  --glow-teal: 0 4px 20px rgba(0, 201, 167, 0.3);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.10);
+  --glow-red: 0 4px 20px rgba(230, 0, 18, 0.12);
+  --glow-teal: 0 4px 20px rgba(0, 201, 167, 0.12);
 
   /* Zone colors */
-  --cn-bg: rgba(230, 0, 18, 0.06);
-  --cn-border: rgba(230, 0, 18, 0.20);
-  --us-bg: rgba(0, 201, 167, 0.06);
-  --us-border: rgba(0, 201, 167, 0.20);
+  --cn-bg: rgba(230, 0, 18, 0.04);
+  --cn-border: rgba(230, 0, 18, 0.18);
+  --us-bg: rgba(0, 201, 167, 0.04);
+  --us-border: rgba(0, 201, 167, 0.18);
 
   /* Legacy compat */
   --rose: #E60012;
   --blue: #00C9A7;
-  --card-bg: #1A1A2E;
+  --card-bg: #FFFFFF;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -72,17 +74,18 @@ body {
 
 .container { max-width: 1400px; margin: 0 auto; padding: 28px 20px 48px; }
 
-/* === Header - ZURU EDGE Hero Banner === */
+/* === Header - ZURU EDGE Clean Light Banner === */
 .header {
   text-align: center;
   padding: 56px 32px 40px;
-  background: linear-gradient(135deg, #1A1A2E 0%, #0D0D0D 50%, #1A0A0E 100%);
-  border-bottom: 2px solid var(--zuru-red);
+  background: #FFFFFF;
+  border-bottom: 3px solid var(--zuru-red);
+  border-top: 3px solid var(--zuru-red);
   border-radius: 20px;
   margin-bottom: 32px;
   position: relative;
   overflow: hidden;
-  box-shadow: var(--glow-red);
+  box-shadow: 0 2px 12px rgba(230, 0, 18, 0.08);
 }
 .header::before {
   content: '';
@@ -91,7 +94,7 @@ body {
   right: -20%;
   width: 500px;
   height: 500px;
-  background: radial-gradient(circle, rgba(230, 0, 18, 0.08) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(230, 0, 18, 0.04) 0%, transparent 70%);
   border-radius: 50%;
   pointer-events: none;
 }
@@ -102,18 +105,17 @@ body {
   left: -10%;
   width: 400px;
   height: 400px;
-  background: radial-gradient(circle, rgba(123, 97, 255, 0.05) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(232, 82, 122, 0.03) 0%, transparent 70%);
   border-radius: 50%;
   pointer-events: none;
 }
 .header h1 {
   font-size: 32px;
   font-weight: 800;
-  color: #FFFFFF;
+  color: #1A1A1A;
   letter-spacing: 1px;
   position: relative;
   z-index: 1;
-  text-shadow: 0 0 40px rgba(230, 0, 18, 0.3);
 }
 .header .subtitle {
   font-size: 15px;
@@ -126,13 +128,12 @@ body {
 }
 .header .date-badge {
   display: inline-block;
-  background: rgba(230, 0, 18, 0.15);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(230, 0, 18, 0.30);
+  background: #FFF0F2;
+  border: 1px solid rgba(230, 0, 18, 0.20);
   border-radius: 24px;
   padding: 6px 22px;
   font-size: 13px;
-  color: #FF8A8A;
+  color: var(--zuru-red);
   margin-top: 16px;
   font-weight: 500;
   position: relative;
@@ -152,9 +153,9 @@ body {
   border-radius: 16px;
   font-size: 12px;
   font-weight: 600;
-  background: rgba(230, 0, 18, 0.12);
-  border: 1px solid rgba(230, 0, 18, 0.25);
-  color: #FF8A8A;
+  background: var(--zuru-red-light);
+  border: 1px solid rgba(230, 0, 18, 0.15);
+  color: var(--zuru-red);
 }
 
 /* Executive Summary */
@@ -325,7 +326,7 @@ body {
   opacity: 0.4;
 }
 
-/* === Section banner - ZURU EDGE branded === */
+/* === Section banner - ZURU EDGE clean light === */
 .section-banner {
   text-align: center;
   padding: 32px 32px 26px;
@@ -334,6 +335,7 @@ body {
   position: relative;
   box-shadow: var(--shadow);
   overflow: hidden;
+  background: #FFFFFF;
 }
 .section-banner::before {
   content: '';
@@ -342,7 +344,7 @@ body {
   right: -15%;
   width: 350px;
   height: 350px;
-  background: radial-gradient(circle, rgba(230, 0, 18, 0.12) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(230, 0, 18, 0.04) 0%, transparent 70%);
   border-radius: 50%;
   pointer-events: none;
 }
@@ -353,21 +355,21 @@ body {
   left: -10%;
   width: 280px;
   height: 280px;
-  background: radial-gradient(circle, rgba(123, 97, 255, 0.08) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(232, 82, 122, 0.03) 0%, transparent 70%);
   border-radius: 50%;
   pointer-events: none;
 }
 .section-banner h2 {
   font-size: 24px;
   font-weight: 800;
-  color: #FFFFFF;
+  color: #1A1A1A;
   letter-spacing: 0.5px;
   position: relative;
   z-index: 1;
 }
 .section-banner .banner-sub {
   font-size: 13px;
-  color: rgba(255, 255, 255, 0.70);
+  color: #888888;
   margin-top: 6px;
   font-weight: 500;
   letter-spacing: 0.3px;
@@ -376,12 +378,14 @@ body {
 }
 
 .makeup-banner {
-  background: linear-gradient(135deg, #1A0A0E 0%, #2A0A10 30%, #1A1A2E 100%);
-  border-bottom: 2px solid var(--zuru-red);
+  background: #FFFFFF;
+  border-bottom: 3px solid var(--zuru-red);
+  border-top: 3px solid var(--zuru-red);
 }
 .fragrance-banner {
-  background: linear-gradient(135deg, #0A1A1A 0%, #0A2A2A 30%, #1A1A2E 100%);
-  border-bottom: 2px solid var(--teal);
+  background: #FFFFFF;
+  border-bottom: 3px solid var(--monday-pink);
+  border-top: 3px solid var(--monday-pink);
 }
 
 /* === Section shell === */
@@ -391,6 +395,8 @@ body {
   margin-bottom: 16px;
   position: relative;
   overflow: hidden;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
 }
 .section-shell::before {
   content: '';
@@ -402,13 +408,15 @@ body {
   opacity: 0.5;
 }
 .makeup-shell {
-  background: var(--bg-secondary);
+  background: #FFFFFF;
   border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-sm);
 }
 .makeup-shell::before { display: none; }
 .fragrance-shell {
-  background: var(--bg-secondary);
+  background: #FFFFFF;
   border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-sm);
 }
 .fragrance-shell::before { display: none; }
 .section-shell .section { margin-bottom: 0; }
@@ -484,7 +492,7 @@ body {
 .zone-cn { background: var(--cn-bg); border: 1.5px solid var(--cn-border); }
 .zone-us { background: var(--us-bg); border: 1.5px solid var(--us-border); }
 
-.zone-badge { display: inline-block; padding: 7px 20px; border-radius: 22px; font-size: 14px; font-weight: 700; position: absolute; top: -16px; left: 24px; box-shadow: 0 3px 12px rgba(0,0,0,0.3); }
+.zone-badge { display: inline-block; padding: 7px 20px; border-radius: 22px; font-size: 14px; font-weight: 700; position: absolute; top: -16px; left: 24px; box-shadow: 0 3px 12px rgba(0,0,0,0.12); }
 .zone-badge.cn { background: var(--zuru-red); color: #fff; box-shadow: 0 3px 12px rgba(230, 0, 18, 0.4); }
 .zone-badge.us { background: var(--teal); color: #fff; box-shadow: 0 3px 12px rgba(0, 201, 167, 0.4); }
 
@@ -542,7 +550,7 @@ body {
 }
 .signal-chip:hover { transform: translateY(-1px); box-shadow: var(--shadow-sm); }
 .signal-chip.yt { border-left-color: var(--zuru-red); }
-.signal-chip.tt { border-left-color: #1a1a1a; }
+.signal-chip.tt { border-left-color: #333333; }
 .signal-chip.seph { border-left-color: var(--teal); }
 .signal-chip.wgsn { border-left-color: var(--lavender); }
 .signal-chip.pin { border-left-color: #e60023; }
@@ -882,7 +890,7 @@ body {
   .heat-section { grid-template-columns: 1fr; }
 }
 
-/* === Language Switch - ZURU EDGE pill button === */
+/* === Language Switch - ZURU EDGE solid pill === */
 .lang-switch-bar { position: absolute; top: 16px; right: 20px; z-index: 10; display: flex; flex-direction: column; align-items: flex-end; gap: 0; }
 .lang-switch-btn {
   display: flex;
@@ -893,30 +901,29 @@ body {
   font-size: 13px;
   font-weight: 600;
   cursor: pointer;
-  border: 1px solid rgba(230, 0, 18, 0.40);
-  background: rgba(230, 0, 18, 0.15);
-  color: #FF8A8A;
+  border: none;
+  background: var(--zuru-red);
+  color: #FFFFFF;
   transition: all 0.25s;
   text-decoration: none;
   letter-spacing: 0.4px;
-  box-shadow: 0 2px 8px rgba(230, 0, 18, 0.2);
-  backdrop-filter: blur(8px);
+  box-shadow: 0 2px 8px rgba(230, 0, 18, 0.25);
 }
 .lang-switch-btn:hover {
-  background: rgba(230, 0, 18, 0.30);
+  background: var(--zuru-red-dark);
   color: #fff;
   transform: translateY(-1px);
-  box-shadow: 0 4px 14px rgba(230, 0, 18, 0.35);
+  box-shadow: 0 4px 14px rgba(230, 0, 18, 0.30);
 }
-.lang-switch-btn .lang-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--zuru-red); opacity: 0.9; }
-.lang-switch-btn.en-active .lang-dot { background: var(--zuru-red); }
-.lang-switch-btn.cn-active .lang-dot { background: var(--zuru-red); }
+.lang-switch-btn .lang-dot { width: 6px; height: 6px; border-radius: 50%; background: #FFFFFF; opacity: 0.9; }
+.lang-switch-btn.en-active .lang-dot { background: #FFFFFF; }
+.lang-switch-btn.cn-active .lang-dot { background: #FFFFFF; }
 @media (max-width: 768px) {
   .lang-switch-bar { top: 10px; right: 12px; }
   .lang-switch-btn { padding: 6px 14px; font-size: 12px; }
 }
 
-/* === Section Jump Button - ZURU EDGE branded pill === */
+/* === Section Jump Button - ZURU EDGE clean pill === */
 .section-jump-btn {
   display: flex;
   align-items: center;
@@ -927,26 +934,26 @@ body {
   font-size: 12px;
   font-weight: 600;
   cursor: pointer;
-  border: 1px solid rgba(0, 201, 167, 0.30);
-  background: rgba(0, 201, 167, 0.12);
-  color: #80E8D0;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  background: #FFFFFF;
+  color: #666666;
   transition: all 0.25s;
   text-decoration: none;
   letter-spacing: 0.3px;
-  box-shadow: 0 1px 8px rgba(0, 201, 167, 0.15);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
   white-space: nowrap;
-  backdrop-filter: blur(8px);
 }
 .section-jump-btn:hover {
-  background: rgba(0, 201, 167, 0.25);
-  color: #fff;
+  background: #F5F5F7;
+  color: #1A1A1A;
   transform: translateY(-1px);
-  box-shadow: 0 3px 14px rgba(0, 201, 167, 0.30);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+  border-color: rgba(0, 0, 0, 0.18);
 }
 .section-jump-btn .jump-arrow { font-size: 11px; opacity: 0.8; transition: transform 0.25s; }
 .section-jump-btn:hover .jump-arrow { transform: translateY(2px); }
 
-/* Week Selector Dropdown - ZURU EDGE Dark */
+/* Week Selector Dropdown - ZURU EDGE Light */
 .week-selector { position: relative; display: inline-block; margin-left: 10px; vertical-align: middle; z-index: 20; }
 .week-selector-btn {
   display: inline-flex;
@@ -1897,7 +1904,7 @@ body {
 <tr><td class="app-name">Who What Wear</td><td><span class="app-mkt us">🇺🇸</span></td><td class="app-type">Fashion & Beauty</td><td class="app-desc">Sephora new product trends, editor curation</td><td class="app-note">—</td></tr>
 </tbody></table>
 </div>
-<div style="background:#1A1A2E;border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:20px;margin-top:20px;">
+<div style="background:#F8F8FA;border:1px solid rgba(0,0,0,0.06);border-radius:12px;padding:20px;margin-top:20px;">
 <h4 style="margin-top:0;">📐 Scoring Methodology</h4>
 <p style="font-size:13px;color:var(--text-secondary);line-height:1.8;margin:0;">
 Heat ranking is based on <span style="font-weight:700;color:var(--text);">Sales 50% + Buzz 50%</span> dual-dimension scoring system:<br>
@@ -1913,7 +1920,7 @@ Heat ranking is based on <span style="font-weight:700;color:var(--text);">Sales 
 Rank conversion uses segmented linear mapping (TOP1=100%, TOP5=90%, TOP10=80%, etc.); social buzz is log-normalized by views/engagement; scoring draws exclusively from platform-native data (sales rank, views, note count, engagement), excluding editorial recommendations or magazine lists.
 </p></div>
 
-<div style="background:#1A1A2E;border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:20px;margin-top:20px;">
+<div style="background:#F8F8FA;border:1px solid rgba(0,0,0,0.06);border-radius:12px;padding:20px;margin-top:20px;">
 <h4 style="margin-top:0;">📋 This Week's Sources</h4>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;font-size:13px;color:var(--text-secondary);line-height:1.8;">
 <div><h5 style="margin:0 0 6px 0;"><span class="mkt-tag cn">中国市场</span></h5>
