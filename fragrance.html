@@ -7,18 +7,69 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
-<meta name="version" content="2026-06-12-1528">
+<meta name="version" content="2026-06-12-1552">
 <!-- Cache-bust: 2026-06-12-1458 CST -->
 <style>
 :root {
+  /* === ZURU EDGE Design System (based on reference dashboard) === */
+  --zuru-red: #D6001C;
+  --zuru-red-dark: #B00018;
+  --zuru-red-light: rgba(214, 0, 28, 0.08);
+  --zuru-red-glow: rgba(214, 0, 28, 0.15);
+  --monday-pink: #6366F1;
+  --monday-pink-light: rgba(99, 102, 241, 0.08);
+  --teal: #10B981;
+  --teal-light: rgba(16, 185, 129, 0.08);
+  --teal-glow: rgba(16, 185, 129, 0.15);
+  --gold: #F59E0B;
+  --coral: #EF4444;
+  --lavender: #8B5CF6;
+  --purple: #8B5CF6;
+  --daise-pink: #EC4899;
+
+  /* Light surfaces (ref dashboard) */
+  --bg-primary: #FAFAFA;
+  --bg-secondary: #F3F4F6;
+  --bg-elevated: #F9FAFB;
+  --bg-card: #FFFFFF;
+  --bg-hover: #F0F0F5;
+
+  /* Borders (ref dashboard) */
+  --border-subtle: #E5E7EB;
+  --border-medium: #D1D5DB;
+  --border-hover: #D6001C;
+
+  /* Text (ref dashboard) */
+  --text: #1A1A1A;
+  --text-secondary: #6B7280;
+  --text-tertiary: #9CA3AF;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+  --shadow: 0 4px 20px rgba(0,0,0,0.08);
+  --shadow-lg: 0 8px 40px rgba(0,0,0,0.10);
+  --glow-red: 0 4px 20px rgba(214, 0, 28, 0.12);
+  --glow-teal: 0 4px 20px rgba(16, 185, 129, 0.12);
+
+  /* Zone colors */
+  --cn-bg: rgba(214, 0, 28, 0.04);
+  --cn-border: rgba(214, 0, 28, 0.20);
+  --us-bg: rgba(16, 185, 129, 0.04);
+  --us-border: rgba(16, 185, 129, 0.20);
+
+  /* Legacy compat */
+  --rose: #D6001C;
+  --blue: #10B981;
+  --card-bg: #FFFFFF;
+}root {
   /* === ZURU EDGE Light Design System === */
-  --zuru-red: #E60012;
+  --zuru-red: #D6001C;
   --zuru-red-dark: #C4000A;
   --zuru-red-light: rgba(230, 0, 18, 0.08);
   --zuru-red-glow: rgba(230, 0, 18, 0.15);
   --monday-pink: #E8527A;
   --monday-pink-light: rgba(232, 82, 122, 0.10);
-  --teal: #00C9A7;
+  --teal: #10B981;
   --teal-light: rgba(0, 201, 167, 0.08);
   --teal-glow: rgba(0, 201, 167, 0.15);
   --gold: #FFB800;
@@ -57,8 +108,8 @@
   --us-border: rgba(0, 201, 167, 0.18);
 
   /* Legacy compat */
-  --rose: #E60012;
-  --blue: #00C9A7;
+  --rose: #D6001C;
+  --blue: #10B981;
   --card-bg: #FFFFFF;
 }
 
@@ -77,15 +128,13 @@ body {
 /* === Header - ZURU EDGE Clean Light Banner === */
 .header {
   text-align: center;
-  padding: 56px 32px 40px;
-  background: #FFFFFF;
-  border-bottom: 3px solid var(--zuru-red);
-  border-top: 3px solid var(--zuru-red);
-  border-radius: 20px;
+  padding: 28px 32px 22px;
+  background: var(--zuru-red);
+  color: white;
+  border-radius: 16px;
   margin-bottom: 32px;
   position: relative;
-  overflow: hidden;
-  box-shadow: 0 2px 12px rgba(230, 0, 18, 0.08);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
 .header::before {
   content: '';
@@ -110,17 +159,17 @@ body {
   pointer-events: none;
 }
 .header h1 {
-  font-size: 32px;
+  font-size: 28px;
   font-weight: 800;
-  color: #1A1A1A;
-  letter-spacing: 1px;
+  color: white;
+  letter-spacing: -0.5px;
   position: relative;
   z-index: 1;
 }
 .header .subtitle {
-  font-size: 15px;
-  color: var(--text-secondary);
-  margin-top: 10px;
+  font-size: 14px;
+  color: rgba(255,255,255,0.85);
+  margin-top: 4px;
   font-weight: 500;
   letter-spacing: 0.3px;
   position: relative;
@@ -128,14 +177,14 @@ body {
 }
 .header .date-badge {
   display: inline-block;
-  background: #FFF0F2;
-  border: 1px solid rgba(230, 0, 18, 0.20);
-  border-radius: 24px;
-  padding: 6px 22px;
+  background: rgba(255,255,255,0.2);
+  border: 1.5px solid rgba(255,255,255,0.5);
+  border-radius: 8px;
+  padding: 6px 18px;
   font-size: 13px;
-  color: var(--zuru-red);
-  margin-top: 16px;
-  font-weight: 500;
+  color: white;
+  margin-top: 12px;
+  font-weight: 600;
   position: relative;
   z-index: 1;
 }
@@ -153,9 +202,9 @@ body {
   border-radius: 16px;
   font-size: 12px;
   font-weight: 600;
-  background: var(--zuru-red-light);
-  border: 1px solid rgba(230, 0, 18, 0.15);
-  color: var(--zuru-red);
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: white;
 }
 
 /* Executive Summary */
@@ -257,7 +306,7 @@ body {
 .news-card:hover {
   border-color: var(--border-hover);
   background: var(--bg-hover);
-  box-shadow: 0 2px 12px rgba(230, 0, 18, 0.10);
+  box-shadow: 0 2px 12px rgba(214, 0, 28, 0.08);
 }
 .news-card-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; cursor: pointer; user-select: none; }
 .news-card-header:hover .news-card-chevron { color: var(--text-secondary); }
@@ -334,7 +383,6 @@ body {
   margin-bottom: 20px;
   position: relative;
   box-shadow: var(--shadow);
-  overflow: hidden;
   background: #FFFFFF;
 }
 .section-banner::before {
@@ -360,16 +408,16 @@ body {
   pointer-events: none;
 }
 .section-banner h2 {
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 800;
-  color: #1A1A1A;
-  letter-spacing: 0.5px;
+  color: white;
+  letter-spacing: -0.3px;
   position: relative;
   z-index: 1;
 }
 .section-banner .banner-sub {
   font-size: 13px;
-  color: #888888;
+  color: rgba(255,255,255,0.80);
   margin-top: 6px;
   font-weight: 500;
   letter-spacing: 0.3px;
@@ -378,14 +426,12 @@ body {
 }
 
 .makeup-banner {
-  background: #FFFFFF;
-  border-bottom: 3px solid var(--zuru-red);
-  border-top: 3px solid var(--zuru-red);
+  background: var(--zuru-red);
+  color: white;
 }
 .fragrance-banner {
-  background: #FFFFFF;
-  border-bottom: 3px solid var(--monday-pink);
-  border-top: 3px solid var(--monday-pink);
+  background: var(--monday-pink);
+  color: white;
 }
 
 /* === Section shell === */
@@ -632,10 +678,10 @@ body {
 .trend-product-tag { display: inline-block; padding: 2px 8px; border-radius: 6px; font-size: 10px; font-weight: 700; margin-right: 6px; vertical-align: middle; flex-shrink: 0; letter-spacing: 0.3px; background: var(--zuru-red); color: #fff; box-shadow: 0 1px 3px rgba(230, 0, 18, 0.4); }
 .radar-item-header .trend-product-tag { font-size: 10px; padding: 1px 7px; margin-right: 5px; }
 .trend-product-tag.purple { background: linear-gradient(135deg, #7B61FF, #6B4FEE); box-shadow: 0 1px 3px rgba(123, 97, 255, 0.4); }
-.trend-product-tag.teal { background: linear-gradient(135deg, #00C9A7, #00B090); box-shadow: 0 1px 3px rgba(0, 201, 167, 0.4); }
+.trend-product-tag.teal { background: linear-gradient(135deg, #10B981, #00B090); box-shadow: 0 1px 3px rgba(0, 201, 167, 0.4); }
 .trend-product-tag.gold { background: linear-gradient(135deg, #FFB800, #E0A000); box-shadow: 0 1px 3px rgba(255, 184, 0, 0.4); }
 .trend-product-tag.coral { background: linear-gradient(135deg, #FF6B6B, #E05050); box-shadow: 0 1px 3px rgba(255, 107, 107, 0.4); }
-.trend-product-tag.green { background: linear-gradient(135deg, #00C9A7, #00A88A); box-shadow: 0 1px 3px rgba(0, 201, 167, 0.4); }
+.trend-product-tag.green { background: linear-gradient(135deg, #10B981, #00A88A); box-shadow: 0 1px 3px rgba(0, 201, 167, 0.4); }
 
 .heat-item-header .heat-bar-wrap { flex: 1.5; height: 8px; background: var(--border-subtle); border-radius: 4px; overflow: hidden; max-width: 160px; }
 .heat-item-header .heat-fill { height: 100%; border-radius: 4px; }
@@ -868,8 +914,8 @@ body {
   background: var(--bg-card);
   transition: all 0.25s;
 }
-.radar-item:hover { border-color: rgba(230, 0, 18, 0.30); box-shadow: 0 2px 16px rgba(230, 0, 18, 0.10); }
-.radar-item.open { border-color: rgba(230, 0, 18, 0.30); box-shadow: 0 3px 20px rgba(230, 0, 18, 0.15); }
+.radar-item:hover { border-color: rgba(214, 0, 28, 0.25); box-shadow: 0 2px 16px rgba(214, 0, 28, 0.08); }
+.radar-item.open { border-color: rgba(214, 0, 28, 0.25); box-shadow: 0 3px 20px rgba(214, 0, 28, 0.10); }
 .radar-item-header { display: flex; align-items: center; gap: 14px; padding: 16px 18px; cursor: pointer; user-select: none; transition: background 0.2s; }
 .radar-item-header:hover { background: var(--bg-hover); }
 .radar-item .radar-brand { font-size: 15px; font-weight: 700; color: var(--text); width: 155px; flex-shrink: 0; letter-spacing: -0.2px; }
@@ -897,58 +943,52 @@ body {
   align-items: center;
   gap: 6px;
   padding: 8px 18px;
-  border-radius: 24px;
+  border-radius: 8px;
   font-size: 13px;
   font-weight: 600;
   cursor: pointer;
-  border: none;
-  background: var(--zuru-red);
-  color: #FFFFFF;
-  transition: all 0.25s;
+  border: 1.5px solid rgba(255,255,255,0.5);
+  background: rgba(255,255,255,0.2);
+  color: white;
+  transition: all 0.2s;
   text-decoration: none;
   letter-spacing: 0.4px;
-  box-shadow: 0 2px 8px rgba(230, 0, 18, 0.25);
 }
 .lang-switch-btn:hover {
-  background: var(--zuru-red-dark);
-  color: #fff;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 14px rgba(230, 0, 18, 0.30);
+  background: rgba(255,255,255,0.3);
+  color: white;
+  border-color: white;
 }
-.lang-switch-btn .lang-dot { width: 6px; height: 6px; border-radius: 50%; background: #FFFFFF; opacity: 0.9; }
-.lang-switch-btn.en-active .lang-dot { background: #FFFFFF; }
-.lang-switch-btn.cn-active .lang-dot { background: #FFFFFF; }
+.lang-switch-btn .lang-dot { width: 6px; height: 6px; border-radius: 50%; background: white; opacity: 0.9; }
+.lang-switch-btn.en-active .lang-dot { background: #FFD700; }
+.lang-switch-btn.cn-active .lang-dot { background: #FF6B81; }
 @media (max-width: 768px) {
   .lang-switch-bar { top: 10px; right: 12px; }
   .lang-switch-btn { padding: 6px 14px; font-size: 12px; }
 }
 
-/* === Section Jump Button - ZURU EDGE clean pill === */
+/* === Section Jump Button - ZURU EDGE glass pill (on colored banner) === */
 .section-jump-btn {
   display: flex;
   align-items: center;
   gap: 5px;
   margin-top: 8px;
-  padding: 8px 16px;
-  border-radius: 24px;
+  padding: 8px 18px;
+  border-radius: 8px;
   font-size: 12px;
   font-weight: 600;
   cursor: pointer;
-  border: 1px solid rgba(0, 0, 0, 0.12);
-  background: #FFFFFF;
-  color: #666666;
-  transition: all 0.25s;
+  border: 1.5px solid rgba(255,255,255,0.5);
+  background: rgba(255,255,255,0.2);
+  color: white;
+  transition: all 0.2s;
   text-decoration: none;
   letter-spacing: 0.3px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
   white-space: nowrap;
 }
 .section-jump-btn:hover {
-  background: #F5F5F7;
-  color: #1A1A1A;
-  transform: translateY(-1px);
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
-  border-color: rgba(0, 0, 0, 0.18);
+  background: rgba(255,255,255,0.3);
+  border-color: white;
 }
 .section-jump-btn .jump-arrow { font-size: 11px; opacity: 0.8; transition: transform 0.25s; }
 .section-jump-btn:hover .jump-arrow { transform: translateY(2px); }
@@ -960,18 +1000,17 @@ body {
   align-items: center;
   gap: 5px;
   padding: 6px 14px;
-  border-radius: 16px;
+  border-radius: 12px;
   font-size: 12px;
   font-weight: 600;
   cursor: pointer;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  background: rgba(255, 255, 255, 0.08);
-  color: rgba(255, 255, 255, 0.75);
-  transition: all 0.25s;
+  border: 1px solid rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.85);
+  transition: all 0.2s;
   letter-spacing: 0.3px;
-  backdrop-filter: blur(8px);
 }
-.week-selector-btn:hover { background: rgba(255, 255, 255, 0.15); border-color: rgba(255, 255, 255, 0.25); }
+.week-selector-btn:hover { background: rgba(255,255,255,0.25); border-color: rgba(255,255,255,0.5); }
 .week-selector-btn .week-arrow { font-size: 10px; transition: transform 0.25s; opacity: 0.85; }
 .week-selector.open .week-selector-btn .week-arrow { transform: rotate(180deg); }
 .week-dropdown {
@@ -979,7 +1018,7 @@ body {
   background: var(--bg-elevated);
   backdrop-filter: blur(16px);
   border-radius: 14px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.15);
   border: 1px solid var(--border-medium);
   padding: 8px 6px;
   min-width: 140px;
@@ -1002,8 +1041,8 @@ body {
   text-align: center;
   border: none; background: none; cursor: pointer;
 }
-.week-dropdown-item:hover { background: rgba(230, 0, 18, 0.12); color: var(--zuru-red); }
-.week-dropdown-item.current { background: rgba(230, 0, 18, 0.15); color: var(--zuru-red); font-weight: 700; }
+.week-dropdown-item:hover { background: rgba(214, 0, 28, 0.08); color: var(--zuru-red); }
+.week-dropdown-item.current { background: rgba(214, 0, 28, 0.12); color: var(--zuru-red); font-weight: 700; }
 .week-dropdown-divider {
   height: 1px; background: var(--border-subtle);
   margin: 6px 10px;
@@ -1065,7 +1104,7 @@ body {
 <!-- ==================== Report 2: Fragrance ==================== -->
 <div class="section-banner fragrance-banner">
   <div class="lang-switch-bar">
-    <a href="fragrance-cn.html" class="lang-switch-btn en-active"><span class="lang-dot"></span>EN</a>
+    <a href="fragrance-cn.html" class="lang-switch-btn cn-active"><span class="lang-dot"></span>中文</a>
     <a href="index.html" class="section-jump-btn">💄 Makeup <span class="jump-arrow">↑</span></a>
   </div>
   <h2>ZURU EDGE Beauty Innovation Watch</h2>
@@ -1254,7 +1293,7 @@ body {
 </div>
 <div class="act-content">Develop <b>raspberry-forward EDP</b> with jasmine + coconut mid-notes; position as "fresh gourmand". Berry notes are the bridge between freshness and gourmand families, with validated consumer pull through multiple new launches.</div>
 </div>
-<div class="trend-decision-bar" style="margin-top:12px;background:rgba(0,201,167,0.08);border-left:4px solid var(--teal);padding:10px 14px;border-radius:8px;font-size:12px;color:#00C9A7;font-weight:600;">
+<div class="trend-decision-bar" style="margin-top:12px;background:rgba(16, 185, 129, 0.06);border-left:4px solid var(--teal);padding:10px 14px;border-radius:8px;font-size:12px;color:#10B981;font-weight:600;">
   Signal &gt Decision: Raspberry #1 emerging note > Raspberry-jasmine-coconut EDP | Strength: Strong
 </div>
 </div>
@@ -1283,7 +1322,7 @@ body {
 </div>
 <div class="act-content">Consider <b>extrait concentration for hero fragrance SKU</b>; premiumize packaging with refillable art bottles. The extrait trend represents a margin expansion opportunity as consumers demonstrate willingness to pay 2-3x for higher concentration.</div>
 </div>
-<div class="trend-decision-bar" style="margin-top:12px;background:rgba(0,201,167,0.08);border-left:4px solid var(--teal);padding:10px 14px;border-radius:8px;font-size:12px;color:#00C9A7;font-weight:600;">
+<div class="trend-decision-bar" style="margin-top:12px;background:rgba(16, 185, 129, 0.06);border-left:4px solid var(--teal);padding:10px 14px;border-radius:8px;font-size:12px;color:#10B981;font-weight:600;">
   Signal &gt Decision: Extrait premiumization > Refillable art bottle hero SKU | Strength: Mid
 </div>
 </div>
@@ -1517,7 +1556,7 @@ body {
 <tr><td class="app-name">Who What Wear</td><td><span class="app-mkt us">🇺🇸</span></td><td class="app-type">Fashion & Beauty</td><td class="app-desc">Sephora new product trends, editor curation</td><td class="app-note">—</td></tr>
 </tbody></table>
 </div>
-<div style="background:#F8F8FA;border:1px solid rgba(0,0,0,0.06);border-radius:12px;padding:20px;margin-top:20px;">
+<div style="background:#F9FAFB;border:1px solid #E5E7EB;border-radius:12px;padding:20px;margin-top:20px;">
 <h4 style="margin-top:0;">📐 Scoring Methodology</h4>
 <p style="font-size:13px;color:var(--text-secondary);line-height:1.8;margin:0;">
 Heat ranking is based on <span style="font-weight:700;color:var(--text);">Sales 50% + Buzz 50%</span> dual-dimension scoring system:<br>
@@ -1533,7 +1572,7 @@ Heat ranking is based on <span style="font-weight:700;color:var(--text);">Sales 
 Rank conversion uses segmented linear mapping (TOP1=100%, TOP5=90%, TOP10=80%, etc.); social buzz is log-normalized by views/engagement; scoring draws exclusively from platform-native data (sales rank, views, note count, engagement), excluding editorial recommendations or magazine lists.
 </p></div>
 
-<div style="background:#F8F8FA;border:1px solid rgba(0,0,0,0.06);border-radius:12px;padding:20px;margin-top:20px;">
+<div style="background:#F9FAFB;border:1px solid #E5E7EB;border-radius:12px;padding:20px;margin-top:20px;">
 <h4 style="margin-top:0;">📋 This Week's Sources</h4>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;font-size:13px;color:var(--text-secondary);line-height:1.8;">
 <div><h5 style="margin:0 0 6px 0;"><span class="mkt-tag cn">China Market</span></h5>
