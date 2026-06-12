@@ -7,7 +7,7 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
-<meta name="version" content="2026-06-12-1552">
+<meta name="version" content="2026-06-12-1631">
 <!-- Cache-bust: 2026-06-12-1458 CST -->
 <style>
 :root {
@@ -16,8 +16,8 @@
   --zuru-red-dark: #B00018;
   --zuru-red-light: rgba(214, 0, 28, 0.08);
   --zuru-red-glow: rgba(214, 0, 28, 0.15);
-  --monday-pink: #6366F1;
-  --monday-pink-light: rgba(99, 102, 241, 0.08);
+  --monday-pink: #D6001C;
+  --monday-pink-light: rgba(214, 0, 28, 0.06);
   --teal: #10B981;
   --teal-light: rgba(16, 185, 129, 0.08);
   --teal-glow: rgba(16, 185, 129, 0.15);
@@ -61,62 +61,12 @@
   --rose: #D6001C;
   --blue: #10B981;
   --card-bg: #FFFFFF;
-}root {
-  /* === ZURU EDGE Light Design System === */
-  --zuru-red: #D6001C;
-  --zuru-red-dark: #C4000A;
-  --zuru-red-light: rgba(230, 0, 18, 0.08);
-  --zuru-red-glow: rgba(230, 0, 18, 0.15);
-  --monday-pink: #E8527A;
-  --monday-pink-light: rgba(232, 82, 122, 0.10);
-  --teal: #10B981;
-  --teal-light: rgba(0, 201, 167, 0.08);
-  --teal-glow: rgba(0, 201, 167, 0.15);
-  --gold: #FFB800;
-  --coral: #FF6B6B;
-  --lavender: #7B61FF;
-  --purple: #7B61FF;
-
-  /* Light surfaces */
-  --bg-primary: #FFFFFF;
-  --bg-secondary: #F5F5F7;
-  --bg-elevated: #F8F8FA;
-  --bg-card: #FFFFFF;
-  --bg-hover: #F0F0F5;
-
-  /* Borders */
-  --border-subtle: rgba(0, 0, 0, 0.06);
-  --border-medium: rgba(0, 0, 0, 0.10);
-  --border-hover: rgba(230, 0, 18, 0.40);
-
-  /* Text */
-  --text: #1A1A1A;
-  --text-secondary: #666666;
-  --text-tertiary: #999999;
-
-  /* Shadows */
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
-  --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.10);
-  --glow-red: 0 4px 20px rgba(230, 0, 18, 0.12);
-  --glow-teal: 0 4px 20px rgba(0, 201, 167, 0.12);
-
-  /* Zone colors */
-  --cn-bg: rgba(230, 0, 18, 0.04);
-  --cn-border: rgba(230, 0, 18, 0.18);
-  --us-bg: rgba(0, 201, 167, 0.04);
-  --us-border: rgba(0, 201, 167, 0.18);
-
-  /* Legacy compat */
-  --rose: #D6001C;
-  --blue: #10B981;
-  --card-bg: #FFFFFF;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {
-  font-family: 'Inter', 'Space Grotesk', -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
   background: var(--bg-primary);
   color: var(--text);
   line-height: 1.65;
@@ -430,8 +380,10 @@ body {
   color: white;
 }
 .fragrance-banner {
-  background: var(--monday-pink);
+  background: linear-gradient(135deg, #9B0015 0%, #D6001C 60%, #B00018 100%);
   color: white;
+  border-top: 3px solid rgba(255,255,255,0.4);
+  border-bottom: 3px solid rgba(255,255,255,0.2);
 }
 
 /* === Section shell === */
@@ -489,29 +441,28 @@ body {
   margin-bottom: 18px;
 }
 .common-badge {
-  background: var(--zuru-red);
+  background: var(--purple);
   color: #fff;
   padding: 5px 16px;
   border-radius: 20px;
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.5px;
-  box-shadow: 0 2px 8px rgba(230, 0, 18, 0.4);
+  box-shadow: 0 2px 8px rgba(123, 97, 255, 0.4);
 }
-.common-subtitle { font-size: 12px; color: var(--zuru-red); font-weight: 500; }
-.common-trend-card {
-  border: 1px solid rgba(230, 0, 18, 0.20);
+.common-subtitle { font-size: 12px; color: var(--purple); font-weight: 500; }
+.common-trend-card { border: 1px solid rgba(123, 97, 255, 0.20);
   border-radius: 14px;
   overflow: hidden;
   margin-bottom: 14px;
   background: var(--bg-card);
   transition: box-shadow 0.2s;
 }
-.common-trend-card:hover { box-shadow: 0 3px 20px rgba(230, 0, 18, 0.15); }
-.ct-header { display: flex; align-items: center; gap: 12px; padding: 16px 20px 12px; border-bottom: 1px solid rgba(230, 0, 18, 0.12); }
+.common-trend-card:hover { box-shadow: 0 3px 20px rgba(123, 97, 255, 0.15); }
+.ct-header { display: flex; align-items: center; gap: 12px; padding: 16px 20px 12px; border-bottom: 1px solid rgba(123, 97, 255, 0.12); }
 .ct-header .ct-icon { font-size: 20px; }
 .ct-header .ct-title { font-weight: 700; font-size: 15px; color: var(--text); }
-.ct-header .ct-subtitle { font-size: 12px; color: var(--zuru-red); margin-left: auto; }
+.ct-header .ct-subtitle { font-size: 12px; color: var(--purple); margin-left: auto; }
 .ct-dual {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -527,8 +478,8 @@ body {
 }
 .ct-us .ct-flag { color: var(--teal); }
 .ct-cn .ct-flag { color: var(--zuru-red); }
-.ct-action { padding: 11px 18px; background: rgba(230, 0, 18, 0.04); border-top: 1px solid rgba(230, 0, 18, 0.12); font-size: 12px; color: var(--teal); display: flex; align-items: flex-start; gap: 8px; }
-.ct-action .action-icon { font-size: 13px; flex-shrink: 0; color: var(--zuru-red); }
+.ct-action { padding: 11px 18px; background: rgba(123, 97, 255, 0.04); border-top: 1px solid rgba(123, 97, 255, 0.12); font-size: 12px; color: var(--teal); display: flex; align-items: flex-start; gap: 8px; }
+.ct-action .action-icon { font-size: 13px; flex-shrink: 0; color: var(--purple); }
 @media (max-width: 768px) {
   .ct-dual { grid-template-columns: 1fr; }
   .ct-dual .ct-us { border-right: none; border-bottom: 1px solid var(--border-subtle); }
@@ -555,9 +506,21 @@ body {
 .trend-v-card:hover { box-shadow: var(--shadow); }
 .trend-v-card.cn { border-left: 5px solid var(--zuru-red); border-top: none; }
 .trend-v-card.us { border-left: 5px solid var(--teal); border-top: none; }
-.trend-v-card.common { border-left: 5px solid var(--zuru-red); border-top: none; background: rgba(230, 0, 18, 0.04); }
-.trend-v-card.common .driver-summary { background: var(--zuru-red-light); border-left: 3px solid var(--zuru-red); color: var(--zuru-red); }
-.trend-v-card h4 { font-size: 16px; font-weight: 700; margin-bottom: 12px; color: var(--text); }
+.trend-v-card.common { border-left: 5px solid var(--purple); border-top: none; background: rgba(123, 97, 255, 0.04); }
+.trend-v-card.common .driver-summary { background: rgba(123, 97, 255, 0.08); border-left: 3px solid var(--purple); color: var(--purple); }
+.trend-v-card h4 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--text);
+  background: linear-gradient(135deg, var(--text) 0%, #333 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: none;
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.08));
+  position: relative;
+}
 
 /* Trend body - driver */
 .trend-v-body { margin-bottom: 16px; }
@@ -1047,8 +1010,8 @@ body {
   height: 1px; background: var(--border-subtle);
   margin: 6px 10px;
 }
-.fragrance-banner .week-dropdown-item:hover { background: rgba(0, 201, 167, 0.12); color: var(--teal); }
-.fragrance-banner .week-dropdown-item.current { background: rgba(0, 201, 167, 0.15); color: var(--teal); font-weight: 700; }
+.fragrance-banner .week-dropdown-item:hover { background: rgba(255,255,255,0.15); color: white; }
+.fragrance-banner .week-dropdown-item.current { background: rgba(255,255,255,0.2); color: white; font-weight: 700; }
 @media (max-width: 768px) {
   .week-selector { margin-left: 6px; }
   .week-selector-btn { padding: 5px 12px; font-size: 11px; }
@@ -1094,6 +1057,50 @@ body {
   font-weight: 800;
   color: var(--zuru-red);
   letter-spacing: 2px;
+}
+
+/* Radar Grid - US Left / CN Right */
+.radar-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 24px;
+  margin-bottom: 28px;
+}
+.radar-grid > .radar-zone:first-child { order: 1; }
+.radar-grid > .radar-zone:nth-child(2) { order: 2; }
+.radar-zone {
+  border-radius: 16px;
+  padding: 20px;
+  position: relative;
+}
+.radar-zone.us-zone {
+  background: var(--us-bg);
+  border: 1.5px solid var(--us-border);
+}
+.radar-zone.cn-zone {
+  background: var(--cn-bg);
+  border: 1.5px solid var(--cn-border);
+}
+.radar-zone-badge {
+  display: inline-block;
+  padding: 5px 16px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+.radar-zone-badge.us {
+  background: var(--teal);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+}
+.radar-zone-badge.cn {
+  background: var(--zuru-red);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(214, 0, 28, 0.3);
+}
+@media (max-width: 768px) {
+  .radar-grid { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -1329,7 +1336,7 @@ body {
 </div>
 </div>
 <!-- Fragrance Heat Ranking -->
-<div class="heat-section">
+<div class="section"><div class="section-title">🔥 Top 10 Fragrance Heat Ranking</div><div class="heat-section">
 <div class="heat-panel" style="grid-column: 1/-1;">
 <h4>Fragrance Heat TOP 10 <span class="heat-methodology-badge" title="Tmall/Sephora 25% + TikTok/Douyin 20% + YouTube 10% + Editorial 10% + Social Buzz 20% + Trend Fit 15%">Scoring Formula</span></h4>
 <ul class="heat-accordion">
@@ -1466,26 +1473,13 @@ body {
 </ul></div>
 </div>
 </div>
-</div></div>
-<!-- Fragrance New Product Radar -->
-<div class="section"><div class="section-title">Fragrance New Product Radar</div>
-<div class="radar-section luxury">
-<h4>Luxury Fragrance New Products <span class="tier-badge">LUXURY</span></h4>
-<div class="radar-list">
-<div class="radar-item" data-cat="lip"><div class="radar-item-header"><span class="radar-brand">Dior</span><span class="radar-name">Cuir Saddle EDP</span><span class="radar-cat">EDP</span><span class="radar-chevron"></span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">Launch Date</div><div class="cell-value">Jun</div></div><div><div class="cell-label">Key Notes</div><div class="cell-value">Leather, musk, subtle floral</div></div><div><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Saddle Bag Heritage Inspired</span></div></div><div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.dior.com" target="_blank">Dior</a></div></div></div></div></div>
-<div class="radar-item" data-cat="lip"><div class="radar-item-header"><span class="radar-brand">Dior</span><span class="radar-name">Addict Peachy Glow</span><span class="radar-cat">EDT</span><span class="radar-chevron"></span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">Launch Date</div><div class="cell-value">Jun</div></div><div><div class="cell-label">Key Notes</div><div class="cell-value">Jasmine, vanilla, peach</div></div><div><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">TikTok Viral Potential</span></div></div><div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.dior.com" target="_blank">Dior</a></div></div></div></div></div>
-<div class="radar-item" data-cat="lip"><div class="radar-item-header"><span class="radar-brand">Chanel</span><span class="radar-name">Bleu de Chanel L'Exclusif</span><span class="radar-cat">Extrait</span><span class="radar-chevron"></span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">Launch Date</div><div class="cell-value">Jun</div></div><div><div class="cell-label">Key Notes</div><div class="cell-value">Woody chypre, pure parfum</div></div><div><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Highest Concentration Format</span></div></div><div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.chanel.com" target="_blank">Chanel</a></div></div></div></div></div>
-<div class="radar-item" data-cat="lip"><div class="radar-item-header"><span class="radar-brand">Tom Ford</span><span class="radar-name">Taormina Orange</span><span class="radar-cat">EDP</span><span class="radar-chevron"></span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">Launch Date</div><div class="cell-value">Jun</div></div><div><div class="cell-label">Key Notes</div><div class="cell-value">Bright orange, Italian citrus</div></div><div><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Summer Seasonal Hero</span></div></div><div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.tomford.com" target="_blank">Tom Ford</a></div></div></div></div></div>
-<div class="radar-item" data-cat="lip"><div class="radar-item-header"><span class="radar-brand">YSL</span><span class="radar-name">Libre Berry Crush</span><span class="radar-cat">EDP</span><span class="radar-chevron"></span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">Launch Date</div><div class="cell-value">Jun</div></div><div><div class="cell-label">Key Notes</div><div class="cell-value">Raspberry, orange flower, coconut</div></div><div><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Berry Trend Flagship</span></div></div><div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.ysl.com" target="_blank">YSL</a></div></div></div></div></div>
-<div class="radar-item" data-cat="lip"><div class="radar-item-header"><span class="radar-brand">Guerlain</span><span class="radar-name">LPRN Parfum</span><span class="radar-cat">Parfum</span><span class="radar-chevron"></span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">Launch Date</div><div class="cell-value">Q2</div></div><div><div class="cell-label">Key Notes</div><div class="cell-value">High-concentration, new bottle</div></div><div><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Iconic Reimagined</span></div></div><div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.guerlain.com" target="_blank">Guerlain</a></div></div></div></div></div>
-<div class="radar-item" data-cat="lip"><div class="radar-item-header"><span class="radar-brand">LV</span><span class="radar-name">Ambre Levant</span><span class="radar-cat">EDP</span><span class="radar-chevron"></span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">Launch Date</div><div class="cell-value">Q1</div></div><div><div class="cell-label">Key Notes</div><div class="cell-value">Cardamom, cinnamon, amber</div></div><div><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">W Magazine Pick</span></div></div><div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.louisvuitton.com" target="_blank">LV</a></div></div></div></div></div>
-<div class="radar-item" data-cat="lip"><div class="radar-item-header"><span class="radar-brand">Valentino</span><span class="radar-name">Born in Roma Purple Melancholia</span><span class="radar-cat">EDP</span><span class="radar-chevron"></span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">Launch Date</div><div class="cell-value">Jun</div></div><div><div class="cell-label">Key Notes</div><div class="cell-value">Creamy fruit, vanilla</div></div><div><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Purple Aesthetic</span></div></div><div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.valentino.com" target="_blank">Valentino</a></div></div></div></div></div>
-<div class="radar-item" data-cat="lip"><div class="radar-item-header"><span class="radar-brand">Byredo</span><span class="radar-name">Sister Dreamer</span><span class="radar-cat">EDP</span><span class="radar-chevron"></span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">Launch Date</div><div class="cell-value">Q2</div></div><div><div class="cell-label">Key Notes</div><div class="cell-value">Juniper, pepper, sandalwood</div></div><div><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Lauren Halsey Art Collab</span></div></div><div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.byredo.com" target="_blank">Byredo</a></div></div></div></div></div>
-<div class="radar-item" data-cat="lip"><div class="radar-item-header"><span class="radar-brand">Miu Miu</span><span class="radar-name">Fleur de Lait</span><span class="radar-cat">EDP</span><span class="radar-chevron"></span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">Launch Date</div><div class="cell-value">Jun</div></div><div><div class="cell-label">Key Notes</div><div class="cell-value">Mango, coconut, osmanthus</div></div><div><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Resort Vibe Sensation</span></div></div><div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.miumiu.com" target="_blank">Miu Miu</a></div></div></div></div></div>
-</div></div>
-
-<div class="radar-section masstige-frag">
-<h4>Masstige Fragrance New Products <span class="tier-badge">MASSTIGE</span></h4>
+</div></div></div>
+<!--  Radar -->
+<div class="section"><div class="section-title">🆕 Fragrance New Product Radar</div>
+<div class="radar-grid">
+<div class="radar-zone us-zone">
+<span class="radar-zone-badge us">🇺🇸 US Market</span>
+<h4>Masstige Fragrance</h4>
 <div class="radar-list">
 <div class="radar-item" data-cat="lip"><div class="radar-item-header"><span class="radar-brand">Sol de Janeiro</span><span class="radar-name">Cheirosa '62</span><span class="radar-cat">Body Mist</span><span class="radar-chevron"></span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">Launch Date</div><div class="cell-value">Ongoing</div></div><div><div class="cell-label">Key Notes</div><div class="cell-value">Pistachio, almond, salt caramel, sandalwood</div></div><div><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Scent-Stacking #1</span></div></div><div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.soldejaneiro.com" target="_blank">Sol de Janeiro</a></div></div></div></div></div>
 <div class="radar-item" data-cat="lip"><div class="radar-item-header"><span class="radar-brand">Phlur</span><span class="radar-name">Father Figure EDP</span><span class="radar-cat">EDP</span><span class="radar-chevron"></span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">Launch Date</div><div class="cell-value">Q2</div></div><div><div class="cell-label">Key Notes</div><div class="cell-value">Woody, fig leaf, cardamom</div></div><div><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Unisex Positioning</span></div></div><div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.phlur.com" target="_blank">Phlur</a></div></div></div></div></div>
@@ -1497,7 +1491,26 @@ body {
 <div class="radar-item" data-cat="lip"><div class="radar-item-header"><span class="radar-brand">Nest New York</span><span class="radar-name">Seagrass & White Amaryllis</span><span class="radar-cat">EDP</span><span class="radar-chevron"></span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">Launch Date</div><div class="cell-value">Q2</div></div><div><div class="cell-label">Key Notes</div><div class="cell-value">Seagrass, white floral</div></div><div><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Summer Home + Personal</span></div></div><div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.nestnewyork.com" target="_blank">Nest</a></div></div></div></div></div>
 <div class="radar-item" data-cat="lip"><div class="radar-item-header"><span class="radar-brand">Henry Rose</span><span class="radar-name">London 1983</span><span class="radar-cat">EDP</span><span class="radar-chevron"></span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">Launch Date</div><div class="cell-value">Q2</div></div><div><div class="cell-label">Key Notes</div><div class="cell-value">Fig, black pepper, jasmine</div></div><div><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Clean/Nontoxic Leader</span></div></div><div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.henryrose.com" target="_blank">Henry Rose</a></div></div></div></div></div>
 <div class="radar-item" data-cat="lip"><div class="radar-item-header"><span class="radar-brand">Boy Smells</span><span class="radar-name">Tantrum</span><span class="radar-cat">EDP</span><span class="radar-chevron"></span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">Launch Date</div><div class="cell-value">Q2</div></div><div><div class="cell-label">Key Notes</div><div class="cell-value">Bergamot, oud, leather</div></div><div><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Genderful Positioning</span></div></div><div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.boysmells.com" target="_blank">Boy Smells</a></div></div></div></div></div>
-</div></div></div>
+</div>
+</div>
+<div class="radar-zone cn-zone">
+<span class="radar-zone-badge cn">🇨🇳 CN Market</span>
+<h4>Luxury Fragrance</h4>
+<div class="radar-list">
+<div class="radar-item" data-cat="lip"><div class="radar-item-header"><span class="radar-brand">Dior</span><span class="radar-name">Cuir Saddle EDP</span><span class="radar-cat">EDP</span><span class="radar-chevron"></span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">Launch Date</div><div class="cell-value">Jun</div></div><div><div class="cell-label">Key Notes</div><div class="cell-value">Leather, musk, subtle floral</div></div><div><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Saddle Bag Heritage Inspired</span></div></div><div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.dior.com" target="_blank">Dior</a></div></div></div></div></div>
+<div class="radar-item" data-cat="lip"><div class="radar-item-header"><span class="radar-brand">Dior</span><span class="radar-name">Addict Peachy Glow</span><span class="radar-cat">EDT</span><span class="radar-chevron"></span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">Launch Date</div><div class="cell-value">Jun</div></div><div><div class="cell-label">Key Notes</div><div class="cell-value">Jasmine, vanilla, peach</div></div><div><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">TikTok Viral Potential</span></div></div><div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.dior.com" target="_blank">Dior</a></div></div></div></div></div>
+<div class="radar-item" data-cat="lip"><div class="radar-item-header"><span class="radar-brand">Chanel</span><span class="radar-name">Bleu de Chanel L'Exclusif</span><span class="radar-cat">Extrait</span><span class="radar-chevron"></span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">Launch Date</div><div class="cell-value">Jun</div></div><div><div class="cell-label">Key Notes</div><div class="cell-value">Woody chypre, pure parfum</div></div><div><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Highest Concentration Format</span></div></div><div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.chanel.com" target="_blank">Chanel</a></div></div></div></div></div>
+<div class="radar-item" data-cat="lip"><div class="radar-item-header"><span class="radar-brand">Tom Ford</span><span class="radar-name">Taormina Orange</span><span class="radar-cat">EDP</span><span class="radar-chevron"></span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">Launch Date</div><div class="cell-value">Jun</div></div><div><div class="cell-label">Key Notes</div><div class="cell-value">Bright orange, Italian citrus</div></div><div><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Summer Seasonal Hero</span></div></div><div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.tomford.com" target="_blank">Tom Ford</a></div></div></div></div></div>
+<div class="radar-item" data-cat="lip"><div class="radar-item-header"><span class="radar-brand">YSL</span><span class="radar-name">Libre Berry Crush</span><span class="radar-cat">EDP</span><span class="radar-chevron"></span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">Launch Date</div><div class="cell-value">Jun</div></div><div><div class="cell-label">Key Notes</div><div class="cell-value">Raspberry, orange flower, coconut</div></div><div><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Berry Trend Flagship</span></div></div><div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.ysl.com" target="_blank">YSL</a></div></div></div></div></div>
+<div class="radar-item" data-cat="lip"><div class="radar-item-header"><span class="radar-brand">Guerlain</span><span class="radar-name">LPRN Parfum</span><span class="radar-cat">Parfum</span><span class="radar-chevron"></span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">Launch Date</div><div class="cell-value">Q2</div></div><div><div class="cell-label">Key Notes</div><div class="cell-value">High-concentration, new bottle</div></div><div><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Iconic Reimagined</span></div></div><div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.guerlain.com" target="_blank">Guerlain</a></div></div></div></div></div>
+<div class="radar-item" data-cat="lip"><div class="radar-item-header"><span class="radar-brand">LV</span><span class="radar-name">Ambre Levant</span><span class="radar-cat">EDP</span><span class="radar-chevron"></span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">Launch Date</div><div class="cell-value">Q1</div></div><div><div class="cell-label">Key Notes</div><div class="cell-value">Cardamom, cinnamon, amber</div></div><div><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">W Magazine Pick</span></div></div><div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.louisvuitton.com" target="_blank">LV</a></div></div></div></div></div>
+<div class="radar-item" data-cat="lip"><div class="radar-item-header"><span class="radar-brand">Valentino</span><span class="radar-name">Born in Roma Purple Melancholia</span><span class="radar-cat">EDP</span><span class="radar-chevron"></span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">Launch Date</div><div class="cell-value">Jun</div></div><div><div class="cell-label">Key Notes</div><div class="cell-value">Creamy fruit, vanilla</div></div><div><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Purple Aesthetic</span></div></div><div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.valentino.com" target="_blank">Valentino</a></div></div></div></div></div>
+<div class="radar-item" data-cat="lip"><div class="radar-item-header"><span class="radar-brand">Byredo</span><span class="radar-name">Sister Dreamer</span><span class="radar-cat">EDP</span><span class="radar-chevron"></span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">Launch Date</div><div class="cell-value">Q2</div></div><div><div class="cell-label">Key Notes</div><div class="cell-value">Juniper, pepper, sandalwood</div></div><div><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Lauren Halsey Art Collab</span></div></div><div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.byredo.com" target="_blank">Byredo</a></div></div></div></div></div>
+<div class="radar-item" data-cat="lip"><div class="radar-item-header"><span class="radar-brand">Miu Miu</span><span class="radar-name">Fleur de Lait</span><span class="radar-cat">EDP</span><span class="radar-chevron"></span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">Launch Date</div><div class="cell-value">Jun</div></div><div><div class="cell-label">Key Notes</div><div class="cell-value">Mango, coconut, osmanthus</div></div><div><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Resort Vibe Sensation</span></div></div><div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.miumiu.com" target="_blank">Miu Miu</a></div></div></div></div></div>
+</div>
+</div>
+</div>
+</div>
 <!-- Source Footer -->
 <div class="source-footer">
 <h4>Data Sources</h4>
