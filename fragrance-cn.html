@@ -7,7 +7,7 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
-<meta name="version" content="2026-06-12-1552">
+<meta name="version" content="2026-06-12-1631">
 <!-- Cache-bust: 2026-06-12-1458 CST -->
 <style>
 :root {
@@ -16,8 +16,8 @@
   --zuru-red-dark: #B00018;
   --zuru-red-light: rgba(214, 0, 28, 0.08);
   --zuru-red-glow: rgba(214, 0, 28, 0.15);
-  --monday-pink: #6366F1;
-  --monday-pink-light: rgba(99, 102, 241, 0.08);
+  --monday-pink: #D6001C;
+  --monday-pink-light: rgba(214, 0, 28, 0.06);
   --teal: #10B981;
   --teal-light: rgba(16, 185, 129, 0.08);
   --teal-glow: rgba(16, 185, 129, 0.15);
@@ -61,62 +61,12 @@
   --rose: #D6001C;
   --blue: #10B981;
   --card-bg: #FFFFFF;
-}root {
-  /* === ZURU EDGE Light Design System === */
-  --zuru-red: #D6001C;
-  --zuru-red-dark: #C4000A;
-  --zuru-red-light: rgba(230, 0, 18, 0.08);
-  --zuru-red-glow: rgba(230, 0, 18, 0.15);
-  --monday-pink: #E8527A;
-  --monday-pink-light: rgba(232, 82, 122, 0.10);
-  --teal: #10B981;
-  --teal-light: rgba(0, 201, 167, 0.08);
-  --teal-glow: rgba(0, 201, 167, 0.15);
-  --gold: #FFB800;
-  --coral: #FF6B6B;
-  --lavender: #7B61FF;
-  --purple: #7B61FF;
-
-  /* Light surfaces */
-  --bg-primary: #FFFFFF;
-  --bg-secondary: #F5F5F7;
-  --bg-elevated: #F8F8FA;
-  --bg-card: #FFFFFF;
-  --bg-hover: #F0F0F5;
-
-  /* Borders */
-  --border-subtle: rgba(0, 0, 0, 0.06);
-  --border-medium: rgba(0, 0, 0, 0.10);
-  --border-hover: rgba(230, 0, 18, 0.40);
-
-  /* Text */
-  --text: #1A1A1A;
-  --text-secondary: #666666;
-  --text-tertiary: #999999;
-
-  /* Shadows */
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
-  --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.10);
-  --glow-red: 0 4px 20px rgba(230, 0, 18, 0.12);
-  --glow-teal: 0 4px 20px rgba(0, 201, 167, 0.12);
-
-  /* Zone colors */
-  --cn-bg: rgba(230, 0, 18, 0.04);
-  --cn-border: rgba(230, 0, 18, 0.18);
-  --us-bg: rgba(0, 201, 167, 0.04);
-  --us-border: rgba(0, 201, 167, 0.18);
-
-  /* Legacy compat */
-  --rose: #D6001C;
-  --blue: #10B981;
-  --card-bg: #FFFFFF;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {
-  font-family: 'Inter', 'Space Grotesk', -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
   background: var(--bg-primary);
   color: var(--text);
   line-height: 1.65;
@@ -430,8 +380,10 @@ body {
   color: white;
 }
 .fragrance-banner {
-  background: var(--monday-pink);
+  background: linear-gradient(135deg, #9B0015 0%, #D6001C 60%, #B00018 100%);
   color: white;
+  border-top: 3px solid rgba(255,255,255,0.4);
+  border-bottom: 3px solid rgba(255,255,255,0.2);
 }
 
 /* === Section shell === */
@@ -489,29 +441,28 @@ body {
   margin-bottom: 18px;
 }
 .common-badge {
-  background: var(--zuru-red);
+  background: var(--purple);
   color: #fff;
   padding: 5px 16px;
   border-radius: 20px;
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.5px;
-  box-shadow: 0 2px 8px rgba(230, 0, 18, 0.4);
+  box-shadow: 0 2px 8px rgba(123, 97, 255, 0.4);
 }
-.common-subtitle { font-size: 12px; color: var(--zuru-red); font-weight: 500; }
-.common-trend-card {
-  border: 1px solid rgba(230, 0, 18, 0.20);
+.common-subtitle { font-size: 12px; color: var(--purple); font-weight: 500; }
+.common-trend-card { border: 1px solid rgba(123, 97, 255, 0.20);
   border-radius: 14px;
   overflow: hidden;
   margin-bottom: 14px;
   background: var(--bg-card);
   transition: box-shadow 0.2s;
 }
-.common-trend-card:hover { box-shadow: 0 3px 20px rgba(230, 0, 18, 0.15); }
-.ct-header { display: flex; align-items: center; gap: 12px; padding: 16px 20px 12px; border-bottom: 1px solid rgba(230, 0, 18, 0.12); }
+.common-trend-card:hover { box-shadow: 0 3px 20px rgba(123, 97, 255, 0.15); }
+.ct-header { display: flex; align-items: center; gap: 12px; padding: 16px 20px 12px; border-bottom: 1px solid rgba(123, 97, 255, 0.12); }
 .ct-header .ct-icon { font-size: 20px; }
 .ct-header .ct-title { font-weight: 700; font-size: 15px; color: var(--text); }
-.ct-header .ct-subtitle { font-size: 12px; color: var(--zuru-red); margin-left: auto; }
+.ct-header .ct-subtitle { font-size: 12px; color: var(--purple); margin-left: auto; }
 .ct-dual {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -527,8 +478,8 @@ body {
 }
 .ct-us .ct-flag { color: var(--teal); }
 .ct-cn .ct-flag { color: var(--zuru-red); }
-.ct-action { padding: 11px 18px; background: rgba(230, 0, 18, 0.04); border-top: 1px solid rgba(230, 0, 18, 0.12); font-size: 12px; color: var(--teal); display: flex; align-items: flex-start; gap: 8px; }
-.ct-action .action-icon { font-size: 13px; flex-shrink: 0; color: var(--zuru-red); }
+.ct-action { padding: 11px 18px; background: rgba(123, 97, 255, 0.04); border-top: 1px solid rgba(123, 97, 255, 0.12); font-size: 12px; color: var(--teal); display: flex; align-items: flex-start; gap: 8px; }
+.ct-action .action-icon { font-size: 13px; flex-shrink: 0; color: var(--purple); }
 @media (max-width: 768px) {
   .ct-dual { grid-template-columns: 1fr; }
   .ct-dual .ct-us { border-right: none; border-bottom: 1px solid var(--border-subtle); }
@@ -555,9 +506,21 @@ body {
 .trend-v-card:hover { box-shadow: var(--shadow); }
 .trend-v-card.cn { border-left: 5px solid var(--zuru-red); border-top: none; }
 .trend-v-card.us { border-left: 5px solid var(--teal); border-top: none; }
-.trend-v-card.common { border-left: 5px solid var(--zuru-red); border-top: none; background: rgba(230, 0, 18, 0.04); }
-.trend-v-card.common .driver-summary { background: var(--zuru-red-light); border-left: 3px solid var(--zuru-red); color: var(--zuru-red); }
-.trend-v-card h4 { font-size: 16px; font-weight: 700; margin-bottom: 12px; color: var(--text); }
+.trend-v-card.common { border-left: 5px solid var(--purple); border-top: none; background: rgba(123, 97, 255, 0.04); }
+.trend-v-card.common .driver-summary { background: rgba(123, 97, 255, 0.08); border-left: 3px solid var(--purple); color: var(--purple); }
+.trend-v-card h4 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--text);
+  background: linear-gradient(135deg, var(--text) 0%, #333 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: none;
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.08));
+  position: relative;
+}
 
 /* Trend body - driver */
 .trend-v-body { margin-bottom: 16px; }
@@ -1047,8 +1010,8 @@ body {
   height: 1px; background: var(--border-subtle);
   margin: 6px 10px;
 }
-.fragrance-banner .week-dropdown-item:hover { background: rgba(0, 201, 167, 0.12); color: var(--teal); }
-.fragrance-banner .week-dropdown-item.current { background: rgba(0, 201, 167, 0.15); color: var(--teal); font-weight: 700; }
+.fragrance-banner .week-dropdown-item:hover { background: rgba(255,255,255,0.15); color: white; }
+.fragrance-banner .week-dropdown-item.current { background: rgba(255,255,255,0.2); color: white; font-weight: 700; }
 @media (max-width: 768px) {
   .week-selector { margin-left: 6px; }
   .week-selector-btn { padding: 5px 12px; font-size: 11px; }
@@ -1094,6 +1057,50 @@ body {
   font-weight: 800;
   color: var(--zuru-red);
   letter-spacing: 2px;
+}
+
+/* Radar Grid - US Left / CN Right */
+.radar-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 24px;
+  margin-bottom: 28px;
+}
+.radar-grid > .radar-zone:first-child { order: 1; }
+.radar-grid > .radar-zone:nth-child(2) { order: 2; }
+.radar-zone {
+  border-radius: 16px;
+  padding: 20px;
+  position: relative;
+}
+.radar-zone.us-zone {
+  background: var(--us-bg);
+  border: 1.5px solid var(--us-border);
+}
+.radar-zone.cn-zone {
+  background: var(--cn-bg);
+  border: 1.5px solid var(--cn-border);
+}
+.radar-zone-badge {
+  display: inline-block;
+  padding: 5px 16px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+.radar-zone-badge.us {
+  background: var(--teal);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+}
+.radar-zone-badge.cn {
+  background: var(--zuru-red);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(214, 0, 28, 0.3);
+}
+@media (max-width: 768px) {
+  .radar-grid { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -1288,7 +1295,7 @@ body {
 </div>
 
 <!-- ═══════ 香水 · 热度排行 ═══════ -->
-<div class="heat-section">
+<div class="section"><div class="section-title">🔥 香水热度 TOP 10 排行</div><div class="heat-section">
 <h3 class="heat-title">🔥 香水热度排行 TOP 10</h3>
 <div class="heat-panels">
 <div class="heat-panel cn-panel">
@@ -1645,13 +1652,92 @@ body {
 </div>
 
 <!-- ═══════ 香水 · 新品雷达 ═══════ -->
-<div class="radar-section">
-<h3 class="radar-title">📡 香水新品雷达</h3>
-
-<!-- 奢华线 -->
-<div class="radar-tier">
-<h4 class="tier-label luxury">💎 奢华线 Luxe</h4>
+<div class="section">
+<div class="section-title">🆕 香水新品雷达</div>
 <div class="radar-grid">
+<div class="radar-zone us-zone">
+<span class="radar-zone-badge us">🇺🇸 美国市场</span>
+<h4>Masstige 香水</h4>
+<div class="radar-list">
+
+<div class="radar-item">
+<div class="radar-head">
+<span class="radar-brand">Sol de Janeiro</span>
+<span class="radar-name">Cheirosa '62 Perfume</span>
+<span class="frag-gourmand">美食调</span>
+<span class="radar-chevron">▾</span></div>
+<div class="radar-body">
+<div class="radar-tags"><span class="trend-product-tag coral">爆款</span><span class="region-tag us-tag">US</span></div>
+<div class="radar-detail">开心果焦糖调 · Sephora #2 · $38 · TikTok 9.8亿浏览</div>
+</div>
+</div>
+
+<div class="radar-item">
+<div class="radar-head">
+<span class="radar-brand">Glossier</span>
+<span class="radar-name">You Doux</span>
+<span class="frag-floral">花香调</span><span class="frag-musk">麝香调</span>
+<span class="radar-chevron">▾</span></div>
+<div class="radar-body">
+<div class="radar-tags"><span class="trend-product-tag purple">新品</span><span class="region-tag us-tag">US</span></div>
+<div class="radar-detail">草莓前调白麝香 · 首周售罄 · $48 · 叠穿友好</div>
+</div>
+</div>
+
+<div class="radar-item">
+<div class="radar-head">
+<span class="radar-brand">Phlur</span>
+<span class="radar-name">Missing Person EDP Intense</span>
+<span class="frag-musk">麝香调</span>
+<span class="radar-chevron">▾</span></div>
+<div class="radar-body">
+<div class="radar-tags"><span class="trend-product-tag green">升级</span><span class="region-tag us-tag">US</span></div>
+<div class="radar-detail">白麝香升级浓度 · 更持久留香 · $96 · DTC首发</div>
+</div>
+</div>
+
+<div class="radar-item">
+<div class="radar-head">
+<span class="radar-brand">Zara</span>
+<span class="radar-name">Rose Gourmand</span>
+<span class="frag-gourmand">美食调</span><span class="frag-floral">花香调</span>
+<span class="radar-chevron">▾</span></div>
+<div class="radar-body">
+<div class="radar-tags"><span class="trend-product-tag gold">平价</span><span class="region-tag global-tag">GLOBAL</span></div>
+<div class="radar-detail">玫瑰美食调 · $25 · 全球同步 · 3天售罄补货3次</div>
+</div>
+</div>
+
+<div class="radar-item">
+<div class="radar-head">
+<span class="radar-brand">M&S</span>
+<span class="radar-name">Autumn Bloom</span>
+<span class="frag-woody">木质调</span><span class="frag-fruity">果香调</span>
+<span class="radar-chevron">▾</span></div>
+<div class="radar-body">
+<div class="radar-tags"><span class="trend-product-tag teal">英国热门</span><span class="region-tag us-tag">US</span></div>
+<div class="radar-detail">无花果木质调 · 英国#1转战美国 · $22 · Ulta上架</div>
+</div>
+</div>
+
+<div class="radar-item">
+<div class="radar-head">
+<span class="radar-brand">Bath & Body Works</span>
+<span class="radar-name">Gingham Love</span>
+<span class="frag-floral">花香调</span><span class="frag-fruity">果香调</span>
+<span class="radar-chevron">▾</span></div>
+<div class="radar-body">
+<div class="radar-tags"><span class="trend-product-tag teal">大众</span><span class="region-tag us-tag">US</span></div>
+<div class="radar-detail">花果调 · 夏日限定 · $18 · Walmart渠道首发</div>
+</div>
+</div>
+
+</div>
+</div>
+<div class="radar-zone cn-zone">
+<span class="radar-zone-badge cn">🇨🇳 中国市场</span>
+<h4>奢品香水</h4>
+<div class="radar-list">
 
 <div class="radar-item">
 <div class="radar-head">
@@ -1773,74 +1859,6 @@ body {
 </div>
 </div>
 
-</div>
-</div>
-
-<!-- 大众线 -->
-<div class="radar-tier">
-<h4 class="tier-label masstige">🌿 大众线 Masstige</h4>
-<div class="radar-grid">
-
-<div class="radar-item">
-<div class="radar-head">
-<span class="radar-brand">Sol de Janeiro</span>
-<span class="radar-name">Cheirosa '62 Perfume</span>
-<span class="frag-gourmand">美食调</span>
-<span class="radar-chevron">▾</span></div>
-<div class="radar-body">
-<div class="radar-tags"><span class="trend-product-tag coral">爆款</span><span class="region-tag us-tag">US</span></div>
-<div class="radar-detail">开心果焦糖调 · Sephora #2 · $38 · TikTok 9.8亿浏览</div>
-</div>
-</div>
-
-<div class="radar-item">
-<div class="radar-head">
-<span class="radar-brand">Glossier</span>
-<span class="radar-name">You Doux</span>
-<span class="frag-floral">花香调</span><span class="frag-musk">麝香调</span>
-<span class="radar-chevron">▾</span></div>
-<div class="radar-body">
-<div class="radar-tags"><span class="trend-product-tag purple">新品</span><span class="region-tag us-tag">US</span></div>
-<div class="radar-detail">草莓前调白麝香 · 首周售罄 · $48 · 叠穿友好</div>
-</div>
-</div>
-
-<div class="radar-item">
-<div class="radar-head">
-<span class="radar-brand">Phlur</span>
-<span class="radar-name">Missing Person EDP Intense</span>
-<span class="frag-musk">麝香调</span>
-<span class="radar-chevron">▾</span></div>
-<div class="radar-body">
-<div class="radar-tags"><span class="trend-product-tag green">升级</span><span class="region-tag us-tag">US</span></div>
-<div class="radar-detail">白麝香升级浓度 · 更持久留香 · $96 · DTC首发</div>
-</div>
-</div>
-
-<div class="radar-item">
-<div class="radar-head">
-<span class="radar-brand">Zara</span>
-<span class="radar-name">Rose Gourmand</span>
-<span class="frag-gourmand">美食调</span><span class="frag-floral">花香调</span>
-<span class="radar-chevron">▾</span></div>
-<div class="radar-body">
-<div class="radar-tags"><span class="trend-product-tag gold">平价</span><span class="region-tag global-tag">GLOBAL</span></div>
-<div class="radar-detail">玫瑰美食调 · $25 · 全球同步 · 3天售罄补货3次</div>
-</div>
-</div>
-
-<div class="radar-item">
-<div class="radar-head">
-<span class="radar-brand">M&S</span>
-<span class="radar-name">Autumn Bloom</span>
-<span class="frag-woody">木质调</span><span class="frag-fruity">果香调</span>
-<span class="radar-chevron">▾</span></div>
-<div class="radar-body">
-<div class="radar-tags"><span class="trend-product-tag teal">英国热门</span><span class="region-tag us-tag">US</span></div>
-<div class="radar-detail">无花果木质调 · 英国#1转战美国 · $22 · Ulta上架</div>
-</div>
-</div>
-
 <div class="radar-item">
 <div class="radar-head">
 <span class="radar-brand">冰希黎</span>
@@ -1889,21 +1907,10 @@ body {
 </div>
 </div>
 
-<div class="radar-item">
-<div class="radar-head">
-<span class="radar-brand">Bath & Body Works</span>
-<span class="radar-name">Gingham Love</span>
-<span class="frag-floral">花香调</span><span class="frag-fruity">果香调</span>
-<span class="radar-chevron">▾</span></div>
-<div class="radar-body">
-<div class="radar-tags"><span class="trend-product-tag teal">大众</span><span class="region-tag us-tag">US</span></div>
-<div class="radar-detail">花果调 · 夏日限定 · $18 · Walmart渠道首发</div>
 </div>
 </div>
-
 </div>
 </div>
-</div><!-- /radar-section -->
 
 </div><!-- /fragrance-shell -->
 
