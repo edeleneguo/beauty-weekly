@@ -7,7 +7,7 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
-<meta name="version" content="2026-06-12-1552">
+<meta name="version" content="2026-06-12-1631">
 <!-- Cache-bust: 2026-06-12-1458 CST -->
 <style>
 :root {
@@ -16,8 +16,8 @@
   --zuru-red-dark: #B00018;
   --zuru-red-light: rgba(214, 0, 28, 0.08);
   --zuru-red-glow: rgba(214, 0, 28, 0.15);
-  --monday-pink: #6366F1;
-  --monday-pink-light: rgba(99, 102, 241, 0.08);
+  --monday-pink: #D6001C;
+  --monday-pink-light: rgba(214, 0, 28, 0.06);
   --teal: #10B981;
   --teal-light: rgba(16, 185, 129, 0.08);
   --teal-glow: rgba(16, 185, 129, 0.15);
@@ -61,62 +61,12 @@
   --rose: #D6001C;
   --blue: #10B981;
   --card-bg: #FFFFFF;
-}root {
-  /* === ZURU EDGE Light Design System === */
-  --zuru-red: #D6001C;
-  --zuru-red-dark: #C4000A;
-  --zuru-red-light: rgba(230, 0, 18, 0.08);
-  --zuru-red-glow: rgba(230, 0, 18, 0.15);
-  --monday-pink: #E8527A;
-  --monday-pink-light: rgba(232, 82, 122, 0.10);
-  --teal: #10B981;
-  --teal-light: rgba(0, 201, 167, 0.08);
-  --teal-glow: rgba(0, 201, 167, 0.15);
-  --gold: #FFB800;
-  --coral: #FF6B6B;
-  --lavender: #7B61FF;
-  --purple: #7B61FF;
-
-  /* Light surfaces */
-  --bg-primary: #FFFFFF;
-  --bg-secondary: #F5F5F7;
-  --bg-elevated: #F8F8FA;
-  --bg-card: #FFFFFF;
-  --bg-hover: #F0F0F5;
-
-  /* Borders */
-  --border-subtle: rgba(0, 0, 0, 0.06);
-  --border-medium: rgba(0, 0, 0, 0.10);
-  --border-hover: rgba(230, 0, 18, 0.40);
-
-  /* Text */
-  --text: #1A1A1A;
-  --text-secondary: #666666;
-  --text-tertiary: #999999;
-
-  /* Shadows */
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
-  --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.10);
-  --glow-red: 0 4px 20px rgba(230, 0, 18, 0.12);
-  --glow-teal: 0 4px 20px rgba(0, 201, 167, 0.12);
-
-  /* Zone colors */
-  --cn-bg: rgba(230, 0, 18, 0.04);
-  --cn-border: rgba(230, 0, 18, 0.18);
-  --us-bg: rgba(0, 201, 167, 0.04);
-  --us-border: rgba(0, 201, 167, 0.18);
-
-  /* Legacy compat */
-  --rose: #D6001C;
-  --blue: #10B981;
-  --card-bg: #FFFFFF;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {
-  font-family: 'Inter', 'Space Grotesk', -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
   background: var(--bg-primary);
   color: var(--text);
   line-height: 1.65;
@@ -430,8 +380,10 @@ body {
   color: white;
 }
 .fragrance-banner {
-  background: var(--monday-pink);
+  background: linear-gradient(135deg, #9B0015 0%, #D6001C 60%, #B00018 100%);
   color: white;
+  border-top: 3px solid rgba(255,255,255,0.4);
+  border-bottom: 3px solid rgba(255,255,255,0.2);
 }
 
 /* === Section shell === */
@@ -489,29 +441,28 @@ body {
   margin-bottom: 18px;
 }
 .common-badge {
-  background: var(--zuru-red);
+  background: var(--purple);
   color: #fff;
   padding: 5px 16px;
   border-radius: 20px;
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.5px;
-  box-shadow: 0 2px 8px rgba(230, 0, 18, 0.4);
+  box-shadow: 0 2px 8px rgba(123, 97, 255, 0.4);
 }
-.common-subtitle { font-size: 12px; color: var(--zuru-red); font-weight: 500; }
-.common-trend-card {
-  border: 1px solid rgba(230, 0, 18, 0.20);
+.common-subtitle { font-size: 12px; color: var(--purple); font-weight: 500; }
+.common-trend-card { border: 1px solid rgba(123, 97, 255, 0.20);
   border-radius: 14px;
   overflow: hidden;
   margin-bottom: 14px;
   background: var(--bg-card);
   transition: box-shadow 0.2s;
 }
-.common-trend-card:hover { box-shadow: 0 3px 20px rgba(230, 0, 18, 0.15); }
-.ct-header { display: flex; align-items: center; gap: 12px; padding: 16px 20px 12px; border-bottom: 1px solid rgba(230, 0, 18, 0.12); }
+.common-trend-card:hover { box-shadow: 0 3px 20px rgba(123, 97, 255, 0.15); }
+.ct-header { display: flex; align-items: center; gap: 12px; padding: 16px 20px 12px; border-bottom: 1px solid rgba(123, 97, 255, 0.12); }
 .ct-header .ct-icon { font-size: 20px; }
 .ct-header .ct-title { font-weight: 700; font-size: 15px; color: var(--text); }
-.ct-header .ct-subtitle { font-size: 12px; color: var(--zuru-red); margin-left: auto; }
+.ct-header .ct-subtitle { font-size: 12px; color: var(--purple); margin-left: auto; }
 .ct-dual {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -527,8 +478,8 @@ body {
 }
 .ct-us .ct-flag { color: var(--teal); }
 .ct-cn .ct-flag { color: var(--zuru-red); }
-.ct-action { padding: 11px 18px; background: rgba(230, 0, 18, 0.04); border-top: 1px solid rgba(230, 0, 18, 0.12); font-size: 12px; color: var(--teal); display: flex; align-items: flex-start; gap: 8px; }
-.ct-action .action-icon { font-size: 13px; flex-shrink: 0; color: var(--zuru-red); }
+.ct-action { padding: 11px 18px; background: rgba(123, 97, 255, 0.04); border-top: 1px solid rgba(123, 97, 255, 0.12); font-size: 12px; color: var(--teal); display: flex; align-items: flex-start; gap: 8px; }
+.ct-action .action-icon { font-size: 13px; flex-shrink: 0; color: var(--purple); }
 @media (max-width: 768px) {
   .ct-dual { grid-template-columns: 1fr; }
   .ct-dual .ct-us { border-right: none; border-bottom: 1px solid var(--border-subtle); }
@@ -555,9 +506,21 @@ body {
 .trend-v-card:hover { box-shadow: var(--shadow); }
 .trend-v-card.cn { border-left: 5px solid var(--zuru-red); border-top: none; }
 .trend-v-card.us { border-left: 5px solid var(--teal); border-top: none; }
-.trend-v-card.common { border-left: 5px solid var(--zuru-red); border-top: none; background: rgba(230, 0, 18, 0.04); }
-.trend-v-card.common .driver-summary { background: var(--zuru-red-light); border-left: 3px solid var(--zuru-red); color: var(--zuru-red); }
-.trend-v-card h4 { font-size: 16px; font-weight: 700; margin-bottom: 12px; color: var(--text); }
+.trend-v-card.common { border-left: 5px solid var(--purple); border-top: none; background: rgba(123, 97, 255, 0.04); }
+.trend-v-card.common .driver-summary { background: rgba(123, 97, 255, 0.08); border-left: 3px solid var(--purple); color: var(--purple); }
+.trend-v-card h4 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--text);
+  background: linear-gradient(135deg, var(--text) 0%, #333 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: none;
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.08));
+  position: relative;
+}
 
 /* Trend body - driver */
 .trend-v-body { margin-bottom: 16px; }
@@ -1047,8 +1010,8 @@ body {
   height: 1px; background: var(--border-subtle);
   margin: 6px 10px;
 }
-.fragrance-banner .week-dropdown-item:hover { background: rgba(0, 201, 167, 0.12); color: var(--teal); }
-.fragrance-banner .week-dropdown-item.current { background: rgba(0, 201, 167, 0.15); color: var(--teal); font-weight: 700; }
+.fragrance-banner .week-dropdown-item:hover { background: rgba(255,255,255,0.15); color: white; }
+.fragrance-banner .week-dropdown-item.current { background: rgba(255,255,255,0.2); color: white; font-weight: 700; }
 @media (max-width: 768px) {
   .week-selector { margin-left: 6px; }
   .week-selector-btn { padding: 5px 12px; font-size: 11px; }
@@ -1094,6 +1057,50 @@ body {
   font-weight: 800;
   color: var(--zuru-red);
   letter-spacing: 2px;
+}
+
+/* Radar Grid - US Left / CN Right */
+.radar-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 24px;
+  margin-bottom: 28px;
+}
+.radar-grid > .radar-zone:first-child { order: 1; }
+.radar-grid > .radar-zone:nth-child(2) { order: 2; }
+.radar-zone {
+  border-radius: 16px;
+  padding: 20px;
+  position: relative;
+}
+.radar-zone.us-zone {
+  background: var(--us-bg);
+  border: 1.5px solid var(--us-border);
+}
+.radar-zone.cn-zone {
+  background: var(--cn-bg);
+  border: 1.5px solid var(--cn-border);
+}
+.radar-zone-badge {
+  display: inline-block;
+  padding: 5px 16px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+.radar-zone-badge.us {
+  background: var(--teal);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+}
+.radar-zone-badge.cn {
+  background: var(--zuru-red);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(214, 0, 28, 0.3);
+}
+@media (max-width: 768px) {
+  .radar-grid { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -1318,7 +1325,7 @@ body {
 </div>
 
 <!-- Makeup Heat Ranking -->
-<div class="heat-section">
+<div class="section"><div class="section-title">🔥 彩妆热度 TOP 10 排行</div><div class="heat-section">
 <div class="heat-panel">
 <h4>🔥 中国彩妆热度 TOP 10 <span class="heat-methodology-badge" title="天猫 30% + 抖音 15% + 京东 10% + 小红书 15% + 热度 15% + 常青 15%">📐 评分公式</span></h4>
 <ul class="heat-accordion">
@@ -1351,9 +1358,25 @@ body {
 
 <!-- ═══ 彩妆新品雷达 ═══ -->
 <div class="section">
-<div class="heat-section">
-<div class="heat-panel radar-section luxury" style="grid-column: 1/-1; margin-bottom: 20px;">
-<h4>🛰️ 彩妆新品雷达 <span class="tier-badge">奢品</span></h4>
+<div class="section-title">🆕 彩妆新品雷达</div>
+<div class="radar-grid">
+<div class="radar-zone us-zone">
+<span class="radar-zone-badge us">🇺🇸 美国市场</span>
+<h4>Masstige 新品</h4>
+<div class="radar-list">
+<div class="radar-item"><div class="radar-item-header"><span class="radar-brand">Fenty Beauty</span><span class="radar-name"><span class="trend-product-tag teal">趋势产品</span>慕斯修容</span><span class="radar-cat">修容</span><span class="radar-chevron">▾</span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">上市时间</div><div class="cell-value">5月15日</div></div><div><div class="cell-label">核心宣称</div><div class="cell-value">慕斯质地，可叠加</div></div><div><div class="cell-label">社媒热度</div><div class="cell-tags"><span class="rev-tag rev-pos">Sephora 3次售罄</span></div></div><div><div class="cell-label">链接</div><div class="cell-value"><a href="https://www.fentybeauty.com" target="_blank">Fenty Beauty →</a></div></div></div></div></div>
+<div class="radar-item"><div class="radar-item-header"><span class="radar-brand">Patrick Ta</span><span class="radar-name"><span class="trend-product-tag coral">趋势产品</span>液体渐变腮红</span><span class="radar-cat">腮红</span><span class="radar-chevron">▾</span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">上市时间</div><div class="cell-value">5月</div></div><div><div class="cell-label">核心宣称</div><div class="cell-value">提亮，液体转粉</div></div><div><div class="cell-label">社媒热度</div><div class="cell-tags"><span class="rev-tag rev-pos">候补5万+</span></div></div><div><div class="cell-label">链接</div><div class="cell-value"><a href="https://www.patricktabeauty.com" target="_blank">Patrick Ta →</a></div></div></div></div></div>
+<div class="radar-item"><div class="radar-item-header"><span class="radar-brand">NARS</span><span class="radar-name">持久液体腮红</span><span class="radar-cat">腮红</span><span class="radar-chevron">▾</span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">上市时间</div><div class="cell-value">5月</div></div><div><div class="cell-label">核心宣称</div><div class="cell-value">16h持妆，高显色</div></div><div><div class="cell-label">社媒热度</div><div class="cell-tags"><span class="rev-tag rev-pos">扩展腮红产品线</span></div></div><div><div class="cell-label">链接</div><div class="cell-value"><a href="https://www.narscosmetics.com" target="_blank">NARS →</a></div></div></div></div></div>
+<div class="radar-item"><div class="radar-item-header"><span class="radar-brand">Hourglass</span><span class="radar-name">幻影柔焦唇膏</span><span class="radar-cat">唇部</span><span class="radar-chevron">▾</span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">上市时间</div><div class="cell-value">5月</div></div><div><div class="cell-label">核心宣称</div><div class="cell-value">柔焦效果，平滑</div></div><div><div class="cell-label">社媒热度</div><div class="cell-tags"><span class="rev-tag rev-pos">唇部打底+显色二合一</span></div></div><div><div class="cell-label">链接</div><div class="cell-value"><a href="https://www.hourglasscosmetics.com" target="_blank">Hourglass →</a></div></div></div></div></div>
+<div class="radar-item"><div class="radar-item-header"><span class="radar-brand">MAC</span><span class="radar-name">丰润唇蜜（夏季）</span><span class="radar-cat">唇部</span><span class="radar-chevron">▾</span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">上市时间</div><div class="cell-value">5月</div></div><div><div class="cell-label">核心宣称</div><div class="cell-value">丰唇，夏季色号</div></div><div><div class="cell-label">社媒热度</div><div class="cell-tags"><span class="rev-tag rev-pos">季节色彩延展</span></div></div><div><div class="cell-label">链接</div><div class="cell-value"><a href="https://www.maccosmetics.com" target="_blank">MAC →</a></div></div></div></div></div>
+<div class="radar-item"><div class="radar-item-header"><span class="radar-brand">ColourPop</span><span class="radar-name"><span class="trend-product-tag green">趋势产品</span>果冻眼影棒</span><span class="radar-cat">眼部</span><span class="radar-chevron">▾</span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">上市时间</div><div class="cell-value">5月22日</div></div><div><div class="cell-label">核心宣称</div><div class="cell-value">奶油眼影棒，平价</div></div><div><div class="cell-label">社媒热度</div><div class="cell-tags"><span class="rev-tag rev-pos">TikTok爆火</span></div></div><div><div class="cell-label">链接</div><div class="cell-value"><a href="https://www.colourpop.com" target="_blank">ColourPop →</a></div></div></div></div></div>
+<div class="radar-item"><div class="radar-item-header"><span class="radar-brand">Rhode</span><span class="radar-name"><span class="trend-product-tag purple">趋势产品</span>香氛胜肽唇釉</span><span class="radar-cat">唇部</span><span class="radar-chevron">▾</span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">上市时间</div><div class="cell-value">5月</div></div><div><div class="cell-label">核心宣称</div><div class="cell-value">胜肽+香氛，限量</div></div><div><div class="cell-label">社媒热度</div><div class="cell-tags"><span class="rev-tag rev-pos">手机壳捆绑套装</span></div></div><div><div class="cell-label">链接</div><div class="cell-value"><a href="https://www.rhodeskin.com" target="_blank">Rhode →</a></div></div></div></div></div>
+<div class="radar-item"><div class="radar-item-header"><span class="radar-brand">R.E.M. Beauty</span><span class="radar-name">危险女人系列</span><span class="radar-cat">全系列</span><span class="radar-chevron">▾</span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">上市时间</div><div class="cell-value">5月17日</div></div><div><div class="cell-label">核心宣称</div><div class="cell-value">全系列，Ariana Grande</div></div><div><div class="cell-label">社媒热度</div><div class="cell-tags"><span class="rev-tag rev-pos">粉丝驱动需求</span></div></div><div><div class="cell-label">链接</div><div class="cell-value"><a href="https://www.rembeauty.com" target="_blank">R.E.M. Beauty →</a></div></div></div></div></div>
+</div>
+</div>
+<div class="radar-zone cn-zone">
+<span class="radar-zone-badge cn">🇨🇳 中国市场</span>
+<h4>奢品新品</h4>
 <div class="radar-list">
 <div class="radar-item"><div class="radar-item-header"><span class="radar-brand">Givenchy</span><span class="radar-name"><span class="trend-product-tag coral">趋势产品</span>宝石糖唇油</span><span class="radar-cat">唇部</span><span class="radar-chevron">▾</span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">上市时间</div><div class="cell-value">6月1日</div></div><div><div class="cell-label">核心宣称</div><div class="cell-value">99%唇部养护，24h保湿</div></div><div><div class="cell-label">社媒热度</div><div class="cell-tags"><span class="rev-tag rev-pos">天猫独家 · 搜索+1,200%</span></div></div><div><div class="cell-label">链接</div><div class="cell-value"><a href="https://www.givenchy.com" target="_blank">Givenchy →</a></div></div></div></div></div>
 <div class="radar-item"><div class="radar-item-header"><span class="radar-brand">PRADA</span><span class="radar-name">唇釉</span><span class="radar-cat">唇部</span><span class="radar-chevron">▾</span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">上市时间</div><div class="cell-value">6月3日</div></div><div><div class="cell-label">核心宣称</div><div class="cell-value">高光泽，长效</div></div><div><div class="cell-label">社媒热度</div><div class="cell-tags"><span class="rev-tag rev-pos">首周1,000+支</span></div></div><div><div class="cell-label">链接</div><div class="cell-value"><a href="https://www.prada.com" target="_blank">PRADA →</a></div></div></div></div></div>
@@ -1364,19 +1387,8 @@ body {
 <div class="radar-item"><div class="radar-item-header"><span class="radar-brand">YSL</span><span class="radar-name">高定迷你手包眼影盘</span><span class="radar-cat">眼部</span><span class="radar-chevron">▾</span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">上市时间</div><div class="cell-value">5月</div></div><div><div class="cell-label">核心宣称</div><div class="cell-value">旅行装，4色</div></div><div><div class="cell-label">社媒热度</div><div class="cell-tags"><span class="rev-tag rev-pos">机场零售独家</span></div></div><div><div class="cell-label">链接</div><div class="cell-value"><a href="https://www.ysl.com" target="_blank">YSL →</a></div></div></div></div></div>
 <div class="radar-item"><div class="radar-item-header"><span class="radar-brand">Tom Ford</span><span class="radar-name">七夕限定系列</span><span class="radar-cat">限定</span><span class="radar-chevron">▾</span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">上市时间</div><div class="cell-value">5月（预览）</div></div><div><div class="cell-label">核心宣称</div><div class="cell-value">奢华限量</div></div><div><div class="cell-label">社媒热度</div><div class="cell-tags"><span class="rev-tag rev-pos">上市前社交热议</span></div></div><div><div class="cell-label">链接</div><div class="cell-value"><a href="https://www.tomford.com" target="_blank">Tom Ford →</a></div></div></div></div></div>
 <div class="radar-item"><div class="radar-item-header"><span class="radar-brand">SUQQU</span><span class="radar-name">2026夏"魔幻时刻"</span><span class="radar-cat">眼部</span><span class="radar-chevron">▾</span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">上市时间</div><div class="cell-value">5月14日</div></div><div><div class="cell-label">核心宣称</div><div class="cell-value">日式美学，季节限定</div></div><div><div class="cell-label">社媒热度</div><div class="cell-tags"><span class="rev-tag rev-pos">死忠粉追捧</span></div></div><div><div class="cell-label">链接</div><div class="cell-value"><a href="https://www.suqqu.com" target="_blank">SUQQU →</a></div></div></div></div></div>
-</div></div>
-<div class="heat-panel radar-section masstige-makeup" style="grid-column: 1/-1; margin-bottom: 20px;">
-<h4>🛰️ 彩妆新品雷达 <span class="tier-badge">Masstige</span></h4>
-<div class="radar-list">
-<div class="radar-item"><div class="radar-item-header"><span class="radar-brand">Fenty Beauty</span><span class="radar-name"><span class="trend-product-tag teal">趋势产品</span>慕斯修容</span><span class="radar-cat">修容</span><span class="radar-chevron">▾</span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">上市时间</div><div class="cell-value">5月15日</div></div><div><div class="cell-label">核心宣称</div><div class="cell-value">慕斯质地，可叠加</div></div><div><div class="cell-label">社媒热度</div><div class="cell-tags"><span class="rev-tag rev-pos">Sephora 3次售罄</span></div></div><div><div class="cell-label">链接</div><div class="cell-value"><a href="https://www.fentybeauty.com" target="_blank">Fenty Beauty →</a></div></div></div></div></div>
-<div class="radar-item"><div class="radar-item-header"><span class="radar-brand">Patrick Ta</span><span class="radar-name"><span class="trend-product-tag coral">趋势产品</span>液体渐变腮红</span><span class="radar-cat">腮红</span><span class="radar-chevron">▾</span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">上市时间</div><div class="cell-value">5月</div></div><div><div class="cell-label">核心宣称</div><div class="cell-value">提亮，液体转粉</div></div><div><div class="cell-label">社媒热度</div><div class="cell-tags"><span class="rev-tag rev-pos">候补5万+</span></div></div><div><div class="cell-label">链接</div><div class="cell-value"><a href="https://www.patricktabeauty.com" target="_blank">Patrick Ta →</a></div></div></div></div></div>
-<div class="radar-item"><div class="radar-item-header"><span class="radar-brand">NARS</span><span class="radar-name">持久液体腮红</span><span class="radar-cat">腮红</span><span class="radar-chevron">▾</span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">上市时间</div><div class="cell-value">5月</div></div><div><div class="cell-label">核心宣称</div><div class="cell-value">16h持妆，高显色</div></div><div><div class="cell-label">社媒热度</div><div class="cell-tags"><span class="rev-tag rev-pos">扩展腮红产品线</span></div></div><div><div class="cell-label">链接</div><div class="cell-value"><a href="https://www.narscosmetics.com" target="_blank">NARS →</a></div></div></div></div></div>
-<div class="radar-item"><div class="radar-item-header"><span class="radar-brand">Hourglass</span><span class="radar-name">幻影柔焦唇膏</span><span class="radar-cat">唇部</span><span class="radar-chevron">▾</span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">上市时间</div><div class="cell-value">5月</div></div><div><div class="cell-label">核心宣称</div><div class="cell-value">柔焦效果，平滑</div></div><div><div class="cell-label">社媒热度</div><div class="cell-tags"><span class="rev-tag rev-pos">唇部打底+显色二合一</span></div></div><div><div class="cell-label">链接</div><div class="cell-value"><a href="https://www.hourglasscosmetics.com" target="_blank">Hourglass →</a></div></div></div></div></div>
-<div class="radar-item"><div class="radar-item-header"><span class="radar-brand">MAC</span><span class="radar-name">丰润唇蜜（夏季）</span><span class="radar-cat">唇部</span><span class="radar-chevron">▾</span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">上市时间</div><div class="cell-value">5月</div></div><div><div class="cell-label">核心宣称</div><div class="cell-value">丰唇，夏季色号</div></div><div><div class="cell-label">社媒热度</div><div class="cell-tags"><span class="rev-tag rev-pos">季节色彩延展</span></div></div><div><div class="cell-label">链接</div><div class="cell-value"><a href="https://www.maccosmetics.com" target="_blank">MAC →</a></div></div></div></div></div>
-<div class="radar-item"><div class="radar-item-header"><span class="radar-brand">ColourPop</span><span class="radar-name"><span class="trend-product-tag green">趋势产品</span>果冻眼影棒</span><span class="radar-cat">眼部</span><span class="radar-chevron">▾</span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">上市时间</div><div class="cell-value">5月22日</div></div><div><div class="cell-label">核心宣称</div><div class="cell-value">奶油眼影棒，平价</div></div><div><div class="cell-label">社媒热度</div><div class="cell-tags"><span class="rev-tag rev-pos">TikTok爆火</span></div></div><div><div class="cell-label">链接</div><div class="cell-value"><a href="https://www.colourpop.com" target="_blank">ColourPop →</a></div></div></div></div></div>
-<div class="radar-item"><div class="radar-item-header"><span class="radar-brand">Rhode</span><span class="radar-name"><span class="trend-product-tag purple">趋势产品</span>香氛胜肽唇釉</span><span class="radar-cat">唇部</span><span class="radar-chevron">▾</span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">上市时间</div><div class="cell-value">5月</div></div><div><div class="cell-label">核心宣称</div><div class="cell-value">胜肽+香氛，限量</div></div><div><div class="cell-label">社媒热度</div><div class="cell-tags"><span class="rev-tag rev-pos">手机壳捆绑套装</span></div></div><div><div class="cell-label">链接</div><div class="cell-value"><a href="https://www.rhodeskin.com" target="_blank">Rhode →</a></div></div></div></div></div>
-<div class="radar-item"><div class="radar-item-header"><span class="radar-brand">R.E.M. Beauty</span><span class="radar-name">危险女人系列</span><span class="radar-cat">全系列</span><span class="radar-chevron">▾</span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">上市时间</div><div class="cell-value">5月17日</div></div><div><div class="cell-label">核心宣称</div><div class="cell-value">全系列，Ariana Grande</div></div><div><div class="cell-label">社媒热度</div><div class="cell-tags"><span class="rev-tag rev-pos">粉丝驱动需求</span></div></div><div><div class="cell-label">链接</div><div class="cell-value"><a href="https://www.rembeauty.com" target="_blank">R.E.M. Beauty →</a></div></div></div></div></div>
-</div></div>
+</div>
+</div>
 </div>
 </div>
 </div>
