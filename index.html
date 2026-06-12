@@ -7,7 +7,7 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
-<meta name="version" content="2026-06-12-1552">
+<meta name="version" content="2026-06-12-1631">
 <!-- Cache-bust: 2026-06-12-1458 CST -->
 <style>
 :root {
@@ -16,8 +16,8 @@
   --zuru-red-dark: #B00018;
   --zuru-red-light: rgba(214, 0, 28, 0.08);
   --zuru-red-glow: rgba(214, 0, 28, 0.15);
-  --monday-pink: #6366F1;
-  --monday-pink-light: rgba(99, 102, 241, 0.08);
+  --monday-pink: #D6001C;
+  --monday-pink-light: rgba(214, 0, 28, 0.06);
   --teal: #10B981;
   --teal-light: rgba(16, 185, 129, 0.08);
   --teal-glow: rgba(16, 185, 129, 0.15);
@@ -61,62 +61,12 @@
   --rose: #D6001C;
   --blue: #10B981;
   --card-bg: #FFFFFF;
-}root {
-  /* === ZURU EDGE Light Design System === */
-  --zuru-red: #D6001C;
-  --zuru-red-dark: #C4000A;
-  --zuru-red-light: rgba(230, 0, 18, 0.08);
-  --zuru-red-glow: rgba(230, 0, 18, 0.15);
-  --monday-pink: #E8527A;
-  --monday-pink-light: rgba(232, 82, 122, 0.10);
-  --teal: #10B981;
-  --teal-light: rgba(0, 201, 167, 0.08);
-  --teal-glow: rgba(0, 201, 167, 0.15);
-  --gold: #FFB800;
-  --coral: #FF6B6B;
-  --lavender: #7B61FF;
-  --purple: #7B61FF;
-
-  /* Light surfaces */
-  --bg-primary: #FFFFFF;
-  --bg-secondary: #F5F5F7;
-  --bg-elevated: #F8F8FA;
-  --bg-card: #FFFFFF;
-  --bg-hover: #F0F0F5;
-
-  /* Borders */
-  --border-subtle: rgba(0, 0, 0, 0.06);
-  --border-medium: rgba(0, 0, 0, 0.10);
-  --border-hover: rgba(230, 0, 18, 0.40);
-
-  /* Text */
-  --text: #1A1A1A;
-  --text-secondary: #666666;
-  --text-tertiary: #999999;
-
-  /* Shadows */
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
-  --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.10);
-  --glow-red: 0 4px 20px rgba(230, 0, 18, 0.12);
-  --glow-teal: 0 4px 20px rgba(0, 201, 167, 0.12);
-
-  /* Zone colors */
-  --cn-bg: rgba(230, 0, 18, 0.04);
-  --cn-border: rgba(230, 0, 18, 0.18);
-  --us-bg: rgba(0, 201, 167, 0.04);
-  --us-border: rgba(0, 201, 167, 0.18);
-
-  /* Legacy compat */
-  --rose: #D6001C;
-  --blue: #10B981;
-  --card-bg: #FFFFFF;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {
-  font-family: 'Inter', 'Space Grotesk', -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
   background: var(--bg-primary);
   color: var(--text);
   line-height: 1.65;
@@ -430,8 +380,10 @@ body {
   color: white;
 }
 .fragrance-banner {
-  background: var(--monday-pink);
+  background: linear-gradient(135deg, #9B0015 0%, #D6001C 60%, #B00018 100%);
   color: white;
+  border-top: 3px solid rgba(255,255,255,0.4);
+  border-bottom: 3px solid rgba(255,255,255,0.2);
 }
 
 /* === Section shell === */
@@ -489,29 +441,28 @@ body {
   margin-bottom: 18px;
 }
 .common-badge {
-  background: var(--zuru-red);
+  background: var(--purple);
   color: #fff;
   padding: 5px 16px;
   border-radius: 20px;
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.5px;
-  box-shadow: 0 2px 8px rgba(230, 0, 18, 0.4);
+  box-shadow: 0 2px 8px rgba(123, 97, 255, 0.4);
 }
-.common-subtitle { font-size: 12px; color: var(--zuru-red); font-weight: 500; }
-.common-trend-card {
-  border: 1px solid rgba(230, 0, 18, 0.20);
+.common-subtitle { font-size: 12px; color: var(--purple); font-weight: 500; }
+.common-trend-card { border: 1px solid rgba(123, 97, 255, 0.20);
   border-radius: 14px;
   overflow: hidden;
   margin-bottom: 14px;
   background: var(--bg-card);
   transition: box-shadow 0.2s;
 }
-.common-trend-card:hover { box-shadow: 0 3px 20px rgba(230, 0, 18, 0.15); }
-.ct-header { display: flex; align-items: center; gap: 12px; padding: 16px 20px 12px; border-bottom: 1px solid rgba(230, 0, 18, 0.12); }
+.common-trend-card:hover { box-shadow: 0 3px 20px rgba(123, 97, 255, 0.15); }
+.ct-header { display: flex; align-items: center; gap: 12px; padding: 16px 20px 12px; border-bottom: 1px solid rgba(123, 97, 255, 0.12); }
 .ct-header .ct-icon { font-size: 20px; }
 .ct-header .ct-title { font-weight: 700; font-size: 15px; color: var(--text); }
-.ct-header .ct-subtitle { font-size: 12px; color: var(--zuru-red); margin-left: auto; }
+.ct-header .ct-subtitle { font-size: 12px; color: var(--purple); margin-left: auto; }
 .ct-dual {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -527,8 +478,8 @@ body {
 }
 .ct-us .ct-flag { color: var(--teal); }
 .ct-cn .ct-flag { color: var(--zuru-red); }
-.ct-action { padding: 11px 18px; background: rgba(230, 0, 18, 0.04); border-top: 1px solid rgba(230, 0, 18, 0.12); font-size: 12px; color: var(--teal); display: flex; align-items: flex-start; gap: 8px; }
-.ct-action .action-icon { font-size: 13px; flex-shrink: 0; color: var(--zuru-red); }
+.ct-action { padding: 11px 18px; background: rgba(123, 97, 255, 0.04); border-top: 1px solid rgba(123, 97, 255, 0.12); font-size: 12px; color: var(--teal); display: flex; align-items: flex-start; gap: 8px; }
+.ct-action .action-icon { font-size: 13px; flex-shrink: 0; color: var(--purple); }
 @media (max-width: 768px) {
   .ct-dual { grid-template-columns: 1fr; }
   .ct-dual .ct-us { border-right: none; border-bottom: 1px solid var(--border-subtle); }
@@ -555,9 +506,21 @@ body {
 .trend-v-card:hover { box-shadow: var(--shadow); }
 .trend-v-card.cn { border-left: 5px solid var(--zuru-red); border-top: none; }
 .trend-v-card.us { border-left: 5px solid var(--teal); border-top: none; }
-.trend-v-card.common { border-left: 5px solid var(--zuru-red); border-top: none; background: rgba(230, 0, 18, 0.04); }
-.trend-v-card.common .driver-summary { background: var(--zuru-red-light); border-left: 3px solid var(--zuru-red); color: var(--zuru-red); }
-.trend-v-card h4 { font-size: 16px; font-weight: 700; margin-bottom: 12px; color: var(--text); }
+.trend-v-card.common { border-left: 5px solid var(--purple); border-top: none; background: rgba(123, 97, 255, 0.04); }
+.trend-v-card.common .driver-summary { background: rgba(123, 97, 255, 0.08); border-left: 3px solid var(--purple); color: var(--purple); }
+.trend-v-card h4 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--text);
+  background: linear-gradient(135deg, var(--text) 0%, #333 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: none;
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.08));
+  position: relative;
+}
 
 /* Trend body - driver */
 .trend-v-body { margin-bottom: 16px; }
@@ -1047,8 +1010,8 @@ body {
   height: 1px; background: var(--border-subtle);
   margin: 6px 10px;
 }
-.fragrance-banner .week-dropdown-item:hover { background: rgba(0, 201, 167, 0.12); color: var(--teal); }
-.fragrance-banner .week-dropdown-item.current { background: rgba(0, 201, 167, 0.15); color: var(--teal); font-weight: 700; }
+.fragrance-banner .week-dropdown-item:hover { background: rgba(255,255,255,0.15); color: white; }
+.fragrance-banner .week-dropdown-item.current { background: rgba(255,255,255,0.2); color: white; font-weight: 700; }
 @media (max-width: 768px) {
   .week-selector { margin-left: 6px; }
   .week-selector-btn { padding: 5px 12px; font-size: 11px; }
@@ -1094,6 +1057,50 @@ body {
   font-weight: 800;
   color: var(--zuru-red);
   letter-spacing: 2px;
+}
+
+/* Radar Grid - US Left / CN Right */
+.radar-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 24px;
+  margin-bottom: 28px;
+}
+.radar-grid > .radar-zone:first-child { order: 1; }
+.radar-grid > .radar-zone:nth-child(2) { order: 2; }
+.radar-zone {
+  border-radius: 16px;
+  padding: 20px;
+  position: relative;
+}
+.radar-zone.us-zone {
+  background: var(--us-bg);
+  border: 1.5px solid var(--us-border);
+}
+.radar-zone.cn-zone {
+  background: var(--cn-bg);
+  border: 1.5px solid var(--cn-border);
+}
+.radar-zone-badge {
+  display: inline-block;
+  padding: 5px 16px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+.radar-zone-badge.us {
+  background: var(--teal);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+}
+.radar-zone-badge.cn {
+  background: var(--zuru-red);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(214, 0, 28, 0.3);
+}
+@media (max-width: 768px) {
+  .radar-grid { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -1331,7 +1338,7 @@ body {
 </div>
 
 <!-- Makeup Heat Ranking -->
-<div class="heat-section">
+<div class="section"><div class="section-title">🔥 Top 10 Makeup Heat Ranking</div><div class="heat-section">
 <div class="heat-panel">
 <h4>China Makeup Heat TOP 10 <span class="heat-methodology-badge" title="Tmall 30% + Douyin 15% + JD 10% + RED 15% + Buzz 15% + Evergreen 15%">Scoring Formula</span></h4>
 <ul class="heat-accordion">
@@ -1601,11 +1608,26 @@ body {
 </div></div></li>
 </ul></div>
 </div>
+</div></div>
+<!--  -->
+<div class="section"><div class="section-title">🆕 Makeup New Product Radar</div>
+<div class="radar-grid">
+<div class="radar-zone us-zone">
+<span class="radar-zone-badge us">🇺🇸 US Market</span>
+<h4>Masstige New Products <span class="tier-badge">MASSTIGE</span></h4>
+<div class="radar-list">
+<div class="radar-item" data-cat="cheek"><div class="radar-item-header"><span class="radar-brand">Fenty Beauty</span><span class="radar-name">Sun Stalk'r Mousse Bronzer</span><span class="radar-cat">Bronzer</span><span class="radar-chevron"></span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">Launch Date</div><div class="cell-value">May 15</div></div><div><div class="cell-label">Key Claims</div><div class="cell-value">Mousse texture, buildable</div></div><div><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">3x Sephora Sellout</span></div></div><div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.fentybeauty.com" target="_blank">Fenty Beauty</a></div></div></div></div></div>
+<div class="radar-item" data-cat="cheek"><div class="radar-item-header"><span class="radar-brand">Patrick Ta</span><span class="radar-name">Liquid Transition Blush</span><span class="radar-cat">Blush</span><span class="radar-chevron"></span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">Launch Date</div><div class="cell-value">May</div></div><div><div class="cell-label">Key Claims</div><div class="cell-value">Brightening, liquid-to-powder</div></div><div><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">50K+ Waitlist</span></div></div><div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.patrickta.com" target="_blank">Patrick Ta</a></div></div></div></div></div>
+<div class="radar-item" data-cat="cheek"><div class="radar-item-header"><span class="radar-brand">NARS</span><span class="radar-name">Insatiable Longwear Liquid Blush</span><span class="radar-cat">Blush</span><span class="radar-chevron"></span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">Launch Date</div><div class="cell-value">May</div></div><div><div class="cell-label">Key Claims</div><div class="cell-value">16h wear, high pigment</div></div><div><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Extending Blush Franchise</span></div></div><div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.narscosmetics.com" target="_blank">NARS</a></div></div></div></div></div>
+<div class="radar-item" data-cat="lip"><div class="radar-item-header"><span class="radar-brand">Hourglass</span><span class="radar-name">Phantom Smoothing Blur Lip Balm</span><span class="radar-cat">Lip Balm</span><span class="radar-chevron"></span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">Launch Date</div><div class="cell-value">May</div></div><div><div class="cell-label">Key Claims</div><div class="cell-value">Blur effect, smoothing</div></div><div><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Lip Prep + Color Hybrid</span></div></div><div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.hourglasscosmetics.com" target="_blank">Hourglass</a></div></div></div></div></div>
+<div class="radar-item" data-cat="lip"><div class="radar-item-header"><span class="radar-brand">MAC</span><span class="radar-name">Squirt Plumping Gloss (Summer)</span><span class="radar-cat">Lip Gloss</span><span class="radar-chevron"></span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">Launch Date</div><div class="cell-value">May</div></div><div><div class="cell-label">Key Claims</div><div class="cell-value">Plumping, summer shades</div></div><div><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Seasonal Color Extension</span></div></div><div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.maccosmetics.com" target="_blank">MAC</a></div></div></div></div></div>
+<div class="radar-item" data-cat="eye"><div class="radar-item-header"><span class="radar-brand">ColourPop</span><span class="radar-name">Jelly Much Eyeshadow Stick</span><span class="radar-cat">Eye</span><span class="radar-chevron"></span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">Launch Date</div><div class="cell-value">May 22</div></div><div><div class="cell-label">Key Claims</div><div class="cell-value">Cream shadow stick, affordable</div></div><div><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Viral on TikTok</span></div></div><div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.colourpop.com" target="_blank">ColourPop</a></div></div></div></div></div>
+<div class="radar-item" data-cat="lip"><div class="radar-item-header"><span class="radar-brand">Rhode</span><span class="radar-name">Scented Peptide Lip Tint Glaze</span><span class="radar-cat">Lip Tint</span><span class="radar-chevron"></span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">Launch Date</div><div class="cell-value">May</div></div><div><div class="cell-label">Key Claims</div><div class="cell-value">Peptide + scent, limited edition</div></div><div><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Phone Case Bundle</span></div></div><div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.rhodeskin.com" target="_blank">Rhode</a></div></div></div></div></div>
+<div class="radar-item" data-cat="face"><div class="radar-item-header"><span class="radar-brand">R.E.M. Beauty</span><span class="radar-name">Dangerous Woman Collection</span><span class="radar-cat">Collection</span><span class="radar-chevron"></span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">Launch Date</div><div class="cell-value">May 17</div></div><div><div class="cell-label">Key Claims</div><div class="cell-value">Full collection, Ariana Grande</div></div><div><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Fan-Driven Demand</span></div></div><div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.rembeauty.com" target="_blank">R.E.M. Beauty</a></div></div></div></div></div>
 </div>
-
-<!-- Makeup New Product Radar -->
-<div class="section"><div class="section-title">Makeup New Product Radar</div>
-<div class="radar-section luxury">
+</div>
+<div class="radar-zone cn-zone">
+<span class="radar-zone-badge cn">🇨🇳 CN Market</span>
 <h4>Luxury New Products <span class="tier-badge">LUXURY</span></h4>
 <div class="radar-list">
 <div class="radar-item" data-cat="lip"><div class="radar-item-header"><span class="radar-brand">Givenchy</span><span class="radar-name">Gem Candy Lip Oil</span><span class="radar-cat">Lip Oil</span><span class="radar-chevron"></span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">Launch Date</div><div class="cell-value">Jun 1</div></div><div><div class="cell-label">Key Claims</div><div class="cell-value">99% lip care, 24h hydration</div></div><div><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Tmall Exclusive · Search +1,200%</span></div></div><div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.givenchy.com" target="_blank">Givenchy</a></div></div></div></div></div>
@@ -1617,26 +1639,10 @@ body {
 <div class="radar-item" data-cat="eye"><div class="radar-item-header"><span class="radar-brand">YSL</span><span class="radar-name">Couture Mini Clutch Eye Palettes</span><span class="radar-cat">Eye Palette</span><span class="radar-chevron"></span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">Launch Date</div><div class="cell-value">May</div></div><div><div class="cell-label">Key Claims</div><div class="cell-value">Travel-size, 4-pan</div></div><div><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Airport Retail Exclusive</span></div></div><div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.ysl.com" target="_blank">YSL</a></div></div></div></div></div>
 <div class="radar-item" data-cat="face"><div class="radar-item-header"><span class="radar-brand">Tom Ford</span><span class="radar-name">Qixi Limited Collection</span><span class="radar-cat">Face</span><span class="radar-chevron"></span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">Launch Date</div><div class="cell-value">May (preview)</div></div><div><div class="cell-label">Key Claims</div><div class="cell-value">Luxury limited edition</div></div><div><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Pre-launch Social Buzz</span></div></div><div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.tomford.com" target="_blank">Tom Ford</a></div></div></div></div></div>
 <div class="radar-item" data-cat="face"><div class="radar-item-header"><span class="radar-brand">SUQQU</span><span class="radar-name">Summer 2026 Magic Hour</span><span class="radar-cat">Face Palette</span><span class="radar-chevron"></span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">Launch Date</div><div class="cell-value">May 14</div></div><div><div class="cell-label">Key Claims</div><div class="cell-value">Japanese aesthetic, seasonal</div></div><div><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Cult Following</span></div></div><div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.suqqu.com" target="_blank">SUQQU</a></div></div></div></div></div>
-</div></div>
 </div>
-
-<!-- Masstige Makeup New Products -->
-<div class="section">
-<div class="radar-section masstige-makeup">
-<h4>Masstige Makeup New Products <span class="tier-badge">MASSTIGE</span></h4>
-<div class="radar-list">
-<div class="radar-item" data-cat="cheek"><div class="radar-item-header"><span class="radar-brand">Fenty Beauty</span><span class="radar-name">Sun Stalk'r Mousse Bronzer</span><span class="radar-cat">Bronzer</span><span class="radar-chevron"></span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">Launch Date</div><div class="cell-value">May 15</div></div><div><div class="cell-label">Key Claims</div><div class="cell-value">Mousse texture, buildable</div></div><div><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">3x Sephora Sellout</span></div></div><div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.fentybeauty.com" target="_blank">Fenty Beauty</a></div></div></div></div></div>
-<div class="radar-item" data-cat="cheek"><div class="radar-item-header"><span class="radar-brand">Patrick Ta</span><span class="radar-name">Liquid Transition Blush</span><span class="radar-cat">Blush</span><span class="radar-chevron"></span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">Launch Date</div><div class="cell-value">May</div></div><div><div class="cell-label">Key Claims</div><div class="cell-value">Brightening, liquid-to-powder</div></div><div><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">50K+ Waitlist</span></div></div><div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.patrickta.com" target="_blank">Patrick Ta</a></div></div></div></div></div>
-<div class="radar-item" data-cat="cheek"><div class="radar-item-header"><span class="radar-brand">NARS</span><span class="radar-name">Insatiable Longwear Liquid Blush</span><span class="radar-cat">Blush</span><span class="radar-chevron"></span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">Launch Date</div><div class="cell-value">May</div></div><div><div class="cell-label">Key Claims</div><div class="cell-value">16h wear, high pigment</div></div><div><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Extending Blush Franchise</span></div></div><div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.narscosmetics.com" target="_blank">NARS</a></div></div></div></div></div>
-<div class="radar-item" data-cat="lip"><div class="radar-item-header"><span class="radar-brand">Hourglass</span><span class="radar-name">Phantom Smoothing Blur Lip Balm</span><span class="radar-cat">Lip Balm</span><span class="radar-chevron"></span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">Launch Date</div><div class="cell-value">May</div></div><div><div class="cell-label">Key Claims</div><div class="cell-value">Blur effect, smoothing</div></div><div><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Lip Prep + Color Hybrid</span></div></div><div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.hourglasscosmetics.com" target="_blank">Hourglass</a></div></div></div></div></div>
-<div class="radar-item" data-cat="lip"><div class="radar-item-header"><span class="radar-brand">MAC</span><span class="radar-name">Squirt Plumping Gloss (Summer)</span><span class="radar-cat">Lip Gloss</span><span class="radar-chevron"></span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">Launch Date</div><div class="cell-value">May</div></div><div><div class="cell-label">Key Claims</div><div class="cell-value">Plumping, summer shades</div></div><div><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Seasonal Color Extension</span></div></div><div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.maccosmetics.com" target="_blank">MAC</a></div></div></div></div></div>
-<div class="radar-item" data-cat="eye"><div class="radar-item-header"><span class="radar-brand">ColourPop</span><span class="radar-name">Jelly Much Eyeshadow Stick</span><span class="radar-cat">Eye</span><span class="radar-chevron"></span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">Launch Date</div><div class="cell-value">May 22</div></div><div><div class="cell-label">Key Claims</div><div class="cell-value">Cream shadow stick, affordable</div></div><div><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Viral on TikTok</span></div></div><div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.colourpop.com" target="_blank">ColourPop</a></div></div></div></div></div>
-<div class="radar-item" data-cat="lip"><div class="radar-item-header"><span class="radar-brand">Rhode</span><span class="radar-name">Scented Peptide Lip Tint Glaze</span><span class="radar-cat">Lip Tint</span><span class="radar-chevron"></span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">Launch Date</div><div class="cell-value">May</div></div><div><div class="cell-label">Key Claims</div><div class="cell-value">Peptide + scent, limited edition</div></div><div><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Phone Case Bundle</span></div></div><div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.rhodeskin.com" target="_blank">Rhode</a></div></div></div></div></div>
-<div class="radar-item" data-cat="face"><div class="radar-item-header"><span class="radar-brand">R.E.M. Beauty</span><span class="radar-name">Dangerous Woman Collection</span><span class="radar-cat">Collection</span><span class="radar-chevron"></span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">Launch Date</div><div class="cell-value">May 17</div></div><div><div class="cell-label">Key Claims</div><div class="cell-value">Full collection, Ariana Grande</div></div><div><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Fan-Driven Demand</span></div></div><div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.rembeauty.com" target="_blank">R.E.M. Beauty</a></div></div></div></div></div>
-</div></div></div>
-</div></div>
-
-
+</div>
+</div>
+</div>
 
 <div class="source-footer">
 <h4>Data Sources</h4>
