@@ -6,9 +6,9 @@
 
 <meta charset="UTF-8">
 
-<meta name="version" content="week25-20260615-v16-final">
+<meta name="version" content="week25-20260615-v17-final">
 
-<!-- Cache-bust: week25-20260615-v16-final -->
+<!-- Cache-bust: week25-20260615-v17-final -->
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -2672,29 +2672,6 @@ Heat ranking based on <strong>Sales 50% + Buzz 50%</strong>:<br><br>
 </div>
 </div>
 
-<script>
-// Heat ranking + Radar accordion toggle
-document.querySelectorAll('.heat-item').forEach(function(item){
-  item.addEventListener('click',function(e){
-    // Don't toggle if clicking inside an already-open detail (allow links inside)
-    if(e.target.closest('.heat-detail')) return;
-    var isOpen = this.classList.contains('open');
-    // Close siblings in same panel
-    var parent = this.parentElement; // ul.heat-accordion
-    if(parent) parent.querySelectorAll('.heat-item').forEach(function(s){s.classList.remove('open');});
-    if(!isOpen) this.classList.add('open');
-    e.stopPropagation();
-  });
-});
-// News card toggle
-document.querySelectorAll('.news-card-header').forEach(function(hd){
-  hd.addEventListener('click',function(e){this.parentElement.classList.toggle('open');e.stopPropagation();});
-});
-// Trend card toggle
-document.querySelectorAll('.trend-v-header').forEach(function(hdr){
-  hdr.addEventListener('click',function(e){this.parentElement.classList.toggle('open');e.stopPropagation();});
-});
-</script>
 
 </body>
 </html>
