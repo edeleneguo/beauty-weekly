@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fragrance Industry Weekly | EN | Week 24, 2026</title>
+<title>Fragrance Industry Weekly | Week 25, 2026</title>
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
-<meta name="version" content="2026-06-13-1750">
-<!-- Cache-bust: 2026-06-13-1750 CST -->
+<meta name="version" content="week25-fragrance-en-20260615-v1">
+<!-- Cache-bust: week25-fragrance-en-20260615-v1 -->
 <style>
 :root {
   /* === ZURU EDGE Design System (based on reference dashboard) === */
@@ -1127,6 +1127,25 @@ body {
 /* === Section Icon — ZURU geometric style === */
 .section-icon { display: inline-block; vertical-align: middle; margin-right: 10px; opacity: 0.9; }
 .section-icon svg { display: block; }
+
+/* Decision Bar */
+.trend-decision-bar {
+  margin-top: 12px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.trend-decision-bar.us-decision {
+  background: rgba(16, 185, 129, 0.06);
+  border-left: 4px solid var(--us-blue);
+  color: #10B981;
+}
+.trend-decision-bar.cn-decision {
+  background: rgba(245, 158, 11, 0.06);
+  border-left: 4px solid var(--gold);
+  color: #D97706;
+}
 </style>
 </head>
 <body>
@@ -1137,21 +1156,46 @@ body {
 <div class="section-banner fragrance-banner">
   <div class="lang-switch-bar">
     <a href="fragrance-cn.html" class="lang-switch-btn cn-active"><span class="lang-dot"></span>中文</a>
-    <a href="index.html" class="section-jump-btn">💄 Makeup <span class="jump-arrow">↑</span></a>
+    <a href="index.html" class="section-jump-btn">💄 Makeup Edition <span class="jump-arrow">↑</span></a>
   </div>
-  <span class="section-icon"><svg viewBox="0 0 32 32" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 28h12v-6h-2v-4h-8v4h-2v6z"/><path d="M14 14v4h4v-4"/><line x1="16" y1="8" x2="16" y2="14"/><circle cx="16" cy="7" r="1.5"/><path d="M13 10h6"/></svg></span><h2>ZURU EDGE Fragrance Innovation Watch</h2>
+  <span class="section-icon"><svg viewBox="0 0 32 32" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 28h12v-6h-2v-4h-8v4h-2v6z"/><path d="M14 14v4h4v-4"/><line x1="16" y1="8" x2="16" y2="14"/><circle cx="16" cy="7" r="1.5"/><path d="M13 10h6"/></svg></span><h2>🌸 Beauty Weekly Report Week 25 — FRAGRANCE EDITION</h2>
   <div class="banner-sub">
-    June 2 - Jun 8, 2026 &#183; Week 24 &#183; China &#215; US
+    June 9–15, 2026 &#183; ZURU EDGE · NPD Strategy
     <div class="week-selector" id="weekSelectorFragrance">
       <button class="week-selector-btn" onclick="event.stopPropagation();toggleWeekDropdown('weekSelectorFragrance')">
         Past Issues
       </button>
       <div class="week-dropdown" onclick="event.stopPropagation()">
-        <button class="week-dropdown-item current" disabled>Week 24 (Current)</button>
+        <button class="week-dropdown-item current" disabled>Week 25 (Current)</button>
         <div class="week-dropdown-divider"></div>
+        <a class="week-dropdown-item" href="archive/week-24/fragrance.html">Week 24</a>
         <a class="week-dropdown-item" href="archive/week-23/fragrance.html">Week 23</a>
       </div>
     </div>
+  </div>
+</div>
+
+<!-- KPI Row -->
+<div class="exec-summary">
+  <div class="exec-card us-frag">
+    <div class="exec-tag">Social Reach</div>
+    <div class="exec-headline" style="font-size:22px;color:var(--zuru-red);">64B</div>
+    <div class="exec-detail">#PerfumeTok Total Views</div>
+  </div>
+  <div class="exec-card cn-frag">
+    <div class="exec-tag">Note Trend</div>
+    <div class="exec-headline" style="font-size:22px;color:var(--gold);">+852%</div>
+    <div class="exec-detail">Pistachio Note Search Growth YoY</div>
+  </div>
+  <div class="exec-card us-frag">
+    <div class="exec-tag">Market Size</div>
+    <div class="exec-headline" style="font-size:22px;color:var(--us-blue);">$9.02B</div>
+    <div class="exec-detail">Clean Beauty Fragrance Market <span style="color:var(--us-blue);font-weight:600;">(+12.5% YoY)</span></div>
+  </div>
+  <div class="exec-card cn-frag">
+    <div class="exec-tag">Search Trend</div>
+    <div class="exec-headline" style="font-size:22px;color:var(--coral);">+174.6%</div>
+    <div class="exec-detail">Solid Perfume Search Growth</div>
   </div>
 </div>
 
@@ -1164,400 +1208,440 @@ body {
 
     <div class="news-card">
       <div class="news-card-header">
-        <span class="news-card-title">618 Fragrance Boom: YSL Crowned Tmall Color Cosmetics and Fragrance #1</span>
-        <span class="news-card-tag cn">CN</span>
-        <span class="news-card-tag data">Data</span>
+        <span class="news-card-title">Pistachio Gourmand Explodes: D.S. & Durga Pistachio Goes Viral on TikTok #PistachioPerfume</span>
+        <span class="news-card-tag shared">Global</span>
+        <span class="news-card-tag data">Trend</span>
         <span class="news-card-chevron"></span>
       </div>
-      <div class="news-card-brief">Tmall 618 first cycle: high-end fragrance segment growing double digits; Serge Lutens, NARCISO RODRIGUEZ, MFK all strong performers. Source: IT Home</div>
+      <div class="news-card-brief">Pistachio note searches surge +852% YoY; #PistachioPerfume hits 3.8B views on TikTok. D.S. & Durga Pistachio EDP becomes the breakout fragrance of the season.</div>
       <div class="news-card-body">
         <div class="news-card-body-inner">
-          Tmall 618 first cycle reveals the high-end fragrance segment as the star performer with double-digit growth. YSL crowned overall Tmall 618 color cosmetics and fragrance #1.<br><br>
-          <b>Strong performers:</b> Serge Lutens, NARCISO RODRIGUEZ, Maison Francis Kurkdjian (MFK) all delivering standout results. The premiumization trend in fragrance continues to accelerate as consumers trade up.
+          The pistachio gourmand trend has reached critical mass. D.S. & Durga Pistachio EDP has catalyzed a viral wave, with #PistachioPerfume amassing <span class="hl-num">3.8B views (+852%)</span> on TikTok alone. Google Trends confirms +852% search growth, while Sephora reports gourmand SKU growth of +64%. WGSN has elevated pistachio to S-tier status for 2026.<br><br>
+          <b>Key combinations emerging:</b> Pistachio × Caramel, Toasted Almond × Patchouli, Hazelnut × Cream — signaling a broader "nut gourmand" palette expansion.
         </div>
       </div>
     </div>
+
+    <div class="news-card">
+      <div class="news-card-header">
+        <span class="news-card-title">Functional Mood Fragrance Market Reaches $12.1B — 62% Consumers Prefer Functional Scents</span>
+        <span class="news-card-tag shared">Global</span>
+        <span class="news-card-tag capital">Capital</span>
+        <span class="news-card-chevron"></span>
+      </div>
+      <div class="news-card-brief">The Nue Co. leads the functional fragrance charge; mood-based scent positioning (Calm/Focus/Joy) now a $12.1B market segment with 62% consumer preference.</div>
+      <div class="news-card-body">
+        <div class="news-card-body-inner">
+          The functional fragrance segment has matured into a <span class="hl-num">$12.1B market</span>, with The Nue Co. establishing the category template. A striking <span class="hl-num">62% of consumers</span> now prefer fragrances with functional benefits. #MoodPerfume has surged <span class="hl-num">240M views (+210%)</span>, and Sephora's mood fragrance SKU count has grown +78%. The three dominant functional territories — Calm, Focus, Joy — are becoming standard fragrance development frameworks.
+        </div>
+      </div>
+    </div>
+
 </div>
 
 <div class="section">
 <div class="section-title">Fragrance Trends</div>
 
+<!-- GLOBAL Shared Trends -->
 <div class="common-trends-section">
-<div class="common-trends-header"><span class="common-badge">GLOBAL Shared Trends</span><span class="common-subtitle">Pistachio Gourmand x Scent Stacking — Defining the scent architecture of 2026</span></div>
+<div class="common-trends-header"><span class="common-badge">GLOBAL Shared Trends</span><span class="common-subtitle">Pistachio Gourmand × Skin Scent × Functional Mood — The defining scent architecture of Week 25</span></div>
 
 <!-- Shared Trend 1: Pistachio Gourmand -->
 <div class="trend-v-card common">
-<h4><span class="trend-num">Trend 1</span>: Pistachio Gourmand — The Defining Note of 2026</h4>
+<h4><span class="trend-num">Trend 1</span>: Pistachio Gourmand <span class="hl-rose">+852%</span></h4>
 <div class="trend-v-body">
-<div class="driver-summary">Food-adjacent scents create instant mood uplift + social shareability; pistachio bridges gourmand freshness and woody depth. Kayali Yum Pistachio Gelato 33 is the cross-market hero product of the year.</div>
+<div class="driver-summary">D.S. & Durga Pistachio triggers TikTok #PistachioPerfume viral wave. Pistachio bridges gourmand freshness and woody depth, expanding into Pistachio×Caramel, Toasted Almond×Patchouli, Hazelnut×Cream combinations.</div>
 <div class="driver-bullets">
-<div class="bullet-group cn-group"><div class="bullet-point"><span class="region-tag" style="background:rgba(214,0,28,0.15);color:#D6001C;">GLOBAL</span><span> Pistachio <span class="hl-rose">+852%</span> search growth (CN); Kayali Yum Pistachio Gelato 33 viral globally; Sol de Janeiro Cheirosa '62 Sephora #2; TikTok #pistachioperfume <span class="hl-teal">980M views</span></span></div></div>
-<div class="bullet-group cn-group"><div class="bullet-point"><span class="region-tag cn-tag">CN</span><span> Douyin "pistachio perfume" search exploding; Xiaohongshu gourmand scent discussions surpassing traditional floral; young consumers driving food-adjacent fragrance discovery</span></div></div>
-<div class="bullet-group cn-group"><div class="bullet-point"><span class="region-tag us-tag">US</span><span> Kayali Yum Pistachio Gelato 33 TikTok sensation; Sol de Janeiro Cheirosa '62 Sephora #2 overall; D.S. and Durga Pistachio EDP cult status; #gourmandperfume 1.8B views</span></div></div>
+<div class="bullet-group cn-group"><div class="bullet-point"><span class="region-tag" style="background:rgba(214,0,28,0.15);color:#D6001C;">GLOBAL</span><span> #PistachioPerfume <span class="hl-rose">3.8B views (+852%)</span>; Google Trends +852%; Sephora gourmand SKU <span class="hl-teal">+64%</span>; WGSN S-tier classification</span></div></div>
+<div class="bullet-group cn-group"><div class="bullet-point"><span class="region-tag cn-tag">CN</span><span> Pistachio note trending on Xiaohongshu; nut-gourmand discussions surpassing traditional floral categories; young consumers driving food-adjacent fragrance discovery</span></div></div>
+<div class="bullet-group cn-group"><div class="bullet-point"><span class="region-tag us-tag">US</span><span> D.S. & Durga Pistachio EDP cult status; Kayali Yum Pistachio Gelato 33 continuing viral momentum; Sol de Janeiro Cheirosa '62 Sephora top-seller as pistachio-adjacent</span></div></div>
 </div></div>
 <div class="signal-strip">
-<div class="signal-chip tt"><div class="chip-icon">Douyin</div><div class="chip-num" style="color:var(--rose);">+852%</div><div class="chip-desc">Pistachio Search YoY</div><div class="chip-trend chip-up">Explosive</div></div>
-<div class="signal-chip tt"><div class="chip-icon">TikTok</div><div class="chip-hashtag tt-hash">#pistachioperfume</div><div class="chip-num" style="color:var(--us-blue);">980M</div><div class="chip-desc">Views globally</div><div class="chip-trend chip-hot">Viral</div></div>
-<div class="signal-chip seph"><div class="chip-icon">Sephora</div><div class="chip-num" style="color:var(--us-blue);">#2</div><div class="chip-desc">Sol de Janeiro Cheirosa '62</div><div class="chip-trend chip-up">Best Seller</div></div>
-<div class="signal-chip wgsn"><div class="chip-icon">Kayali</div><div class="chip-num">VIRAL</div><div class="chip-desc">Yum Pistachio Gelato 33</div><div class="chip-trend chip-hot">Global Hit</div></div>
+<div class="signal-chip tt"><div class="chip-icon">TikTok</div><div class="chip-hashtag tt-hash">#PistachioPerfume</div><div class="chip-num" style="color:var(--zuru-red);">3.8B</div><div class="chip-desc">Views (+852%)</div><div class="chip-trend chip-hot">Viral</div></div>
+<div class="signal-chip gtrends"><div class="chip-icon">Google</div><div class="chip-num" style="color:var(--zuru-red);">+852%</div><div class="chip-desc">Search YoY</div><div class="chip-trend chip-hot">Explosive</div></div>
+<div class="signal-chip seph"><div class="chip-icon">Sephora</div><div class="chip-num" style="color:var(--us-blue);">+64%</div><div class="chip-desc">Gourmand SKU Growth</div><div class="chip-trend chip-up">Category Surge</div></div>
+<div class="signal-chip wgsn"><div class="chip-icon">WGSN</div><div class="chip-num">S-TIER</div><div class="chip-desc">Pistachio Classification</div><div class="chip-trend chip-hot">Top Forecast</div></div>
 </div>
 <div class="action-block">
 <div class="act-header">
 <span class="act-label">Action</span>
-<span class="act-direction">Pistachio-forward EDP with cardamom top + sandalwood base</span>
-<span class="act-strength strong">Strong - Cross-Market Surge</span>
+<span class="act-direction">Pistachio-forward EDP with caramel top + patchouli base</span>
+<span class="act-strength strong">STRONG</span>
 </div>
-<div class="act-content">Develop <b>pistachio-forward EDP</b> with cardamom top + sandalwood base; layer with body mist for scent-stacking. Pistachio is the highest-velocity fragrance note of 2026 with validated consumer pull across both China and US.</div>
+<div class="act-content">Develop <b>pistachio-forward EDP</b> with caramel top + patchouli base; expand into Pistachio×Caramel, Toasted Almond×Patchouli, Hazelnut×Cream combinations. Pistachio is the highest-velocity fragrance note of 2026 with validated consumer pull across both China and US markets.</div>
 </div>
 </div>
 
-<!-- Shared Trend 2: Scent Stacking / Layering -->
+<!-- Shared Trend 2: Skin Scent Musk -->
 <div class="trend-v-card common">
-<h4><span class="trend-num">Trend 2</span>: Scent Stacking / Layering (<span class="hl-gold">+63.9% YoY</span>)</h4>
+<h4><span class="trend-num">Trend 2</span>: Skin Scent Musk</h4>
 <div class="trend-v-body">
-<div class="driver-summary">Consumers want unique signature scents; layering creates personalization without niche prices. Three-piece scent layering sets (body wash + mist + EDP) are the emerging category driver.</div>
+<div class="driver-summary">Phlur Missing Person and Glossier You define the "your skin but better" fragrance territory. Cashmeran/White Musk/Creamy Sandalwood create intimate, second-skin scent profiles.</div>
 <div class="driver-bullets">
-<div class="bullet-group cn-group"><div class="bullet-point"><span class="region-tag" style="background:rgba(214,0,28,0.15);color:#D6001C;">GLOBAL</span><span> Body wash to body mist to perfume layering trend growing <span class="hl-gold">+63.9% YoY</span> on Douyin; fragrance layering kits trending on Sephora; layering creates personalization without niche prices</span></div></div>
-<div class="bullet-group cn-group"><div class="bullet-point"><span class="region-tag cn-tag">CN</span><span> Douyin "fragrance layering" tutorials going viral; Sol de Janeiro body mists as the hero layering base; consumers building multi-step scent routines</span></div></div>
-<div class="bullet-group cn-group"><div class="bullet-point"><span class="region-tag us-tag">US</span><span> Sephora fragrance layering kits top-10 in fragrance category; DedCool Extra Milk and Phlur Father Figure as popular layering anchors; #scentlayering growing on TikTok</span></div></div>
+<div class="bullet-group cn-group"><div class="bullet-point"><span class="region-tag" style="background:rgba(214,0,28,0.15);color:#D6001C;">GLOBAL</span><span> #SkinScent <span class="hl-rose">1.2B views (+76%)</span>; Sephora TOP5 fragrance category; "skin scent" search <span class="hl-teal">+143%</span>; Pinterest Cashmere Musk <span class="hl-teal">+89%</span></span></div></div>
+<div class="bullet-group cn-group"><div class="bullet-point"><span class="region-tag cn-tag">CN</span><span> "伪体香" (pseudo-body-scent) trending on Douyin; intimate fragrance preference growing among Gen Z; minimal-sillage scents gaining cultural resonance</span></div></div>
+<div class="bullet-group cn-group"><div class="bullet-point"><span class="region-tag us-tag">US</span><span> Phlur Missing Person as the skin scent archetype; Glossier You expanding into solid format; cashmeran and white musk as the foundational notes of the category</span></div></div>
 </div></div>
 <div class="signal-strip">
-<div class="signal-chip tt"><div class="chip-icon">Douyin</div><div class="chip-num" style="color:var(--rose);">+63.9%</div><div class="chip-desc">Scent Stacking YoY</div><div class="chip-trend chip-up">Behavior Shift</div></div>
-<div class="signal-chip seph"><div class="chip-icon">Sol de Janeiro</div><div class="chip-num" style="color:var(--us-blue);">#1</div><div class="chip-desc">Layering Hero Brand</div><div class="chip-trend chip-hot">Category King</div></div>
-<div class="signal-chip seph"><div class="chip-icon">Sephora</div><div class="chip-num">TOP 10</div><div class="chip-desc">Layering Kits</div><div class="chip-trend chip-up">New Category</div></div>
-<div class="signal-chip ig"><div class="chip-icon">DedCool</div><div class="chip-num">TRENDING</div><div class="chip-desc">Extra Milk layering hero</div><div class="chip-trend chip-up">Clean Layer</div></div>
+<div class="signal-chip tt"><div class="chip-icon">TikTok</div><div class="chip-hashtag tt-hash">#SkinScent</div><div class="chip-num" style="color:var(--zuru-red);">1.2B</div><div class="chip-desc">Views (+76%)</div><div class="chip-trend chip-up">Growing</div></div>
+<div class="signal-chip seph"><div class="chip-icon">Sephora</div><div class="chip-num">TOP5</div><div class="chip-desc">Skin Scent Category</div><div class="chip-trend chip-hot">Mainstream</div></div>
+<div class="signal-chip gtrends"><div class="chip-icon">Google</div><div class="chip-num" style="color:var(--us-blue);">+143%</div><div class="chip-desc">"skin scent" Search</div><div class="chip-trend chip-up">Rapid Growth</div></div>
+<div class="signal-chip pin"><div class="chip-icon">Pinterest</div><div class="chip-num" style="color:var(--us-blue);">+89%</div><div class="chip-desc">Cashmere Musk Saves</div><div class="chip-trend chip-up">Trending</div></div>
 </div>
 <div class="action-block">
 <div class="act-header">
 <span class="act-label">Action</span>
-<span class="act-direction">3-piece scent layering sets (body wash + mist + EDP)</span>
-<span class="act-strength strong">Strong - Consumer Behavior Shift</span>
+<span class="act-direction">Cashmeran + white musk + creamy sandalwood skin-scent EDP</span>
+<span class="act-strength strong">STRONG</span>
 </div>
-<div class="act-content">Launch <b>3-piece scent layering sets</b> (body wash + mist + EDP) in matching gourmand notes. The layering trend represents a structural shift in fragrance consumption — consumers are building routines, not just buying bottles.</div>
-</div>
+<div class="act-content">Develop <b>skin-scent EDP</b> with Cashmeran + White Musk + Creamy Sandalwood base; position as "intimate fragrance" for daily wear. The skin scent category is the fastest-growing segment in fragrance with validated cross-market demand.</div>
 </div>
 </div>
 
-
-<!-- CN-Only Fragrance Trends -->
-<div class="trend-grid">
-<div class="zone zone-cn">
-<span class="zone-badge cn">CN Fragrance Market</span>
-
-<!-- CN Fragrance Trend 3: Male Fragrance -->
-<div class="trend-v-card cn">
-<h4><span class="trend-num">Trend 3</span>: Male Fragrance Goes Mainstream (<span class="hl-rose">+343.2%</span>)</h4>
+<!-- Shared Trend 3: Functional Mood Fragrance -->
+<div class="trend-v-card common">
+<h4><span class="trend-num">Trend 3</span>: Functional Mood Fragrance <span class="hl-rose">$12.1B</span></h4>
 <div class="trend-v-body">
-<div class="driver-summary">Male grooming normalization + social media destigmatization + corporate gifting season (618). Woody-spice men's EDT line (oud + cardamom + vetiver) is the fastest-growing niche.</div>
+<div class="driver-summary">The Nue Co. establishes the functional fragrance category template. 62% of consumers now prefer fragrances with functional benefits. Three dominant territories: Calm, Focus, Joy.</div>
 <div class="driver-bullets">
-<div class="bullet-group cn-group"><div class="bullet-point"><span>Male fragrance sales <span class="hl-rose">+343.2% YoY</span> on Chinese platforms; Arabic fragrance <span class="hl-rose">+61.4%</span>; "gentleman scent" Douyin topic <span class="hl-rose">500M+ views</span></span></div></div>
-<div class="bullet-group cn-group"><div class="bullet-point"><span>Corporate gifting driving male fragrance during 618; woody-spice and oud-based scents leading the male segment; men's grooming destigmatization accelerating</span></div></div>
-<div class="bullet-group cn-group"><div class="bullet-point"><span>Male fragrance remains dramatically under-penetrated vs. female (estimated 8% vs. 92% of market), representing the largest untapped opportunity in Chinese fragrance</span></div></div>
+<div class="bullet-group cn-group"><div class="bullet-point"><span class="region-tag" style="background:rgba(214,0,28,0.15);color:#D6001C;">GLOBAL</span><span> Functional fragrance market <span class="hl-rose">$12.1B</span>; <span class="hl-rose">62%</span> consumer preference for functional scents; #MoodPerfume <span class="hl-teal">240M views (+210%)</span>; Sephora mood fragrance SKU <span class="hl-teal">+78%</span></span></div></div>
+<div class="bullet-group cn-group"><div class="bullet-point"><span class="region-tag cn-tag">CN</span><span> Aromatherapy + fragrance fusion growing; functional scent positioning resonating with wellness-oriented consumers; "疗愈香氛" (healing fragrance) topic expanding</span></div></div>
+<div class="bullet-group cn-group"><div class="bullet-point"><span class="region-tag us-tag">US</span><span> The Nue Co. Functional Fragrance as the category leader; mood-based positioning (Calm/Focus/Joy) becoming standard development framework; Sephora expanding mood-fragrance shelf space</span></div></div>
 </div></div>
 <div class="signal-strip">
-<div class="signal-chip tt"><div class="chip-icon">Douyin</div><div class="chip-num" style="color:#c94b6c;">+343.2%</div><div class="chip-desc">Male Fragrance YoY</div><div class="chip-trend chip-up">Explosive</div></div>
-<div class="signal-chip tt"><div class="chip-icon">Douyin</div><div class="chip-num" style="color:var(--rose);">500M+</div><div class="chip-desc">Gentleman Scent Views</div><div class="chip-trend chip-hot">Massive</div></div>
-<div class="signal-chip wgsn"><div class="chip-icon">Market</div><div class="chip-num">8% vs 92%</div><div class="chip-desc">Male vs Female Split</div><div class="chip-trend chip-up">Vast Untapped</div></div>
-<div class="signal-chip ig"><div class="chip-icon">Arabic</div><div class="chip-num">+61.4%</div><div class="chip-desc">Arabic Fragrance YoY</div><div class="chip-trend chip-up">Surging</div></div>
+<div class="signal-chip tt"><div class="chip-icon">TikTok</div><div class="chip-hashtag tt-hash">#MoodPerfume</div><div class="chip-num" style="color:var(--zuru-red);">240M</div><div class="chip-desc">Views (+210%)</div><div class="chip-trend chip-hot">Viral</div></div>
+<div class="signal-chip seph"><div class="chip-icon">Sephora</div><div class="chip-num" style="color:var(--us-blue);">+78%</div><div class="chip-desc">Mood Fragrance SKU</div><div class="chip-trend chip-up">Expanding</div></div>
+<div class="signal-chip gtrends"><div class="chip-icon">Market</div><div class="chip-num" style="color:var(--zuru-red);">$12.1B</div><div class="chip-desc">Functional Fragrance Market</div><div class="chip-trend chip-up">High Value</div></div>
+<div class="signal-chip wgsn"><div class="chip-icon">Consumer</div><div class="chip-num" style="color:var(--us-blue);">62%</div><div class="chip-desc">Prefer Functional</div><div class="chip-trend chip-up">Majority</div></div>
 </div>
 <div class="action-block">
 <div class="act-header">
 <span class="act-label">Action</span>
-<span class="act-direction">Woody-spice men's EDT (oud + cardamom + vetiver)</span>
-<span class="act-strength strong">Explosive - Untapped Market</span>
+<span class="act-direction">Mood-functional EDP line: Calm / Focus / Joy variants</span>
+<span class="act-strength strong">STRONG</span>
 </div>
-<div class="act-content">Develop <b>woody-spice men's EDT line</b> (oud + cardamom + vetiver); target Douyin male KOLs. Male fragrance is the #1 untapped opportunity in Chinese fragrance with explosive growth and dramatic under-penetration.</div>
+<div class="act-content">Launch <b>mood-functional EDP line</b> with three variants (Calm/Focus/Joy); leverage functional positioning as the differentiator. The $12.1B functional fragrance market with 62% consumer preference represents the highest-conviction category opportunity in fragrance.</div>
+</div>
 </div>
 </div>
 
-<!-- CN Fragrance Trend 4: Incense & Artisanal Home -->
-<div class="trend-v-card cn">
-<h4><span class="trend-num">Trend 4</span>: Incense and Artisanal Home Fragrance</h4>
-<div class="trend-v-body">
-<div class="driver-summary">"Slow living" + wellness + ritualization of home spaces. Incense-inspired personal fragrance line (sandalwood + white sage + frankincense) bridges home and personal fragrance categories.</div>
-<div class="driver-bullets">
-<div class="bullet-group cn-group"><div class="bullet-point"><span>Xiaohongshu <span class="hl-rose">7.04M</span> incense discussions; Guan Xia <span class="hl-rose">+211%</span> Feb 2026; Guibao pop-up <span class="hl-rose">800K</span>/2weeks</span></div></div>
-<div class="bullet-group cn-group"><div class="bullet-point"><span>"Slow living" lifestyle trend driving incense and artisanal home fragrance; incense becoming social currency and lifestyle identity marker</span></div></div>
-<div class="bullet-group cn-group"><div class="bullet-point"><span>Cross-sell opportunity: incense-inspired personal fragrance + home fragrance; sandalwood, white sage, frankincense as the emerging note palette</span></div></div>
-</div></div>
-<div class="signal-strip">
-<div class="signal-chip ig"><div class="chip-icon">Xiaohongshu</div><div class="chip-num" style="color:var(--rose);">7.04M</div><div class="chip-desc">Incense Discussions</div><div class="chip-trend chip-hot">Massive</div></div>
-<div class="signal-chip tt"><div class="chip-icon">Guan Xia</div><div class="chip-num" style="color:var(--rose);">+211%</div><div class="chip-desc">Feb 2026 YoY</div><div class="chip-trend chip-up">Surging</div></div>
-<div class="signal-chip seph"><div class="chip-icon">Guibao</div><div class="chip-num">800K</div><div class="chip-desc">Pop-up Revenue/2wks</div><div class="chip-trend chip-up">High Conv.</div></div>
-<div class="signal-chip wgsn"><div class="chip-icon">Notes</div><div class="chip-num">Sandal+Sage</div><div class="chip-desc">Emerging Note Palette</div><div class="chip-trend chip-up">Lifestyle</div></div>
-</div>
-<div class="action-block">
-<div class="act-header">
-<span class="act-label">Action</span>
-<span class="act-direction">Incense-inspired fragrance (sandalwood + white sage + frankincense)</span>
-<span class="act-strength rising">Rising - Lifestyle Trend</span>
-</div>
-<div class="act-content">Develop <b>incense-inspired personal fragrance line</b> (sandalwood + white sage + frankincense notes); cross-sell with home fragrance. The ritualization of scent is becoming a lifestyle identity marker, not just a beauty purchase.</div>
-</div>
-</div>
-</div>
 
 <!-- US-Only Fragrance Trends -->
+<div class="trend-grid">
 <div class="zone zone-us">
-<span class="zone-badge us">US Fragrance Market</span>
+<span class="zone-badge us">US Fragrance Zone</span>
 
-<!-- US Fragrance Trend 5: Berry & Fruit Forward -->
+<!-- US Trend 1: Marshmallow Gothic -->
 <div class="trend-v-card us">
-<h4><span class="trend-num">Trend 5</span>: Berry and Fruit Forward — Raspberry Leads</h4>
+<h4><span class="trend-num">Trend 1</span>: Marshmallow Gothic <span class="hl-teal">+242.1%</span></h4>
 <div class="trend-v-body">
-<div class="driver-summary">Fruit notes offer freshness + sweetness without gourmand heaviness; versatile across seasons. Raspberry-forward EDP with jasmine + coconut mid-notes represents the "fresh gourmand" direction.</div>
+<div class="driver-summary">Kilian Love Don't Be Shy drives the toasted marshmallow × smoky woody × dark vanilla trend through TikTok Shop. The "dark gourmand" territory merges sweetness with depth.</div>
 <div class="driver-bullets">
-<div class="bullet-group us-group"><div class="bullet-point"><span>YSL Libre Berry Crush, Mugler Alien Pulp (raspberry edition), Burberry Her Parfum With Cherry; raspberry as <span class="hl-teal">#1 emerging fruit note</span></span></div></div>
-<div class="bullet-group us-group"><div class="bullet-point"><span>Fruit notes offer freshness + sweetness without gourmand heaviness — versatile across seasons and bridging the gap between fresh and gourmand families</span></div></div>
-<div class="bullet-group us-group"><div class="bullet-point"><span>Raspberry-coconut-jasmine accord emerging as the signature "fresh gourmand" combo; berry notes appearing across both designer and niche launches</span></div></div>
+<div class="bullet-group us-group"><div class="bullet-point"><span>Kilian Love Don't Be Shy viral on TikTok Shop; toasted marshmallow × smoky woody × dark vanilla as the emerging "dark gourmand" combination</span></div></div>
+<div class="bullet-group us-group"><div class="bullet-point"><span>TikTok <span class="hl-teal">6.2B views</span> on marshmallow/dark gourmand fragrance content; the gothic-gourmand fusion is creating a new sub-category</span></div></div>
+<div class="bullet-group us-group"><div class="bullet-point"><span>Toasted Dark Gourmand series: marshmallow meets campfire smoke meets dark vanilla — sweetness with an edge</span></div></div>
 </div></div>
 <div class="signal-strip">
-<div class="signal-chip seph"><div class="chip-icon">YSL</div><div class="chip-num">Berry Crush</div><div class="chip-desc">New Libre variant</div><div class="chip-trend chip-hot">Flagship Launch</div></div>
-<div class="signal-chip tt"><div class="chip-icon">Mugler</div><div class="chip-num">Alien Pulp</div><div class="chip-desc">Raspberry edition</div><div class="chip-trend chip-up">Niche Hit</div></div>
-<div class="signal-chip wgsn"><div class="chip-icon">Burberry</div><div class="chip-num">Her Cherry</div><div class="chip-desc">Fruit franchise ext.</div><div class="chip-trend chip-up">Extension</div></div>
-<div class="signal-chip ig"><div class="chip-icon">Raspberry</div><div class="chip-num">#1</div><div class="chip-desc">Emerging Fruit Note</div><div class="chip-trend chip-up">Note Leader</div></div>
+<div class="signal-chip tt"><div class="chip-icon">TikTok</div><div class="chip-num" style="color:var(--us-blue);">6.2B</div><div class="chip-desc">Views</div><div class="chip-trend chip-hot">Massive</div></div>
+<div class="signal-chip tt"><div class="chip-icon">TikTok Shop</div><div class="chip-num">VIRAL</div><div class="chip-desc">Kilian LDBS</div><div class="chip-trend chip-hot">Commerce Hit</div></div>
+<div class="signal-chip seph"><div class="chip-icon">Kilian</div><div class="chip-num">LDBS</div><div class="chip-desc">Dark Gourmand Hero</div><div class="chip-trend chip-up">Flagship</div></div>
+<div class="signal-chip wgsn"><div class="chip-icon">Combo</div><div class="chip-num">Dark×Sweet</div><div class="chip-desc">Gothic Gourmand</div><div class="chip-trend chip-up">New Territory</div></div>
 </div>
 <div class="action-block">
 <div class="act-header">
 <span class="act-label">Action</span>
-<span class="act-direction">Raspberry-forward EDP with jasmine + coconut mid-notes</span>
-<span class="act-strength strong">Strong</span>
+<span class="act-direction">Toasted Dark Gourmand EDP series (marshmallow + smoky + dark vanilla)</span>
+<span class="act-strength strong">STRONG</span>
 </div>
-<div class="act-content">Develop <b>raspberry-forward EDP</b> with jasmine + coconut mid-notes; position as "fresh gourmand". Berry notes are the bridge between freshness and gourmand families, with validated consumer pull through multiple new launches.</div>
+<div class="act-content">Develop <b>Toasted Dark Gourmand EDP series</b> with marshmallow top + smoky woody heart + dark vanilla base. With 6.2B TikTok views and Kilian LDBS as proof of concept, the dark gourmand territory has massive validated demand.</div>
 </div>
-<div class="trend-decision-bar" style="margin-top:12px;background:rgba(16, 185, 129, 0.06);border-left:4px solid var(--us-blue);padding:10px 14px;border-radius:8px;font-size:12px;color:#10B981;font-weight:600;">
-  Signal &gt Decision: Raspberry #1 emerging note > Raspberry-jasmine-coconut EDP | Strength: Strong
+<div class="trend-decision-bar us-decision">
+  TikTok 6.2B views → Toasted Dark Gourmand series → STRONG
 </div>
 </div>
 
-<!-- US Fragrance Trend 6: Extrait de Parfum Premiumization -->
+<!-- US Trend 2: Rose Renaissance -->
 <div class="trend-v-card us">
-<h4><span class="trend-num">Trend 6</span>: Extrait de Parfum Premiumization</h4>
+<h4><span class="trend-num">Trend 2</span>: Rose Renaissance</h4>
 <div class="trend-v-body">
-<div class="driver-summary">"Investment fragrance" mindset — consumers buying fewer but better; extrait = status signal. Chanel Bleu L'Exclusif and Guerlain LPRN Parfum leading the high-concentration trend.</div>
+<div class="driver-summary">Sol de Janeiro Cheirosa 91 and Phlur Rose Whip revitalize the rose category. Green rose × dewy rose × garden rose combinations breathe new life into the classic note.</div>
 <div class="driver-bullets">
-<div class="bullet-group us-group"><div class="bullet-point"><span>Chanel Bleu L'Exclusif, Guerlain LPRN Parfum, Dior Sauvage Rare Blend all launching high-concentration versions; consumers willing to pay <span class="hl-teal">2-3x</span> for longer wear</span></div></div>
-<div class="bullet-group us-group"><div class="bullet-point"><span>"Investment fragrance" mindset driving premiumization: consumers buying fewer bottles but spending more per bottle; extrait concentration as status and quality signal</span></div></div>
-<div class="bullet-group us-group"><div class="bullet-point"><span>Premiumize packaging with refillable art bottles; extrait concentration for hero fragrance SKU as margin expansion strategy</span></div></div>
+<div class="bullet-group us-group"><div class="bullet-point"><span>Sol de Janeiro Cheirosa 91 at <span class="hl-teal">$39</span> as the accessible entry point; Phlur Rose Whip at <span class="hl-teal">$99</span> as the premium positioning</span></div></div>
+<div class="bullet-group us-group"><div class="bullet-point"><span>Green rose × dewy rose × garden rose as the emerging multi-rose combination; rose is being reinvented through fresh, dewy interpretations</span></div></div>
+<div class="bullet-group us-group"><div class="bullet-point"><span>Rose body mist format (SDJ $39) creating the "Morning Dew Rose" body mist opportunity</span></div></div>
 </div></div>
 <div class="signal-strip">
-<div class="signal-chip seph"><div class="chip-icon">Chanel</div><div class="chip-num">Bleu L'Exclusif</div><div class="chip-desc">Pure parfum format</div><div class="chip-trend chip-hot">Hero Launch</div></div>
-<div class="signal-chip wgsn"><div class="chip-icon">Guerlain</div><div class="chip-num">LPRN Parfum</div><div class="chip-desc">Icon reimagined</div><div class="chip-trend chip-up">Reinvention</div></div>
-<div class="signal-chip ig"><div class="chip-icon">Dior</div><div class="chip-num">Sauvage Rare</div><div class="chip-desc">High concentration</div><div class="chip-trend chip-up">Premium Tier</div></div>
-<div class="signal-chip gtrends"><div class="chip-icon">Pricing</div><div class="chip-num">2-3x</div><div class="chip-desc">Premium vs EDP</div><div class="chip-trend chip-up">Margin Signal</div></div>
+<div class="signal-chip seph"><div class="chip-icon">SDJ</div><div class="chip-num">$39</div><div class="chip-desc">Cheirosa 91</div><div class="chip-trend chip-up">Mass Hit</div></div>
+<div class="signal-chip seph"><div class="chip-icon">Phlur</div><div class="chip-num">$99</div><div class="chip-desc">Rose Whip</div><div class="chip-trend chip-up">Premium Rose</div></div>
+<div class="signal-chip tt"><div class="chip-icon">Rose</div><div class="chip-num">3-Rose</div><div class="chip-desc">Green×Dewy×Garden</div><div class="chip-trend chip-up">Combo Innovation</div></div>
+<div class="signal-chip ig"><div class="chip-icon">Format</div><div class="chip-num">Mist</div><div class="chip-desc">Morning Dew Rose</div><div class="chip-trend chip-up">Body Mist Entry</div></div>
 </div>
 <div class="action-block">
 <div class="act-header">
 <span class="act-label">Action</span>
-<span class="act-direction">Extrait concentration for hero SKU with refillable art bottle</span>
-<span class="act-strength mid">Mid</span>
+<span class="act-direction">Morning Dew Rose Body Mist at accessible price point</span>
+<span class="act-strength mid">MID</span>
 </div>
-<div class="act-content">Consider <b>extrait concentration for hero fragrance SKU</b>; premiumize packaging with refillable art bottles. The extrait trend represents a margin expansion opportunity as consumers demonstrate willingness to pay 2-3x for higher concentration.</div>
+<div class="act-content">Develop <b>Morning Dew Rose Body Mist</b> at $39 accessible price point, leveraging the green rose × dewy rose × garden rose combination. Sol de Janeiro Cheirosa 91 at $39 validates the rose body mist format as a mass-market entry.</div>
 </div>
-<div class="trend-decision-bar" style="margin-top:12px;background:rgba(16, 185, 129, 0.06);border-left:4px solid var(--us-blue);padding:10px 14px;border-radius:8px;font-size:12px;color:#10B981;font-weight:600;">
-  Signal &gt Decision: Extrait premiumization > Refillable art bottle hero SKU | Strength: Mid
-</div>
-</div>
+<div class="trend-decision-bar us-decision">
+  Sol de Janeiro $39 → Morning Dew Rose Body Mist → MID
 </div>
 </div>
+</div>
+
+<!-- CN-Only Fragrance Trends -->
+<div class="zone zone-cn">
+<span class="zone-badge cn">CN Fragrance Zone</span>
+
+<!-- CN Trend 1: Oriental Narrative Scents -->
+<div class="trend-v-card cn">
+<h4><span class="trend-num">Trend 1</span>: Oriental Narrative Scents</h4>
+<div class="trend-v-body">
+<div class="driver-summary">观夏, 气味图书馆, and 冰希黎 drive the "Oriental narrative" fragrance movement — scents that tell stories through Tea×Osmanthus×Sandalwood combinations, spanning solid perfume, incense, and diffuser formats.</div>
+<div class="driver-bullets">
+<div class="bullet-group cn-group"><div class="bullet-point"><span>观夏, 气味图书馆, 冰希黎 as the three hero brands defining "Oriental narrative" — each creating story-driven fragrance experiences rooted in Chinese cultural motifs</span></div></div>
+<div class="bullet-group cn-group"><div class="bullet-point"><span>Format diversity: solid perfume, incense, diffuser — expanding beyond traditional EDP/EDT into lifestyle fragrance categories</span></div></div>
+<div class="bullet-group cn-group"><div class="bullet-point"><span>Tea × Osmanthus × Sandalwood as the core Oriental narrative note palette; these ingredients create cultural resonance and differentiate from Western fragrance families</span></div></div>
+</div></div>
+<div class="signal-strip">
+<div class="signal-chip tt"><div class="chip-icon">观夏</div><div class="chip-num">Hero</div><div class="chip-desc">Oriental Narrative Leader</div><div class="chip-trend chip-up">Brand Leader</div></div>
+<div class="signal-chip ig"><div class="chip-icon">Format</div><div class="chip-num">Multi</div><div class="chip-desc">Solid/Incense/Diffuser</div><div class="chip-trend chip-up">Category Expansion</div></div>
+<div class="signal-chip seph"><div class="chip-icon">Notes</div><div class="chip-num">Tea×Osmanthus</div><div class="chip-desc">×Sandalwood Core</div><div class="chip-trend chip-up">Cultural DNA</div></div>
+<div class="signal-chip wgsn"><div class="chip-icon">Brands</div><div class="chip-num">3-Hero</div><div class="chip-desc">观夏/气味图书馆/冰希黎</div><div class="chip-trend chip-up">Category Definers</div></div>
+</div>
+<div class="action-block">
+<div class="act-header">
+<span class="act-label">Action</span>
+<span class="act-direction">Oriental narrative EDP + solid perfume + home diffuser set</span>
+<span class="act-strength strong">STRONG</span>
+</div>
+<div class="act-content">Develop <b>Oriental narrative fragrance collection</b> with Tea×Osmanthus×Sandalwood core notes across EDP, solid perfume, and home diffuser formats. The multi-format approach matches Chinese consumer lifestyle fragrance habits.</div>
+</div>
+</div>
+
+<!-- CN Trend 2: Matcha Mania -->
+<div class="trend-v-card cn">
+<h4><span class="trend-num">Trend 2</span>: Matcha Mania <span class="hl-gold">+173%</span></h4>
+<div class="trend-v-body">
+<div class="driver-summary">Kayali Freedom Musk Matcha and Le Labo Thé Matcha 26 validate the matcha note as a cross-market fragrance ingredient. Three emerging combinations: Matcha×Vanilla, Matcha×Cedar, Matcha×Citrus.</div>
+<div class="driver-bullets">
+<div class="bullet-group cn-group"><div class="bullet-point"><span>Matcha fragrance search <span class="hl-gold">+173%</span>; Kayali Freedom Musk Matcha and Le Labo Thé Matcha 26 as the hero products driving the trend</span></div></div>
+<div class="bullet-group cn-group"><div class="bullet-point"><span>Three emerging combinations: <b>Matcha×Vanilla</b> (sweet-earthy), <b>Matcha×Cedar</b> (woody-serene), <b>Matcha×Citrus</b> (fresh-energizing) — each targeting different mood territories</span></div></div>
+<div class="bullet-group cn-group"><div class="bullet-point"><span>Matcha's cultural resonance in CN market creates natural consumer connection; Le Labo Thé Matcha 26 as the aspirational anchor, Kayali as the accessible entry</span></div></div>
+</div></div>
+<div class="signal-strip">
+<div class="signal-chip tt"><div class="chip-icon">Douyin</div><div class="chip-num" style="color:var(--gold);">+173%</div><div class="chip-desc">Matcha Fragrance Search</div><div class="chip-trend chip-up">Surging</div></div>
+<div class="signal-chip seph"><div class="chip-icon">Kayali</div><div class="chip-num">Freedom</div><div class="chip-desc">Musk Matcha</div><div class="chip-trend chip-up">Hero Product</div></div>
+<div class="signal-chip seph"><div class="chip-icon">Le Labo</div><div class="chip-num">Thé 26</div><div class="chip-desc">Matcha Aspirational</div><div class="chip-trend chip-up">Premium Anchor</div></div>
+<div class="signal-chip wgsn"><div class="chip-icon">Combos</div><div class="chip-num">3-Way</div><div class="chip-desc">Vanilla/Cedar/Citrus</div><div class="chip-trend chip-up">Versatile</div></div>
+</div>
+<div class="action-block">
+<div class="act-header">
+<span class="act-label">Action</span>
+<span class="act-direction">Matcha EDP line in 3 combos: Vanilla / Cedar / Citrus</span>
+<span class="act-strength strong">STRONG</span>
+</div>
+<div class="act-content">Develop <b>Matcha EDP line</b> in three combinations (Matcha×Vanilla, Matcha×Cedar, Matcha×Citrus) targeting Calm/Focus/Joy mood territories. Matcha's +173% search growth and cultural resonance make it the highest-potential "Oriental gourmand" note for the CN market.</div>
+</div>
+</div>
+</div>
+</div>
+
 <!-- Fragrance Heat Ranking -->
-<div class="section"><div class="section-title">🔥 Top 10 Fragrance Heat Ranking</div><div class="heat-section">
-<div class="heat-panel" style="grid-column: 1/-1;">
-<h4>Fragrance Heat TOP 10 <span class="heat-methodology-badge" title="Tmall/Sephora 25% + TikTok/Douyin 20% + YouTube 10% + Editorial 10% + Social Buzz 20% + Trend Fit 15%">Scoring Formula</span></h4>
+<div class="section"><div class="section-title">🔥 Fragrance Heat Ranking</div><div class="heat-section">
+<div class="heat-panel heat-zone us">
+<h4>🇺🇸 US TOP 5 <span class="heat-methodology-badge" title="Sephora 25% + TikTok 25% + Editorial 15% + Social Buzz 20% + Trend Fit 15%">Scoring</span></h4>
 <ul class="heat-accordion">
 <li class="heat-item">
 <div class="heat-item-header">
 <span class="heat-rank r1">1</span>
-<span class="heat-name"><span class="trend-product-tag gold">Trend</span>Sol de Janeiro Cheirosa '62</span><span class="prod-cat-tag frag-gourmand">Gourmand</span>
-<div class="heat-bar-wrap"><div class="heat-fill" style="width:92%"></div></div>
-<div class="heat-score-wrap"><span class="heat-score-val">96</span><span class="heat-score-bd">Sephora · TikTok · Editor · Social · Trend</span></div>
+<span class="heat-name"><span class="trend-product-tag gold">Trend</span>Sol de Janeiro Cheirosa 91</span><span class="prod-cat-tag frag-floral">Floral</span>
+<div class="heat-bar-wrap"><div class="heat-fill" style="width:95%"></div></div>
+<div class="heat-score-wrap"><span class="heat-score-val">95%</span></div>
 <span class="heat-chevron"></span></div>
 <div class="heat-item-body"><div class="heat-detail-grid">
 <div class="heat-detail-cell"><div class="cell-label">Brand</div><div class="cell-value">Sol de Janeiro</div></div>
-<div class="heat-detail-cell"><div class="cell-label">Key Notes</div><div class="cell-value">Pistachio, almond, salted caramel, sandalwood</div></div>
-<div class="heat-detail-cell"><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Scent-Stacking Hero · Sephora #2</span></div></div>
-<div class="heat-detail-cell"><div class="cell-label">Product Link</div><div class="cell-value"><a href="https://www.soldejaneiro.com" target="_blank">Sol de Janeiro Official</a></div></div>
+<div class="heat-detail-cell"><div class="cell-label">Key Notes</div><div class="cell-value">Green rose, dewy rose, garden rose</div></div>
+<div class="heat-detail-cell"><div class="cell-label">Price</div><div class="cell-value">$39</div></div>
+<div class="heat-detail-cell"><div class="cell-label">Buzz</div><div class="cell-tags"><span class="rev-tag rev-pos">Rose Renaissance · Body Mist Hero</span></div></div>
 </div></div></li>
 <li class="heat-item">
 <div class="heat-item-header">
 <span class="heat-rank r2">2</span>
-<span class="heat-name"><span class="trend-product-tag coral">Trend</span>YSL Libre (Berry Crush new)</span><span class="prod-cat-tag frag-fruity">Fruity</span>
+<span class="heat-name"><span class="trend-product-tag purple">Trend</span>Phlur Missing Person</span><span class="prod-cat-tag frag-musk">Musk</span>
 <div class="heat-bar-wrap"><div class="heat-fill" style="width:88%"></div></div>
-<div class="heat-score-wrap"><span class="heat-score-val">92</span><span class="heat-score-bd">Sephora · TikTok · Editor · Social · Trend</span></div>
+<div class="heat-score-wrap"><span class="heat-score-val">88%</span></div>
 <span class="heat-chevron"></span></div>
 <div class="heat-item-body"><div class="heat-detail-grid">
-<div class="heat-detail-cell"><div class="cell-label">Brand</div><div class="cell-value">YSL</div></div>
-<div class="heat-detail-cell"><div class="cell-label">Key Notes</div><div class="cell-value">Raspberry, orange flower, coconut</div></div>
-<div class="heat-detail-cell"><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Tmall 618 #1 Frag · Berry Trend</span></div></div>
-<div class="heat-detail-cell"><div class="cell-label">Product Link</div><div class="cell-value"><a href="https://www.ysl.com" target="_blank">YSL Official</a></div></div>
+<div class="heat-detail-cell"><div class="cell-label">Brand</div><div class="cell-value">Phlur</div></div>
+<div class="heat-detail-cell"><div class="cell-label">Key Notes</div><div class="cell-value">Cashmeran, white musk, creamy sandalwood</div></div>
+<div class="heat-detail-cell"><div class="cell-label">Price</div><div class="cell-value">$96</div></div>
+<div class="heat-detail-cell"><div class="cell-label">Buzz</div><div class="cell-tags"><span class="rev-tag rev-pos">Skin Scent #1 · Sephora TOP5</span></div></div>
 </div></div></li>
 <li class="heat-item">
 <div class="heat-item-header">
 <span class="heat-rank r3">3</span>
-<span class="heat-name">Dior Sauvage</span><span class="prod-cat-tag frag-woody">Woody</span>
-<div class="heat-bar-wrap"><div class="heat-fill" style="width:84%"></div></div>
-<div class="heat-score-wrap"><span class="heat-score-val">88</span><span class="heat-score-bd">Sephora · TikTok · Editor · Social · Trend</span></div>
+<span class="heat-name"><span class="trend-product-tag coral">Trend</span>Kayali Freedom Musk Matcha</span><span class="prod-cat-tag frag-tea">Tea</span>
+<div class="heat-bar-wrap"><div class="heat-fill" style="width:82%"></div></div>
+<div class="heat-score-wrap"><span class="heat-score-val">82%</span></div>
 <span class="heat-chevron"></span></div>
 <div class="heat-item-body"><div class="heat-detail-grid">
-<div class="heat-detail-cell"><div class="cell-label">Brand</div><div class="cell-value">Dior</div></div>
-<div class="heat-detail-cell"><div class="cell-label">Key Notes</div><div class="cell-value">Bergamot, Sichuan pepper, ambroxan</div></div>
-<div class="heat-detail-cell"><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Global #1 Men's · Steady</span></div></div>
-<div class="heat-detail-cell"><div class="cell-label">Product Link</div><div class="cell-value"><a href="https://www.dior.com" target="_blank">Dior Official</a></div></div>
+<div class="heat-detail-cell"><div class="cell-label">Brand</div><div class="cell-value">Kayali</div></div>
+<div class="heat-detail-cell"><div class="cell-label">Key Notes</div><div class="cell-value">Matcha, musk, vanilla</div></div>
+<div class="heat-detail-cell"><div class="cell-label">Price</div><div class="cell-value">$118</div></div>
+<div class="heat-detail-cell"><div class="cell-label">Buzz</div><div class="cell-tags"><span class="rev-tag rev-pos">Matcha Trend · Cross-Market Hit</span></div></div>
 </div></div></li>
 <li class="heat-item">
 <div class="heat-item-header">
 <span class="heat-rank r4">4</span>
-<span class="heat-name"><span class="trend-product-tag purple">Trend</span>Chanel Bleu de Chanel L'Exclusif</span><span class="prod-cat-tag frag-woody">Woody</span>
-<div class="heat-bar-wrap"><div class="heat-fill" style="width:79%"></div></div>
-<div class="heat-score-wrap"><span class="heat-score-val">83</span><span class="heat-score-bd">Sephora · TikTok · Editor · Social · Trend</span></div>
+<span class="heat-name">Kilian Love Don't Be Shy</span><span class="prod-cat-tag frag-gourmand">Gourmand</span>
+<div class="heat-bar-wrap"><div class="heat-fill" style="width:75%"></div></div>
+<div class="heat-score-wrap"><span class="heat-score-val">75%</span></div>
 <span class="heat-chevron"></span></div>
 <div class="heat-item-body"><div class="heat-detail-grid">
-<div class="heat-detail-cell"><div class="cell-label">Brand</div><div class="cell-value">Chanel</div></div>
-<div class="heat-detail-cell"><div class="cell-label">Key Notes</div><div class="cell-value">Woody chypre, pure parfum</div></div>
-<div class="heat-detail-cell"><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">New Extrait · High Demand</span></div></div>
-<div class="heat-detail-cell"><div class="cell-label">Product Link</div><div class="cell-value"><a href="https://www.chanel.com" target="_blank">Chanel Official</a></div></div>
+<div class="heat-detail-cell"><div class="cell-label">Brand</div><div class="cell-value">Kilian</div></div>
+<div class="heat-detail-cell"><div class="cell-label">Key Notes</div><div class="cell-value">Toasted marshmallow, dark vanilla, smoky woody</div></div>
+<div class="heat-detail-cell"><div class="cell-label">Price</div><div class="cell-value">$250</div></div>
+<div class="heat-detail-cell"><div class="cell-label">Buzz</div><div class="cell-tags"><span class="rev-tag rev-pos">Marshmallow Gothic · TikTok Shop Hit</span></div></div>
 </div></div></li>
 <li class="heat-item">
 <div class="heat-item-header">
 <span class="heat-rank r5">5</span>
-<span class="heat-name"><span class="trend-product-tag gold">Trend</span>Kayali Yum Pistachio Gelato 33</span><span class="prod-cat-tag frag-gourmand">Gourmand</span>
-<div class="heat-bar-wrap"><div class="heat-fill" style="width:74%"></div></div>
-<div class="heat-score-wrap"><span class="heat-score-val">78</span><span class="heat-score-bd">Sephora · TikTok · Editor · Social · Trend</span></div>
+<span class="heat-name">Glossier You</span><span class="prod-cat-tag frag-musk">Musk</span>
+<div class="heat-bar-wrap"><div class="heat-fill" style="width:68%"></div></div>
+<div class="heat-score-wrap"><span class="heat-score-val">68%</span></div>
 <span class="heat-chevron"></span></div>
 <div class="heat-item-body"><div class="heat-detail-grid">
-<div class="heat-detail-cell"><div class="cell-label">Brand</div><div class="cell-value">Kayali</div></div>
-<div class="heat-detail-cell"><div class="cell-label">Key Notes</div><div class="cell-value">Pistachio, hazelnut, whipped cream</div></div>
-<div class="heat-detail-cell"><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Viral Gourmand · TikTok Sensation</span></div></div>
-<div class="heat-detail-cell"><div class="cell-label">Product Link</div><div class="cell-value"><a href="https://www.hudabeauty.com" target="_blank">Kayali Official</a></div></div>
+<div class="heat-detail-cell"><div class="cell-label">Brand</div><div class="cell-value">Glossier</div></div>
+<div class="heat-detail-cell"><div class="cell-label">Key Notes</div><div class="cell-value">White musk, ambrette, iris</div></div>
+<div class="heat-detail-cell"><div class="cell-label">Price</div><div class="cell-value">$68</div></div>
+<div class="heat-detail-cell"><div class="cell-label">Buzz</div><div class="cell-tags"><span class="rev-tag rev-pos">Skin Scent Icon · New Solid Format</span></div></div>
+</div></div></li>
+</ul></div>
+
+<div class="heat-panel heat-zone cn">
+<h4>🇨🇳 CN TOP 5 <span class="heat-methodology-badge" title="Tmall 30% + Douyin 20% + RED 15% + Search 15% + Social Buzz 10% + Trend Fit 10%">Scoring</span></h4>
+<ul class="heat-accordion">
+<li class="heat-item">
+<div class="heat-item-header">
+<span class="heat-rank r1">1</span>
+<span class="heat-name"><span class="trend-product-tag gold">Trend</span>观夏 昆仑煮雪</span><span class="prod-cat-tag frag-woody">Oriental</span>
+<div class="heat-bar-wrap"><div class="heat-fill" style="width:95%"></div></div>
+<div class="heat-score-wrap"><span class="heat-score-val">95%</span></div>
+<span class="heat-chevron"></span></div>
+<div class="heat-item-body"><div class="heat-detail-grid">
+<div class="heat-detail-cell"><div class="cell-label">Brand</div><div class="cell-value">观夏 Documents</div></div>
+<div class="heat-detail-cell"><div class="cell-label">Key Notes</div><div class="cell-value">Tea, sandalwood, osmanthus</div></div>
+<div class="heat-detail-cell"><div class="cell-label">Format</div><div class="cell-value">EDP / Solid / Diffuser</div></div>
+<div class="heat-detail-cell"><div class="cell-label">Buzz</div><div class="cell-tags"><span class="rev-tag rev-pos">Oriental Narrative #1 · Cultural Icon</span></div></div>
 </div></div></li>
 <li class="heat-item">
 <div class="heat-item-header">
-<span class="heat-rank r6">6</span>
-<span class="heat-name">Tom Ford Taormina Orange</span><span class="prod-cat-tag frag-fruity">Fruity</span>
-<div class="heat-bar-wrap"><div class="heat-fill" style="width:69%"></div></div>
-<div class="heat-score-wrap"><span class="heat-score-val">73</span><span class="heat-score-bd">Sephora · TikTok · Editor · Social · Trend</span></div>
+<span class="heat-rank r2">2</span>
+<span class="heat-name">气味图书馆 凉白开</span><span class="prod-cat-tag frag-aquatic">Aquatic</span>
+<div class="heat-bar-wrap"><div class="heat-fill" style="width:85%"></div></div>
+<div class="heat-score-wrap"><span class="heat-score-val">85%</span></div>
 <span class="heat-chevron"></span></div>
 <div class="heat-item-body"><div class="heat-detail-grid">
-<div class="heat-detail-cell"><div class="cell-label">Brand</div><div class="cell-value">Tom Ford</div></div>
-<div class="heat-detail-cell"><div class="cell-label">Key Notes</div><div class="cell-value">Bright orange, Italian citrus</div></div>
-<div class="heat-detail-cell"><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Summer Citrus Hero</span></div></div>
-<div class="heat-detail-cell"><div class="cell-label">Product Link</div><div class="cell-value"><a href="https://www.tomford.com" target="_blank">Tom Ford Official</a></div></div>
+<div class="heat-detail-cell"><div class="cell-label">Brand</div><div class="cell-value">气味图书馆 Scent Library</div></div>
+<div class="heat-detail-cell"><div class="cell-label">Key Notes</div><div class="cell-value">Clean water, white musk, cotton</div></div>
+<div class="heat-detail-cell"><div class="cell-label">Format</div><div class="cell-value">EDP / Home Diffuser</div></div>
+<div class="heat-detail-cell"><div class="cell-label">Buzz</div><div class="cell-tags"><span class="rev-tag rev-pos">Nostalgia Fragrance · Daily Wear</span></div></div>
 </div></div></li>
 <li class="heat-item">
 <div class="heat-item-header">
-<span class="heat-rank r7">7</span>
-<span class="heat-name">Le Labo Santal 33</span><span class="prod-cat-tag frag-woody">Woody</span>
-<div class="heat-bar-wrap"><div class="heat-fill" style="width:64%"></div></div>
-<div class="heat-score-wrap"><span class="heat-score-val">68</span><span class="heat-score-bd">Sephora · TikTok · Editor · Social · Trend</span></div>
+<span class="heat-rank r3">3</span>
+<span class="heat-name">冰希黎 流沙金</span><span class="prod-cat-tag frag-floral">Floral</span>
+<div class="heat-bar-wrap"><div class="heat-fill" style="width:78%"></div></div>
+<div class="heat-score-wrap"><span class="heat-score-val">78%</span></div>
+<span class="heat-chevron"></span></div>
+<div class="heat-item-body"><div class="heat-detail-grid">
+<div class="heat-detail-cell"><div class="cell-label">Brand</div><div class="cell-value">冰希黎 Boitown</div></div>
+<div class="heat-detail-cell"><div class="cell-label">Key Notes</div><div class="cell-value">Osmanthus, amber, sandalwood</div></div>
+<div class="heat-detail-cell"><div class="cell-label">Format</div><div class="cell-value">EDP</div></div>
+<div class="heat-detail-cell"><div class="cell-label">Buzz</div><div class="cell-tags"><span class="rev-tag rev-pos">Value Fragrance Leader · Incense-Inspired</span></div></div>
+</div></div></li>
+<li class="heat-item">
+<div class="heat-item-header">
+<span class="heat-rank r4">4</span>
+<span class="heat-name"><span class="trend-product-tag teal">Trend</span>Le Labo Thé Matcha 26</span><span class="prod-cat-tag frag-tea">Tea</span>
+<div class="heat-bar-wrap"><div class="heat-fill" style="width:70%"></div></div>
+<div class="heat-score-wrap"><span class="heat-score-val">70%</span></div>
 <span class="heat-chevron"></span></div>
 <div class="heat-item-body"><div class="heat-detail-grid">
 <div class="heat-detail-cell"><div class="cell-label">Brand</div><div class="cell-value">Le Labo</div></div>
-<div class="heat-detail-cell"><div class="cell-label">Key Notes</div><div class="cell-value">Sandalwood, cedar, cardamom</div></div>
-<div class="heat-detail-cell"><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Evergreen · Social Media Staple</span></div></div>
-<div class="heat-detail-cell"><div class="cell-label">Product Link</div><div class="cell-value"><a href="https://www.lelabofragrances.com" target="_blank">Le Labo Official</a></div></div>
+<div class="heat-detail-cell"><div class="cell-label">Key Notes</div><div class="cell-value">Matcha, vetiver, fig</div></div>
+<div class="heat-detail-cell"><div class="cell-label">Price</div><div class="cell-value">¥1,800</div></div>
+<div class="heat-detail-cell"><div class="cell-label">Buzz</div><div class="cell-tags"><span class="rev-tag rev-pos">Matcha Aspirational · Premium Anchor</span></div></div>
 </div></div></li>
 <li class="heat-item">
 <div class="heat-item-header">
-<span class="heat-rank r8">8</span>
-<span class="heat-name">Miu Miu Fleur de Lait</span><span class="prod-cat-tag frag-gourmand">Gourmand</span>
-<div class="heat-bar-wrap"><div class="heat-fill" style="width:59%"></div></div>
-<div class="heat-score-wrap"><span class="heat-score-val">63</span><span class="heat-score-bd">Sephora · TikTok · Editor · Social · Trend</span></div>
+<span class="heat-rank r5">5</span>
+<span class="heat-name">Maison Margiela Lazy Weekend</span><span class="prod-cat-tag frag-musk">Musk</span>
+<div class="heat-bar-wrap"><div class="heat-fill" style="width:62%"></div></div>
+<div class="heat-score-wrap"><span class="heat-score-val">62%</span></div>
 <span class="heat-chevron"></span></div>
 <div class="heat-item-body"><div class="heat-detail-grid">
-<div class="heat-detail-cell"><div class="cell-label">Brand</div><div class="cell-value">Miu Miu</div></div>
-<div class="heat-detail-cell"><div class="cell-label">Key Notes</div><div class="cell-value">Mango, coconut, osmanthus</div></div>
-<div class="heat-detail-cell"><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">TikTok Viral · Resort Vibe</span></div></div>
-<div class="heat-detail-cell"><div class="cell-label">Product Link</div><div class="cell-value"><a href="https://www.miumiu.com" target="_blank">Miu Miu Official</a></div></div>
-</div></div></li>
-<li class="heat-item">
-<div class="heat-item-header">
-<span class="heat-rank r9">9</span>
-<span class="heat-name">Jo Malone Amber Labdanum</span><span class="prod-cat-tag frag-woody">Woody</span>
-<div class="heat-bar-wrap"><div class="heat-fill" style="width:55%"></div></div>
-<div class="heat-score-wrap"><span class="heat-score-val">58</span><span class="heat-score-bd">Sephora · TikTok · Editor · Social · Trend</span></div>
-<span class="heat-chevron"></span></div>
-<div class="heat-item-body"><div class="heat-detail-grid">
-<div class="heat-detail-cell"><div class="cell-label">Brand</div><div class="cell-value">Jo Malone</div></div>
-<div class="heat-detail-cell"><div class="cell-label">Key Notes</div><div class="cell-value">Amber, labdanum, woody</div></div>
-<div class="heat-detail-cell"><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">New Intense Release</span></div></div>
-<div class="heat-detail-cell"><div class="cell-label">Product Link</div><div class="cell-value"><a href="https://www.jomalone.com" target="_blank">Jo Malone Official</a></div></div>
-</div></div></li>
-<li class="heat-item">
-<div class="heat-item-header">
-<span class="heat-rank r10">10</span>
-<span class="heat-name">MFK Baccarat Rouge 540</span><span class="prod-cat-tag frag-floral">Floral</span>
-<div class="heat-bar-wrap"><div class="heat-fill" style="width:51%"></div></div>
-<div class="heat-score-wrap"><span class="heat-score-val">54</span><span class="heat-score-bd">Sephora · TikTok · Editor · Social · Trend</span></div>
-<span class="heat-chevron"></span></div>
-<div class="heat-item-body"><div class="heat-detail-grid">
-<div class="heat-detail-cell"><div class="cell-label">Brand</div><div class="cell-value">MFK</div></div>
-<div class="heat-detail-cell"><div class="cell-label">Key Notes</div><div class="cell-value">Jasmine, saffron, cedar</div></div>
-<div class="heat-detail-cell"><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">618 High-End Fragrance Star</span></div></div>
-<div class="heat-detail-cell"><div class="cell-label">Product Link</div><div class="cell-value"><a href="https://www.franciskurkdjian.com" target="_blank">MFK Official</a></div></div>
+<div class="heat-detail-cell"><div class="cell-label">Brand</div><div class="cell-value">Maison Margiela</div></div>
+<div class="heat-detail-cell"><div class="cell-label">Key Notes</div><div class="cell-value">White musk, lily of the valley, iris</div></div>
+<div class="heat-detail-cell"><div class="cell-label">Price</div><div class="cell-value">¥1,080</div></div>
+<div class="heat-detail-cell"><div class="cell-label">Buzz</div><div class="cell-tags"><span class="rev-tag rev-pos">Skin Scent CN · Lazy Sunday Aesthetic</span></div></div>
 </div></div></li>
 </ul></div>
 </div>
 </div>
-</div></div></div>
-<!--  Radar -->
-<div class="section"><div class="section-title">🆕 Fragrance New Product Radar</div>
-<div class="radar-grid">
-<div class="radar-zone us-zone">
-<span class="radar-zone-badge us">🇺🇸 US Market</span>
-<h4>Masstige Fragrance</h4>
+
+<!-- New Product Radar -->
+<div class="section"><div class="section-title">🆕 New Product Radar</div>
+
+<!-- Luxury -->
+<div class="radar-section luxury">
+<h4>Luxury Fragrance <span class="tier-badge">PRESTIGE</span></h4>
 <div class="radar-list">
-<div class="radar-item" data-cat="lip"><div class="radar-item-header"><span class="radar-brand">Sol de Janeiro</span><span class="radar-name">Cheirosa '62</span><span class="radar-cat">Body Mist</span><span class="radar-chevron"></span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">Launch Date</div><div class="cell-value">Ongoing</div></div><div><div class="cell-label">Key Notes</div><div class="cell-value">Pistachio, almond, salt caramel, sandalwood</div></div><div><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Scent-Stacking #1</span></div></div><div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.soldejaneiro.com" target="_blank">Sol de Janeiro</a></div></div></div></div></div>
-<div class="radar-item" data-cat="lip"><div class="radar-item-header"><span class="radar-brand">Phlur</span><span class="radar-name">Father Figure EDP</span><span class="radar-cat">EDP</span><span class="radar-chevron"></span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">Launch Date</div><div class="cell-value">Q2</div></div><div><div class="cell-label">Key Notes</div><div class="cell-value">Woody, fig leaf, cardamom</div></div><div><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Unisex Positioning</span></div></div><div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.phlur.com" target="_blank">Phlur</a></div></div></div></div></div>
-<div class="radar-item" data-cat="lip"><div class="radar-item-header"><span class="radar-brand">DedCool</span><span class="radar-name">Extra Milk</span><span class="radar-cat">EDP</span><span class="radar-chevron"></span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">Launch Date</div><div class="cell-value">Q2</div></div><div><div class="cell-label">Key Notes</div><div class="cell-value">Milky, clean, musk</div></div><div><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Layering Hero</span></div></div><div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.dedcool.com" target="_blank">DedCool</a></div></div></div></div></div>
-<div class="radar-item" data-cat="lip"><div class="radar-item-header"><span class="radar-brand">Juliette Has a Gun</span><span class="radar-name">Peach Oud</span><span class="radar-cat">EDP</span><span class="radar-chevron"></span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">Launch Date</div><div class="cell-value">Q2</div></div><div><div class="cell-label">Key Notes</div><div class="cell-value">Peach, oud, saffron</div></div><div><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">East-Meets-West Fusion</span></div></div><div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.juliettehasagun.com" target="_blank">Juliette</a></div></div></div></div></div>
-<div class="radar-item" data-cat="lip"><div class="radar-item-header"><span class="radar-brand">Commodity</span><span class="radar-name">Milk Express</span><span class="radar-cat">EDP</span><span class="radar-chevron"></span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">Launch Date</div><div class="cell-value">Q2</div></div><div><div class="cell-label">Key Notes</div><div class="cell-value">Milk, marshmallow, musk</div></div><div><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Express Concentration Line</span></div></div><div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.commodityfragrances.com" target="_blank">Commodity</a></div></div></div></div></div>
-<div class="radar-item" data-cat="lip"><div class="radar-item-header"><span class="radar-brand">Skylar</span><span class="radar-name">Boardwalk Delight</span><span class="radar-cat">EDP</span><span class="radar-chevron"></span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">Launch Date</div><div class="cell-value">Q2</div></div><div><div class="cell-label">Key Notes</div><div class="cell-value">Caramel, vanilla, sea salt</div></div><div><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Boardwalk Nostalgia</span></div></div><div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.skylar.com" target="_blank">Skylar</a></div></div></div></div></div>
-<div class="radar-item" data-cat="lip"><div class="radar-item-header"><span class="radar-brand">Maison Margiela Replica</span><span class="radar-name">Coffee Break Intense</span><span class="radar-cat">EDP</span><span class="radar-chevron"></span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">Launch Date</div><div class="cell-value">Q2</div></div><div><div class="cell-label">Key Notes</div><div class="cell-value">Coffee, milk, cinnamon</div></div><div><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Replica Franchise Extension</span></div></div><div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.maisonmargiela.com" target="_blank">Margiela</a></div></div></div></div></div>
-<div class="radar-item" data-cat="lip"><div class="radar-item-header"><span class="radar-brand">Nest New York</span><span class="radar-name">Seagrass & White Amaryllis</span><span class="radar-cat">EDP</span><span class="radar-chevron"></span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">Launch Date</div><div class="cell-value">Q2</div></div><div><div class="cell-label">Key Notes</div><div class="cell-value">Seagrass, white floral</div></div><div><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Summer Home + Personal</span></div></div><div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.nestnewyork.com" target="_blank">Nest</a></div></div></div></div></div>
-<div class="radar-item" data-cat="lip"><div class="radar-item-header"><span class="radar-brand">Henry Rose</span><span class="radar-name">London 1983</span><span class="radar-cat">EDP</span><span class="radar-chevron"></span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">Launch Date</div><div class="cell-value">Q2</div></div><div><div class="cell-label">Key Notes</div><div class="cell-value">Fig, black pepper, jasmine</div></div><div><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Clean/Nontoxic Leader</span></div></div><div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.henryrose.com" target="_blank">Henry Rose</a></div></div></div></div></div>
-<div class="radar-item" data-cat="lip"><div class="radar-item-header"><span class="radar-brand">Boy Smells</span><span class="radar-name">Tantrum</span><span class="radar-cat">EDP</span><span class="radar-chevron"></span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">Launch Date</div><div class="cell-value">Q2</div></div><div><div class="cell-label">Key Notes</div><div class="cell-value">Bergamot, oud, leather</div></div><div><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Genderful Positioning</span></div></div><div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.boysmells.com" target="_blank">Boy Smells</a></div></div></div></div></div>
+<div class="radar-item"><div class="radar-item-header"><span class="radar-brand">Tom Ford</span><span class="radar-name">Taormina Orange EDP</span><span class="radar-cat">EDP</span><span class="radar-chevron"></span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">Key Notes</div><div class="cell-value">Bright orange, Italian citrus, neroli</div></div><div><div class="cell-label">Positioning</div><div class="cell-value">Summer seasonal hero in the Private Blend line</div></div><div><div class="cell-label">Buzz</div><div class="cell-tags"><span class="rev-tag rev-pos">Summer Citrus Hero</span></div></div><div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.tomford.com" target="_blank">Tom Ford</a></div></div></div></div></div>
+<div class="radar-item"><div class="radar-item-header"><span class="radar-brand">Bvlgari</span><span class="radar-name">Thé Impérial</span><span class="radar-cat">EDP</span><span class="radar-chevron"></span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">Key Notes</div><div class="cell-value">Imperial tea, bergamot, woods</div></div><div><div class="cell-label">Positioning</div><div class="cell-value">Tea-forward luxury fragrance extending the Bvlgari tea franchise</div></div><div><div class="cell-label">Buzz</div><div class="cell-tags"><span class="rev-tag rev-pos">Tea×Luxury · Matcha Adjacent</span></div></div><div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.bvlgari.com" target="_blank">Bvlgari</a></div></div></div></div></div>
+<div class="radar-item"><div class="radar-item-header"><span class="radar-brand">L'Artisan Parfumeur</span><span class="radar-name">L'Amant</span><span class="radar-cat">EDP</span><span class="radar-chevron"></span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">Key Notes</div><div class="cell-value">Spices, oud, vanilla</div></div><div><div class="cell-label">Positioning</div><div class="cell-value">Oriental-inspired artisanal fragrance</div></div><div><div class="cell-label">Buzz</div><div class="cell-tags"><span class="rev-tag rev-pos">Oriental Narrative · Artisanal</span></div></div><div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.artisanparfumeur.com" target="_blank">L'Artisan</a></div></div></div></div></div>
+<div class="radar-item"><div class="radar-item-header"><span class="radar-brand">Rabanne</span><span class="radar-name">Million Gold</span><span class="radar-cat">EDP</span><span class="radar-chevron"></span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">Key Notes</div><div class="cell-value">Gold amber, patchouli, rose</div></div><div><div class="cell-label">Positioning</div><div class="cell-value">Luxury extension of the 1 Million franchise</div></div><div><div class="cell-label">Buzz</div><div class="cell-tags"><span class="rev-tag rev-pos">Franchise Premiumization</span></div></div><div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.rabanne.com" target="_blank">Rabanne</a></div></div></div></div></div>
+<div class="radar-item"><div class="radar-item-header"><span class="radar-brand">Jean Paul Gaultier</span><span class="radar-name">Le Male In Blue</span><span class="radar-cat">EDP</span><span class="radar-chevron"></span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">Key Notes</div><div class="cell-value">Mint, vanilla, lavender</div></div><div><div class="cell-label">Positioning</div><div class="cell-value">Summer extension of the Le Male franchise</div></div><div><div class="cell-label">Buzz</div><div class="cell-tags"><span class="rev-tag rev-pos">Franchise Summer Drop</span></div></div><div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.jpgaultier.com" target="_blank">JPG</a></div></div></div></div></div>
+<div class="radar-item"><div class="radar-item-header"><span class="radar-brand">Guerlain</span><span class="radar-name">Rosa Rossa</span><span class="radar-cat">EDP</span><span class="radar-chevron"></span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">Key Notes</div><div class="cell-value">Rose, peony, musk</div></div><div><div class="cell-label">Positioning</div><div class="cell-value">Rose Renaissance entry in the Aqua Allegoria line</div></div><div><div class="cell-label">Buzz</div><div class="cell-tags"><span class="rev-tag rev-pos">Rose Renaissance · Heritage Rose</span></div></div><div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.guerlain.com" target="_blank">Guerlain</a></div></div></div></div></div>
 </div>
 </div>
-<div class="radar-zone cn-zone">
-<span class="radar-zone-badge cn">🇨🇳 CN Market</span>
-<h4>Luxury Fragrance</h4>
+
+<!-- Masstige -->
+<div class="radar-section masstige-frag">
+<h4>Masstige Fragrance <span class="tier-badge">MASSTIGE</span></h4>
 <div class="radar-list">
-<div class="radar-item" data-cat="lip"><div class="radar-item-header"><span class="radar-brand">Dior</span><span class="radar-name">Cuir Saddle EDP</span><span class="radar-cat">EDP</span><span class="radar-chevron"></span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">Launch Date</div><div class="cell-value">Jun</div></div><div><div class="cell-label">Key Notes</div><div class="cell-value">Leather, musk, subtle floral</div></div><div><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Saddle Bag Heritage Inspired</span></div></div><div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.dior.com" target="_blank">Dior</a></div></div></div></div></div>
-<div class="radar-item" data-cat="lip"><div class="radar-item-header"><span class="radar-brand">Dior</span><span class="radar-name">Addict Peachy Glow</span><span class="radar-cat">EDT</span><span class="radar-chevron"></span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">Launch Date</div><div class="cell-value">Jun</div></div><div><div class="cell-label">Key Notes</div><div class="cell-value">Jasmine, vanilla, peach</div></div><div><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">TikTok Viral Potential</span></div></div><div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.dior.com" target="_blank">Dior</a></div></div></div></div></div>
-<div class="radar-item" data-cat="lip"><div class="radar-item-header"><span class="radar-brand">Chanel</span><span class="radar-name">Bleu de Chanel L'Exclusif</span><span class="radar-cat">Extrait</span><span class="radar-chevron"></span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">Launch Date</div><div class="cell-value">Jun</div></div><div><div class="cell-label">Key Notes</div><div class="cell-value">Woody chypre, pure parfum</div></div><div><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Highest Concentration Format</span></div></div><div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.chanel.com" target="_blank">Chanel</a></div></div></div></div></div>
-<div class="radar-item" data-cat="lip"><div class="radar-item-header"><span class="radar-brand">Tom Ford</span><span class="radar-name">Taormina Orange</span><span class="radar-cat">EDP</span><span class="radar-chevron"></span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">Launch Date</div><div class="cell-value">Jun</div></div><div><div class="cell-label">Key Notes</div><div class="cell-value">Bright orange, Italian citrus</div></div><div><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Summer Seasonal Hero</span></div></div><div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.tomford.com" target="_blank">Tom Ford</a></div></div></div></div></div>
-<div class="radar-item" data-cat="lip"><div class="radar-item-header"><span class="radar-brand">YSL</span><span class="radar-name">Libre Berry Crush</span><span class="radar-cat">EDP</span><span class="radar-chevron"></span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">Launch Date</div><div class="cell-value">Jun</div></div><div><div class="cell-label">Key Notes</div><div class="cell-value">Raspberry, orange flower, coconut</div></div><div><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Berry Trend Flagship</span></div></div><div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.ysl.com" target="_blank">YSL</a></div></div></div></div></div>
-<div class="radar-item" data-cat="lip"><div class="radar-item-header"><span class="radar-brand">Guerlain</span><span class="radar-name">LPRN Parfum</span><span class="radar-cat">Parfum</span><span class="radar-chevron"></span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">Launch Date</div><div class="cell-value">Q2</div></div><div><div class="cell-label">Key Notes</div><div class="cell-value">High-concentration, new bottle</div></div><div><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Iconic Reimagined</span></div></div><div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.guerlain.com" target="_blank">Guerlain</a></div></div></div></div></div>
-<div class="radar-item" data-cat="lip"><div class="radar-item-header"><span class="radar-brand">LV</span><span class="radar-name">Ambre Levant</span><span class="radar-cat">EDP</span><span class="radar-chevron"></span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">Launch Date</div><div class="cell-value">Q1</div></div><div><div class="cell-label">Key Notes</div><div class="cell-value">Cardamom, cinnamon, amber</div></div><div><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">W Magazine Pick</span></div></div><div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.louisvuitton.com" target="_blank">LV</a></div></div></div></div></div>
-<div class="radar-item" data-cat="lip"><div class="radar-item-header"><span class="radar-brand">Valentino</span><span class="radar-name">Born in Roma Purple Melancholia</span><span class="radar-cat">EDP</span><span class="radar-chevron"></span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">Launch Date</div><div class="cell-value">Jun</div></div><div><div class="cell-label">Key Notes</div><div class="cell-value">Creamy fruit, vanilla</div></div><div><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Purple Aesthetic</span></div></div><div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.valentino.com" target="_blank">Valentino</a></div></div></div></div></div>
-<div class="radar-item" data-cat="lip"><div class="radar-item-header"><span class="radar-brand">Byredo</span><span class="radar-name">Sister Dreamer</span><span class="radar-cat">EDP</span><span class="radar-chevron"></span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">Launch Date</div><div class="cell-value">Q2</div></div><div><div class="cell-label">Key Notes</div><div class="cell-value">Juniper, pepper, sandalwood</div></div><div><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Lauren Halsey Art Collab</span></div></div><div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.byredo.com" target="_blank">Byredo</a></div></div></div></div></div>
-<div class="radar-item" data-cat="lip"><div class="radar-item-header"><span class="radar-brand">Miu Miu</span><span class="radar-name">Fleur de Lait</span><span class="radar-cat">EDP</span><span class="radar-chevron"></span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">Launch Date</div><div class="cell-value">Jun</div></div><div><div class="cell-label">Key Notes</div><div class="cell-value">Mango, coconut, osmanthus</div></div><div><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Resort Vibe Sensation</span></div></div><div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.miumiu.com" target="_blank">Miu Miu</a></div></div></div></div></div>
+<div class="radar-item"><div class="radar-item-header"><span class="radar-brand">Huda Beauty</span><span class="radar-name">Easy Bake Intense EDP</span><span class="radar-cat">$129</span><span class="radar-chevron"></span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">Key Notes</div><div class="cell-value">Vanilla, marshmallow, caramel</div></div><div><div class="cell-label">Positioning</div><div class="cell-value">Gourmand-intense EDP from the Kayali sister brand</div></div><div><div class="cell-label">Buzz</div><div class="cell-tags"><span class="rev-tag rev-pos">Dark Gourmand · Intense Format</span></div></div><div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.hudabeauty.com" target="_blank">Huda Beauty</a></div></div></div></div></div>
+<div class="radar-item"><div class="radar-item-header"><span class="radar-brand">Phlur</span><span class="radar-name">Rose Whip</span><span class="radar-cat">$99</span><span class="radar-chevron"></span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">Key Notes</div><div class="cell-value">Green rose, dewy rose, garden rose</div></div><div><div class="cell-label">Positioning</div><div class="cell-value">Rose Renaissance premium masstige entry</div></div><div><div class="cell-label">Buzz</div><div class="cell-tags"><span class="rev-tag rev-pos">Rose Renaissance · 3-Rose Combo</span></div></div><div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.phlur.com" target="_blank">Phlur</a></div></div></div></div></div>
+<div class="radar-item"><div class="radar-item-header"><span class="radar-brand">Glossier</span><span class="radar-name">You Solid</span><span class="radar-cat">Solid</span><span class="radar-chevron"></span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">Key Notes</div><div class="cell-value">White musk, ambrette, iris</div></div><div><div class="cell-label">Positioning</div><div class="cell-value">Skin Scent in solid format — portability meets intimacy</div></div><div><div class="cell-label">Buzz</div><div class="cell-tags"><span class="rev-tag rev-pos">Skin Scent · Solid Format Innovation</span></div></div><div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.glossier.com" target="_blank">Glossier</a></div></div></div></div></div>
+<div class="radar-item"><div class="radar-item-header"><span class="radar-brand">Sol de Janeiro</span><span class="radar-name">Cheirosa 91</span><span class="radar-cat">$39</span><span class="radar-chevron"></span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">Key Notes</div><div class="cell-value">Green rose, dewy rose, garden rose</div></div><div><div class="cell-label">Positioning</div><div class="cell-value">Rose body mist at accessible price — mass-market rose entry</div></div><div><div class="cell-label">Buzz</div><div class="cell-tags"><span class="rev-tag rev-pos">Rose Renaissance · Body Mist Format</span></div></div><div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.soldejaneiro.com" target="_blank">Sol de Janeiro</a></div></div></div></div></div>
+<div class="radar-item"><div class="radar-item-header"><span class="radar-brand">Lake & Skye</span><span class="radar-name">11 11 Moon</span><span class="radar-cat">$105</span><span class="radar-chevron"></span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">Key Notes</div><div class="cell-value">White floral, musk, amber</div></div><div><div class="cell-label">Positioning</div><div class="cell-value">Celestial-themed skin scent — mood-functional positioning</div></div><div><div class="cell-label">Buzz</div><div class="cell-tags"><span class="rev-tag rev-pos">Mood Fragrance · Skin Scent Adjacent</span></div></div><div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.lakeandskye.com" target="_blank">Lake & Skye</a></div></div></div></div></div>
+<div class="radar-item"><div class="radar-item-header"><span class="radar-brand">DedCool</span><span class="radar-name">Mochi Milk</span><span class="radar-cat">$90</span><span class="radar-chevron"></span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">Key Notes</div><div class="cell-value">Milk, mochi, vanilla, musk</div></div><div><div class="cell-label">Positioning</div><div class="cell-value">Clean milky gourmand — pistachio-adjacent food note</div></div><div><div class="cell-label">Buzz</div><div class="cell-tags"><span class="rev-tag rev-pos">Clean Gourmand · Layering Hero</span></div></div><div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.dedcool.com" target="_blank">DedCool</a></div></div></div></div></div>
 </div>
 </div>
 </div>
-</div>
+
 <!-- Source Footer -->
 <div class="source-footer">
 <h4>Data Sources</h4>
 <div class="source-list">
-<span class="source-chip src-cn">IT Home</span>
-<span class="source-chip src-cn">Sina Finance</span>
-<span class="source-chip src-cn">Baidu Industry Data</span>
+<span class="source-chip src-us">TikTok #PerfumeTok</span>
+<span class="source-chip src-us">Google Trends</span>
+<span class="source-chip src-us">Sephora Insights</span>
+<span class="source-chip src-us">WGSN Forecasting</span>
+<span class="source-chip src-us">Pinterest Trends</span>
 <span class="source-chip src-cn">Douyin Trends</span>
 <span class="source-chip src-cn">Xiaohongshu (RED)</span>
 <span class="source-chip src-cn">Feigua Data</span>
-<span class="source-chip src-us">PerfumeStars</span>
-<span class="source-chip src-us">Scent-Wise</span>
-<span class="source-chip src-us">TikTok Trends</span>
-<span class="source-chip src-us">Sephora Insights</span>
-<span class="source-chip src-us">Ulta Beauty</span>
-<span class="source-chip src-us">Allure / W Magazine</span>
-<span class="source-chip src-us">FridayCharm</span>
-<span class="source-chip src-us">Qogita TikTok Trends</span>
 <span class="source-chip src-brand">Brand Official Stores</span>
+<span class="source-chip src-us">Circana (NPD)</span>
+<span class="source-chip src-us">Fragrantica</span>
+<span class="source-chip src-us">FridayCharm</span>
 </div>
 </div>
 
+<!-- Appendix -->
 <div class="appendix-section">
 <h4 style="margin-bottom:12px;font-size:15px;">🔖 Source Overview</h4>
 <table class="appendix-table"><thead><tr><th>Source</th><th>Market</th><th>Type</th><th>Coverage</th><th>Notes</th></tr></thead><tbody>
@@ -1572,28 +1656,18 @@ body {
 <tr><td class="app-name">飞瓜数据</td><td><span class="app-mkt cn">🇨🇳</span></td><td class="app-type">Douyin Data</td><td class="app-desc">Short video/livestream commerce trends, category heat</td><td class="app-note">—</td></tr>
 <tr><td class="app-name">蝉妈妈</td><td><span class="app-mkt cn">🇨🇳</span></td><td class="app-type">Douyin KOL</td><td class="app-desc">KOL seeding effectiveness, livestream conversion</td><td class="app-note">—</td></tr>
 <tr><td class="app-name">Accio</td><td><span class="app-mkt cn">🇨🇳</span></td><td class="app-type">Social Trends</td><td class="app-desc">Douyin/XHS trending categories, ingredient trends</td><td class="app-note">—</td></tr>
-<tr><td class="app-name">美修大数据（美丽修行）</td><td><span class="app-mkt cn">🇨🇳</span></td><td class="app-type">Ingredient Reputation</td><td class="app-desc">Ingredient trends, safety scores, user reviews</td><td class="app-note">—</td></tr>
+<tr><td class="app-name">TikTok Creative Center</td><td><span class="app-mkt us">🇺🇸</span></td><td class="app-type">TikTok Data</td><td class="app-desc">Hashtag trends, video views, creator insights</td><td class="app-note">—</td></tr>
 <tr class="cat-divider"><td colspan="5">📖 Industry Research & Consumer Insights</td></tr>
-<tr><td class="app-name">艾瑞咨询</td><td><span class="app-mkt cn">🇨🇳</span></td><td class="app-type">Industry Research</td><td class="app-desc">China beauty ecom/social media industry reports</td><td class="app-note">—</td></tr>
-<tr><td class="app-name">Daxue Consulting</td><td><span class="app-mkt cn">🇨🇳</span></td><td class="app-type">Consumer Research</td><td class="app-desc">China beauty consumer behavior</td><td class="app-note">—</td></tr>
-<tr><td class="app-name">Mintel 英敏特（中国）</td><td><span class="app-mkt cn">🇨🇳</span></td><td class="app-type">Consumer Insights</td><td class="app-desc">Consumer behavior, category innovation cases</td><td class="app-note">—</td></tr>
-<tr><td class="app-name">凯度 Kantar</td><td><span class="app-mkt cn">🇨🇳</span></td><td class="app-type">Brand Equity</td><td class="app-desc">China beauty brand equity index</td><td class="app-note">—</td></tr>
-<tr><td class="app-name">经济参考报 / 新华网</td><td><span class="app-mkt cn">🇨🇳</span></td><td class="app-type">Official Media</td><td class="app-desc">Industry M&A, regulation</td><td class="app-note">—</td></tr>
-<tr><td class="app-name">新浪财经</td><td><span class="app-mkt cn">🇨🇳</span></td><td class="app-type">Financial Media</td><td class="app-desc">Luxury beauty bestseller lists, brand financials</td><td class="app-note">—</td></tr>
-<tr><td class="app-name">WGSN</td><td><span class="app-mkt us">🇺🇸</span></td><td class="app-type">Trend Forecasting</td><td class="app-desc">Global color/materials/beauty trend forecasting</td><td class="app-note">—</td></tr>
-<tr><td class="app-name">Euromonitor</td><td><span class="app-mkt us">🇺🇸</span></td><td class="app-type">Market Sizing</td><td class="app-desc">Global makeup/fragrance market size & forecasts</td><td class="app-note">—</td></tr>
-<tr><td class="app-name">Mintel GNPD</td><td><span class="app-mkt us">🇺🇸</span></td><td class="app-type">New Product DB</td><td class="app-desc">Global new product ingredient/claim/packaging analysis</td><td class="app-note">—</td></tr>
+<tr><td class="app-name">WGSN</td><td><span class="app-mkt global">🌐</span></td><td class="app-type">Trend Forecasting</td><td class="app-desc">Global color/materials/beauty trend forecasting</td><td class="app-note">—</td></tr>
+<tr><td class="app-name">Euromonitor</td><td><span class="app-mkt global">🌐</span></td><td class="app-type">Market Sizing</td><td class="app-desc">Global makeup/fragrance market size & forecasts</td><td class="app-note">—</td></tr>
+<tr><td class="app-name">Mintel GNPD</td><td><span class="app-mkt global">🌐</span></td><td class="app-type">New Product DB</td><td class="app-desc">Global new product ingredient/claim/packaging analysis</td><td class="app-note">—</td></tr>
 <tr><td class="app-name">BeautyMatter</td><td><span class="app-mkt us">🇺🇸</span></td><td class="app-type">Industry Media</td><td class="app-desc">Annual beauty trend reports, brand strategy</td><td class="app-note">—</td></tr>
 <tr><td class="app-name">FridayCharm</td><td><span class="app-mkt us">🇺🇸</span></td><td class="app-type">Fragrance Forecasting</td><td class="app-desc">Annual fragrance note trend forecasting</td><td class="app-note">—</td></tr>
 <tr><td class="app-name">Fragrantica</td><td><span class="app-mkt us">🇺🇸</span></td><td class="app-type">Fragrance Community</td><td class="app-desc">Note analysis, user ratings, new product tracking</td><td class="app-note">—</td></tr>
 <tr><td class="app-name">The Business Research Company</td><td><span class="app-mkt us">🇺🇸</span></td><td class="app-type">Market Research</td><td class="app-desc">Clean Beauty and other category market sizing</td><td class="app-note">—</td></tr>
-<tr><td class="app-name">W Magazine</td><td><span class="app-mkt us">🇺🇸</span></td><td class="app-type">Fashion Media</td><td class="app-desc">Annual best fragrance/makeup editor picks</td><td class="app-note">—</td></tr>
-<tr class="cat-divider"><td colspan="5">📰 Media & Editor Recommendations</td></tr>
-<tr><td class="app-name">NewBeauty</td><td><span class="app-mkt us">🇺🇸</span></td><td class="app-type">Beauty Media</td><td class="app-desc">Monthly new launch lists, editor reviews</td><td class="app-note">—</td></tr>
-<tr><td class="app-name">Bustle</td><td><span class="app-mkt us">🇺🇸</span></td><td class="app-type">Consumer Media</td><td class="app-desc">Editor-recommended new products</td><td class="app-note">—</td></tr>
-<tr><td class="app-name">Who What Wear</td><td><span class="app-mkt us">🇺🇸</span></td><td class="app-type">Fashion & Beauty</td><td class="app-desc">Sephora new product trends, editor curation</td><td class="app-note">—</td></tr>
 </tbody></table>
 </div>
+
 <div style="background:#F9FAFB;border:1px solid #E5E7EB;border-radius:12px;padding:20px;margin-top:20px;">
 <h4 style="margin-top:0;">📐 Scoring Methodology</h4>
 <p style="font-size:13px;color:var(--text-secondary);line-height:1.8;margin:0;">
@@ -1614,17 +1688,18 @@ Rank conversion uses segmented linear mapping (TOP1=100%, TOP5=90%, TOP10=80%, e
 <h4 style="margin-top:0;">📋 This Week's Sources</h4>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;font-size:13px;color:var(--text-secondary);line-height:1.8;">
 <div><h5 style="margin:0 0 6px 0;"><span class="mkt-tag cn">China Market</span></h5>
-天猫TMIC · 抖音/飞瓜数据 · 小红书 · IT之家 · 新浪财经 · 魔镜洞察 · 观夏/闻献官方数据</div>
+天猫TMIC · 抖音/飞瓜数据 · 小红书 · IT之家 · 新浪财经 · 魔镜洞察 · 观夏/气味图书馆/冰希黎官方数据</div>
 <div><h5 style="margin:0 0 6px 0;"><span class="mkt-tag us">US Market</span></h5>
-TikTok · Sephora · Fragrantica · FridayCharm · WGSN · Circana · Brand Official (Chanel/Guerlain/Dior/Kayali)</div>
+TikTok #PerfumeTok · Sephora · Fragrantica · FridayCharm · WGSN · Circana · Brand Official (D.S.&Durga/Kilian/Phlur/Glossier/Kayali/Le Labo/Sol de Janeiro)</div>
 </div>
-<p style="font-size:11px;color:#bbb;margin:12px 0 0 0;">Authority Trends: WGSN × Coloro SS2026 · Circana Premium Fragrance Data · Fragrantica Note Trend Report</p>
+<p style="font-size:11px;color:#bbb;margin:12px 0 0 0;">Authority Trends: WGSN S-tier Pistachio Classification · Circana Premium Fragrance Data · Fragrantica Note Trend Report · TikTok Creative Center</p>
 </div>
 
 <div style="text-align:center;margin-top:32px;padding:24px;background:linear-gradient(135deg,rgba(230,0,18,0.08),rgba(123,97,255,0.06),rgba(0,201,167,0.06));border-radius:16px;border:1px solid rgba(230,0,18,0.20);">
-<p style="font-size:14px;color:var(--text-secondary);margin:0;">📅 Next Week Preview：2026年6月16日（周一）自动推送 · 📬 如需调整报告内容或频率，请随时反馈</p>
+<p style="font-size:14px;color:var(--text-secondary);margin:0;">📅 Next Week Preview: Week 26 (June 16–22, 2026) · Auto-delivery Monday · 📬 Feedback welcome for content or frequency adjustments</p>
 </div>
 </div>
+
 <script>
 // === Accordion: News Cards ===
 document.querySelectorAll('.news-card').forEach(function(card) {
