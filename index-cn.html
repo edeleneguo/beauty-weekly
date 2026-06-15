@@ -2,8 +2,8 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="version" content="week25-20260615-v1">
-<!-- Cache-bust: week25-20260615-v1 -->
+<meta name="version" content="week25-20260615-v2-fixed">
+<!-- Cache-bust: week25-20260615-v2-fixed -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>美妆行业周报 Week 25 | ZURU EDGE</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -422,17 +422,8 @@ body { font-family: var(--font); background: var(--body-bg); color: var(--text);
 <h2 class="section-title">📰 行业要闻</h2>
 <div class="news-grid">
 
-  <div class="news-card open" onclick="this.classList.toggle('open')">
-    <div class="news-card-header">
-      <span class="news-region-tag cn">CN</span>
-      <span class="news-card-title">珀莱雅斥资近8亿元控股花知晓，国货彩妆版图再洗牌</span>
-    </div>
-    <div class="news-card-body">
-      珀莱雅全资子公司以3.51亿元收购花知晓12.55%股权，持股比例从38.45%升至51%实现控股并表。此前首轮投资约4.28亿元，合计投入近8亿元。花知晓以"少女心"风格和高颜值包装著称，此举标志国货彩妆头部阵营整合加速。
-    </div>
-  </div>
-
-  <div class="news-card open" onclick="this.classList.toggle('open')">
+  <!-- GLOBAL 置顶 -->
+  <div class="news-card" onclick="this.classList.toggle('open')">
     <div class="news-card-header">
       <span class="news-region-tag global">GLOBAL</span>
       <span class="news-card-title">雅诗兰黛 × Puig 合并谈判：潜在全球第二大美妆集团诞生</span>
@@ -444,11 +435,22 @@ body { font-family: var(--font); background: var(--body-bg); color: var(--text);
 
   <div class="news-card" onclick="this.classList.toggle('open')">
     <div class="news-card-header">
-      <span class="news-region-tag us">US</span>
-      <span class="news-card-title">Sephora SEPHORiA 2026 重返洛杉矶，打造"美妆多元宇宙"</span>
+      <span class="news-region-tag global">GLOBAL</span>
+      <span class="news-card-title">Q1 2026 美妆融资聚焦 AI 与合成生物学两大领域</span>
     </div>
     <div class="news-card-body">
-      Sephora 旗舰活动 SEPHORiA 2026 以全新沉浸式概念回归洛杉矶，推出首次面世的独家节目和现场专属福利。活动以"Beauty Multiverse"为主题，进一步巩固 Sephora 在体验式零售领域的领先地位。
+      2026年Q1美妆行业融资集中在AI与合成生物学领域。美国AI香水设计平台Osmo、虚拟生物学公司Turbine等5家AI企业获得融资。AI研发平台成为资本市场重点赛道，加速美妆产品从研发到落地的全流程。
+    </div>
+  </div>
+
+  <!-- CN 归组 -->
+  <div class="news-card" onclick="this.classList.toggle('open')">
+    <div class="news-card-header">
+      <span class="news-region-tag cn">CN</span>
+      <span class="news-card-title">珀莱雅斥资近8亿元控股花知晓，国货彩妆版图再洗牌</span>
+    </div>
+    <div class="news-card-body">
+      珀莱雅全资子公司以3.51亿元收购花知晓12.55%股权，持股比例从38.45%升至51%实现控股并表。此前首轮投资约4.28亿元，合计投入近8亿元。花知晓以"少女心"风格和高颜值包装著称，此举标志国货彩妆头部阵营整合加速。
     </div>
   </div>
 
@@ -462,6 +464,17 @@ body { font-family: var(--font); background: var(--body-bg); color: var(--text);
     </div>
   </div>
 
+  <!-- US 归组 -->
+  <div class="news-card" onclick="this.classList.toggle('open')">
+    <div class="news-card-header">
+      <span class="news-region-tag us">US</span>
+      <span class="news-card-title">Sephora SEPHORiA 2026 重返洛杉矶，打造"美妆多元宇宙"</span>
+    </div>
+    <div class="news-card-body">
+      Sephora 旗舰活动 SEPHORiA 2026 以全新沉浸式概念回归洛杉矶，推出首次面世的独家节目和现场专属福利。活动以"Beauty Multiverse"为主题，进一步巩固 Sephora 在体验式零售领域的领先地位。
+    </div>
+  </div>
+
   <div class="news-card" onclick="this.classList.toggle('open')">
     <div class="news-card-header">
       <span class="news-region-tag us">US</span>
@@ -469,16 +482,6 @@ body { font-family: var(--font); background: var(--body-bg); color: var(--text);
     </div>
     <div class="news-card-body">
       Ulta Beauty Q1 2026 香氛品类数据显示：DKNY 排名飙升58位领跑，Kylie Cosmetics 上升24位，touchland 上升18位。消费者对香氛品类的需求依然强劲，渠道增长势头持续。
-    </div>
-  </div>
-
-  <div class="news-card" onclick="this.classList.toggle('open')">
-    <div class="news-card-header">
-      <span class="news-region-tag global">GLOBAL</span>
-      <span class="news-card-title">Q1 2026 美妆融资聚焦 AI 与合成生物学两大领域</span>
-    </div>
-    <div class="news-card-body">
-      2026年Q1美妆行业融资集中在AI与合成生物学领域。美国AI香水设计平台Osmo、虚拟生物学公司Turbine等5家AI企业获得融资。AI研发平台成为资本市场重点赛道，加速美妆产品从研发到落地的全流程。
     </div>
   </div>
 
@@ -897,10 +900,10 @@ body { font-family: var(--font); background: var(--body-bg); color: var(--text);
         </tr>
         <tr>
           <td><span class="radar-brand">Tom Ford</span></td>
-          <td><span class="radar-product">Taormina Orange EDP</span></td>
+          <td><span class="radar-product">Shade and Illuminate Soft Radiance Foundation</span></td>
           <td><span class="radar-tier luxury">Luxury</span></td>
-          <td class="radar-desc">青橘+橙花+广藿香；西西里灵感高级柑橘调</td>
-          <td><span class="rev-tag rev-pos">高期待度</span></td>
+          <td class="radar-desc">光泽肌底妆+修容一体；12色号涵盖全肤色；养肤成分+高延展性质地</td>
+          <td><span class="rev-tag rev-pos">Sephora 6月首发 · 高期待</span></td>
         </tr>
       </tbody>
     </table>
@@ -913,415 +916,26 @@ body { font-family: var(--font); background: var(--body-bg); color: var(--text);
       </thead>
       <tbody>
         <tr>
-          <td><span class="radar-brand">Huda Beauty</span></td>
-          <td><span class="radar-product">Easy Bake Intense EDP</span></td>
+          <td><span class="radar-brand">Rare Beauty</span></td>
+          <td><span class="radar-product">Find Comfort Hydrating Tinted Moisturizer</span></td>
           <td><span class="radar-tier masstige">Masstige</span></td>
-          <td class="radar-desc">野樱桃+白花+焦糖牛奶+波旁香草；Easy Bake散粉的香水延伸</td>
-          <td><span class="rev-tag rev-pos">Sephora $129/50ml</span></td>
+          <td class="radar-desc">养肤有色面霜；透明质酸+神经酰胺+蓝藻萃取；30色号 · Clean Beauty认证</td>
+          <td><span class="rev-tag rev-pos">Sephora $34 · 预售即TOP 10</span></td>
         </tr>
         <tr>
-          <td><span class="radar-brand">Fenty Beauty</span></td>
-          <td><span class="radar-product">Fenty Eau de Parfum 固体版</span></td>
+          <td><span class="radar-brand">Kosas</span></td>
+          <td><span class="radar-product">Cloud Set Blurring Powder</span></td>
           <td><span class="radar-tier masstige">Masstige</span></td>
-          <td class="radar-desc">经典香固体香膏形态；便携补香趋势+5</td>
-          <td><span class="rev-tag rev-pos">固体香水 +174.6% 搜索</span></td>
+          <td class="radar-desc">柔焦定妆散粉；植物成膜剂+微球体技术；控油8H + 零粉感</td>
+          <td><span class="rev-tag rev-pos">$32 · Reddit MakeupAddiction 热议</span></td>
         </tr>
         <tr>
-          <td><span class="radar-brand">Glossier</span></td>
-          <td><span class="radar-product">Glossier You Solid</span></td>
-          <td><span class="radar-tier masstige">Masstige</span></td>
-          <td class="radar-desc">鹅卵石造型固体香膏；社媒爆款+个性化皮肤麝香</td>
-          <td><span class="rev-tag rev-pos">社媒现象级</span></td>
+          <td><span class="radar-brand">Tower 28</span></td>
+          <td><span class="radar-product">Splashy Cream Blush Hydrating Gel</span></td>
+          <td><span class="radar-tier masstige">Masstige</span<td>
+          <td class="radar-desc">果冻腮红啫喱；8色水光感；芦荟+海藻糖保湿基底 · BeachGlow系列延伸</td>
+          <td><span class="rev-tag rev-pos">$24 · Sephora 新品榜 TOP 5</span></td>
         </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
-
-</div><!-- end section-shell -->
-
-<!-- ======== FRAGRANCE SECTION ======== -->
-<div class="section-sep"><hr></div>
-<div class="section-shell">
-<h2 class="section-title">🌸 香水趋势报告</h2>
-
-<!-- Common Trends -->
-<div class="common-trends-section">
-  <h3 style="font-size:14px;font-weight:700;margin-bottom:14px;color:var(--zurured);display:flex;align-items:center;gap:8px;">
-    <span style="background:var(--zurured);color:white;padding:2px 10px;border-radius:4px;font-size:10px;">GLOBAL</span> 跨市场共享趋势
-  </h3>
-
-  <div class="trend-v-card open" style="border-top:4px solid var(--zurured);">
-    <div class="trend-v-header" onclick="this.parentElement.classList.toggle('open')">
-      <h4>🥜 开心果美食调：全行业增速最快香调（+852%）</h4>
-      <span class="trend-v-arrow">▼</span>
-    </div>
-    <div class="trend-v-body">
-      <div class="driver-summary">开心果香调年增长852%成为2026年增速最快香调——从D.S. & Durga到Prada，奢侈品牌和Masstige品牌全线布局坚果美食调。</div>
-      <div class="driver-chain">
-        <span class="chain-node trigger">触发：D.S. & Durga Pistachio 口碑爆发</span>
-        <span class="chain-arrow">→</span>
-        <span class="chain-node ferment">发酵：TikTok #PistachioPerfume 病毒传播</span>
-        <span class="chain-arrow">→</span>
-        <span class="chain-node diverge">分化：开心果×焦糖 / 烤杏仁×广藿香 / 榛子×奶油 三大调性</span>
-      </div>
-      <div class="driver-expand">
-        <span class="exp-chip global">开心果 +852%</span>
-        <span class="exp-chip global">咸鲜美食香</span>
-        <span class="exp-chip us">D.S. & Durga</span>
-        <span class="exp-chip cn">坚果香调国货机会</span>
-      </div>
-      <div class="signal-strip">
-        <div class="signal-chip tt"><div class="chip-desc">#PistachioPerfume</div><div class="chip-num">3.8亿</div><div class="chip-arrow up">+852% YoY</div></div>
-        <div class="signal-chip gtrends"><div class="chip-desc">开心果香调搜索</div><div class="chip-num">+852%</div><div class="chip-desc">全行业增速最快</div></div>
-        <div class="signal-chip seph"><div class="chip-desc">美食调香水SKU</div><div class="chip-num">+64%</div><div class="chip-arrow up">Sephora 同比</div></div>
-        <div class="signal-chip wgsn"><div class="chip-desc">趋势评级</div><div class="chip-num">S级</div><div class="chip-desc">2026年度香调</div></div>
-      </div>
-      <div class="action-strip">
-        <span class="action-tag">🎯 行动</span>
-        <span class="action-text">开发开心果/烤杏仁/榛子三大坚果香调线——建议从身体喷雾（对标Sol de Janeiro价格带）切入，降低试错成本。香调结构：坚果前调 + 焦糖/香草中调 + 广藿香/麝香基调。这是目前全球增速最快的香调，窗口期优势明显。</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="trend-v-card open" style="border-top:4px solid var(--zurured);">
-    <div class="trend-v-header" onclick="this.parentElement.classList.toggle('open')">
-      <h4>🤍 肌肤感麝香：从"穿香"到"第二层皮肤"的品类升级</h4>
-      <span class="trend-v-arrow">▼</span>
-    </div>
-    <div class="trend-v-body">
-      <div class="driver-summary">Phlur Missing Person、Glossier You、DedCool Milk等"肌肤感麝香"成为社媒常青款——消费者追求"像洗完澡后的干净体香"而非"喷了香水"的感觉。</div>
-      <div class="driver-chain">
-        <span class="chain-node trigger">触发：Phlur Missing Person TikTok爆红</span>
-        <span class="chain-arrow">→</span>
-        <span class="chain-node ferment">发酵：Glossier You 个性化皮肤麝香概念</span>
-        <span class="chain-arrow">→</span>
-        <span class="chain-node diverge">分化：开士米麝香 × 奶油麝香 × 奶香木质 三条子线</span>
-      </div>
-      <div class="driver-expand">
-        <span class="exp-chip global">Phlur Missing Person</span>
-        <span class="exp-chip global">Glossier You Solid</span>
-        <span class="exp-chip global">DedCool Milk/Mochi</span>
-        <span class="exp-chip global">Lake & Skye 11 11</span>
-      </div>
-      <div class="signal-strip">
-        <div class="signal-chip tt"><div class="chip-desc">#SkinScent 浏览量</div><div class="chip-num">12亿</div><div class="chip-arrow up">+76%</div></div>
-        <div class="signal-chip seph"><div class="chip-desc">Phlur Sephora排名</div><div class="chip-num">TOP 5</div><div class="chip-desc">香水品类</div></div>
-        <div class="signal-chip gtrends"><div class="chip-desc">"skin scent"搜索</div><div class="chip-num">+143%</div><div class="chip-arrow up">Google</div></div>
-        <div class="signal-chip pin"><div class="chip-desc">Cashmere Musk</div><div class="chip-num">+89%</div><div class="chip-arrow up">Pinterest</div></div>
-      </div>
-      <div class="action-strip">
-        <span class="action-tag">🎯 行动</span>
-        <span class="action-text">开发"Your Skin But Better"定位的肌肤感麝香香水——核心香调：Cashmeran分子+白麝香+奶油檀木，主打"千人千味"的个性化叙事。定价对标Phlur $99价位，Target/Ulta渠道适配度极高。</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="trend-v-card open" style="border-top:4px solid var(--zurured);">
-    <div class="trend-v-header" onclick="this.parentElement.classList.toggle('open')">
-      <h4>🔬 功能性情绪香水：$121亿市场新赛道</h4>
-      <span class="trend-v-arrow">▼</span>
-    </div>
-    <div class="trend-v-body">
-      <div class="driver-summary">功能性香水市场规模达$121亿——62%消费者优先选择有情绪/生理功效的香水。从Rare Beauty Find Comfort到Charlotte Tilbury情绪系列，品牌加速布局。</div>
-      <div class="driver-chain">
-        <span class="chain-node trigger">触发：The Nue Co. Functional Fragrance 开创品类</span>
-        <span class="chain-arrow">→</span>
-        <span class="chain-node ferment">发酵：62%消费者偏好功效香水</span>
-        <span class="chain-arrow">→</span>
-        <span class="chain-node diverge">分化：减压放松 × 专注提升 × 情绪疗愈 三大功效方向</span>
-      </div>
-      <div class="driver-expand">
-        <span class="exp-chip global">$121亿市场</span>
-        <span class="exp-chip global">62%消费者偏好</span>
-        <span class="exp-chip us">Rare Beauty Comfort</span>
-        <span class="exp-chip global">CT 情绪系列</span>
-      </div>
-      <div class="signal-strip">
-        <div class="signal-chip wgsn"><div class="chip-desc">功能性香水市场</div><div class="chip-num">$121B</div><div class="chip-desc">预测规模</div></div>
-        <div class="signal-chip gtrends"><div class="chip-desc">消费者功效偏好</div><div class="chip-num">62%</div><div class="chip-desc">优先情绪/生理功效</div></div>
-        <div class="signal-chip tt"><div class="chip-desc">#MoodPerfume</div><div class="chip-num">2.4亿</div><div class="chip-arrow up">+210%</div></div>
-        <div class="signal-chip seph"><div class="chip-desc">Sephora 情绪香水</div><div class="chip-num">+78%</div><div class="chip-arrow up">SKU增长</div></div>
-      </div>
-      <div class="action-strip">
-        <span class="action-tag">🎯 行动</span>
-        <span class="action-text">推出"MOOD"系列——3款功能定位香水：Calm（圣木+薰衣草+洋甘菊，减压安神）、Focus（绿茶+薄荷+迷迭香，专注提升）、Joy（柑橘+茉莉+琥珀，情绪提振）。每款附带神经科学背书的小卡片，切入$121亿蓝海市场。</span>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Fragrance Trend Grid: CN + US -->
-<div class="trend-grid">
-  <div class="zone zone-us">
-    <span class="zone-badge us">US 美国香水市场</span>
-    <div class="zone-platforms">平台：<strong>TikTok · Sephora · Ulta · Fragrantica</strong></div>
-
-    <div class="trend-v-card us open">
-      <div class="trend-v-header" onclick="this.parentElement.classList.toggle('open')">
-        <h4>🖤 棉花糖哥特：暗黑美食调 +242.1% 搜索增长</h4>
-        <span class="trend-v-arrow">▼</span>
-      </div>
-      <div class="trend-v-body">
-        <div class="driver-summary us">"棉花糖香水"搜索增长242.1%，TikTok贡献80%以上搜索兴趣——暗黑美食调从Kilian到Maison Margiela再到TikTok Shop白牌全面爆发。</div>
-        <div class="driver-chain">
-          <span class="chain-node trigger">触发：Kilian Love Don't Be Shy 经典回归</span>
-          <span class="chain-arrow">→</span>
-          <span class="chain-node ferment">发酵：TikTok Shop Marshmallow Blush 爆卖</span>
-          <span class="chain-arrow">→</span>
-          <span class="chain-node diverge">分化：烤棉花糖 × 烟熏木质 × 暗黑香草 三种调性</span>
-        </div>
-        <div class="driver-expand">
-          <span class="exp-chip us">Kilian Paris</span>
-          <span class="exp-chip us">MMM By the Fireplace</span>
-          <span class="exp-chip us">Eilish No.2</span>
-          <span class="exp-chip us">Marshmallow Blush TikTok爆款</span>
-        </div>
-        <div class="signal-strip">
-          <div class="signal-chip tt"><div class="chip-desc">#MarshmallowPerfume</div><div class="chip-num">6.2亿</div><div class="chip-arrow up">+242.1%</div></div>
-          <div class="signal-chip gtrends"><div class="chip-desc">棉花糖香水搜索</div><div class="chip-num">+242.1%</div><div class="chip-desc">YoY Google</div></div>
-          <div class="signal-chip seph"><div class="chip-desc">Kilian Sephora 排名</div><div class="chip-num">TOP 10</div><div class="chip-desc">香水品类</div></div>
-          <div class="signal-chip pin"><div class="chip-desc">Dark Gourmand</div><div class="chip-num">+178%</div><div class="chip-arrow up">Pinterest</div></div>
-        </div>
-        <div class="action-strip">
-          <span class="action-tag">🎯 行动</span>
-          <span class="action-text">开发"Toasted"暗黑美食调系列——烤棉花糖+烟熏香草+羊绒木。包装用暗黑美学（黑色瓶身+烫金），定价Masstige档$48-68。这是TikTok原生的爆款香调，社交传播潜力极大。</span>
-        </div>
-        <div class="trend-decision-bar">
-          <span class="dec-label">信号→决策</span>
-          <span class="dec-signal">TikTok 6.2亿浏览</span>
-          <span class="dec-arrow">→</span>
-          <span class="dec-direction">Toasted 暗黑美食调系列</span>
-          <span class="dec-strength strong">STRONG</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="trend-v-card us open">
-      <div class="trend-v-header" onclick="this.parentElement.classList.toggle('open')">
-        <h4>🥀 玫瑰复兴：青绿露水玫瑰取代老派粉质玫瑰</h4>
-        <span class="trend-v-arrow">▼</span>
-      </div>
-      <div class="trend-v-body">
-        <div class="driver-summary us">玫瑰香调以清新、青绿、带露水的面貌回归——Phlur Rose Whip、Sol de Janeiro Cheirosa 91等新品脱离传统粉质印象，吸引Z世代消费者。</div>
-        <div class="driver-chain">
-          <span class="chain-node trigger">触发：Sol de Janeiro Cheirosa 91 玫瑰+热带果香融合</span>
-          <span class="chain-arrow">→</span>
-          <span class="chain-node ferment">发酵：Phlur Rose Whip 青绿玫瑰 $99定价受追捧</span>
-          <span class="chain-arrow">→</span>
-          <span class="chain-node diverge">分化：绿叶玫瑰 × 露水玫瑰 × 花园玫瑰 三种清新调</span>
-        </div>
-        <div class="driver-expand">
-          <span class="exp-chip us">Phlur Rose Whip $99</span>
-          <span class="exp-chip us">Sol de Janeiro Cheirosa 91</span>
-          <span class="exp-chip us">Guerlain Rosa Rossa</span>
-          <span class="exp-chip us">MMM Up at Dawn</span>
-        </div>
-        <div class="signal-strip">
-          <div class="signal-chip seph"><div class="chip-desc">Sol de Janeiro 91</div><div class="chip-num">$39</div><div class="chip-desc">Body Mist 畅销</div></div>
-          <div class="signal-chip tt"><div class="chip-desc">#RosePerfume 回归</div><div class="chip-num">4.1亿</div><div class="chip-arrow up">+56%</div></div>
-          <div class="signal-chip pin"><div class="chip-desc">Green Rose搜索</div><div class="chip-num">+134%</div><div class="chip-arrow up">Pinterest</div></div>
-          <div class="signal-chip yt"><div class="chip-desc">玫瑰香水测评</div><div class="chip-num">210万</div><div class="chip-arrow up">+42%</div></div>
-        </div>
-        <div class="action-strip">
-          <span class="action-tag">🎯 行动</span>
-          <span class="action-text">推出"晨露玫瑰"身体喷雾（对标Sol de Janeiro $39价格带）——青绿玫瑰+梨+白麝香，清爽不粉腻。Z世代对玫瑰的接受度正在回归，但必须是"现代玫瑰"而非"祖母玫瑰"。</span>
-        </div>
-        <div class="trend-decision-bar">
-          <span class="dec-label">信号→决策</span>
-          <span class="dec-signal">Sol de Janeiro $39</span>
-          <span class="dec-arrow">→</span>
-          <span class="dec-direction">晨露玫瑰身体喷雾</span>
-          <span class="dec-strength mid">MID</span>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="zone zone-cn">
-    <span class="zone-badge cn">CN 中国香水市场</span>
-    <div class="zone-platforms">平台：<strong>抖音 · 小红书 · 天猫 · 艾媒咨询</strong></div>
-
-    <div class="trend-v-card cn open">
-      <div class="trend-v-header" onclick="this.parentElement.classList.toggle('open')">
-        <h4>🏮 东方叙事香：观夏/气味图书馆引领"文化香"崛起</h4>
-        <span class="trend-v-arrow">▼</span>
-      </div>
-      <div class="trend-v-body">
-        <div class="driver-summary">中国香水消费者的购买逻辑从"社交悦人"转向"情绪自洽"——以观夏、气味图书馆、冰希黎为代表的国货香水以东方香调和东方文化叙事吸引大批年轻消费者。</div>
-        <div class="driver-chain">
-          <span class="chain-node trigger">触发：2025国产香水十大品牌（冰希黎/气味图书馆/观夏等）</span>
-          <span class="chain-arrow">→</span>
-          <span class="chain-node ferment">发酵：固态香膏、线香、扩香精等品类多元化</span>
-          <span class="chain-arrow">→</span>
-          <span class="chain-node diverge">分化：茶香 × 桂花 × 檀香 三大东方香调系</span>
-        </div>
-        <div class="driver-expand">
-          <span class="exp-chip cn">观夏 东方美学</span>
-          <span class="exp-chip cn">气味图书馆</span>
-          <span class="exp-chip cn">冰希黎</span>
-          <span class="exp-chip cn">固态香膏品类</span>
-        </div>
-        <div class="signal-strip">
-          <div class="signal-chip xhs"><div class="chip-desc">东方香笔记数</div><div class="chip-num">890万+</div><div class="chip-arrow up">+125%</div></div>
-          <div class="signal-chip douyin"><div class="chip-desc">国货香水话题量</div><div class="chip-num">4.6亿</div><div class="chip-arrow up">+87%</div></div>
-          <div class="signal-chip tmall"><div class="chip-desc">国货香水GMV增速</div><div class="chip-num">+45%</div><div class="chip-arrow up">YoY</div></div>
-          <div class="signal-chip gtrends"><div class="chip-desc">固态香水搜索</div><div class="chip-num">+174.6%</div><div class="chip-arrow up">全球趋势</div></div>
-        </div>
-        <div class="action-strip">
-          <span class="action-tag">🎯 行动</span>
-          <span class="action-text">开发"东方茶韵"系列——以中国茶为灵感：龙井绿茶/普洱陈香/桂花乌龙，配合东方美学包装（瓷器质感瓶身）。固态香膏形态契合便携趋势（+174.6%全球搜索增长），优先布局该品类。</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="trend-v-card cn open">
-      <div class="trend-v-header" onclick="this.parentElement.classList.toggle('open')">
-        <h4>🍵 抹茶狂热：+173%搜索增长的绿意香调</h4>
-        <span class="trend-v-arrow">▼</span>
-      </div>
-      <div class="trend-v-body">
-        <div class="driver-summary">抹茶香调搜索增长173%，"茶香"品类社交媒体提及量增长45%——从Kayali到Le Labo，抹茶已成为连接健康生活方式与香水品类的桥梁。</div>
-        <div class="driver-chain">
-          <span class="chain-node trigger">触发：Kayali Freedom Musk Matcha 引爆话题</span>
-          <span class="chain-arrow">→</span>
-          <span class="chain-node ferment">发酵：Le Labo Thé Matcha 26 高端定价验证</span>
-          <span class="chain-arrow">→</span>
-          <span class="chain-node diverge">分化：抹茶×香草 / 抹茶×雪松 / 抹茶×柑橘 三个方向</span>
-        </div>
-        <div class="driver-expand">
-          <span class="exp-chip global">抹茶搜索 +173%</span>
-          <span class="exp-chip us">Kayali Freedom Musk Matcha</span>
-          <span class="exp-chip global">Le Labo Thé Matcha 26</span>
-          <span class="exp-chip cn">Bvlgari Thé Impérial 茶文化</span>
-        </div>
-        <div class="signal-strip">
-          <div class="signal-chip tt"><div class="chip-desc">#MatchaPerfume</div><div class="chip-num">1.8亿</div><div class="chip-arrow up">+173%</div></div>
-          <div class="signal-chip xhs"><div class="chip-desc">茶香笔记数</div><div class="chip-num">320万+</div><div class="chip-arrow up">+45%</div></div>
-          <div class="signal-chip seph"><div class="chip-desc">Kayali 抹茶 Sephora</div><div class="chip-num">TOP 20</div><div class="chip-desc">香水品类</div></div>
-          <div class="signal-chip pin"><div class="chip-desc">Matcha Scent</div><div class="chip-num">+198%</div><div class="chip-arrow up">Pinterest</div></div>
-        </div>
-        <div class="action-strip">
-          <span class="action-tag">🎯 行动</span>
-          <span class="action-text">推出"抹茶雾语"淡香精——日本抹茶+雪松木+白麝香。中国市场茶文化根基深厚，抹茶香调兼具国际趋势与本土文化共鸣。重点渠道：天猫旗舰店+小红书种草，对标Le Labo高端定位但Masstige定价。</span>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<!-- Fragrance Heat -->
-<div class="heat-section">
-  <div class="heat-panel us-heat">
-    <h4><span style="background:var(--us-blue);color:white;padding:2px 10px;border-radius:4px;font-size:10px;">US</span> 香水热度 TOP 5</h4>
-    <ul class="heat-accordion">
-      <li class="heat-item"><span class="heat-rank us">1</span><div class="heat-info"><span class="heat-name">Sol de Janeiro Cheirosa 91 Rosa Charmosa</span><span class="heat-brand"> · Sol de Janeiro</span></div><div class="heat-meter"><div class="heat-fill us-fill" style="width:95%"></div></div><div class="heat-data">玫瑰+热带果香 · $39 Body Mist · Sephora畅销</div></li>
-      <li class="heat-item"><span class="heat-rank us">2</span><div class="heat-info"><span class="heat-name">Phlur Missing Person</span><span class="heat-brand"> · Phlur</span></div><div class="heat-meter"><div class="heat-fill us-fill" style="width:88%"></div></div><div class="heat-data">肌肤感麝香标杆 · 社媒常青款 · Sephora TOP 5</div></li>
-      <li class="heat-item"><span class="heat-rank us">3</span><div class="heat-info"><span class="heat-name">Kayali Freedom Musk Matcha</span><span class="heat-brand"> · Kayali</span></div><div class="heat-meter"><div class="heat-fill us-fill" style="width:82%"></div></div><div class="heat-data">抹茶+香草+麝香 · Sephora TOP 20 · 抹茶趋势受益者</div></li>
-      <li class="heat-item"><span class="heat-rank us">4</span><div class="heat-info"><span class="heat-name">Kilian Paris Love, Don't Be Shy</span><span class="heat-brand"> · Kilian Paris</span></div><div class="heat-meter"><div class="heat-fill us-fill" style="width:75%"></div></div><div class="heat-data">棉花糖+麝香经典 · 暗黑美食调代表 · TikTok长红</div></li>
-      <li class="heat-item"><span class="heat-rank us">5</span><div class="heat-info"><span class="heat-name">Glossier You</span><span class="heat-brand"> · Glossier</span></div><div class="heat-meter"><div class="heat-fill us-fill" style="width:68%"></div></div><div class="heat-data">个性化皮肤麝香 · 固体版鹅卵石造型爆款</div></li>
-    </ul>
-  </div>
-  <div class="heat-panel cn-heat">
-    <h4><span style="background:var(--cn-yellow);color:#1A1A1A;padding:2px 10px;border-radius:4px;font-size:10px;">CN</span> 香水热度 TOP 5</h4>
-    <ul class="heat-accordion">
-      <li class="heat-item"><span class="heat-rank cn">1</span><div class="heat-info"><span class="heat-name">观夏 昆仑煮雪</span><span class="heat-brand"> · 观夏</span></div><div class="heat-meter"><div class="heat-fill cn-fill" style="width:95%"></div></div><div class="heat-data">东方美学标杆 · 雪松+焚香+琥珀 · 小红书现象级</div></li>
-      <li class="heat-item"><span class="heat-rank cn">2</span><div class="heat-info"><span class="heat-name">气味图书馆 凉白开</span><span class="heat-brand"> · 气味图书馆</span></div><div class="heat-meter"><div class="heat-fill cn-fill" style="width:85%"></div></div><div class="heat-data">国民记忆香 · 铝壶煮水金属感 · 天猫长销</div></li>
-      <li class="heat-item"><span class="heat-rank cn">3</span><div class="heat-info"><span class="heat-name">冰希黎 幻境流沙金</span><span class="heat-brand"> · 冰希黎</span></div><div class="heat-meter"><div class="heat-fill cn-fill" style="width:78%"></div></div><div class="heat-data">流沙鎏金视觉效果 · 花香+果香+木质 · 抖音爆款</div></li>
-      <li class="heat-item"><span class="heat-rank cn">4</span><div class="heat-info"><span class="heat-name">Le Labo Thé Matcha 26</span><span class="heat-brand"> · Le Labo</span></div><div class="heat-meter"><div class="heat-fill cn-fill" style="width:70%"></div></div><div class="heat-data">抹茶+雪松+苦橙 · 高端茶香标杆 · 小红书热议</div></li>
-      <li class="heat-item"><span class="heat-rank cn">5</span><div class="heat-info"><span class="heat-name">Maison Margiela Replica 慵懒周末</span><span class="heat-brand"> · Maison Margiela</span></div><div class="heat-meter"><div class="heat-fill cn-fill" style="width:62%"></div></div><div class="heat-data">白色麝香+梨+鸢尾 · 洁净感香调长红 · 天猫国际畅销</div></li>
-    </ul>
-  </div>
-</div>
-
-<!-- Fragrance New Product Radar -->
-<div class="radar-section">
-  <div class="radar-subsection">
-    <h4>🆕 香水新品雷达 — 奢品</h4>
-    <table class="radar-table">
-      <thead><tr><th>品牌</th><th>产品</th><th>定位</th><th>香调</th><th>口碑</th></tr></thead>
-      <tbody>
-        <tr>
-          <td><span class="radar-brand">Tom Ford</span></td><td><span class="radar-product">Taormina Orange EDP</span></td>
-          <td><span class="radar-tier luxury">Luxury</span></td>
-          <td class="radar-desc">青橘+青柠/橙花净油+西西里血橙/广藿香+橡苔+盐感麝香 — 西西里海岸灵感</td>
-          <td><span class="rev-tag rev-pos">6月发售 · 高期待</span></td>
-        </tr>
-        <tr>
-          <td><span class="radar-brand">Bvlgari</span></td><td><span class="radar-product">Eau Parfumée Thé Impérial</span></td>
-          <td><span class="radar-tier luxury">Luxury</span></td>
-          <td class="radar-desc">中国茶文化+意大利柑橘 — 东西方交融 · 原为宝格丽酒店签名香</td>
-          <td><span class="rev-tag rev-pos">全球发售 · 话题性高</span></td>
-        </tr>
-        <tr>
-          <td><span class="radar-brand">L'Artisan Parfumeur</span></td><td><span class="radar-product">L'Amant EDP</span></td>
-          <td><span class="radar-tier luxury">Luxury</span></td>
-          <td class="radar-desc">辣椒叶/墨水+广藿香/香柏+檀香+香根草 — 热情与克制的张力</td>
-          <td><span class="rev-tag rev-mid">$300/100ml · 小众高端</span></td>
-        </tr>
-        <tr>
-          <td><span class="radar-brand">Rabanne</span></td><td><span class="radar-product">Million Gold For Her Pure Diamonds</span></td>
-          <td><span class="radar-tier luxury">Luxury</span></td>
-          <td class="radar-desc">桃子+薰衣草+覆盆子/依兰+茉莉净油/柔滑麝香 — 限量版</td>
-          <td><span class="rev-tag rev-mid">$250/90ml · 限量</span></td>
-        </tr>
-        <tr>
-          <td><span class="radar-brand">Jean Paul Gaultier</span></td><td><span class="radar-product">Le Male In Blue</span></td>
-          <td><span class="radar-tier luxury">Luxury</span></td>
-          <td class="radar-desc">芳香薰衣草/金属感茴香/温暖安息香 — 海洋能量 · 限量版</td>
-          <td><span class="rev-tag rev-mid">$139/75ml · 限量</span></td>
-        </tr>
-        <tr>
-          <td><span class="radar-brand">Guerlain</span></td><td><span class="radar-product">Aqua Allegoria Rosa Rossa EDT</span></td>
-          <td><span class="radar-tier luxury">Luxury</span></td>
-          <td class="radar-desc">清新青绿玫瑰 — 现代玫瑰复兴趋势代表</td>
-          <td><span class="rev-tag rev-pos">玫瑰复兴受益者</span></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <div class="radar-subsection">
-    <h4>🆕 香水新品雷达 — Masstige 香水</h4>
-    <table class="radar-table">
-      <thead><tr><th>品牌</th><th>产品</th><th>定位</th><th>香调</th><th>口碑</th></tr></thead>
-      <tbody>
-        <tr>
-          <td><span class="radar-brand">Huda Beauty</span></td><td><span class="radar-product">Easy Bake Intense EDP</span></td>
-          <td><span class="radar-tier masstige">Masstige</span></td>
-          <td class="radar-desc"><span class="frag-note-tag frag-fruity">野樱桃</span><span class="frag-note-tag frag-floral">白花</span><span class="frag-note-tag frag-gourmand">焦糖牛奶</span><span class="frag-note-tag frag-gourmand">波旁香草</span> — 美食调</td>
-          <td><span class="rev-tag rev-pos">$129/50ml · Sephora 独售</span></td>
-        </tr>
-        <tr>
-          <td><span class="radar-brand">Phlur</span></td><td><span class="radar-product">Rose Whip EDP</span></td>
-          <td><span class="radar-tier masstige">Masstige</span></td>
-          <td class="radar-desc"><span class="frag-note-tag frag-floral">青绿玫瑰</span><span class="frag-note-tag frag-green">绿叶</span><span class="frag-note-tag frag-musk">麝香</span> — 现代玫瑰复兴</td>
-          <td><span class="rev-tag rev-pos">$99 · 玫瑰复兴标杆</span></td>
-        </tr>
-        <tr>
-          <td><span class="radar-brand">Glossier</span></td><td><span class="radar-product">Glossier You Solid</span></td>
-          <td><span class="radar-tier masstige">Masstige</span></td>
-          <td class="radar-desc"><span class="frag-note-tag frag-musk">皮肤麝香</span><span class="frag-note-tag frag-woody">木质</span> — 固体香膏</td>
-          <td><span class="rev-tag rev-pos">社媒现象级 · 便携趋势</span></td>
-        </tr>
-        <tr>
-          <td><span class="radar-brand">Sol de Janeiro</span></td><td><span class="radar-product">Cheirosa 91 Rosa Charmosa</span></td>
-          <td><span class="radar-tier masstige">Masstige</span></td>
-          <td class="radar-desc"><span class="frag-note-tag frag-floral">玫瑰</span><span class="frag-note-tag frag-fruity">热带果香</span> — Body & Hair Mist</td>
-          <td><span class="rev-tag rev-pos">$39 · Sephora TOP 畅销</span></td>
-        </tr>
-        <tr>
-          <td><span class="radar-brand">Lake & Skye</span></td><td><span class="radar-product">11 11 Moon EDP</span></td>
-          <td><span class="radar-tier masstige">Masstige</span></td>
-          <td class="radar-desc"><span class="frag-note-tag frag-musk">麝香</span><span class="frag-note-tag frag-woody">檀香</span> — 肌肤感麝香延伸</td>
-          <td><span class="rev-tag rev-pos">$105 · 麝香趋势受益</span></td>
-        </tr>
-        <tr>
-          <td><span class="radar-brand">DedCool</span></td><td><span class="radar-product">Mochi Milk Fragrance</span></td>
-          <td><span class="radar-tier masstige">Masstige</span></td>
-          <td class="radar-desc"><span class="frag-note-tag frag-gourmand">麻薯</span><span class="frag-note-tag frag-gourmand">牛奶</span> — 升级版美食调</td>
-          <td><span class="rev-tag rev-pos">$90 · 美食调创新</span></td>
         </tr>
       </tbody>
     </table>
