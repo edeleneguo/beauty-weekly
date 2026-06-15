@@ -2,1179 +2,765 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
+<meta name="version" content="week25-20260615-v1">
+<!-- Cache-bust: week25-20260615-v1 -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>彩妆行业周报 | 2026年第24周</title>
-<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-<meta http-equiv="Pragma" content="no-cache">
-<meta http-equiv="Expires" content="0">
-<meta name="version" content="2026-06-13-1750">
-<!-- Cache-bust: 2026-06-13-1750 CST -->
+<title>美妆行业周报 Week 25 | ZURU EDGE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 :root {
-  /* === ZURU EDGE Design System (based on reference dashboard) === */
-  --zuru-red: #D6001C;
-  --zuru-red-dark: #B00018;
-  --zuru-red-light: rgba(214, 0, 28, 0.08);
-  --zuru-red-glow: rgba(214, 0, 28, 0.15);
-  --monday-pink: #D6001C;
-  --monday-pink-light: rgba(214, 0, 28, 0.06);
+  --zurured: #D6001C;
+  --rose: #c94b6c;
+  --teal: #2d8a7a;
+  --gold: #b8943a;
+  --coral: #d4654a;
+  --lavender: #7b6faa;
   --us-blue: #2563EB;
-  --us-blue-light: rgba(37, 99, 235, 0.08);
-  --us-blue-glow: rgba(37, 99, 235, 0.15);
-  --gold: #F59E0B;
-  --coral: #EF4444;
-  --lavender: #8B5CF6;
-  --purple: #8B5CF6;
-  --daise-pink: #EC4899;
-
-  /* Light surfaces (ref dashboard) */
-  --bg-primary: #FAFAFA;
-  --bg-secondary: #F3F4F6;
-  --bg-elevated: #F9FAFB;
-  --bg-card: #FFFFFF;
-  --bg-hover: #F0F0F5;
-
-  /* Borders (ref dashboard) */
-  --border-subtle: #E5E7EB;
-  --border-medium: #D1D5DB;
-  --border-hover: #D6001C;
-
-  /* Text (ref dashboard) */
+  --cn-yellow: #F59E0B;
+  --body-bg: #FAFAFA;
+  --card-bg: #FFFFFF;
+  --border: #E5E7EB;
   --text: #1A1A1A;
   --text-secondary: #6B7280;
-  --text-tertiary: #9CA3AF;
-
-  /* Shadows */
-  --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
-  --shadow: 0 4px 20px rgba(0,0,0,0.08);
-  --shadow-lg: 0 8px 40px rgba(0,0,0,0.10);
-  --glow-red: 0 4px 20px rgba(214, 0, 28, 0.12);
-  --glow-blue: 0 4px 20px rgba(37, 99, 235, 0.12);
-
-  /* Zone colors */
-  --cn-bg: rgba(245, 158, 11, 0.04);
-  --cn-border: rgba(245, 158, 11, 0.20);
-  --us-bg: rgba(37, 99, 235, 0.04);
-  --us-border: rgba(37, 99, 235, 0.20);
-
-  /* Legacy compat */
-  --rose: #D6001C;
-  --blue: #2563EB;
-  --card-bg: #FFFFFF;
+  --text-muted: #9CA3AF;
+  --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
-  background: var(--bg-primary);
-  color: var(--text);
-  line-height: 1.65;
-  -webkit-font-smoothing: antialiased;
-}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font); background: var(--body-bg); color: var(--text); line-height: 1.5; }
 
-.container { max-width: 1400px; margin: 0 auto; padding: 28px 20px 48px; }
-
-/* === Header - ZURU EDGE Clean Light Banner === */
-.header {
-  text-align: center;
-  padding: 28px 32px 22px;
-  background: var(--zuru-red);
-  color: white;
-  border-radius: 16px;
-  margin-bottom: 32px;
-  position: relative;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-}
-.header::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  right: -20%;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(230, 0, 18, 0.04) 0%, transparent 70%);
-  border-radius: 50%;
-  pointer-events: none;
-}
-.header::after {
-  content: '';
-  position: absolute;
-  bottom: -30%;
-  left: -10%;
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, rgba(232, 82, 122, 0.03) 0%, transparent 70%);
-  border-radius: 50%;
-  pointer-events: none;
-}
-.header h1 {
-  font-size: 28px;
-  font-weight: 800;
-  color: white;
-  letter-spacing: -0.5px;
-  position: relative;
-  z-index: 1;
-}
-.header .subtitle {
-  font-size: 14px;
-  color: rgba(255,255,255,0.85);
-  margin-top: 4px;
-  font-weight: 500;
-  letter-spacing: 0.3px;
-  position: relative;
-  z-index: 1;
-}
-.header .date-badge {
-  display: inline-block;
-  background: rgba(255,255,255,0.2);
-  border: 1.5px solid rgba(255,255,255,0.5);
-  border-radius: 8px;
-  padding: 6px 18px;
-  font-size: 13px;
-  color: white;
-  margin-top: 12px;
-  font-weight: 600;
-  position: relative;
-  z-index: 1;
-}
-.header .header-tags {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 18px;
-  position: relative;
-  z-index: 1;
-}
-.header .header-tag {
-  display: inline-block;
-  padding: 4px 14px;
-  border-radius: 16px;
-  font-size: 12px;
-  font-weight: 600;
-  background: rgba(255,255,255,0.15);
-  border: 1px solid rgba(255,255,255,0.3);
-  color: white;
-}
-
-/* Executive Summary */
-.exec-summary {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 14px;
-  max-width: 1050px;
-  margin: 28px auto 0;
-  position: relative;
-  z-index: 1;
-}
-.exec-card {
-  background: var(--bg-elevated);
-  backdrop-filter: blur(10px);
-  border-radius: 14px;
-  padding: 18px 18px;
-  box-shadow: var(--shadow-sm);
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  text-align: left;
-  border-top: 4px solid var(--border-subtle);
-  border: 1px solid var(--border-subtle);
-  border-top: 4px solid var(--border-subtle);
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-.exec-card:hover { transform: translateY(-2px); box-shadow: var(--glow-red); }
-.exec-card.cn-makeup { border-top-color: var(--gold); }
-.exec-card.us-makeup { border-top-color: var(--us-blue); }
-.exec-card.cn-frag { border-top-color: var(--gold); }
-.exec-card.us-frag { border-top-color: var(--us-blue); }
-.exec-card .exec-icon { font-size: 20px; }
-.exec-card .exec-tag { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: var(--text-tertiary); }
-.exec-card .exec-headline { font-size: 14px; font-weight: 700; color: var(--text); line-height: 1.4; }
-.exec-card .exec-detail { font-size: 12px; color: var(--text-secondary); line-height: 1.5; }
-.exec-card .exec-highlight { display: inline-block; background: var(--zuru-red-light); color: var(--zuru-red); padding: 1px 6px; border-radius: 4px; font-weight: 600; font-size: 12px; }
-.exec-card .exec-highlight.teal { background: var(--us-blue-light); color: var(--us-blue); }
-.exec-card .exec-highlight.gold { background: rgba(255, 184, 0, 0.15); color: var(--gold); }
-.exec-card .exec-highlight.coral { background: rgba(255, 107, 107, 0.15); color: var(--coral); }
-
-/* KPI inline */
-.kpi-inline { display: flex; gap: 10px; margin-bottom: 14px; flex-wrap: wrap; }
-.kpi-pill {
-  background: var(--bg-elevated);
-  border-radius: 12px;
-  padding: 12px 16px;
-  box-shadow: var(--shadow-sm);
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 13px;
-  border: 1px solid var(--border-subtle);
-}
-.kpi-pill .kpi-pill-val { font-size: 22px; font-weight: 700; }
-.kpi-pill .kpi-pill-meta { display: flex; flex-direction: column; }
-.kpi-pill .kpi-pill-label { font-size: 12px; color: var(--text-secondary); }
-.kpi-pill .kpi-pill-sub { font-size: 11px; color: var(--text-tertiary); }
-.kpi-pill.pill-rose .kpi-pill-val { color: var(--zuru-red); }
-.kpi-pill.pill-teal .kpi-pill-val { color: var(--us-blue); }
-.kpi-pill.pill-gold .kpi-pill-val { color: var(--gold); }
-.kpi-pill.pill-coral .kpi-pill-val { color: var(--coral); }
-
-.perf-overview { background: var(--bg-secondary); border-radius: 12px; padding: 16px 20px; margin-bottom: 16px; border: 1px solid var(--border-subtle); }
-.perf-overview-label { font-size: 13px; font-weight: 700; color: var(--text-secondary); margin-bottom: 10px; }
-.perf-overview .kpi-inline { margin-bottom: 0; }
-
-@media (max-width: 768px) {
-  .exec-summary { grid-template-columns: repeat(2, 1fr); }
-}
-
-/* News strip */
-.news-strip {
-  background: var(--bg-card);
-  border-radius: 16px;
-  padding: 24px 28px;
-  box-shadow: var(--shadow-sm);
-  margin-bottom: 28px;
-  border: 1px solid var(--border-subtle);
-}
-.news-strip h3 {
-  font-size: 16px;
-  font-weight: 700;
-  margin-bottom: 16px;
-  color: var(--text);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.news-list { display: flex; flex-direction: column; gap: 10px; }
-.news-card {
-  border: 1px solid var(--border-medium);
-  border-radius: 12px;
-  padding: 16px 18px;
-  cursor: pointer;
-  transition: all 0.25s;
-  background: var(--bg-elevated);
-}
-.news-card:hover {
-  border-color: var(--border-hover);
-  background: var(--bg-hover);
-  box-shadow: 0 2px 12px rgba(214, 0, 28, 0.08);
-}
-.news-card-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; cursor: pointer; user-select: none; }
-.news-card-header:hover .news-card-chevron { color: var(--text-secondary); }
-.news-card-chevron { font-size: 24px; color: var(--text-tertiary); transition: transform 0.25s; flex-shrink: 0; line-height: 1; cursor: pointer; }
-.news-card.open .news-card-chevron { transform: rotate(180deg); color: var(--text-secondary); }
-.news-card-title { font-size: 14px; font-weight: 600; color: var(--text); line-height: 1.5; flex: 1; }
-.news-card-tag { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 11px; font-weight: 600; white-space: nowrap; flex-shrink: 0; }
-.news-card-tag.ma { background: var(--zuru-red-light); color: var(--zuru-red); }
-.news-card-tag.launch { background: var(--us-blue-light); color: var(--us-blue); }
-.news-card-tag.capital { background: rgba(255, 184, 0, 0.15); color: var(--gold); }
-.news-card-tag.data { background: rgba(123, 97, 255, 0.15); color: var(--lavender); }
-.news-card-tag.cn { background: rgba(245, 158, 11, 0.12); color: #D97706; }
-.news-card-tag.us { background: var(--us-blue-light); color: var(--us-blue); }
-.news-card-tag.shared { background: rgba(214, 0, 28, 0.12); color: var(--zuru-red); }
-
-.news-card-brief { font-size: 13px; color: var(--text-secondary); margin-top: 6px; line-height: 1.6; }
-.news-card-body { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
-.news-card.open .news-card-body { max-height: 500px; margin-top: 8px; }
-.news-card-body-inner {
-  font-size: 13px;
-  color: var(--text-secondary);
-  line-height: 1.7;
-  padding: 14px 18px;
-  background: var(--bg-secondary);
-  border-radius: 10px;
-  border-left: 4px solid var(--zuru-red);
-}
-.news-card:not(.open) .news-card-body-inner {
-  font-size: 13px;
-  color: var(--text-secondary);
-  line-height: 1.7;
-  padding: 14px 18px;
-  background: var(--bg-secondary);
-  border-radius: 10px;
-  border-left: 4px solid var(--zuru-red);
-}
-.hl-num { color: var(--zuru-red); font-weight: 700; }
-
-/* Section */
-.section { margin-bottom: 36px; }
-.section-title {
-  font-size: 22px;
-  font-weight: 800;
-  margin-bottom: 8px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  color: var(--text);
-  letter-spacing: -0.3px;
-}
-.section-subnote {
-  font-size: 12px;
-  color: var(--text-tertiary);
-  margin-bottom: 20px;
-  padding: 6px 14px;
-  background: var(--bg-elevated);
-  border-radius: 8px;
-  display: inline-block;
-  border: 1px solid var(--border-subtle);
-}
-.section-divider {
-  height: 4px;
-  background: linear-gradient(90deg, var(--zuru-red), var(--us-blue), transparent);
-  border-radius: 2px;
-  margin: 40px 0;
-  opacity: 0.4;
-}
-
-/* === Section banner - ZURU EDGE clean light === */
+/* Banner */
 .section-banner {
-  text-align: center;
-  padding: 32px 32px 26px;
-  border-radius: 18px;
-  margin-bottom: 20px;
-  position: relative;
-  box-shadow: var(--shadow);
-  background: #FFFFFF;
-}
-.section-banner::before {
-  content: '';
-  position: absolute;
-  top: -40%;
-  right: -15%;
-  width: 350px;
-  height: 350px;
-  background: radial-gradient(circle, rgba(230, 0, 18, 0.04) 0%, transparent 70%);
-  border-radius: 50%;
-  pointer-events: none;
-}
-.section-banner::after {
-  content: '';
-  position: absolute;
-  bottom: -30%;
-  left: -10%;
-  width: 280px;
-  height: 280px;
-  background: radial-gradient(circle, rgba(232, 82, 122, 0.03) 0%, transparent 70%);
-  border-radius: 50%;
-  pointer-events: none;
-}
-.section-banner h2 {
-  font-size: 22px;
-  font-weight: 800;
+  background: var(--zurured);
   color: white;
-  letter-spacing: -0.3px;
-  position: relative;
-  z-index: 1;
-}
-.section-banner .banner-sub {
-  font-size: 13px;
-  color: rgba(255,255,255,0.80);
-  margin-top: 6px;
-  font-weight: 500;
-  letter-spacing: 0.3px;
-  position: relative;
-  z-index: 1;
-}
-
-.makeup-banner {
-  background: var(--zuru-red);
-  color: white;
-}
-.fragrance-banner {
-  background: linear-gradient(135deg, #9B0015 0%, #D6001C 60%, #B00018 100%);
-  color: white;
-  border-top: 3px solid rgba(255,255,255,0.4);
-  border-bottom: 3px solid rgba(255,255,255,0.2);
-}
-
-/* === Section shell === */
-.section-shell {
-  border-radius: 20px;
-  padding: 32px 24px;
-  margin-bottom: 16px;
-  position: relative;
-  overflow: hidden;
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-subtle);
-}
-.section-shell::before {
-  content: '';
-  position: absolute;
-  top: 0; right: 0;
-  width: 300px; height: 300px;
-  border-radius: 50%;
-  pointer-events: none;
-  opacity: 0.5;
-}
-.makeup-shell {
-  background: #FFFFFF;
-  border: 1px solid var(--border-subtle);
-  box-shadow: var(--shadow-sm);
-}
-.makeup-shell::before { display: none; }
-.fragrance-shell {
-  background: #FFFFFF;
-  border: 1px solid var(--border-subtle);
-  box-shadow: var(--shadow-sm);
-}
-.fragrance-shell::before { display: none; }
-.section-shell .section { margin-bottom: 0; }
-
-/* Trend grid */
-.trend-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px; margin-bottom: 20px; }
-.trend-grid .zone-cn, .trend-grid .zone-cn-frag { order: 2; }
-.trend-grid .zone-us, .trend-grid .zone-us-frag { order: 1; }
-@media (max-width: 900px) { .trend-grid { grid-template-columns: 1fr; } .trend-grid .zone-cn, .trend-grid .zone-cn-frag, .trend-grid .zone-us, .trend-grid .zone-us-frag { order: 0; } }
-
-/* Common Trends */
-.common-trends-section {
-  margin-bottom: 28px;
-  border: 1px solid var(--zuru-red);
-  border-radius: 18px;
-  padding: 24px 28px;
-  background: rgba(230, 0, 18, 0.04);
-  box-shadow: 0 0 20px rgba(230, 0, 18, 0.08);
-}
-.common-trends-header {
+  padding: 28px 32px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 18px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
 }
-.common-badge { background: var(--zuru-red);
-  color: #fff;
-  padding: 5px 16px;
+.banner-left h1 { font-size: 22px; font-weight: 800; letter-spacing: -0.5px; }
+.banner-left .banner-date { font-size: 13px; opacity: 0.85; margin-top: 4px; display: flex; align-items: center; gap: 12px; }
+.banner-right { display: flex; align-items: center; gap: 10px; }
+.glass-pill {
+  background: rgba(255,255,255,0.2);
+  border: 1px solid rgba(255,255,255,0.35);
+  color: white;
+  padding: 6px 16px;
   border-radius: 20px;
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  box-shadow: 0 2px 8px rgba(214, 0, 28, 0.4);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  font-family: var(--font);
 }
-.common-subtitle { font-size: 12px; color: var(--zuru-red); font-weight: 500; }
-.common-trend-card { border: 1px solid rgba(214, 0, 28, 0.20);
-  border-radius: 14px;
+.glass-pill:hover { background: rgba(255,255,255,0.3); }
+.week-select { padding: 6px 12px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.35); background: rgba(255,255,255,0.15); color: white; font-size: 12px; font-family: var(--font); cursor: pointer; }
+.week-select option { color: #1A1A1A; }
+
+/* Section Shell */
+.section-shell { max-width: 1400px; margin: 0 auto; padding: 24px 32px; }
+.section-title {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 16px 24px;
+  margin: 28px 0 20px;
+  font-size: 18px;
+  font-weight: 700;
+  border-left: 4px solid var(--zurured);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* KPI Row */
+.kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
+.kpi-card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid var(--border);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.kpi-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; font-weight: 600; letter-spacing: 0.5px; }
+.kpi-value { font-size: 32px; font-weight: 800; margin: 6px 0; }
+.kpi-sub { font-size: 12px; color: var(--text-secondary); }
+.kpi-card.cn-kpi { border-top: 3px solid var(--cn-yellow); }
+.kpi-card.us-kpi { border-top: 3px solid var(--us-blue); }
+.kpi-card.global-kpi { border-top: 3px solid var(--zurured); }
+.kpi-card.frag-kpi { border-top: 3px solid var(--coral); }
+
+/* News */
+.news-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 14px; margin-bottom: 20px; }
+.news-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  cursor: pointer;
   overflow: hidden;
-  margin-bottom: 14px;
-  background: var(--bg-card);
   transition: box-shadow 0.2s;
 }
-.common-trend-card:hover { box-shadow: 0 3px 20px rgba(214, 0, 28, 0.15); }
-.ct-header { display: flex; align-items: center; gap: 12px; padding: 16px 20px 12px; border-bottom: 1px solid rgba(214, 0, 28, 0.12); }
-.ct-header .ct-icon { font-size: 20px; }
-.ct-header .ct-title { font-weight: 700; font-size: 15px; color: var(--text); }
-.ct-header .ct-subtitle { font-size: 12px; color: var(--purple); margin-left: auto; }
-.ct-dual {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0;
-}
-.ct-dual .ct-us { background: var(--us-bg); border-right: 1px solid var(--border-subtle); }
-.ct-dual .ct-cn { background: var(--cn-bg); }
-.ct-flag {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.3px;
-  margin-bottom: 2px;
-}
-.ct-us .ct-flag { color: var(--us-blue); }
-.ct-cn .ct-flag { color: var(--gold); }
-.ct-action { padding: 11px 18px; background: rgba(123, 97, 255, 0.04); border-top: 1px solid rgba(123, 97, 255, 0.12); font-size: 12px; color: var(--us-blue); display: flex; align-items: flex-start; gap: 8px; }
-.ct-action .action-icon { font-size: 13px; flex-shrink: 0; color: var(--purple); }
-@media (max-width: 768px) {
-  .ct-dual { grid-template-columns: 1fr; }
-  .ct-dual .ct-us { border-right: none; border-bottom: 1px solid var(--border-subtle); }
-}
+.news-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+.news-card-header { padding: 14px 18px; display: flex; align-items: flex-start; gap: 10px; }
+.news-region-tag { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 4px; flex-shrink: 0; margin-top: 2px; }
+.news-region-tag.cn { background: #FEF3C7; color: #92400E; }
+.news-region-tag.us { background: #DBEAFE; color: #1E40AF; }
+.news-region-tag.global { background: #FEE2E2; color: #991B1B; }
+.news-card-title { font-size: 14px; font-weight: 600; flex: 1; }
+.news-card-body { padding: 0 18px 14px 42px; font-size: 13px; color: var(--text-secondary); display: none; line-height: 1.6; }
+.news-card.open .news-card-body { display: block; }
+.news-card.open .news-card-header { border-bottom: 1px solid var(--border); }
 
-.zone { border-radius: 18px; padding: 28px; position: relative; }
-.zone-cn { background: var(--cn-bg); border: 1.5px solid var(--cn-border); }
-.zone-us { background: var(--us-bg); border: 1.5px solid var(--us-border); }
-
-.zone-badge { display: inline-block; padding: 7px 20px; border-radius: 22px; font-size: 14px; font-weight: 700; position: absolute; top: -16px; left: 24px; box-shadow: 0 3px 12px rgba(0,0,0,0.12); }
-.zone-badge.cn { background: var(--gold); color: #fff; box-shadow: 0 3px 12px rgba(245, 158, 11, 0.4); }
-.zone-badge.us { background: var(--us-blue); color: #fff; box-shadow: 0 3px 12px rgba(37, 99, 235, 0.4); }
-
-/* Trend cards */
-.trend-v-card {
-  background: var(--bg-card);
+/* Trend Grid */
+.trend-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px; }
+.zone {
   border-radius: 14px;
-  padding: 22px;
-  margin-bottom: 16px;
-  box-shadow: var(--shadow-sm);
-  border: 1px solid var(--border-subtle);
-  transition: box-shadow 0.2s, border-color 0.2s;
-}
-.trend-v-card:hover { box-shadow: var(--shadow); }
-.trend-v-card.cn { border-left: 5px solid var(--gold); border-top: none; }
-.trend-v-card.us { border-left: 5px solid var(--us-blue); border-top: none; }
-.trend-v-card.common { border-left: 5px solid var(--zuru-red); border-top: none; background: rgba(214, 0, 28, 0.04); }
-.trend-v-card.common .driver-summary { background: rgba(214, 0, 28, 0.08); border-left: 3px solid var(--zuru-red); color: var(--zuru-red); }
-.trend-v-card h4 {
-  font-size: 16px;
-  font-weight: 700;
-  margin-bottom: 12px;
-  color: var(--text);
-  text-shadow: 0 2px 4px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.06);
-  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.06));
-}
-
-/* Trend body - driver */
-.trend-v-body { margin-bottom: 16px; }
-.driver-summary { padding: 12px 16px; border-radius: 10px; font-size: 14px; font-weight: 600; margin-bottom: 14px; }
-.cn .driver-summary { background: rgba(245, 158, 11, 0.06); border-left: 4px solid var(--gold); color: #B45309; }
-.us .driver-summary { background: var(--us-blue-light); border-left: 4px solid var(--us-blue); color: var(--us-blue); }
-
-/* Driver bullets */
-.driver-bullets { padding-left: 4px; }
-.bullet-group { position: relative; padding: 8px 0 8px 20px; margin-bottom: 4px; }
-.bullet-group::before { content: ''; position: absolute; left: 6px; top: 8px; bottom: 8px; width: 2px; border-radius: 1px; }
-.cn-group::before { background: rgba(230, 0, 18, 0.30); }
-.us-group::before { background: rgba(0, 201, 167, 0.30); }
-.bullet-group:last-child::before { display: none; }
-.bullet-point { display: flex; align-items: flex-start; gap: 8px; font-size: 14px; font-weight: 600; color: var(--text); }
-.b-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-top: 6px; flex-shrink: 0; }
-.cn-dot { background: var(--gold); }
-.us-dot { background: var(--us-blue); }
-
-.region-tag { display: inline-block; padding: 3px 10px; border-radius: 10px; font-size: 11px; font-weight: 700; letter-spacing: 0.3px; flex-shrink: 0; margin-right: 6px; line-height: 1.5; text-transform: uppercase; white-space: nowrap; }
-.cn-tag { background: rgba(245, 158, 11, 0.12); color: #D97706; box-shadow: 0 1px 3px rgba(245, 158, 11, 0.15); }
-.us-tag { background: var(--us-blue-light); color: var(--us-blue); box-shadow: 0 1px 3px rgba(37, 99, 235, 0.15); }
-.bullet-sub { margin-top: 6px; padding-left: 16px; display: flex; flex-direction: column; gap: 4px; }
-.sub-item { font-size: 13px; color: var(--text-secondary); line-height: 1.7; }
-
-/* Signal strip */
-.signal-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 16px; }
-.signal-chip {
-  background: var(--bg-elevated);
-  border-radius: 12px;
-  padding: 14px;
-  border-left: 4px solid var(--border-subtle);
-  transition: transform 0.15s, box-shadow 0.15s;
-  border: 1px solid var(--border-subtle);
-  border-left: 4px solid var(--border-subtle);
-}
-.signal-chip:hover { transform: translateY(-1px); box-shadow: var(--shadow-sm); }
-.signal-chip.yt { border-left-color: var(--zuru-red); }
-.signal-chip.tt { border-left-color: #333333; }
-.signal-chip.seph { border-left-color: var(--us-blue); }
-.signal-chip.wgsn { border-left-color: var(--lavender); }
-.signal-chip.pin { border-left-color: #e60023; }
-.signal-chip.ig { border-left-color: #e4405f; }
-.signal-chip.gtrends { border-left-color: #4285f4; }
-.signal-chip .chip-icon { font-size: 16px; margin-bottom: 2px; }
-.signal-chip .chip-hashtag { font-size: 16px; font-weight: 700; margin: 4px 0 2px; letter-spacing: 0.2px; display: block; color: var(--text); }
-.signal-chip .chip-hashtag.tt-hash { color: var(--zuru-red); }
-.signal-chip .chip-num { font-size: 22px; font-weight: 700; color: var(--text); }
-.signal-chip .chip-desc { font-size: 11px; color: var(--text-tertiary); margin-top: 2px; }
-.signal-chip .chip-trend { font-size: 11px; margin-top: 4px; font-weight: 600; }
-.chip-up { color: var(--us-blue); }
-.chip-hot { color: var(--zuru-red); }
-
-/* Action strip */
-.action-strip { border: none; border-radius: 0; padding: 0; background: transparent; display: block; margin-bottom: 0; }
-.action-block {
-  border: 1px solid rgba(230, 0, 18, 0.20);
-  border-radius: 12px;
-  padding: 18px 20px;
-  background: rgba(230, 0, 18, 0.04);
-  margin-bottom: 0;
-}
-.action-block .act-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
-.action-block .act-label { font-size: 13px; color: var(--zuru-red); font-weight: 700; }
-.action-block .act-direction { background: var(--zuru-red-light); color: var(--zuru-red); padding: 3px 12px; border-radius: 14px; font-size: 12px; font-weight: 600; letter-spacing: 0.2px; }
-.action-block .act-strength { margin-left: auto; font-size: 12px; font-weight: 700; padding: 3px 12px; border-radius: 10px; }
-.action-block .act-strength.strong { background: rgba(230, 0, 18, 0.15); color: var(--zuru-red); }
-.action-block .act-strength.mid { background: rgba(255, 184, 0, 0.15); color: var(--gold); }
-.action-block .act-strength.rising { background: var(--us-blue-light); color: var(--us-blue); }
-.action-block .act-evidence { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
-.action-block .act-evidence .ev-chip { background: var(--bg-elevated); border-radius: 8px; padding: 4px 10px; font-size: 11px; color: var(--text-secondary); font-weight: 500; border: 1px solid var(--border-subtle); }
-.action-block .act-content { font-size: 13px; color: var(--text); line-height: 1.65; padding-top: 8px; border-top: 1px solid rgba(230, 0, 18, 0.12); }
-.action-strip .action-label { font-size: 12px; color: var(--zuru-red); font-weight: 700; white-space: nowrap; flex-shrink: 0; }
-.action-strip .action-content { font-size: 13px; color: var(--text); line-height: 1.6; }
-
-/* Heat ranking - Interactive Accordion */
-.heat-section { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px; margin-bottom: 20px; }
-.heat-section > .heat-panel:first-child { order: 2; }
-.heat-section > .heat-panel:nth-child(2) { order: 1; }
-@media (max-width: 768px) { .heat-section > .heat-panel:first-child, .heat-section > .heat-panel:nth-child(2) { order: 0; } }
-.heat-panel {
-  background: var(--bg-card);
-  border-radius: 16px;
-  padding: 24px;
-  box-shadow: var(--shadow-sm);
-  border: 1px solid var(--border-subtle);
-}
-.heat-panel h4 { font-size: 16px; font-weight: 700; margin-bottom: 16px; color: var(--text); }
-.heat-accordion { list-style: none; padding: 0; margin: 0; }
-.heat-item { border-bottom: 1px solid var(--border-subtle); }
-.heat-item:last-child { border-bottom: none; }
-.heat-item-header { display: flex; align-items: center; gap: 12px; padding: 11px 10px; cursor: pointer; user-select: none; transition: background 0.15s; border-radius: 10px; }
-.heat-item-header:hover { background: var(--bg-hover); }
-.heat-item-header .heat-rank { width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: #fff; flex-shrink: 0; }
-.heat-item-header .heat-rank.r1 { background: var(--zuru-red); box-shadow: 0 2px 8px rgba(230, 0, 18, 0.4); }
-.heat-item-header .heat-rank.r2 { background: var(--zuru-red-dark); }
-.heat-item-header .heat-rank.r3 { background: var(--us-blue); box-shadow: 0 2px 8px rgba(0, 201, 167, 0.3); }
-.heat-item-header .heat-rank.r4 { background: var(--lavender); }
-.heat-item-header .heat-rank.r5 { background: var(--text-tertiary); }
-.heat-item-header .heat-rank.r6 { background: #5b9bd5; }
-.heat-item-header .heat-rank.r7 { background: #7b6faa; }
-.heat-item-header .heat-rank.r8 { background: #d4836a; }
-.heat-item-header .heat-rank.r9 { background: #4a9c8c; }
-.heat-item-header .heat-rank.r10 { background: #6b7280; }
-.heat-item-header .heat-name { font-size: 14px; font-weight: 600; flex: 1; color: var(--text); }
-.heat-item-header .prod-cat-tag { display: inline-block; padding: 2px 10px; border-radius: 10px; font-size: 11px; font-weight: 600; margin-left: 8px; vertical-align: middle; flex-shrink: 0; }
-.heat-item-header .prod-cat-tag.makeup-cat { background: var(--zuru-red-light); color: var(--zuru-red); border: 1px solid rgba(230, 0, 18, 0.20); }
-.heat-item-header .prod-cat-tag.frag-woody { background: rgba(184, 104, 58, 0.15); color: #E8A87C; border: 1px solid rgba(184, 104, 58, 0.25); }
-.heat-item-header .prod-cat-tag.frag-floral { background: rgba(196, 88, 122, 0.15); color: #E88AAF; border: 1px solid rgba(196, 88, 122, 0.25); }
-.heat-item-header .prod-cat-tag.frag-fruity { background: rgba(212, 117, 62, 0.15); color: #F0A070; border: 1px solid rgba(212, 117, 62, 0.25); }
-.heat-item-header .prod-cat-tag.frag-gourmand { background: rgba(184, 122, 48, 0.15); color: #F0C060; border: 1px solid rgba(184, 122, 48, 0.25); }
-.heat-item-header .prod-cat-tag.frag-aquatic { background: var(--us-blue-light); color: var(--us-blue); border: 1px solid rgba(0, 201, 167, 0.25); }
-.heat-item-header .prod-cat-tag.frag-green { background: rgba(78, 128, 64, 0.15); color: #80D070; border: 1px solid rgba(78, 128, 64, 0.25); }
-.heat-item-header .prod-cat-tag.frag-musk { background: rgba(122, 86, 168, 0.15); color: var(--lavender); border: 1px solid rgba(122, 86, 168, 0.25); }
-.heat-item-header .prod-cat-tag.frag-tea { background: rgba(122, 106, 74, 0.15); color: #C0B080; border: 1px solid rgba(122, 106, 74, 0.25); }
-
-/* Trend product tag */
-.trend-product-tag { display: inline-block; padding: 2px 8px; border-radius: 6px; font-size: 10px; font-weight: 700; margin-right: 6px; vertical-align: middle; flex-shrink: 0; letter-spacing: 0.3px; background: var(--zuru-red); color: #fff; box-shadow: 0 1px 3px rgba(230, 0, 18, 0.4); }
-.radar-item-header .trend-product-tag { font-size: 10px; padding: 1px 7px; margin-right: 5px; }
-.trend-product-tag.purple { background: linear-gradient(135deg, #7B61FF, #6B4FEE); box-shadow: 0 1px 3px rgba(123, 97, 255, 0.4); }
-.trend-product-tag.teal { background: linear-gradient(135deg, #10B981, #00B090); box-shadow: 0 1px 3px rgba(0, 201, 167, 0.4); }
-.trend-product-tag.gold { background: linear-gradient(135deg, #FFB800, #E0A000); box-shadow: 0 1px 3px rgba(255, 184, 0, 0.4); }
-.trend-product-tag.coral { background: linear-gradient(135deg, #FF6B6B, #E05050); box-shadow: 0 1px 3px rgba(255, 107, 107, 0.4); }
-.trend-product-tag.green { background: linear-gradient(135deg, #10B981, #00A88A); box-shadow: 0 1px 3px rgba(0, 201, 167, 0.4); }
-
-.heat-item-header .heat-bar-wrap { flex: 1.5; height: 8px; background: var(--border-subtle); border-radius: 4px; overflow: hidden; max-width: 160px; }
-.heat-item-header .heat-fill { height: 100%; border-radius: 4px; }
-/* Zone-based heat bar colors - CN yellow, US blue */
-.heat-zone.cn .heat-fill { background: linear-gradient(90deg, rgba(245,158,11,0.3), var(--gold)) !important; }
-.heat-zone.us .heat-fill { background: linear-gradient(90deg, rgba(37,99,235,0.3), var(--us-blue)) !important; }
-.heat-item-header .heat-score { font-size: 13px; font-weight: 700; color: var(--text-secondary); width: 32px; text-align: right; }
-.heat-item-header .heat-chevron { font-size: 12px; color: var(--text-tertiary); transition: transform 0.25s; margin-left: 4px; }
-.heat-item.open .heat-item-header .heat-chevron { transform: rotate(180deg); color: var(--text-secondary); }
-.heat-item-body { max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.35s ease; }
-.heat-item.open .heat-item-body { max-height: 400px; }
-.heat-detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 0 10px 16px 44px; }
-.heat-detail-cell { background: var(--bg-elevated); border-radius: 10px; padding: 12px 14px; border: 1px solid var(--border-subtle); }
-.heat-detail-cell .cell-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; color: var(--text-tertiary); margin-bottom: 4px; }
-.heat-detail-cell .cell-value { font-size: 13px; font-weight: 600; color: var(--text); }
-.heat-detail-cell .cell-value a { color: var(--zuru-red); text-decoration: none; font-size: 12px; }
-.heat-detail-cell .cell-value a:hover { text-decoration: underline; }
-.heat-detail-cell .cell-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 2px; }
-
-/* Heat table (perfume) */
-.heat-table { width: 100%; border-collapse: collapse; font-size: 13px; }
-.heat-table th { background: var(--bg-elevated); padding: 10px 12px; text-align: left; font-weight: 600; font-size: 12px; color: var(--text-secondary); border-bottom: 2px solid var(--border-medium); }
-.heat-table td { padding: 10px 12px; border-bottom: 1px solid var(--border-subtle); color: var(--text); }
-.heat-table .ht-rank { width: 30px; font-weight: 700; text-align: center; }
-.heat-table .ht-brand { font-weight: 600; }
-.heat-table .ht-tag { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 500; }
-.ht-tag.cn-tag { background: rgba(245, 158, 11, 0.12); color: #D97706; box-shadow: 0 1px 3px rgba(245, 158, 11, 0.15); }
-.ht-tag.us-tag { background: var(--us-blue-light); color: var(--us-blue); box-shadow: 0 1px 3px rgba(37, 99, 235, 0.15); }
-
-/* New Product Radar - ZURU EDGE Dark Theme */
-.radar-section { margin-bottom: 20px; }
-.radar-section h4 {
-  font-size: 15px; font-weight: 700; margin-bottom: 14px; padding-bottom: 10px;
-  border-bottom: 3px solid transparent;
-  border-image: linear-gradient(90deg, var(--zuru-red) 0%, transparent 100%) 1;
-  display: flex; align-items: center; gap: 8px;
-  color: var(--text);
-}
-.radar-section.luxury h4 { border-image: linear-gradient(90deg, var(--zuru-red) 0%, var(--zuru-red) 40%, transparent 100%) 1; }
-.radar-section.masstige-makeup h4 { border-image: linear-gradient(90deg, var(--us-blue) 0%, var(--us-blue) 40%, transparent 100%) 1; }
-.radar-section.masstige-frag h4 { border-image: linear-gradient(90deg, var(--us-blue) 0%, var(--us-blue) 40%, transparent 100%) 1; }
-
-.radar-section h4 .tier-badge {
-  display: inline-block; padding: 2px 10px; border-radius: 10px;
-  font-size: 10px; font-weight: 700; letter-spacing: 0.8px;
-  margin-left: 6px; vertical-align: middle;
-}
-.radar-section.luxury h4 .tier-badge { background: var(--zuru-red-light); color: var(--zuru-red); }
-.radar-section.masstige-makeup h4 .tier-badge { background: var(--us-blue-light); color: var(--us-blue); }
-.radar-section.masstige-frag h4 .tier-badge { background: var(--us-blue-light); color: var(--us-blue); }
-
-.radar-list { display: flex; flex-direction: column; gap: 8px; }
-.radar-item {
-  background: var(--bg-card);
-  border: 1px solid var(--border-subtle);
-  border-left: 4px solid var(--border-subtle);
-  border-radius: 10px;
-  overflow: hidden;
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.radar-section.luxury .radar-item { border-left-color: var(--zuru-red); }
-.radar-section.luxury .radar-item:hover { border-left-color: var(--zuru-red); border-color: rgba(230, 0, 18, 0.30); box-shadow: 0 2px 16px rgba(230, 0, 18, 0.12); }
-.radar-section.luxury .radar-item.open { border-left-color: var(--zuru-red); border-color: rgba(230, 0, 18, 0.30); box-shadow: 0 3px 20px rgba(230, 0, 18, 0.18); }
-
-.radar-section.masstige-makeup .radar-item { border-left-color: rgba(0, 201, 167, 0.30); }
-.radar-section.masstige-makeup .radar-item:hover { border-left-color: var(--us-blue); border-color: rgba(0, 201, 167, 0.30); box-shadow: 0 2px 16px rgba(0, 201, 167, 0.10); }
-.radar-section.masstige-makeup .radar-item.open { border-left-color: var(--us-blue); border-color: rgba(0, 201, 167, 0.30); box-shadow: 0 3px 20px rgba(0, 201, 167, 0.15); }
-
-.radar-section.masstige-frag .radar-item { border-left-color: rgba(0, 201, 167, 0.30); }
-.radar-section.masstige-frag .radar-item:hover { border-left-color: var(--us-blue); border-color: rgba(0, 201, 167, 0.30); box-shadow: 0 2px 16px rgba(0, 201, 167, 0.10); }
-.radar-section.masstige-frag .radar-item.open { border-left-color: var(--us-blue); border-color: rgba(0, 201, 167, 0.30); box-shadow: 0 3px 20px rgba(0, 201, 167, 0.15); }
-
-.radar-item-header {
-  display: flex; align-items: center; gap: 14px; padding: 18px 20px;
-  cursor: pointer; user-select: none; transition: background 0.2s;
-}
-.radar-item-header:hover { background: var(--bg-hover); }
-.radar-item .radar-brand { font-size: 15px; font-weight: 700; color: var(--text); width: 165px; flex-shrink: 0; letter-spacing: -0.3px; }
-.radar-item .radar-name { font-size: 13.5px; font-weight: 500; color: var(--text-secondary); flex: 1; line-height: 1.4; }
-
-.radar-item .radar-cat { font-size: 11px; font-weight: 500; color: var(--zuru-red); background: var(--zuru-red-light); padding: 4px 12px; border-radius: 20px; flex-shrink: 0; letter-spacing: 0.3px; }
-
-.radar-item[data-cat="lip"] .radar-cat { background: var(--zuru-red-light); color: var(--zuru-red); }
-.radar-item[data-cat="cheek"] .radar-cat { background: rgba(255, 107, 107, 0.15); color: var(--coral); }
-.radar-item[data-cat="eye"] .radar-cat { background: rgba(123, 97, 255, 0.15); color: var(--lavender); }
-.radar-item[data-cat="base"] .radar-cat { background: var(--us-blue-light); color: var(--us-blue); }
-.radar-item[data-cat="face"] .radar-cat { background: rgba(255, 184, 0, 0.15); color: var(--gold); }
-
-.radar-section.luxury .radar-item .radar-cat { font-size: 11px; font-weight: 500; color: var(--zuru-red); background: var(--zuru-red-light); padding: 4px 12px; border-radius: 20px; flex-shrink: 0; letter-spacing: 0.3px; }
-.radar-section.masstige-frag .radar-item .radar-cat { font-size: 11px; font-weight: 500; color: var(--us-blue); background: var(--us-blue-light); padding: 4px 12px; border-radius: 20px; flex-shrink: 0; letter-spacing: 0.3px; }
-
-.radar-item .radar-chevron { font-size: 20px; color: var(--text-tertiary); transition: transform 0.25s, color 0.25s; margin-left: 2px; flex-shrink: 0; cursor: pointer; }
-.radar-item.open .radar-chevron { transform: rotate(180deg); color: var(--zuru-red); }
-.radar-section.luxury .radar-item.open .radar-chevron { transform: rotate(180deg); color: var(--zuru-red); }
-.radar-section.masstige-makeup .radar-item.open .radar-chevron { transform: rotate(180deg); color: var(--us-blue); }
-.radar-section.masstige-frag .radar-item.open .radar-chevron { transform: rotate(180deg); color: var(--us-blue); }
-
-.radar-detail { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
-.radar-item.open .radar-detail { max-height: 600px; }
-.radar-detail-inner {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 10px 20px;
-  padding: 12px 18px 16px; font-size: 13px;
-}
-.radar-section.luxury .radar-detail-inner { background: rgba(230, 0, 18, 0.04); border-top: 1px solid rgba(230, 0, 18, 0.12); }
-.radar-section.masstige-makeup .radar-detail-inner { background: rgba(0, 201, 167, 0.04); border-top: 1px solid rgba(0, 201, 167, 0.12); }
-.radar-section.masstige-frag .radar-detail-inner { background: rgba(0, 201, 167, 0.04); border-top: 1px solid rgba(0, 201, 167, 0.12); }
-
-.radar-detail-inner .cell-label { font-size: 10px; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 2px; font-weight: 600; }
-.radar-detail-inner .cell-value { font-size: 13px; color: var(--text); line-height: 1.5; }
-.radar-detail-inner .cell-value a { color: var(--zuru-red); text-decoration: none; font-weight: 500; }
-.radar-detail-inner .cell-value a:hover { text-decoration: underline; }
-.radar-detail-inner .cell-tags { display: flex; flex-wrap: wrap; gap: 5px; }
-
-.rev-tag { display: inline-block; padding: 3px 10px; border-radius: 10px; font-size: 10.5px; font-weight: 600; margin: 1px 3px 1px 0; }
-.rev-pos { background: rgba(0, 201, 167, 0.15); color: var(--us-blue); }
-.rev-mid { background: rgba(255, 184, 0, 0.15); color: var(--gold); }
-.rev-neg { background: rgba(230, 0, 18, 0.15); color: var(--zuru-red); }
-.rev-neutral { background: rgba(255, 255, 255, 0.08); color: var(--text-secondary); }
-
-.radar-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-bottom: 16px; background: var(--bg-card); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow-sm); }
-.radar-table th { background: var(--bg-elevated); padding: 12px 14px; text-align: left; font-weight: 600; font-size: 12px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; }
-.radar-table td { padding: 12px 14px; border-bottom: 1px solid var(--border-subtle); vertical-align: top; color: var(--text); }
-.radar-table .rt-brand { font-weight: 600; }
-.radar-table .rt-name { font-weight: 500; }
-.radar-table .rt-date { font-size: 12px; color: var(--text-secondary); }
-.radar-table .rt-link a { color: var(--zuru-red); text-decoration: none; font-size: 12px; }
-.radar-table .rt-link a:hover { text-decoration: underline; }
-
-/* Color highlights */
-.hl-rose { color: var(--zuru-red); font-weight: 600; }
-.hl-teal { color: var(--us-blue); font-weight: 600; }
-.hl-gold { color: var(--gold); font-weight: 600; }
-.hl-coral { color: var(--coral); font-weight: 600; }
-.hl-lavender { color: var(--lavender); font-weight: 600; }
-.hl-positive { color: var(--us-blue); font-weight: 600; }
-.hl-negative { color: var(--zuru-red); font-weight: 600; }
-
-/* Source footer */
-.source-footer {
-  background: var(--bg-card);
-  border-radius: 16px;
-  padding: 24px;
-  box-shadow: var(--shadow-sm);
-  margin-top: 36px;
-  border: 1px solid var(--border-subtle);
-}
-.source-footer h4 { font-size: 14px; font-weight: 600; margin-bottom: 10px; color: var(--text); }
-.source-footer .source-list { display: flex; flex-wrap: wrap; gap: 8px; }
-.source-chip { background: var(--bg-elevated); padding: 3px 10px; border-radius: 12px; font-size: 12px; color: var(--text-secondary); border: 1px solid var(--border-subtle); }
-.source-chip.src-cn { background: rgba(245, 158, 11, 0.12); color: #D97706; border-color: rgba(245, 158, 11, 0.20); }
-.source-chip.src-us { background: var(--us-blue-light); color: var(--us-blue); border-color: rgba(0, 201, 167, 0.20); }
-.source-chip.src-brand { background: rgba(123, 97, 255, 0.15); color: var(--lavender); border-color: rgba(123, 97, 255, 0.20); }
-
-/* Heat Methodology Badge */
-.heat-methodology-badge { display: inline-block; font-size: 10px; font-weight: 500; padding: 2px 8px; border-radius: 10px; background: var(--zuru-red-light); color: var(--zuru-red); margin-left: 8px; vertical-align: middle; cursor: help; }
-.heat-score-bd {
-  display: none;
-  font-size: 10px;
-  color: var(--text-tertiary);
-  font-weight: 400;
-  margin-top: 2px;
-  line-height: 1.4;
-}
-.heat-item.open .heat-score-bd { display: block; }
-.heat-score-wrap {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  min-width: 36px;
-}
-.heat-score-val {
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--text-secondary);
-}
-.methodology-box {
-  background: var(--bg-card);
-  border: 1px solid var(--border-medium);
-  border-radius: 16px;
-  padding: 24px 28px;
-  margin-top: 24px;
-}
-.methodology-box h5 {
-  font-size: 14px;
-  font-weight: 700;
-  margin: 0 0 12px 0;
-  color: var(--text);
-}
-.methodology-box h5 .mkt-tag { font-size: 11px; padding: 2px 8px; border-radius: 10px; margin-left: 8px; font-weight: 600; }
-.methodology-box h5 .mkt-tag.cn { background: rgba(245, 158, 11, 0.12); color: #D97706; }
-.methodology-box h5 .mkt-tag.us { background: var(--us-blue-light); color: var(--us-blue); }
-.methodology-formula { font-family: 'SF Mono', 'Cascadia Code', 'Consolas', monospace; font-size: 13px; background: var(--bg-elevated); padding: 12px 16px; border-radius: 8px; margin: 10px 0; line-height: 1.7; border-left: 3px solid var(--zuru-red); color: var(--text); }
-.methodology-formula .hl-w { color: var(--zuru-red); font-weight: 700; }
-.methodology-table { width: 100%; border-collapse: collapse; font-size: 12px; margin-top: 10px; }
-.methodology-table th { background: var(--bg-elevated); padding: 8px 10px; text-align: left; font-size: 11px; font-weight: 600; color: var(--text-tertiary); }
-.methodology-table td { padding: 7px 10px; border-bottom: 1px solid var(--border-subtle); color: var(--text); }
-.methodology-table .mw-col { color: var(--zuru-red); font-weight: 600; }
-
-.appendix {
-  background: var(--bg-card);
-  border-radius: 16px;
-  padding: 28px;
-  box-shadow: var(--shadow-sm);
-  margin-top: 28px;
-  border: 1px solid var(--border-subtle);
-}
-.appendix h4 { font-size: 15px; font-weight: 600; margin-bottom: 16px; color: var(--text); }
-.appendix-table { width: 100%; border-collapse: collapse; font-size: 13px; }
-.appendix-table thead th { background: var(--bg-elevated); padding: 10px 12px; text-align: left; font-size: 11px; font-weight: 600; color: var(--text-tertiary); text-transform: uppercase; border-bottom: 2px solid var(--border-medium); }
-.appendix-table thead th:first-child { border-radius: 8px 0 0 0; }
-.appendix-table thead th:last-child { border-radius: 0 8px 0 0; }
-.appendix-table tbody td { padding: 10px 12px; border-bottom: 1px solid var(--border-subtle); vertical-align: top; line-height: 1.5; color: var(--text); }
-.appendix-table tbody tr:last-child td { border-bottom: none; }
-.appendix-table tbody tr:hover { background: var(--bg-hover); }
-.appendix-table .app-mkt { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 600; }
-.appendix-table .app-mkt.cn { background: rgba(245, 158, 11, 0.12); color: #D97706; }
-.appendix-table .app-mkt.us { background: var(--us-blue-light); color: var(--us-blue); }
-.appendix-table .app-mkt.global { background: rgba(123, 97, 255, 0.15); color: var(--lavender); }
-.appendix-table .app-type { font-size: 11px; color: var(--text-tertiary); }
-.appendix-table .app-name { font-weight: 600; color: var(--text); }
-.appendix-table .app-desc { color: var(--text-secondary); }
-.appendix-table .app-note { font-size: 11px; color: var(--text-tertiary); font-style: italic; }
-.appendix-table .cat-divider td { padding: 6px 12px; font-size: 12px; font-weight: 600; color: var(--text); background: var(--bg-elevated); }
-.appendix-table .cat-divider td:first-child { border-radius: 6px 0 0 6px; }
-.appendix-table .cat-divider td:last-child { border-radius: 0 6px 6px 0; }
-
-.radar-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 16px; }
-.radar-item {
-  border: 1px solid var(--border-subtle);
-  border-radius: 12px;
-  overflow: hidden;
-  background: var(--bg-card);
-  transition: all 0.25s;
-}
-.radar-item:hover { border-color: rgba(214, 0, 28, 0.25); box-shadow: 0 2px 16px rgba(214, 0, 28, 0.08); }
-.radar-item.open { border-color: rgba(214, 0, 28, 0.25); box-shadow: 0 3px 20px rgba(214, 0, 28, 0.10); }
-.radar-item-header { display: flex; align-items: center; gap: 14px; padding: 16px 18px; cursor: pointer; user-select: none; transition: background 0.2s; }
-.radar-item-header:hover { background: var(--bg-hover); }
-.radar-item .radar-brand { font-size: 15px; font-weight: 700; color: var(--text); width: 155px; flex-shrink: 0; letter-spacing: -0.2px; }
-.radar-item .radar-name { font-size: 14px; font-weight: 500; color: var(--text-secondary); flex: 1; line-height: 1.4; }
-.radar-item .radar-cat { font-size: 11px; font-weight: 500; color: var(--zuru-red); background: var(--zuru-red-light); padding: 4px 12px; border-radius: 20px; flex-shrink: 0; letter-spacing: 0.3px; }
-.radar-item .radar-chevron { font-size: 22px; color: var(--text-tertiary); transition: transform 0.25s; margin-left: 4px; flex-shrink: 0; cursor: pointer; }
-.radar-item.open .radar-chevron { transform: rotate(180deg); color: var(--zuru-red); }
-.radar-detail { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
-.radar-item.open .radar-detail { max-height: 500px; }
-.radar-detail-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 24px; padding: 0 18px 18px; font-size: 13px; }
-.radar-detail-inner .cell-label { font-size: 10px; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 2px; font-weight: 600; }
-.radar-detail-inner .cell-value { font-size: 13px; color: var(--text); line-height: 1.5; }
-.radar-detail-inner .cell-value a { color: var(--zuru-red); text-decoration: none; font-weight: 500; }
-.radar-detail-inner .cell-value a:hover { text-decoration: underline; }
-.radar-detail-inner .cell-tags { display: flex; flex-wrap: wrap; gap: 5px; }
-@media (max-width: 768px) {
-  .signal-strip { grid-template-columns: repeat(2, 1fr); }
-  .heat-section { grid-template-columns: 1fr; }
-}
-
-/* === Language Switch - ZURU EDGE solid pill === */
-.lang-switch-bar { position: absolute; top: 16px; right: 20px; z-index: 10; display: flex; flex-direction: column; align-items: flex-end; gap: 0; }
-.lang-switch-btn {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 8px 18px;
-  border-radius: 8px;
-  font-size: 13px;
-  font-weight: 600;
-  cursor: pointer;
-  border: 1.5px solid rgba(255,255,255,0.5);
-  background: rgba(255,255,255,0.2);
-  color: white;
-  transition: all 0.2s;
-  text-decoration: none;
-  letter-spacing: 0.4px;
-}
-.lang-switch-btn:hover {
-  background: rgba(255,255,255,0.3);
-  color: white;
-  border-color: white;
-}
-.lang-switch-btn .lang-dot { width: 6px; height: 6px; border-radius: 50%; background: white; opacity: 0.9; }
-.lang-switch-btn.en-active .lang-dot { background: #FFD700; }
-.lang-switch-btn.cn-active .lang-dot { background: #FF6B81; }
-@media (max-width: 768px) {
-  .lang-switch-bar { top: 10px; right: 12px; }
-  .lang-switch-btn { padding: 6px 14px; font-size: 12px; }
-}
-
-/* === Section Jump Button - ZURU EDGE glass pill (on colored banner) === */
-.section-jump-btn {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  margin-top: 8px;
-  padding: 8px 18px;
-  border-radius: 8px;
-  font-size: 12px;
-  font-weight: 600;
-  cursor: pointer;
-  border: 1.5px solid rgba(255,255,255,0.5);
-  background: rgba(255,255,255,0.2);
-  color: white;
-  transition: all 0.2s;
-  text-decoration: none;
-  letter-spacing: 0.3px;
-  white-space: nowrap;
-}
-.section-jump-btn:hover {
-  background: rgba(255,255,255,0.3);
-  border-color: white;
-}
-.section-jump-btn .jump-arrow { font-size: 11px; opacity: 0.8; transition: transform 0.25s; }
-.section-jump-btn:hover .jump-arrow { transform: translateY(2px); }
-
-/* Week Selector Dropdown - ZURU EDGE Light */
-.week-selector { position: relative; display: inline-block; margin-left: 10px; vertical-align: middle; z-index: 20; }
-.week-selector-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  padding: 6px 14px;
-  border-radius: 12px;
-  font-size: 12px;
-  font-weight: 600;
-  cursor: pointer;
-  border: 1px solid rgba(255,255,255,0.3);
-  background: rgba(255,255,255,0.15);
-  color: rgba(255,255,255,0.85);
-  transition: all 0.2s;
-  letter-spacing: 0.3px;
-}
-.week-selector-btn:hover { background: rgba(255,255,255,0.25); border-color: rgba(255,255,255,0.5); }
-.week-selector-btn .week-arrow { font-size: 10px; transition: transform 0.25s; opacity: 0.85; }
-.week-selector.open .week-selector-btn .week-arrow { transform: rotate(180deg); }
-.week-dropdown {
-  position: absolute; top: calc(100% + 6px); left: 50%; transform: translateX(-50%) scale(0.96);
-  background: var(--bg-elevated);
-  backdrop-filter: blur(16px);
-  border-radius: 14px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.15);
-  border: 1px solid var(--border-medium);
-  padding: 8px 6px;
-  min-width: 140px;
-  opacity: 0; visibility: hidden;
-  transform-origin: top center;
-  transition: all 0.2s ease;
-  max-height: 280px;
-  overflow-y: auto;
-  z-index: 100;
-}
-.week-selector.open .week-dropdown { opacity: 1; visibility: visible; transform: translateX(-50%) scale(1); }
-.week-dropdown-item {
-  display: block; width: 100%;
-  padding: 8px 14px;
-  border-radius: 10px;
-  font-size: 13px; font-weight: 500;
-  color: var(--text-secondary);
-  text-decoration: none;
-  transition: all 0.15s;
-  text-align: center;
-  border: none; background: none; cursor: pointer;
-}
-.week-dropdown-item:hover { background: rgba(214, 0, 28, 0.08); color: var(--zuru-red); }
-.week-dropdown-item.current { background: rgba(214, 0, 28, 0.12); color: var(--zuru-red); font-weight: 700; }
-.week-dropdown-divider {
-  height: 1px; background: var(--border-subtle);
-  margin: 6px 10px;
-}
-.fragrance-banner .week-dropdown-item:hover { background: rgba(255,255,255,0.15); color: white; }
-.fragrance-banner .week-dropdown-item.current { background: rgba(255,255,255,0.2); color: white; font-weight: 700; }
-@media (max-width: 768px) {
-  .week-selector { margin-left: 6px; }
-  .week-selector-btn { padding: 5px 12px; font-size: 11px; }
-  .week-dropdown { min-width: 120px; padding: 6px 4px; }
-  .week-dropdown-item { padding: 7px 10px; font-size: 12px; }
-}
-
-/* ZURU EDGE Brand Mark */
-.zuru-brand-mark {
-  display: inline-block;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--zuru-red);
-  padding: 3px 10px;
-  border: 1px solid rgba(230, 0, 18, 0.30);
-  border-radius: 4px;
-  background: rgba(230, 0, 18, 0.08);
-  margin-bottom: 8px;
-}
-
-/* Appendix section styles (used in CN) */
-.appendix-section { margin-bottom: 24px; }
-.appendix-section .appendix-title { font-size: 16px; font-weight: 700; margin-bottom: 14px; color: var(--text); display: flex; align-items: center; gap: 8px; }
-.appendix-block { margin-bottom: 20px; }
-.source-table { width: 100%; border-collapse: collapse; font-size: 13px; }
-.source-table thead th { background: var(--bg-elevated); padding: 10px 12px; text-align: left; font-size: 11px; font-weight: 600; color: var(--text-tertiary); text-transform: uppercase; border-bottom: 2px solid var(--border-medium); }
-.source-table tbody td { padding: 10px 12px; border-bottom: 1px solid var(--border-subtle); vertical-align: top; line-height: 1.5; color: var(--text); }
-.source-table tbody tr:hover { background: var(--bg-hover); }
-
-/* ZURU EDGE footer */
-.zuru-footer {
-  text-align: center;
-  padding: 24px;
-  margin-top: 40px;
-  border-top: 1px solid var(--border-subtle);
-  color: var(--text-tertiary);
-  font-size: 12px;
-  letter-spacing: 0.5px;
-}
-.zuru-footer .zuru-logo-text {
-  font-weight: 800;
-  color: var(--zuru-red);
-  letter-spacing: 2px;
-}
-
-/* Radar Grid - US Left / CN Right */
-.radar-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 24px;
-  margin-bottom: 28px;
-}
-.radar-grid > .radar-zone:first-child { order: 1; }
-.radar-grid > .radar-zone:nth-child(2) { order: 2; }
-.radar-zone {
-  border-radius: 16px;
   padding: 20px;
   position: relative;
 }
-.radar-zone.us-zone {
-  background: var(--us-bg);
-  border: 1.5px solid var(--us-border);
-}
-.radar-zone.cn-zone {
-  background: var(--cn-bg);
-  border: 1.5px solid var(--cn-border);
-}
-.radar-zone-badge {
+.zone-us { order: 1; background: linear-gradient(135deg, #f3faf8 0%, #eaf6f3 50%, #eef8f5 100%); border: 1.5px solid #c5e5dc; }
+.zone-cn { order: 2; background: linear-gradient(135deg, #fff5f7 0%, #fef0f3 50%, #fdf6f8 100%); border: 1.5px solid #f2d5dc; }
+.zone-badge {
   display: inline-block;
-  padding: 5px 16px;
-  border-radius: 20px;
-  font-size: 13px;
+  font-size: 11px;
   font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 20px;
   margin-bottom: 14px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
-.radar-zone-badge.us { background: var(--us-blue); color: #fff; box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3); }
-.radar-zone-badge.cn { background: var(--gold); color: #fff; box-shadow: 0 2px 8px rgba(245, 158, 11, 0.3); }
-@media (max-width: 768px) {
-  .radar-grid { grid-template-columns: 1fr; }
-}
+.zone-badge.us { background: linear-gradient(135deg, #2563EB, #3B82F6); color: white; }
+.zone-badge.cn { background: linear-gradient(135deg, #F59E0B, #FBBF24); color: #1A1A1A; }
+.zone-platforms { font-size: 11px; color: var(--text-muted); margin-bottom: 16px; font-weight: 500; }
+.zone-platforms strong { color: var(--text-secondary); }
 
-/* === Trend Number Badge — floating 3D effect === */
-.trend-num {
-  display: inline-block;
-  background: var(--zuru-red);
-  color: #fff;
-  padding: 3px 12px;
-  border-radius: 8px;
+/* Trend V Card */
+.trend-v-card {
+  background: var(--card-bg);
+  border-radius: 10px;
+  margin-bottom: 14px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+.trend-v-card.us { border-top: 4px solid var(--us-blue); }
+.trend-v-card.cn { border-top: 4px solid var(--cn-yellow); }
+.trend-v-header { padding: 14px 18px; cursor: pointer; display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+.trend-v-header h4 { font-size: 14px; font-weight: 700; flex: 1; }
+.trend-v-arrow { color: var(--text-muted); transition: transform 0.2s; font-size: 12px; }
+.trend-v-card.open .trend-v-arrow { transform: rotate(180deg); }
+.trend-v-body { padding: 0 18px; display: none; }
+.trend-v-card.open .trend-v-body { display: block; padding-bottom: 14px; }
+
+/* Driver */
+.driver-summary {
+  background: #fefce8;
+  border-left: 3px solid var(--gold);
+  padding: 10px 14px;
+  margin-bottom: 12px;
   font-size: 13px;
-  font-weight: 800;
-  margin-right: 8px;
-  box-shadow: 0 3px 10px rgba(214, 0, 28, 0.3), 0 1px 3px rgba(0,0,0,0.15);
-  transform: translateY(-1px);
-  letter-spacing: 0.5px;
-  text-shadow: none;
-  -webkit-text-fill-color: #fff;
-  background-clip: initial;
-  -webkit-background-clip: initial;
+  border-radius: 0 6px 6px 0;
 }
-.trend-v-card.cn .trend-num { background: var(--gold); box-shadow: 0 3px 10px rgba(245, 158, 11, 0.3), 0 1px 3px rgba(0,0,0,0.15); }
-.trend-v-card.us .trend-num { background: var(--us-blue); box-shadow: 0 3px 10px rgba(37, 99, 235, 0.3), 0 1px 3px rgba(0,0,0,0.15); }
-
-/* === Trend title — enhanced floating effect === */
-.trend-v-card h4 {
-  color: var(--text);
-  background: none;
-  -webkit-background-clip: initial;
-  -webkit-text-fill-color: initial;
-  background-clip: initial;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.06);
-  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.06));
+.us .driver-summary { background: #f0fdf4; border-left-color: var(--teal); }
+.driver-chain { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; font-size: 12px; }
+.chain-node {
+  padding: 4px 10px;
+  border-radius: 14px;
+  font-weight: 600;
+  font-size: 11px;
 }
+.chain-node.trigger { background: #fef3c7; color: #92400E; }
+.chain-node.ferment { background: #fce7f3; color: #9D174D; }
+.chain-node.diverge { background: #dbeafe; color: #1E40AF; }
+.chain-arrow { color: var(--text-muted); }
+.driver-expand { display: flex; flex-wrap: wrap; gap: 6px; }
+.driver-expand span {
+  font-size: 11px;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-weight: 500;
+}
+.exp-chip.cn { background: #fef3c7; color: #92400E; }
+.exp-chip.us { background: #dbeafe; color: #1E40AF; }
+.exp-chip.global { background: #fee2e2; color: #991B1B; }
 
-/* === Section Icon — ZURU geometric style === */
-.section-icon { display: inline-block; vertical-align: middle; margin-right: 10px; opacity: 0.9; }
-.section-icon svg { display: block; }
+/* Signal Strip */
+.signal-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin: 14px 0;
+}
+.signal-chip {
+  background: #fafafa;
+  border-radius: 8px;
+  padding: 12px;
+  text-align: center;
+  border: 1px solid var(--border);
+}
+.signal-chip.yt { border-left: 3px solid #FF0000; }
+.signal-chip.tt { border-left: 3px solid #000000; }
+.signal-chip.seph { border-left: 3px solid var(--teal); }
+.signal-chip.pin { border-left: 3px solid #E60023; }
+.signal-chip.wgsn { border-left: 3px solid var(--lavender); }
+.signal-chip.gtrends { border-left: 3px solid #4285F4; }
+.signal-chip.douyin { border-left: 3px solid #FF4D4F; }
+.signal-chip.xhs { border-left: 3px solid #FF6B6B; }
+.signal-chip.tmall { border-left: 3px solid #FF6A00; }
+.chip-num { font-size: 20px; font-weight: 800; margin: 4px 0; }
+.chip-desc { font-size: 10px; color: var(--text-muted); }
+.chip-arrow { font-size: 11px; font-weight: 600; }
+.chip-arrow.up { color: #16a34a; }
+.chip-arrow.down { color: #dc2626; }
+
+/* Action Strip */
+.action-strip {
+  border: 1px dashed var(--gold);
+  border-radius: 8px;
+  padding: 12px 14px;
+  margin-top: 14px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.action-tag {
+  background: var(--coral);
+  color: white;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+.action-text { font-size: 13px; color: var(--text-secondary); flex: 1; }
+
+/* Trend Decision Bar (US only) */
+.trend-decision-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  margin-top: 10px;
+  background: #f0fdf4;
+  border-radius: 8px;
+  font-size: 11px;
+  flex-wrap: wrap;
+}
+.dec-label { font-weight: 700; color: var(--teal); font-size: 10px; text-transform: uppercase; }
+.dec-signal { background: #dbeafe; color: #1E40AF; padding: 2px 8px; border-radius: 4px; font-weight: 600; }
+.dec-arrow { color: var(--gold); font-weight: 800; font-size: 14px; }
+.dec-direction { background: #fef3c7; color: #92400E; padding: 2px 8px; border-radius: 4px; font-weight: 600; }
+.dec-strength.strong { color: var(--coral); font-weight: 700; }
+.dec-strength.mid { color: var(--gold); font-weight: 700; }
+.dec-strength.rising { color: var(--teal); font-weight: 700; }
+
+/* Common Trends */
+.common-trends-section { margin-bottom: 24px; }
+.common-trends-section .trend-v-card { border-top: 4px solid var(--zurured); }
+
+/* Heat Section */
+.heat-section { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px; }
+.heat-panel { background: var(--card-bg); border-radius: 12px; padding: 20px; border: 1px solid var(--border); }
+.heat-panel.us-heat { order: 1; }
+.heat-panel.cn-heat { order: 2; }
+.heat-panel h4 { font-size: 15px; font-weight: 700; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+.heat-accordion { list-style: none; }
+.heat-item { border-bottom: 1px solid var(--border); padding: 12px 0; }
+.heat-item:last-child { border-bottom: none; }
+.heat-rank { font-size: 20px; font-weight: 900; margin-right: 10px; display: inline-block; width: 28px; }
+.heat-rank.us { color: var(--us-blue); }
+.heat-rank.cn { color: var(--cn-yellow); }
+.heat-info { display: inline; }
+.heat-name { font-weight: 600; font-size: 14px; }
+.heat-brand { font-size: 12px; color: var(--text-muted); }
+.heat-meter { height: 6px; background: #f3f4f6; border-radius: 3px; margin-top: 6px; overflow: hidden; }
+.heat-fill { height: 100%; border-radius: 3px; }
+.heat-fill.us-fill { background: linear-gradient(90deg, var(--us-blue), #60A5FA); }
+.heat-fill.cn-fill { background: linear-gradient(90deg, var(--cn-yellow), #FBBF24); }
+.heat-data { font-size: 11px; color: var(--text-muted); margin-top: 4px; }
+
+/* Radar */
+.radar-section { margin-bottom: 24px; }
+.radar-subsection { margin-bottom: 20px; }
+.radar-subsection h4 { font-size: 15px; font-weight: 700; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+.radar-table { width: 100%; border-collapse: collapse; background: var(--card-bg); border-radius: 10px; overflow: hidden; border: 1px solid var(--border); }
+.radar-table th { background: #fafafa; padding: 12px 14px; font-size: 11px; font-weight: 700; text-align: left; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid var(--border); }
+.radar-table td { padding: 12px 14px; font-size: 13px; border-bottom: 1px solid var(--border); }
+.radar-table tr:last-child td { border-bottom: none; }
+.radar-brand { font-weight: 700; }
+.radar-product { font-weight: 600; }
+.radar-desc { color: var(--text-secondary); font-size: 12px; }
+.radar-tier { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 4px; }
+.radar-tier.luxury { background: #fef3c7; color: #92400E; }
+.radar-tier.masstige { background: #dbeafe; color: #1E40AF; }
+
+/* Rev Tags */
+.rev-tag { font-size: 10px; font-weight: 700; padding: 2px 6px; border-radius: 3px; }
+.rev-tag.rev-pos { background: #dcfce7; color: #166534; }
+.rev-tag.rev-mid { background: #fef9c3; color: #854d0e; }
+.rev-tag.rev-neg { background: #fee2e2; color: #991b1b; }
+
+/* Color Highlights */
+.hl-rose { color: var(--rose); font-weight: 700; }
+.hl-teal { color: var(--teal); font-weight: 700; }
+.hl-gold { color: var(--gold); font-weight: 700; }
+.hl-coral { color: var(--coral); font-weight: 700; }
+.hl-lavender { color: var(--lavender); font-weight: 700; }
+.hl-positive { color: #16a34a; font-weight: 700; }
+.hl-negative { color: #dc2626; font-weight: 700; }
+
+/* Fragrance specific */
+.frag-note-tag { font-size: 10px; padding: 2px 8px; border-radius: 4px; font-weight: 600; margin: 0 2px; }
+.frag-woody { background: #ede9fe; color: #6D28D9; }
+.frag-floral { background: #fce7f3; color: #BE185D; }
+.frag-fruity { background: #fef3c7; color: #B45309; }
+.frag-gourmand { background: #fef9c3; color: #92400E; }
+.frag-aquatic { background: #dbeafe; color: #1E40AF; }
+.frag-green { background: #dcfce7; color: #166534; }
+.frag-musk { background: #f3f4f6; color: #4B5563; }
+.frag-tea { background: #ecfdf5; color: #065F46; }
+
+/* Separator */
+.section-sep {
+  max-width: 1400px;
+  margin: 32px auto;
+  padding: 0 32px;
+}
+.section-sep hr { border: none; border-top: 2px solid var(--border); }
+
+/* Appendix */
+.appendix-section { max-width: 1400px; margin: 0 auto; padding: 24px 32px; }
+.appendix-table { width: 100%; border-collapse: collapse; margin: 16px 0; background: var(--card-bg); border-radius: 10px; overflow: hidden; border: 1px solid var(--border); }
+.appendix-table td { padding: 10px 14px; font-size: 13px; border-bottom: 1px solid var(--border); }
+.appendix-table .cat-divider { background: #fafafa; font-weight: 700; font-size: 12px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px; }
+.appendix-table .cat-divider td { padding: 10px 14px; border-bottom: 2px solid var(--border); }
+.source-badge { display: inline-block; font-size: 10px; padding: 2px 8px; border-radius: 3px; margin: 1px 2px; }
+.source-cn { background: #fef3c7; color: #92400E; }
+.source-us { background: #dbeafe; color: #1E40AF; }
+
+/* Next Week Banner */
+.next-week-banner {
+  max-width: 1400px;
+  margin: 0 auto 40px;
+  padding: 20px 32px;
+  background: linear-gradient(135deg, #1e293b, #334155);
+  color: white;
+  border-radius: 12px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.next-week-banner h3 { font-size: 16px; font-weight: 700; }
+
+@media (max-width: 900px) {
+  .trend-grid, .heat-section { grid-template-columns: 1fr; }
+  .signal-strip { grid-template-columns: repeat(2, 1fr); }
+  .kpi-row { grid-template-columns: repeat(2, 1fr); }
+  .news-grid { grid-template-columns: 1fr; }
+}
 </style>
 </head>
 <body>
 
-<div class="container">
-
-<!-- ==================== 报告一：彩妆 ==================== -->
-<div class="section-banner makeup-banner">
-  <div class="lang-switch-bar">
-    <a href="index.html" class="lang-switch-btn en-active"><span class="lang-dot"></span>EN</a>
-    <a href="fragrance-cn.html" class="section-jump-btn">🌸 香水板块 <span class="jump-arrow">↓</span></a>
+<!-- Banner -->
+<header class="section-banner">
+  <div class="banner-left">
+    <h1>美妆行业周报 Week 25</h1>
+    <div class="banner-date">
+      <span>2026年6月9日 – 6月15日</span>
+      <span>|</span>
+      <span>ZURU EDGE · NPD Strategy</span>
+      <span>|</span>
+      <select class="week-select" onchange="if(this.value) window.location.href=this.value" onclick="event.stopPropagation()">
+        <option value="">Past Issues ▾</option>
+        <option value="archive/week-23/index.html">Week 23 (5/19–5/25)</option>
+        <option value="archive/week-24/index.html">Week 24 (6/2–6/8)</option>
+      </select>
+    </div>
   </div>
-  <span class="section-icon"><svg viewBox="0 0 32 32" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="12" y="4" width="8" height="14" rx="2"/><path d="M14 18v10h4v-10"/><line x1="12" y1="8" x2="20" y2="8"/></svg></span><h2>ZURU EDGE 美妆创新观察</h2>
-  <div class="banner-sub">
-    2026年6月2日 – 6月8日 · 第24周 · 中国 × 美国
-    <div class="week-selector" id="weekSelectorMakeup">
-      <button class="week-selector-btn" onclick="event.stopPropagation();toggleWeekDropdown('weekSelectorMakeup')">
-        选择往期 ▾
-      </button>
-      <div class="week-dropdown" onclick="event.stopPropagation()">
-        <button class="week-dropdown-item current" disabled>第24周（本周）</button>
-        <div class="week-dropdown-divider"></div>
-        <a class="week-dropdown-item" href="archive/week-23/index-cn.html">第23周</a>
+  <div class="banner-right">
+    <a href="fragrance-cn.html" class="glass-pill">🌸 香水板块</a>
+    <a href="index.html" class="glass-pill">EN</a>
+  </div>
+</header>
+
+<div class="section-shell">
+
+<!-- ======== KPI ROW ======== -->
+<div class="kpi-row">
+  <div class="kpi-card cn-kpi">
+    <div class="kpi-label">CN 抖音彩妆 GMV</div>
+    <div class="kpi-value hl-rose">¥128<span style="font-size:16px">亿</span></div>
+    <div class="kpi-sub">5月累计 · 国货品牌占 <strong>73%</strong> 席位</div>
+  </div>
+  <div class="kpi-card us-kpi">
+    <div class="kpi-label">US Sephora 彩妆热销</div>
+    <div class="kpi-value hl-teal">$9.02<span style="font-size:16px">B</span></div>
+    <div class="kpi-sub">Clean Beauty 全球市场 · <span class="hl-positive">+12.5%</span> YoY</div>
+  </div>
+  <div class="kpi-card global-kpi">
+    <div class="kpi-label">#PerfumeTok 累计浏览量</div>
+    <div class="kpi-value hl-gold">64<span style="font-size:16px">亿</span></div>
+    <div class="kpi-sub">TikTok 香水话题 · 全球香水市场 <span class="hl-positive">$887亿</span></div>
+  </div>
+  <div class="kpi-card frag-kpi">
+    <div class="kpi-label">开心果香调搜索增长</div>
+    <div class="kpi-value hl-coral">852<span style="font-size:16px">%</span></div>
+    <div class="kpi-sub">YoY · 全行业增速最快香调之一</div>
+  </div>
+</div>
+
+<!-- ======== INDUSTRY NEWS ======== -->
+<h2 class="section-title">📰 行业要闻</h2>
+<div class="news-grid">
+
+  <div class="news-card open" onclick="this.classList.toggle('open')">
+    <div class="news-card-header">
+      <span class="news-region-tag cn">CN</span>
+      <span class="news-card-title">珀莱雅斥资近8亿元控股花知晓，国货彩妆版图再洗牌</span>
+    </div>
+    <div class="news-card-body">
+      珀莱雅全资子公司以3.51亿元收购花知晓12.55%股权，持股比例从38.45%升至51%实现控股并表。此前首轮投资约4.28亿元，合计投入近8亿元。花知晓以"少女心"风格和高颜值包装著称，此举标志国货彩妆头部阵营整合加速。
+    </div>
+  </div>
+
+  <div class="news-card open" onclick="this.classList.toggle('open')">
+    <div class="news-card-header">
+      <span class="news-region-tag global">GLOBAL</span>
+      <span class="news-card-title">雅诗兰黛 × Puig 合并谈判：潜在全球第二大美妆集团诞生</span>
+    </div>
+    <div class="news-card-body">
+      雅诗兰黛集团与西班牙Puig集团确认正就"潜在业务合并"进行谈判。若交易达成，合并后市值约400亿美元，年销售额约200亿美元，将成为仅次于欧莱雅的全球第二大美妆集团。此举可能重塑全球高端美妆竞争格局。
+    </div>
+  </div>
+
+  <div class="news-card" onclick="this.classList.toggle('open')">
+    <div class="news-card-header">
+      <span class="news-region-tag us">US</span>
+      <span class="news-card-title">Sephora SEPHORiA 2026 重返洛杉矶，打造"美妆多元宇宙"</span>
+    </div>
+    <div class="news-card-body">
+      Sephora 旗舰活动 SEPHORiA 2026 以全新沉浸式概念回归洛杉矶，推出首次面世的独家节目和现场专属福利。活动以"Beauty Multiverse"为主题，进一步巩固 Sephora 在体验式零售领域的领先地位。
+    </div>
+  </div>
+
+  <div class="news-card" onclick="this.classList.toggle('open')">
+    <div class="news-card-header">
+      <span class="news-region-tag cn">CN</span>
+      <span class="news-card-title">2026年美妆新规密集落地，"合规"成行业关键词</span>
+    </div>
+    <div class="news-card-body">
+      2026年作为"十五五"规划开幕之年，化妆品相关新规密集出台。2025年国家及地方监管部门共发布60+项新规，覆盖全产业链。全年化妆品新原料备案达169个，行业正式迈入高质量发展阶段。
+    </div>
+  </div>
+
+  <div class="news-card" onclick="this.classList.toggle('open')">
+    <div class="news-card-header">
+      <span class="news-region-tag us">US</span>
+      <span class="news-card-title">Ulta Beauty Q1 2026 香氛品类表现强劲，DKNY飙升58位</span>
+    </div>
+    <div class="news-card-body">
+      Ulta Beauty Q1 2026 香氛品类数据显示：DKNY 排名飙升58位领跑，Kylie Cosmetics 上升24位，touchland 上升18位。消费者对香氛品类的需求依然强劲，渠道增长势头持续。
+    </div>
+  </div>
+
+  <div class="news-card" onclick="this.classList.toggle('open')">
+    <div class="news-card-header">
+      <span class="news-region-tag global">GLOBAL</span>
+      <span class="news-card-title">Q1 2026 美妆融资聚焦 AI 与合成生物学两大领域</span>
+    </div>
+    <div class="news-card-body">
+      2026年Q1美妆行业融资集中在AI与合成生物学领域。美国AI香水设计平台Osmo、虚拟生物学公司Turbine等5家AI企业获得融资。AI研发平台成为资本市场重点赛道，加速美妆产品从研发到落地的全流程。
+    </div>
+  </div>
+
+</div>
+
+</div><!-- end section-shell -->
+
+<!-- ======== MAKEUP SECTION ======== -->
+<div class="section-sep"><hr></div>
+<div class="section-shell">
+<h2 class="section-title">💄 彩妆趋势报告</h2>
+
+<!-- Common Trends -->
+<div class="common-trends-section">
+  <h3 style="font-size:14px;font-weight:700;margin-bottom:14px;color:var(--zurured);display:flex;align-items:center;gap:8px;">
+    <span style="background:var(--zurured);color:white;padding:2px 10px;border-radius:4px;font-size:10px;">GLOBAL</span> 跨市场共享趋势
+  </h3>
+
+  <div class="trend-v-card open" style="border-top:4px solid var(--zurured);">
+    <div class="trend-v-header" onclick="this.parentElement.classList.toggle('open')">
+      <h4>🌿 纯净美妆 3.0：从"Free From"到"Science-Backed Clean"</h4>
+      <span class="trend-v-arrow">▼</span>
+    </div>
+    <div class="trend-v-body">
+      <div class="driver-summary">消费者不再满足于"不含什么"，而是追问"含有什么有效成分"——纯净美妆正从排除性宣称转向科学验证的功效导向。</div>
+      <div class="driver-chain">
+        <span class="chain-node trigger">触发：REN关停+纯净品牌退潮</span>
+        <span class="chain-arrow">→</span>
+        <span class="chain-node ferment">发酵：消费者对"Clean Washing"疲劳</span>
+        <span class="chain-arrow">→</span>
+        <span class="chain-node diverge">分化：功效型纯净美妆（PDRN、Bakuchiol、神经酰胺）</span>
+      </div>
+      <div class="driver-expand">
+        <span class="exp-chip global">Clean Beauty $9.02B</span>
+        <span class="exp-chip global">纯素/零残忍配方</span>
+        <span class="exp-chip cn">国货成分创新</span>
+        <span class="exp-chip us">Sephora Clean + Planet Aware</span>
+      </div>
+      <div class="signal-strip">
+        <div class="signal-chip gtrends"><div class="chip-desc">Clean Beauty 市场规模</div><div class="chip-num">$9.02B</div><div class="chip-arrow up">+12.5% YoY</div></div>
+        <div class="signal-chip douyin"><div class="chip-desc">纯净美妆话题量</div><div class="chip-num">3.2亿</div><div class="chip-arrow up">+45%</div></div>
+        <div class="signal-chip seph"><div class="chip-desc">Sephora Clean 标签产品</div><div class="chip-num">2,800+</div><div class="chip-desc">SKU持续扩容</div></div>
+        <div class="signal-chip wgsn"><div class="chip-desc">WGSN 趋势评级</div><div class="chip-num">A级</div><div class="chip-desc">长期结构性趋势</div></div>
+      </div>
+      <div class="action-strip">
+        <span class="action-tag">🎯 行动</span>
+        <span class="action-text">新品牌定位必须超越"Free From"层面，建立"Science-Backed Clean"的技术叙事。关键成分方向：植物性A醇替代品（Bakuchiol）、发酵神经酰胺、生物技术来源活性物。配合 Sephora "Clean + Planet Aware"标签策略制定配方路线。</span>
       </div>
     </div>
   </div>
 </div>
 
-<div class="section-shell makeup-shell">
+<!-- CN + US Trend Grid -->
+<div class="trend-grid">
 
-<!-- 彩妆要闻 -->
-<div class="news-strip">
-  <h3>📰 彩妆行业要闻</h3>
-  <div class="news-list">
+  <!-- US ZONE -->
+  <div class="zone zone-us">
+    <span class="zone-badge us">US 美国彩妆市场</span>
+    <div class="zone-platforms">平台：<strong>YouTube · TikTok · Pinterest · Sephora</strong></div>
 
-    <div class="news-card">
-      <div class="news-card-header">
-        <span class="news-card-title">🔥 618大促：彩妆+香水GMV同比<span class="hl-num">+18.5%</span>，远超护肤的&lt;1%</span>
-        <span class="news-card-tag shared">GLOBAL</span>
-        <span class="news-card-tag data">618</span>
-        <span class="news-card-chevron">▾</span>
+    <div class="trend-v-card us open">
+      <div class="trend-v-header" onclick="this.parentElement.classList.toggle('open')">
+        <h4>💙 蓝色美妆革命：从秀场到 TikTok 的全品类渗透</h4>
+        <span class="trend-v-arrow">▼</span>
       </div>
-      <div class="news-card-brief">天猫618第一周期数据出炉：彩妆/香水增速远超护肤；YSL登顶天猫618彩妆品牌榜TOP1；毛戈平跻身前五。</div>
-      <div class="news-card-body">
-        <div class="news-card-body-inner">
-          天猫618第一周期核心数据：彩妆+香水品类GMV同比<span class="hl-num">+18.5%</span>，而护肤品类增速不足1%。<br><br>
-          <b>品牌亮点：</b>YSL登顶天猫618彩妆品牌榜TOP1；毛戈平凭借专业底妆跻身前五，国货品牌在高端彩妆市场持续突破。<br><br>
-          来源：IT之家 / 新浪财经
+      <div class="trend-v-body">
+        <div class="driver-summary us">冰蓝眼影、银色高光、珠光蓝唇——Y2K冷调美学在2026年全面爆发，蓝色已从点缀色升级为全脸妆容的主色调。</div>
+        <div class="driver-chain">
+          <span class="chain-node trigger">触发：2026 FW 秀场蓝色妆容密集出现</span>
+          <span class="chain-arrow">→</span>
+          <span class="chain-node ferment">发酵：TikTok #BlueBeauty 标签病毒式传播</span>
+          <span class="chain-arrow">→</span>
+          <span class="chain-node diverge">分化：紫色睫毛膏×蓝色眼线×银蓝高光三线并进</span>
+        </div>
+        <div class="driver-expand">
+          <span class="exp-chip us">Julep 眼影棒 月销12.5万</span>
+          <span class="exp-chip us">紫色睫毛膏套装热销</span>
+          <span class="exp-chip us">香槟金闪眼影</span>
+          <span class="exp-chip us">冰感美学 Y2K</span>
+        </div>
+        <div class="signal-strip">
+          <div class="signal-chip yt"><div class="chip-desc">YT 蓝色妆容教程</div><div class="chip-num">480万</div><div class="chip-arrow up">+165%</div></div>
+          <div class="signal-chip tt"><div class="chip-desc">#BlueBeauty 浏览量</div><div class="chip-num">2.1亿</div><div class="chip-arrow up">+89%</div></div>
+          <div class="signal-chip seph"><div class="chip-desc">Julep色号眼影棒</div><div class="chip-num">124,930</div><div class="chip-desc">月销量 Amazon</div></div>
+          <div class="signal-chip pin"><div class="chip-desc">蓝色美妆搜索</div><div class="chip-num">+210%</div><div class="chip-arrow up">Pinterest YoY</div></div>
+        </div>
+        <div class="action-strip">
+          <span class="action-tag">🎯 行动</span>
+          <span class="action-text">开发冷色调多功能彩妆棒（眼影/高光/腮红三合一），以冰蓝、银白、香槟金三色为核心。重点布局 TikTok 病毒内容（Y2K妆容教程），眼影棒品类已验证高转化（月销12万+）。</span>
+        </div>
+        <div class="trend-decision-bar">
+          <span class="dec-label">信号→决策</span>
+          <span class="dec-signal">TikTok 2.1亿浏览</span>
+          <span class="dec-arrow">→</span>
+          <span class="dec-direction">冷调多功能彩妆棒</span>
+          <span class="dec-strength strong">STRONG</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="trend-v-card us open">
+      <div class="trend-v-header" onclick="this.parentElement.classList.toggle('open')">
+        <h4>✨ 新极繁主义：大胆唇妆 × 金属质感 × 创意眼线三趋势共振</h4>
+        <span class="trend-v-arrow">▼</span>
+      </div>
+      <div class="trend-v-body">
+        <div class="driver-summary us">"Clean Girl"极简审美退潮，消费者拥抱大胆自我表达——浓郁唇色、图形化眼线、金属光泽全脸妆容正在接管社交媒体。</div>
+        <div class="driver-chain">
+          <span class="chain-node trigger">触发：Reddit 1,500+赞"Bring back colourful full beats 2026"</span>
+          <span class="chain-arrow">→</span>
+          <span class="chain-node ferment">发酵：MAC 口红讨论占追踪品牌42%</span>
+          <span class="chain-arrow">→</span>
+          <span class="chain-node diverge">分化：单色眼妆 × 金属质感 × 夸张睫毛 三大子趋势</span>
+        </div>
+        <div class="driver-expand">
+          <span class="exp-chip us">Bold Lip 复兴</span>
+          <span class="exp-chip us">Graphic Eyeliner</span>
+          <span class="exp-chip us">Metallic Finishes</span>
+          <span class="exp-chip us">Statement Lashes</span>
+        </div>
+        <div class="signal-strip">
+          <div class="signal-chip tt"><div class="chip-desc">#BoldLip 标签浏览</div><div class="chip-num">8.7亿</div><div class="chip-arrow up">+43%</div></div>
+          <div class="signal-chip yt"><div class="chip-desc">极繁妆容教程</div><div class="chip-num">320万</div><div class="chip-arrow up">+78%</div></div>
+          <div class="signal-chip seph"><div class="chip-desc">MAC 口红社区讨论</div><div class="chip-num">42%</div><div class="chip-desc">追踪品牌最高</div></div>
+          <div class="signal-chip pin"><div class="chip-desc">大胆彩妆搜索</div><div class="chip-num">+95%</div><div class="chip-arrow up">Pinterest</div></div>
+        </div>
+        <div class="action-strip">
+          <span class="action-tag">🎯 行动</span>
+          <span class="action-text">推出"Statement Lip Kit"套装（浓郁唇釉×金属闪粉顶涂），重点色号：深莓果、正红、梅子紫。配合图形眼线笔（双头设计：细头+宽头），切入新极繁主义三大品类交叉点。</span>
+        </div>
+        <div class="trend-decision-bar">
+          <span class="dec-label">信号→决策</span>
+          <span class="dec-signal">MAC 42% SOV</span>
+          <span class="dec-arrow">→</span>
+          <span class="dec-direction">Statement Lip Kit</span>
+          <span class="dec-strength strong">STRONG</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="trend-v-card us open">
+      <div class="trend-v-header" onclick="this.parentElement.classList.toggle('open')">
+        <h4>☁️ Cloud Skin × Toasty Makeup：柔软底妆双趋势驱动购买</h4>
+        <span class="trend-v-arrow">▼</span>
+      </div>
+      <div class="trend-v-body">
+        <div class="driver-summary us">柔焦"云朵肌"与暖调"烤色妆"成为TikTok双热点——前者追求朦胧滤镜般的无瑕底妆，后者以烤杏仁色调营造温暖高级感。</div>
+        <div class="driver-chain">
+          <span class="chain-node trigger">触发：TikTok #CloudSkin 病毒传播</span>
+          <span class="chain-arrow">→</span>
+          <span class="chain-node ferment">发酵：混合彩妆需求增长9%</span>
+          <span class="chain-arrow">→</span>
+          <span class="chain-node diverge">分化：护肤型粉底液 + 暖调腮红修容组合购买</span>
+        </div>
+        <div class="driver-expand">
+          <span class="exp-chip us">Laura Mercier 粉底月销484</span>
+          <span class="exp-chip us">Revlon ColorStay 月销1.5万</span>
+          <span class="exp-chip us">混合彩妆 +9%</span>
+          <span class="exp-chip us">Toasty Makeup 病毒</span>
+        </div>
+        <div class="signal-strip">
+          <div class="signal-chip tt"><div class="chip-desc">#CloudSkin</div><div class="chip-num">1.4亿</div><div class="chip-arrow up">+112%</div></div>
+          <div class="signal-chip yt"><div class="chip-desc">底妆教程观看</div><div class="chip-num">580万</div><div class="chip-arrow up">+34%</div></div>
+          <div class="signal-chip seph"><div class="chip-desc">Revlon粉底月销</div><div class="chip-num">15,294</div><div class="chip-desc">Amazon</div></div>
+          <div class="signal-chip gtrends"><div class="chip-desc">混合彩妆需求</div><div class="chip-num">+9%</div><div class="chip-arrow up">品类增长</div></div>
+        </div>
+        <div class="action-strip">
+          <span class="action-tag">🎯 行动</span>
+          <span class="action-text">开发"柔焦滤镜粉底液"（含超细硅粉+光反射色素），SPF 30+，搭配暖调多用途彩妆棒（腮红+修容+眼影）。产品名强调"Cloud"和"Toasty"关键词以匹配TikTok搜索行为。</span>
+        </div>
+        <div class="trend-decision-bar">
+          <span class="dec-label">信号→决策</span>
+          <span class="dec-signal">混合彩妆 +9%</span>
+          <span class="dec-arrow">→</span>
+          <span class="dec-direction">柔焦滤镜粉底液 SPF30+</span>
+          <span class="dec-strength mid">MID</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- CN ZONE -->
+  <div class="zone zone-cn">
+    <span class="zone-badge cn">CN 中国彩妆市场</span>
+    <div class="zone-platforms">平台：<strong>抖音 · 小红书 · 天猫</strong></div>
+
+    <div class="trend-v-card cn open">
+      <div class="trend-v-header" onclick="this.parentElement.classList.toggle('open')">
+        <h4>🎨 低饱和粉彩色系：82%年轻用户的春夏首选</h4>
+        <span class="trend-v-arrow">▼</span>
+      </div>
+      <div class="trend-v-body">
+        <div class="driver-summary">抖音精选数据显示82%的18-35岁用户认为低饱和粉彩色系最适合春夏——不突兀、提气色，成为2026年国货彩妆色彩开发的核心方向。</div>
+        <div class="driver-chain">
+          <span class="chain-node trigger">触发：抖音9.6万人参与"春夏粉彩色"评价</span>
+          <span class="chain-arrow">→</span>
+          <span class="chain-node ferment">发酵：小红书"奶油腮红""雾粉口红"话题爆发</span>
+          <span class="chain-arrow">→</span>
+          <span class="chain-node diverge">分化：黄油黄美甲+1,043% / 粉色系腮红口红联动增长</span>
+        </div>
+        <div class="driver-expand">
+          <span class="exp-chip cn">黄油黄 指甲 +1,043%</span>
+          <span class="exp-chip cn">低饱和粉彩</span>
+          <span class="exp-chip cn">奶油腮红</span>
+          <span class="exp-chip cn">雾粉口红</span>
+        </div>
+        <div class="signal-strip">
+          <div class="signal-chip douyin"><div class="chip-desc">粉彩偏好用户</div><div class="chip-num">82%</div><div class="chip-desc">18-35岁 9.6万人评价</div></div>
+          <div class="signal-chip xhs"><div class="chip-desc">奶油腮红笔记</div><div class="chip-num">180万+</div><div class="chip-arrow up">+68%</div></div>
+          <div class="signal-chip tmall"><div class="chip-desc">粉色系唇釉GMV</div><div class="chip-num">¥3.2亿</div><div class="chip-arrow up">+32% YoY</div></div>
+          <div class="signal-chip gtrends"><div class="chip-desc">黄油黄搜索增长</div><div class="chip-num">+1,043%</div><div class="chip-arrow up">全球趋势</div></div>
+        </div>
+        <div class="action-strip">
+          <span class="action-tag">🎯 行动</span>
+          <span class="action-text">推出"春日奶油"系列——4色腮红膏（奶桃/裸粉/杏橘/豆沙）+ 对应口红，参考黄油黄在美甲品类+1,043%的成功，考虑彩妆×美甲联动。包装用马卡龙色系呼应粉彩趋势。</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="trend-v-card cn open">
+      <div class="trend-v-header" onclick="this.parentElement.classList.toggle('open')">
+        <h4>⚡ 国货彩妆格局重塑：蒂洛薇领跑 × 珀莱雅控股花知晓</h4>
+        <span class="trend-v-arrow">▼</span>
+      </div>
+      <div class="trend-v-body">
+        <div class="driver-summary">抖音618彩妆TOP1蒂洛薇成为现象级新锐，同时珀莱雅以近8亿控股花知晓——国货彩妆进入"资本整合+爆品驱动"双引擎时代。</div>
+        <div class="driver-chain">
+          <span class="chain-node trigger">触发：珀莱雅8亿控股花知晓</span>
+          <span class="chain-arrow">→</span>
+          <span class="chain-node ferment">发酵：蒂洛薇618抖音彩妆TOP1</span>
+          <span class="chain-arrow">→</span>
+          <span class="chain-node diverge">分化：国货彩妆从"平替"走向"品牌矩阵+资本运作"</span>
+        </div>
+        <div class="driver-expand">
+          <span class="exp-chip cn">蒂洛薇 抖音TOP1</span>
+          <span class="exp-chip cn">花知晓被控股</span>
+          <span class="exp-chip cn">国货73%席位</span>
+          <span class="exp-chip cn">中高端底妆价格带上升</span>
+        </div>
+        <div class="signal-strip">
+          <div class="signal-chip douyin"><div class="chip-desc">蒂洛薇 抖音排名</div><div class="chip-num">TOP 1</div><div class="chip-desc">618彩妆香水</div></div>
+          <div class="signal-chip tmall"><div class="chip-desc">珀莱雅收购金额</div><div class="chip-num">¥8亿</div><div class="chip-desc">花知晓51%股权</div></div>
+          <div class="signal-chip xhs"><div class="chip-desc">花知晓话题笔记</div><div class="chip-num">620万+</div><div class="chip-arrow up">+28%</div></div>
+          <div class="signal-chip gtrends"><div class="chip-desc">国货彩妆份额</div><div class="chip-num">57.37%</div><div class="chip-desc">中国市场主场</div></div>
+        </div>
+        <div class="action-strip">
+          <span class="action-tag">🎯 行动</span>
+          <span class="action-text">关注蒂洛薇的"波浪纹水散粉""恒瓷粉膏"产品策略——以差异化的产品形态（散粉→水散粉，粉底→粉膏）切入饱和品类。花知晓的"少女心"高颜值包装方法论值得新品牌参考。</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="trend-v-card cn open">
+      <div class="trend-v-header" onclick="this.parentElement.classList.toggle('open')">
+        <h4>🔬 成分驱动底妆升级：控油持妆 × 局部遮瑕 × 精华粉底三线爆发</h4>
+        <span class="trend-v-arrow">▼</span>
+      </div>
+      <div class="trend-v-body">
+        <div class="driver-summary">中国底妆市场进入成分驱动阶段——控油持妆仍是核心卖点，但"精华粉底液"（含养肤成分的底妆）和局部精准遮瑕成为新增长极。</div>
+        <div class="driver-chain">
+          <span class="chain-node trigger">触发：Q1 新品备案下滑14.6%但底妆品类逆势增长</span>
+          <span class="chain-arrow">→</span>
+          <span class="chain-node ferment">发酵：神经酰胺/多肽/玻色因进入底妆配方</span>
+          <span class="chain-arrow">→</span>
+          <span class="chain-node diverge">分化：精华粉底液 × 局部遮瑕笔 × 控油气垫 三品类矩阵</span>
+        </div>
+        <div class="driver-expand">
+          <span class="exp-chip cn">神经酰胺 底妆添加</span>
+          <span class="exp-chip cn">多肽粉底液</span>
+          <span class="exp-chip cn">局部遮瑕 增速突出</span>
+          <span class="exp-chip cn">中高端价格带占比突出</span>
+        </div>
+        <div class="signal-strip">
+          <div class="signal-chip douyin"><div class="chip-desc">底妆品类GMV</div><div class="chip-num">¥45亿</div><div class="chip-arrow up">+18%</div></div>
+          <div class="signal-chip tmall"><div class="chip-desc">精华粉底搜索增长</div><div class="chip-num">+85%</div><div class="chip-arrow up">YoY</div></div>
+          <div class="signal-chip xhs"><div class="chip-desc">遮瑕教程笔记</div><div class="chip-num">420万+</div><div class="chip-arrow up">+52%</div></div>
+          <div class="signal-chip gtrends"><div class="chip-desc">Q1 新品备案</div><div class="chip-num">8.8万</div><div class="chip-arrow down">-14.6%</div></div>
+        </div>
+        <div class="action-strip">
+          <span class="action-tag">🎯 行动</span>
+          <span class="action-text">底妆线策略：① 含3%烟酰胺+神经酰胺的"精华粉底液"对标护肤型底妆趋势；② 多色局部遮瑕笔（绿/橘/肤色三色）切入高增速遮瑕子品类；③ 控油持妆气垫补全便携场景。避免普通粉底液的红海竞争。</span>
         </div>
       </div>
     </div>
@@ -1182,375 +768,655 @@ body {
   </div>
 </div>
 
-<div class="section">
-<div class="section-title">💄 彩妆趋势</div>
+<!-- Heat Ranking -->
+<div class="heat-section">
+  <div class="heat-panel us-heat">
+    <h4><span style="background:var(--us-blue);color:white;padding:2px 10px;border-radius:4px;font-size:10px;">US</span> 彩妆热度 TOP 5</h4>
+    <ul class="heat-accordion">
+      <li class="heat-item">
+        <span class="heat-rank us">1</span>
+        <div class="heat-info">
+          <span class="heat-name">Julep Eyeshadow 101 Cream-to-Powder Stick</span>
+          <span class="heat-brand"> · Julep</span>
+        </div>
+        <div class="heat-meter"><div class="heat-fill us-fill" style="width:95%"></div></div>
+        <div class="heat-data">月销 124,930 · Amazon Bestseller · $17.16</div>
+      </li>
+      <li class="heat-item">
+        <span class="heat-rank us">2</span>
+        <div class="heat-info">
+          <span class="heat-name">Revlon ColorStay Liquid Foundation SPF 15</span>
+          <span class="heat-brand"> · Revlon</span>
+        </div>
+        <div class="heat-meter"><div class="heat-fill us-fill" style="width:82%"></div></div>
+        <div class="heat-data">月销 15,294 · Amazon · $10.26</div>
+      </li>
+      <li class="heat-item">
+        <span class="heat-rank us">3</span>
+        <div class="heat-info">
+          <span class="heat-name">Laura Geller The Ideal Fix Concealer</span>
+          <span class="heat-brand"> · Laura Geller NY</span>
+        </div>
+        <div class="heat-meter"><div class="heat-fill us-fill" style="width:78%"></div></div>
+        <div class="heat-data">月销 14,314 · Amazon · $25.71</div>
+      </li>
+      <li class="heat-item">
+        <span class="heat-rank us">4</span>
+        <div class="heat-info">
+          <span class="heat-name">MAC Lipstick (全色号)</span>
+          <span class="heat-brand"> · MAC Cosmetics</span>
+        </div>
+        <div class="heat-meter"><div class="heat-fill us-fill" style="width:72%"></div></div>
+        <div class="heat-data">Reddit口红讨论占追踪品牌 42% · Sephora Bestseller</div>
+      </li>
+      <li class="heat-item">
+        <span class="heat-rank us">5</span>
+        <div class="heat-info">
+          <span class="heat-name">Maybelline Sky High Mascara</span>
+          <span class="heat-brand"> · Maybelline</span>
+        </div>
+        <div class="heat-meter"><div class="heat-fill us-fill" style="width:68%"></div></div>
+        <div class="heat-data">睫毛膏品牌SOV 36.3% · 互动率 30.3%</div>
+      </li>
+    </ul>
+  </div>
+  <div class="heat-panel cn-heat">
+    <h4><span style="background:var(--cn-yellow);color:#1A1A1A;padding:2px 10px;border-radius:4px;font-size:10px;">CN</span> 彩妆热度 TOP 5</h4>
+    <ul class="heat-accordion">
+      <li class="heat-item">
+        <span class="heat-rank cn">1</span>
+        <div class="heat-info">
+          <span class="heat-name">蒂洛薇 波浪纹云雾触感水散粉</span>
+          <span class="heat-brand"> · 蒂洛薇</span>
+        </div>
+        <div class="heat-meter"><div class="heat-fill cn-fill" style="width:95%"></div></div>
+        <div class="heat-data">抖音618彩妆TOP1品牌 · 底妆品类领跑</div>
+      </li>
+      <li class="heat-item">
+        <span class="heat-rank cn">2</span>
+        <div class="heat-info">
+          <span class="heat-name">花西子 空气蜜粉</span>
+          <span class="heat-brand"> · 花西子</span>
+        </div>
+        <div class="heat-meter"><div class="heat-fill cn-fill" style="width:88%"></div></div>
+        <div class="heat-data">国货彩妆TOP3品牌 · 散粉品类常青</div>
+      </li>
+      <li class="heat-item">
+        <span class="heat-rank cn">3</span>
+        <div class="heat-info">
+          <span class="heat-name">INTO YOU 女主角唇泥</span>
+          <span class="heat-brand"> · INTO YOU</span>
+        </div>
+        <div class="heat-meter"><div class="heat-fill cn-fill" style="width:82%"></div></div>
+        <div class="heat-data">唇泥品类开创者 · 低饱和色系引领</div>
+      </li>
+      <li class="heat-item">
+        <span class="heat-rank cn">4</span>
+        <div class="heat-info">
+          <span class="heat-name">彩棠 妆前乳+奶皮气垫组合</span>
+          <span class="heat-brand"> · 彩棠</span>
+        </div>
+        <div class="heat-meter"><div class="heat-fill cn-fill" style="width:75%"></div></div>
+        <div class="heat-data">年度爱用推荐 · 底妆套装策略成功</div>
+      </li>
+      <li class="heat-item">
+        <span class="heat-rank cn">5</span>
+        <div class="heat-info">
+          <span class="heat-name">橘朵 单色腮红</span>
+          <span class="heat-brand"> · 橘朵</span>
+        </div>
+        <div class="heat-meter"><div class="heat-fill cn-fill" style="width:68%"></div></div>
+        <div class="heat-data">腮红品类高性价比标杆 · 色号丰富</div>
+      </li>
+    </ul>
+  </div>
+</div>
 
+<!-- New Product Radar -->
+<div class="radar-section">
+  <div class="radar-subsection">
+    <h4>🆕 彩妆新品雷达 — 奢品</h4>
+    <table class="radar-table">
+      <thead>
+        <tr><th>品牌</th><th>产品</th><th>定位</th><th>核心卖点</th><th>口碑</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="radar-brand">LANEIGE</span></td>
+          <td><span class="radar-product">Glaze Craze Tinted Lip Serum (冷调版)</span></td>
+          <td><span class="radar-tier luxury">Luxury</span></td>
+          <td class="radar-desc">95%护肤配方，含阿甘油苷酯+石榴籽油+多肽；Y2K冷调玫瑰色 + 限量Plum Sparkle/Lavender Glaze</td>
+          <td><span class="rev-tag rev-pos">Sephora上线即热销</span></td>
+        </tr>
+        <tr>
+          <td><span class="radar-brand">Dolce & Gabbana</span></td>
+          <td><span class="radar-product">Icy-Touch Lemon Balm</span></td>
+          <td><span class="radar-tier luxury">Luxury</span></td>
+          <td class="radar-desc">意大利柠檬提取物+乳木果油；清凉触感+自然光泽唇部护理</td>
+          <td><span class="rev-tag rev-mid">新品待观察</span></td>
+        </tr>
+        <tr>
+          <td><span class="radar-brand">Tom Ford</span></td>
+          <td><span class="radar-product">Taormina Orange EDP</span></td>
+          <td><span class="radar-tier luxury">Luxury</span></td>
+          <td class="radar-desc">青橘+橙花+广藿香；西西里灵感高级柑橘调</td>
+          <td><span class="rev-tag rev-pos">高期待度</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="radar-subsection">
+    <h4>🆕 彩妆新品雷达 — Masstige 彩妆</h4>
+    <table class="radar-table">
+      <thead>
+        <tr><th>品牌</th><th>产品</th><th>定位</th><th>核心卖点</th><th>口碑</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="radar-brand">Huda Beauty</span></td>
+          <td><span class="radar-product">Easy Bake Intense EDP</span></td>
+          <td><span class="radar-tier masstige">Masstige</span></td>
+          <td class="radar-desc">野樱桃+白花+焦糖牛奶+波旁香草；Easy Bake散粉的香水延伸</td>
+          <td><span class="rev-tag rev-pos">Sephora $129/50ml</span></td>
+        </tr>
+        <tr>
+          <td><span class="radar-brand">Fenty Beauty</span></td>
+          <td><span class="radar-product">Fenty Eau de Parfum 固体版</span></td>
+          <td><span class="radar-tier masstige">Masstige</span></td>
+          <td class="radar-desc">经典香固体香膏形态；便携补香趋势+5</td>
+          <td><span class="rev-tag rev-pos">固体香水 +174.6% 搜索</span></td>
+        </tr>
+        <tr>
+          <td><span class="radar-brand">Glossier</span></td>
+          <td><span class="radar-product">Glossier You Solid</span></td>
+          <td><span class="radar-tier masstige">Masstige</span></td>
+          <td class="radar-desc">鹅卵石造型固体香膏；社媒爆款+个性化皮肤麝香</td>
+          <td><span class="rev-tag rev-pos">社媒现象级</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+</div><!-- end section-shell -->
+
+<!-- ======== FRAGRANCE SECTION ======== -->
+<div class="section-sep"><hr></div>
+<div class="section-shell">
+<h2 class="section-title">🌸 香水趋势报告</h2>
+
+<!-- Common Trends -->
 <div class="common-trends-section">
-<div class="common-trends-header"><span class="common-badge">🌐 共享趋势</span><span class="common-subtitle">护肤级唇妆 × 迷你化可穿戴 — 2026夏季中美核心方向</span></div>
+  <h3 style="font-size:14px;font-weight:700;margin-bottom:14px;color:var(--zurured);display:flex;align-items:center;gap:8px;">
+    <span style="background:var(--zurured);color:white;padding:2px 10px;border-radius:4px;font-size:10px;">GLOBAL</span> 跨市场共享趋势
+  </h3>
 
-<div class="trend-v-card common">
-<h4><span class="trend-num">趋势#1</span>：护肤级唇妆革命 — 从"上色"到"养唇"</h4>
-<div class="trend-v-body">
-<div class="driver-summary">消费者拒绝干燥唇膏，要求一步到位的保湿+显色；神经酰胺+胜肽成核心配方方向。Givenchy"宝石糖"唇油天猫首周搜索<span style="color:var(--rose);font-weight:700">+1,200%</span>；PRADA唇釉首周<span style="color:var(--rose);font-weight:700">1,000+</span>支。</div>
-<div class="driver-bullets">
-<div class="bullet-group cn-group"><div class="bullet-point"><span class="region-tag" style="background:rgba(214,0,28,0.15);color:#D6001C;">GLOBAL</span><span> 消费者拒绝干燥唇膏 → 要求一步到位的保湿+显色；"护肤级唇色"成为新品核心定位</span></div></div>
-<div class="bullet-group cn-group"><div class="bullet-point"><span class="region-tag cn-tag">CN</span><span> <b>Givenchy"宝石糖"唇油</b>天猫首周搜索<span class="hl-rose">+1,200%</span>；99%唇部养护成分宣称占主导</span></div></div>
-<div class="bullet-group cn-group"><div class="bullet-point"><span class="region-tag us-tag">US</span><span> <b>Tower 28唇蜜</b>Z世代Clean Beauty明星；<b>Rhode胜肽唇釉</b>手机壳捆绑套装爆火</span></div></div>
-</div></div>
-<div class="signal-strip">
-<div class="signal-chip tt"><div class="chip-icon">🎵 天猫</div><div class="chip-num" style="color:var(--rose);">+1,200%</div><div class="chip-desc">Givenchy唇油首周搜索</div><div class="chip-trend chip-hot">🔥 爆发式增长</div></div>
-<div class="signal-chip seph"><div class="chip-icon">🛒 天猫</div><div class="chip-num" style="color:var(--us-blue);">1,000+</div><div class="chip-desc">PRADA唇釉首周销量</div><div class="chip-trend chip-up">↑ 高端功效</div></div>
-<div class="signal-chip ig"><div class="chip-icon">🔬 成分</div><div class="chip-num">99%</div><div class="chip-desc">唇部养护成分宣称</div><div class="chip-trend chip-hot">🔥 成分创新</div></div>
-<div class="signal-chip wgsn"><div class="chip-icon">🔮 配方</div><div class="chip-num">神经酰胺+胜肽</div><div class="chip-desc">核心配方方向</div><div class="chip-trend chip-up">↑ 护肤级彩妆</div></div>
-</div>
-<div class="action-block">
-<div class="act-header">
-<span class="act-label">🎯 行动</span>
-<span class="act-direction">神经酰胺+胜肽唇油 · "护肤级唇色"定位</span>
-<span class="act-strength strong">强烈推荐</span>
-</div>
-<div class="act-content">开发神经酰胺+胜肽唇油，可叠加显色；定位为"护肤级唇色"；对标Givenchy宝石糖99%养护概念。</div>
-</div>
+  <div class="trend-v-card open" style="border-top:4px solid var(--zurured);">
+    <div class="trend-v-header" onclick="this.parentElement.classList.toggle('open')">
+      <h4>🥜 开心果美食调：全行业增速最快香调（+852%）</h4>
+      <span class="trend-v-arrow">▼</span>
+    </div>
+    <div class="trend-v-body">
+      <div class="driver-summary">开心果香调年增长852%成为2026年增速最快香调——从D.S. & Durga到Prada，奢侈品牌和Masstige品牌全线布局坚果美食调。</div>
+      <div class="driver-chain">
+        <span class="chain-node trigger">触发：D.S. & Durga Pistachio 口碑爆发</span>
+        <span class="chain-arrow">→</span>
+        <span class="chain-node ferment">发酵：TikTok #PistachioPerfume 病毒传播</span>
+        <span class="chain-arrow">→</span>
+        <span class="chain-node diverge">分化：开心果×焦糖 / 烤杏仁×广藿香 / 榛子×奶油 三大调性</span>
+      </div>
+      <div class="driver-expand">
+        <span class="exp-chip global">开心果 +852%</span>
+        <span class="exp-chip global">咸鲜美食香</span>
+        <span class="exp-chip us">D.S. & Durga</span>
+        <span class="exp-chip cn">坚果香调国货机会</span>
+      </div>
+      <div class="signal-strip">
+        <div class="signal-chip tt"><div class="chip-desc">#PistachioPerfume</div><div class="chip-num">3.8亿</div><div class="chip-arrow up">+852% YoY</div></div>
+        <div class="signal-chip gtrends"><div class="chip-desc">开心果香调搜索</div><div class="chip-num">+852%</div><div class="chip-desc">全行业增速最快</div></div>
+        <div class="signal-chip seph"><div class="chip-desc">美食调香水SKU</div><div class="chip-num">+64%</div><div class="chip-arrow up">Sephora 同比</div></div>
+        <div class="signal-chip wgsn"><div class="chip-desc">趋势评级</div><div class="chip-num">S级</div><div class="chip-desc">2026年度香调</div></div>
+      </div>
+      <div class="action-strip">
+        <span class="action-tag">🎯 行动</span>
+        <span class="action-text">开发开心果/烤杏仁/榛子三大坚果香调线——建议从身体喷雾（对标Sol de Janeiro价格带）切入，降低试错成本。香调结构：坚果前调 + 焦糖/香草中调 + 广藿香/麝香基调。这是目前全球增速最快的香调，窗口期优势明显。</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="trend-v-card open" style="border-top:4px solid var(--zurured);">
+    <div class="trend-v-header" onclick="this.parentElement.classList.toggle('open')">
+      <h4>🤍 肌肤感麝香：从"穿香"到"第二层皮肤"的品类升级</h4>
+      <span class="trend-v-arrow">▼</span>
+    </div>
+    <div class="trend-v-body">
+      <div class="driver-summary">Phlur Missing Person、Glossier You、DedCool Milk等"肌肤感麝香"成为社媒常青款——消费者追求"像洗完澡后的干净体香"而非"喷了香水"的感觉。</div>
+      <div class="driver-chain">
+        <span class="chain-node trigger">触发：Phlur Missing Person TikTok爆红</span>
+        <span class="chain-arrow">→</span>
+        <span class="chain-node ferment">发酵：Glossier You 个性化皮肤麝香概念</span>
+        <span class="chain-arrow">→</span>
+        <span class="chain-node diverge">分化：开士米麝香 × 奶油麝香 × 奶香木质 三条子线</span>
+      </div>
+      <div class="driver-expand">
+        <span class="exp-chip global">Phlur Missing Person</span>
+        <span class="exp-chip global">Glossier You Solid</span>
+        <span class="exp-chip global">DedCool Milk/Mochi</span>
+        <span class="exp-chip global">Lake & Skye 11 11</span>
+      </div>
+      <div class="signal-strip">
+        <div class="signal-chip tt"><div class="chip-desc">#SkinScent 浏览量</div><div class="chip-num">12亿</div><div class="chip-arrow up">+76%</div></div>
+        <div class="signal-chip seph"><div class="chip-desc">Phlur Sephora排名</div><div class="chip-num">TOP 5</div><div class="chip-desc">香水品类</div></div>
+        <div class="signal-chip gtrends"><div class="chip-desc">"skin scent"搜索</div><div class="chip-num">+143%</div><div class="chip-arrow up">Google</div></div>
+        <div class="signal-chip pin"><div class="chip-desc">Cashmere Musk</div><div class="chip-num">+89%</div><div class="chip-arrow up">Pinterest</div></div>
+      </div>
+      <div class="action-strip">
+        <span class="action-tag">🎯 行动</span>
+        <span class="action-text">开发"Your Skin But Better"定位的肌肤感麝香香水——核心香调：Cashmeran分子+白麝香+奶油檀木，主打"千人千味"的个性化叙事。定价对标Phlur $99价位，Target/Ulta渠道适配度极高。</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="trend-v-card open" style="border-top:4px solid var(--zurured);">
+    <div class="trend-v-header" onclick="this.parentElement.classList.toggle('open')">
+      <h4>🔬 功能性情绪香水：$121亿市场新赛道</h4>
+      <span class="trend-v-arrow">▼</span>
+    </div>
+    <div class="trend-v-body">
+      <div class="driver-summary">功能性香水市场规模达$121亿——62%消费者优先选择有情绪/生理功效的香水。从Rare Beauty Find Comfort到Charlotte Tilbury情绪系列，品牌加速布局。</div>
+      <div class="driver-chain">
+        <span class="chain-node trigger">触发：The Nue Co. Functional Fragrance 开创品类</span>
+        <span class="chain-arrow">→</span>
+        <span class="chain-node ferment">发酵：62%消费者偏好功效香水</span>
+        <span class="chain-arrow">→</span>
+        <span class="chain-node diverge">分化：减压放松 × 专注提升 × 情绪疗愈 三大功效方向</span>
+      </div>
+      <div class="driver-expand">
+        <span class="exp-chip global">$121亿市场</span>
+        <span class="exp-chip global">62%消费者偏好</span>
+        <span class="exp-chip us">Rare Beauty Comfort</span>
+        <span class="exp-chip global">CT 情绪系列</span>
+      </div>
+      <div class="signal-strip">
+        <div class="signal-chip wgsn"><div class="chip-desc">功能性香水市场</div><div class="chip-num">$121B</div><div class="chip-desc">预测规模</div></div>
+        <div class="signal-chip gtrends"><div class="chip-desc">消费者功效偏好</div><div class="chip-num">62%</div><div class="chip-desc">优先情绪/生理功效</div></div>
+        <div class="signal-chip tt"><div class="chip-desc">#MoodPerfume</div><div class="chip-num">2.4亿</div><div class="chip-arrow up">+210%</div></div>
+        <div class="signal-chip seph"><div class="chip-desc">Sephora 情绪香水</div><div class="chip-num">+78%</div><div class="chip-arrow up">SKU增长</div></div>
+      </div>
+      <div class="action-strip">
+        <span class="action-tag">🎯 行动</span>
+        <span class="action-text">推出"MOOD"系列——3款功能定位香水：Calm（圣木+薰衣草+洋甘菊，减压安神）、Focus（绿茶+薄荷+迷迭香，专注提升）、Joy（柑橘+茉莉+琥珀，情绪提振）。每款附带神经科学背书的小卡片，切入$121亿蓝海市场。</span>
+      </div>
+    </div>
+  </div>
 </div>
 
-<div class="trend-v-card common">
-<h4><span class="trend-num">趋势#2</span>：迷你化+可穿戴彩妆 — 产品即配饰</h4>
-<div class="trend-v-body">
-<div class="driver-summary">Rhode唇蜜手机壳在TikTok爆火；花知晓包挂口红带动Ulta流量；AMUSE戒指口红韩国售罄。消费者渴望<span style="color:var(--gold);font-weight:700">"便携奢华"</span>，适合拍照的包装正在超越产品性能本身。</div>
-<div class="driver-bullets">
-<div class="bullet-group cn-group"><div class="bullet-point"><span class="region-tag" style="background:rgba(214,0,28,0.15);color:#D6001C;">GLOBAL</span><span> 消费者渴望"便携奢华" + 适合拍照的包装 > 产品性能本身</span></div></div>
-<div class="bullet-group cn-group"><div class="bullet-point"><span class="region-tag cn-tag">CN</span><span> <b>花知晓包挂口红</b>带动Ulta流量；产品社交传播力成为核心购买驱动</span></div></div>
-<div class="bullet-group cn-group"><div class="bullet-point"><span class="region-tag us-tag">US</span><span> <b>Rhode唇蜜手机壳</b>TikTok爆火；<b>AMUSE戒指口红</b>韩国售罄</span></div></div>
-</div></div>
-<div class="signal-strip">
-<div class="signal-chip tt"><div class="chip-icon">🎵 TikTok</div><div class="chip-num" style="color:var(--rose);">爆火</div><div class="chip-desc">Rhode唇蜜手机壳</div><div class="chip-trend chip-hot">🔥 社交传播力</div></div>
-<div class="signal-chip seph"><div class="chip-icon">🛒 Ulta</div><div class="chip-num" style="color:var(--us-blue);">流量↑</div><div class="chip-desc">花知晓包挂口红带动</div><div class="chip-trend chip-up">↑ 配饰驱动</div></div>
-<div class="signal-chip ig"><div class="chip-icon">🌏 韩国</div><div class="chip-num">售罄</div><div class="chip-desc">AMUSE戒指口红</div><div class="chip-trend chip-hot">🔥 限量爆款</div></div>
-<div class="signal-chip wgsn"><div class="chip-icon">🔮 趋势</div><div class="chip-num">工具→配饰</div><div class="chip-desc">产品形态转变</div><div class="chip-trend chip-hot">🔥 社交传播</div></div>
-</div>
-<div class="action-block">
-<div class="act-header">
-<span class="act-label">🎯 行动</span>
-<span class="act-direction">迷你规格明星SKU · 钥匙扣/登山扣造型</span>
-<span class="act-strength strong">强烈推荐</span>
-</div>
-<div class="act-content">设计迷你规格的明星SKU，采用钥匙扣/登山扣造型；与配饰品类交叉陈列；社交传播力优先于产品性能。</div>
-</div>
-</div>
-</div>
-
+<!-- Fragrance Trend Grid: CN + US -->
 <div class="trend-grid">
-<div class="zone zone-cn">
-<span class="zone-badge cn">中国彩妆市场</span>
+  <div class="zone zone-us">
+    <span class="zone-badge us">US 美国香水市场</span>
+    <div class="zone-platforms">平台：<strong>TikTok · Sephora · Ulta · Fragrantica</strong></div>
 
-<div class="trend-v-card cn">
-<h4><span class="trend-num">趋势#3</span>：蓝色妆容 — 牛仔蓝眼唇</h4>
-<div class="trend-v-body">
-<div class="driver-summary">抖音搜索"蓝色妆容"暴涨<span style="color:var(--rose);font-weight:700">+380%</span>；小红书"牛仔蓝"帖子+215%；Chanel牛仔蓝系列天猫预售售罄。K-pop影响力催化夏季从暖桃色调转向冷蓝色调。</div>
-<div class="driver-bullets">
-<div class="bullet-group cn-group"><div class="bullet-point"><span><b>aespa Karina</b>带火"牛仔蓝"妆容，抖音搜索暴涨<span class="hl-rose">+380%</span></span></div></div>
-<div class="bullet-group cn-group"><div class="bullet-point"><span>Chanel牛仔蓝系列天猫预售售罄；植村秀蓝色妆前乳、3CE苏打蓝唇釉热卖</span></div></div>
-<div class="bullet-group cn-group"><div class="bullet-point"><span>夏季从暖桃色调转向冷蓝色调，K-pop造型内容是核心驱动力</span></div></div>
-</div></div>
-<div class="signal-strip">
-<div class="signal-chip tt"><div class="chip-icon">🎵 抖音</div><div class="chip-num" style="color:var(--rose);">+380%</div><div class="chip-desc">"蓝色妆容"搜索暴涨</div><div class="chip-trend chip-up">↑ K-pop催化</div></div>
-<div class="signal-chip ig"><div class="chip-icon">📕 小红书</div><div class="chip-num" style="color:var(--rose);">+215%</div><div class="chip-desc">"牛仔蓝"帖子增长</div><div class="chip-trend chip-up">↑ 夏季冷色转换</div></div>
-<div class="signal-chip seph"><div class="chip-icon">🛒 天猫</div><div class="chip-num">售罄</div><div class="chip-desc">Chanel牛仔蓝预售</div><div class="chip-trend chip-hot">🔥 Karina效应</div></div>
-<div class="signal-chip wgsn"><div class="chip-icon">🔮 趋势</div><div class="chip-num">牛仔蓝</div><div class="chip-desc">夏季冷蓝色调</div><div class="chip-trend chip-hot">🔥 上升中</div></div>
-</div>
-<div class="action-block">
-<div class="act-header">
-<span class="act-label">🎯 行动</span>
-<span class="act-direction">蓝色眼线笔+蓝色透明唇蜜双品</span>
-<span class="act-strength rising">上升中 — K-pop催化</span>
-</div>
-<div class="act-content">推出蓝色调眼线笔+蓝色透明唇蜜双品；借助K-pop造型内容营销；定位夏季冷蓝色调替代暖桃色。</div>
-</div>
-</div>
+    <div class="trend-v-card us open">
+      <div class="trend-v-header" onclick="this.parentElement.classList.toggle('open')">
+        <h4>🖤 棉花糖哥特：暗黑美食调 +242.1% 搜索增长</h4>
+        <span class="trend-v-arrow">▼</span>
+      </div>
+      <div class="trend-v-body">
+        <div class="driver-summary us">"棉花糖香水"搜索增长242.1%，TikTok贡献80%以上搜索兴趣——暗黑美食调从Kilian到Maison Margiela再到TikTok Shop白牌全面爆发。</div>
+        <div class="driver-chain">
+          <span class="chain-node trigger">触发：Kilian Love Don't Be Shy 经典回归</span>
+          <span class="chain-arrow">→</span>
+          <span class="chain-node ferment">发酵：TikTok Shop Marshmallow Blush 爆卖</span>
+          <span class="chain-arrow">→</span>
+          <span class="chain-node diverge">分化：烤棉花糖 × 烟熏木质 × 暗黑香草 三种调性</span>
+        </div>
+        <div class="driver-expand">
+          <span class="exp-chip us">Kilian Paris</span>
+          <span class="exp-chip us">MMM By the Fireplace</span>
+          <span class="exp-chip us">Eilish No.2</span>
+          <span class="exp-chip us">Marshmallow Blush TikTok爆款</span>
+        </div>
+        <div class="signal-strip">
+          <div class="signal-chip tt"><div class="chip-desc">#MarshmallowPerfume</div><div class="chip-num">6.2亿</div><div class="chip-arrow up">+242.1%</div></div>
+          <div class="signal-chip gtrends"><div class="chip-desc">棉花糖香水搜索</div><div class="chip-num">+242.1%</div><div class="chip-desc">YoY Google</div></div>
+          <div class="signal-chip seph"><div class="chip-desc">Kilian Sephora 排名</div><div class="chip-num">TOP 10</div><div class="chip-desc">香水品类</div></div>
+          <div class="signal-chip pin"><div class="chip-desc">Dark Gourmand</div><div class="chip-num">+178%</div><div class="chip-arrow up">Pinterest</div></div>
+        </div>
+        <div class="action-strip">
+          <span class="action-tag">🎯 行动</span>
+          <span class="action-text">开发"Toasted"暗黑美食调系列——烤棉花糖+烟熏香草+羊绒木。包装用暗黑美学（黑色瓶身+烫金），定价Masstige档$48-68。这是TikTok原生的爆款香调，社交传播潜力极大。</span>
+        </div>
+        <div class="trend-decision-bar">
+          <span class="dec-label">信号→决策</span>
+          <span class="dec-signal">TikTok 6.2亿浏览</span>
+          <span class="dec-arrow">→</span>
+          <span class="dec-direction">Toasted 暗黑美食调系列</span>
+          <span class="dec-strength strong">STRONG</span>
+        </div>
+      </div>
+    </div>
 
-<div class="trend-v-card cn">
-<h4><span class="trend-num">趋势#4</span>：唇油革命 — 护肤遇上彩妆</h4>
-<div class="trend-v-body">
-<div class="driver-summary">Givenchy"宝石糖"唇油天猫首周搜索<span style="color:var(--rose);font-weight:700">+1,200%</span>；PRADA唇釉首周1,000+支；99%唇部养护成分宣称占主导。消费者拒绝干燥唇膏，要求一步到位的保湿+显色。</div>
-<div class="driver-bullets">
-<div class="bullet-group cn-group"><div class="bullet-point"><span><b>Givenchy"宝石糖"唇油</b>天猫首周搜索<span class="hl-rose">+1,200%</span>；99%唇部养护成分</span></div></div>
-<div class="bullet-group cn-group"><div class="bullet-point"><span><b>PRADA唇釉</b>首周1,000+支；高端定位+功效路线</span></div></div>
-<div class="bullet-group cn-group"><div class="bullet-point"><span>消费者拒绝干燥唇膏 → 要求一步到位的保湿+显色；神经酰胺+胜肽成核心配方方向</span></div></div>
-</div></div>
-<div class="signal-strip">
-<div class="signal-chip tt"><div class="chip-icon">🎵 天猫</div><div class="chip-num" style="color:var(--rose);">+1,200%</div><div class="chip-desc">Givenchy唇油首周搜索</div><div class="chip-trend chip-hot">🔥 爆发式增长</div></div>
-<div class="signal-chip seph"><div class="chip-icon">🛒 天猫</div><div class="chip-num" style="color:var(--us-blue);">1,000+</div><div class="chip-desc">PRADA唇釉首周销量</div><div class="chip-trend chip-up">↑ 高端功效</div></div>
-<div class="signal-chip ig"><div class="chip-icon">🔬 成分</div><div class="chip-num">99%</div><div class="chip-desc">唇部养护成分宣称</div><div class="chip-trend chip-hot">🔥 成分创新</div></div>
-<div class="signal-chip wgsn"><div class="chip-icon">🔮 品类</div><div class="chip-num">护肤级唇色</div><div class="chip-desc">唇油革命</div><div class="chip-trend chip-up">↑ 品类升级</div></div>
-</div>
-<div class="action-block">
-<div class="act-header">
-<span class="act-label">🎯 行动</span>
-<span class="act-direction">神经酰胺+胜肽唇油 · "护肤级唇色"定位</span>
-<span class="act-strength strong">强烈推荐</span>
-</div>
-<div class="act-content">开发神经酰胺+胜肽唇油，可叠加显色；定位为"护肤级唇色"；对标Givenchy宝石糖99%养护概念。</div>
-</div>
-</div>
-</div>
+    <div class="trend-v-card us open">
+      <div class="trend-v-header" onclick="this.parentElement.classList.toggle('open')">
+        <h4>🥀 玫瑰复兴：青绿露水玫瑰取代老派粉质玫瑰</h4>
+        <span class="trend-v-arrow">▼</span>
+      </div>
+      <div class="trend-v-body">
+        <div class="driver-summary us">玫瑰香调以清新、青绿、带露水的面貌回归——Phlur Rose Whip、Sol de Janeiro Cheirosa 91等新品脱离传统粉质印象，吸引Z世代消费者。</div>
+        <div class="driver-chain">
+          <span class="chain-node trigger">触发：Sol de Janeiro Cheirosa 91 玫瑰+热带果香融合</span>
+          <span class="chain-arrow">→</span>
+          <span class="chain-node ferment">发酵：Phlur Rose Whip 青绿玫瑰 $99定价受追捧</span>
+          <span class="chain-arrow">→</span>
+          <span class="chain-node diverge">分化：绿叶玫瑰 × 露水玫瑰 × 花园玫瑰 三种清新调</span>
+        </div>
+        <div class="driver-expand">
+          <span class="exp-chip us">Phlur Rose Whip $99</span>
+          <span class="exp-chip us">Sol de Janeiro Cheirosa 91</span>
+          <span class="exp-chip us">Guerlain Rosa Rossa</span>
+          <span class="exp-chip us">MMM Up at Dawn</span>
+        </div>
+        <div class="signal-strip">
+          <div class="signal-chip seph"><div class="chip-desc">Sol de Janeiro 91</div><div class="chip-num">$39</div><div class="chip-desc">Body Mist 畅销</div></div>
+          <div class="signal-chip tt"><div class="chip-desc">#RosePerfume 回归</div><div class="chip-num">4.1亿</div><div class="chip-arrow up">+56%</div></div>
+          <div class="signal-chip pin"><div class="chip-desc">Green Rose搜索</div><div class="chip-num">+134%</div><div class="chip-arrow up">Pinterest</div></div>
+          <div class="signal-chip yt"><div class="chip-desc">玫瑰香水测评</div><div class="chip-num">210万</div><div class="chip-arrow up">+42%</div></div>
+        </div>
+        <div class="action-strip">
+          <span class="action-tag">🎯 行动</span>
+          <span class="action-text">推出"晨露玫瑰"身体喷雾（对标Sol de Janeiro $39价格带）——青绿玫瑰+梨+白麝香，清爽不粉腻。Z世代对玫瑰的接受度正在回归，但必须是"现代玫瑰"而非"祖母玫瑰"。</span>
+        </div>
+        <div class="trend-decision-bar">
+          <span class="dec-label">信号→决策</span>
+          <span class="dec-signal">Sol de Janeiro $39</span>
+          <span class="dec-arrow">→</span>
+          <span class="dec-direction">晨露玫瑰身体喷雾</span>
+          <span class="dec-strength mid">MID</span>
+        </div>
+      </div>
+    </div>
 
-<div class="zone zone-us">
-<span class="zone-badge us">美国彩妆市场</span>
+  </div>
 
-<div class="trend-v-card us">
-<h4><span class="trend-num">趋势#5</span>：云朵肌与黄油黄美学</h4>
-<div class="trend-v-body">
-<div class="driver-summary">"云朵肌"柔焦妆容TikTok <span style="color:var(--us-blue);font-weight:700">8.9亿</span>浏览；黄油黄美甲搜索+1,043%；冰蓝色眼影Allure 2026预测热门。"无妆感妆容"从哑光进化到柔焦，黄色/蓝色成为夏季新中性色板。</div>
-<div class="driver-bullets">
-<div class="bullet-group us-group"><div class="bullet-point"><span>"云朵肌"柔焦妆容TikTok <span class="hl-teal">8.9亿</span>浏览；"无妆感"从哑光进化到柔焦</span></div></div>
-<div class="bullet-group us-group"><div class="bullet-point"><span>黄油黄美甲搜索<span class="hl-teal">+1,043%</span>；奶油黄成为新中性色；#butteryellow 23亿浏览</span></div></div>
-<div class="bullet-group us-group"><div class="bullet-point"><span>冰蓝色眼影Allure 2026预测热门；黄色/蓝色成为夏季新中性色板</span></div></div>
-</div></div>
-<div class="signal-strip">
-<div class="signal-chip tt"><div class="chip-icon">🎵 TikTok</div><div class="chip-hashtag tt-hash" style="color:var(--us-blue);">#CloudSkin</div><div class="chip-num">8.9亿</div><div class="chip-desc">云朵肌柔焦妆容浏览</div><div class="chip-trend chip-hot">🔥 柔焦进化</div></div>
-<div class="signal-chip gtrends"><div class="chip-icon">📈 搜索</div><div class="chip-num" style="color:var(--us-blue);">+1,043%</div><div class="chip-desc">黄油黄美甲搜索</div><div class="chip-trend chip-up">↑ 新中性色</div></div>
-<div class="signal-chip seph"><div class="chip-icon">🔮 Allure</div><div class="chip-num">2026预测</div><div class="chip-desc">冰蓝色眼影热门</div><div class="chip-trend chip-hot">🔥 季节性</div></div>
-<div class="signal-chip wgsn"><div class="chip-icon">🎨 色板</div><div class="chip-num">黄+蓝</div><div class="chip-desc">夏季新中性色</div><div class="chip-trend chip-up">↑ 色彩升级</div></div>
-</div>
-<div class="action-block">
-<div class="act-header">
-<span class="act-label">🎯 行动</span>
-<span class="act-direction">柔焦定妆粉+黄油黄奶油腮红双品</span>
-<span class="act-strength strong">强烈推荐</span>
-</div>
-<div class="act-content">推出柔焦定妆粉+黄油黄奶油腮红双品；强调"滤镜肌肤"效果；夏季限定色板含黄+蓝色调。</div>
-</div>
-</div>
+  <div class="zone zone-cn">
+    <span class="zone-badge cn">CN 中国香水市场</span>
+    <div class="zone-platforms">平台：<strong>抖音 · 小红书 · 天猫 · 艾媒咨询</strong></div>
 
-<div class="trend-v-card us">
-<h4><span class="trend-num">趋势#6</span>：奶油慕斯质地全面化</h4>
-<div class="trend-v-body">
-<div class="driver-summary">Fenty慕斯修容Sephora <span style="color:var(--us-blue);font-weight:700">3次售罄</span>；Patrick Ta液体渐变腮红候补5万+；奶油修容TikTok 8.9亿浏览。"无妆感妆容"需要扩散的、亲肤的质地；奶油/慕斯无需工具即可无缝融合。</div>
-<div class="driver-bullets">
-<div class="bullet-group us-group"><div class="bullet-point"><span><b>Fenty慕斯修容</b>Sephora <span class="hl-teal">3次售罄</span>；夏季明星产品</span></div></div>
-<div class="bullet-group us-group"><div class="bullet-point"><span><b>Patrick Ta液体渐变腮红</b>候补<span class="hl-teal">5万+</span>；KOL最爱高互动</span></div></div>
-<div class="bullet-group us-group"><div class="bullet-point"><span>奶油/慕斯质地无需工具即可无缝融合；"手指晕染"成为核心上妆方式</span></div></div>
-</div></div>
-<div class="signal-strip">
-<div class="signal-chip tt"><div class="chip-icon">🎵 TikTok</div><div class="chip-num" style="color:var(--us-blue);">8.9亿</div><div class="chip-desc">奶油修容话题浏览</div><div class="chip-trend chip-hot">🔥 消费者需求</div></div>
-<div class="signal-chip seph"><div class="chip-icon">🛒 Sephora</div><div class="chip-num" style="color:var(--us-blue);">3次售罄</div><div class="chip-desc">Fenty慕斯修容</div><div class="chip-trend chip-hot">🔥 夏季明星</div></div>
-<div class="signal-chip ig"><div class="chip-icon">📊 候补</div><div class="chip-num">5万+</div><div class="chip-desc">Patrick Ta渐变腮红</div><div class="chip-trend chip-up">↑ KOL驱动</div></div>
-<div class="signal-chip wgsn"><div class="chip-icon">🔮 质地</div><div class="chip-num">手指晕染</div><div class="chip-desc">无需工具上妆</div><div class="chip-trend chip-hot">🔥 亲肤质地</div></div>
-</div>
-<div class="action-block">
-<div class="act-header">
-<span class="act-label">🎯 行动</span>
-<span class="act-direction">慕斯修容+奶油腮红棒系列</span>
-<span class="act-strength strong">强烈推荐</span>
-</div>
-<div class="act-content">推出慕斯修容+奶油腮红棒系列；强调"手指晕染"上妆方式；对标Fenty和Patrick Ta。</div>
-</div>
-</div>
-</div>
-</div>
+    <div class="trend-v-card cn open">
+      <div class="trend-v-header" onclick="this.parentElement.classList.toggle('open')">
+        <h4>🏮 东方叙事香：观夏/气味图书馆引领"文化香"崛起</h4>
+        <span class="trend-v-arrow">▼</span>
+      </div>
+      <div class="trend-v-body">
+        <div class="driver-summary">中国香水消费者的购买逻辑从"社交悦人"转向"情绪自洽"——以观夏、气味图书馆、冰希黎为代表的国货香水以东方香调和东方文化叙事吸引大批年轻消费者。</div>
+        <div class="driver-chain">
+          <span class="chain-node trigger">触发：2025国产香水十大品牌（冰希黎/气味图书馆/观夏等）</span>
+          <span class="chain-arrow">→</span>
+          <span class="chain-node ferment">发酵：固态香膏、线香、扩香精等品类多元化</span>
+          <span class="chain-arrow">→</span>
+          <span class="chain-node diverge">分化：茶香 × 桂花 × 檀香 三大东方香调系</span>
+        </div>
+        <div class="driver-expand">
+          <span class="exp-chip cn">观夏 东方美学</span>
+          <span class="exp-chip cn">气味图书馆</span>
+          <span class="exp-chip cn">冰希黎</span>
+          <span class="exp-chip cn">固态香膏品类</span>
+        </div>
+        <div class="signal-strip">
+          <div class="signal-chip xhs"><div class="chip-desc">东方香笔记数</div><div class="chip-num">890万+</div><div class="chip-arrow up">+125%</div></div>
+          <div class="signal-chip douyin"><div class="chip-desc">国货香水话题量</div><div class="chip-num">4.6亿</div><div class="chip-arrow up">+87%</div></div>
+          <div class="signal-chip tmall"><div class="chip-desc">国货香水GMV增速</div><div class="chip-num">+45%</div><div class="chip-arrow up">YoY</div></div>
+          <div class="signal-chip gtrends"><div class="chip-desc">固态香水搜索</div><div class="chip-num">+174.6%</div><div class="chip-arrow up">全球趋势</div></div>
+        </div>
+        <div class="action-strip">
+          <span class="action-tag">🎯 行动</span>
+          <span class="action-text">开发"东方茶韵"系列——以中国茶为灵感：龙井绿茶/普洱陈香/桂花乌龙，配合东方美学包装（瓷器质感瓶身）。固态香膏形态契合便携趋势（+174.6%全球搜索增长），优先布局该品类。</span>
+        </div>
+      </div>
+    </div>
 
-<!-- Makeup Heat Ranking -->
-<div class="section"><div class="section-title">🔥 彩妆热度 TOP 10 排行</div><div class="heat-section">
-<div class="heat-panel">
-<h4>🔥 中国彩妆热度 TOP 10 <span class="heat-methodology-badge" title="天猫 30% + 抖音 15% + 京东 10% + 小红书 15% + 热度 15% + 常青 15%">📐 评分公式</span></h4>
-<ul class="heat-accordion">
-<li class="heat-item"><div class="heat-item-header"><span class="heat-rank r1">1</span><span class="heat-name">YSL 黑管唇釉 #416</span><span class="prod-cat-tag makeup-cat">唇釉</span><div class="heat-bar-wrap"><div class="heat-fill" style="width:92%"></div></div><div class="heat-score-wrap"><span class="heat-score-val">96</span><span class="heat-score-bd">天猫 · 抖音 · 京东 · 小红书 · 热度 · 常青</span></div><span class="heat-chevron">▼</span></div><div class="heat-item-body"><div class="heat-detail-grid"><div class="heat-detail-cell"><div class="cell-label">品牌</div><div class="cell-value">YSL</div></div><div class="heat-detail-cell"><div class="cell-label">核心卖点</div><div class="cell-value">天猫618彩妆品牌TOP1，Z世代最爱</div></div><div class="heat-detail-cell"><div class="cell-label">社媒热度</div><div class="cell-tags"><span class="rev-tag rev-pos">天猫618 #1 · Z世代首选</span></div></div><div class="heat-detail-cell"><div class="cell-label">产品链接</div><div class="cell-value"><a href="https://www.ysl.com" target="_blank">YSL 官网 →</a></div></div></div></div></li>
-<li class="heat-item"><div class="heat-item-header"><span class="heat-rank r2">2</span><span class="heat-name">Dior #999 口红</span><span class="prod-cat-tag makeup-cat">口红</span><div class="heat-bar-wrap"><div class="heat-fill" style="width:88%"></div></div><div class="heat-score-wrap"><span class="heat-score-val">92</span><span class="heat-score-bd">天猫 · 抖音 · 京东 · 小红书 · 热度 · 常青</span></div><span class="heat-chevron">▼</span></div><div class="heat-item-body"><div class="heat-detail-grid"><div class="heat-detail-cell"><div class="cell-label">品牌</div><div class="cell-value">Dior</div></div><div class="heat-detail-cell"><div class="cell-label">核心卖点</div><div class="cell-value">天猫口红#1，抖音搜索+28%</div></div><div class="heat-detail-cell"><div class="cell-label">社媒热度</div><div class="cell-tags"><span class="rev-tag rev-pos">天猫口红#1 · 抖音搜索+28%</span></div></div><div class="heat-detail-cell"><div class="cell-label">产品链接</div><div class="cell-value"><a href="https://www.dior.com" target="_blank">Dior 官网 →</a></div></div></div></div></li>
-<li class="heat-item"><div class="heat-item-header"><span class="heat-rank r3">3</span><span class="heat-name"><span class="trend-product-tag coral">趋势产品</span>Givenchy 宝石糖唇油</span><span class="prod-cat-tag makeup-cat">唇油</span><div class="heat-bar-wrap"><div class="heat-fill" style="width:85%"></div></div><div class="heat-score-wrap"><span class="heat-score-val">89</span><span class="heat-score-bd">天猫 · 抖音 · 京东 · 小红书 · 热度 · 常青</span></div><span class="heat-chevron">▼</span></div><div class="heat-item-body"><div class="heat-detail-grid"><div class="heat-detail-cell"><div class="cell-label">品牌</div><div class="cell-value">Givenchy</div></div><div class="heat-detail-cell"><div class="cell-label">核心卖点</div><div class="cell-value">99%唇部养护，天猫搜索+1,200%</div></div><div class="heat-detail-cell"><div class="cell-label">社媒热度</div><div class="cell-tags"><span class="rev-tag rev-pos">新品 · 天猫搜索+1,200%</span></div></div><div class="heat-detail-cell"><div class="cell-label">产品链接</div><div class="cell-value"><a href="https://www.givenchy.com" target="_blank">Givenchy 官网 →</a></div></div></div></div></li>
-<li class="heat-item"><div class="heat-item-header"><span class="heat-rank r4">4</span><span class="heat-name">Armani 红管唇丝绒</span><span class="prod-cat-tag makeup-cat">唇釉</span><div class="heat-bar-wrap"><div class="heat-fill" style="width:79%"></div></div><div class="heat-score-wrap"><span class="heat-score-val">83</span><span class="heat-score-bd">天猫 · 抖音 · 京东 · 小红书 · 热度 · 常青</span></div><span class="heat-chevron">▼</span></div><div class="heat-item-body"><div class="heat-detail-grid"><div class="heat-detail-cell"><div class="cell-label">品牌</div><div class="cell-value">Armani</div></div><div class="heat-detail-cell"><div class="cell-label">核心卖点</div><div class="cell-value">高端定位，高复购</div></div><div class="heat-detail-cell"><div class="cell-label">社媒热度</div><div class="cell-tags"><span class="rev-tag rev-pos">高端唇釉标杆 · 高复购</span></div></div><div class="heat-detail-cell"><div class="cell-label">产品链接</div><div class="cell-value"><a href="https://www.giorgioarmanibeauty.com" target="_blank">Armani 官网 →</a></div></div></div></div></li>
-<li class="heat-item"><div class="heat-item-header"><span class="heat-rank r5">5</span><span class="heat-name"><span class="trend-product-tag purple">趋势产品</span>PRADA 唇釉</span><span class="prod-cat-tag makeup-cat">唇釉</span><div class="heat-bar-wrap"><div class="heat-fill" style="width:75%"></div></div><div class="heat-score-wrap"><span class="heat-score-val">79</span><span class="heat-score-bd">天猫 · 抖音 · 京东 · 小红书 · 热度 · 常青</span></div><span class="heat-chevron">▼</span></div><div class="heat-item-body"><div class="heat-detail-grid"><div class="heat-detail-cell"><div class="cell-label">品牌</div><div class="cell-value">PRADA</div></div><div class="heat-detail-cell"><div class="cell-label">核心卖点</div><div class="cell-value">首周1,000+支，社交热议</div></div><div class="heat-detail-cell"><div class="cell-label">社媒热度</div><div class="cell-tags"><span class="rev-tag rev-pos">首周1,000+支 · 功效路线</span></div></div><div class="heat-detail-cell"><div class="cell-label">产品链接</div><div class="cell-value"><a href="https://www.prada.com" target="_blank">PRADA 官网 →</a></div></div></div></div></li>
-<li class="heat-item"><div class="heat-item-header"><span class="heat-rank r6">6</span><span class="heat-name"><span class="trend-product-tag gold">趋势产品</span>Chanel 牛仔蓝系列</span><span class="prod-cat-tag makeup-cat">眼影盘</span><div class="heat-bar-wrap"><div class="heat-fill" style="width:71%"></div></div><div class="heat-score-wrap"><span class="heat-score-val">74</span><span class="heat-score-bd">天猫 · 抖音 · 京东 · 小红书 · 热度 · 常青</span></div><span class="heat-chevron">▼</span></div><div class="heat-item-body"><div class="heat-detail-grid"><div class="heat-detail-cell"><div class="cell-label">品牌</div><div class="cell-value">Chanel</div></div><div class="heat-detail-cell"><div class="cell-label">核心卖点</div><div class="cell-value">蓝色妆容趋势，Karina效应，预售售罄</div></div><div class="heat-detail-cell"><div class="cell-label">社媒热度</div><div class="cell-tags"><span class="rev-tag rev-pos">蓝色妆容标杆 · Karina效应</span></div></div><div class="heat-detail-cell"><div class="cell-label">产品链接</div><div class="cell-value"><a href="https://www.chanel.com" target="_blank">Chanel 官网 →</a></div></div></div></div></li>
-<li class="heat-item"><div class="heat-item-header"><span class="heat-rank r7">7</span><span class="heat-name">MAC Chili</span><span class="prod-cat-tag makeup-cat">口红</span><div class="heat-bar-wrap"><div class="heat-fill" style="width:67%"></div></div><div class="heat-score-wrap"><span class="heat-score-val">70</span><span class="heat-score-bd">天猫 · 抖音 · 京东 · 小红书 · 热度 · 常青</span></div><span class="heat-chevron">▼</span></div><div class="heat-item-body"><div class="heat-detail-grid"><div class="heat-detail-cell"><div class="cell-label">品牌</div><div class="cell-value">MAC</div></div><div class="heat-detail-cell"><div class="cell-label">核心卖点</div><div class="cell-value">长青款，复古妆容+15%</div></div><div class="heat-detail-cell"><div class="cell-label">社媒热度</div><div class="cell-tags"><span class="rev-tag rev-pos">经典长青 · 复古妆容回潮</span></div></div><div class="heat-detail-cell"><div class="cell-label">产品链接</div><div class="cell-value"><a href="https://www.maccosmetics.com" target="_blank">MAC 官网 →</a></div></div></div></div></li>
-<li class="heat-item"><div class="heat-item-header"><span class="heat-rank r8">8</span><span class="heat-name">花知晓 泰迪口红</span><span class="prod-cat-tag makeup-cat">口红</span><div class="heat-bar-wrap"><div class="heat-fill" style="width:62%"></div></div><div class="heat-score-wrap"><span class="heat-score-val">65</span><span class="heat-score-bd">天猫 · 抖音 · 京东 · 小红书 · 热度 · 常青</span></div><span class="heat-chevron">▼</span></div><div class="heat-item-body"><div class="heat-detail-grid"><div class="heat-detail-cell"><div class="cell-label">品牌</div><div class="cell-value">花知晓</div></div><div class="heat-detail-cell"><div class="cell-label">核心卖点</div><div class="cell-value">珀莱雅收购引发关注，包挂口红配饰化</div></div><div class="heat-detail-cell"><div class="cell-label">社媒热度</div><div class="cell-tags"><span class="rev-tag rev-pos">并购热点 · 配饰化产品</span></div></div><div class="heat-detail-cell"><div class="cell-label">产品链接</div><div class="cell-value"><a href="https://www.florasis.com" target="_blank">Florasis 官网 →</a></div></div></div></div></li>
-<li class="heat-item"><div class="heat-item-header"><span class="heat-rank r9">9</span><span class="heat-name">Colorkey 镜面唇釉</span><span class="prod-cat-tag makeup-cat">唇釉</span><div class="heat-bar-wrap"><div class="heat-fill" style="width:57%"></div></div><div class="heat-score-wrap"><span class="heat-score-val">60</span><span class="heat-score-bd">天猫 · 抖音 · 京东 · 小红书 · 热度 · 常青</span></div><span class="heat-chevron">▼</span></div><div class="heat-item-body"><div class="heat-detail-grid"><div class="heat-detail-cell"><div class="cell-label">品牌</div><div class="cell-value">Colorkey</div></div><div class="heat-detail-cell"><div class="cell-label">核心卖点</div><div class="cell-value">大众市场明星，抖音唇釉#1</div></div><div class="heat-detail-cell"><div class="cell-label">社媒热度</div><div class="cell-tags"><span class="rev-tag rev-pos">抖音唇釉#1 · 极致性价比</span></div></div><div class="heat-detail-cell"><div class="cell-label">产品链接</div><div class="cell-value"><a href="https://www.colorkey.com.cn" target="_blank">Colorkey 官网 →</a></div></div></div></div></li>
-<li class="heat-item"><div class="heat-item-header"><span class="heat-rank r10">10</span><span class="heat-name">毛戈平 光感粉底</span><span class="prod-cat-tag makeup-cat">粉底</span><div class="heat-bar-wrap"><div class="heat-fill" style="width:53%"></div></div><div class="heat-score-wrap"><span class="heat-score-val">56</span><span class="heat-score-bd">天猫 · 抖音 · 京东 · 小红书 · 热度 · 常青</span></div><span class="heat-chevron">▼</span></div><div class="heat-item-body"><div class="heat-detail-grid"><div class="heat-detail-cell"><div class="cell-label">品牌</div><div class="cell-value">毛戈平</div></div><div class="heat-detail-cell"><div class="cell-label">核心卖点</div><div class="cell-value">天猫618彩妆品牌前五，专业底妆</div></div><div class="heat-detail-cell"><div class="cell-label">社媒热度</div><div class="cell-tags"><span class="rev-tag rev-pos">618前五 · 国货专业标杆</span></div></div><div class="heat-detail-cell"><div class="cell-label">产品链接</div><div class="cell-value"><a href="https://www.maogeping.com" target="_blank">毛戈平官网 →</a></div></div></div></div></li>
-</ul></div>
-<div class="heat-panel">
-<h4>🔥 美国彩妆热度 TOP 10 <span class="heat-methodology-badge" title="Sephora 25% + Ulta 25% + TikTok 25% + YouTube 10% + 互动量 10% + 趋势匹配 5%">📐 评分公式</span></h4>
-<ul class="heat-accordion">
-<li class="heat-item"><div class="heat-item-header"><span class="heat-rank r1">1</span><span class="heat-name">Rare Beauty 柔焦液体腮红</span><span class="prod-cat-tag makeup-cat">腮红</span><div class="heat-bar-wrap"><div class="heat-fill" style="width:92%"></div></div><div class="heat-score-wrap"><span class="heat-score-val">96</span></div><span class="heat-chevron">▼</span></div><div class="heat-item-body"><div class="heat-detail-grid"><div class="heat-detail-cell"><div class="cell-label">价格</div><div class="cell-value">$23</div></div><div class="heat-detail-cell"><div class="cell-label">核心卖点</div><div class="cell-value">Sephora彩妆#1，TikTok常青</div></div><div class="heat-detail-cell"><div class="cell-label">社媒热度</div><div class="cell-tags"><span class="rev-tag rev-pos">Sephora #1 · TikTok常青</span></div></div><div class="heat-detail-cell"><div class="cell-label">产品链接</div><div class="cell-value"><a href="https://www.rarebeauty.com" target="_blank">Rare Beauty 官网 →</a></div></div></div></div></li>
-<li class="heat-item"><div class="heat-item-header"><span class="heat-rank r2">2</span><span class="heat-name"><span class="trend-product-tag teal">趋势产品</span>Fenty Beauty 慕斯修容</span><span class="prod-cat-tag makeup-cat">修容</span><div class="heat-bar-wrap"><div class="heat-fill" style="width:87%"></div></div><div class="heat-score-wrap"><span class="heat-score-val">91</span></div><span class="heat-chevron">▼</span></div><div class="heat-item-body"><div class="heat-detail-grid"><div class="heat-detail-cell"><div class="cell-label">价格</div><div class="cell-value">$38</div></div><div class="heat-detail-cell"><div class="cell-label">核心卖点</div><div class="cell-value">3次售罄，夏季明星</div></div><div class="heat-detail-cell"><div class="cell-label">社媒热度</div><div class="cell-tags"><span class="rev-tag rev-pos">3次售罄 · 慕斯质地标杆</span></div></div><div class="heat-detail-cell"><div class="cell-label">产品链接</div><div class="cell-value"><a href="https://www.fentybeauty.com" target="_blank">Fenty Beauty 官网 →</a></div></div></div></div></li>
-<li class="heat-item"><div class="heat-item-header"><span class="heat-rank r3">3</span><span class="heat-name">Charlotte Tilbury 无瑕滤镜</span><span class="prod-cat-tag makeup-cat">粉底</span><div class="heat-bar-wrap"><div class="heat-fill" style="width:82%"></div></div><div class="heat-score-wrap"><span class="heat-score-val">86</span></div><span class="heat-chevron">▼</span></div><div class="heat-item-body"><div class="heat-detail-grid"><div class="heat-detail-cell"><div class="cell-label">价格</div><div class="cell-value">$44</div></div><div class="heat-detail-cell"><div class="cell-label">核心卖点</div><div class="cell-value">光泽标杆，社交媒体#1</div></div><div class="heat-detail-cell"><div class="cell-label">社媒热度</div><div class="cell-tags"><span class="rev-tag rev-pos">社交媒体#1 · 光泽标杆</span></div></div><div class="heat-detail-cell"><div class="cell-label">产品链接</div><div class="cell-value"><a href="https://www.charlottetilbury.com" target="_blank">CT 官网 →</a></div></div></div></div></li>
-<li class="heat-item"><div class="heat-item-header"><span class="heat-rank r4">4</span><span class="heat-name">Patrick Ta 头条眼影盘</span><span class="prod-cat-tag makeup-cat">眼影盘</span><div class="heat-bar-wrap"><div class="heat-fill" style="width:77%"></div></div><div class="heat-score-wrap"><span class="heat-score-val">81</span></div><span class="heat-chevron">▼</span></div><div class="heat-item-body"><div class="heat-detail-grid"><div class="heat-detail-cell"><div class="cell-label">价格</div><div class="cell-value">$52</div></div><div class="heat-detail-cell"><div class="cell-label">核心卖点</div><div class="cell-value">KOL最爱，高互动</div></div><div class="heat-detail-cell"><div class="cell-label">社媒热度</div><div class="cell-tags"><span class="rev-tag rev-pos">KOL最爱 · 高互动</span></div></div><div class="heat-detail-cell"><div class="cell-label">产品链接</div><div class="cell-value"><a href="https://www.patricktabeauty.com" target="_blank">Patrick Ta 官网 →</a></div></div></div></div></li>
-<li class="heat-item"><div class="heat-item-header"><span class="heat-rank r5">5</span><span class="heat-name">Natasha Denona 棕色盘</span><span class="prod-cat-tag makeup-cat">眼影盘</span><div class="heat-bar-wrap"><div class="heat-fill" style="width:72%"></div></div><div class="heat-score-wrap"><span class="heat-score-val">76</span></div><span class="heat-chevron">▼</span></div><div class="heat-item-body"><div class="heat-detail-grid"><div class="heat-detail-cell"><div class="cell-label">价格</div><div class="cell-value">$65</div></div><div class="heat-detail-cell"><div class="cell-label">核心卖点</div><div class="cell-value">新品，早期热议</div></div><div class="heat-detail-cell"><div class="cell-label">社媒热度</div><div class="cell-tags"><span class="rev-tag rev-pos">新品热议 · 专业眼影</span></div></div><div class="heat-detail-cell"><div class="cell-label">产品链接</div><div class="cell-value"><a href="https://www.natashadenona.com" target="_blank">Natasha Denona →</a></div></div></div></div></li>
-<li class="heat-item"><div class="heat-item-header"><span class="heat-rank r6">6</span><span class="heat-name">Merit 古铜修容棒</span><span class="prod-cat-tag makeup-cat">修容</span><div class="heat-bar-wrap"><div class="heat-fill" style="width:67%"></div></div><div class="heat-score-wrap"><span class="heat-score-val">71</span></div><span class="heat-chevron">▼</span></div><div class="heat-item-body"><div class="heat-detail-grid"><div class="heat-detail-cell"><div class="cell-label">价格</div><div class="cell-value">$32</div></div><div class="heat-detail-cell"><div class="cell-label">核心卖点</div><div class="cell-value">Clean beauty修容领导者</div></div><div class="heat-detail-cell"><div class="cell-label">社媒热度</div><div class="cell-tags"><span class="rev-tag rev-pos">Clean Beauty标杆 · 修容首选</span></div></div><div class="heat-detail-cell"><div class="cell-label">产品链接</div><div class="cell-value"><a href="https://www.meritbeauty.com" target="_blank">Merit 官网 →</a></div></div></div></div></li>
-<li class="heat-item"><div class="heat-item-header"><span class="heat-rank r7">7</span><span class="heat-name">Dior 魅惑唇釉</span><span class="prod-cat-tag makeup-cat">唇釉</span><div class="heat-bar-wrap"><div class="heat-fill" style="width:63%"></div></div><div class="heat-score-wrap"><span class="heat-score-val">67</span></div><span class="heat-chevron">▼</span></div><div class="heat-item-body"><div class="heat-detail-grid"><div class="heat-detail-cell"><div class="cell-label">价格</div><div class="cell-value">$40</div></div><div class="heat-detail-cell"><div class="cell-label">核心卖点</div><div class="cell-value">奢华唇部，TikTok爆火色号</div></div><div class="heat-detail-cell"><div class="cell-label">社媒热度</div><div class="cell-tags"><span class="rev-tag rev-pos">TikTok爆火色号 · 奢华唇部</span></div></div><div class="heat-detail-cell"><div class="cell-label">产品链接</div><div class="cell-value"><a href="https://www.dior.com" target="_blank">Dior 官网 →</a></div></div></div></div></li>
-<li class="heat-item"><div class="heat-item-header"><span class="heat-rank r8">8</span><span class="heat-name">Tower 28 唇蜜</span><span class="prod-cat-tag makeup-cat">唇蜜</span><div class="heat-bar-wrap"><div class="heat-fill" style="width:59%"></div></div><div class="heat-score-wrap"><span class="heat-score-val">63</span></div><span class="heat-chevron">▼</span></div><div class="heat-item-body"><div class="heat-detail-grid"><div class="heat-detail-cell"><div class="cell-label">价格</div><div class="cell-value">$20</div></div><div class="heat-detail-cell"><div class="cell-label">核心卖点</div><div class="cell-value">Z世代Clean beauty明星</div></div><div class="heat-detail-cell"><div class="cell-label">社媒热度</div><div class="cell-tags"><span class="rev-tag rev-pos">Z世代Clean Beauty · 唇蜜标杆</span></div></div><div class="heat-detail-cell"><div class="cell-label">产品链接</div><div class="cell-value"><a href="https://www.tower28beauty.com" target="_blank">Tower 28 官网 →</a></div></div></div></div></li>
-<li class="heat-item"><div class="heat-item-header"><span class="heat-rank r9">9</span><span class="heat-name">Laura Mercier 完美焕亮粉底</span><span class="prod-cat-tag makeup-cat">粉底</span><div class="heat-bar-wrap"><div class="heat-fill" style="width:55%"></div></div><div class="heat-score-wrap"><span class="heat-score-val">58</span></div><span class="heat-chevron">▼</span></div><div class="heat-item-body"><div class="heat-detail-grid"><div class="heat-detail-cell"><div class="cell-label">价格</div><div class="cell-value">$50</div></div><div class="heat-detail-cell"><div class="cell-label">核心卖点</div><div class="cell-value">15小时保湿，TikTok热推</div></div><div class="heat-detail-cell"><div class="cell-label">社媒热度</div><div class="cell-tags"><span class="rev-tag rev-pos">TikTok热推 · 15h保湿</span></div></div><div class="heat-detail-cell"><div class="cell-label">产品链接</div><div class="cell-value"><a href="https://www.lauramercier.com" target="_blank">Laura Mercier →</a></div></div></div></div></li>
-<li class="heat-item"><div class="heat-item-header"><span class="heat-rank r10">10</span><span class="heat-name"><span class="trend-product-tag green">趋势产品</span>ColourPop 果冻眼影棒</span><span class="prod-cat-tag makeup-cat">眼影</span><div class="heat-bar-wrap"><div class="heat-fill" style="width:51%"></div></div><div class="heat-score-wrap"><span class="heat-score-val">54</span></div><span class="heat-chevron">▼</span></div><div class="heat-item-body"><div class="heat-detail-grid"><div class="heat-detail-cell"><div class="cell-label">价格</div><div class="cell-value">$9</div></div><div class="heat-detail-cell"><div class="cell-label">核心卖点</div><div class="cell-value">TikTok爆火，平价</div></div><div class="heat-detail-cell"><div class="cell-label">社媒热度</div><div class="cell-tags"><span class="rev-tag rev-pos">TikTok爆火 · 平价标杆</span></div></div><div class="heat-detail-cell"><div class="cell-label">产品链接</div><div class="cell-value"><a href="https://www.colourpop.com" target="_blank">ColourPop 官网 →</a></div></div></div></div></li>
-</ul></div>
-</div>
+    <div class="trend-v-card cn open">
+      <div class="trend-v-header" onclick="this.parentElement.classList.toggle('open')">
+        <h4>🍵 抹茶狂热：+173%搜索增长的绿意香调</h4>
+        <span class="trend-v-arrow">▼</span>
+      </div>
+      <div class="trend-v-body">
+        <div class="driver-summary">抹茶香调搜索增长173%，"茶香"品类社交媒体提及量增长45%——从Kayali到Le Labo，抹茶已成为连接健康生活方式与香水品类的桥梁。</div>
+        <div class="driver-chain">
+          <span class="chain-node trigger">触发：Kayali Freedom Musk Matcha 引爆话题</span>
+          <span class="chain-arrow">→</span>
+          <span class="chain-node ferment">发酵：Le Labo Thé Matcha 26 高端定价验证</span>
+          <span class="chain-arrow">→</span>
+          <span class="chain-node diverge">分化：抹茶×香草 / 抹茶×雪松 / 抹茶×柑橘 三个方向</span>
+        </div>
+        <div class="driver-expand">
+          <span class="exp-chip global">抹茶搜索 +173%</span>
+          <span class="exp-chip us">Kayali Freedom Musk Matcha</span>
+          <span class="exp-chip global">Le Labo Thé Matcha 26</span>
+          <span class="exp-chip cn">Bvlgari Thé Impérial 茶文化</span>
+        </div>
+        <div class="signal-strip">
+          <div class="signal-chip tt"><div class="chip-desc">#MatchaPerfume</div><div class="chip-num">1.8亿</div><div class="chip-arrow up">+173%</div></div>
+          <div class="signal-chip xhs"><div class="chip-desc">茶香笔记数</div><div class="chip-num">320万+</div><div class="chip-arrow up">+45%</div></div>
+          <div class="signal-chip seph"><div class="chip-desc">Kayali 抹茶 Sephora</div><div class="chip-num">TOP 20</div><div class="chip-desc">香水品类</div></div>
+          <div class="signal-chip pin"><div class="chip-desc">Matcha Scent</div><div class="chip-num">+198%</div><div class="chip-arrow up">Pinterest</div></div>
+        </div>
+        <div class="action-strip">
+          <span class="action-tag">🎯 行动</span>
+          <span class="action-text">推出"抹茶雾语"淡香精——日本抹茶+雪松木+白麝香。中国市场茶文化根基深厚，抹茶香调兼具国际趋势与本土文化共鸣。重点渠道：天猫旗舰店+小红书种草，对标Le Labo高端定位但Masstige定价。</span>
+        </div>
+      </div>
+    </div>
 
-<!-- ═══ 彩妆新品雷达 ═══ -->
-<div class="section">
-<div class="section-title">🆕 彩妆新品雷达</div>
-<div class="radar-grid">
-<div class="radar-zone us-zone">
-<span class="radar-zone-badge us">🇺🇸 美国市场</span>
-<h4>Masstige 新品</h4>
-<div class="radar-list">
-<div class="radar-item"><div class="radar-item-header"><span class="radar-brand">Fenty Beauty</span><span class="radar-name"><span class="trend-product-tag teal">趋势产品</span>慕斯修容</span><span class="radar-cat">修容</span><span class="radar-chevron">▾</span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">上市时间</div><div class="cell-value">5月15日</div></div><div><div class="cell-label">核心宣称</div><div class="cell-value">慕斯质地，可叠加</div></div><div><div class="cell-label">社媒热度</div><div class="cell-tags"><span class="rev-tag rev-pos">Sephora 3次售罄</span></div></div><div><div class="cell-label">链接</div><div class="cell-value"><a href="https://www.fentybeauty.com" target="_blank">Fenty Beauty →</a></div></div></div></div></div>
-<div class="radar-item"><div class="radar-item-header"><span class="radar-brand">Patrick Ta</span><span class="radar-name"><span class="trend-product-tag coral">趋势产品</span>液体渐变腮红</span><span class="radar-cat">腮红</span><span class="radar-chevron">▾</span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">上市时间</div><div class="cell-value">5月</div></div><div><div class="cell-label">核心宣称</div><div class="cell-value">提亮，液体转粉</div></div><div><div class="cell-label">社媒热度</div><div class="cell-tags"><span class="rev-tag rev-pos">候补5万+</span></div></div><div><div class="cell-label">链接</div><div class="cell-value"><a href="https://www.patricktabeauty.com" target="_blank">Patrick Ta →</a></div></div></div></div></div>
-<div class="radar-item"><div class="radar-item-header"><span class="radar-brand">NARS</span><span class="radar-name">持久液体腮红</span><span class="radar-cat">腮红</span><span class="radar-chevron">▾</span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">上市时间</div><div class="cell-value">5月</div></div><div><div class="cell-label">核心宣称</div><div class="cell-value">16h持妆，高显色</div></div><div><div class="cell-label">社媒热度</div><div class="cell-tags"><span class="rev-tag rev-pos">扩展腮红产品线</span></div></div><div><div class="cell-label">链接</div><div class="cell-value"><a href="https://www.narscosmetics.com" target="_blank">NARS →</a></div></div></div></div></div>
-<div class="radar-item"><div class="radar-item-header"><span class="radar-brand">Hourglass</span><span class="radar-name">幻影柔焦唇膏</span><span class="radar-cat">唇部</span><span class="radar-chevron">▾</span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">上市时间</div><div class="cell-value">5月</div></div><div><div class="cell-label">核心宣称</div><div class="cell-value">柔焦效果，平滑</div></div><div><div class="cell-label">社媒热度</div><div class="cell-tags"><span class="rev-tag rev-pos">唇部打底+显色二合一</span></div></div><div><div class="cell-label">链接</div><div class="cell-value"><a href="https://www.hourglasscosmetics.com" target="_blank">Hourglass →</a></div></div></div></div></div>
-<div class="radar-item"><div class="radar-item-header"><span class="radar-brand">MAC</span><span class="radar-name">丰润唇蜜（夏季）</span><span class="radar-cat">唇部</span><span class="radar-chevron">▾</span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">上市时间</div><div class="cell-value">5月</div></div><div><div class="cell-label">核心宣称</div><div class="cell-value">丰唇，夏季色号</div></div><div><div class="cell-label">社媒热度</div><div class="cell-tags"><span class="rev-tag rev-pos">季节色彩延展</span></div></div><div><div class="cell-label">链接</div><div class="cell-value"><a href="https://www.maccosmetics.com" target="_blank">MAC →</a></div></div></div></div></div>
-<div class="radar-item"><div class="radar-item-header"><span class="radar-brand">ColourPop</span><span class="radar-name"><span class="trend-product-tag green">趋势产品</span>果冻眼影棒</span><span class="radar-cat">眼部</span><span class="radar-chevron">▾</span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">上市时间</div><div class="cell-value">5月22日</div></div><div><div class="cell-label">核心宣称</div><div class="cell-value">奶油眼影棒，平价</div></div><div><div class="cell-label">社媒热度</div><div class="cell-tags"><span class="rev-tag rev-pos">TikTok爆火</span></div></div><div><div class="cell-label">链接</div><div class="cell-value"><a href="https://www.colourpop.com" target="_blank">ColourPop →</a></div></div></div></div></div>
-<div class="radar-item"><div class="radar-item-header"><span class="radar-brand">Rhode</span><span class="radar-name"><span class="trend-product-tag purple">趋势产品</span>香氛胜肽唇釉</span><span class="radar-cat">唇部</span><span class="radar-chevron">▾</span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">上市时间</div><div class="cell-value">5月</div></div><div><div class="cell-label">核心宣称</div><div class="cell-value">胜肽+香氛，限量</div></div><div><div class="cell-label">社媒热度</div><div class="cell-tags"><span class="rev-tag rev-pos">手机壳捆绑套装</span></div></div><div><div class="cell-label">链接</div><div class="cell-value"><a href="https://www.rhodeskin.com" target="_blank">Rhode →</a></div></div></div></div></div>
-<div class="radar-item"><div class="radar-item-header"><span class="radar-brand">R.E.M. Beauty</span><span class="radar-name">危险女人系列</span><span class="radar-cat">全系列</span><span class="radar-chevron">▾</span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">上市时间</div><div class="cell-value">5月17日</div></div><div><div class="cell-label">核心宣称</div><div class="cell-value">全系列，Ariana Grande</div></div><div><div class="cell-label">社媒热度</div><div class="cell-tags"><span class="rev-tag rev-pos">粉丝驱动需求</span></div></div><div><div class="cell-label">链接</div><div class="cell-value"><a href="https://www.rembeauty.com" target="_blank">R.E.M. Beauty →</a></div></div></div></div></div>
-</div>
-</div>
-<div class="radar-zone cn-zone">
-<span class="radar-zone-badge cn">🇨🇳 中国市场</span>
-<h4>奢品新品</h4>
-<div class="radar-list">
-<div class="radar-item"><div class="radar-item-header"><span class="radar-brand">Givenchy</span><span class="radar-name"><span class="trend-product-tag coral">趋势产品</span>宝石糖唇油</span><span class="radar-cat">唇部</span><span class="radar-chevron">▾</span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">上市时间</div><div class="cell-value">6月1日</div></div><div><div class="cell-label">核心宣称</div><div class="cell-value">99%唇部养护，24h保湿</div></div><div><div class="cell-label">社媒热度</div><div class="cell-tags"><span class="rev-tag rev-pos">天猫独家 · 搜索+1,200%</span></div></div><div><div class="cell-label">链接</div><div class="cell-value"><a href="https://www.givenchy.com" target="_blank">Givenchy →</a></div></div></div></div></div>
-<div class="radar-item"><div class="radar-item-header"><span class="radar-brand">PRADA</span><span class="radar-name">唇釉</span><span class="radar-cat">唇部</span><span class="radar-chevron">▾</span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">上市时间</div><div class="cell-value">6月3日</div></div><div><div class="cell-label">核心宣称</div><div class="cell-value">高光泽，长效</div></div><div><div class="cell-label">社媒热度</div><div class="cell-tags"><span class="rev-tag rev-pos">首周1,000+支</span></div></div><div><div class="cell-label">链接</div><div class="cell-value"><a href="https://www.prada.com" target="_blank">PRADA →</a></div></div></div></div></div>
-<div class="radar-item"><div class="radar-item-header"><span class="radar-brand">Dior</span><span class="radar-name">魅惑蜜桃光</span><span class="radar-cat">唇部</span><span class="radar-chevron">▾</span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">上市时间</div><div class="cell-value">6月5日</div></div><div><div class="cell-label">核心宣称</div><div class="cell-value">茉莉+香草+蜜桃</div></div><div><div class="cell-label">社媒热度</div><div class="cell-tags"><span class="rev-tag rev-pos">W Magazine 2026最佳</span></div></div><div><div class="cell-label">链接</div><div class="cell-value"><a href="https://www.dior.com" target="_blank">Dior →</a></div></div></div></div></div>
-<div class="radar-item"><div class="radar-item-header"><span class="radar-brand">Chanel</span><span class="radar-name"><span class="trend-product-tag gold">趋势产品</span>牛仔蓝系列眼影盘</span><span class="radar-cat">眼部</span><span class="radar-chevron">▾</span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">上市时间</div><div class="cell-value">6月1日</div></div><div><div class="cell-label">核心宣称</div><div class="cell-value">蓝色+粉色珠光，校色</div></div><div><div class="cell-label">社媒热度</div><div class="cell-tags"><span class="rev-tag rev-pos">Karina效应 · 预售售罄</span></div></div><div><div class="cell-label">链接</div><div class="cell-value"><a href="https://www.chanel.com" target="_blank">Chanel →</a></div></div></div></div></div>
-<div class="radar-item"><div class="radar-item-header"><span class="radar-brand">Burberry</span><span class="radar-name">英伦光泽口红（5色）</span><span class="radar-cat">唇部</span><span class="radar-chevron">▾</span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">上市时间</div><div class="cell-value">5月15日</div></div><div><div class="cell-label">核心宣称</div><div class="cell-value">光泽妆效，英伦优雅</div></div><div><div class="cell-label">社媒热度</div><div class="cell-tags"><span class="rev-tag rev-mid">夏季色彩更新</span></div></div><div><div class="cell-label">链接</div><div class="cell-value"><a href="https://www.burberry.com" target="_blank">Burberry →</a></div></div></div></div></div>
-<div class="radar-item"><div class="radar-item-header"><span class="radar-brand">Lancôme</span><span class="radar-name">唇Idôle丝绒唇釉</span><span class="radar-cat">唇部</span><span class="radar-chevron">▾</span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">上市时间</div><div class="cell-value">5月18日</div></div><div><div class="cell-label">核心宣称</div><div class="cell-value">丝绒哑光，舒适持妆</div></div><div><div class="cell-label">社媒热度</div><div class="cell-tags"><span class="rev-tag rev-pos">新质地科技</span></div></div><div><div class="cell-label">链接</div><div class="cell-value"><a href="https://www.lancome.com" target="_blank">Lancôme →</a></div></div></div></div></div>
-<div class="radar-item"><div class="radar-item-header"><span class="radar-brand">YSL</span><span class="radar-name">高定迷你手包眼影盘</span><span class="radar-cat">眼部</span><span class="radar-chevron">▾</span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">上市时间</div><div class="cell-value">5月</div></div><div><div class="cell-label">核心宣称</div><div class="cell-value">旅行装，4色</div></div><div><div class="cell-label">社媒热度</div><div class="cell-tags"><span class="rev-tag rev-pos">机场零售独家</span></div></div><div><div class="cell-label">链接</div><div class="cell-value"><a href="https://www.ysl.com" target="_blank">YSL →</a></div></div></div></div></div>
-<div class="radar-item"><div class="radar-item-header"><span class="radar-brand">Tom Ford</span><span class="radar-name">七夕限定系列</span><span class="radar-cat">限定</span><span class="radar-chevron">▾</span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">上市时间</div><div class="cell-value">5月（预览）</div></div><div><div class="cell-label">核心宣称</div><div class="cell-value">奢华限量</div></div><div><div class="cell-label">社媒热度</div><div class="cell-tags"><span class="rev-tag rev-pos">上市前社交热议</span></div></div><div><div class="cell-label">链接</div><div class="cell-value"><a href="https://www.tomford.com" target="_blank">Tom Ford →</a></div></div></div></div></div>
-<div class="radar-item"><div class="radar-item-header"><span class="radar-brand">SUQQU</span><span class="radar-name">2026夏"魔幻时刻"</span><span class="radar-cat">眼部</span><span class="radar-chevron">▾</span></div><div class="radar-detail"><div class="radar-detail-inner"><div><div class="cell-label">上市时间</div><div class="cell-value">5月14日</div></div><div><div class="cell-label">核心宣称</div><div class="cell-value">日式美学，季节限定</div></div><div><div class="cell-label">社媒热度</div><div class="cell-tags"><span class="rev-tag rev-pos">死忠粉追捧</span></div></div><div><div class="cell-label">链接</div><div class="cell-value"><a href="https://www.suqqu.com" target="_blank">SUQQU →</a></div></div></div></div></div>
-</div>
-</div>
-</div>
-</div>
+  </div>
 </div>
 
+<!-- Fragrance Heat -->
+<div class="heat-section">
+  <div class="heat-panel us-heat">
+    <h4><span style="background:var(--us-blue);color:white;padding:2px 10px;border-radius:4px;font-size:10px;">US</span> 香水热度 TOP 5</h4>
+    <ul class="heat-accordion">
+      <li class="heat-item"><span class="heat-rank us">1</span><div class="heat-info"><span class="heat-name">Sol de Janeiro Cheirosa 91 Rosa Charmosa</span><span class="heat-brand"> · Sol de Janeiro</span></div><div class="heat-meter"><div class="heat-fill us-fill" style="width:95%"></div></div><div class="heat-data">玫瑰+热带果香 · $39 Body Mist · Sephora畅销</div></li>
+      <li class="heat-item"><span class="heat-rank us">2</span><div class="heat-info"><span class="heat-name">Phlur Missing Person</span><span class="heat-brand"> · Phlur</span></div><div class="heat-meter"><div class="heat-fill us-fill" style="width:88%"></div></div><div class="heat-data">肌肤感麝香标杆 · 社媒常青款 · Sephora TOP 5</div></li>
+      <li class="heat-item"><span class="heat-rank us">3</span><div class="heat-info"><span class="heat-name">Kayali Freedom Musk Matcha</span><span class="heat-brand"> · Kayali</span></div><div class="heat-meter"><div class="heat-fill us-fill" style="width:82%"></div></div><div class="heat-data">抹茶+香草+麝香 · Sephora TOP 20 · 抹茶趋势受益者</div></li>
+      <li class="heat-item"><span class="heat-rank us">4</span><div class="heat-info"><span class="heat-name">Kilian Paris Love, Don't Be Shy</span><span class="heat-brand"> · Kilian Paris</span></div><div class="heat-meter"><div class="heat-fill us-fill" style="width:75%"></div></div><div class="heat-data">棉花糖+麝香经典 · 暗黑美食调代表 · TikTok长红</div></li>
+      <li class="heat-item"><span class="heat-rank us">5</span><div class="heat-info"><span class="heat-name">Glossier You</span><span class="heat-brand"> · Glossier</span></div><div class="heat-meter"><div class="heat-fill us-fill" style="width:68%"></div></div><div class="heat-data">个性化皮肤麝香 · 固体版鹅卵石造型爆款</div></li>
+    </ul>
+  </div>
+  <div class="heat-panel cn-heat">
+    <h4><span style="background:var(--cn-yellow);color:#1A1A1A;padding:2px 10px;border-radius:4px;font-size:10px;">CN</span> 香水热度 TOP 5</h4>
+    <ul class="heat-accordion">
+      <li class="heat-item"><span class="heat-rank cn">1</span><div class="heat-info"><span class="heat-name">观夏 昆仑煮雪</span><span class="heat-brand"> · 观夏</span></div><div class="heat-meter"><div class="heat-fill cn-fill" style="width:95%"></div></div><div class="heat-data">东方美学标杆 · 雪松+焚香+琥珀 · 小红书现象级</div></li>
+      <li class="heat-item"><span class="heat-rank cn">2</span><div class="heat-info"><span class="heat-name">气味图书馆 凉白开</span><span class="heat-brand"> · 气味图书馆</span></div><div class="heat-meter"><div class="heat-fill cn-fill" style="width:85%"></div></div><div class="heat-data">国民记忆香 · 铝壶煮水金属感 · 天猫长销</div></li>
+      <li class="heat-item"><span class="heat-rank cn">3</span><div class="heat-info"><span class="heat-name">冰希黎 幻境流沙金</span><span class="heat-brand"> · 冰希黎</span></div><div class="heat-meter"><div class="heat-fill cn-fill" style="width:78%"></div></div><div class="heat-data">流沙鎏金视觉效果 · 花香+果香+木质 · 抖音爆款</div></li>
+      <li class="heat-item"><span class="heat-rank cn">4</span><div class="heat-info"><span class="heat-name">Le Labo Thé Matcha 26</span><span class="heat-brand"> · Le Labo</span></div><div class="heat-meter"><div class="heat-fill cn-fill" style="width:70%"></div></div><div class="heat-data">抹茶+雪松+苦橙 · 高端茶香标杆 · 小红书热议</div></li>
+      <li class="heat-item"><span class="heat-rank cn">5</span><div class="heat-info"><span class="heat-name">Maison Margiela Replica 慵懒周末</span><span class="heat-brand"> · Maison Margiela</span></div><div class="heat-meter"><div class="heat-fill cn-fill" style="width:62%"></div></div><div class="heat-data">白色麝香+梨+鸢尾 · 洁净感香调长红 · 天猫国际畅销</div></li>
+    </ul>
+  </div>
+</div>
 
+<!-- Fragrance New Product Radar -->
+<div class="radar-section">
+  <div class="radar-subsection">
+    <h4>🆕 香水新品雷达 — 奢品</h4>
+    <table class="radar-table">
+      <thead><tr><th>品牌</th><th>产品</th><th>定位</th><th>香调</th><th>口碑</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="radar-brand">Tom Ford</span></td><td><span class="radar-product">Taormina Orange EDP</span></td>
+          <td><span class="radar-tier luxury">Luxury</span></td>
+          <td class="radar-desc">青橘+青柠/橙花净油+西西里血橙/广藿香+橡苔+盐感麝香 — 西西里海岸灵感</td>
+          <td><span class="rev-tag rev-pos">6月发售 · 高期待</span></td>
+        </tr>
+        <tr>
+          <td><span class="radar-brand">Bvlgari</span></td><td><span class="radar-product">Eau Parfumée Thé Impérial</span></td>
+          <td><span class="radar-tier luxury">Luxury</span></td>
+          <td class="radar-desc">中国茶文化+意大利柑橘 — 东西方交融 · 原为宝格丽酒店签名香</td>
+          <td><span class="rev-tag rev-pos">全球发售 · 话题性高</span></td>
+        </tr>
+        <tr>
+          <td><span class="radar-brand">L'Artisan Parfumeur</span></td><td><span class="radar-product">L'Amant EDP</span></td>
+          <td><span class="radar-tier luxury">Luxury</span></td>
+          <td class="radar-desc">辣椒叶/墨水+广藿香/香柏+檀香+香根草 — 热情与克制的张力</td>
+          <td><span class="rev-tag rev-mid">$300/100ml · 小众高端</span></td>
+        </tr>
+        <tr>
+          <td><span class="radar-brand">Rabanne</span></td><td><span class="radar-product">Million Gold For Her Pure Diamonds</span></td>
+          <td><span class="radar-tier luxury">Luxury</span></td>
+          <td class="radar-desc">桃子+薰衣草+覆盆子/依兰+茉莉净油/柔滑麝香 — 限量版</td>
+          <td><span class="rev-tag rev-mid">$250/90ml · 限量</span></td>
+        </tr>
+        <tr>
+          <td><span class="radar-brand">Jean Paul Gaultier</span></td><td><span class="radar-product">Le Male In Blue</span></td>
+          <td><span class="radar-tier luxury">Luxury</span></td>
+          <td class="radar-desc">芳香薰衣草/金属感茴香/温暖安息香 — 海洋能量 · 限量版</td>
+          <td><span class="rev-tag rev-mid">$139/75ml · 限量</span></td>
+        </tr>
+        <tr>
+          <td><span class="radar-brand">Guerlain</span></td><td><span class="radar-product">Aqua Allegoria Rosa Rossa EDT</span></td>
+          <td><span class="radar-tier luxury">Luxury</span></td>
+          <td class="radar-desc">清新青绿玫瑰 — 现代玫瑰复兴趋势代表</td>
+          <td><span class="rev-tag rev-pos">玫瑰复兴受益者</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="radar-subsection">
+    <h4>🆕 香水新品雷达 — Masstige 香水</h4>
+    <table class="radar-table">
+      <thead><tr><th>品牌</th><th>产品</th><th>定位</th><th>香调</th><th>口碑</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="radar-brand">Huda Beauty</span></td><td><span class="radar-product">Easy Bake Intense EDP</span></td>
+          <td><span class="radar-tier masstige">Masstige</span></td>
+          <td class="radar-desc"><span class="frag-note-tag frag-fruity">野樱桃</span><span class="frag-note-tag frag-floral">白花</span><span class="frag-note-tag frag-gourmand">焦糖牛奶</span><span class="frag-note-tag frag-gourmand">波旁香草</span> — 美食调</td>
+          <td><span class="rev-tag rev-pos">$129/50ml · Sephora 独售</span></td>
+        </tr>
+        <tr>
+          <td><span class="radar-brand">Phlur</span></td><td><span class="radar-product">Rose Whip EDP</span></td>
+          <td><span class="radar-tier masstige">Masstige</span></td>
+          <td class="radar-desc"><span class="frag-note-tag frag-floral">青绿玫瑰</span><span class="frag-note-tag frag-green">绿叶</span><span class="frag-note-tag frag-musk">麝香</span> — 现代玫瑰复兴</td>
+          <td><span class="rev-tag rev-pos">$99 · 玫瑰复兴标杆</span></td>
+        </tr>
+        <tr>
+          <td><span class="radar-brand">Glossier</span></td><td><span class="radar-product">Glossier You Solid</span></td>
+          <td><span class="radar-tier masstige">Masstige</span></td>
+          <td class="radar-desc"><span class="frag-note-tag frag-musk">皮肤麝香</span><span class="frag-note-tag frag-woody">木质</span> — 固体香膏</td>
+          <td><span class="rev-tag rev-pos">社媒现象级 · 便携趋势</span></td>
+        </tr>
+        <tr>
+          <td><span class="radar-brand">Sol de Janeiro</span></td><td><span class="radar-product">Cheirosa 91 Rosa Charmosa</span></td>
+          <td><span class="radar-tier masstige">Masstige</span></td>
+          <td class="radar-desc"><span class="frag-note-tag frag-floral">玫瑰</span><span class="frag-note-tag frag-fruity">热带果香</span> — Body & Hair Mist</td>
+          <td><span class="rev-tag rev-pos">$39 · Sephora TOP 畅销</span></td>
+        </tr>
+        <tr>
+          <td><span class="radar-brand">Lake & Skye</span></td><td><span class="radar-product">11 11 Moon EDP</span></td>
+          <td><span class="radar-tier masstige">Masstige</span></td>
+          <td class="radar-desc"><span class="frag-note-tag frag-musk">麝香</span><span class="frag-note-tag frag-woody">檀香</span> — 肌肤感麝香延伸</td>
+          <td><span class="rev-tag rev-pos">$105 · 麝香趋势受益</span></td>
+        </tr>
+        <tr>
+          <td><span class="radar-brand">DedCool</span></td><td><span class="radar-product">Mochi Milk Fragrance</span></td>
+          <td><span class="radar-tier masstige">Masstige</span></td>
+          <td class="radar-desc"><span class="frag-note-tag frag-gourmand">麻薯</span><span class="frag-note-tag frag-gourmand">牛奶</span> — 升级版美食调</td>
+          <td><span class="rev-tag rev-pos">$90 · 美食调创新</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+</div><!-- end section-shell -->
+
+<!-- ======== APPENDIX ======== -->
+<div class="section-sep"><hr></div>
 <div class="appendix-section">
-<h4 style="margin-bottom:12px;font-size:15px;">🔖 Source Overview</h4>
-<table class="appendix-table"><thead><tr><th>Source</th><th>Market</th><th>Type</th><th>Coverage</th><th>Notes</th></tr></thead><tbody>
-<tr class="cat-divider"><td colspan="5">📊 E-Commerce & Social Media Data</td></tr>
-<tr><td class="app-name">天猫新品创新中心（TMIC）</td><td><span class="app-mkt cn">🇨🇳</span></td><td class="app-type">电商趋势</td><td class="app-desc">品类增长、消费者画像、价格带分析</td><td class="app-note">—</td></tr>
-<tr><td class="app-name">CBNData 第一财经商业数据中心</td><td><span class="app-mkt cn">🇨🇳</span></td><td class="app-type">Consumer Data</td><td class="app-desc">Domestic vs global brand share, annual beauty trends</td><td class="app-note">—</td></tr>
-<tr><td class="app-name">魔镜洞察</td><td><span class="app-mkt cn">🇨🇳</span></td><td class="app-type">Omni-Channel Ecom</td><td class="app-desc">天猫/JD/Douyin category growth, brand rankings</td><td class="app-note">—</td></tr>
-<tr><td class="app-name">Circana（原NPD）</td><td><span class="app-mkt us">🇺🇸</span></td><td class="app-type">POS Retail</td><td class="app-desc">US prestige beauty POS sales data</td><td class="app-note">—</td></tr>
-<tr><td class="app-name">Sephora Bestsellers</td><td><span class="app-mkt us">🇺🇸</span></td><td class="app-type">Retailer</td><td class="app-desc">Prestige beauty bestseller lists, new launches</td><td class="app-note">—</td></tr>
-<tr><td class="app-name">Ulta Beauty</td><td><span class="app-mkt us">🇺🇸</span></td><td class="app-type">Retailer</td><td class="app-desc">Mass + prestige beauty new arrivals</td><td class="app-note">—</td></tr>
-<tr class="cat-divider"><td colspan="5">📱 Social Media & KOL Data</td></tr>
-<tr><td class="app-name">飞瓜数据</td><td><span class="app-mkt cn">🇨🇳</span></td><td class="app-type">Douyin Data</td><td class="app-desc">Short video/livestream commerce trends, category heat</td><td class="app-note">—</td></tr>
-<tr><td class="app-name">蝉妈妈</td><td><span class="app-mkt cn">🇨🇳</span></td><td class="app-type">Douyin KOL</td><td class="app-desc">KOL seeding effectiveness, livestream conversion</td><td class="app-note">—</td></tr>
-<tr><td class="app-name">Accio</td><td><span class="app-mkt cn">🇨🇳</span></td><td class="app-type">Social Trends</td><td class="app-desc">Douyin/XHS trending categories, ingredient trends</td><td class="app-note">—</td></tr>
-<tr><td class="app-name">美修大数据（美丽修行）</td><td><span class="app-mkt cn">🇨🇳</span></td><td class="app-type">Ingredient Reputation</td><td class="app-desc">Ingredient trends, safety scores, user reviews</td><td class="app-note">—</td></tr>
-<tr class="cat-divider"><td colspan="5">📖 Industry Research & Consumer Insights</td></tr>
-<tr><td class="app-name">艾瑞咨询</td><td><span class="app-mkt cn">🇨🇳</span></td><td class="app-type">Industry Research</td><td class="app-desc">China beauty ecom/social media industry reports</td><td class="app-note">—</td></tr>
-<tr><td class="app-name">Daxue Consulting</td><td><span class="app-mkt cn">🇨🇳</span></td><td class="app-type">Consumer Research</td><td class="app-desc">China beauty consumer behavior</td><td class="app-note">—</td></tr>
-<tr><td class="app-name">Mintel 英敏特（中国）</td><td><span class="app-mkt cn">🇨🇳</span></td><td class="app-type">Consumer Insights</td><td class="app-desc">Consumer behavior, category innovation cases</td><td class="app-note">—</td></tr>
-<tr><td class="app-name">凯度 Kantar</td><td><span class="app-mkt cn">🇨🇳</span></td><td class="app-type">Brand Equity</td><td class="app-desc">China beauty brand equity index</td><td class="app-note">—</td></tr>
-<tr><td class="app-name">经济参考报 / 新华网</td><td><span class="app-mkt cn">🇨🇳</span></td><td class="app-type">官方媒体</td><td class="app-desc">行业并购、监管</td><td class="app-note">—</td></tr>
-<tr><td class="app-name">新浪财经</td><td><span class="app-mkt cn">🇨🇳</span></td><td class="app-type">Financial Media</td><td class="app-desc">Luxury beauty bestseller lists, brand financials</td><td class="app-note">—</td></tr>
-<tr><td class="app-name">WGSN</td><td><span class="app-mkt us">🇺🇸</span></td><td class="app-type">Trend Forecasting</td><td class="app-desc">Global color/materials/beauty trend forecasting</td><td class="app-note">—</td></tr>
-<tr><td class="app-name">Euromonitor</td><td><span class="app-mkt us">🇺🇸</span></td><td class="app-type">Market Sizing</td><td class="app-desc">Global makeup/fragrance market size & forecasts</td><td class="app-note">—</td></tr>
-<tr><td class="app-name">Mintel GNPD</td><td><span class="app-mkt us">🇺🇸</span></td><td class="app-type">New Product DB</td><td class="app-desc">Global new product ingredient/claim/packaging analysis</td><td class="app-note">—</td></tr>
-<tr><td class="app-name">BeautyMatter</td><td><span class="app-mkt us">🇺🇸</span></td><td class="app-type">Industry Media</td><td class="app-desc">Annual beauty trend reports, brand strategy</td><td class="app-note">—</td></tr>
-<tr><td class="app-name">FridayCharm</td><td><span class="app-mkt us">🇺🇸</span></td><td class="app-type">Fragrance Forecasting</td><td class="app-desc">Annual fragrance note trend forecasting</td><td class="app-note">—</td></tr>
-<tr><td class="app-name">Fragrantica</td><td><span class="app-mkt us">🇺🇸</span></td><td class="app-type">Fragrance Community</td><td class="app-desc">Note analysis, user ratings, new product tracking</td><td class="app-note">—</td></tr>
-<tr><td class="app-name">The Business Research Company</td><td><span class="app-mkt us">🇺🇸</span></td><td class="app-type">Market Research</td><td class="app-desc">Clean Beauty and other category market sizing</td><td class="app-note">—</td></tr>
-<tr><td class="app-name">W Magazine</td><td><span class="app-mkt us">🇺🇸</span></td><td class="app-type">Fashion Media</td><td class="app-desc">Annual best fragrance/makeup editor picks</td><td class="app-note">—</td></tr>
-<tr class="cat-divider"><td colspan="5">📰 Media & Editor Recommendations</td></tr>
-<tr><td class="app-name">NewBeauty</td><td><span class="app-mkt us">🇺🇸</span></td><td class="app-type">Beauty Media</td><td class="app-desc">Monthly new launch lists, editor reviews</td><td class="app-note">—</td></tr>
-<tr><td class="app-name">Bustle</td><td><span class="app-mkt us">🇺🇸</span></td><td class="app-type">Consumer Media</td><td class="app-desc">Editor-recommended new products</td><td class="app-note">—</td></tr>
-<tr><td class="app-name">Who What Wear</td><td><span class="app-mkt us">🇺🇸</span></td><td class="app-type">Fashion & Beauty</td><td class="app-desc">Sephora new product trends, editor curation</td><td class="app-note">—</td></tr>
-</tbody></table>
-</div>
-<div style="background:#F9FAFB;border:1px solid #E5E7EB;border-radius:12px;padding:20px;margin-top:20px;">
-<h4 style="margin-top:0;">📐 Scoring Methodology</h4>
-<p style="font-size:13px;color:var(--text-secondary);line-height:1.8;margin:0;">
-Heat ranking is based on <span style="font-weight:700;color:var(--text);">Sales 50% + Buzz 50%</span> dual-dimension scoring system:<br>
-<br>
-<span class="mkt-tag cn" style="font-size:12px;">China Market</span><br>
-<strong>📊 Sales 50%:</strong> 天猫 GMV <span style="color:var(--rose);font-weight:700">30%</span> · Douyin Sales <span style="color:var(--rose);font-weight:700">20%</span><br>
-<strong>📣 Buzz 50%:</strong> Douyin Search + Views <span style="color:var(--rose);font-weight:700">25%</span> · 小红书 Notes + Search <span style="color:var(--rose);font-weight:700">15%</span> · Topic Discussion & Engagement <span style="color:var(--rose);font-weight:700">10%</span><br>
-<br>
-<span class="mkt-tag us" style="font-size:12px;">US Market</span><br>
-<strong>📊 Sales 50%:</strong> Sephora Bestsellers <span style="color:var(--us-blue);font-weight:700">25%</span> · Ulta Beauty Bestsellers <span style="color:var(--us-blue);font-weight:700">25%</span><br>
-<strong>📣 Buzz 50%:</strong> TikTok Search + Views <span style="color:var(--us-blue);font-weight:700">25%</span> · YouTube Search & Discussion <span style="color:var(--us-blue);font-weight:700">15%</span> · Post Discussion & Engagement <span style="color:var(--us-blue);font-weight:700">10%</span><br>
-<br>
-Rank conversion uses segmented linear mapping (TOP1=100%, TOP5=90%, TOP10=80%, etc.); social buzz is log-normalized by views/engagement; scoring draws exclusively from platform-native data (sales rank, views, note count, engagement), excluding editorial recommendations or magazine lists.
-</p></div>
 
-<div style="background:#F9FAFB;border:1px solid #E5E7EB;border-radius:12px;padding:20px;margin-top:20px;">
-<h4 style="margin-top:0;">📋 This Week's Sources</h4>
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;font-size:13px;color:var(--text-secondary);line-height:1.8;">
-<div><h5 style="margin:0 0 6px 0;"><span class="mkt-tag cn">中国市场</span></h5>
-天猫TMIC · 抖音/飞瓜数据 · 小红书 · IT之家 · 新浪财经 · 魔镜洞察 · 美修大数据</div>
-<div><h5 style="margin:0 0 6px 0;"><span class="mkt-tag us">美国市场</span></h5>
-TikTok · Sephora · Ulta Beauty · Allure · WGSN · Fragrantica · FridayCharm · Circana</div>
-</div>
-<p style="font-size:11px;color:#bbb;margin:12px 0 0 0;">权威趋势：WGSN × Coloro SS2026 · Allure 2026夏季预测 · TikTok趋势发现</p>
+<h2 class="section-title">📚 附录</h2>
+
+<!-- 1. Source Overview -->
+<div style="background:var(--card-bg);border-radius:12px;padding:20px;margin-bottom:20px;border:1px solid var(--border);">
+  <h3 style="font-size:15px;font-weight:700;margin-bottom:14px;">🔖 Source Overview</h3>
+  <table class="appendix-table">
+    <tr class="cat-divider"><td colspan="3">🇨🇳 中国市场数据源</td></tr>
+    <tr><td style="width:180px;font-weight:600;">飞瓜数据</td><td>抖音美妆品类市场洞察报告 2026</td><td><span class="source-badge source-cn">CN</span></td></tr>
+    <tr><td>蝉妈妈</td><td>抖音商品销量排行榜</td><td><span class="source-badge source-cn">CN</span></td></tr>
+    <tr><td>Accio</td><td>抖音热门化妆品商品趋势解析</td><td><span class="source-badge source-cn">CN</span></td></tr>
+    <tr><td>艾媒咨询</td><td>2026年中国香水行业研究及消费者洞察报告</td><td><span class="source-badge source-cn">CN</span></td></tr>
+    <tr><td>美修大数据</td><td>2026 Q1化妆品注册备案数据</td><td><span class="source-badge source-cn">CN</span></td></tr>
+    <tr><td>界面新闻</td><td>Q1美妆融资盘点、成分趋势报告</td><td><span class="source-badge source-cn">CN</span></td></tr>
+    <tr><td>中国香化协会</td><td>行业新规政策动态</td><td><span class="source-badge source-cn">CN</span></td></tr>
+    <tr class="cat-divider"><td colspan="3">🇺🇸 美国市场数据源</td></tr>
+    <tr><td>Qogita Blog</td><td>TikTok Beauty Trends 2026 / 7 Fragrance Trends</td><td><span class="source-badge source-us">US</span></td></tr>
+    <tr><td>Accio</td><td>TikTok Hot Selling Makeup 2026 + B2B B2C数据</td><td><span class="source-badge source-us">US</span></td></tr>
+    <tr><td>Harper's BAZAAR</td><td>2026 Perfume Trends</td><td><span class="source-badge source-us">US</span></td></tr>
+    <tr><td>Meltwater</td><td>Reddit Beauty Trends Early 2026</td><td><span class="source-badge source-us">US</span></td></tr>
+    <tr><td>Daily Vanity</td><td>June 2026 New Beauty Launches</td><td><span class="source-badge source-us">US</span></td></tr>
+    <tr><td>Byrdie / Editorialist</td><td>2026 Best New Beauty Products</td><td><span class="source-badge source-us">US</span></td></tr>
+    <tr><td>LinkedIn (Rohit Banota)</td><td>Ulta & Sephora Q1 2026 Fragrance Data</td><td><span class="source-badge source-us">US</span></td></tr>
+    <tr><td>Pinterest Predicts</td><td>2026 Beauty Trends Report</td><td><span class="source-badge source-us">US</span></td></tr>
+    <tr><td>Sephora / Amazon</td><td>产品销售排名数据</td><td><span class="source-badge source-us">US</span></td></tr>
+    <tr class="cat-divider"><td colspan="3">🌐 全球/行业数据源</td></tr>
+    <tr><td>WGSN</td><td>Beauty Trend Forecasting 2026-2035</td><td><span class="source-badge source-cn">GLOBAL</span></td></tr>
+    <tr><td>Global Cosmetics News</td><td>Weekly Review Week 23</td><td><span class="source-badge source-cn">GLOBAL</span></td></tr>
+    <tr><td>The Business Research Co.</td><td>Clean Beauty Market Report 2026</td><td><span class="source-badge source-cn">GLOBAL</span></td></tr>
+    <tr><td>CEW</td><td>Beauty Top Headlines June 4 2026</td><td><span class="source-badge source-cn">GLOBAL</span></td></tr>
+  </table>
 </div>
 
-<div style="text-align:center;margin-top:32px;padding:24px;background:linear-gradient(135deg,rgba(230,0,18,0.08),rgba(123,97,255,0.06),rgba(0,201,167,0.06));border-radius:16px;border:1px solid rgba(230,0,18,0.20);">
-<p style="font-size:14px;color:var(--text-secondary);margin:0;">📅 Next Week Preview：2026年6月16日（周一）自动推送 · 📬 如需调整报告内容或频率，请随时反馈</p>
+<!-- 2. Scoring Methodology -->
+<div style="background:#fafafa;border-radius:12px;padding:20px;margin-bottom:20px;border:1px solid var(--border);">
+  <h3 style="font-size:15px;font-weight:700;margin-bottom:14px;">📐 Scoring Methodology</h3>
+  <p style="font-size:13px;color:var(--text-secondary);margin-bottom:12px;">热度排行基于 Sales 50% + 声量 50% 双维度加权评分，仅纳入平台原生数据，不含编辑推荐或杂志榜单。</p>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+    <div style="background:white;padding:14px;border-radius:8px;border:1px solid var(--border);">
+      <strong style="color:var(--cn-yellow);">CN 中国市场</strong>
+      <ul style="font-size:12px;color:var(--text-secondary);margin-top:8px;padding-left:16px;">
+        <li>Sales 50%：天猫 30% + 抖音 20%</li>
+        <li>声量 50%：抖音搜索+播放 25% + 小红书笔记 15% + 话题互动 10%</li>
+      </ul>
+    </div>
+    <div style="background:white;padding:14px;border-radius:8px;border:1px solid var(--border);">
+      <strong style="color:var(--us-blue);">US 美国市场</strong>
+      <ul style="font-size:12px;color:var(--text-secondary);margin-top:8px;padding-left:16px;">
+        <li>Sales 50%：Sephora 25% + Ulta 25%</li>
+        <li>声量 50%：TikTok搜索+播放 25% + YouTube搜索 15% + 帖子互动 10%</li>
+      </ul>
+    </div>
+  </div>
 </div>
+
+<!-- 3. This Week's Sources -->
+<div style="background:linear-gradient(135deg,#fef3c7,#fef9c3,#dbeafe);border-radius:12px;padding:20px;margin-bottom:20px;border:1px solid var(--border);">
+  <h3 style="font-size:15px;font-weight:700;margin-bottom:14px;">📋 This Week's Sources</h3>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px;font-size:12px;">
+    <div style="background:white;padding:10px;border-radius:6px;"><strong style="color:var(--cn-yellow);">中国市场</strong><br>飞瓜数据 2026 抖音美妆洞察报告<br>蝉妈妈 抖音商品销量榜<br>Accio 抖音热门化妆品趋势<br>艾媒咨询 2026 中国香水报告<br>界面新闻 成分趋势/Q1融资<br>中国香化协会 政策动态</div>
+    <div style="background:white;padding:10px;border-radius:6px;"><strong style="color:var(--us-blue);">美国市场</strong><br>Qogita — TikTok Beauty & Fragrance Trends 2026<br>Accio — TikTok Hot Selling Makeup<br>Harper's BAZAAR — 2026 Perfume Trends<br>Meltwater — Reddit Beauty Trends<br>Daily Vanity — June 2026 Launches<br>Pinterest Predicts 2026<br>LinkedIn — Ulta/Sephora Q1 Frag Data</div>
+    <div style="background:white;padding:10px;border-radius:6px;"><strong>权威趋势机构</strong><br>WGSN — Beauty Forecast 2026-2035<br>Global Cosmetics News — Week 23 Review<br>The Business Research Co. — Clean Beauty<br>CEW — Top Headlines June 4</div>
+    <div style="background:white;padding:10px;border-radius:6px;"><strong>零售平台</strong><br>Sephora — Bestsellers / New Releases<br>Amazon — 彩妆月销量数据<br>Ulta Beauty — Q1 2026 香氛表现<br>天猫/抖音 — GMV与品牌排名</div>
+  </div>
 </div>
-</div><!-- /report-container -->
+
+</div>
+
+<!-- 4. Next Week Preview -->
+<div class="next-week-banner">
+  <div style="font-size:32px;">📅</div>
+  <div>
+    <h3>Week 26 Preview（6月16日–6月22日）</h3>
+    <p style="opacity:0.8;margin-top:4px;">关注618终局数据、雅诗兰黛×Puig合并进展、夏季彩妆新品爆发期、功能性香水赛道竞争格局</p>
+  </div>
+</div>
 
 <script>
-// === Accordion: News Cards ===
-document.querySelectorAll('.news-card').forEach(function(card) {
-  card.addEventListener('click', function(e) {
-    if (e.target.closest('a')) return;
-    this.classList.toggle('open');
-  });
+// News card toggle
+document.querySelectorAll('.news-card').forEach(card => {
+  card.addEventListener('click', function(e) { this.classList.toggle('open'); });
 });
-
-// === Accordion: Heat Items ===
-document.querySelectorAll('.heat-item-header').forEach(function(header) {
-  header.addEventListener('click', function(e) {
-    if (e.target.closest('a')) return;
-    this.parentElement.classList.toggle('open');
-  });
-});
-
-// === Accordion: Radar Items ===
-document.querySelectorAll('.radar-item-header').forEach(function(header) {
-  header.addEventListener('click', function(e) {
-    if (e.target.closest('a')) return;
-    this.parentElement.classList.toggle('open');
-  });
-});
-
-// === Accordion: Trend Cards ===
-document.querySelectorAll('.trend-v-card').forEach(function(card) {
-  var h = card.querySelector('h4');
-  var body = card.querySelector('.trend-v-body');
-  var sig = card.querySelector('.signal-strip');
-  var act = card.querySelector('.action-block');
-  if (h && body) {
-    h.style.cursor = 'pointer';
-    h.addEventListener('click', function() {
-      var isOpen = body.style.display !== 'none';
-      body.style.display = isOpen ? 'none' : 'block';
-      if (sig) sig.style.display = isOpen ? 'none' : 'flex';
-      if (act) act.style.display = isOpen ? 'none' : 'block';
-      h.classList.toggle('collapsed', isOpen);
-    });
-  }
-});
-
-// === Week Selector Dropdown ===
-function toggleWeekDropdown(id) {
-  var selector = document.getElementById(id);
-  if (!selector) return;
-  selector.classList.toggle('open');
-}
-
-// Close dropdowns when clicking outside
-document.addEventListener('click', function(e) {
-  if (!e.target.closest('.week-selector')) {
-    document.querySelectorAll('.week-selector.open').forEach(function(sel) {
-      sel.classList.remove('open');
-    });
-  }
-});
-
-// === Chevron initialization for news cards ===
-document.querySelectorAll('.news-card-chevron').forEach(function(chevron) {
-  chevron.textContent = '\u25BC';
-});
+// Week selector stopPropagation already inline
 </script>
+
 </body>
 </html>
