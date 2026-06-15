@@ -6,9 +6,9 @@
 
 <meta charset="UTF-8">
 
-<meta name="version" content="week25-20260615-v5-layout-fix">
+<meta name="version" content="week25-20260615-v6-comprehensive-fix">
 
-<!-- Cache-bust: week25-20260615-v5-layout-fix -->
+<!-- Cache-bust: week25-20260615-v6-comprehensive-fix -->
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -232,7 +232,7 @@ body { font-family: var(--font); background: var(--body-bg); color: var(--text);
 
 .news-card-title { font-size: 14px; font-weight: 600; flex: 1; }
 
-.news-card-body { padding: 0 18px 14px 42px; font-size: 13px; color: var(--text-secondary); display: none; line-height: 1.6; }
+.news-card-body { padding: 0 18px 14px 42px; font-size: 13px; color: var(--text-secondary); display: none !important; line-height: 1.6; }
 
 .news-card.open .news-card-body { display: block; }
 
@@ -597,6 +597,32 @@ body { font-family: var(--font); background: var(--body-bg); color: var(--text);
 .heat-fill.cn-fill { background: linear-gradient(90deg, var(--cn-yellow), #FBBF24); }
 
 .heat-data { font-size: 11px; color: var(--text-muted); margin-top: 4px; }
+/* Heat Accordion - v6 fix */
+.heat-item { cursor: pointer; border-bottom: 1px solid var(--border); padding: 0; }
+.heat-item:last-child { border-bottom: none; }
+.heat-item-header { display: flex; align-items: center; gap: 10px; padding: 12px 8px; transition: background 0.15s; }
+.heat-item:hover .heat-item-header { background: #fafafa; border-radius: 6px; }
+.heat-info { flex: 1; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; min-width: 0; }
+.heat-name { font-weight: 600; font-size: 13px; }
+.heat-brand { font-size: 11px; color: var(--text-muted); }
+.heat-cat-tag { font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 4px; flex-shrink: 0; }
+.heat-cat-tag.eye { background: #ede9fe; color: #5b21b6; }
+.heat-cat-tag.face { background: #fce7f3; color: #be185d; }
+.heat-cat-tag.lip { background: #fee2e2; color: #991b1b; }
+.heat-cat-tag.cheek { background: #fef3c7; color: #92400e; }
+.heat-cat-tag.powder { background: #f0fdf4; color: #166534; }
+.heat-cat-tag.lash { background: #eff6ff; color: #1e40af; }
+.heat-cat-tag.conceal { background: #f3e8ff; color: #6b21a8; }
+.heat-cat-tag.cushion { background: #fff7ed; color: #9a3412; }
+.heat-cat-tag.primer { background: #ecfeff; color: #0e7490; }
+.heat-cat-tag.general { background: #f5f5f5; color: #525252; }
+.heat-bar-wrap { width: 80px; flex-shrink: 0; }
+.heat-score { font-size: 11px; font-weight: 700; color: var(--text-secondary); width: 50px; text-align: right; flex-shrink: 0; }
+.heat-chevron { font-size: 14px; color: #ccc; transition: transform 0.25s; flex-shrink: 0; }
+.heat-item.open .heat-chevron { transform: rotate(180deg); }
+.heat-detail { display: none; padding: 0 48px 12px; font-size: 12px; color: var(--text-muted); line-height: 1.5; }
+.heat-item.open .heat-detail { display: block; }
+
 
 
 
@@ -1046,7 +1072,7 @@ body { font-family: var(--font); background: var(--body-bg); color: var(--text);
 
 
 
-  <div class="trend-v-card open" style="border-top:4px solid var(--zurured);">
+  <div class="trend-v-card" style="border-top:4px solid var(--zurured);">
 
     <div class="trend-v-header" onclick="this.parentElement.classList.toggle('open')">
 
@@ -1108,7 +1134,7 @@ body { font-family: var(--font); background: var(--body-bg); color: var(--text);
 
 
 
-    <div class="trend-v-card us open">
+    <div class="trend-v-card us">
 
       <div class="trend-v-header" onclick="this.parentElement.classList.toggle('open')">
 
@@ -1166,7 +1192,7 @@ body { font-family: var(--font); background: var(--body-bg); color: var(--text);
 
 
 
-    <div class="trend-v-card us open">
+    <div class="trend-v-card us">
 
       <div class="trend-v-header" onclick="this.parentElement.classList.toggle('open')">
 
@@ -1224,7 +1250,7 @@ body { font-family: var(--font); background: var(--body-bg); color: var(--text);
 
 
 
-    <div class="trend-v-card us open">
+    <div class="trend-v-card us">
 
       <div class="trend-v-header" onclick="this.parentElement.classList.toggle('open')">
 
@@ -1296,7 +1322,7 @@ body { font-family: var(--font); background: var(--body-bg); color: var(--text);
 
 
 
-    <div class="trend-v-card cn open">
+    <div class="trend-v-card cn">
 
       <div class="trend-v-header" onclick="this.parentElement.classList.toggle('open')">
 
@@ -1340,7 +1366,7 @@ body { font-family: var(--font); background: var(--body-bg); color: var(--text);
 
 
 
-    <div class="trend-v-card cn open">
+    <div class="trend-v-card cn">
 
       <div class="trend-v-header" onclick="this.parentElement.classList.toggle('open')">
 
@@ -1384,7 +1410,7 @@ body { font-family: var(--font); background: var(--body-bg); color: var(--text);
 
 
 
-    <div class="trend-v-card cn open">
+    <div class="trend-v-card cn">
 
       <div class="trend-v-header" onclick="this.parentElement.classList.toggle('open')">
 
@@ -1444,94 +1470,79 @@ body { font-family: var(--font); background: var(--body-bg); color: var(--text);
 
     <ul class="heat-accordion">
 
-      <li class="heat-item">
-
-        <span class="heat-rank us">1</span>
-
-        <div class="heat-info">
-
-          <span class="heat-name">Julep Eyeshadow 101 Cream-to-Powder Stick</span>
-
-          <span class="heat-brand"> · Julep</span>
-
+      <li class="heat-item" onclick="this.classList.toggle('open')">
+        <div class="heat-item-header">
+          <span class="heat-rank us">1</span>
+          <div class="heat-info">
+            <span class="heat-name">Julep Eyeshadow 101 Cream-to-Powder Stick</span>
+            <span class="heat-brand">· Julep</span>
+            <span class="heat-cat-tag eye">眼影</span>
+          </div>
+          <div class="heat-bar-wrap"><div class="heat-meter"><div class="heat-fill us-fill" style="width:95%"></div></div></div>
+          <span class="heat-score">124,930</span>
+          <span class="heat-chevron">&#9662;</span>
         </div>
-
-        <div class="heat-meter"><div class="heat-fill us-fill" style="width:95%"></div></div>
-
-        <div class="heat-data">月销 124,930 · Amazon Bestseller · $17.16</div>
-
+        <div class="heat-detail"><div class="heat-detail-inner">月销 124,930 · Amazon Bestseller · $17.16</div></div>
       </li>
 
-      <li class="heat-item">
-
-        <span class="heat-rank us">2</span>
-
-        <div class="heat-info">
-
-          <span class="heat-name">Revlon ColorStay Liquid Foundation SPF 15</span>
-
-          <span class="heat-brand"> · Revlon</span>
-
+      <li class="heat-item" onclick="this.classList.toggle('open')">
+        <div class="heat-item-header">
+          <span class="heat-rank us">2</span>
+          <div class="heat-info">
+            <span class="heat-name">Revlon ColorStay Liquid Foundation SPF 15</span>
+            <span class="heat-brand">· Revlon</span>
+            <span class="heat-cat-tag face">粉底</span>
+          </div>
+          <div class="heat-bar-wrap"><div class="heat-meter"><div class="heat-fill us-fill" style="width:82%"></div></div></div>
+          <span class="heat-score">15,294</span>
+          <span class="heat-chevron">&#9662;</span>
         </div>
-
-        <div class="heat-meter"><div class="heat-fill us-fill" style="width:82%"></div></div>
-
-        <div class="heat-data">月销 15,294 · Amazon · $10.26</div>
-
+        <div class="heat-detail"><div class="heat-detail-inner">月销 15,294 · Amazon · $10.26</div></div>
       </li>
 
-      <li class="heat-item">
-
-        <span class="heat-rank us">3</span>
-
-        <div class="heat-info">
-
-          <span class="heat-name">Laura Geller The Ideal Fix Concealer</span>
-
-          <span class="heat-brand"> · Laura Geller NY</span>
-
+      <li class="heat-item" onclick="this.classList.toggle('open')">
+        <div class="heat-item-header">
+          <span class="heat-rank us">3</span>
+          <div class="heat-info">
+            <span class="heat-name">Laura Geller The Ideal Fix Concealer</span>
+            <span class="heat-brand">· Laura Geller NY</span>
+            <span class="heat-cat-tag conceal">遮瑕</span>
+          </div>
+          <div class="heat-bar-wrap"><div class="heat-meter"><div class="heat-fill us-fill" style="width:78%"></div></div></div>
+          <span class="heat-score">14,314</span>
+          <span class="heat-chevron">&#9662;</span>
         </div>
-
-        <div class="heat-meter"><div class="heat-fill us-fill" style="width:78%"></div></div>
-
-        <div class="heat-data">月销 14,314 · Amazon · $25.71</div>
-
+        <div class="heat-detail"><div class="heat-detail-inner">月销 14,314 · Amazon · $25.71</div></div>
       </li>
 
-      <li class="heat-item">
-
-        <span class="heat-rank us">4</span>
-
-        <div class="heat-info">
-
-          <span class="heat-name">MAC Lipstick (全色号)</span>
-
-          <span class="heat-brand"> · MAC Cosmetics</span>
-
+      <li class="heat-item" onclick="this.classList.toggle('open')">
+        <div class="heat-item-header">
+          <span class="heat-rank us">4</span>
+          <div class="heat-info">
+            <span class="heat-name">MAC Lipstick (全色号)</span>
+            <span class="heat-brand">· MAC Cosmetics</span>
+            <span class="heat-cat-tag lip">唇妆</span>
+          </div>
+          <div class="heat-bar-wrap"><div class="heat-meter"><div class="heat-fill us-fill" style="width:72%"></div></div></div>
+          <span class="heat-score">72</span>
+          <span class="heat-chevron">&#9662;</span>
         </div>
-
-        <div class="heat-meter"><div class="heat-fill us-fill" style="width:72%"></div></div>
-
-        <div class="heat-data">Reddit口红讨论占追踪品牌 42% · Sephora Bestseller</div>
-
+        <div class="heat-detail"><div class="heat-detail-inner">Reddit口红讨论占追踪品牌 42% · Sephora Bestseller</div></div>
       </li>
 
-      <li class="heat-item">
-
-        <span class="heat-rank us">5</span>
-
-        <div class="heat-info">
-
-          <span class="heat-name">Maybelline Sky High Mascara</span>
-
-          <span class="heat-brand"> · Maybelline</span>
-
+      <li class="heat-item" onclick="this.classList.toggle('open')">
+        <div class="heat-item-header">
+          <span class="heat-rank us">5</span>
+          <div class="heat-info">
+            <span class="heat-name">Maybelline Sky High Mascara</span>
+            <span class="heat-brand">· Maybelline</span>
+            <span class="heat-cat-tag lash">睫毛</span>
+          </div>
+          <div class="heat-bar-wrap"><div class="heat-meter"><div class="heat-fill us-fill" style="width:68%"></div></div></div>
+          <span class="heat-score">68</span>
+          <span class="heat-chevron">&#9662;</span>
         </div>
-
-        <div class="heat-meter"><div class="heat-fill us-fill" style="width:68%"></div></div>
-
-        <div class="heat-data">睫毛膏品牌SOV 36.3% · 互动率 30.3%</div>
-
+        <div class="heat-detail"><div class="heat-detail-inner">睫毛膏品牌SOV 36.3% · 互动率 30.3%</div></div>
       </li>
 
     </ul>
@@ -1544,94 +1555,79 @@ body { font-family: var(--font); background: var(--body-bg); color: var(--text);
 
     <ul class="heat-accordion">
 
-      <li class="heat-item">
-
-        <span class="heat-rank cn">1</span>
-
-        <div class="heat-info">
-
-          <span class="heat-name">蒂洛薇 波浪纹云雾触感水散粉</span>
-
-          <span class="heat-brand"> · 蒂洛薇</span>
-
+      <li class="heat-item" onclick="this.classList.toggle('open')">
+        <div class="heat-item-header">
+          <span class="heat-rank cn">1</span>
+          <div class="heat-info">
+            <span class="heat-name">蒂洛薇 波浪纹云雾触感水散粉</span>
+            <span class="heat-brand">· 蒂洛薇</span>
+            <span class="heat-cat-tag powder">水散粉</span>
+          </div>
+          <div class="heat-bar-wrap"><div class="heat-meter"><div class="heat-fill cn-fill" style="width:95%"></div></div></div>
+          <span class="heat-score">95</span>
+          <span class="heat-chevron">&#9662;</span>
         </div>
-
-        <div class="heat-meter"><div class="heat-fill cn-fill" style="width:95%"></div></div>
-
-        <div class="heat-data">抖音618彩妆TOP1品牌 · 底妆品类领跑</div>
-
+        <div class="heat-detail"><div class="heat-detail-inner">抖音618彩妆TOP1品牌 · 底妆品类领跑</div></div>
       </li>
 
-      <li class="heat-item">
-
-        <span class="heat-rank cn">2</span>
-
-        <div class="heat-info">
-
-          <span class="heat-name">花西子 空气蜜粉</span>
-
-          <span class="heat-brand"> · 花西子</span>
-
+      <li class="heat-item" onclick="this.classList.toggle('open')">
+        <div class="heat-item-header">
+          <span class="heat-rank cn">2</span>
+          <div class="heat-info">
+            <span class="heat-name">花西子 空气蜜粉</span>
+            <span class="heat-brand">· 花西子</span>
+            <span class="heat-cat-tag general">彩妆</span>
+          </div>
+          <div class="heat-bar-wrap"><div class="heat-meter"><div class="heat-fill cn-fill" style="width:88%"></div></div></div>
+          <span class="heat-score">88</span>
+          <span class="heat-chevron">&#9662;</span>
         </div>
-
-        <div class="heat-meter"><div class="heat-fill cn-fill" style="width:88%"></div></div>
-
-        <div class="heat-data">国货彩妆TOP3品牌 · 散粉品类常青</div>
-
+        <div class="heat-detail"><div class="heat-detail-inner">国货彩妆TOP3品牌 · 散粉品类常青</div></div>
       </li>
 
-      <li class="heat-item">
-
-        <span class="heat-rank cn">3</span>
-
-        <div class="heat-info">
-
-          <span class="heat-name">INTO YOU 女主角唇泥</span>
-
-          <span class="heat-brand"> · INTO YOU</span>
-
+      <li class="heat-item" onclick="this.classList.toggle('open')">
+        <div class="heat-item-header">
+          <span class="heat-rank cn">3</span>
+          <div class="heat-info">
+            <span class="heat-name">INTO YOU 女主角唇泥</span>
+            <span class="heat-brand">· INTO YOU</span>
+            <span class="heat-cat-tag general">彩妆</span>
+          </div>
+          <div class="heat-bar-wrap"><div class="heat-meter"><div class="heat-fill cn-fill" style="width:82%"></div></div></div>
+          <span class="heat-score">82</span>
+          <span class="heat-chevron">&#9662;</span>
         </div>
-
-        <div class="heat-meter"><div class="heat-fill cn-fill" style="width:82%"></div></div>
-
-        <div class="heat-data">唇泥品类开创者 · 低饱和色系引领</div>
-
+        <div class="heat-detail"><div class="heat-detail-inner">唇泥品类开创者 · 低饱和色系引领</div></div>
       </li>
 
-      <li class="heat-item">
-
-        <span class="heat-rank cn">4</span>
-
-        <div class="heat-info">
-
-          <span class="heat-name">彩棠 妆前乳+奶皮气垫组合</span>
-
-          <span class="heat-brand"> · 彩棠</span>
-
+      <li class="heat-item" onclick="this.classList.toggle('open')">
+        <div class="heat-item-header">
+          <span class="heat-rank cn">4</span>
+          <div class="heat-info">
+            <span class="heat-name">彩棠 妆前乳+奶皮气垫组合</span>
+            <span class="heat-brand">· 彩棠</span>
+            <span class="heat-cat-tag cushion">气垫</span>
+          </div>
+          <div class="heat-bar-wrap"><div class="heat-meter"><div class="heat-fill cn-fill" style="width:75%"></div></div></div>
+          <span class="heat-score">75</span>
+          <span class="heat-chevron">&#9662;</span>
         </div>
-
-        <div class="heat-meter"><div class="heat-fill cn-fill" style="width:75%"></div></div>
-
-        <div class="heat-data">年度爱用推荐 · 底妆套装策略成功</div>
-
+        <div class="heat-detail"><div class="heat-detail-inner">年度爱用推荐 · 底妆套装策略成功</div></div>
       </li>
 
-      <li class="heat-item">
-
-        <span class="heat-rank cn">5</span>
-
-        <div class="heat-info">
-
-          <span class="heat-name">橘朵 单色腮红</span>
-
-          <span class="heat-brand"> · 橘朵</span>
-
+      <li class="heat-item" onclick="this.classList.toggle('open')">
+        <div class="heat-item-header">
+          <span class="heat-rank cn">5</span>
+          <div class="heat-info">
+            <span class="heat-name">橘朵 单色腮红</span>
+            <span class="heat-brand">· 橘朵</span>
+            <span class="heat-cat-tag general">彩妆</span>
+          </div>
+          <div class="heat-bar-wrap"><div class="heat-meter"><div class="heat-fill cn-fill" style="width:68%"></div></div></div>
+          <span class="heat-score">68</span>
+          <span class="heat-chevron">&#9662;</span>
         </div>
-
-        <div class="heat-meter"><div class="heat-fill cn-fill" style="width:68%"></div></div>
-
-        <div class="heat-data">腮红品类高性价比标杆 · 色号丰富</div>
-
+        <div class="heat-detail"><div class="heat-detail-inner">腮红品类高性价比标杆 · 色号丰富</div></div>
       </li>
 
     </ul>
