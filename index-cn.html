@@ -6,9 +6,9 @@
 
 <meta charset="UTF-8">
 
-<meta name="version" content="week25-20260615-v9-structural">
+<meta name="version" content="week25-20260615-v12-comprehensive">
 
-<!-- Cache-bust: week25-20260615-v9-structural -->
+<!-- Cache-bust: week25-20260615-v12-comprehensive -->
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -624,7 +624,7 @@ body { font-family: var(--font); background: var(--body-bg); color: var(--text);
 .heat-chevron { font-size: 14px; color: #ccc; transition: transform 0.25s; flex-shrink: 0; }
 
 .heat-item.open .heat-tier-tag { margin-left: 6px; vertical-align: middle; }
-.heat-chevron { transform: rotate(180deg); }
+.heat-item.open .heat-chevron { transform: rotate(180deg); }
 
 /* Heat Detail Grid - v9 reference template */
 .heat-platform-line { font-size:10px; color: var(--text-muted); padding: 0 48px 6px; display:none; }
@@ -1070,31 +1070,19 @@ body { font-family: var(--font); background: var(--body-bg); color: var(--text);
 <h2 class="section-title">💄 彩妆趋势报告</h2>
 
 
-
-<!-- Common Trends -->
-
+<!-- Common Trends (GLOBAL) -->
 <div class="common-trends-section">
 
   <h3 style="font-size:14px;font-weight:700;margin-bottom:14px;color:var(--zurured);display:flex;align-items:center;gap:8px;">
-
     <span style="background:var(--zurured);color:white;padding:2px 10px;border-radius:4px;font-size:10px;">GLOBAL</span> 跨市场共享趋势
-
   </h3>
 
-
-
   <div class="trend-v-card" style="border-top:4px solid var(--zurured);">
-
     <div class="trend-v-header" onclick="this.parentElement.classList.toggle('open')">
-
       <h4>🌿 纯净美妆 3.0：从"Free From"到"Science-Backed Clean"</h4>
-
       <span class="trend-v-arrow">▼</span>
-
     </div>
-
     <div class="trend-v-body">
-
       <div class="driver-summary">消费者不再满足于"不含什么"，而是追问"含有什么有效成分"——纯净美妆正从排除性宣称转向科学验证的功效导向。</div>
       <div class="driver-bullets">
         <div class="bullet-group">
@@ -1105,22 +1093,21 @@ body { font-family: var(--font); background: var(--body-bg); color: var(--text);
       </div>
 
       <div class="signal-strip">
-
         <div class="signal-chip gtrends"><div class="chip-desc">Clean Beauty 市场规模</div><div class="chip-num">$9.02B</div><div class="chip-arrow up">+12.5% YoY</div></div>
-
         <div class="signal-chip douyin"><div class="chip-desc">纯净美妆话题量</div><div class="chip-num">3.2亿</div><div class="chip-arrow up">+45%</div></div>
-
         <div class="signal-chip seph"><div class="chip-desc">Sephora Clean 标签产品</div><div class="chip-num">2,800+</div><div class="chip-desc">SKU持续扩容</div></div>
-
-        <div class="signal-chip wgsn"><div class=
-        <div class="trend-decision-bar"><span style="font-size:11px;">Science-Backed Clean技术叙事</span> <span style="color:#d4654a;font-weight:700;">STRONG</span></div>"chip-desc">WGSN 趋势评级</div><div class="chip-num">A级</div><div class="chip-desc">长期结构性趋势</div></div>
-
+        <div class="signal-chip wgsn"><div class="chip-desc">WGSN 趋势评级</div><div class="chip-num">A级</div><div class="chip-desc">长期结构性趋势</div></div>
       </div>
 
-      
+      <div class="action-block">
+        <div class="act-header">
+          <span class="act-label">行动</span>
+          <span class="act-direction">加速Science-Backed Clean认证布局，在产品页面突出核心功效成分+临床数据，避免空洞的"Free From"宣称</span>
+        </div>
+      </div>
+      <div class="trend-decision-bar"><span class="dec-label">信号→决策</span> <span class="dec-signal">Science-Backed Clean技术叙事</span> <span class="dec-arrow">→</span> <span class="dec-direction">STRONG</span></div>
 
     </div>
-
   </div>
 
 </div>
@@ -1128,282 +1115,239 @@ body { font-family: var(--font); background: var(--body-bg); color: var(--text);
 
 
 <!-- CN + US Trend Grid -->
-
 <div class="trend-grid">
 
 
-
-  <!-- US ZONE -->
-
+  <!-- US ZONE (left, order:1) -->
   <div class="zone zone-us">
-
     <span class="zone-badge us">US 美国彩妆市场</span>
-
     <div class="zone-platforms">平台：<strong>YouTube · TikTok · Pinterest · Sephora</strong></div>
 
-
-
+    <!-- US Trend 1: Blue Beauty -->
     <div class="trend-v-card us">
-
       <div class="trend-v-header" onclick="this.parentElement.classList.toggle('open')">
-
         <h4>💙 蓝色美妆革命：从秀场到 TikTok 的全品类渗透</h4>
-
         <span class="trend-v-arrow">▼</span>
-
       </div>
-
       <div class="trend-v-body">
-
         <div class="driver-summary us">冰蓝眼影、银色高光、珠光蓝唇——Y2K冷调美学在2026年全面爆发，蓝色已从点缀色升级为全脸妆容的主色调。</div>
-      <div class="driver-bullets">
-        <div class="bullet-group">
-          <div class="bullet-point"><span class="region-tag" style="background:#dbeafe;color:#1e40af;">US</span><span>YouTube 蓝色妆容教程 <strong>480万</strong>+165%，TikTok #BlueBeauty <strong>2.1亿</strong>浏览+89%，Amazon Julep 眼影棒月销 <strong>124,930</strong></span></div>
+        <div class="driver-bullets">
+          <div class="bullet-group">
+            <div class="bullet-point"><span class="region-tag" style="background:#dbeafe;color:#1e40af;">US</span><span>YouTube 蓝色妆容教程 <strong>480万</strong>+165%，TikTok #BlueBeauty <strong>2.1亿</strong>浏览+89%，Amazon Julep 眼影棒月销 <strong>124,930</strong></span></div>
+          </div>
         </div>
-      </div>
 
         <div class="signal-strip">
-
           <div class="signal-chip yt"><div class="chip-desc">YT 蓝色妆容教程</div><div class="chip-num">480万</div><div class="chip-arrow up">+165%</div></div>
-
           <div class="signal-chip tt"><div class="chip-desc">#BlueBeauty 浏览量</div><div class="chip-num">2.1亿</div><div class="chip-arrow up">+89%</div></div>
-
           <div class="signal-chip seph"><div class="chip-desc">Julep色号眼影棒</div><div class="chip-num">124,930</div><div class="chip-desc">月销量 Amazon</div></div>
-
-          <div class="signal-chip pin"><div class="chip-desc">蓝色美妆搜索</div><
-        <div class="trend-decision-bar"><span style="font-size:11px;">冷调多功能彩妆棒(眼影/高光/腮红)</span> <span style="color:#d4654a;font-weight:700;">STRONG</span></div>div class="chip-num">+210%</div><div class="chip-arrow up">Pinterest YoY</div></div>
-
+          <div class="signal-chip pin"><div class="chip-desc">蓝色美妆搜索</div><div class="chip-num">+210%</div><div class="chip-arrow up">Pinterest YoY</div></div>
         </div>
 
-        
+        <div class="action-block">
+          <div class="act-header">
+            <span class="act-label">行动</span>
+            <span class="act-direction">推出冰蓝/银白/香槟金多功能彩妆棒（眼影/高光/腮红三合一），主打冷调Y2K美学，重点色：Ice Blue、Silver Rain、Champagne Pop</span>
+          </div>
+        </div>
+        <div class="trend-decision-bar"><span class="dec-label">信号→决策</span> <span class="dec-signal">冷调多功能彩妆棒(眼影/高光/腮红)</span> <span class="dec-arrow">→</span> <span class="dec-direction">Julep 124K月销</span> <span class="dec-strength strong">STRONG</span></div>
 
       </div>
-
     </div>
 
-
-
+    <!-- US Trend 2: Maximalism / Bold Makeup -->
     <div class="trend-v-card us">
-
       <div class="trend-v-header" onclick="this.parentElement.classList.toggle('open')">
-
         <h4>✨ 新极繁主义：大胆唇妆 × 金属质感 × 创意眼线三趋势共振</h4>
-
         <span class="trend-v-arrow">▼</span>
-
       </div>
-
       <div class="trend-v-body">
-
         <div class="driver-summary us">"Clean Girl"极简审美退潮，消费者拥抱大胆自我表达——浓郁唇色、图形化眼线、金属光泽全脸妆容正在接管社交媒体。</div>
-      <div class="driver-bullets">
-        <div class="bullet-group">
-          <div class="bullet-point"><span class="region-tag" style="background:#dbeafe;color:#1e40af;">US</span><span>TikTok #BoldLip <strong>8.7亿</strong>+43%，MAC 占追踪品牌 SOV <strong>42%</strong>，Pinterest 大胆彩妆搜索 <strong>+95%</strong></span></div>
+        <div class="driver-bullets">
+          <div class="bullet-group">
+            <div class="bullet-point"><span class="region-tag" style="background:#dbeafe;color:#1e40af;">US</span><span>TikTok #BoldLip <strong>8.7亿</strong>+43%，MAC 占追踪品牌 SOV <strong>42%</strong>，Pinterest 大胆彩妆搜索 <strong>+95%</strong></span></div>
+          </div>
         </div>
-      </div>
 
         <div class="signal-strip">
-
           <div class="signal-chip tt"><div class="chip-desc">#BoldLip 标签浏览</div><div class="chip-num">8.7亿</div><div class="chip-arrow up">+43%</div></div>
-
           <div class="signal-chip yt"><div class="chip-desc">极繁妆容教程</div><div class="chip-num">320万</div><div class="chip-arrow up">+78%</div></div>
-
           <div class="signal-chip seph"><div class="chip-desc">MAC 口红社区讨论</div><div class="chip-num">42%</div><div class="chip-desc">追踪品牌最高</div></div>
-
-          <div class="signal-chip pin"><div class="chip-desc">大胆彩妆
-        <div class="trend-decision-bar"><span style="font-size:11px;">Statement Lip Kit套组</span> <span style="color:#d4654a;font-weight:700;">STRONG</span></div>搜索</div><div class="chip-num">+95%</div><div class="chip-arrow up">Pinterest</div></div>
-
+          <div class="signal-chip pin"><div class="chip-desc">大胆彩妆搜索</div><div class="chip-num">+95%</div><div class="chip-arrow up">Pinterest</div></div>
         </div>
 
-        
+        <div class="action-block">
+          <div class="act-header">
+            <span class="act-label">行动</span>
+            <span class="act-direction">推出"Statement Lip Kit"套装（浓郁唇釉×金属闪粉顶涂），重点色：深莓果、正红、梅子紫。配创意眼线笔（双头设计：细头+宽头），切入新极简主义</span>
+          </div>
+        </div>
+        <div class="trend-decision-bar"><span class="dec-label">信号→决策</span> <span class="dec-signal">MAC 42% SOV</span> <span class="dec-arrow">→</span> <span class="dec-direction">Statement Lip Kit</span> <span class="dec-strength strong">STRONG</span></div>
 
       </div>
-
     </div>
 
-
-
+    <!-- US Trend 3: Cloud Skin × Toasty Makeup -->
     <div class="trend-v-card us">
-
       <div class="trend-v-header" onclick="this.parentElement.classList.toggle('open')">
-
         <h4>☁️ Cloud Skin × Toasty Makeup：柔软底妆双趋势驱动购买</h4>
-
         <span class="trend-v-arrow">▼</span>
-
       </div>
-
       <div class="trend-v-body">
-
         <div class="driver-summary us">柔焦"云朵肌"与暖调"烤色妆"成为TikTok双热点——前者追求朦胧滤镜般的无瑕底妆，后者以烤杏仁色调营造温暖高级感。</div>
-      <div class="driver-bullets">
-        <div class="bullet-group">
-          <div class="bullet-point"><span class="region-tag" style="background:#dbeafe;color:#1e40af;">US</span><span>TikTok #CloudSkin <strong>1.4亿</strong>+112%，Revlon 粉底 Amazon 月销 <strong>15,294</strong>，混合彩妆品类 <strong>+9%</strong></span></div>
+        <div class="driver-bullets">
+          <div class="bullet-group">
+            <div class="bullet-point"><span class="region-tag" style="background:#dbeafe;color:#1e40af;">US</span><span>TikTok #CloudSkin <strong>1.4亿</strong>+112%，Revlon 粉底 Amazon 月销 <strong>15,294</strong>，混合彩妆品类 <strong>+9%</strong></span></div>
+          </div>
         </div>
-      </div>
 
         <div class="signal-strip">
-
           <div class="signal-chip tt"><div class="chip-desc">#CloudSkin</div><div class="chip-num">1.4亿</div><div class="chip-arrow up">+112%</div></div>
-
           <div class="signal-chip yt"><div class="chip-desc">底妆教程观看</div><div class="chip-num">580万</div><div class="chip-arrow up">+34%</div></div>
-
           <div class="signal-chip seph"><div class="chip-desc">Revlon粉底月销</div><div class="chip-num">15,294</div><div class="chip-desc">Amazon</div></div>
-
-          <div class="signal-chip gtrends"><div class="
-        <div class="trend-decision-bar"><span style="font-size:11px;">养肤型光泽底妆SKU扩容</span> <span style="color:#b8943a;font-weight:700;">MID</span></div>chip-desc">混合彩妆需求</div><div class="chip-num">+9%</div><div class="chip-arrow up">品类增长</div></div>
-
+          <div class="signal-chip gtrends"><div class="chip-desc">混合彩妆需求</div><div class="chip-num">+9%</div><div class="chip-arrow up">品类增长</div></div>
         </div>
 
-        
+        <div class="action-block">
+          <div class="act-header">
+            <span class="act-label">行动</span>
+            <span class="act-direction">养肤型光泽底妆SKU扩容，添加烟酰胺/肽类成分，包装强调"dewy finish"视觉，配合TikTok CloudSkin教程KOL投放</span>
+          </div>
+        </div>
+        <div class="trend-decision-bar"><span class="dec-label">信号→决策</span> <span class="dec-signal">Cloud Skin 1.4亿浏览</span> <span class="dec-arrow">→</span> <span class="dec-direction">养肤型光泽底妆</span> <span class="dec-strength mid">MID</span></div>
 
       </div>
-
     </div>
 
 
 
-  </div>
+  </div><!-- end zone-us -->
 
 
 
-  <!-- CN ZONE -->
-
+  <!-- CN ZONE (right, order:2) -->
   <div class="zone zone-cn">
-
     <span class="zone-badge cn">CN 中国彩妆市场</span>
-
     <div class="zone-platforms">平台：<strong>抖音 · 小红书 · 天猫</strong></div>
 
-
-
+    <!-- CN Trend 1: 低饱和粉彩色系 -->
     <div class="trend-v-card cn">
-
       <div class="trend-v-header" onclick="this.parentElement.classList.toggle('open')">
-
         <h4>🎨 低饱和粉彩色系：82%年轻用户的春夏首选</h4>
-
         <span class="trend-v-arrow">▼</span>
-
       </div>
-
       <div class="trend-v-body">
-
         <div class="driver-summary">抖音精选数据显示82%的18-35岁用户认为低饱和粉彩色系最适合春夏——不突兀、提气色，成为2026年国货彩妆色彩开发的核心方向。</div>
-      <div class="driver-bullets">
-        <div class="bullet-group">
-          <div class="bullet-point"><span class="region-tag" style="background:#fef3c7;color:#92400e;">CN</span><span>82% 18-35岁用户偏好粉彩色系，小红书奶油腮红 <strong>180万+</strong>笔记+68%，天猫粉色系唇釉 GMV <strong>¥3.2亿</strong>+32% YoY</span></div>
+        <div class="driver-bullets">
+          <div class="bullet-group">
+            <div class="bullet-point"><span class="region-tag" style="background:#fef3c7;color:#92400e;">CN</span><span>82% 18-35岁用户偏好粉彩色系，小红书奶油腮红 <strong>180万+</strong>笔记+68%，天猫粉色系唇釉 GMV <strong>¥3.2亿</strong>+32% YoY</span></div>
+          </div>
         </div>
-      </div>
 
         <div class="signal-strip">
-
           <div class="signal-chip douyin"><div class="chip-desc">粉彩偏好用户</div><div class="chip-num">82%</div><div class="chip-desc">18-35岁 9.6万人评价</div></div>
-
           <div class="signal-chip xhs"><div class="chip-desc">奶油腮红笔记</div><div class="chip-num">180万+</div><div class="chip-arrow up">+68%</div></div>
-
-          <div class="signal-chip tmall"><div class="chip-desc">粉色系唇釉GMV</div><
-        <div class="trend-decision-bar"><span style="font-size:11px;">春日奶油系列(4色腮红+唇)</span> <span style="color:#d4654a;font-weight:700;">STRONG</span></div>div class="chip-num">¥3.2亿</div><div class="chip-arrow up">+32% YoY</div></div>
-
-          
-
+          <div class="signal-chip tmall"><div class="chip-desc">粉色系唇釉GMV</div><div class="chip-num">¥3.2亿</div><div class="chip-arrow up">+32% YoY</div></div>
+          <div class="signal-chip gtrends"><div class="chip-desc">春夏色彩偏好</div><div class="chip-num">Top 1</div><div class="chip-desc">低饱和粉彩</div></div>
         </div>
 
-        
-
-      </div>
-
-    </div>
-
-
-
-    
-      </div>
-
-        <div class="signal-strip">
-
-          <div class="signal-chip douyin"><div class="chip-desc">蒂洛薇 抖音排名</div><div class="chip-num">TOP 1</div><div class="chip-desc">618彩妆香水</div></div>
-
-          <div class="signal-chip tmall"><div class="chip-desc">珀莱雅收购金额</div><div class="chip-num">¥8亿</div><div class="chip-desc">花知晓51%股权</div></div>
-
-          <div class="signal-chip xhs"><div class="chip-desc">花知晓话题笔记</div><div class="chip-num">620万+</div><div class="chip-arrow up">+28%</div></div>
-
-          <div class="signal-chip gtrends"><div class="chip-desc">国货彩妆份额</div><div class="chip-num">57.37%</div><div class="chip-desc">中国市场主场</div></div>
-
+        <div class="action-block">
+          <div class="act-header">
+            <span class="act-label">行动</span>
+            <span class="act-direction">推出春日奶油系列（4色低饱和腮红盘+同色系唇釉），重点色：杏仁奶白、樱花粉、蜜桃橘。配合小红书"伪素颜妆容"教程种草</span>
+          </div>
         </div>
-
-        
+        <div class="trend-decision-bar"><span class="dec-label">信号→决策</span> <span class="dec-signal">粉色系GMV ¥3.2亿</span> <span class="dec-arrow">→</span> <span class="dec-direction">春日奶油系列</span> <span class="dec-strength strong">STRONG</span></div>
 
       </div>
-
     </div>
 
-
-
+    <!-- CN Trend 2: 成分驱动底妆升级 -->
     <div class="trend-v-card cn">
-
       <div class="trend-v-header" onclick="this.parentElement.classList.toggle('open')">
-
         <h4>🔬 成分驱动底妆升级：控油持妆 × 局部遮瑕 × 精华粉底三线爆发</h4>
-
         <span class="trend-v-arrow">▼</span>
-
       </div>
-
       <div class="trend-v-body">
-
         <div class="driver-summary">中国底妆市场进入成分驱动阶段——控油持妆仍是核心卖点，但"精华粉底液"（含养肤成分的底妆）和局部精准遮瑕成为新增长极。</div>
-      <div class="driver-bullets">
-        <div class="bullet-group">
-          <div class="bullet-point"><span class="region-tag" style="background:#fef3c7;color:#92400e;">CN</span><span>底妆品类 GMV <strong>¥45亿</strong>+18%，精华粉底搜索 <strong>+85%</strong> YoY，小红书遮瑕教程 <strong>420万+</strong>+52%</span></div>
+        <div class="driver-bullets">
+          <div class="bullet-group">
+            <div class="bullet-point"><span class="region-tag" style="background:#fef3c7;color:#92400e;">CN</span><span>底妆品类 GMV <strong>¥45亿</strong>+18%，精华粉底搜索 <strong>+85%</strong> YoY，小红书遮瑕教程 <strong>420万+</strong>+52%</span></div>
+          </div>
         </div>
-      </div>
 
         <div class="signal-strip">
-
           <div class="signal-chip douyin"><div class="chip-desc">底妆品类GMV</div><div class="chip-num">¥45亿</div><div class="chip-arrow up">+18%</div></div>
-
           <div class="signal-chip tmall"><div class="chip-desc">精华粉底搜索增长</div><div class="chip-num">+85%</div><div class="chip-arrow up">YoY</div></div>
-
           <div class="signal-chip xhs"><div class="chip-desc">遮瑕教程笔记</div><div class="chip-num">420万+</div><div class="chip-arrow up">+52%</div></div>
-
-          <div class="signal-chip gtrends"><div class="chip-desc">Q1
-        <div class="trend-decision-bar"><span style="font-size:11px;">精华粉底液×遮瑕组合</span> <span style="color:#b8943a;font-weight:700;">MID</span></div> 新品备案</div><div class="chip-num">8.8万</div><div class="chip-arrow down">-14.6%</div></div>
-
+          <div class="signal-chip gtrends"><div class="chip-desc">Q1 新品备案</div><div class="chip-num">8.8万</div><div class="chip-arrow down">-14.6%</div></div>
         </div>
 
-        
+        <div class="action-block">
+          <div class="act-header">
+            <span class="act-label">行动</span>
+            <span class="act-direction">精华粉底液×精准遮瑕组合装，控油持妆配方添加神经酰胺/多肽，遮瑕笔采用"点-拍-晕"三步教学法包装</span>
+          </div>
+        </div>
+        <div class="trend-decision-bar"><span class="dec-label">信号→决策</span> <span class="dec-signal">精华粉底搜索+85%</span> <span class="dec-arrow">→</span> <span class="dec-direction">精华粉底×遮瑕组合</span> <span class="dec-strength mid">MID</span></div>
 
       </div>
-
     </div>
 
 
 
-  </div>
+  </div><!-- end zone-cn -->
 
-</div>
-
-
-
-<!-- Heat Ranking -->
-
-<h2 class="section-title">🔥 彩妆热度排行</h2>
-
+</div><!-- end trend-grid --><h2 class="section-title">🔥 彩妆热度排行</h2>
 <div class="heat-section">
 
+  <!-- US PANEL (left) -->
   <div class="heat-panel us-heat">
 
-    <h4><span style="background:var(--us-blue);color:white;padding:2px 10px;border-radius:4px;font-size:10px;">US</span> 彩妆热度 TOP 10</h4>
-
+    <!-- === US LUXURY === -->
+    <h4 style="font-size:13px;font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:6px;">
+      <span style="background:var(--us-blue);color:white;padding:2px 8px;border-radius:4px;font-size:10px;">US</span>
+      <span style="background:#fef9ee;color:#b8943a;padding:2px 8px;border-radius:4px;font-size:9px;font-weight:700;">LUXURY</span> 奢品线
+    </h4>
     <ul class="heat-accordion">
+      <li class="heat-item" onclick="this.classList.toggle('open')">
+        <div class="heat-item-header">
+          <span class="heat-rank us">1</span>
+          <div class="heat-info">
+            <span class="heat-name">Tom Ford Shade & Illuminate Foundation</span>
+            <span class="heat-tier-tag luxury" style="padding:2px 7px;border-radius:4px;font-size:9px;font-weight:700;background:#fef9ee;color:#b8943a">Luxury</span>
+            <span class="heat-brand">· Tom Ford Beauty</span>
+            <span class="heat-cat-tag face">粉底</span>
+            <span class="heat-trend-badge">新品</span>
+          </div>
+          <div class="heat-bar-wrap"><div class="heat-meter"><div class="heat-fill us-fill" style="width:92%"></div></div></div>
+          <span class="heat-score">高期待</span>
+          <span class="heat-chevron">&#9662;</span>
+        </div>
+        <div class="heat-platform-line">Sephora · Tom Ford Beauty · 2026年6月首发</div>
+        <div class="heat-detail">
+          <div class="heat-detail-grid">
+            <div class="heat-detail-cell"><div class="heat-detail-label">价格</div><div class="heat-detail-value">$135~150</div></div>
+            <div class="heat-detail-cell"><div class="heat-detail-label">核心卖点</div><div class="heat-detail-value">光泽肌底妆+修容一体 · 12色号全肤色 · 养肤成分+高延展性</div></div>
+            <div class="heat-detail-cell"><div class="heat-detail-label">社媒热度</div><div class="heat-detail-value"><span class="heat-social-pill seph">Sephora 6月首发</span></div></div>
+            <div class="heat-detail-cell"><div class="heat-detail-label">产品链接</div><div class="heat-detail-value"><a href="#" class="heat-product-link">Sephora →</a></div></div>
+          </div>
+        </div>
+      </li>
+    </ul>
 
+    <!-- === US MASSTIGE === -->
+    <h4 style="font-size:13px;font-weight:700;margin:18px 0 10px;display:flex;align-items:center;gap:6px;">
+      <span style="background:var(--us-blue);color:white;padding:2px 8px;border-radius:4px;font-size:10px;">US</span>
+      <span style="background:#f5f3fa;color:#7b6faa;padding:2px 8px;border-radius:4px;font-size:9px;font-weight:700;">MASSTIGE</span> 精品彩妆
+    </h4>
+    <ul class="heat-accordion">
       <li class="heat-item" onclick="this.classList.toggle('open')">
         <div class="heat-item-header">
           <span class="heat-rank us">1</span>
           <div class="heat-info">
             <span class="heat-name">Julep Eyeshadow 101 Cream-to-Powder Stick</span>
-            <span class="heat-tier-tag masstige" style="padding:2px 7px;border-radius:4px;font-size:9px;font-weight:700;background:#f5f3fa;color:#7b6faa">Masstigue</span>
+            <span class="heat-tier-tag masstige" style="padding:2px 7px;border-radius:4px;font-size:9px;font-weight:700;background:#f5f3fa;color:#7b6faa">Masstige</span>
             <span class="heat-brand">· Julep</span>
             <span class="heat-cat-tag eye">眼影</span>
             <span class="heat-trend-badge">趋势产品</span>
@@ -1427,32 +1371,8 @@ body { font-family: var(--font); background: var(--body-bg); color: var(--text);
         <div class="heat-item-header">
           <span class="heat-rank us">2</span>
           <div class="heat-info">
-            <span class="heat-name">Revlon ColorStay Liquid Foundation SPF 15</span>
-            <span class="heat-tier-tag mass" style="padding:2px 7px;border-radius:4px;font-size:9px;font-weight:700;background:#eef6fc;color:#2563EB">Mass</span>
-            <span class="heat-brand">· Revlon</span>
-            <span class="heat-cat-tag face">粉底</span>
-          </div>
-          <div class="heat-bar-wrap"><div class="heat-meter"><div class="heat-fill us-fill" style="width:82%"></div></div></div>
-          <span class="heat-score">15,294</span>
-          <span class="heat-chevron">&#9662;</span>
-        </div>
-        <div class="heat-platform-line">Amazon · 药店渠道 稳定畅销</div>
-        <div class="heat-detail">
-          <div class="heat-detail-grid">
-            <div class="heat-detail-cell"><div class="heat-detail-label">价格</div><div class="heat-detail-value">$10.26</div></div>
-            <div class="heat-detail-cell"><div class="heat-detail-label">核心卖点</div><div class="heat-detail-value">24H持妆 · SPF15防护 · 混合皮适用 · 高性价比开架粉底</div></div>
-            <div class="heat-detail-cell"><div class="heat-detail-label">社媒热度</div><div class="heat-detail-value"><span class="heat-social-pin">Pinterest 底妆推荐</span> <span class="heat-social-pill tt">TikTok CloudSkin 关联</span></div></div>
-            <div class="heat-detail-cell"><div class="heat-detail-label">产品链接</div><div class="heat-detail-value"><a href="#" class="heat-product-link">Amazon →</a></div></div>
-          </div>
-        </div>
-      </li>
-
-      <li class="heat-item" onclick="this.classList.toggle('open')">
-        <div class="heat-item-header">
-          <span class="heat-rank us">3</span>
-          <div class="heat-info">
             <span class="heat-name">Laura Geller The Ideal Fix Concealer</span>
-            <span class="heat-tier-tag masstige" style="padding:2px 7px;border-radius:4px;font-size:9px;font-weight:700;background:#f5f3fa;color:#7b6faa">Masstigue</span>
+            <span class="heat-tier-tag masstige" style="padding:2px 7px;border-radius:4px;font-size:9px;font-weight:700;background:#f5f3fa;color:#7b6faa">Masstige</span>
             <span class="heat-brand">· Laura Geller NY</span>
             <span class="heat-cat-tag conceal">遮瑕</span>
           </div>
@@ -1473,10 +1393,10 @@ body { font-family: var(--font); background: var(--body-bg); color: var(--text);
 
       <li class="heat-item" onclick="this.classList.toggle('open')">
         <div class="heat-item-header">
-          <span class="heat-rank us">4</span>
+          <span class="heat-rank us">3</span>
           <div class="heat-info">
             <span class="heat-name">MAC Lipstick (全色号)</span>
-            <span class="heat-tier-tag masstige" style="padding:2px 7px;border-radius:4px;font-size:9px;font-weight:700;background:#f5f3fa;color:#7b6faa">Masstigue</span>
+            <span class="heat-tier-tag masstige" style="padding:2px 7px;border-radius:4px;font-size:9px;font-weight:700;background:#f5f3fa;color:#7b6faa">Masstige</span>
             <span class="heat-brand">· MAC Cosmetics</span>
             <span class="heat-cat-tag lip">唇妆</span>
             <span class="heat-trend-badge">趋势产品</span>
@@ -1498,59 +1418,10 @@ body { font-family: var(--font); background: var(--body-bg); color: var(--text);
 
       <li class="heat-item" onclick="this.classList.toggle('open')">
         <div class="heat-item-header">
-          <span class="heat-rank us">5</span>
-          <div class="heat-info">
-            <span class="heat-name">Maybelline Sky High Mascara</span>
-            <span class="heat-tier-tag mass" style="padding:2px 7px;border-radius:4px;font-size:9px;font-weight:700;background:#eef6fc;color:#2563EB">Mass</span>
-            <span class="heat-brand">· Maybelline</span>
-            <span class="heat-cat-tag lash">睫毛</span>
-          </div>
-          <div class="heat-bar-wrap"><div class="heat-meter"><div class="heat-fill us-fill" style="width:68%"></div></div></div>
-          <span class="heat-score">68</span>
-          <span class="heat-chevron">&#9662;</span>
-        </div>
-        <div class="heat-platform-line">Ulta · 药店 · TikTok 睫毛膏 SOV</div>
-        <div class="heat-detail">
-          <div class="heat-detail-grid">
-            <div class="heat-detail-cell"><div class="heat-detail-label">价格</div><div class="heat-detail-value">$9.99</div></div>
-            <div class="heat-detail-cell"><div class="heat-detail-label">核心卖点</div><div class="heat-detail-value">纤长卷翘不结块 · 睫毛膏品牌 SOV <strong>36.3%</strong> · 互动率 <strong>30.3%</strong></div></div>
-            <div class="heat-detail-cell"><div class="heat-detail-label">社媒热度</div><div class="heat-detail-value"><span class="heat-social-pill tt">TikTok 睫毛教程</span> <span class="heat-social-pill yt">YouTube 评测</span></div></div>
-            <div class="heat-detail-cell"><div class="heat-detail-label">产品链接</div><div class="heat-detail-value"><a href="#" class="heat-product-link">Maybelline 官网 →</a></div></div>
-          </div>
-        </div>
-      </li>
-
-    
-      <li class="heat-item" onclick="this.classList.toggle('open')">
-        <div class="heat-item-header">
-          <span class="heat-rank us">6</span>
-          <div class="heat-info">
-            <span class="heat-name">e.l.f. Halo Glow Liquid Filter</span>
-            <span class="heat-tier-tag mass" style="padding:2px 7px;border-radius:4px;font-size:9px;font-weight:700;background:#eef6fc;color:#2563EB">Mass</span>
-            <span class="heat-brand">· e.l.f.</span>
-            <span class="heat-cat-tag highlight">高光</span>
-          </div>
-          <div class="heat-bar-wrap"><div class="heat-meter"><div class="heat-fill us-fill" style="width:65%"></div></div></div>
-          <span class="heat-score">62</span>
-          <span class="heat-chevron">&#9662;</span>
-        </div>
-        <div class="heat-platform-line">Ulta · Target · TikTok 光泽妆趋势</div>
-        <div class="heat-detail">
-          <div class="heat-detail-grid">
-            <div class="heat-detail-cell"><div class="heat-detail-label">价格</div><div class="heat-detail-value">$16~18</div></div>
-            <div class="heat-detail-cell"><div class="heat-detail-label">核心卖点</div><div class="heat-detail-value">液体高光滤镜 · Cloud Skin 关联 · 一抹光泽肌</div></div>
-            <div class="heat-detail-cell"><div class="heat-detail-label">社媒热度</div><div class="heat-detail-value"><span class="heat-social-pill tt">TikTok #HaloGlow</span> <span class="heat-social-pill yt">YouTube 光泽教程</span></div></div>
-            <div class="heat-detail-cell"><div class="heat-detail-label">产品链接</div><div class="heat-detail-value"><a href="#" class="heat-product-link">e.l.f. 官网 &rarr;</a></div></div>
-          </div>
-        </div>
-      </li>
-
-      <li class="heat-item" onclick="this.classList.toggle('open')">
-        <div class="heat-item-header">
-          <span class="heat-rank us">7</span>
+          <span class="heat-rank us">4</span>
           <div class="heat-info">
             <span class="heat-name">Fenty Beauty Pro Filt'r Soft Matte Foundation</span>
-            <span class="heat-tier-tag masstige" style="padding:2px 7px;border-radius:4px;font-size:9px;font-weight:700;background:#f5f3fa;color:#7b6faa">Masstigue</span>
+            <span class="heat-tier-tag masstige" style="padding:2px 7px;border-radius:4px;font-size:9px;font-weight:700;background:#f5f3fa;color:#7b6faa">Masstige</span>
             <span class="heat-brand">· Fenty Beauty</span>
             <span class="heat-cat-tag face">粉底</span>
           </div>
@@ -1564,17 +1435,17 @@ body { font-family: var(--font); background: var(--body-bg); color: var(--text);
             <div class="heat-detail-cell"><div class="heat-detail-label">价格</div><div class="heat-detail-value">$35~39</div></div>
             <div class="heat-detail-cell"><div class="heat-detail-label">核心卖点</div><div class="heat-detail-value">50色号全肤色 · 哑光柔雾 · 持妆12H · Clean Beauty认证</div></div>
             <div class="heat-detail-cell"><div class="heat-detail-label">社媒热度</div><div class="heat-detail-value"><span class="heat-social-pill seph">Sephora Bestseller</span> <span class="heat-social-pill tt">#FentyFace 话题</span></div></div>
-            <div class="heat-detail-cell"><div class="heat-detail-label">产品链接</div><div class="heat-detail-value"><a href="#" class="heat-product-link">Sephora &rarr;</a></div></div>
+            <div class="heat-detail-cell"><div class="heat-detail-label">产品链接</div><div class="heat-detail-value"><a href="#" class="heat-product-link">Sephora →</a></div></div>
           </div>
         </div>
       </li>
 
       <li class="heat-item" onclick="this.classList.toggle('open')">
         <div class="heat-item-header">
-          <span class="heat-rank us">8</span>
+          <span class="heat-rank us">5</span>
           <div class="heat-info">
             <span class="heat-name">Rare Beauty Find Comfort Tinted Moisturizer</span>
-            <span class="heat-tier-tag masstige" style="padding:2px 7px;border-radius:4px;font-size:9px;font-weight:700;background:#f5f3fa;color:#7b6faa">Masstigue</span>
+            <span class="heat-tier-tag masstige" style="padding:2px 7px;border-radius:4px;font-size:9px;font-weight:700;background:#f5f3fa;color:#7b6faa">Masstige</span>
             <span class="heat-brand">· Rare Beauty</span>
             <span class="heat-cat-tag face">有色面霜</span>
             <span class="heat-trend-badge">趋势产品</span>
@@ -1589,17 +1460,17 @@ body { font-family: var(--font); background: var(--body-bg); color: var(--text);
             <div class="heat-detail-cell"><div class="heat-detail-label">价格</div><div class="heat-detail-value">$34</div></div>
             <div class="heat-detail-cell"><div class="heat-detail-label">核心卖点</div><div class="heat-detail-value">养肤有色面霜 · 透明质酸+神经酰胺 · 30色号 · Clean Beauty</div></div>
             <div class="heat-detail-cell"><div class="heat-detail-label">社媒热度</div><div class="heat-detail-value"><span class="heat-social-pill seph">预售即TOP10</span> <span class="heat-social-pill tt">Selena Gomez 同款</span></div></div>
-            <div class="heat-detail-cell"><div class="heat-detail-label">产品链接</div><div class="heat-detail-value"><a href="#" class="heat-product-link">Rare Beauty &rarr;</a></div></div>
+            <div class="heat-detail-cell"><div class="heat-detail-label">产品链接</div><div class="heat-detail-value"><a href="#" class="heat-product-link">Rare Beauty →</a></div></div>
           </div>
         </div>
       </li>
 
       <li class="heat-item" onclick="this.classList.toggle('open')">
         <div class="heat-item-header">
-          <span class="heat-rank us">9</span>
+          <span class="heat-rank us">6</span>
           <div class="heat-info">
             <span class="heat-name">Tower 28 Beach Please Cream Blush</span>
-            <span class="heat-tier-tag masstige" style="padding:2px 7px;border-radius:4px;font-size:9px;font-weight:700;background:#f5f3fa;color:#7b6faa">Masstigue</span>
+            <span class="heat-tier-tag masstige" style="padding:2px 7px;border-radius:4px;font-size:9px;font-weight:700;background:#f5f3fa;color:#7b6faa">Masstige</span>
             <span class="heat-brand">· Tower 28</span>
             <span class="heat-cat-tag cheek">腮红</span>
           </div>
@@ -1613,17 +1484,17 @@ body { font-family: var(--font); background: var(--body-bg); color: var(--text);
             <div class="heat-detail-cell"><div class="heat-detail-label">价格</div><div class="heat-detail-value">$26</div></div>
             <div class="heat-detail-cell"><div class="heat-detail-label">核心卖点</div><div class="heat-detail-value">奶油腮红膏 · 低饱和裸色系 · 敏感肌友好 · Clean Beauty</div></div>
             <div class="heat-detail-cell"><div class="heat-detail-label">社媒热度</div><div class="heat-detail-value"><span class="heat-social-pin">Pinterest 腮红推荐</span> <span class="heat-social-pill tt">TikTok Glass Skin</span></div></div>
-            <div class="heat-detail-cell"><div class="heat-detail-label">产品链接</div><div class="heat-detail-value"><a href="#" class="heat-product-link">Tower 28 &rarr;</a></div></div>
+            <div class="heat-detail-cell"><div class="heat-detail-label">产品链接</div><div class="heat-detail-value"><a href="#" class="heat-product-link">Tower 28 →</a></div></div>
           </div>
         </div>
       </li>
 
       <li class="heat-item" onclick="this.classList.toggle('open')">
         <div class="heat-item-header">
-          <span class="heat-rank us">10</span>
+          <span class="heat-rank us">7</span>
           <div class="heat-info">
             <span class="heat-name">ILIA Super Serum Skin Tint SPF 40</span>
-            <span class="heat-tier-tag masstige" style="padding:2px 7px;border-radius:4px;font-size:9px;font-weight:700;background:#f5f3fa;color:#7b6faa">Masstigue</span>
+            <span class="heat-tier-tag masstige" style="padding:2px 7px;border-radius:4px;font-size:9px;font-weight:700;background:#f5f3fa;color:#7b6faa">Masstige</span>
             <span class="heat-brand">· ILIA</span>
             <span class="heat-cat-tag face">护肤粉底</span>
           </div>
@@ -1637,50 +1508,61 @@ body { font-family: var(--font); background: var(--body-bg); color: var(--text);
             <div class="heat-detail-cell"><div class="heat-detail-label">价格</div><div class="heat-detail-value">$48~52</div></div>
             <div class="heat-detail-cell"><div class="heat-detail-label">核心卖点</div><div class="heat-detail-value">精华粉底液 · SPF40防护 · Niacinamide+B3</div></div>
             <div class="heat-detail-cell"><div class="heat-detail-label">社媒热度</div><div class="heat-detail-value"><span class="heat-social-pill seph">Sephora Clean</span> <span class="heat-social-pill yt">护肤型底妆推荐</span></div></div>
-            <div class="heat-detail-cell"><div class="heat-detail-label">产品链接</div><div class="heat-detail-value"><a href="#" class="heat-product-link">ILIA &rarr;</a></div></div>
+            <div class="heat-detail-cell"><div class="heat-detail-label">产品链接</div><div class="heat-detail-value"><a href="#" class="heat-product-link">ILIA →</a></div></div>
           </div>
         </div>
-      </li></ul>
+      </li>
+    </ul>
 
-  </div>
+  </div><!-- end us-heat -->
 
+
+  <!-- CN PANEL (right) -->
   <div class="heat-panel cn-heat">
 
-    <h4><span style="background:var(--cn-yellow);color:#1A1A1A;padding:2px 10px;border-radius:4px;font-size:10px;">CN</span> 彩妆热度 TOP 10</h4>
-
+    <!-- === CN LUXURY === -->
+    <h4 style="font-size:13px;font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:6px;">
+      <span style="background:var(--cn-yellow);color:#1A1A1A;padding:2px 8px;border-radius:4px;font-size:10px;">CN</span>
+      <span style="background:#fef9ee;color:#b8943a;padding:2px 8px;border-radius:4px;font-size:9px;font-weight:700;">LUXURY</span> 奢品线
+    </h4>
     <ul class="heat-accordion">
-
       <li class="heat-item" onclick="this.classList.toggle('open')">
         <div class="heat-item-header">
           <span class="heat-rank cn">1</span>
           <div class="heat-info">
-            <span class="heat-name">蒂洛薇 波浪纹云雾触感水散粉</span>
-            <span class="heat-tier-tag mass" style="padding:2px 7px;border-radius:4px;font-size:9px;font-weight:700;background:#eef6fc;color:#2563EB">Mass</span>
-            <span class="heat-brand">· 蒂洛薇</span>
-            <span class="heat-cat-tag powder">水散粉</span>
-            <span class="heat-trend-badge">趋势产品</span>
+            <span class="heat-name">毛戈平 高光膏</span>
+            <span class="heat-tier-tag luxury" style="padding:2px 7px;border-radius:4px;font-size:9px;font-weight:700;background:#fef9ee;color:#b8943a">Luxury</span>
+            <span class="heat-brand">· 毛戈平</span>
+            <span class="heat-cat-tag highlight">高光</span>
           </div>
-          <div class="heat-bar-wrap"><div class="heat-meter"><div class="heat-fill cn-fill" style="width:95%"></div></div></div>
-          <span class="heat-score">95</span>
+          <div class="heat-bar-wrap"><div class="heat-meter"><div class="heat-fill cn-fill" style="width:90%"></div></div></div>
+          <span class="heat-score">49</span>
           <span class="heat-chevron">&#9662;</span>
         </div>
-        <div class="heat-platform-line">抖音618彩妆TOP1 · 新品爆款</div>
+        <div class="heat-platform-line">专柜 · 天猫 · 东方美学高端标杆</div>
         <div class="heat-detail">
           <div class="heat-detail-grid">
-            <div class="heat-detail-cell"><div class="heat-detail-label">价格</div><div class="heat-detail-value">¥109~139</div></div>
-            <div class="heat-detail-cell"><div class="heat-detail-label">核心卖点</div><div class="heat-detail-value">波浪纹创新形态 · 云雾触感 · 控油定妆 · 抖音618彩妆TOP1品牌</div></div>
-            <div class="heat-detail-cell"><div class="heat-detail-label">社媒热度</div><div class="heat-detail-value"><span class="heat-social-pill tt">抖音 TOP1</span> <span class="heat-social-pin">小红书 种草620万+</span></div></div>
-            <div class="heat-detail-cell"><div class="heat-detail-label">产品链接</div><div class="heat-detail-value"><a href="#" class="heat-product-link">天猫旗舰店 →</a></div></div>
+            <div class="heat-detail-cell"><div class="heat-detail-label">价格</div><div class="heat-detail-value">¥290~380</div></div>
+            <div class="heat-detail-cell"><div class="heat-detail-label">核心卖点</div><div class="heat-detail-value">东方光影美学 · 专业化妆师品牌 · 高光塑颜技术 · 国货高端代表</div></div>
+            <div class="heat-detail-cell"><div class="heat-detail-label">社媒热度</div><div class="heat-detail-value"><span class="heat-social-pin">小红书 高光教程</span> <span class="heat-social-pill tt">抖音 光影修容</span></div></div>
+            <div class="heat-detail-cell"><div class="heat-detail-label">产品链接</div><div class="heat-detail-value"><a href="#" class="heat-product-link">毛戈平官方 →</a></div></div>
           </div>
         </div>
       </li>
+    </ul>
 
+    <!-- === CN MASSTIGE === -->
+    <h4 style="font-size:13px;font-weight:700;margin:18px 0 10px;display:flex;align-items:center;gap:6px;">
+      <span style="background:var(--cn-yellow);color:#1A1A1A;padding:2px 8px;border-radius:4px;font-size:10px;">CN</span>
+      <span style="background:#f5f3fa;color:#7b6faa;padding:2px 8px;border-radius:4px;font-size:9px;font-weight:700;">MASSTIGE</span> 精品彩妆
+    </h4>
+    <ul class="heat-accordion">
       <li class="heat-item" onclick="this.classList.toggle('open')">
         <div class="heat-item-header">
-          <span class="heat-rank cn">2</span>
+          <span class="heat-rank cn">1</span>
           <div class="heat-info">
             <span class="heat-name">花西子 空气蜜粉</span>
-            <span class="heat-tier-tag masstige" style="padding:2px 7px;border-radius:4px;font-size:9px;font-weight:700;background:#f5f3fa;color:#7b6faa">Masstigue</span>
+            <span class="heat-tier-tag masstige" style="padding:2px 7px;border-radius:4px;font-size:9px;font-weight:700;background:#f5f3fa;color:#7b6faa">Masstige</span>
             <span class="heat-brand">· 花西子</span>
             <span class="heat-cat-tag powder">蜜粉</span>
           </div>
@@ -1701,34 +1583,10 @@ body { font-family: var(--font); background: var(--body-bg); color: var(--text);
 
       <li class="heat-item" onclick="this.classList.toggle('open')">
         <div class="heat-item-header">
-          <span class="heat-rank cn">3</span>
-          <div class="heat-info">
-            <span class="heat-name">INTO YOU 女主角唇泥</span>
-            <span class="heat-tier-tag mass" style="padding:2px 7px;border-radius:4px;font-size:9px;font-weight:700;background:#eef6fc;color:#2563EB">Mass</span>
-            <span class="heat-brand">· INTO YOU</span>
-            <span class="heat-cat-tag lip">唇泥</span>
-          </div>
-          <div class="heat-bar-wrap"><div class="heat-meter"><div class="heat-fill cn-fill" style="width:82%"></div></div></div>
-          <span class="heat-score">82</span>
-          <span class="heat-chevron">&#9662;</span>
-        </div>
-        <div class="heat-platform-line">抖音 · 天猫 · 低饱和色系引领者</div>
-        <div class="heat-detail">
-          <div class="heat-detail-grid">
-            <div class="heat-detail-cell"><div class="heat-detail-label">价格</div><div class="heat-detail-value">¥58~68</div></div>
-            <div class="heat-detail-cell"><div class="heat-detail-label">核心卖点</div><div class="heat-detail-value">唇泥品类开创者 · 低饱和裸色系 · 奶雾质地 · 性价比标杆</div></div>
-            <div class="heat-detail-cell"><div class="heat-detail-label">社媒热度</div><div class="heat-detail-value"><span class="heat-social-pin">小红书 唇泥鼻祖</span> <span class="heat-social-pill tt">抖音 唇泥品类TOP</span></div></div>
-            <div class="heat-detail-cell"><div class="heat-detail-label">产品链接</div><div class="heat-detail-value"><a href="#" class="heat-product-link">INTO YOU 旗舰店 →</a></div></div>
-          </div>
-        </div>
-      </li>
-
-      <li class="heat-item" onclick="this.classList.toggle('open')">
-        <div class="heat-item-header">
-          <span class="heat-rank cn">4</span>
+          <span class="heat-rank cn">2</span>
           <div class="heat-info">
             <span class="heat-name">彩棠 妆前乳+奶皮气垫组合</span>
-            <span class="heat-tier-tag masstige" style="padding:2px 7px;border-radius:4px;font-size:9px;font-weight:700;background:#f5f3fa;color:#7b6faa">Masstigue</span>
+            <span class="heat-tier-tag masstige" style="padding:2px 7px;border-radius:4px;font-size:9px;font-weight:700;background:#f5f3fa;color:#7b6faa">Masstige</span>
             <span class="heat-brand">· 彩棠</span>
             <span class="heat-cat-tag cushion">底妆套装</span>
           </div>
@@ -1749,61 +1607,12 @@ body { font-family: var(--font); background: var(--body-bg); color: var(--text);
 
       <li class="heat-item" onclick="this.classList.toggle('open')">
         <div class="heat-item-header">
-          <span class="heat-rank cn">5</span>
-          <div class="heat-info">
-            <span class="heat-name">橘朵 单色腮红</span>
-            <span class="heat-tier-tag mass" style="padding:2px 7px;border-radius:4px;font-size:9px;font-weight:700;background:#eef6fc;color:#2563EB">Mass</span>
-            <span class="heat-brand">· 橘朵</span>
-            <span class="heat-cat-tag cheek">腮红</span>
-          </div>
-          <div class="heat-bar-wrap"><div class="heat-meter"><div class="heat-fill cn-fill" style="width:68%"></div></div></div>
-          <span class="heat-score">68</span>
-          <span class="heat-chevron">&#9662;</span>
-        </div>
-        <div class="heat-platform-line">天猫 · 高性价比标杆</div>
-        <div class="heat-detail">
-          <div class="heat-detail-grid">
-            <div class="heat-detail-cell"><div class="heat-detail-label">价格</div><div class="heat-detail-value">¥25~38</div></div>
-            <div class="heat-detail-cell"><div class="heat-detail-label">核心卖点</div><div class="heat-detail-value">单色腮红高性价比标杆 · 色号丰富(40+) · 显色度高 · 学生党首选</div></div>
-            <div class="heat-detail-cell"><div class="heat-detail-label">社媒热度</div><div class="heat-detail-value"><span class="heat-social-pin">小红书 腮红推荐</span> <span class="heat-social-pill tt">抖音 腮红销量TOP</span></div></div>
-            <div class="heat-detail-cell"><div class="heat-detail-label">产品链接</div><div class="heat-detail-value"><a href="#" class="heat-product-link">橘朵旗舰店 →</a></div></div>
-          </div>
-        </div>
-      </li>
-
-    
-      <li class="heat-item" onclick="this.classList.toggle('open')">
-        <div class="heat-item-header">
-          <span class="heat-rank cn">6</span>
-          <div class="heat-info">
-            <span class="heat-name">完美日记 动物眼影盘</span>
-            <span class="heat-tier-tag mass" style="padding:2px 7px;border-radius:4px;font-size:9px;font-weight:700;background:#eef6fc;color:#2563EB">Mass</span>
-            <span class="heat-brand">· 完美日记</span>
-            <span class="cat-tag eye">眼影</span>
-          </div>
-          <div class="heat-bar-wrap"><div class="heat-meter"><div class="heat-fill cn-fill" style="width:65%"></div></div></div>
-          <span class="heat-score">64</span>
-          <span class="heat-chevron">&#9662;</span>
-        </div>
-        <div class="heat-platform-line">天猫 · 小红书 · 国货眼影常青树</div>
-        <div class="heat-detail">
-          <div class="heat-detail-grid">
-            <div class="heat-detail-cell"><div class="heat-detail-label">价格</div><div class="heat-detail-value">¥79~129</div></div>
-            <div class="heat-detail-cell"><div class="heat-detail-label">核心卖点</div><div class="heat-detail-value">动物IP系列 · 十二色配色 · 国货眼影销量TOP · 性价比高</div></div>
-            <div class="heat-detail-cell"><div class="heat-detail-label">社媒热度</div><div class="heat-detail-value"><span class="heat-social-pill tt">抖音 眼影教程</span> <span class="heat-social-pin">小红书 眼影盘推荐</span></div></div>
-            <div class="heat-detail-cell"><div class="heat-detail-label">产品链接</div><div class="heat-detail-value"><a href="#" class="heat-product-link">完美日记旗舰店 →</a></div></div>
-          </div>
-        </div>
-      </li>
-
-      <li class="heat-item" onclick="this.classList.toggle('open')">
-        <div class="heat-item-header">
-          <span class="heat-rank cn">7</span>
+          <span class="heat-rank cn">3</span>
           <div class="heat-info">
             <span class="heat-name">珀莱雅 双抗粉底液</span>
-            <span class="heat-tier-tag masstige" style="padding:2px 7px;border-radius:4px;font-size:9px;font-weight:700;background:#f5f3fa;color:#7b6faa">Masstigue</span>
+            <span class="heat-tier-tag masstige" style="padding:2px 7px;border-radius:4px;font-size:9px;font-weight:700;background:#f5f3fa;color:#7b6faa">Masstige</span>
             <span class="heat-brand">· 珀莱雅</span>
-            <span class="cat-tag face">粉底</span>
+            <span class="heat-cat-tag face">粉底</span>
           </div>
           <div class="heat-bar-wrap"><div class="heat-meter"><div class="heat-fill cn-fill" style="width:62%"></div></div></div>
           <span class="heat-score">60</span>
@@ -1819,105 +1628,29 @@ body { font-family: var(--font); background: var(--body-bg); color: var(--text);
           </div>
         </div>
       </li>
+    </ul>
 
-      <li class="heat-item" onclick="this.classList.toggle('open')">
-        <div class="heat-item-header">
-          <span class="heat-rank cn">8</span>
-          <div class="heat-info">
-            <span class="heat-name">花知晓 少女心唇釉</span>
-            <span class="heat-tier-tag mass" style="padding:2px 7px;border-radius:4px;font-size:9px;font-weight:700;background:#eef6fc;color:#2563EB">Mass</span>
-            <span class="heat-brand">· 花知晓</span>
-            <span class="cat-tag lip">唇釉</span>
-          </div>
-          <div class="heat-bar-wrap"><div class="heat-meter"><div class="heat-fill cn-fill" style="width:58%"></div></div></div>
-          <span class="heat-score">56</span>
-          <span class="heat-chevron">&#9662;</span>
-        </div>
-        <div class="heat-platform-line">天猫 · 高颜值包装 · 收购事件热度加持</div>
-        <div class="heat-detail">
-          <div class="heat-detail-grid">
-            <div class="heat-detail-cell"><div class="heat-detail-label">价格</div><div class="heat-detail-value">¥69~89</div></div>
-            <div class="heat-detail-cell"><div class="heat-detail-label">核心卖点</div><div class="heat-detail-value">少女心高颜值包装 · 低饱和色系 · 珀莱雅收购后关注度飙升</div></div>
-            <div class="heat-detail-cell"><div class="heat-detail-label">社媒热度</div><div class="heat-detail-value"><span class="heat-social-pin">小红书 包装种草</span> <span class="heat-social-pill tt">话题+28%</span></div></div>
-            <div class="heat-detail-cell"><div class="heat-detail-label">产品链接</div><div class="heat-detail-value"><a href="#" class="heat-product-link">花知晓旗舰店 →</a></div></div>
-          </div>
-        </div>
-      </li>
+  </div><!-- end cn-heat -->
 
-      <li class="heat-item" onclick="this.classList.toggle('open')">
-        <div class="heat-item-header">
-          <span class="heat-rank cn">9</span>
-          <div class="heat-info">
-            <span class="heat-name">酵色 贝壳唇泥</span>
-            <span class="heat-tier-tag mass" style="padding:2px 7px;border-radius:4px;font-size:9px;font-weight:700;background:#eef6fc;color:#2563EB">Mass</span>
-            <span class="heat-brand">· 酵色</span>
-            <span class="cat-tag lip">唇泥</span>
-          </div>
-          <div class="heat-bar-wrap"><div class="heat-meter"><div class="heat-fill cn-fill" style="width:54%"></div></div></div>
-          <span class="heat-score">53</span>
-          <span class="heat-chevron">&#9662;</span>
-        </div>
-        <div class="heat-platform-line">抖音 · 天猫 · 低饱和唇泥细分</div>
-        <div class="heat-detail">
-          <div class="heat-detail-grid">
-            <div class="heat-detail-cell"><div class="heat-detail-label">价格</div><div class="heat-detail-value">¥68~88</div></div>
-            <div class="heat-detail-cell"><div class="heat-detail-label">核心卖点</div><div class="heat-detail-value">贝壳系列设计 · 唯美低饱和 · 唶喱唇泥质地 · 差异化包装</div></div>
-            <div class="heat-detail-cell"><div class="heat-detail-label">社媒热度</div><div class="heat-detail-value"><span class="heat-social-pin">小红书 唇泥推荐</span> <span class="heat-social-pill tt">抖音 低饱和色系</span></div></div>
-            <div class="heat-detail-cell"><div class="heat-detail-label">产品链接</div><div class="heat-detail-value"><a href="#" class="heat-product-link">酵色旗舰店 →</a></div></div>
-          </div>
-        </div>
-      </li>
+</div><!-- end heat-section --><h2 class="section-title">🆕 彩妆新品雷达</h2>
+<div class="radar-section" style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
 
-      <li class="heat-item" onclick="this.classList.toggle('open')">
-        <div class="heat-item-header">
-          <span class="heat-rank cn">10</span>
-          <div class="heat-info">
-            <span class="heat-name">毛戈平 高光膏</span>
-            <span class="heat-tier-tag luxury" style="padding:2px 7px;border-radius:4px;font-size:9px;font-weight:700;background:#fef9ee;color:#b8943a">Luxury</span>
-            <span class="heat-brand">· 毛戈平</span>
-            <span class="cat-tag highlight">高光</span>
-          </div>
-          <div class="heat-bar-wrap"><div class="heat-meter"><div class="heat-fill cn-fill" style="width:50%"></div></div></div>
-          <span class="heat-score">49</span>
-          <span class="heat-chevron">&#9662;</span>
-        </div>
-        <div class="heat-platform-line">专柜 · 天猫 · 东方美学高端标杆</div>
-        <div class="heat-detail">
-          <div class="heat-detail-grid">
-            <div class="heat-detail-cell"><div class="heat-detail-label">价格</div><div class="heat-detail-value">¥290~380</div></div>
-            <div class="heat-detail-cell"><div class="heat-detail-label">核心卖点</div><div class="heat-detail-value">东方光影美学 · 专业化妆师品牌 · 高光塑颜技术 · 国货高端代表</div></div>
-            <div class="heat-detail-cell"><div class="heat-detail-label">社媒热度</div><div class="heat-detail-value"><span class="heat-social-pin">小红书 高光教程</span> <span class="heat-social-pill tt">抖音 光影修容</span></div></div>
-            <div class="heat-detail-cell"><div class="heat-detail-label">产品链接</div><div class="heat-detail-value"><a href="#" class="heat-product-link">毛戈平官方 →</a></div></div>
-          </div>
-        </div>
-      </li></ul>
+  <!-- US RADAR (left) -->
+  <div>
+    <h4 style="font-size:14px;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:8px;">
+      <span style="background:var(--us-blue);color:white;padding:2px 10px;border-radius:4px;font-size:10px;">US</span> 新品上架
+    </h4>
 
-  </div>
-
-</div>
-
-
-
-<!-- New Product Radar -->
-
-<h2 class="section-title">🆕 彩妆新品雷达</h2>
-
-<div class="radar-section">
-
-  <!-- LUXURY -->
-  <h3 style="font-size:13px;font-weight:700;margin:16px 0 10px;color:var(--zurured);display:flex;align-items:center;gap:8px;">
-    <span style="background:#fef9ee;color:#b8943a;padding:2px 8px;border-radius:4px;font-size:9px;font-weight:700;">LUXURY</span> 奢品线新品
-  </h3>
-
-  <ul class="heat-accordion">
-
+    <!-- US Luxury New Products -->
+    <h5 style="font-size:12px;font-weight:700;margin:12px 0 8px;color:var(--gold);">👑 Luxury 奢品线</h5>
+    <ul class="heat-accordion">
       <li class="heat-item" onclick="this.classList.toggle('open')">
         <div class="heat-item-header">
           <span class="heat-rank us" style="background:var(--gold);color:white;">★</span>
           <div class="heat-info">
             <span class="heat-name">LANEIGE Glaze Craze Tinted Lip Serum</span>
-            <span class="heat-brand">· LANEIGE</span>
             <span class="heat-tier-tag luxury" style="padding:2px 7px;border-radius:4px;font-size:9px;font-weight:700;background:#fef9ee;color:#b8943a;">Luxury</span>
+            <span class="heat-brand">· LANEIGE</span>
           </div>
           <div class="heat-bar-wrap"><div class="heat-meter"><div class="heat-fill us-fill" style="width:90%"></div></div></div>
           <span class="heat-score">热销</span>
@@ -1927,9 +1660,9 @@ body { font-family: var(--font); background: var(--body-bg); color: var(--text);
         <div class="heat-detail">
           <div class="heat-detail-grid">
             <div class="heat-detail-cell"><div class="heat-detail-label">定位</div><div class="heat-detail-value"><span style="background:#fef9ee;color:#b8943a;padding:2px 7px;border-radius:4px;font-size:10px;font-weight:700;">Luxury 唇部护理</span></div></div>
-            <div class="heat-detail-cell"><div class="heat-detail-label">核心卖点</div><div class="heat-detail-value">95%护肤配方 · 阿甘油苷酯+石榴籽油+多肽 · Y2K冷调玫瑰色 · 限量Plum Sparkle/Lavender Glaze</div></div>
+            <div class="heat-detail-cell"><div class="heat-detail-label">核心卖点</div><div class="heat-detail-value">95%护肤配方 · 阿甘油苷酯+石榴籽油+多肽 · Y2K冷调玫瑰色</div></div>
             <div class="heat-detail-cell"><div class="heat-detail-label">渠道 & 日期</div><div class="heat-detail-value"><span class="heat-social-pill seph">Sephora 6月上线即热销</span></div></div>
-            <div class="heat-detail-cell"><div class="heat-detail-label">口碑</div><div class="heat-detail-value"><span class="rev-tag rev-pos">Sephora上线即热销</span></div></div>
+            <div class="heat-detail-cell"><div class="heat-detail-label">口碑</div><div class="heat-detail-value"><span class="rev-tag rev-pos">上线即热销</span></div></div>
           </div>
         </div>
       </li>
@@ -1939,8 +1672,8 @@ body { font-family: var(--font); background: var(--body-bg); color: var(--text);
           <span class="heat-rank us" style="background:var(--gold);color:white;">★</span>
           <div class="heat-info">
             <span class="heat-name">Dolce & Gabbana Icy-Touch Lemon Balm</span>
-            <span class="heat-brand">· D&G</span>
             <span class="heat-tier-tag luxury" style="padding:2px 7px;border-radius:4px;font-size:9px;font-weight:700;background:#fef9ee;color:#b8943a;">Luxury</span>
+            <span class="heat-brand">· D&G</span>
           </div>
           <div class="heat-bar-wrap"><div class="heat-meter"><div class="heat-fill us-fill" style="width:75%"></div></div></div>
           <span class="heat-score">新</span>
@@ -1951,7 +1684,7 @@ body { font-family: var(--font); background: var(--body-bg); color: var(--text);
           <div class="heat-detail-grid">
             <div class="heat-detail-cell"><div class="heat-detail-label">定位</div><div class="heat-detail-value"><span style="background:#fef9ee;color:#b8943a;padding:2px 7px;border-radius:4px;font-size:10px;font-weight:700;">Luxury 唇部护理</span></div></div>
             <div class="heat-detail-cell"><div class="heat-detail-label">核心卖点</div><div class="heat-detail-value">意大利柠檬提取物+乳木果油 · 清凉触感+自然光泽唇部护理</div></div>
-            <div class="heat-detail-cell"><div class="heat-detail-label">渠道 & 日期</div><div class="heat-detail-value"><span class="rev-tag rev-mid">新品待观察 · Q3上市</span></div></div>
+            <div class="heat-detail-cell"><div class="heat-detail-label">渠道 & 日期</div><div class="heat-detail-value"><span class="rev-tag rev-mid">Q3上市待观察</span></div></div>
             <div class="heat-detail-cell"><div class="heat-detail-label">口碑</div><div class="heat-detail-value"><span class="rev-tag rev-mid">新品待观察</span></div></div>
           </div>
         </div>
@@ -1962,8 +1695,8 @@ body { font-family: var(--font); background: var(--body-bg); color: var(--text);
           <span class="heat-rank us" style="background:var(--gold);color:white;">★</span>
           <div class="heat-info">
             <span class="heat-name">Tom Ford Shade & Illuminate Foundation</span>
-            <span class="heat-brand">· Tom Ford</span>
             <span class="heat-tier-tag luxury" style="padding:2px 7px;border-radius:4px;font-size:9px;font-weight:700;background:#fef9ee;color:#b8943a;">Luxury</span>
+            <span class="heat-brand">· Tom Ford</span>
           </div>
           <div class="heat-bar-wrap"><div class="heat-meter"><div class="heat-fill us-fill" style="width:85%"></div></div></div>
           <span class="heat-score">高期待</span>
@@ -1975,30 +1708,25 @@ body { font-family: var(--font); background: var(--body-bg); color: var(--text);
             <div class="heat-detail-cell"><div class="heat-detail-label">定位</div><div class="heat-detail-value"><span style="background:#fef9ee;color:#b8943a;padding:2px 7px;border-radius:4px;font-size:10px;font-weight:700;">Luxury 底妆</span></div></div>
             <div class="heat-detail-cell"><div class="heat-detail-label">核心卖点</div><div class="heat-detail-value">光泽肌底妆+修容一体 · 12色号全肤色 · 养肤成分+高延展性</div></div>
             <div class="heat-detail-cell"><div class="heat-detail-label">渠道 & 日期</div><div class="heat-detail-value"><span class="heat-social-pill seph">Sephora 6月首发</span> <span class="rev-tag rev-pos">高期待值</span></div></div>
-            <div class="heat-detail-cell"><div class="heat-detail-label">口碑</div><div class="heat-detail-value"><span class="rev-tag rev-pos">Sephora 6月首发 · 高期待</span></div></div>
+            <div class="heat-detail-cell"><div class="heat-detail-label">口碑</div><div class="heat-detail-value"><span class="rev-tag rev-pos">高期待</span></div></div>
           </div>
         </div>
       </li>
+    </ul>
 
-  </ul>
-
-  <!-- MASSTIGE -->
-  <h3 style="font-size:13px;font-weight:700;margin:20px 0 10px;color:var(--us-blue);display:flex;align-items:center;gap:8px;">
-    <span style="background:#f5f3fa;color:#7b6faa;padding:2px 8px;border-radius:4px;font-size:9px;font-weight:700;">MASSTIGE</span> Masstige 彩妆新品
-  </h3>
-
-  <ul class="heat-accordion">
-
+    <!-- US Masstige New Products -->
+    <h5 style="font-size:12px;font-weight:700;margin:18px 0 8px;color:var(--lavender);">💎 Masstige 精品线</h5>
+    <ul class="heat-accordion">
       <li class="heat-item" onclick="this.classList.toggle('open')">
         <div class="heat-item-header">
-          <span class="heat-rank cn" style="background:var(--rose);color:white;">★</span>
+          <span class="heat-rank us" style="background:var(--rose);color:white;">★</span>
           <div class="heat-info">
             <span class="heat-name">Rare Beauty Find Comfort Tinted Moisturizer</span>
-            <span class="heat-brand">· Rare Beauty</span>
-            <span class="heat-tier-badge">趋势产品</span>
             <span class="heat-tier-tag masstige" style="padding:2px 7px;border-radius:4px;font-size:9px;font-weight:700;background:#f5f3fa;color:#7b6faa;">Masstige</span>
+            <span class="heat-brand">· Rare Beauty</span>
+            <span class="heat-trend-badge">趋势产品</span>
           </div>
-          <div class="heat-bar-wrap"><div class="heat-meter"><div class="heat-fill cn-fill" style="width:92%"></div></div></div>
+          <div class="heat-bar-wrap"><div class="heat-meter"><div class="heat-fill us-fill" style="width:92%"></div></div></div>
           <span class="heat-score">预售TOP10</span>
           <span class="heat-chevron">&#9662;</span>
         </div>
@@ -2008,20 +1736,20 @@ body { font-family: var(--font); background: var(--body-bg); color: var(--text);
             <div class="heat-detail-cell"><div class="heat-detail-label">定位</div><div class="heat-detail-value"><span style="background:#f5f3fa;color:#7b6faa;padding:2px 7px;border-radius:4px;font-size:10px;font-weight:700;">Masstige 有色面霜</span></div></div>
             <div class="heat-detail-cell"><div class="heat-detail-label">核心卖点</div><div class="heat-detail-value">养肤有色面霜 · 透明质酸+神经酰胺+蓝藻萃取 · 30色号 · Clean Beauty认证</div></div>
             <div class="heat-detail-cell"><div class="heat-detail-label">渠道 & 日期</div><div class="heat-detail-value"><span class="heat-social-pill seph">$34 · 预售即TOP10</span> <span class="heat-social-pill tt">Selena Gomez同款</span></div></div>
-            <div class="heat-detail-cell"><div class="heat-detail-label">口碑</div><div class="heat-detail-value"><span class="rev-tag rev-pos">Sephora $34 · 预售即TOP 10</span></div></div>
+            <div class="heat-detail-cell"><div class="heat-detail-label">口碑</div><div class="heat-detail-value"><span class="rev-tag rev-pos">Sephora 预售即TOP 10</span></div></div>
           </div>
         </div>
       </li>
 
       <li class="heat-item" onclick="this.classList.toggle('open')">
         <div class="heat-item-header">
-          <span class="heat-rank cn" style="background:var(--rose);color:white;">★</span>
+          <span class="heat-rank us" style="background:var(--rose);color:white;">★</span>
           <div class="heat-info">
             <span class="heat-name">Kosas Cloud Set Blurring Powder</span>
-            <span class="heat-brand">· Kosas</span>
             <span class="heat-tier-tag masstige" style="padding:2px 7px;border-radius:4px;font-size:9px;font-weight:700;background:#f5f3fa;color:#7b6faa;">Masstige</span>
+            <span class="heat-brand">· Kosas</span>
           </div>
-          <div class="heat-bar-wrap"><div class="heat-meter"><div class="heat-fill cn-fill" style="width:78%"></div></div></div>
+          <div class="heat-bar-wrap"><div class="heat-meter"><div class="heat-fill us-fill" style="width:78%"></div></div></div>
           <span class="heat-score">热卖</span>
           <span class="heat-chevron">&#9662;</span>
         </div>
@@ -2030,8 +1758,94 @@ body { font-family: var(--font); background: var(--body-bg); color: var(--text);
           <div class="heat-detail-grid">
             <div class="heat-detail-cell"><div class="heat-detail-label">定位</div><div class="heat-detail-value"><span style="background:#f5f3fa;color:#7b6faa;padding:2px 7px;border-radius:4px;font-size:10px;font-weight:700;">Masstige 散粉定妆</span></div></div>
             <div class="heat-detail-cell"><div class="heat-detail-label">核心卖点</div><div class="heat-detail-value">柔焦定妆散粉 · 植物性成膜剂+纳米技术 · 控油8H · 干雾质地</div></div>
-            <div class="heat-detail-cell"><div class="heat-detail-label">渠道 & 日期</div><div class="heat-detail-value"><span class="heat-social-pill seph">$33 · Reddit MakeupAddiction热评</span></div></div>
-            <div class="heat-detail-cell"><div class="heat-detail-label">口碑</div><div class="heat-detail-value"><span class="rev-tag rev-pos">$33 · Reddit热评TOP 5</span></div></div>
+            <div class="heat-detail-cell"><div class="heat-detail-label">渠道 & 日期</div><div class="heat-detail-value"><span class="heat-social-pill seph">$33 · Reddit热评</span></div></div>
+            <div class="heat-detail-cell"><div class="heat-detail-label">口碑</div><div class="heat-detail-value"><span class="rev-tag rev-pos">Reddit热评TOP 5</span></div></div>
+          </div>
+        </div>
+      </li>
+
+      <li class="heat-item" onclick="this.classList.toggle('open')">
+        <div class="heat-item-header">
+          <span class="heat-rank us" style="background:var(--rose);color:white;">★</span>
+          <div class="heat-info">
+            <span class="heat-name">Tower 28 Splashy Cream Blush Hydrating Gel</span>
+            <span class="heat-tier-tag masstige" style="padding:2px 7px;border-radius:4px;font-size:9px;font-weight:700;background:#f5f3fa;color:#7b6faa;">Masstige</span>
+            <span class="heat-brand">· Tower 28</span>
+          </div>
+          <div class="heat-bar-wrap"><div class="heat-meter"><div class="heat-fill us-fill" style="width:72%"></div></div></div>
+          <span class="heat-score">新</span>
+          <span class="heat-chevron">&#9662;</span>
+        </div>
+        <div class="heat-platform-line">Sephora · Tower28 Beauty · 2026年夏季</div>
+        <div class="heat-detail">
+          <div class="heat-detail-grid">
+            <div class="heat-detail-cell"><div class="heat-detail-label">定位</div><div class="heat-detail-value"><span style="background:#f5f3fa;color:#7b6faa;padding:2px 7px;border-radius:4px;font-size:10px;font-weight:700;">Masstige 腮红</span></div></div>
+            <div class="heat-detail-cell"><div class="heat-detail-label">核心卖点</div><div class="heat-detail-value">果冻腮红啫喱 · 6色水光 · 芦荟+海糖保湿基底 · BeachGlow系列延伸</div></div>
+            <div class="heat-detail-cell"><div class="heat-detail-label">渠道 & 日期</div><div class="heat-detail-value"><span class="heat-social-pill seph">$24 · Sephora新品榜TOP 5</span></div></div>
+            <div class="heat-detail-cell"><div class="heat-detail-label">口碑</div><div class="heat-detail-value"><span class="rev-tag rev-mid">新品待观察</span></div></div>
+          </div>
+        </div>
+      </li>
+    </ul>
+
+  </div><!-- end US radar -->
+
+
+  <!-- CN RADAR (right) -->
+  <div>
+    <h4 style="font-size:14px;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:8px;">
+      <span style="background:var(--cn-yellow);color:#1A1A1A;padding:2px 10px;border-radius:4px;font-size:10px;">CN</span> 新品上架
+    </h4>
+
+    <!-- CN Luxury New Products -->
+    <h5 style="font-size:12px;font-weight:700;margin:12px 0 8px;color:var(--gold);">👑 Luxury 奢品线</h5>
+    <ul class="heat-accordion">
+      <li class="heat-item" onclick="this.classList.toggle('open')">
+        <div class="heat-item-header">
+          <span class="heat-rank cn" style="background:var(--gold);color:white;">★</span>
+          <div class="heat-info">
+            <span class="heat-name">毛戈平 光韵奢华粉底霜（新品）</span>
+            <span class="heat-tier-tag luxury" style="padding:2px 7px;border-radius:4px;font-size:9px;font-weight:700;background:#fef9ee;color:#b8943a;">Luxury</span>
+            <span class="heat-brand">· 毛戈平</span>
+          </div>
+          <div class="heat-bar-wrap"><div class="heat-meter"><div class="heat-fill cn-fill" style="width:88%"></div></div></div>
+          <span class="heat-score">高期待</span>
+          <span class="heat-chevron">&#9662;</span>
+        </div>
+        <div class="heat-platform-line">专柜+天猫 · 2026年Q3首发</div>
+        <div class="heat-detail">
+          <div class="heat-detail-grid">
+            <div class="heat-detail-cell"><div class="heat-detail-label">定位</div><div class="heat-detail-value"><span style="background:#fef9ee;color:#b8943a;padding:2px 7px;border-radius:4px;font-size:10px;font-weight:700;">Luxury 底妆</span></div></div>
+            <div class="heat-detail-cell"><div class="heat-detail-label">核心卖点</div><div class="heat-detail-value">东方光影底妆技术升级 · 养肤级粉底霜 · 专业化妆师联名款 · 高遮瑕光泽肌</div></div>
+            <div class="heat-detail-cell"><div class="heat-detail-label">渠道 & 日期</div><div class="heat-detail-value"><span class="heat-social-pin">小红书 高端底妆讨论</span></div></div>
+            <div class="heat-detail-cell"><div class="heat-detail-label">口碑</div><div class="heat-detail-value"><span class="rev-tag rev-mid">新品待观察</span></div></div>
+          </div>
+        </div>
+      </li>
+    </ul>
+
+    <!-- CN Masstige New Products -->
+    <h5 style="font-size:12px;font-weight:700;margin:18px 0 8px;color:var(--lavender);">💎 Masstige 精品线</h5>
+    <ul class="heat-accordion">
+      <li class="heat-item" onclick="this.classList.toggle('open')">
+        <div class="heat-item-header">
+          <span class="heat-rank cn" style="background:var(--rose);color:white;">★</span>
+          <div class="heat-info">
+            <span class="heat-name">酵色 贝壳系列唇泥（新色）</span>
+            <span class="heat-tier-tag masstige" style="padding:2px 7px;border-radius:4px;font-size:9px;font-weight:700;background:#f5f3fa;color:#7b6faa;">Masstige</span>
+            <span class="heat-brand">· 酵色 JOOCYEE</span>
+          </div>
+          <div class="heat-bar-wrap"><div class="heat-meter"><div class="heat-fill cn-fill" style="width:80%"></div></div></div>
+          <span class="heat-score">新</span>
+          <span class="heat-chevron">&#9662;</span>
+        </div>
+        <div class="heat-platform-line">天猫 · 抖音 · 2026年6月上新</div>
+        <div class="heat-detail">
+          <div class="heat-detail-grid">
+            <div class="heat-detail-cell"><div class="heat-detail-label">定位</div><div class="heat-detail-value"><span style="background:#f5f3fa;color:#7b6faa;padding:2px 7px;border-radius:4px;font-size:10px;font-weight:700;">Masstige 唇泥</span></div></div>
+            <div class="heat-detail-cell"><div class="heat-detail-label">核心卖点</div><div class="heat-detail-value">贝壳系列新色 · 低饱和裸色系扩展 · 唶喱唇泥质地 · 差异化包装设计</div></div>
+            <div class="heat-detail-cell"><div class="heat-detail-label">渠道 & 日期</div><div class="heat-detail-value"><span class="heat-social-pill tt">抖音 上新</span> <span class="heat-social-pin">小红书 种草</span></div></div>
+            <div class="heat-detail-cell"><div class="heat-detail-label">口碑</div><div class="heat-detail-value"><span class="rev-tag rev-mid">新品待观察</span></div></div>
           </div>
         </div>
       </li>
@@ -2040,36 +1854,52 @@ body { font-family: var(--font); background: var(--body-bg); color: var(--text);
         <div class="heat-item-header">
           <span class="heat-rank cn" style="background:var(--rose);color:white;">★</span>
           <div class="heat-info">
-            <span class="heat-name">Tower 28 Splashy Cream Blush Hydrating Gel</span>
-            <span class="heat-brand">· Tower 28</span>
+            <span class="heat-name">INTO YOU 心动主角唇泥（限量版）</span>
             <span class="heat-tier-tag masstige" style="padding:2px 7px;border-radius:4px;font-size:9px;font-weight:700;background:#f5f3fa;color:#7b6faa;">Masstige</span>
+            <span class="heat-brand">· INTO YOU</span>
           </div>
-          <div class="heat-bar-wrap"><div class="heat-meter"><div class="heat-fill cn-fill" style="width:72%"></div></div></div>
-          <span class="heat-score">新</span>
+          <div class="heat-bar-wrap"><div class="heat-meter"><div class="heat-fill cn-fill" style="width:75%"></div></div></div>
+          <span class="heat-score">热卖</span>
           <span class="heat-chevron">&#9662;</span>
         </div>
-        <div class="heat-platform-line">Sephora · Tower28 Beauty · 2026年夏季</div>
+        <div class="heat-platform-line">天猫 · 抖音 · 618限量发售</div>
         <div class="heat-detail">
           <div class="heat-detail-grid">
-            <div class="heat-detail-cell"><div class="heat-detail-label">定位</div><div class="heat-detail-value"><span style="background:#f5f3fa;color:#7b6faa;padding:2px 7px;border-radius:4px;font-size:10px;font-weight:700;">Masstige 腮红</span></div></div>
-            <div class="heat-detail-cell"><div class="heat-detail-label">核心卖点</div><div class="heat-detail-value">果冻腮红啫喱 · 6色水光产 · 芦荟+海糖保湿基底 · BeachGlow系列延伸</div></div>
-            <div class="heat-detail-cell"><div class="heat-detail-label">渠道 & 日期</div><div class="heat-detail-value"><span class="heat-social-pill seph">$24 · Sephora新品榜TOP 5</span></div></div>
-            <div class="heat-detail-cell"><div class="heat-detail-label">口碑</div><div class="heat-detail-value"><span class="rev-tag rev-mid">新品待观察</span></div></div>
+            <div class="heat-detail-cell"><div class="heat-detail-label">定位</div><div class="heat-detail-value"><span style="background:#f5f3fa;color:#7b6faa;padding:2px 7px;border-radius:4px;font-size:10px;font-weight:700;">Masstige 唇泥</span></div></div>
+            <div class="heat-detail-cell"><div class="heat-detail-label">核心卖点</div><div class="heat-detail-value">心动主角IP联名限量版 · 专属低饱和新色5支 · 限定礼盒包装</div></div>
+            <div class="heat-detail-cell"><div class="heat-detail-label">渠道 & 日期</div><div class="heat-detail-value"><span class="heat-social-pill tt">618限量热卖</span></div></div>
+            <div class="heat-detail-cell"><div class="heat-detail-label">口碑</div><div class="heat-detail-value"><span class="rev-tag rev-pos">618预售热卖</span></div></div>
           </div>
         </div>
       </li>
 
-  </ul>
+      <li class="heat-item" onclick="this.classList.toggle('open')">
+        <div class="heat-item-header">
+          <span class="heat-rank cn" style="background:var(--rose);color:white;">★</span>
+          <div class="heat-info">
+            <span class="heat-name">花知晓 马卡龙系列眼影盘（夏季版）</span>
+            <span class="heat-tier-tag masstige" style="padding:2px 7px;border-radius:4px;font-size:9px;font-weight:700;background:#f5f3fa;color:#7b6faa;">Masstige</span>
+            <span class="heat-brand">· 花知晓</span>
+          </div>
+          <div class="heat-bar-wrap"><div class="heat-meter"><div class="heat-fill cn-fill" style="width:70%"></div></div></div>
+          <span class="heat-score">新</span>
+          <span class="heat-chevron">&#9662;</span>
+        </div>
+        <div class="heat-platform-line">天猫 · 小红书 · 珀莱雅收购后首季新品</div>
+        <div class="heat-detail">
+          <div class="heat-detail-grid">
+            <div class="heat-detail-cell"><div class="heat-detail-label">定位</div><div class="heat-detail-value"><span style="background:#f5f3fa;color:#7b6faa;padding:2px 7px;border-radius:4px;font-size:10px;font-weight:700;">Masstige 眼影</span></div></div>
+            <div class="heat-detail-cell"><div class="heat-detail-label">核心卖点</div><div class="heat-detail-value">马卡龙夏季配色 · 少女心高颜值包装 · 低饱和粉彩应用 · 收购后品质升级</div></div>
+            <div class="heat-detail-cell"><div class="heat-detail-label">渠道 & 日期</div><div class="heat-detail-value"><span class="heat-social-pin">小红书 包装种草</span> <span class="heat-social-pill tt">话题+28%</span></div></div>
+            <div class="heat-detail-cell"><div class="heat-detail-label">口碑</div><div class="heat-detail-value"><span class="rev-tag rev-mid">新品待观察</span></div></div>
+          </div>
+        </div>
+      </li>
+    </ul>
 
-</div>
+  </div><!-- end CN radar -->
 
-</div>
-</div>
-</div>
-</div>
-</div>
-
-<!-- APPENDIX -->
+</div><!-- end radar-section grid --><!-- APPENDIX -->
 <div class="section">
 <h3 style="font-size:16px;font-weight:700;color:var(--text);margin-bottom:16px;">📚 信源全景 & 方法论</h3>
 
