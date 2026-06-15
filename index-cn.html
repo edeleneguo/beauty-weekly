@@ -6,9 +6,9 @@
 
 <meta charset="UTF-8">
 
-<meta name="version" content="week25-20260615-v4-surgical-fix">
+<meta name="version" content="week25-20260615-v5-layout-fix">
 
-<!-- Cache-bust: week25-20260615-v4-surgical-fix -->
+<!-- Cache-bust: week25-20260615-v5-layout-fix -->
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -238,6 +238,32 @@ body { font-family: var(--font); background: var(--body-bg); color: var(--text);
 
 .news-card.open .news-card-header { border-bottom: 1px solid var(--border); }
 
+/* News Card - v4 additions */
+.news-card-tag { padding: 2px 9px; border-radius: 10px; font-size: 10px; font-weight: 700; flex-shrink: 0; margin-top: 2px; }
+.news-card-tag.ma { background: #fff0f3; color: #c94b6c; }
+.news-card-tag.capital { background: #fef9ee; color: #b8943a; }
+.news-card-tag.data { background: #f5f3fa; color: #7b6faa; }
+.news-card-tag.event { background: #eef6fc; color: #2563EB; }
+.news-card-chevron { font-size: 18px; color: #ccc; transition: transform 0.25s; flex-shrink: 0; margin-top: 2px; }
+.news-card.open .news-card-chevron { transform: rotate(180deg); }
+.news-card-brief { font-size: 12px; color: var(--text-secondary); margin-top: 6px; padding: 0 18px 10px; line-height: 1.5; }
+.news-card-body-inner { padding: 0; }
+
+/* Driver Bullets - vertical layout */
+.driver-bullets { margin: 12px 0; }
+.bullet-group { display: flex; flex-direction: column; gap: 8px; }
+.bullet-point { display: flex; align-items: flex-start; gap: 8px; font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
+.region-tag { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 4px; flex-shrink: 0; }
+
+/* Action Block */
+.action-block { border-left: 3px solid var(--coral); padding: 10px 14px; background: #fffbfa; border-radius: 0 8px 8px 0; margin: 12px 0; }
+.act-header { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.act-label { font-size: 11px; font-weight: 700; color: var(--coral); }
+.act-direction { font-size: 12px; color: var(--text); flex: 1; min-width: 200px; }
+.act-strength { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 4px; flex-shrink: 0; }
+.act-strength.strong { background: #fee2e2; color: #991b1b; }
+.act-strength.mid { background: #fef3c7; color: #92400e; }
+.act-content { font-size: 12px; color: var(--text-secondary); margin-top: 8px; line-height: 1.5; }
 
 
 /* Trend Grid */
@@ -883,7 +909,8 @@ body { font-family: var(--font); background: var(--body-bg); color: var(--text);
 
     </div>
 
-    <div class="news-card-body">
+    <div class="news-card-brief">Q1美妆融资集中AI与合成生物，5家AI企业获资，研发平台成资本热点。</div>
+    <div class="news-card-body"><div class="news-card-body-inner">
 
       2026年Q1美妆行业融资集中在AI与合成生物学领域。美国AI香水设计平台Osmo、虚拟生物学公司Turbine等5家AI企业获得融资。AI研发平台成为资本市场重点赛道，加速美妆产品从研发到落地的全流程。
 
@@ -907,6 +934,7 @@ body { font-family: var(--font); background: var(--body-bg); color: var(--text);
 
     </div>
 
+    <div class="news-card-brief">珀莱雅3.51亿收购花知晓12.55%股权实现控股，合计投入近8亿元。</div>
     <div class="news-card-body"><div class="news-card-body-inner">
 
       珀莱雅全资子公司以3.51亿元收购花知晓12.55%股权，持股比例从38.45%升至51%实现控股并表。此前首轮投资约4.28亿元，合计投入近8亿元。花知晓以"少女心"风格和高颜值包装著称，此举标志国货彩妆头部阵营整合加速。
@@ -929,7 +957,8 @@ body { font-family: var(--font); background: var(--body-bg); color: var(--text);
 
     </div>
 
-    <div class="news-card-body">
+    <div class="news-card-brief">2026"十五五"开幕年60+项新规出台，化妆品新原料备案达169个。</div>
+    <div class="news-card-body"><div class="news-card-body-inner">
 
       2026年作为"十五五"规划开幕之年，化妆品相关新规密集出台。2025年国家及地方监管部门共发布60+项新规，覆盖全产业链。全年化妆品新原料备案达169个，行业正式迈入高质量发展阶段。
 
@@ -953,6 +982,7 @@ body { font-family: var(--font); background: var(--body-bg); color: var(--text);
 
     </div>
 
+    <div class="news-card-brief">Sephora沉浸式活动SEPHORiA回归LA，以"Beauty Multiverse"为主题。</div>
     <div class="news-card-body"><div class="news-card-body-inner">
 
       Sephora 旗舰活动 SEPHORiA 2026 以全新沉浸式概念回归洛杉矶，推出首次面世的独家节目和现场专属福利。活动以"Beauty Multiverse"为主题，进一步巩固 Sephora 在体验式零售领域的领先地位。
@@ -975,7 +1005,8 @@ body { font-family: var(--font); background: var(--body-bg); color: var(--text);
 
     </div>
 
-    <div class="news-card-body">
+    <div class="news-card-brief">Ulta Q1香氛：DKNY飙升58位，Kylie上升24位，touchland上升18位。</div>
+    <div class="news-card-body"><div class="news-card-body-inner">
 
       Ulta Beauty Q1 2026 香氛品类数据显示：DKNY 排名飙升58位领跑，Kylie Cosmetics 上升24位，touchland 上升18位。消费者对香氛品类的需求依然强劲，渠道增长势头持续。
 
