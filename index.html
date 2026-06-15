@@ -1,1414 +1,483 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Makeup Industry Weekly | Week 25, 2026</title>
-<meta name="version" content="week25-en-20260615-v3-template-fix">
-<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-<meta http-equiv="Pragma" content="no-cache">
-<meta http-equiv="Expires" content="0">
-<!-- Cache-bust: week25-en-20260615-v3-template-fix -->
-<style>
-:root {
-  --rose: #c94b6c;
-  --teal: #2d8a7a;
-  --gold: #b8943a;
-  --coral: #d4654a;
-  --lavender: #7b6faa;
-  --purple: #8b5cf6;
-  --blue: #4f8ef7;
-  --cn-bg: #fff5f7;
-  --cn-border: #f2d5dc;
-  --us-bg: #f3faf8;
-  --us-border: #c5e5dc;
-  --bg: #f7f8fa;
-  --card-bg: #ffffff;
-  --text: #1e1e2e;
-  --text-secondary: #6b7280;
-  --shadow-sm: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.03);
-  --shadow: 0 4px 16px rgba(0,0,0,0.05), 0 1px 4px rgba(0,0,0,0.03);
-  --shadow-lg: 0 8px 30px rgba(0,0,0,0.07), 0 2px 8px rgba(0,0,0,0.04);
-}
-
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif; background: linear-gradient(180deg, #f0f2f8 0%, var(--bg) 200px); color: var(--text); line-height: 1.65; -webkit-font-smoothing: antialiased; }
-
-.container { max-width: 1400px; margin: 0 auto; padding: 28px 20px 48px; }
-
-/* ═══ Header — gradient hero banner ═══ */
-.header {
-  text-align: center;
-  padding: 56px 32px 40px;
-  background: linear-gradient(135deg, #e8516e 0%, #d4568c 20%, #b85bae 40%, #8b5cf6 60%, #5b8af7 80%, #3b9bcc 100%);
-  border-radius: 20px;
-  margin-bottom: 32px;
-  position: relative;
-  overflow: hidden;
-  box-shadow: var(--shadow-lg);
-}
-.header::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  right: -20%;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
-  border-radius: 50%;
-  pointer-events: none;
-}
-.header::after {
-  content: '';
-  position: absolute;
-  bottom: -30%;
-  left: -10%;
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
-  border-radius: 50%;
-  pointer-events: none;
-}
-.header h1 {
-  font-size: 32px;
-  font-weight: 800;
-  color: #fff;
-  letter-spacing: 0.5px;
-  text-shadow: 0 2px 12px rgba(0,0,0,0.12);
-  position: relative;
-  z-index: 1;
-}
-.header .subtitle {
-  font-size: 15px;
-  color: rgba(255,255,255,0.85);
-  margin-top: 10px;
-  font-weight: 500;
-  letter-spacing: 0.3px;
-  position: relative;
-  z-index: 1;
-}
-.header .date-badge {
-  display: inline-block;
-  background: rgba(255,255,255,0.18);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255,255,255,0.25);
-  border-radius: 24px;
-  padding: 6px 22px;
-  font-size: 13px;
-  color: rgba(255,255,255,0.95);
-  margin-top: 16px;
-  font-weight: 500;
-  position: relative;
-  z-index: 1;
-}
-.header .header-tags {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 18px;
-  position: relative;
-  z-index: 1;
-}
-.header .header-tag {
-  display: inline-block;
-  padding: 4px 14px;
-  border-radius: 16px;
-  font-size: 12px;
-  font-weight: 600;
-  background: rgba(255,255,255,0.15);
-  backdrop-filter: blur(6px);
-  border: 1px solid rgba(255,255,255,0.2);
-  color: rgba(255,255,255,0.9);
-}
-/* Executive Summary Highlights Grid */
-.exec-summary { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; max-width: 1050px; margin: 28px auto 0; position: relative; z-index: 1; }
-.exec-card { background: rgba(255,255,255,0.92); backdrop-filter: blur(10px); border-radius: 14px; padding: 18px 18px; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; gap: 8px; text-align: left; border-top: 4px solid #eee; transition: transform 0.2s, box-shadow 0.2s; }
-.exec-card:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
-.exec-card.cn-makeup { border-top-color: var(--rose); }
-.exec-card.us-makeup { border-top-color: var(--teal); }
-.exec-card.cn-frag { border-top-color: var(--coral); }
-.exec-card.us-frag { border-top-color: var(--gold); }
-.exec-card .exec-icon { font-size: 20px; }
-.exec-card .exec-tag { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: #9ca3af; }
-.exec-card .exec-headline { font-size: 14px; font-weight: 700; color: var(--text); line-height: 1.4; }
-.exec-card .exec-detail { font-size: 12px; color: var(--text-secondary); line-height: 1.5; }
-.exec-card .exec-highlight { display: inline-block; background: #fef0f3; color: var(--rose); padding: 1px 6px; border-radius: 4px; font-weight: 600; font-size: 12px; }
-.exec-card .exec-highlight.teal { background: #f0faf6; color: var(--teal); }
-.exec-card .exec-highlight.gold { background: #fef9ee; color: var(--gold); }
-.exec-card .exec-highlight.coral { background: #fcf0ec; color: var(--coral); }
-
-/* KPI inline in trend cards */
-.kpi-inline { display: flex; gap: 10px; margin-bottom: 14px; flex-wrap: wrap; }
-.kpi-pill { background: #fff; border-radius: 12px; padding: 12px 16px; box-shadow: var(--shadow-sm); display: flex; align-items: center; gap: 12px; font-size: 13px; border: 1px solid #f0f2f5; }
-.kpi-pill .kpi-pill-val { font-size: 22px; font-weight: 700; }
-.kpi-pill .kpi-pill-meta { display: flex; flex-direction: column; }
-.kpi-pill .kpi-pill-label { font-size: 12px; color: var(--text-secondary); }
-.kpi-pill .kpi-pill-sub { font-size: 11px; color: var(--text-secondary); }
-.kpi-pill.pill-rose .kpi-pill-val { color: var(--rose); }
-.kpi-pill.pill-teal .kpi-pill-val { color: var(--teal); }
-.kpi-pill.pill-gold .kpi-pill-val { color: var(--gold); }
-.kpi-pill.pill-coral .kpi-pill-val { color: var(--coral); }
-
-/* Perf Overview block above trend cards */
-.perf-overview { background: rgba(255,255,255,0.7); border-radius: 12px; padding: 16px 20px; margin-bottom: 16px; border: 1px dashed var(--cn-border); }
-.perf-overview-label { font-size: 13px; font-weight: 700; color: var(--text-secondary); margin-bottom: 10px; }
-.perf-overview .kpi-inline { margin-bottom: 0; }
-
-@media (max-width: 768px) {
-  .exec-summary { grid-template-columns: repeat(2, 1fr); }
-}
-
-
-/* News strip */
-.news-strip { background: var(--card-bg); border-radius: 16px; padding: 24px 28px; box-shadow: var(--shadow); margin-bottom: 28px; border: 1px solid #f0f0f4; }
-.news-strip h3 { font-size: 16px; font-weight: 700; margin-bottom: 16px; color: var(--text); display: flex; align-items: center; gap: 8px; }
-.news-list { display: flex; flex-direction: column; gap: 10px; }
-.news-card { border: 1px solid #eef0f5; border-radius: 12px; padding: 16px 18px; cursor: pointer; transition: all 0.25s; background: #fafbfd; }
-.news-card:hover { border-color: #d0d5e0; background: #f5f7fb; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
-.news-card-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; cursor: pointer; user-select: none; }
-.news-card-header:hover .news-card-chevron { color: var(--text-secondary); }
-.news-card-chevron { font-size: 24px; color: #a0a8b8; transition: transform 0.25s; flex-shrink: 0; line-height: 1; cursor: pointer; }
-.news-card.open .news-card-chevron { transform: rotate(180deg); color: var(--text-secondary); }
-.news-card-title { font-size: 14px; font-weight: 600; color: var(--text); line-height: 1.5; flex: 1; }
-.news-card-tag { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 11px; font-weight: 600; white-space: nowrap; flex-shrink: 0; }
-.news-card-tag.ma { background: #fff0f3; color: var(--rose); }
-.news-card-tag.launch { background: #f0faf6; color: var(--teal); }
-.news-card-tag.capital { background: #fef9ee; color: #b8860b; }
-.news-card-tag.data { background: #f5f3fa; color: var(--lavender); }
-.news-card-tag.cn { background: #fff0f3; color: var(--rose); }
-.news-card-tag.us { background: #f0faf6; color: var(--teal); }
-.news-card-tag.shared { background: #fef9ee; color: #b8860b; }
-
-.news-card-brief { font-size: 13px; color: var(--text-secondary); margin-top: 6px; line-height: 1.6; }
-.news-card-body { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
-.news-card.open .news-card-body { max-height: 500px; margin-top: 8px; }
-.news-card-body-inner { font-size: 13px; color: var(--text-secondary); line-height: 1.7; padding: 14px 18px; background: #f8f9fb; border-radius: 10px; border-left: 4px solid #e0e0e0; }
-.news-card:not(.open) .news-card-body-inner { padding: 0 16px; }
-
-.hl-num { color: var(--rose); font-weight: 700; }
-
-/* Section */
-.section { margin-bottom: 36px; }
-.section-title { font-size: 22px; font-weight: 800; margin-bottom: 8px; display: flex; align-items: center; gap: 10px; color: var(--text); letter-spacing: -0.3px; }
-.section-subnote { font-size: 12px; color: #aaa; margin-bottom: 20px; padding: 6px 14px; background: rgba(0,0,0,0.02); border-radius: 8px; display: inline-block; }
-.section-divider { height: 4px; background: linear-gradient(90deg, var(--rose), var(--purple), var(--blue), var(--teal), var(--gold)); border-radius: 2px; margin: 40px 0; opacity: 0.25; }
-
-/* ═══ Section banner ═══ */
-.section-banner {
-  text-align: center;
-  padding: 32px 32px 26px;
-  border-radius: 18px;
-  margin-bottom: 20px;
-  position: relative;
-  box-shadow: var(--shadow);
-}
-.section-banner::before {
-  content: '';
-  position: absolute;
-  top: -40%;
-  right: -15%;
-  width: 350px;
-  height: 350px;
-  background: radial-gradient(circle, rgba(255,255,255,0.10) 0%, transparent 70%);
-  border-radius: 50%;
-  pointer-events: none;
-}
-.section-banner::after {
-  content: '';
-  position: absolute;
-  bottom: -30%;
-  left: -10%;
-  width: 280px;
-  height: 280px;
-  background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%);
-  border-radius: 50%;
-  pointer-events: none;
-}
-.section-banner h2 {
-  font-size: 24px;
-  font-weight: 800;
-  color: #fff;
-  letter-spacing: 0.5px;
-  text-shadow: 0 2px 10px rgba(0,0,0,0.10);
-  position: relative;
-  z-index: 1;
-}
-.section-banner .banner-sub {
-  font-size: 13px;
-  color: rgba(255,255,255,0.82);
-  margin-top: 6px;
-  font-weight: 500;
-  letter-spacing: 0.3px;
-  position: relative;
-  z-index: 1;
-}
-.makeup-banner {
-  background: linear-gradient(135deg, #e8516e 0%, #d4568c 25%, #c75da2 50%, #b85bae 75%, #a366c4 100%);
-}
-.fragrance-banner {
-  background: linear-gradient(135deg, #147a6a 0%, #1d9a85 25%, #2dae96 50%, #48c0a8 75%, #6dd2b8 100%);
-}
-
-/* ═══ Section shell ═══ */
-.section-shell {
-  border-radius: 20px;
-  padding: 32px 24px;
-  margin-bottom: 16px;
-  position: relative;
-  overflow: hidden;
-}
-.section-shell::before {
-  content: '';
-  position: absolute;
-  top: 0; right: 0;
-  width: 300px; height: 300px;
-  border-radius: 50%;
-  pointer-events: none;
-  opacity: 0.5;
-}
-.makeup-shell {
-  background: linear-gradient(180deg, #fde2eb 0%, #fcdae6 12%, #fbdde9 25%, #fbe3ef 40%, #fae9f3 60%, #faf0f6 80%, #faf5f8 100%);
-  border: 1px solid #eec5d6;
-}
-.makeup-shell::before {
-  background: radial-gradient(circle at 60% 10%, rgba(201,75,108,0.07) 0%, rgba(139,92,246,0.05) 40%, rgba(91,138,247,0.03) 70%, transparent 100%);
-  top: 0; right: 0;
-  width: 100%; height: 100%;
-}
-.fragrance-shell {
-  background: linear-gradient(180deg, #d6f0e4 0%, #ceebdd 15%, #d6efe2 50%, #e0f4ea 75%, #edf8f1 100%);
-  border: 1px solid #b3dcc6;
-}
-.fragrance-shell::before {
-  background: radial-gradient(circle, rgba(45,138,122,0.08) 0%, transparent 70%);
-  top: -40px; right: -30px;
-  width: 300px; height: 300px;
-}
-.section-shell .section { margin-bottom: 0; }
-
-/* Trend grid */
-.trend-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px; margin-bottom: 20px; }
-.trend-grid .zone-cn, .trend-grid .zone-cn-frag { order: 2; }
-.trend-grid .zone-us, .trend-grid .zone-us-frag { order: 1; }
-@media (max-width: 900px) { .trend-grid { grid-template-columns: 1fr; } .trend-grid .zone-cn, .trend-grid .zone-cn-frag, .trend-grid .zone-us, .trend-grid .zone-us-frag { order: 0; } }
-
-/* Zone containers */
-.common-trends-section {
-  margin-bottom: 28px;
-  border: 2px solid #e8d090;
-  border-radius: 18px;
-  padding: 24px 28px;
-  background: linear-gradient(135deg, #fffef9 0%, #fefdf4 30%, #fffdf6 100%);
-  box-shadow: var(--shadow-sm);
-}
-.common-trends-header {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 18px;
-}
-.common-badge {
-  background: linear-gradient(135deg, #c47a3a, #d4954a);
-  color: #fff;
-  padding: 5px 16px;
-  border-radius: 20px;
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-}
-.common-subtitle {
-  font-size: 12px;
-  color: #b8935a;
-  font-weight: 500;
-}
-
-.zone { border-radius: 18px; padding: 28px; position: relative; }
-.zone-cn { background: linear-gradient(180deg, #fef5f8 0%, #fdf0f4 50%, #fcf3f6 100%); border: 1.5px solid #f2d5dc; }
-.zone-us { background: linear-gradient(180deg, #f4fbf8 0%, #edf7f3 50%, #f0f8f5 100%); border: 1.5px solid #c5e5dc; }
-
-.zone-badge { display: inline-block; padding: 7px 20px; border-radius: 22px; font-size: 14px; font-weight: 700; position: absolute; top: -16px; left: 24px; box-shadow: 0 3px 12px rgba(0,0,0,0.08); }
-.zone-badge.cn { background: linear-gradient(135deg, #fce4e9, #f5c6d2); color: var(--rose); }
-.zone-badge.us { background: linear-gradient(135deg, #c5f0e2, #a8e0ce); color: #1a6b58; }
-
-/* Trend cards */
-.trend-v-card { background: #fff; border-radius: 14px; padding: 22px; margin-bottom: 16px; box-shadow: var(--shadow-sm); border: 1px solid #f0f2f5; transition: box-shadow 0.2s; }
-.trend-v-card:hover { box-shadow: var(--shadow); }
-.trend-v-card.cn { border-left: 5px solid var(--rose); border-top: none; }
-.trend-v-card.us { border-left: 5px solid var(--teal); border-top: none; }
-.trend-v-card.common { border-left: 5px solid var(--gold); border-top: none; background: #fffefb; }
-.trend-v-card.common .driver-summary { background: #fefcf6; border-left: 3px solid var(--gold); color: #8b6914; }
-.trend-v-card h4 { font-size: 16px; font-weight: 700; margin-bottom: 12px; }
-
-.trend-v-body { margin-bottom: 16px; }
-.driver-summary { padding: 12px 16px; border-radius: 10px; font-size: 14px; font-weight: 600; margin-bottom: 14px; }
-.cn .driver-summary { background: #fff0f4; border-left: 4px solid var(--rose); color: var(--rose); }
-.us .driver-summary { background: #eefaf4; border-left: 4px solid var(--teal); color: var(--teal); }
-
-.driver-bullets { padding-left: 4px; }
-.bullet-group { position: relative; padding: 8px 0 8px 20px; margin-bottom: 4px; }
-.bullet-group::before { content: ''; position: absolute; left: 6px; top: 8px; bottom: 8px; width: 2px; border-radius: 1px; }
-.cn-group::before { background: #f5c6d0; }
-.us-group::before { background: #b8dbd2; }
-.bullet-group:last-child::before { display: none; }
-.bullet-point { display: flex; align-items: flex-start; gap: 8px; font-size: 14px; font-weight: 600; color: var(--text); }
-
-.region-tag { display: inline-block; padding: 3px 10px; border-radius: 10px; font-size: 11px; font-weight: 700; letter-spacing: 0.3px; flex-shrink: 0; margin-right: 6px; line-height: 1.5; text-transform: uppercase; white-space: nowrap; }
-.cn-tag { background: #fce4ea; color: var(--rose); box-shadow: 0 1px 3px rgba(201,75,108,0.12); }
-.us-tag { background: #cdf0e3; color: #147a6a; box-shadow: 0 1px 3px rgba(20,122,106,0.12); }
-
-/* Signal strip */
-.signal-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 16px; }
-.signal-chip { background: #f8f9fb; border-radius: 12px; padding: 14px; border-left: 4px solid #ddd; transition: transform 0.15s, box-shadow 0.15s; }
-.signal-chip:hover { transform: translateY(-1px); box-shadow: var(--shadow-sm); }
-.signal-chip.yt { border-left-color: #e74c3c; }
-.signal-chip.tt { border-left-color: #1a1a1a; }
-.signal-chip.seph { border-left-color: var(--teal); }
-.signal-chip.wgsn { border-left-color: var(--lavender); }
-.signal-chip.pin { border-left-color: #e60023; }
-.signal-chip.ig { border-left-color: #e4405f; }
-.signal-chip.gtrends { border-left-color: #4285f4; }
-.signal-chip .chip-icon { font-size: 16px; margin-bottom: 2px; }
-.signal-chip .chip-hashtag { font-size: 16px; font-weight: 700; margin: 4px 0 2px; letter-spacing: 0.2px; display: block; }
-.signal-chip .chip-hashtag.tt-hash { background: linear-gradient(90deg, #e8516e, #c94b6c); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-.signal-chip .chip-num { font-size: 22px; font-weight: 700; color: var(--text); }
-.signal-chip .chip-desc { font-size: 11px; color: var(--text-secondary); margin-top: 2px; }
-.signal-chip .chip-trend { font-size: 11px; margin-top: 4px; font-weight: 600; }
-.chip-up { color: #27ae60; }
-.chip-hot { color: var(--coral); }
-
-/* Action strip */
-.action-block { border: 2px solid #f0d8c0; border-radius: 12px; padding: 18px 20px; background: linear-gradient(135deg, #fffdf7 0%, #fff9f0 100%); margin-bottom: 0; }
-.action-block .act-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
-.action-block .act-label { font-size: 13px; color: var(--coral); font-weight: 700; }
-.action-block .act-direction { background: #fef0e6; color: var(--gold); padding: 3px 12px; border-radius: 14px; font-size: 12px; font-weight: 600; letter-spacing: 0.2px; }
-.action-block .act-strength { margin-left: auto; font-size: 12px; font-weight: 700; padding: 3px 12px; border-radius: 10px; }
-.action-block .act-strength.strong { background: #fde3e8; color: var(--coral); }
-.action-block .act-strength.mid { background: #fef3e6; color: var(--gold); }
-.action-block .act-strength.rising { background: #dff0e8; color: var(--teal); }
-.action-block .act-content { font-size: 13px; color: var(--text); line-height: 1.65; padding-top: 8px; border-top: 1px solid #f0e8d8; }
-
-/* Decision bar (US only) */
-.trend-decision-bar {
-  display: flex; align-items: center; gap: 8px; padding: 8px 12px; margin-top: 10px;
-  background: #f0fdf4; border-radius: 8px; font-size: 11px; flex-wrap: wrap;
-}
-.dec-label { font-weight: 700; color: var(--teal); font-size: 10px; text-transform: uppercase; }
-.dec-signal { background: #dbeafe; color: #1E40AF; padding: 2px 8px; border-radius: 4px; font-weight: 600; }
-.dec-arrow { color: var(--gold); font-weight: 800; font-size: 14px; }
-.dec-direction { background: #fef3c7; color: #92400E; padding: 2px 8px; border-radius: 4px; font-weight: 600; }
-.dec-strength.strong { color: var(--coral); font-weight: 700; }
-.dec-strength.mid { color: var(--gold); font-weight: 700; }
-
-/* Heat ranking - Interactive Accordion */
-.heat-section { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px; margin-bottom: 20px; }
-.heat-section > .heat-panel:first-child { order: 2; }
-.heat-section > .heat-panel:nth-child(2) { order: 1; }
-@media (max-width: 768px) { .heat-section > .heat-panel:first-child, .heat-section > .heat-panel:nth-child(2) { order: 0; } }
-.heat-panel { background: #fff; border-radius: 16px; padding: 24px; box-shadow: var(--shadow-sm); border: 1px solid #f0f2f5; }
-.heat-panel h4 { font-size: 16px; font-weight: 700; margin-bottom: 16px; }
-.heat-accordion { list-style: none; padding: 0; margin: 0; }
-.heat-item { border-bottom: 1px solid #f0f0f0; }
-.heat-item:last-child { border-bottom: none; }
-.heat-item-header { display: flex; align-items: center; gap: 12px; padding: 11px 10px; cursor: pointer; user-select: none; transition: background 0.15s; border-radius: 10px; }
-.heat-item-header:hover { background: #f8f9fb; }
-.heat-item-header .heat-rank { width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: #fff; flex-shrink: 0; }
-.heat-item-header .heat-rank.r1 { background: var(--rose); }
-.heat-item-header .heat-rank.r2 { background: var(--coral); }
-.heat-item-header .heat-rank.r3 { background: var(--gold); }
-.heat-item-header .heat-rank.r4 { background: var(--teal); }
-.heat-item-header .heat-rank.r5 { background: var(--lavender); }
-.heat-item-header .heat-rank.r6 { background: #5b9bd5; }
-.heat-item-header .heat-rank.r7 { background: #7b6faa; }
-.heat-item-header .heat-rank.r8 { background: #d4836a; }
-.heat-item-header .heat-rank.r9 { background: #4a9c8c; }
-.heat-item-header .heat-rank.r10 { background: #6b7280; }
-.heat-item-header .heat-name { font-size: 14px; font-weight: 600; flex: 1; }
-.heat-item-header .prod-cat-tag { display: inline-block; padding: 2px 10px; border-radius: 10px; font-size: 11px; font-weight: 600; margin-left: 8px; vertical-align: middle; flex-shrink: 0; }
-.heat-item-header .prod-cat-tag.makeup-cat { background: #fef0f5; color: var(--rose); border: 1px solid #f5d0dc; }
-.heat-item-header .heat-bar-wrap { flex: 1.5; height: 8px; background: #f0f0f0; border-radius: 4px; overflow: hidden; max-width: 160px; }
-.heat-item-header .heat-fill { height: 100%; border-radius: 4px; }
-.heat-item-header .heat-score { font-size: 13px; font-weight: 700; color: var(--text-secondary); width: 32px; text-align: right; }
-.heat-item-header .heat-chevron { font-size: 12px; color: #ccc; transition: transform 0.25s; margin-left: 4px; }
-.heat-item.open .heat-item-header .heat-chevron { transform: rotate(180deg); color: var(--text-secondary); }
-.heat-item-body { max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.35s ease; }
-.heat-item.open .heat-item-body { max-height: 400px; }
-.heat-detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 0 10px 16px 44px; }
-.heat-detail-cell { background: #f8f9fb; border-radius: 10px; padding: 12px 14px; }
-.heat-detail-cell .cell-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; color: #999; margin-bottom: 4px; }
-.heat-detail-cell .cell-value { font-size: 13px; font-weight: 600; color: var(--text); }
-.heat-detail-cell .cell-value a { color: var(--teal); text-decoration: none; font-size: 12px; }
-.heat-detail-cell .cell-value a:hover { text-decoration: underline; }
-.heat-detail-cell .cell-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 2px; }
-
-/* Trend Product Tag */
-.trend-product-tag { display: inline-block; padding: 2px 8px; border-radius: 6px; font-size: 10px; font-weight: 700; margin-right: 6px; vertical-align: middle; flex-shrink: 0; letter-spacing: 0.3px; background: linear-gradient(135deg, #e8516e, #c94b6c); color: #fff; box-shadow: 0 1px 3px rgba(201,75,108,0.3); }
-.radar-item-header .trend-product-tag { font-size: 10px; padding: 1px 7px; margin-right: 5px; }
-.trend-product-tag.purple { background: linear-gradient(135deg, #8b5cf6, #7c3aed); box-shadow: 0 1px 3px rgba(124,58,237,0.3); }
-.trend-product-tag.teal { background: linear-gradient(135deg, #2d8a7a, #1a6b5e); box-shadow: 0 1px 3px rgba(45,138,122,0.3); }
-.trend-product-tag.gold { background: linear-gradient(135deg, #b8943a, #a07828); box-shadow: 0 1px 3px rgba(184,148,58,0.3); }
-.trend-product-tag.coral { background: linear-gradient(135deg, #d4654a, #c04a30); box-shadow: 0 1px 3px rgba(212,101,74,0.3); }
-
-/* Heat methodology badge */
-.heat-methodology-badge {
-  display: inline-block;
-  font-size: 10px;
-  font-weight: 500;
-  padding: 2px 8px;
-  border-radius: 10px;
-  background: linear-gradient(135deg, #fef9ee, #fdf0d5);
-  color: #b8860b;
-  margin-left: 8px;
-  vertical-align: middle;
-  cursor: help;
-}
-.heat-score-bd {
-  display: none;
-  font-size: 10px;
-  color: #999;
-  font-weight: 400;
-  margin-top: 2px;
-  line-height: 1.4;
-}
-.heat-item.open .heat-score-bd { display: block; }
-.heat-score-wrap {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  min-width: 36px;
-}
-.heat-score-val {
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--text-secondary);
-}
-
-/* ═══ New Product Radar ═══ */
-.radar-section { margin-bottom: 20px; }
-.radar-section h4 {
-  font-size: 15px; font-weight: 700; margin-bottom: 14px; padding-bottom: 10px;
-  border-bottom: 3px solid transparent;
-  border-image: linear-gradient(90deg, var(--gold, #b8943a) 0%, transparent 100%) 1;
-  display: flex; align-items: center; gap: 8px;
-}
-.radar-section.luxury h4 { border-image: linear-gradient(90deg, #b8943a 0%, #d4b96a 40%, transparent 100%) 1; }
-.radar-section.masstige-makeup h4 { border-image: linear-gradient(90deg, #c94b6c 0%, #e8909e 40%, transparent 100%) 1; }
-
-.radar-section h4 .tier-badge {
-  display: inline-block; padding: 2px 10px; border-radius: 10px;
-  font-size: 10px; font-weight: 700; letter-spacing: 0.8px;
-  margin-left: 6px; vertical-align: middle;
-}
-.radar-section.luxury h4 .tier-badge { background: linear-gradient(135deg, #fef9ee, #fdf0d5); color: #b8860b; }
-.radar-section.masstige-makeup h4 .tier-badge { background: linear-gradient(135deg, #fff0f3, #fce4e9); color: #c94b6c; }
-
-.radar-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 16px; }
-.radar-item {
-  border: 1px solid #f0e8ec; border-radius: 12px; overflow: hidden; background: linear-gradient(135deg, #fefdfe 0%, #fcf8fa 100%); transition: all 0.25s;
-}
-.radar-item:hover { border-color: #e8cdd6; box-shadow: 0 2px 12px rgba(201, 75, 108, 0.08); }
-.radar-item.open { border-color: #e8cdd6; box-shadow: 0 3px 16px rgba(201, 75, 108, 0.10); }
-.radar-item-header { display: flex; align-items: center; gap: 14px; padding: 16px 18px; cursor: pointer; user-select: none; transition: background 0.2s; }
-.radar-item-header:hover { background: rgba(201, 75, 108, 0.03); }
-.radar-item .radar-brand { font-size: 15px; font-weight: 700; color: #3a2a30; width: 155px; flex-shrink: 0; letter-spacing: -0.2px; }
-.radar-item .radar-name { font-size: 14px; font-weight: 500; color: #4a3a40; flex: 1; line-height: 1.4; }
-.radar-item .radar-cat { font-size: 11px; font-weight: 500; color: var(--rose); background: linear-gradient(135deg, #fff0f3, #fce4e9); padding: 4px 12px; border-radius: 20px; flex-shrink: 0; letter-spacing: 0.3px; }
-.radar-item .radar-chevron { font-size: 22px; color: #c4b0b8; transition: transform 0.25s; margin-left: 4px; flex-shrink: 0; cursor: pointer; }
-.radar-item.open .radar-chevron { transform: rotate(180deg); color: var(--rose); }
-.radar-detail { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
-.radar-item.open .radar-detail { max-height: 500px; }
-.radar-detail-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 24px; padding: 0 18px 18px; font-size: 13px; }
-.radar-detail-inner .cell-label { font-size: 10px; color: #b8a0a8; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 3px; font-weight: 600; }
-.radar-detail-inner .cell-value { font-size: 13px; color: #3a2a30; line-height: 1.5; }
-.radar-detail-inner .cell-value a { color: var(--teal); text-decoration: none; font-weight: 500; }
-.radar-detail-inner .cell-value a:hover { text-decoration: underline; }
-.radar-detail-inner .cell-tags { display: flex; flex-wrap: wrap; gap: 5px; }
-
-/* Luxury tier: gold left accent */
-.radar-section.luxury .radar-item { border-left-color: #d4b96a; }
-.radar-section.luxury .radar-item:hover { border-left-color: #b8943a; }
-.radar-section.luxury .radar-item.open { border-left-color: #b8943a; }
-.radar-section.luxury .radar-item.open .radar-chevron { color: #b8943a; }
-.radar-section.luxury .radar-detail-inner { background: linear-gradient(180deg, #fefdfb, #fdfaf3); border-top: 1px solid #f0ead8; }
-
-/* Masstige makeup tier: rose left accent */
-.radar-section.masstige-makeup .radar-item { border-left-color: #e8b4c0; }
-.radar-section.masstige-makeup .radar-item:hover { border-left-color: #c94b6c; }
-.radar-section.masstige-makeup .radar-item.open { border-left-color: #c94b6c; }
-.radar-section.masstige-makeup .radar-item.open .radar-chevron { color: #c94b6c; }
-.radar-section.masstige-makeup .radar-detail-inner { background: linear-gradient(180deg, #fefdfd, #fdf8f9); border-top: 1px solid #f0e4e8; }
-
-/* Review / reputation tags */
-.rev-tag { display: inline-block; padding: 3px 10px; border-radius: 10px; font-size: 10.5px; font-weight: 600; margin: 1px 3px 1px 0; }
-.rev-pos { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); color: #256d2b; }
-.rev-mid { background: linear-gradient(135deg, #fff8e1, #ffe082); color: #b8690b; }
-
-/* Color highlights */
-.hl-rose { color: var(--rose); font-weight: 600; }
-.hl-teal { color: var(--teal); font-weight: 600; }
-.hl-gold { color: var(--gold); font-weight: 600; }
-.hl-coral { color: var(--coral); font-weight: 600; }
-
-/* Appendix table */
-.appendix { background: #fff; border-radius: 16px; padding: 28px; box-shadow: var(--shadow-sm); margin-top: 28px; border: 1px solid #f0f2f5; }
-.appendix h4 { font-size: 15px; font-weight: 600; margin-bottom: 16px; color: var(--text); }
-.appendix-table { width: 100%; border-collapse: collapse; font-size: 13px; }
-.appendix-table thead th { background: #f8f9fb; padding: 10px 12px; text-align: left; font-size: 11px; font-weight: 600; color: #999; text-transform: uppercase; border-bottom: 2px solid #e8e8ec; }
-.appendix-table thead th:first-child { border-radius: 8px 0 0 0; }
-.appendix-table thead th:last-child { border-radius: 0 8px 0 0; }
-.appendix-table tbody td { padding: 10px 12px; border-bottom: 1px solid #f0f0f4; vertical-align: top; line-height: 1.5; }
-.appendix-table tbody tr:last-child td { border-bottom: none; }
-.appendix-table tbody tr:hover { background: #fafbfc; }
-.appendix-table .app-mkt { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 600; }
-.appendix-table .app-mkt.cn { background: #fff0f3; color: #c41e3a; }
-.appendix-table .app-mkt.us { background: #f0faf6; color: #0d7b6b; }
-.appendix-table .app-mkt.global { background: #f5f3fa; color: #6b5ce7; }
-.appendix-table .app-type { font-size: 11px; color: #999; }
-.appendix-table .app-name { font-weight: 600; color: var(--text); }
-.appendix-table .app-desc { color: var(--text-secondary); }
-.appendix-table .app-note { font-size: 11px; color: #bbb; font-style: italic; }
-.appendix-table .cat-divider td { padding: 6px 12px; font-size: 12px; font-weight: 600; color: var(--text); background: #f8f9fb; }
-.appendix-table .cat-divider td:first-child { border-radius: 6px 0 0 6px; }
-.appendix-table .cat-divider td:last-child { border-radius: 0 6px 6px 0; }
-
-/* ═══ Language Switch ═══ */
-.lang-switch-bar { position: absolute; top: 16px; right: 20px; z-index: 10; display: flex; flex-direction: column; align-items: flex-end; gap: 0; }
-.lang-switch-btn { display: flex; align-items: center; gap: 6px; padding: 7px 16px; border-radius: 24px; font-size: 13px; font-weight: 600; cursor: pointer; border: 1.5px solid rgba(255,255,255,0.6); background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); color: #fff; transition: all 0.25s; text-decoration: none; letter-spacing: 0.4px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
-.lang-switch-btn:hover { background: rgba(255,255,255,0.28); border-color: rgba(255,255,255,0.85); transform: translateY(-1px); box-shadow: 0 4px 18px rgba(0,0,0,0.12); }
-.lang-switch-btn .lang-dot { width: 6px; height: 6px; border-radius: 50%; background: #fff; opacity: 0.9; }
-.lang-switch-btn.en-active .lang-dot { background: #ffd700; }
-.lang-switch-btn.cn-active .lang-dot { background: #ff6b81; }
-@media (max-width: 768px) { .lang-switch-bar { top: 10px; right: 12px; } .lang-switch-btn { padding: 5px 12px; font-size: 12px; } .section-jump-btn { padding: 4px 10px; font-size: 11px; } }
-
-/* Section Jump Button */
-.section-jump-btn { display: flex; align-items: center; gap: 5px; margin-top: 8px; padding: 6px 14px; border-radius: 24px; font-size: 12px; font-weight: 600; cursor: pointer; border: 1.5px solid rgba(255,255,255,0.45); background: rgba(255,255,255,0.10); backdrop-filter: blur(10px); color: rgba(255,255,255,0.92); transition: all 0.25s; text-decoration: none; letter-spacing: 0.3px; box-shadow: 0 1px 8px rgba(0,0,0,0.06); white-space: nowrap; }
-.section-jump-btn:hover { background: rgba(255,255,255,0.22); border-color: rgba(255,255,255,0.8); color: #fff; transform: translateY(-1px); box-shadow: 0 3px 14px rgba(0,0,0,0.10); }
-.section-jump-btn .jump-arrow { font-size: 11px; opacity: 0.8; transition: transform 0.25s; }
-.section-jump-btn:hover .jump-arrow { transform: translateY(2px); }
-
-/* Week Selector Dropdown */
-.week-selector { position: relative; display: inline-block; margin-left: 10px; vertical-align: middle; z-index: 20; }
-.week-selector-btn { display: inline-flex; align-items: center; gap: 5px; padding: 4px 12px; border-radius: 16px; font-size: 12px; font-weight: 600; cursor: pointer; border: 1.5px solid rgba(255,255,255,0.55); background: rgba(255,255,255,0.18); backdrop-filter: blur(10px); color: #fff; transition: all 0.25s; letter-spacing: 0.3px; }
-.week-selector-btn:hover { background: rgba(255,255,255,0.30); border-color: rgba(255,255,255,0.85); }
-.week-selector-btn .week-arrow { font-size: 10px; transition: transform 0.25s; opacity: 0.85; }
-.week-selector.open .week-selector-btn .week-arrow { transform: rotate(180deg); }
-.week-dropdown { position: absolute; top: calc(100% + 6px); left: 50%; transform: translateX(-50%) scale(0.96); background: rgba(255,255,255,0.98); backdrop-filter: blur(16px); border-radius: 14px; box-shadow: 0 8px 32px rgba(0,0,0,0.22); padding: 8px 6px; min-width: 140px; opacity: 0; visibility: hidden; transform-origin: top center; transition: all 0.2s ease; max-height: 280px; overflow-y: auto; z-index: 100; }
-.week-selector.open .week-dropdown { opacity: 1; visibility: visible; transform: translateX(-50%) scale(1); }
-.week-dropdown-item { display: block; width: 100%; padding: 8px 14px; border-radius: 10px; font-size: 13px; font-weight: 500; color: #444; text-decoration: none; transition: all 0.15s; text-align: center; border: none; background: none; cursor: pointer; }
-.week-dropdown-item:hover { background: rgba(200,93,162,0.10); color: #b85bae; }
-.week-dropdown-item.current { background: rgba(200,93,162,0.15); color: #b85bae; font-weight: 700; }
-.week-dropdown-divider { height: 1px; background: rgba(0,0,0,0.08); margin: 6px 10px; }
-
-@media (max-width: 768px) {
-  .signal-strip { grid-template-columns: repeat(2, 1fr); }
-  .heat-section { grid-template-columns: 1fr; }
-  .week-selector { margin-left: 6px; }
-  .week-selector-btn { padding: 3px 9px; font-size: 11px; }
-  .week-dropdown { min-width: 120px; padding: 6px 4px; }
-  .week-dropdown-item { padding: 7px 10px; font-size: 12px; }
-}
-</style>
-</head>
-<body>
-
-<div class="container">
-
-<!-- ==================== Makeup Report ==================== -->
-<div class="section-banner makeup-banner">
-  <div class="lang-switch-bar">
-    <a href="index-cn.html" class="lang-switch-btn cn-active"><span class="lang-dot"></span>中文</a>
-    <a href="fragrance.html" class="section-jump-btn">🌸 Fragrance Edition <span class="jump-arrow">↓</span></a>
-  </div>
-  <h2>💄 Makeup Industry Weekly</h2>
-  <div class="banner-sub">June 9 – 15, 2026 · Week 25 · China × US
-    <div class="week-selector" id="weekSelectorMakeup">
-      <button class="week-selector-btn" onclick="event.stopPropagation();toggleWeekDropdown('weekSelectorMakeup')">
-        Past Issues <span class="week-arrow">▾</span>
-      </button>
-      <div class="week-dropdown">
-        <button class="week-dropdown-item current" disabled>Week 25 (Current)</button>
-        <div class="week-dropdown-divider"></div>
-        <a class="week-dropdown-item" href="archive/week-23/index.html">Week 23 (May 19–25)</a>
-        <a class="week-dropdown-item" href="archive/week-24/index.html">Week 24 (Jun 2–8)</a>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="section-shell makeup-shell">
-
-<!-- KPI Row -->
-<div class="exec-summary">
-  <div class="exec-card cn-makeup">
-    <div class="exec-tag">#PerfumeTok</div>
-    <div class="exec-headline"><span class="exec-highlight">64B</span> TikTok Views</div>
-    <div class="exec-detail">Global cumulative fragrance topic · Makeup × fragrance boundary blurring</div>
-  </div>
-  <div class="exec-card us-makeup">
-    <div class="exec-tag">Pistachio Notes Search</div>
-    <div class="exec-headline"><span class="exec-highlight teal">+852%</span> YoY</div>
-    <div class="exec-detail">Fastest-growing fragrance note globally · Olfactory inspiration penetrating makeup</div>
-  </div>
-  <div class="exec-card cn-frag">
-    <div class="exec-tag">Clean Beauty Market</div>
-    <div class="exec-headline"><span class="exec-highlight gold">$9.02B</span> <span class="exec-highlight">+12.5%</span></div>
-    <div class="exec-detail">Clean Beauty global market continues to grow</div>
-  </div>
-  <div class="exec-card us-frag">
-    <div class="exec-tag">Solid Perfume Search</div>
-    <div class="exec-headline"><span class="exec-highlight coral">+174.6%</span> YoY</div>
-    <div class="exec-detail">Portable fragrance category explosive growth</div>
-  </div>
-</div>
-
-<!-- Makeup News -->
-<div class="news-strip">
-  <h3>📰 Makeup Industry News</h3>
-  <div class="news-list">
-
-    <!-- News 1: GLOBAL - Estée Lauder × Puig -->
-    <div class="news-card">
-      <div class="news-card-header">
-        <span class="news-card-title">🏦 Estée Lauder × Puig merger talks: potential <span class="hl-num">$40B</span> beauty giant emerges</span>
-        <span class="news-card-tag shared">GLOBAL</span>
-        <span class="news-card-tag ma">M&A</span>
-        <span class="news-card-chevron">▾</span>
-      </div>
-      <div class="news-card-brief">Estée Lauder and Puig confirm "potential business combination" negotiations. If deal closes, combined entity would be the world's 2nd-largest beauty group after L'Oréal.</div>
-      <div class="news-card-body">
-        <div class="news-card-body-inner">
-          Estée Lauder Companies and Spanish Puig Group confirm they are in talks regarding a "potential business combination." If the deal closes, combined market cap would reach <span class="hl-num">$40B</span>, annual sales ~$20B, creating the world's second-largest beauty group after L'Oréal. This could reshape the global prestige beauty competitive landscape.
-        </div>
-      </div>
-    </div>
-
-    <!-- News 2: GLOBAL - Q1 Funding -->
-    <div class="news-card">
-      <div class="news-card-header">
-        <span class="news-card-title">💰 Q1 2026 beauty funding focused on <span class="hl-num">AI</span> & Synthetic Biology</span>
-        <span class="news-card-tag shared">GLOBAL</span>
-        <span class="news-card-tag capital">Capital</span>
-        <span class="news-card-chevron">▾</span>
-      </div>
-      <div class="news-card-brief">Five AI companies including Osmo and Turbine received funding. AI R&D platforms are now a key capital market track, accelerating the full pipeline from formulation to launch.</div>
-      <div class="news-card-body">
-        <div class="news-card-body-inner">
-          Q1 2026 beauty industry funding concentrated in AI and synthetic biology. US AI fragrance design platform Osmo, virtual biology company Turbine, and three other AI companies secured funding. AI R&D platforms have become a capital market priority, accelerating the entire process from beauty product development to market launch.
-        </div>
-      </div>
-    </div>
-
-    <!-- News 3: CN - Proya × Huaxiaozhi -->
-    <div class="news-card">
-      <div class="news-card-header">
-        <span class="news-card-title">🏦 Proya invests ~<span class="hl-num">¥800M</span> for controlling stake in Huaxiaozhi — domestic consolidation accelerates</span>
-        <span class="news-card-tag cn">🇨🇳</span>
-        <span class="news-card-tag ma">M&A</span>
-        <span class="news-card-chevron">▾</span>
-      </div>
-      <div class="news-card-brief">Proya's wholly-owned subsidiary acquired 12.55% stake for ¥351M, raising total holding to 51% for consolidation. Domestic makeup brand M&A accelerating.</div>
-      <div class="news-card-body">
-        <div class="news-card-body-inner">
-          Proya's wholly-owned subsidiary acquired <span class="hl-num">12.55%</span> stake in Huaxiaozhi for ¥351M, increasing total holding from 38.45% to 51% for full consolidation. Combined with the prior ~¥428M Series B investment, cumulative investment approaches ¥800M. This marks accelerating consolidation among domestic makeup's top-tier brands.
-        </div>
-      </div>
-    </div>
-
-    <!-- News 4: CN - 2026 Regulations -->
-    <div class="news-card">
-      <div class="news-card-header">
-        <span class="news-card-title">🛡️ 2026 beauty regulations intensify: <span class="hl-num">60+</span> new rules + <span class="hl-num">169</span> new ingredient filings</span>
-        <span class="news-card-tag cn">🇨🇳</span>
-        <span class="news-card-tag data">Regulation</span>
-        <span class="news-card-chevron">▾</span>
-      </div>
-      <div class="news-card-brief">As the "15th Five-Year Plan" begins, cosmetic regulations are being released at pace, covering the entire supply chain. Industry formally entering high-quality development phase.</div>
-      <div class="news-card-body">
-        <div class="news-card-body-inner">
-          As the "15th Five-Year Plan" opening year, cosmetic regulations are being released intensively. In 2025, national and local regulators issued <span class="hl-num">60+</span> new rules covering the full supply chain. Annual new cosmetic ingredient filings reached <span class="hl-num">169</span>, as the industry formally enters the high-quality development phase.
-        </div>
-      </div>
-    </div>
-
-    <!-- News 5: US - SEPHORiA -->
-    <div class="news-card">
-      <div class="news-card-header">
-        <span class="news-card-title">🎉 Sephora SEPHORiA 2026 returns to LA with "Beauty Multiverse" theme</span>
-        <span class="news-card-tag us">🇺🇸</span>
-        <span class="news-card-tag launch">Event</span>
-        <span class="news-card-chevron">▾</span>
-      </div>
-      <div class="news-card-brief">Sephora's flagship event returns to LA with a new immersive concept, further cementing its experiential retail leadership.</div>
-      <div class="news-card-body">
-        <div class="news-card-body-inner">
-          Sephora's flagship event SEPHORiA 2026 returns to Los Angeles with a new immersive concept, debuting exclusive programming and on-site perks. The "Beauty Multiverse" theme further solidifies Sephora's leadership in experiential retail.
-        </div>
-      </div>
-    </div>
-
-    <!-- News 6: US - Ulta Q1 -->
-    <div class="news-card">
-      <div class="news-card-header">
-        <span class="news-card-title">📊 Ulta Q1 fragrance: DKNY surges <span class="hl-num">58</span> ranks, Kylie +24, touchland +18</span>
-        <span class="news-card-tag us">🇺🇸</span>
-        <span class="news-card-tag data">Data</span>
-        <span class="news-card-chevron">▾</span>
-      </div>
-      <div class="news-card-brief">DKNY leads with 58-rank surge, Kylie Cosmetics up 24, touchland up 18. Fragrance demand remains robust.</div>
-      <div class="news-card-body">
-        <div class="news-card-body-inner">
-          Ulta Beauty Q1 2026 fragrance category data: DKNY surges <span class="hl-num">58 ranks</span> to lead, Kylie Cosmetics rises 24 ranks, touchland up 18 ranks. Consumer demand for fragrance remains robust, with channel growth momentum continuing.
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="section">
-<div class="section-title">💄 Makeup Trends</div>
-
-<!-- Shared Trends -->
-<div class="common-trends-section">
-<div class="common-trends-header"><span class="common-badge">🌐 Shared Trends</span><span class="common-subtitle">Science-Backed Clean × #BlueBeauty — Core 2026 Direction for China & US</span></div>
-
-<div class="trend-v-card common">
-<h4>🧬 Clean Beauty 3.0 — From "Free From" to "Science-Backed Clean"</h4>
-<div class="trend-v-body">
-<div class="driver-summary">Consumers no longer ask "what's excluded" but "what effective ingredients are included" — Clean Beauty is shifting from exclusion-based claims to science-verified efficacy orientation.</div>
-<div class="driver-bullets">
-<div class="bullet-group cn-group"><div class="bullet-point"><span class="region-tag" style="background:#f3f0f8;color:#6b5b8a;">GLOBAL</span><span> Estée Lauder × Puig merger talks: potential world's 2nd-largest beauty group — if deal closes, prestige beauty landscape will be reshaped</span></div></div>
-<div class="bullet-group cn-group"><div class="bullet-point"><span class="region-tag cn-tag">CN</span><span> REN shutdown + "Clean Washing" fatigue — Chinese consumers care more about ingredient efficacy than marketing concepts</span></div></div>
-<div class="bullet-group cn-group"><div class="bullet-point"><span class="region-tag cn-tag">CN</span><span> Clean Beauty <span style="color:var(--rose);font-weight:700">$9.02B</span> market continues growing — vegan/cruelty-free formulas becoming 2026 standard</span></div></div>
-<div class="bullet-group cn-group"><div class="bullet-point"><span class="region-tag us-tag">US</span><span> Sephora Clean + Planet Aware SKUs up <span style="color:var(--teal);font-weight:700">+65%</span>, Clean Beauty market maintains double-digit growth</span></div></div>
-</div></div>
-<div class="signal-strip">
-<div class="signal-chip tt"><div class="chip-icon">🎵 TikTok</div><div class="chip-num" style="color:#c94b6c;">$9.02B</div><div class="chip-desc">Clean Beauty market size</div><div class="chip-trend chip-up">↑ +12.5% YoY</div></div>
-<div class="signal-chip seph"><div class="chip-icon">🛒 Sephora</div><div class="chip-num" style="color:var(--teal);">+65%</div><div class="chip-desc">Clean SKU expansion</div><div class="chip-trend chip-up">↑ Category Expansion</div></div>
-<div class="signal-chip wgsn"><div class="chip-icon">🔮 Credo/WGSN</div><div class="chip-num">High Priority</div><div class="chip-desc">Science-Backed Clean</div><div class="chip-trend chip-hot">🔥 Long-term Trend</div></div>
-<div class="signal-chip ig"><div class="chip-icon">🧪 Meixiu</div><div class="chip-num">Vegan/Cruelty-Free</div><div class="chip-desc">2026 formula standard direction</div><div class="chip-trend chip-hot">🔥 High Priority</div></div>
-</div>
-<div class="action-block">
-<div class="act-header">
-<span class="act-label">🎯 Action</span>
-<span class="act-direction">Science-Backed Clean base line · Ingredient transparency framework</span>
-<span class="act-strength strong">STRONG</span>
-</div>
-<div class="act-content">New brand positioning must go beyond "Free From" to build a "Science-Backed Clean" technical narrative. Key ingredient directions: Bakuchiol, fermented ceramides, biotech-derived actives. Align formulation roadmap with Sephora "Clean + Planet Aware" label strategy.</div>
-</div>
-</div>
-
-
-<div class="trend-v-card common">
-<h4>🔬 #BlueBeauty Wave — Blue Makeup Goes Mainstream</h4>
-<div class="trend-v-body">
-<div class="driver-summary">From TikTok #BlueBeauty <span style="color:var(--rose);font-weight:700">2.1B</span> views, blue eyeshadow/mascara/nail polish are exploding across the board. Pinterest butter yellow +<span style="color:var(--gold);font-weight:700">1043%</span>, baby blue +<span style="color:var(--teal);font-weight:700">342%</span>.</div>
-<div class="driver-bullets">
-<div class="bullet-group cn-group"><div class="bullet-point"><span class="region-tag" style="background:#f3f0f8;color:#6b5b8a;">GLOBAL</span><span> Blue eyeshadow, mascara, and nail polish all going mainstream — blue shifts from runway accent to everyday wearable</span></div></div>
-<div class="bullet-group cn-group"><div class="bullet-point"><span class="region-tag cn-tag">CN</span><span> Water-glow makeup trend amplifies cool-tone appeal — blue paired with dewy base creates fresh "summer cool girl" look</span></div></div>
-<div class="bullet-group cn-group"><div class="bullet-point"><span class="region-tag cn-tag">CN</span><span> Barrier repair actives are 2026's hottest direction — related product registrations <span style="color:var(--rose);font-weight:700">+180% YoY</span></span></div></div>
-<div class="bullet-group cn-group"><div class="bullet-point"><span class="region-tag us-tag">US</span><span> Sephora blue-toned SKU count expanding significantly, blue makeup becoming core color cosmetics growth pole</span></div></div>
-</div></div>
-<div class="signal-strip">
-<div class="signal-chip tt"><div class="chip-icon">🎵 TikTok</div><div class="chip-num" style="color:#c94b6c;">2.1B</div><div class="chip-desc">#BlueBeauty views · +89%</div><div class="chip-trend chip-hot">🔥 Viral</div></div>
-<div class="signal-chip pin"><div class="chip-icon">📌 Pinterest</div><div class="chip-num" style="color:var(--teal);">baby blue +342%</div><div class="chip-desc">Cool-tone colors surging</div><div class="chip-trend chip-up">↑ Trend Confirmed</div></div>
-<div class="signal-chip seph"><div class="chip-icon">🛒 Sephora</div><div class="chip-num">Blue SKU ↑</div><div class="chip-desc">Blue makeup expansion</div><div class="chip-trend chip-up">↑ Category Growth</div></div>
-<div class="signal-chip gtrends"><div class="chip-icon">🔍 Google</div><div class="chip-num" style="color:var(--teal);">+198%</div><div class="chip-desc">Blue Makeup search growth</div><div class="chip-trend chip-up">↑ Demand Surge</div></div>
-</div>
-<div class="action-block">
-<div class="act-header">
-<span class="act-label">🎯 Action</span>
-<span class="act-direction">Blue limited edition · Marine-derived pigments</span>
-<span class="act-strength strong">STRONG</span>
-</div>
-<div class="act-content">Develop blue limited-edition collection — cool-tone multi-use makeup stick (ice blue/silver white/champagne gold trio), marine-derived pigments as differentiated ingredient narrative. Prioritize TikTok viral content (#BlueBeauty makeup tutorials).</div>
-</div>
-</div>
-</div>
-
-<!-- US Zone -->
-<div class="trend-grid">
-<div class="zone zone-us" style="max-width: 100%;">
-<span class="zone-badge us">US Makeup Market</span>
-
-<div class="trend-v-card us">
-<h4>💄 Soft Pinch Liquid Blush Revolution</h4>
-<div class="trend-v-body">
-<div class="driver-summary">Rare Beauty Soft Pinch Liquid Blush continues to dominate TikTok with <span style="color:var(--teal);font-weight:700">124,930 units/month</span>, becoming a 2026 phenomenon. Liquid blush has upgraded from sub-category to standalone category gateway.</div>
-<div class="driver-bullets">
-<div class="bullet-group us-group"><div class="bullet-point"><span>Rare Beauty $29 → ZURU EDGE liquid blush line benchmark: lightweight formula + high-pigment dual-end design</span></div></div>
-<div class="bullet-group us-group"><div class="bullet-point"><span>Reddit MakeupAddiction hot posts driving word-of-mouth, YouTube reviews exceed 2.1M views</span></div></div>
-</div></div>
-<div class="signal-strip">
-<div class="signal-chip tt"><div class="chip-icon">🎵 TikTok</div><div class="chip-num" style="color:#c94b6c;">430M</div><div class="chip-desc">Liquid Blush topic views</div><div class="chip-trend chip-hot">🔥 Category Defining</div></div>
-<div class="signal-chip seph"><div class="chip-icon">🛒 Sephora</div><div class="chip-num" style="color:var(--teal);">RB TOP 1</div><div class="chip-desc">Rare Beauty blush bestseller</div><div class="chip-trend chip-up">↑ Phenomenon</div></div>
-<div class="signal-chip yt"><div class="chip-icon">📺 YouTube</div><div class="chip-num">2.1M</div><div class="chip-desc">Review video views</div><div class="chip-trend chip-up">↑ Word-of-mouth</div></div>
-<div class="signal-chip ig"><div class="chip-icon">💬 Reddit</div><div class="chip-num">Hot</div><div class="chip-desc">MakeupAddiction</div><div class="chip-trend chip-hot">🔥 Community Driven</div></div>
-</div>
-<div class="action-block">
-<div class="act-header">
-<span class="act-label">🎯 Action</span>
-<span class="act-direction">ZURU EDGE Liquid Blush Line</span>
-<span class="act-strength strong">STRONG</span>
-</div>
-<div class="act-content">Benchmark Rare Beauty $29 price point, develop lightweight high-pigment liquid blush line. Water-gel base + fingertip-blendable texture, 5-6 shades covering warm and cool tones.</div>
-</div>
-<div class="trend-decision-bar">
-  <span class="dec-label">Signal→Decision</span>
-  <span class="dec-signal">Rare Beauty $29</span>
-  <span class="dec-arrow">→</span>
-  <span class="dec-direction">ZURU EDGE Liquid Blush Line</span>
-  <span class="dec-strength strong">STRONG</span>
-</div>
-</div>
-
-<div class="trend-v-card us">
-<h4>✨ Suede Glow Highlighter New Species</h4>
-<div class="trend-v-body">
-<div class="driver-summary">Shift from cream bronzers to <span style="color:var(--gold);font-weight:700">baked powder bronzers</span>, pursuing a matte suede-like soft-focus effect. Saie Supersuede sets the benchmark, Pinterest Suede Glow search +278%.</div>
-<div class="driver-bullets">
-<div class="bullet-group us-group"><div class="bullet-point"><span>Hero Product: Saie Supersuede Radiant Baked Bronzer ($38), TikTok #SuedeGlow 210M views</span></div></div>
-<div class="bullet-group us-group"><div class="bullet-point"><span>Product Direction: Baked powder technology achieving matte + soft-focus dual effect; suede highlighter/bronzer combo is summer contouring core category</span></div></div>
-</div></div>
-<div class="signal-strip">
-<div class="signal-chip tt"><div class="chip-icon">🎵 TikTok</div><div class="chip-num" style="color:#c94b6c;">210M</div><div class="chip-desc">#SuedeGlow views</div><div class="chip-trend chip-hot">🔥 Trend Benchmark</div></div>
-<div class="signal-chip pin"><div class="chip-icon">📌 Pinterest</div><div class="chip-num" style="color:var(--teal);">+278%</div><div class="chip-desc">Suede Glow search</div><div class="chip-trend chip-up">↑ Growth Confirmed</div></div>
-<div class="signal-chip seph"><div class="chip-icon">🛒 Sephora</div><div class="chip-num" style="color:var(--teal);">Saie TOP 3</div><div class="chip-desc">Contour category rank</div><div class="chip-trend chip-up">↑ Category Leader</div></div>
-<div class="signal-chip ig"><div class="chip-icon">📸 Instagram</div><div class="chip-num">#SuedeGlow</div><div class="chip-desc">Instagram viral tag</div><div class="chip-trend chip-hot">🔥 Visual Driven</div></div>
-</div>
-<div class="action-block">
-<div class="act-header">
-<span class="act-label">🎯 Action</span>
-<span class="act-direction">Suede highlighter/bronzer line</span>
-<span class="act-strength mid">MID — Category Fill</span>
-</div>
-<div class="act-content">Develop suede highlighter/bronzer combo — baked powder technology, matte + soft-focus dual effect. Benchmark Saie $38 price point, targeting summer contouring core category.</div>
-</div>
-<div class="trend-decision-bar">
-  <span class="dec-label">Signal→Decision</span>
-  <span class="dec-signal">Saie $38</span>
-  <span class="dec-arrow">→</span>
-  <span class="dec-direction">Suede Highlighter/Bronzer Line</span>
-  <span class="dec-strength mid">MID</span>
-</div>
-</div>
-</div>
-
-<!-- CN Zone -->
-<div class="zone zone-cn" style="max-width: 100%;">
-<span class="zone-badge cn">China Makeup Market</span>
-
-<div class="trend-v-card cn">
-<h4>🎋 Oriental Narrative Makeup 2.0</h4>
-<div class="trend-v-body">
-<div class="driver-summary">Evolving from "Chinese-style packaging" to "<span style="color:var(--rose);font-weight:700">cultural narrative + modern formula</span>" dual drive — Florasis Miao Heritage series, MAOGEPING light-shadow philosophy, Judydoll national trend collab. Eastern aesthetics has become the global differentiation anchor for domestic makeup brands.</div>
-<div class="driver-bullets">
-<div class="bullet-group cn-group"><div class="bullet-point"><span>RED "New Chinese Makeup" topic <span style="color:var(--rose);font-weight:700">+125%</span>, Douyin related views exceed 460M</span></div></div>
-<div class="bullet-group cn-group"><div class="bullet-point"><span>Tmall Oriental Aesthetics GMV <span style="color:var(--rose);font-weight:700">+45%</span>, Google "Eastern Aesthetics" search +156% — global narrative momentum has formed</span></div></div>
-</div></div>
-<div class="signal-strip">
-<div class="signal-chip tt"><div class="chip-icon">🎵 RED</div><div class="chip-num" style="color:#c94b6c;">+125%</div><div class="chip-desc">New Chinese Makeup topic growth</div><div class="chip-trend chip-up">↑ Explosive Growth</div></div>
-<div class="signal-chip seph"><div class="chip-icon">🎵 Douyin</div><div class="chip-num">460M</div><div class="chip-desc">Oriental Aesthetics views</div><div class="chip-trend chip-up">↑ Content Surge</div></div>
-<div class="signal-chip gtrends"><div class="chip-icon">🛒 Tmall</div><div class="chip-num" style="color:var(--teal);">GMV +45%</div><div class="chip-desc">Oriental Aesthetics category</div><div class="chip-trend chip-up">↑ Consumer Validation</div></div>
-<div class="signal-chip pin"><div class="chip-icon">🔍 Google</div><div class="chip-num" style="color:var(--teal);">+156%</div><div class="chip-desc">Eastern Aesthetics search growth</div><div class="chip-trend chip-up">↑ Global Attention</div></div>
-</div>
-<div class="action-block">
-<div class="act-header">
-<span class="act-label">🎯 Action</span>
-<span class="act-direction">New Chinese 2.0 limited series · Cultural narrative formula system</span>
-<span class="act-strength strong">STRONG</span>
-</div>
-<div class="act-content">Develop "New Chinese 2.0" limited series — upgrade from "visual Chinese style" to "cultural narrative + modern formula" dual drive. Core direction: intangible heritage craft shade naming + Eastern botanical extract actives (white tea/reishi/snow lotus).</div>
-</div>
-</div>
-
-<div class="trend-v-card cn">
-<h4>🫧 Water-Glow Skincare Foundation Evolution</h4>
-<div class="trend-v-body">
-<div class="driver-summary">Douyin "water-glow skin" search <span style="color:var(--rose);font-weight:700">+340%</span>, base makeup enters "true skincare" phase — Ceramide EOP becomes TOP1 base makeup added ingredient, mid-to-high price tier share increasing, consumers willing to pay premium for dual wear + skincare benefits.</div>
-<div class="driver-bullets">
-<div class="bullet-group cn-group"><div class="bullet-point"><span>RED "skincare base makeup" topic <span style="color:var(--rose);font-weight:700">+89%</span>, Tmall base makeup avg price <span style="color:var(--rose);font-weight:700">+28%</span></span></div></div>
-<div class="bullet-group cn-group"><div class="bullet-point"><span>Meixiu big data: Ceramide EOP is 2026's TOP1 base makeup ingredient, related registrations +180% YoY</span></div></div>
-</div></div>
-<div class="signal-strip">
-<div class="signal-chip tt"><div class="chip-icon">🎵 Douyin</div><div class="chip-num" style="color:#c94b6c;">+340%</div><div class="chip-desc">"Water-glow skin" search surge</div><div class="chip-trend chip-up">↑ Explosive</div></div>
-<div class="signal-chip seph"><div class="chip-icon">🎵 RED</div><div class="chip-num" style="color:var(--teal);">+89%</div><div class="chip-desc">"Skincare base makeup" growth</div><div class="chip-trend chip-up">↑ Category Upgrade</div></div>
-<div class="signal-chip gtrends"><div class="chip-icon">🛒 Tmall</div><div class="chip-num">Avg +28%</div><div class="chip-desc">Base makeup consumer upgrade</div><div class="chip-trend chip-up">↑ Value Uplift</div></div>
-<div class="signal-chip ig"><div class="chip-icon">🧪 Meixiu</div><div class="chip-num">Ceramide TOP1</div><div class="chip-desc">Base makeup ingredient rank</div><div class="chip-trend chip-hot">🔥 Ingredient Trend</div></div>
-</div>
-<div class="action-block">
-<div class="act-header">
-<span class="act-label">🎯 Action</span>
-<span class="act-direction">Ceramide EOP skincare base line · Water-glow dedicated formula</span>
-<span class="act-strength strong">STRONG</span>
-</div>
-<div class="act-content">Base makeup line should incorporate <b>Ceramide EOP + Phytosphingosine complex</b> for barrier repair; "Water-Glow" series featuring hyaluronic acid + ceramide dual skincare formula, upgrading from "faux bare skin" to "true skincare" positioning.</div>
-</div>
-</div>
-</div>
-</div>
-
-<!-- Makeup Heat Ranking -->
-<div class="heat-section">
-<div class="heat-panel">
-<h4>🔥 China Makeup Heat TOP 10 <span class="heat-methodology-badge" title="Tmall 30% + Douyin 15% + JD 10% + RED 15% + Buzz 15% + Evergreen 15%">📐 Scoring Formula</span></h4>
-<ul class="heat-accordion">
-<li class="heat-item">
-<div class="heat-item-header">
-<span class="heat-rank r1" style="background:#c41e3a">1</span>
-<span class="heat-name">Dior Rouge #999 Classic Red</span><span class="prod-cat-tag makeup-cat">Lipstick</span>
-<div class="heat-bar-wrap"><div class="heat-fill" style="background:linear-gradient(90deg,#f5c6d0,var(--rose));width:90%"></div></div>
-<div class="heat-score-wrap"><span class="heat-score-val">95</span><span class="heat-score-bd">Tmall · Douyin · JD · RED · Buzz · Evergreen</span></div>
-<span class="heat-chevron">▼</span></div>
-<div class="heat-item-body"><div class="heat-detail-grid">
-<div class="heat-detail-cell"><div class="cell-label">Brand</div><div class="cell-value">Dior</div></div>
-<div class="heat-detail-cell"><div class="cell-label">Key USP</div><div class="cell-value">Smart tone-adjust + plumping formula, transfer-proof</div></div>
-<div class="heat-detail-cell"><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Tmall Lipstick #1 · Classic Evergreen</span></div></div>
-<div class="heat-detail-cell"><div class="cell-label">Product Link</div><div class="cell-value"><a href="https://www.dior.com" target="_blank">Dior Official →</a></div></div>
-</div></div></li>
-<li class="heat-item">
-<div class="heat-item-header">
-<span class="heat-rank r2" style="background:#d4654a">2</span>
-<span class="heat-name">YSL Vinyl Cream Lip Stain #416</span><span class="prod-cat-tag makeup-cat">Lip Glaze</span>
-<div class="heat-bar-wrap"><div class="heat-fill" style="background:linear-gradient(90deg,#f5c6d0,var(--rose));width:85%"></div></div>
-<div class="heat-score-wrap"><span class="heat-score-val">90</span><span class="heat-score-bd">RED 850K+ · Douyin Lip Glaze TOP3</span></div>
-<span class="heat-chevron">▼</span></div>
-<div class="heat-item-body"><div class="heat-detail-grid">
-<div class="heat-detail-cell"><div class="cell-label">Brand</div><div class="cell-value">YSL</div></div>
-<div class="heat-detail-cell"><div class="cell-label">Key USP</div><div class="cell-value">Mirror-finish film technology, 85%+ color retention</div></div>
-<div class="heat-detail-cell"><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">RED 850K+ posts · Douyin Lip Glaze TOP3</span></div></div>
-<div class="heat-detail-cell"><div class="cell-label">Product Link</div><div class="cell-value"><a href="https://www.ysl.com" target="_blank">YSL Official →</a></div></div>
-</div></div></li>
-<li class="heat-item">
-<div class="heat-item-header">
-<span class="heat-rank r3" style="background:#d4b96a">3</span>
-<span class="heat-name">Armani Lip Maestro Velvet Matte</span><span class="prod-cat-tag makeup-cat">Lip Glaze</span>
-<div class="heat-bar-wrap"><div class="heat-fill" style="background:linear-gradient(90deg,#f5c6d0,var(--rose));width:80%"></div></div>
-<div class="heat-score-wrap"><span class="heat-score-val">85</span><span class="heat-score-bd">Tmall Lip Glaze TOP5 · Classic</span></div>
-<span class="heat-chevron">▼</span></div>
-<div class="heat-item-body"><div class="heat-detail-grid">
-<div class="heat-detail-cell"><div class="cell-label">Brand</div><div class="cell-value">Armani</div></div>
-<div class="heat-detail-cell"><div class="cell-label">Key USP</div><div class="cell-value">Luxe feel + daily wearable, velvet matte texture</div></div>
-<div class="heat-detail-cell"><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Tmall Lip Glaze TOP5 · Classic Evergreen</span></div></div>
-<div class="heat-detail-cell"><div class="cell-label">Product Link</div><div class="cell-value"><a href="https://www.giorgioarmanibeauty.com" target="_blank">Armani Official →</a></div></div>
-</div></div></li>
-<li class="heat-item">
-<div class="heat-item-header">
-<span class="heat-rank r4">4</span>
-<span class="heat-name"><span class="trend-product-tag coral">TREND</span>Warm Nude Tinted Lip Balm</span><span class="prod-cat-tag makeup-cat">Lip Balm</span>
-<div class="heat-bar-wrap"><div class="heat-fill" style="background:linear-gradient(90deg,#f5c6d0,var(--rose));width:75%"></div></div>
-<div class="heat-score-wrap"><span class="heat-score-val">80</span><span class="heat-score-bd">Efficacy lip category benchmark</span></div>
-<span class="heat-chevron">▼</span></div>
-<div class="heat-item-body"><div class="heat-detail-grid">
-<div class="heat-detail-cell"><div class="cell-label">Brand</div><div class="cell-value">—</div></div>
-<div class="heat-detail-cell"><div class="cell-label">Key USP</div><div class="cell-value">Triple hydration, lip care + color dual function</div></div>
-<div class="heat-detail-cell"><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Efficacy lip category · Lip Care + Color</span></div></div>
-<div class="heat-detail-cell"><div class="cell-label">Product Link</div><div class="cell-value">—</div></div>
-</div></div></li>
-<li class="heat-item">
-<div class="heat-item-header">
-<span class="heat-rank r5">5</span>
-<span class="heat-name">MAC Chili Brick Red</span><span class="prod-cat-tag makeup-cat">Lipstick</span>
-<div class="heat-bar-wrap"><div class="heat-fill" style="background:linear-gradient(90deg,#f5c6d0,var(--rose));width:71%"></div></div>
-<div class="heat-score-wrap"><span class="heat-score-val">76</span><span class="heat-score-bd">RED 1.2M+ · MAC China #1</span></div>
-<span class="heat-chevron">▼</span></div>
-<div class="heat-item-body"><div class="heat-detail-grid">
-<div class="heat-detail-cell"><div class="cell-label">Brand</div><div class="cell-value">MAC</div></div>
-<div class="heat-detail-cell"><div class="cell-label">Key USP</div><div class="cell-value">Brick-red brightening for all skin tones, perennial bestseller</div></div>
-<div class="heat-detail-cell"><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">RED 1.2M+ posts · MAC China #1</span></div></div>
-<div class="heat-detail-cell"><div class="cell-label">Product Link</div><div class="cell-value"><a href="https://www.maccosmetics.com" target="_blank">MAC Official →</a></div></div>
-</div></div></li>
-<li class="heat-item">
-<div class="heat-item-header">
-<span class="heat-rank r6">6</span>
-<span class="heat-name">Florasis Miao Heritage Lipstick</span><span class="prod-cat-tag makeup-cat">Lipstick</span>
-<div class="heat-bar-wrap"><div class="heat-fill" style="background:linear-gradient(90deg,#f5c6d0,var(--rose));width:67%"></div></div>
-<div class="heat-score-wrap"><span class="heat-score-val">71</span><span class="heat-score-bd">RED 2M+ · Tmall Domestic #1</span></div>
-<span class="heat-chevron">▼</span></div>
-<div class="heat-item-body"><div class="heat-detail-grid">
-<div class="heat-detail-cell"><div class="cell-label">Brand</div><div class="cell-value">Florasis</div></div>
-<div class="heat-detail-cell"><div class="cell-label">Key USP</div><div class="cell-value">Miao heritage carved craftsmanship, Eastern aesthetic icon</div></div>
-<div class="heat-detail-cell"><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">RED 2M+ posts · Tmall Domestic Brand #1</span></div></div>
-<div class="heat-detail-cell"><div class="cell-label">Product Link</div><div class="cell-value"><a href="https://www.florasis.com" target="_blank">Florasis Official →</a></div></div>
-</div></div></li>
-<li class="heat-item">
-<div class="heat-item-header">
-<span class="heat-rank r7">7</span>
-<span class="heat-name">Colorkey Matte Triangle Lip Glaze</span><span class="prod-cat-tag makeup-cat">Lip Glaze</span>
-<div class="heat-bar-wrap"><div class="heat-fill" style="background:linear-gradient(90deg,#f5c6d0,var(--rose));width:63%"></div></div>
-<div class="heat-score-wrap"><span class="heat-score-val">67</span><span class="heat-score-bd">Douyin Domestic Lip Glaze TOP3</span></div>
-<span class="heat-chevron">▼</span></div>
-<div class="heat-item-body"><div class="heat-detail-grid">
-<div class="heat-detail-cell"><div class="cell-label">Brand</div><div class="cell-value">Colorkey</div></div>
-<div class="heat-detail-cell"><div class="cell-label">Key USP</div><div class="cell-value">Nude matte, unbeatable quality-to-price ratio</div></div>
-<div class="heat-detail-cell"><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Douyin Domestic Lip Glaze TOP3 · 91% Approval</span></div></div>
-<div class="heat-detail-cell"><div class="cell-label">Product Link</div><div class="cell-value"><a href="https://www.colorkey.com.cn" target="_blank">COLORKEY Official →</a></div></div>
-</div></div></li>
-<li class="heat-item">
-<div class="heat-item-header">
-<span class="heat-rank r8">8</span>
-<span class="heat-name">Givenchy Le Rouge Interdit</span><span class="prod-cat-tag makeup-cat">Lipstick</span>
-<div class="heat-bar-wrap"><div class="heat-fill" style="background:linear-gradient(90deg,#f5c6d0,var(--rose));width:60%"></div></div>
-<div class="heat-score-wrap"><span class="heat-score-val">63</span><span class="heat-score-bd">Tmall Luxury Lipstick TOP5</span></div>
-<span class="heat-chevron">▼</span></div>
-<div class="heat-item-body"><div class="heat-detail-grid">
-<div class="heat-detail-cell"><div class="cell-label">Brand</div><div class="cell-value">Givenchy</div></div>
-<div class="heat-detail-cell"><div class="cell-label">Key USP</div><div class="cell-value">Velvet texture, brightening nude classic</div></div>
-<div class="heat-detail-cell"><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Tmall Luxury Lipstick TOP5</span></div></div>
-<div class="heat-detail-cell"><div class="cell-label">Product Link</div><div class="cell-value"><a href="https://www.givenchy.com" target="_blank">Givenchy Official →</a></div></div>
-</div></div></li>
-<li class="heat-item">
-<div class="heat-item-header">
-<span class="heat-rank r9">9</span>
-<span class="heat-name">MAOGEPING Mirror Glow Highlighter</span><span class="prod-cat-tag makeup-cat">Highlighter</span>
-<div class="heat-bar-wrap"><div class="heat-fill" style="background:linear-gradient(90deg,#f5c6d0,var(--rose));width:57%"></div></div>
-<div class="heat-score-wrap"><span class="heat-score-val">60</span><span class="heat-score-bd">Tmall Domestic Highlighter #1</span></div>
-<span class="heat-chevron">▼</span></div>
-<div class="heat-item-body"><div class="heat-detail-grid">
-<div class="heat-detail-cell"><div class="cell-label">Brand</div><div class="cell-value">MAOGEPING</div></div>
-<div class="heat-detail-cell"><div class="cell-label">Key USP</div><div class="cell-value">Pro makeup artist endorsement, high-pigment highlight</div></div>
-<div class="heat-detail-cell"><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Tmall Domestic Highlighter #1 · Douyin GMV ¥1B+</span></div></div>
-<div class="heat-detail-cell"><div class="cell-label">Product Link</div><div class="cell-value"><a href="https://www.maogeping.com" target="_blank">MAOGEPING Official →</a></div></div>
-</div></div></li>
-<li class="heat-item">
-<div class="heat-item-header">
-<span class="heat-rank r10">10</span>
-<span class="heat-name"><span class="trend-product-tag purple">TREND</span>DEELUOVI Glow Cushion SPF50+</span><span class="prod-cat-tag makeup-cat">Cushion/Foundation</span>
-<div class="heat-bar-wrap"><div class="heat-fill" style="background:linear-gradient(90deg,#f5c6d0,var(--rose));width:54%"></div></div>
-<div class="heat-score-wrap"><span class="heat-score-val">57</span><span class="heat-score-bd">Douyin Domestic Base #5</span></div>
-<span class="heat-chevron">▼</span></div>
-<div class="heat-item-body"><div class="heat-detail-grid">
-<div class="heat-detail-cell"><div class="cell-label">Brand</div><div class="cell-value">DEELUOVI</div></div>
-<div class="heat-detail-cell"><div class="cell-label">Key USP</div><div class="cell-value">SPF50+ sunscreen base 2-in-1, 12hr wear</div></div>
-<div class="heat-detail-cell"><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Douyin Domestic Base #5 · Rising Star</span></div></div>
-<div class="heat-detail-cell"><div class="cell-label">Product Link</div><div class="cell-value"><a href="https://www.delovebeauty.com" target="_blank">DEELUOVI Official →</a></div></div>
-</div></div></li>
-</ul></div>
-<div class="heat-panel">
-<h4>🔥 US Makeup Heat TOP 10 <span class="heat-methodology-badge" title="Sephora 25% + Ulta 25% + TikTok 25% + YouTube 10% + Engagement 10% + Trend Fit 5%">📐 Scoring Formula</span></h4>
-<ul class="heat-accordion">
-<li class="heat-item">
-<div class="heat-item-header">
-<span class="heat-rank r1" style="background:#c41e3a">1</span>
-<span class="heat-name">Rare Beauty Soft Pinch Liquid Blush</span><span class="prod-cat-tag makeup-cat">Blush</span>
-<div class="heat-bar-wrap"><div class="heat-fill" style="background:linear-gradient(90deg,#b8dbd2,var(--teal));width:90%"></div></div>
-<div class="heat-score-wrap"><span class="heat-score-val">95</span><span class="heat-score-bd">124,930/mo · Sephora BEST SELLER</span></div>
-<span class="heat-chevron">▼</span></div>
-<div class="heat-item-body"><div class="heat-detail-grid">
-<div class="heat-detail-cell"><div class="cell-label">Price</div><div class="cell-value">$29</div></div>
-<div class="heat-detail-cell"><div class="cell-label">Key USP</div><div class="cell-value">Selena Gomez halo, liquid blush category definer</div></div>
-<div class="heat-detail-cell"><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Sephora BEST SELLER · TikTok 430M+</span></div></div>
-<div class="heat-detail-cell"><div class="cell-label">Product Link</div><div class="cell-value"><a href="https://www.rarebeauty.com" target="_blank">Rare Beauty Official →</a></div></div>
-</div></div></li>
-<li class="heat-item">
-<div class="heat-item-header">
-<span class="heat-rank r2" style="background:#d4654a">2</span>
-<span class="heat-name">Revlon ColorStay Liquid Foundation SPF 15</span><span class="prod-cat-tag makeup-cat">Foundation</span>
-<div class="heat-bar-wrap"><div class="heat-fill" style="background:linear-gradient(90deg,#b8dbd2,var(--teal));width:85%"></div></div>
-<div class="heat-score-wrap"><span class="heat-score-val">90</span><span class="heat-score-bd">15,204/mo · Amazon Foundation #1</span></div>
-<span class="heat-chevron">▼</span></div>
-<div class="heat-item-body"><div class="heat-detail-grid">
-<div class="heat-detail-cell"><div class="cell-label">Price</div><div class="cell-value">$10.26</div></div>
-<div class="heat-detail-cell"><div class="cell-label">Key USP</div><div class="cell-value">24hr wear, SPF15, full shade range</div></div>
-<div class="heat-detail-cell"><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Amazon Foundation #1 · Mass-market benchmark</span></div></div>
-<div class="heat-detail-cell"><div class="cell-label">Product Link</div><div class="cell-value"><a href="https://www.revlon.com" target="_blank">Revlon Official →</a></div></div>
-</div></div></li>
-<li class="heat-item">
-<div class="heat-item-header">
-<span class="heat-rank r3" style="background:#d4b96a">3</span>
-<span class="heat-name">Laura Geller The Ideal Fix Concealer</span><span class="prod-cat-tag makeup-cat">Concealer</span>
-<div class="heat-bar-wrap"><div class="heat-fill" style="background:linear-gradient(90deg,#b8dbd2,var(--teal));width:81%"></div></div>
-<div class="heat-score-wrap"><span class="heat-score-val">86</span><span class="heat-score-bd">14,314/mo · Amazon Concealer Top</span></div>
-<span class="heat-chevron">▼</span></div>
-<div class="heat-item-body"><div class="heat-detail-grid">
-<div class="heat-detail-cell"><div class="cell-label">Price</div><div class="cell-value">$25.71</div></div>
-<div class="heat-detail-cell"><div class="cell-label">Key USP</div><div class="cell-value">Full-coverage, crease-proof formula</div></div>
-<div class="heat-detail-cell"><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Amazon Concealer #1 · 93% Approval</span></div></div>
-<div class="heat-detail-cell"><div class="cell-label">Product Link</div><div class="cell-value"><a href="https://www.laurageller.com" target="_blank">Laura Geller Official →</a></div></div>
-</div></div></li>
-<li class="heat-item">
-<div class="heat-item-header">
-<span class="heat-rank r4">4</span>
-<span class="heat-name">MAC Lipstick Classic</span><span class="prod-cat-tag makeup-cat">Lipstick</span>
-<div class="heat-bar-wrap"><div class="heat-fill" style="background:linear-gradient(90deg,#b8dbd2,var(--teal));width:79%"></div></div>
-<div class="heat-score-wrap"><span class="heat-score-val">84</span><span class="heat-score-bd">Sephora · Ulta · TikTok evergreen</span></div>
-<span class="heat-chevron">▼</span></div>
-<div class="heat-item-body"><div class="heat-detail-grid">
-<div class="heat-detail-cell"><div class="cell-label">Price</div><div class="cell-value">$22</div></div>
-<div class="heat-detail-cell"><div class="cell-label">Key USP</div><div class="cell-value">Iconic shade range, professional quality standard</div></div>
-<div class="heat-detail-cell"><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Sephora Lipstick Evergreen · Global Icon</span></div></div>
-<div class="heat-detail-cell"><div class="cell-label">Product Link</div><div class="cell-value"><a href="https://www.maccosmetics.com" target="_blank">MAC Official →</a></div></div>
-</div></div></li>
-<li class="heat-item">
-<div class="heat-item-header">
-<span class="heat-rank r5">5</span>
-<span class="heat-name">Maybelline Sky High Mascara</span><span class="prod-cat-tag makeup-cat">Mascara</span>
-<div class="heat-bar-wrap"><div class="heat-fill" style="background:linear-gradient(90deg,#b8dbd2,var(--teal));width:74%"></div></div>
-<div class="heat-score-wrap"><span class="heat-score-val">78</span><span class="heat-score-bd">TikTok viral · Ulta Mascara TOP3</span></div>
-<span class="heat-chevron">▼</span></div>
-<div class="heat-item-body"><div class="heat-detail-grid">
-<div class="heat-detail-cell"><div class="cell-label">Price</div><div class="cell-value">$14</div></div>
-<div class="heat-detail-cell"><div class="cell-label">Key USP</div><div class="cell-value">Length + volume, bamboo extract formula</div></div>
-<div class="heat-detail-cell"><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">TikTok 1B+ views · Ulta Mascara TOP3</span></div></div>
-<div class="heat-detail-cell"><div class="cell-label">Product Link</div><div class="cell-value"><a href="https://www.maybelline.com" target="_blank">Maybelline Official →</a></div></div>
-</div></div></li>
-<li class="heat-item">
-<div class="heat-item-header">
-<span class="heat-rank r6">6</span>
-<span class="heat-name">ILIA Limitless Lash Mascara</span><span class="prod-cat-tag makeup-cat">Mascara</span>
-<div class="heat-bar-wrap"><div class="heat-fill" style="background:linear-gradient(90deg,#b8dbd2,var(--teal));width:68%"></div></div>
-<div class="heat-score-wrap"><span class="heat-score-val">72</span><span class="heat-score-bd">96% Approval · Clean Beauty Annual Pick</span></div>
-<span class="heat-chevron">▼</span></div>
-<div class="heat-item-body"><div class="heat-detail-grid">
-<div class="heat-detail-cell"><div class="cell-label">Price</div><div class="cell-value">$29</div></div>
-<div class="heat-detail-cell"><div class="cell-label">Key USP</div><div class="cell-value">Clean ingredients, recyclable packaging</div></div>
-<div class="heat-detail-cell"><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">96% Approval · Clean Beauty Pick</span></div></div>
-<div class="heat-detail-cell"><div class="cell-label">Product Link</div><div class="cell-value"><a href="https://www.iliabeauty.com" target="_blank">ILIA Official →</a></div></div>
-</div></div></li>
-<li class="heat-item">
-<div class="heat-item-header">
-<span class="heat-rank r7">7</span>
-<span class="heat-name">Makeup By Mario Ethereal Eyes Palette</span><span class="prod-cat-tag makeup-cat">Eye Palette</span>
-<div class="heat-bar-wrap"><div class="heat-fill" style="background:linear-gradient(90deg,#b8dbd2,var(--teal));width:66%"></div></div>
-<div class="heat-score-wrap"><span class="heat-score-val">70</span><span class="heat-score-bd">Sephora 2026 Editor's Pick</span></div>
-<span class="heat-chevron">▼</span></div>
-<div class="heat-item-body"><div class="heat-detail-grid">
-<div class="heat-detail-cell"><div class="cell-label">Price</div><div class="cell-value">$69</div></div>
-<div class="heat-detail-cell"><div class="cell-label">Key USP</div><div class="cell-value">Pro MUA Mario signature brand</div></div>
-<div class="heat-detail-cell"><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Sephora 2026 Editor's Pick</span></div></div>
-<div class="heat-detail-cell"><div class="cell-label">Product Link</div><div class="cell-value"><a href="https://www.makeupbymario.com" target="_blank">MBM Official →</a></div></div>
-</div></div></li>
-<li class="heat-item">
-<div class="heat-item-header">
-<span class="heat-rank r8">8</span>
-<span class="heat-name">Saie Glowy Super Gel Illuminator</span><span class="prod-cat-tag makeup-cat">Highlighter</span>
-<div class="heat-bar-wrap"><div class="heat-fill" style="background:linear-gradient(90deg,#b8dbd2,var(--teal));width:64%"></div></div>
-<div class="heat-score-wrap"><span class="heat-score-val">68</span><span class="heat-score-bd">Sephora Clean Beauty benchmark</span></div>
-<span class="heat-chevron">▼</span></div>
-<div class="heat-item-body"><div class="heat-detail-grid">
-<div class="heat-detail-cell"><div class="cell-label">Price</div><div class="cell-value">$29</div></div>
-<div class="heat-detail-cell"><div class="cell-label">Key USP</div><div class="cell-value">Clean highlighter, lightweight non-heavy</div></div>
-<div class="heat-detail-cell"><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Sephora Clean Beauty benchmark</span></div></div>
-<div class="heat-detail-cell"><div class="cell-label">Product Link</div><div class="cell-value"><a href="https://www.saiehello.com" target="_blank">Saie Official →</a></div></div>
-</div></div></li>
-<li class="heat-item">
-<div class="heat-item-header">
-<span class="heat-rank r9">9</span>
-<span class="heat-name">VIOLETTE_FR Bisou Blush Marbled Cream Stick</span><span class="prod-cat-tag makeup-cat">Blush Stick</span>
-<div class="heat-bar-wrap"><div class="heat-fill" style="background:linear-gradient(90deg,#b8dbd2,var(--teal));width:60%"></div></div>
-<div class="heat-score-wrap"><span class="heat-score-val">64</span><span class="heat-score-bd">Sephora New Arrival · Designer Brand</span></div>
-<span class="heat-chevron">▼</span></div>
-<div class="heat-item-body"><div class="heat-detail-grid">
-<div class="heat-detail-cell"><div class="cell-label">Price</div><div class="cell-value">$36</div></div>
-<div class="heat-detail-cell"><div class="cell-label">Key USP</div><div class="cell-value">Creamy marble swirl blush stick</div></div>
-<div class="heat-detail-cell"><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Sephora New Arrival Pick · Designer Brand</span></div></div>
-<div class="heat-detail-cell"><div class="cell-label">Product Link</div><div class="cell-value"><a href="https://www.violettefr.com" target="_blank">VIOLETTE_FR Official →</a></div></div>
-</div></div></li>
-<li class="heat-item">
-<div class="heat-item-header">
-<span class="heat-rank r10">10</span>
-<span class="heat-name">Charlotte Tilbury Airbrush Flawless Foundation</span><span class="prod-cat-tag makeup-cat">Foundation</span>
-<div class="heat-bar-wrap"><div class="heat-fill" style="background:linear-gradient(90deg,#b8dbd2,var(--teal));width:57%"></div></div>
-<div class="heat-score-wrap"><span class="heat-score-val">60</span><span class="heat-score-bd">Sephora Foundation Bestseller</span></div>
-<span class="heat-chevron">▼</span></div>
-<div class="heat-item-body"><div class="heat-detail-grid">
-<div class="heat-detail-cell"><div class="cell-label">Price</div><div class="cell-value">$44</div></div>
-<div class="heat-detail-cell"><div class="cell-label">Key USP</div><div class="cell-value">Airy foundation, 24hr wear</div></div>
-<div class="heat-detail-cell"><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Sephora Foundation Bestseller · 94% Approval</span></div></div>
-<div class="heat-detail-cell"><div class="cell-label">Product Link</div><div class="cell-value"><a href="https://www.charlottetilbury.com" target="_blank">CT Official →</a></div></div>
-</div></div></li>
-</ul></div>
-</div>
-
-<!-- ═══ New Product Radar ═══ -->
-<div class="section">
-<div class="heat-section">
-<div class="heat-panel radar-section luxury" style="grid-column: 1/-1; margin-bottom: 20px;">
-<h4>🛰️ New Product Radar <span class="tier-badge">LUXURY</span></h4>
-<div class="radar-list">
-<div class="radar-item">
-<div class="radar-item-header">
-<span class="radar-brand">LANEIGE</span>
-<span class="radar-name">Glaze Craze Lip Serum</span>
-<span class="radar-cat">Lip Serum</span>
-<span class="radar-chevron">▾</span></div>
-<div class="radar-detail"><div class="radar-detail-inner">
-<div><div class="cell-label">Launch Date</div><div class="cell-value">2026.05</div></div>
-<div><div class="cell-label">Price</div><div class="cell-value">$28</div></div>
-<div><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Sephora New Arrival · Lip Care + Color</span></div></div>
-<div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.laneige.com" target="_blank">LANEIGE →</a></div></div>
-</div></div></div>
-<div class="radar-item">
-<div class="radar-item-header">
-<span class="radar-brand">D&G</span>
-<span class="radar-name">Icy-Touch Lemon Balm</span>
-<span class="radar-cat">Lip Balm</span>
-<span class="radar-chevron">▾</span></div>
-<div class="radar-detail"><div class="radar-detail-inner">
-<div><div class="cell-label">Launch Date</div><div class="cell-value">2026.05</div></div>
-<div><div class="cell-label">Price</div><div class="cell-value">$38</div></div>
-<div><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Cooling lip balm innovation · Luxury lip care</span></div></div>
-<div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.dolcegabbana.com" target="_blank">D&G →</a></div></div>
-</div></div></div>
-<div class="radar-item">
-<div class="radar-item-header">
-<span class="radar-brand">Tom Ford</span>
-<span class="radar-name">Shade & Illuminate Foundation</span>
-<span class="radar-cat">Foundation</span>
-<span class="radar-chevron">▾</span></div>
-<div class="radar-detail"><div class="radar-detail-inner">
-<div><div class="cell-label">Launch Date</div><div class="cell-value">2026.05</div></div>
-<div><div class="cell-label">Price</div><div class="cell-value">$92</div></div>
-<div><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Tom Ford Beauty base category entry · High social buzz</span></div></div>
-<div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.tomford.com" target="_blank">Tom Ford →</a></div></div>
-</div></div></div>
-</div></div>
-<div class="heat-panel radar-section masstige-makeup" style="grid-column: 1/-1; margin-bottom: 20px;">
-<h4>🛰️ New Product Radar <span class="tier-badge">MASSTIGE</span></h4>
-<div class="radar-list">
-<div class="radar-item">
-<div class="radar-item-header">
-<span class="radar-brand">Rare Beauty</span>
-<span class="radar-name"><span class="trend-product-tag gold">TREND</span>Find Comfort Total Moisture</span>
-<span class="radar-cat">Lip Treatment</span>
-<span class="radar-chevron">▾</span></div>
-<div class="radar-detail"><div class="radar-detail-inner">
-<div><div class="cell-label">Launch Date</div><div class="cell-value">2026.05</div></div>
-<div><div class="cell-label">Price</div><div class="cell-value">$20</div></div>
-<div><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Lip Care + Color Trend Icon</span><span class="rev-tag rev-pos">TikTok Extreme Heat</span></div></div>
-<div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.rarebeauty.com" target="_blank">Rare Beauty →</a></div></div>
-</div></div></div>
-<div class="radar-item">
-<div class="radar-item-header">
-<span class="radar-brand">Kosas</span>
-<span class="radar-name">Cloud Set Powder</span>
-<span class="radar-cat">Setting Powder</span>
-<span class="radar-chevron">▾</span></div>
-<div class="radar-detail"><div class="radar-detail-inner">
-<div><div class="cell-label">Launch Date</div><div class="cell-value">2026.05</div></div>
-<div><div class="cell-label">Price</div><div class="cell-value">$32</div></div>
-<div><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Clean Beauty setting powder benchmark</span><span class="rev-tag rev-mid">Beat Saie in reviews</span></div></div>
-<div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.kosas.com" target="_blank">Kosas →</a></div></div>
-</div></div></div>
-<div class="radar-item">
-<div class="radar-item-header">
-<span class="radar-brand">Tower 28</span>
-<span class="radar-name">Splashy Cream Blush</span>
-<span class="radar-cat">Cream Blush</span>
-<span class="radar-chevron">▾</span></div>
-<div class="radar-detail"><div class="radar-detail-inner">
-<div><div class="cell-label">Launch Date</div><div class="cell-value">2026.05</div></div>
-<div><div class="cell-label">Price</div><div class="cell-value">$22</div></div>
-<div><div class="cell-label">Buzz / Heat</div><div class="cell-tags"><span class="rev-tag rev-pos">Cream blush category new entrant</span><span class="rev-tag rev-pos">Sephora Clean approved</span></div></div>
-<div><div class="cell-label">Link</div><div class="cell-value"><a href="https://www.tower28beauty.com" target="_blank">Tower 28 →</a></div></div>
-</div></div></div>
-</div></div>
-</div>
-</div>
-</div>
-
-
-<div class="appendix-section">
-<h4 style="margin-bottom:12px;font-size:15px;">🔖 Source Overview</h4>
-<table class="appendix-table"><thead><tr><th>Source</th><th>Market</th><th>Type</th><th>Coverage</th><th>Notes</th></tr></thead><tbody>
-<tr class="cat-divider"><td colspan="5">📊 E-Commerce & Social Media Data</td></tr>
-<tr><td class="app-name">Tmall Innovation Center (TMIC)</td><td><span class="app-mkt cn">🇨🇳</span></td><td class="app-type">Ecom Trends</td><td class="app-desc">Category growth, consumer profiles, price tier analysis</td><td class="app-note">—</td></tr>
-<tr><td class="app-name">CBNData</td><td><span class="app-mkt cn">🇨🇳</span></td><td class="app-type">Consumer Data</td><td class="app-desc">Domestic vs global brand share, annual beauty trends</td><td class="app-note">—</td></tr>
-<tr><td class="app-name">Mojing Insights</td><td><span class="app-mkt cn">🇨🇳</span></td><td class="app-type">Omni-Channel Ecom</td><td class="app-desc">Tmall/JD/Douyin category growth, brand rankings</td><td class="app-note">—</td></tr>
-<tr><td class="app-name">Circana (formerly NPD)</td><td><span class="app-mkt us">🇺🇸</span></td><td class="app-type">POS Retail</td><td class="app-desc">US prestige beauty POS sales data</td><td class="app-note">—</td></tr>
-<tr><td class="app-name">Sephora Bestsellers</td><td><span class="app-mkt us">🇺🇸</span></td><td class="app-type">Retailer</td><td class="app-desc">Prestige beauty bestseller lists, new launches</td><td class="app-note">—</td></tr>
-<tr><td class="app-name">Ulta Beauty</td><td><span class="app-mkt us">🇺🇸</span></td><td class="app-type">Retailer</td><td class="app-desc">Mass + prestige beauty new arrivals</td><td class="app-note">—</td></tr>
-<tr class="cat-divider"><td colspan="5">📱 Social Media & KOL Data</td></tr>
-<tr><td class="app-name">Feigua Data</td><td><span class="app-mkt cn">🇨🇳</span></td><td class="app-type">Douyin Data</td><td class="app-desc">Short video/livestream commerce trends, category heat</td><td class="app-note">—</td></tr>
-<tr><td class="app-name">Accio</td><td><span class="app-mkt cn">🇨🇳</span></td><td class="app-type">Social Trends</td><td class="app-desc">Douyin/XHS trending categories, ingredient trends</td><td class="app-note">—</td></tr>
-<tr><td class="app-name">Meixiu Big Data</td><td><span class="app-mkt cn">🇨🇳</span></td><td class="app-type">Ingredient Reputation</td><td class="app-desc">Ingredient trends, safety scores, user reviews</td><td class="app-note">—</td></tr>
-<tr class="cat-divider"><td colspan="5">📖 Industry Research & Consumer Insights</td></tr>
-<tr><td class="app-name">WGSN</td><td><span class="app-mkt us">🇺🇸</span></td><td class="app-type">Trend Forecasting</td><td class="app-desc">Global color/materials/beauty trend forecasting</td><td class="app-note">—</td></tr>
-<tr><td class="app-name">Euromonitor</td><td><span class="app-mkt us">🇺🇸</span></td><td class="app-type">Market Sizing</td><td class="app-desc">Global makeup/fragrance market size & forecasts</td><td class="app-note">—</td></tr>
-<tr><td class="app-name">BeautyMatter</td><td><span class="app-mkt us">🇺🇸</span></td><td class="app-type">Industry Media</td><td class="app-desc">Annual beauty trend reports, brand strategy</td><td class="app-note">—</td></tr>
-<tr><td class="app-name">The Business Research Company</td><td><span class="app-mkt us">🇺🇸</span></td><td class="app-type">Market Research</td><td class="app-desc">Clean Beauty and other category market sizing</td><td class="app-note">—</td></tr>
-<tr class="cat-divider"><td colspan="5">📰 Media & Editor Recommendations</td></tr>
-<tr><td class="app-name">NewBeauty</td><td><span class="app-mkt us">🇺🇸</span></td><td class="app-type">Beauty Media</td><td class="app-desc">Monthly new launch lists, editor reviews</td><td class="app-note">—</td></tr>
-<tr><td class="app-name">Who What Wear</td><td><span class="app-mkt us">🇺🇸</span></td><td class="app-type">Fashion & Beauty</td><td class="app-desc">Sephora new product trends, editor curation</td><td class="app-note">—</td></tr>
-</tbody></table>
-</div>
-
-<div style="background:#fafafa;border:1px solid #eee;border-radius:12px;padding:20px;margin-top:20px;">
-<h4 style="margin-top:0;">📐 Scoring Methodology</h4>
-<p style="font-size:13px;color:var(--text-secondary);line-height:1.8;margin:0;">
-Heat ranking is based on <span style="font-weight:700;color:var(--text);">Sales 50% + Buzz 50%</span> dual-dimension scoring system:<br>
-<br>
-<span style="display:inline-block;padding:2px 8px;border-radius:10px;font-size:12px;background:#fff0f3;color:#c41e3a;font-weight:600;">China Market</span><br>
-<strong>📊 Sales 50%:</strong> Tmall GMV <span style="color:var(--rose);font-weight:700">30%</span> · Douyin Sales <span style="color:var(--rose);font-weight:700">20%</span><br>
-<strong>📣 Buzz 50%:</strong> Douyin Search + Views <span style="color:var(--rose);font-weight:700">25%</span> · RED Notes + Search <span style="color:var(--rose);font-weight:700">15%</span> · Topic Discussion & Engagement <span style="color:var(--rose);font-weight:700">10%</span><br>
-<br>
-<span style="display:inline-block;padding:2px 8px;border-radius:10px;font-size:12px;background:#f0faf6;color:#0d7b6b;font-weight:600;">US Market</span><br>
-<strong>📊 Sales 50%:</strong> Sephora Bestsellers <span style="color:var(--teal);font-weight:700">25%</span> · Ulta Beauty Bestsellers <span style="color:var(--teal);font-weight:700">25%</span><br>
-<strong>📣 Buzz 50%:</strong> TikTok Search + Views <span style="color:var(--teal);font-weight:700">25%</span> · YouTube Search & Discussion <span style="color:var(--teal);font-weight:700">15%</span> · Post Discussion & Engagement <span style="color:var(--teal);font-weight:700">10%</span><br>
-<br>
-Rank conversion uses segmented linear mapping (TOP1=100%, TOP5=90%, TOP10=80%, etc.); social buzz is log-normalized by views/engagement; scoring draws exclusively from platform-native data.
-</p></div>
-
-<div style="background:linear-gradient(135deg,#fefdfe,#fcf8fa);border:1px solid #f0e8ec;border-radius:12px;padding:20px;margin-top:20px;">
-<h4 style="margin-top:0;">📋 This Week's Sources</h4>
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;font-size:13px;color:var(--text-secondary);line-height:1.8;">
-<div><h5 style="margin:0 0 6px 0;"><span style="display:inline-block;padding:2px 8px;border-radius:10px;font-size:12px;background:#fff0f3;color:#c41e3a;font-weight:600;">China Market</span></h5>
-Feigua Data · Shiyan Consumer Index · AiiMedia · Pinguan/Youmiyoushu · Jiemian News · Xueqiu · Meixiu Big Data</div>
-<div><h5 style="margin:0 0 6px 0;"><span style="display:inline-block;padding:2px 8px;border-radius:10px;font-size:12px;background:#f0faf6;color:#0d7b6b;font-weight:600;">US Market</span></h5>
-Who What Wear · Marie Claire · W Magazine · The Ethos · Beauty World News · Sephora · Professional Beauty · The Industry</div>
-</div>
-<p style="font-size:11px;color:#bbb;margin:12px 0 0 0;">Authority Trends: WGSN × Coloro SS2026 · Pantone 2026 COTY: Cloud Dancer · Beauty World News</p>
-</div>
-
-<div style="text-align:center;margin-top:32px;padding:24px;background:linear-gradient(135deg,#e8516e15,#8b5cf615,#3b9bcc15);border-radius:16px;border:1px solid #f0e8f0;">
-<p style="font-size:14px;color:var(--text-secondary);margin:0;">📅 Next Week Preview: June 22 (Monday) auto-delivery · 📬 For content or frequency adjustments, please provide feedback anytime</p>
-</div>
-</div>
-
-
-</div>
-
-<script>
-// Interactive heat accordion
-document.querySelectorAll('.heat-item-header').forEach(function(header) {
-  header.addEventListener('click', function() {
-    var item = this.parentElement;
-    var wasOpen = item.classList.contains('open');
-    var parent = item.parentElement;
-    parent.querySelectorAll('.heat-item').forEach(function(sib) { sib.classList.remove('open'); });
-    if (!wasOpen) item.classList.add('open');
-  });
-});
-
-// Interactive news card accordion
-document.querySelectorAll('.news-card-header').forEach(function(header) {
-  header.addEventListener('click', function() {
-    this.parentElement.classList.toggle('open');
-  });
-});
-
-// Interactive radar item accordion
-document.querySelectorAll('.radar-item-header').forEach(function(header) {
-  header.addEventListener('click', function() {
-    this.parentElement.classList.toggle('open');
-  });
-});
-
-// Week Selector Dropdown
-function toggleWeekDropdown(id) {
-  var selector = document.getElementById(id);
-  if (!selector) return;
-  selector.classList.toggle('open');
-}
-
-// Close dropdowns when clicking outside
-document.addEventListener('click', function(e) {
-  if (!e.target.closest('.week-selector')) {
-    document.querySelectorAll('.week-selector.open').forEach(function(sel) {
-      sel.classList.remove('open');
-    });
-  }
-});
-</script>
-
-</body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="version" content="week25-20260615-en-v2-fixed">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beauty Weekly Report Week 25 | ZURU EDGE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --zurured: #D6001C;
+  --rose: #c94b6c;
+  --teal: #2d8a7a;
+  --gold: #b8943a;
+  --coral: #d4654a;
+  --lavender: #7b6faa;
+  --us-blue: #2563EB;
+  --cn-yellow: #F59E0B;
+  --body-bg: #FAFAFA;
+  --card-bg: #FFFFFF;
+  --border: #E5E7EB;
+  --text: #1A1A1A;
+  --text-secondary: #6B7280;
+  --text-muted: #9CA3AF;
+  --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font); background: var(--body-bg); color: var(--text); line-height: 1.5; }
+
+.section-banner { background: var(--zurured); color: white; padding: 28px 32px 20px; position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+.banner-left h1 { font-size: 22px; font-weight: 800; letter-spacing: -0.5px; }
+.banner-left .banner-date { font-size: 13px; opacity: 0.85; margin-top: 4px; display: flex; align-items: center; gap: 12px; }
+.banner-right { display: flex; align-items: center; gap: 10px; }
+.glass-pill { background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.35); color: white; padding: 6px 16px; border-radius: 20px; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.2s; text-decoration: none; font-family: var(--font); }
+.glass-pill:hover { background: rgba(255,255,255,0.3); }
+.week-select { padding: 6px 12px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.35); background: rgba(255,255,255,0.15); color: white; font-size: 12px; font-family: var(--font); cursor: pointer; }
+.week-select option { color: #1A1A1A; }
+
+.section-shell { max-width: 1400px; margin: 0 auto; padding: 24px 32px; }
+.section-title { background: var(--card-bg); border-radius: 12px; padding: 16px 24px; margin: 28px 0 20px; font-size: 18px; font-weight: 700; border-left: 4px solid var(--zurured); box-shadow: 0 1px 3px rgba(0,0,0,0.06); display: flex; align-items: center; gap: 10px; }
+
+.kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
+.kpi-card { background: var(--card-bg); border-radius: 12px; padding: 20px; border: 1px solid var(--border); box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+.kpi-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; font-weight: 600; letter-spacing: 0.5px; }
+.kpi-value { font-size: 32px; font-weight: 800; margin: 6px 0; }
+.kpi-sub { font-size: 12px; color: var(--text-secondary); }
+.kpi-card.cn-kpi { border-top: 3px solid var(--cn-yellow); }
+.kpi-card.us-kpi { border-top: 3px solid var(--us-blue); }
+.kpi-card.global-kpi { border-top: 3px solid var(--zurured); }
+.kpi-card.frag-kpi { border-top: 3px solid var(--coral); }
+
+.news-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 14px; margin-bottom: 20px; }
+.news-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px; cursor: pointer; overflow: hidden; transition: box-shadow 0.2s; }
+.news-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+.news-card-header { padding: 14px 18px; display: flex; align-items: flex-start; gap: 10px; }
+.news-region-tag { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 4px; flex-shrink: 0; margin-top: 2px; }
+.news-region-tag.cn { background: #FEF3C7; color: #92400E; }
+.news-region-tag.us { background: #DBEAFE; color: #1E40AF; }
+.news-region-tag.global { background: #FEE2E2; color: #991B1B; }
+.news-card-title { font-size: 14px; font-weight: 600; flex: 1; }
+.news-card-body { padding: 0 18px 14px 42px; font-size: 13px; color: var(--text-secondary); display: none; line-height: 1.6; }
+.news-card.open .news-card-body { display: block; }
+.news-card.open .news-card-header { border-bottom: 1px solid var(--border); }
+
+.trend-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px; }
+.zone { border-radius: 14px; padding: 20px; position: relative; }
+.zone-us { order: 1; background: linear-gradient(135deg, #f3faf8 0%, #eaf6f3 50%, #eef8f5 100%); border: 1.5px solid #c5e5dc; }
+.zone-cn { order: 2; background: linear-gradient(135deg, #fff5f7 0%, #fef0f3 50%, #fdf6f8 100%); border: 1.5px solid #f2d5dc; }
+.zone-badge { display: inline-block; font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 20px; margin-bottom: 14px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+.zone-badge.us { background: linear-gradient(135deg, #2563EB, #3B82F6); color: white; }
+.zone-badge.cn { background: linear-gradient(135deg, #F59E0B, #FBBF24); color: #1A1A1A; }
+.zone-platforms { font-size: 11px; color: var(--text-muted); margin-bottom: 16px; font-weight: 500; }
+.zone-platforms strong { color: var(--text-secondary); }
+
+.trend-v-card { background: var(--card-bg); border-radius: 10px; margin-bottom: 14px; overflow: hidden; border: 1px solid var(--border); }
+.trend-v-card.us { border-top: 4px solid var(--us-blue); }
+.trend-v-card.cn { border-top: 4px solid var(--cn-yellow); }
+.trend-v-header { padding: 14px 18px; cursor: pointer; display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+.trend-v-header h4 { font-size: 14px; font-weight: 700; flex: 1; }
+.trend-v-arrow { color: var(--text-muted); transition: transform 0.2s; font-size: 12px; }
+.trend-v-card.open .trend-v-arrow { transform: rotate(180deg); }
+.trend-v-body { padding: 0 18px; display: none; }
+.trend-v-card.open .trend-v-body { display: block; padding-bottom: 14px; }
+
+.driver-summary { background: #fefce8; border-left: 3px solid var(--gold); padding: 10px 14px; margin-bottom: 12px; font-size: 13px; border-radius: 0 6px 6px 0; }
+.us .driver-summary { background: #f0fdf4; border-left-color: var(--teal); }
+.driver-chain { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; font-size: 12px; }
+.chain-node { padding: 4px 10px; border-radius: 14px; font-weight: 600; font-size: 11px; }
+.chain-node.trigger { background: #fef3c7; color: #92400E; }
+.chain-node.ferment { background: #fce7f3; color: #9D174D; }
+.chain-node.diverge { background: #dbeafe; color: #1E40AF; }
+.chain-arrow { color: var(--text-muted); }
+.driver-expand { display: flex; flex-wrap: wrap; gap: 6px; }
+.driver-expand span { font-size: 11px; padding: 3px 10px; border-radius: 12px; font-weight: 500; }
+.exp-chip.cn { background: #fef3c7; color: #92400E; }
+.exp-chip.us { background: #dbeafe; color: #1E40AF; }
+.exp-chip.global { background: #fee2e2; color: #991B1B; }
+
+.signal-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 14px 0; }
+.signal-chip { background: #fafafa; border-radius: 8px; padding: 12px; text-align: center; border: 1px solid var(--border); }
+.signal-chip.yt { border-left: 3px solid #FF0000; }
+.signal-chip.tt { border-left: 3px solid #000000; }
+.signal-chip.seph { border-left: 3px solid var(--teal); }
+.signal-chip.pin { border-left: 3px solid #E60023; }
+.signal-chip.wgsn { border-left: 3px solid var(--lavender); }
+.signal-chip.gtrends { border-left: 3px solid #4285F4; }
+.signal-chip.douyin { border-left: 3px solid #FF4D4F; }
+.signal-chip.xhs { border-left: 3px solid #FF6B6B; }
+.signal-chip.tmall { border-left: 3px solid #FF6A00; }
+.chip-num { font-size: 20px; font-weight: 800; margin: 4px 0; }
+.chip-desc { font-size: 10px; color: var(--text-muted); }
+.chip-arrow { font-size: 11px; font-weight: 600; }
+.chip-arrow.up { color: #16a34a; }
+.chip-arrow.down { color: #dc2626; }
+
+.action-strip { border: 1px dashed var(--gold); border-radius: 8px; padding: 12px 14px; margin-top: 14px; display: flex; align-items: flex-start; gap: 10px; }
+.action-tag { background: var(--coral); color: white; font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 4px; flex-shrink: 0; }
+.action-text { font-size: 13px; color: var(--text-secondary); flex: 1; }
+
+.trend-decision-bar { display: flex; align-items: center; gap: 8px; padding: 8px 12px; margin-top: 10px; background: #f0fdf4; border-radius: 8px; font-size: 11px; flex-wrap: wrap; }
+.dec-label { font-weight: 700; color: var(--teal); font-size: 10px; text-transform: uppercase; }
+.dec-signal { background: #dbeafe; color: #1E40AF; padding: 2px 8px; border-radius: 4px; font-weight: 600; }
+.dec-arrow { color: var(--gold); font-weight: 800; font-size: 14px; }
+.dec-direction { background: #fef3c7; color: #92400E; padding: 2px 8px; border-radius: 4px; font-weight: 600; }
+.dec-strength.strong { color: var(--coral); font-weight: 700; }
+.dec-strength.mid { color: var(--gold); font-weight: 700; }
+.dec-strength.rising { color: var(--teal); font-weight: 700; }
+
+.common-trends-section { margin-bottom: 24px; }
+.common-trends-section .trend-v-card { border-top: 4px solid var(--zurured); }
+
+.heat-section { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px; }
+.heat-panel { background: var(--card-bg); border-radius: 12px; padding: 20px; border: 1px solid var(--border); }
+.heat-panel.us-heat { order: 1; }
+.heat-panel.cn-heat { order: 2; }
+.heat-panel h4 { font-size: 15px; font-weight: 700; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+.heat-accordion { list-style: none; }
+.heat-item { border-bottom: 1px solid var(--border); padding: 12px 0; }
+.heat-item:last-child { border-bottom: none; }
+.heat-rank { font-size: 20px; font-weight: 900; margin-right: 10px; display: inline-block; width: 28px; }
+.heat-rank.us { color: var(--us-blue); }
+.heat-rank.cn { color: var(--cn-yellow); }
+.heat-info { display: inline; }
+.heat-name { font-weight: 600; font-size: 14px; }
+.heat-brand { font-size: 12px; color: var(--text-muted); }
+.heat-meter { height: 6px; background: #f3f4f6; border-radius: 3px; margin-top: 6px; overflow: hidden; }
+.heat-fill { height: 100%; border-radius: 3px; }
+.heat-fill.us-fill { background: linear-gradient(90deg, var(--us-blue), #60A5FA); }
+.heat-fill.cn-fill { background: linear-gradient(90deg, var(--cn-yellow), #FBBF24); }
+.heat-data { font-size: 11px; color: var(--text-muted); margin-top: 4px; }
+
+.radar-section { margin-bottom: 24px; }
+.radar-subsection { margin-bottom: 20px; }
+.radar-subsection h4 { font-size: 15px; font-weight: 700; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+.radar-table { width: 100%; border-collapse: collapse; background: var(--card-bg); border-radius: 10px; overflow: hidden; border: 1px solid var(--border); }
+.radar-table th { background: #fafafa; padding: 12px 14px; font-size: 11px; font-weight: 700; text-align: left; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid var(--border); }
+.radar-table td { padding: 12px 14px; font-size: 13px; border-bottom: 1px solid var(--border); }
+.radar-table tr:last-child td { border-bottom: none; }
+.radar-brand { font-weight: 700; }
+.radar-product { font-weight: 600; }
+.radar-desc { color: var(--text-secondary); font-size: 12px; }
+.radar-tier { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 4px; }
+.radar-tier.luxury { background: #fef3c7; color: #92400E; }
+.radar-tier.masstige { background: #dbeafe; color: #1E40AF; }
+
+.rev-tag { font-size: 10px; font-weight: 700; padding: 2px 6px; border-radius: 3px; }
+.rev-tag.rev-pos { background: #dcfce7; color: #166534; }
+.rev-tag.rev-mid { background: #fef9c3; color: #854d0e; }
+.rev-tag.rev-neg { background: #fee2e2; color: #991b1b; }
+
+.hl-rose { color: var(--rose); font-weight: 700; }
+.hl-teal { color: var(--teal); font-weight: 700; }
+.hl-gold { color: var(--gold); font-weight: 700; }
+.hl-coral { color: var(--coral); font-weight: 700; }
+.hl-lavender { color: var(--lavender); font-weight: 700; }
+.hl-positive { color: #16a34a; font-weight: 700; }
+.hl-negative { color: #dc2626; font-weight: 700; }
+
+.frag-note-tag { font-size: 10px; padding: 2px 8px; border-radius: 4px; font-weight: 600; margin: 0 2px; }
+.frag-woody { background: #ede9fe; color: #6D28D9; }
+.frag-floral { background: #fce7f3; color: #BE185D; }
+.frag-fruity { background: #fef3c7; color: #B45309; }
+.frag-gourmand { background: #fef9c3; color: #92400E; }
+.frag-aquatic { background: #dbeafe; color: #1E40AF; }
+.frag-green { background: #dcfce7; color: #166534; }
+.frag-musk { background: #f3f4f6; color: #4B5563; }
+.frag-tea { background: #ecfdf5; color: #065F46; }
+
+.section-sep { max-width: 1400px; margin: 32px auto; padding: 0 32px; }
+.section-sep hr { border: none; border-top: 2px solid var(--border); }
+
+.appendix-section { max-width: 1400px; margin: 0 auto; padding: 24px 32px; }
+.appendix-table { width: 100%; border-collapse: collapse; margin: 16px 0; background: var(--card-bg); border-radius: 10px; overflow: hidden; border: 1px solid var(--border); }
+.appendix-table td { padding: 10px 14px; font-size: 13px; border-bottom: 1px solid var(--border); }
+.appendix-table .cat-divider { background: #fafafa; font-weight: 700; font-size: 12px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px; }
+.appendix-table .cat-divider td { padding: 10px 14px; border-bottom: 2px solid var(--border); }
+.source-badge { display: inline-block; font-size: 10px; padding: 2px 8px; border-radius: 3px; margin: 1px 2px; }
+.source-cn { background: #fef3c7; color: #92400E; }
+.source-us { background: #dbeafe; color: #1E40AF; }
+
+.next-week-banner { max-width: 1400px; margin: 0 auto 40px; padding: 20px 32px; background: linear-gradient(135deg, #1e293b, #334155); color: white; border-radius: 12px; font-size: 14px; display: flex; align-items: center; gap: 16px; }
+.next-week-banner h3 { font-size: 16px; font-weight: 700; }
+
+@media (max-width: 900px) {
+  .trend-grid, .heat-section { grid-template-columns: 1fr; }
+  .signal-strip { grid-template-columns: repeat(2, 1fr); }
+  .kpi-row { grid-template-columns: repeat(2, 1fr); }
+  .news-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<header class="section-banner">
+  <div class="banner-left">
+    <h1>Beauty Weekly Report · Week 25</h1>
+    <div class="banner-date">
+      <span>June 9 – June 15, 2026</span>
+      <span>|</span>
+      <span>ZURU EDGE · NPD Strategy</span>
+      <span>|</span>
+      <select class="week-select" onchange="if(this.value) window.location.href=this.value" onclick="event.stopPropagation()">
+        <option value="">Past Issues ▾</option>
+        <option value="archive/week-23/index.html">Week 23 (5/19–5/25)</option>
+        <option value="archive/week-24/index.html">Week 24 (6/2–6/8)</option>
+      </select>
+    </div>
+  </div>
+  <div class="banner-right">
+    <a href="fragrance.html" class="glass-pill">🌸 Fragrance</a>
+    <a href="index-cn.html" class="glass-pill">中文</a>
+  </div>
+</header>
+
+<div class="section-shell">
+
+<!-- KPI ROW -->
+<div class="kpi-row">
+  <div class="kpi-card cn-kpi">
+    <div class="kpi-label">CN Douyin Makeup GMV</div>
+    <div class="kpi-value hl-rose">¥128<span style="font-size:16px">B</span></div>
+    <div class="kpi-sub">May cumulative · Domestic brands <strong>73%</strong> share</div>
+  </div>
+  <div class="kpi-card us-kpi">
+    <div class="kpi-label">Clean Beauty Global Market</div>
+    <div class="kpi-value hl-teal">$9.02<span style="font-size:16px">B</span></div>
+    <div class="kpi-sub">2026 · <span class="hl-positive">+12.5%</span> YoY growth</div>
+  </div>
+  <div class="kpi-card global-kpi">
+    <div class="kpi-label">#PerfumeTok Total Views</div>
+    <div class="kpi-value hl-gold">6.4<span style="font-size:16px">B</span></div>
+    <div class="kpi-sub">TikTok · Global fragrance market <span class="hl-positive">$88.7B</span></div>
+  </div>
+  <div class="kpi-card frag-kpi">
+    <div class="kpi-label">Pistachio Note Search Growth</div>
+    <div class="kpi-value hl-coral">852<span style="font-size:16px">%</span></div>
+    <div class="kpi-sub">YoY · Fastest-growing fragrance note</div>
+  </div>
+</div>
+
+<!-- INDUSTRY NEWS -->
+<h2 class="section-title">📰 Industry News</h2>
+<div class="news-grid">
+  <div class="news-card open" onclick="this.classList.toggle('open')">
+    <div class="news-card-header"><span class="news-region-tag cn">CN</span><span class="news-card-title">Proya Acquires Controlling Stake in Flower Knows for ~¥800M</span></div>
+    <div class="news-card-body">Proya's subsidiary acquired an additional 12.55% stake in Flower Knows for ¥351M, raising total ownership to 51% for consolidation. Combined with the initial ¥428M investment, total commitment reaches ~¥800M. Flower Knows is known for its "girlhood aesthetic" and premium packaging.</div>
+  </div>
+  <div class="news-card open" onclick="this.classList.toggle('open')">
+    <div class="news-card-header"><span class="news-region-tag global">GLOBAL</span><span class="news-card-title">Estée Lauder × Puig Merger Talks: A Potential $40B Beauty Giant</span></div>
+    <div class="news-card-body">Estée Lauder and Spain's Puig confirmed negotiations on a "potential business combination." If completed, the merged entity would have a ~$40B market cap and ~$20B annual revenue, becoming the world's second-largest beauty group after L'Oréal.</div>
+  </div>
+  <div class="news-card" onclick="this.classList.toggle('open')">
+    <div class="news-card-header"><span class="news-region-tag us">US</span><span class="news-card-title">Sephora SEPHORiA 2026 Returns to LA with "Beauty Multiverse" Theme</span></div>
+    <div class="news-card-body">Sephora's flagship event SEPHORiA 2026 returns to Los Angeles with an all-new immersive "Beauty Multiverse" concept, featuring first-ever programming and exclusive on-site perks.</div>
+  </div>
+  <div class="news-card" onclick="this.classList.toggle('open')">
+    <div class="news-card-header"><span class="news-region-tag cn">CN</span><span class="news-card-title">China's 2026 Beauty Regulatory Overhaul: 60+ New Rules Implemented</span></div>
+    <div class="news-card-body">As China's 15th Five-Year Plan begins, 60+ new cosmetic regulations were issued in 2025, covering the full supply chain. 169 new cosmetic ingredient filings were approved, marking a new era of compliance-driven growth.</div>
+  </div>
+  <div class="news-card" onclick="this.classList.toggle('open')">
+    <div class="news-card-header"><span class="news-region-tag us">US</span><span class="news-card-title">Ulta Q1 2026 Fragrance: DKNY Surges +58 Ranks, Kylie +24</span></div>
+    <div class="news-card-body">Ulta Beauty Q1 2026 fragrance rankings: DKNY surged 58 positions to lead gains, followed by Kylie Cosmetics (+24) and touchland (+18). Consumer appetite for fragrance remains robust.</div>
+  </div>
+  <div class="news-card" onclick="this.classList.toggle('open')">
+    <div class="news-card-header"><span class="news-region-tag global">GLOBAL</span><span class="news-card-title">Q1 2026 Beauty Investment Focuses on AI & Synthetic Biology</span></div>
+    <div class="news-card-body">Q1 2026 beauty industry funding concentrated on AI and synthetic biology. Five AI companies secured investments, including AI fragrance design platform Osmo. AI-powered R&D platforms are the most sought-after赛道.</div>
+  </div>
+</div>
+</div>
+
+<div class="section-sep"><hr></div>
+<div class="section-shell">
+<h2 class="section-title">💄 Makeup Trends</h2>
+
+<div class="common-trends-section">
+  <h3 style="font-size:14px;font-weight:700;margin-bottom:14px;color:var(--zurured);display:flex;align-items:center;gap:8px;"><span style="background:var(--zurured);color:white;padding:2px 10px;border-radius:4px;font-size:10px;">GLOBAL</span> Cross-Market Trends</h3>
+  <div class="trend-v-card open" style="border-top:4px solid var(--zurured);">
+    <div class="trend-v-header" onclick="this.parentElement.classList.toggle('open')"><h4>🌿 Clean Beauty 3.0: From "Free From" to Science-Backed Clean</h4><span class="trend-v-arrow">▼</span></div>
+    <div class="trend-v-body">
+      <div class="driver-summary">Consumers no longer settle for "what's not in it" — they demand "what IS in it." Clean beauty shifts from exclusion claims to scientifically validated efficacy.</div>
+      <div class="driver-chain"><span class="chain-node trigger">Trigger: REN closure, clean brand fatigue</span><span class="chain-arrow">→</span><span class="chain-node ferment">Ferment: Consumer clean-washing skepticism</span><span class="chain-arrow">→</span><span class="chain-node diverge">Diverge: Science-backed clean (PDRN, Bakuchiol, Ceramides)</span></div>
+      <div class="driver-expand"><span class="exp-chip global">Clean Beauty $9.02B</span><span class="exp-chip global">Vegan/Cruelty-Free</span><span class="exp-chip cn">Domestic ingredient innovation</span><span class="exp-chip us">Sephora Clean + Planet Aware</span></div>
+      <div class="signal-strip">
+        <div class="signal-chip gtrends"><div class="chip-desc">Clean Beauty Market</div><div class="chip-num">$9.02B</div><div class="chip-arrow up">+12.5% YoY</div></div>
+        <div class="signal-chip douyin"><div class="chip-desc">Clean Beauty Topic Views</div><div class="chip-num">320M</div><div class="chip-arrow up">+45%</div></div>
+        <div class="signal-chip seph"><div class="chip-desc">Sephora Clean SKUs</div><div class="chip-num">2,800+</div><div class="chip-desc">Growing</div></div>
+        <div class="signal-chip wgsn"><div class="chip-desc">WGSN Trend Rating</div><div class="chip-num">A-Rated</div><div class="chip-desc">Structural trend</div></div>
+      </div>
+      <div class="action-strip"><span class="action-tag">🎯 Action</span><span class="action-text">Position new brands beyond "Free From" — build a Science-Backed Clean narrative with key ingredients: plant-based retinol alternatives (Bakuchiol), fermented ceramides, biotech-derived actives. Align with Sephora Clean + Planet Aware standards.</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="trend-grid">
+  <div class="zone zone-us">
+    <span class="zone-badge us">US Makeup Market</span>
+    <div class="zone-platforms">Platforms: <strong>YouTube · TikTok · Pinterest · Sephora</strong></div>
+    <div class="trend-v-card us open">
+      <div class="trend-v-header" onclick="this.parentElement.classList.toggle('open')"><h4>💙 Blue Beauty Revolution: Full-Category Penetration from Runway to TikTok</h4><span class="trend-v-arrow">▼</span></div>
+      <div class="trend-v-body">
+        <div class="driver-summary us">Ice blue eyeshadow, silver highlight, pearl blue lips — Y2K cold-tone aesthetics fully erupt in 2026, blue upgrades from accent to full-face hero color.</div>
+        <div class="driver-chain"><span class="chain-node trigger">Trigger: FW26 runway blue makeup</span><span class="chain-arrow">→</span><span class="chain-node ferment">Ferment: #BlueBeauty goes viral on TikTok</span><span class="chain-arrow">→</span><span class="chain-node diverge">Diverge: Purple mascara × blue liner × silver highlight</span></div>
+        <div class="driver-expand"><span class="exp-chip us">Julep stick 124K monthly</span><span class="exp-chip us">Purple mascara set trending</span><span class="exp-chip us">Champagne shimmer</span><span class="exp-chip us">Ice aesthetic Y2K</span></div>
+        <div class="signal-strip">
+          <div class="signal-chip yt"><div class="chip-desc">YT Blue Makeup Tutorials</div><div class="chip-num">4.8M</div><div class="chip-arrow up">+165%</div></div>
+          <div class="signal-chip tt"><div class="chip-desc">#BlueBeauty Views</div><div class="chip-num">210M</div><div class="chip-arrow up">+89%</div></div>
+          <div class="signal-chip seph"><div class="chip-desc">Julep Shadow Stick</div><div class="chip-num">124,930</div><div class="chip-desc">Monthly Amazon</div></div>
+          <div class="signal-chip pin"><div class="chip-desc">Blue Makeup Search</div><div class="chip-num">+210%</div><div class="chip-arrow up">Pinterest YoY</div></div>
+        </div>
+        <div class="action-strip"><span class="action-tag">🎯 Action</span><span class="action-text">Develop cool-tone multi-sticks (shadow/highlight/blush 3-in-1) in ice blue, pearl white, champagne gold. Leverage TikTok Y2K tutorials. Eyeshadow stick category proven at 124K+ monthly sales.</span></div>
+        <div class="trend-decision-bar"><span class="dec-label">Signal→Decision</span><span class="dec-signal">TikTok 210M views</span><span class="dec-arrow">→</span><span class="dec-direction">Cool-tone Multi Stick</span><span class="dec-strength strong">STRONG</span></div>
+      </div>
+    </div>
+    <div class="trend-v-card us open">
+      <div class="trend-v-header" onclick="this.parentElement.classList.toggle('open')"><h4>✨ New Maximalism: Bold Lips × Metallic × Graphic Liner Triple Resonance</h4><span class="trend-v-arrow">▼</span></div>
+      <div class="trend-v-body">
+        <div class="driver-summary us">"Clean Girl" minimalism retreats — consumers embrace bold self-expression. Rich lip colors, graphic eyeliner, metallic finishes take over social feeds.</div>
+        <div class="driver-chain"><span class="chain-node trigger">Trigger: Reddit 1,500+ upvotes "full beats 2026"</span><span class="chain-arrow">→</span><span class="chain-node ferment">Ferment: MAC lipstick 42% SOV</span><span class="chain-arrow">→</span><span class="chain-node diverge">Diverge: Monochrome eyes × Metallic × Statement lashes</span></div>
+        <div class="driver-expand"><span class="exp-chip us">Bold Lip Revival</span><span class="exp-chip us">Graphic Eyeliner</span><span class="exp-chip us">Metallic Finishes</span><span class="exp-chip us">Statement Lashes</span></div>
+        <div class="signal-strip">
+          <div class="signal-chip tt"><div class="chip-desc">#BoldLip Views</div><div class="chip-num">870M</div><div class="chip-arrow up">+43%</div></div>
+          <div class="signal-chip yt"><div class="chip-desc">Maximalist Tutorials</div><div class="chip-num">3.2M</div><div class="chip-arrow up">+78%</div></div>
+          <div class="signal-chip seph"><div class="chip-desc">MAC Lipstick SOV</div><div class="chip-num">42%</div><div class="chip-desc">Highest tracked</div></div>
+          <div class="signal-chip pin"><div class="chip-desc">Bold Makeup Search</div><div class="chip-num">+95%</div><div class="chip-arrow up">Pinterest</div></div>
+        </div>
+        <div class="action-strip"><span class="action-tag">🎯 Action</span><span class="action-text">Launch "Statement Lip Kit" (intense lip lacquer × metallic topper). Key shades: deep berry, true red, plum purple. Pair with dual-tip graphic liner (fine + broad).</span></div>
+        <div class="trend-decision-bar"><span class="dec-label">Signal→Decision</span><span class="dec-signal">MAC 42% SOV</span><span class="dec-arrow">→</span><span class="dec-direction">Statement Lip Kit</span><span class="dec-strength strong">STRONG</span></div>
+      </div>
+    </div>
+    <div class="trend-v-card us open">
+      <div class="trend-v-header" onclick="this.parentElement.classList.toggle('open')"><h4>☁️ Cloud Skin × Toasty Makeup: Dual Soft-Focus Base Trends</h4><span class="trend-v-arrow">▼</span></div>
+      <div class="trend-v-body">
+        <div class="driver-summary us">Soft-focus "Cloud Skin" and warm-tone "Toasty Makeup" become TikTok's dual obsessions — the former pursues filter-like flawless base, the latter uses toasted almond tones for sophisticated warmth.</div>
+        <div class="driver-chain"><span class="chain-node trigger">Trigger: #CloudSkin viral on TikTok</span><span class="chain-arrow">→</span><span class="chain-node ferment">Ferment: Hybrid makeup demand +9%</span><span class="chain-arrow">→</span><span class="chain-node diverge">Diverge: Skincare foundation × warm blush/bronzer combo</span></div>
+        <div class="driver-expand"><span class="exp-chip us">Laura Mercier 484 monthly</span><span class="exp-chip us">Revlon ColorStay 15K monthly</span><span class="exp-chip us">Hybrid makeup +9%</span><span class="exp-chip us">Toasty Makeup viral</span></div>
+        <div class="signal-strip">
+          <div class="signal-chip tt"><div class="chip-desc">#CloudSkin</div><div class="chip-num">140M</div><div class="chip-arrow up">+112%</div></div>
+          <div class="signal-chip yt"><div class="chip-desc">Base Tutorial Views</div><div class="chip-num">5.8M</div><div class="chip-arrow up">+34%</div></div>
+          <div class="signal-chip seph"><div class="chip-desc">Revlon Foundation</div><div class="chip-num">15,294</div><div class="chip-desc">Monthly Amazon</div></div>
+          <div class="signal-chip gtrends"><div class="chip-desc">Hybrid Makeup Demand</div><div class="chip-num">+9%</div><div class="chip-arrow up">Category growth</div></div>
+        </div>
+        <div class="action-strip"><span class="action-tag">🎯 Action</span><span class="action-text">Develop "Soft Filter Foundation" (ultra-fine silica + light-reflecting pigments) SPF 30+. Pair with warm multi-purpose face stick (blush/bronzer/shadow). Use "Cloud" and "Toasty" keywords.</span></div>
+        <div class="trend-decision-bar"><span class="dec-label">Signal→Decision</span><span class="dec-signal">Hybrid makeup +9%</span><span class="dec-arrow">→</span><span class="dec-direction">Soft Filter Foundation SPF30+</span><span class="dec-strength mid">MID</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="zone zone-cn">
+    <span class="zone-badge cn">CN Makeup Market</span>
+    <div class="zone-platforms">Platforms: <strong>Douyin · Xiaohongshu · Tmall</strong></div>
+    <div class="trend-v-card cn open">
+      <div class="trend-v-header" onclick="this.parentElement.classList.toggle('open')"><h4>🎨 Low-Saturation Pastels: 82% Young Users' Spring/Summer Pick</h4><span class="trend-v-arrow">▼</span></div>
+      <div class="trend-v-body">
+        <div class="driver-summary">Douyin data shows 82% of 18-35 users prefer low-saturation pastels for spring/summer — non-jarring, complexion-enhancing, becoming the core color dev direction for domestic makeup.</div>
+        <div class="driver-chain"><span class="chain-node trigger">Trigger: 96K Douyin users rated "spring pastels"</span><span class="chain-arrow">→</span><span class="chain-node ferment">Ferment: XHS "cream blush" "misty pink lip" trending</span><span class="chain-arrow">→</span><span class="chain-node diverge">Diverge: Butter yellow nails +1,043% / pink blush+lip synergy</span></div>
+        <div class="driver-expand"><span class="exp-chip cn">Butter Yellow Nails +1,043%</span><span class="exp-chip cn">Low-sat pastels</span><span class="exp-chip cn">Cream Blush</span><span class="exp-chip cn">Misty Pink Lip</span></div>
+        <div class="signal-strip">
+          <div class="signal-chip douyin"><div class="chip-desc">Pastel Preference Rate</div><div class="chip-num">82%</div><div class="chip-desc">18-35 age, 96K votes</div></div>
+          <div class="signal-chip xhs"><div class="chip-desc">Cream Blush Posts</div><div class="chip-num">1.8M+</div><div class="chip-arrow up">+68%</div></div>
+          <div class="signal-chip tmall"><div class="chip-desc">Pink Lip Lacquer GMV</div><div class="chip-num">¥3.2B</div><div class="chip-arrow up">+32% YoY</div></div>
+          <div class="signal-chip gtrends"><div class="chip-desc">Butter Yellow Growth</div><div class="chip-num">+1,043%</div><div class="chip-arrow up">Global</div></div>
+        </div>
+        <div class="action-strip"><span class="action-tag">🎯 Action</span><span class="action-text">Launch "Spring Cream" collection — 4 cream blushes (peach milk/nude pink/apricot/rose) + matching lip colors. Reference butter yellow's success in nail category for cross-category play.</span></div>
+      </div>
+    </div>
+    <div class="trend-v-card cn open">
+      <div class="trend-v-header" onclick="this.parentElement.classList.toggle('open')"><h4>⚡ Domestic Makeup Restructuring: Diluowei Leads × Proya Controls Flower Knows</h4><span class="trend-v-arrow">▼</span></div>
+      <div class="trend-v-body">
+        <div class="driver-summary">Douyin 618 makeup #1 Diluowei becomes a phenomenon; Proya invests ¥800M to control Flower Knows — China's makeup enters "capital consolidation + viral product" dual-engine era.</div>
+        <div class="driver-chain"><span class="chain-node trigger">Trigger: Proya ¥800M controlling Flower Knows</span><span class="chain-arrow">→</span><span class="chain-node ferment">Ferment: Diluowei 618 Douyin #1</span><span class="chain-arrow">→</span><span class="chain-node diverge">Diverge: From "dupe" to "brand matrix + capital operation"</span></div>
+        <div class="driver-expand"><span class="exp-chip cn">Diluowei Douyin #1</span><span class="exp-chip cn">Flower Knows acquired</span><span class="exp-chip cn">Domestic 73% share</span><span class="exp-chip cn">Premium base price↑</span></div>
+        <div class="signal-strip">
+          <div class="signal-chip douyin"><div class="chip-desc">Diluowei Rank</div><div class="chip-num">#1</div><div class="chip-desc">618 Makeup+Frag</div></div>
+          <div class="signal-chip tmall"><div class="chip-desc">Proya Acquisition</div><div class="chip-num">¥8B</div><div class="chip-desc">51% Flower Knows</div></div>
+          <div class="signal-chip xhs"><div class="chip-desc">Flower Knows Posts</div><div class="chip-num">6.2M+</div><div class="chip-arrow up">+28%</div></div>
+          <div class="signal-chip gtrends"><div class="chip-desc">Domestic Makeup Share</div><div class="chip-num">57.37%</div><div class="chip-desc">China market</div></div>
+        </div>
+        <div class="action-strip"><span class="action-tag">🎯 Action</span><span class="action-text">Study Diluowei's "wave water powder" and "porcelain cream foundation" — differentiated product forms breaking saturated categories. Flower Knows' premium packaging methodology worth referencing.</span></div>
+      </div>
+    </div>
+    <div class="trend-v-card cn open">
+      <div class="trend-v-header" onclick="this.parentElement.classList.toggle('open')"><h4>🔬 Ingredient-Driven Base Upgrade: Oil-Control × Spot Conceal × Serum Foundation</h4><span class="trend-v-arrow">▼</span></div>
+      <div class="trend-v-body">
+        <div class="driver-summary">China's base makeup enters ingredient-driven era — oil control remains core, but "serum foundation" (skincare-infused base) and precise spot concealing become new growth poles.</div>
+        <div class="driver-chain"><span class="chain-node trigger">Trigger: Q1 new product filings -14.6% but base grows</span><span class="chain-arrow">→</span><span class="chain-node ferment">Ferment: Ceramides/peptides/pro-xylane enter base formulas</span><span class="chain-arrow">→</span><span class="chain-node diverge">Diverge: Serum foundation × Spot concealer × Oil-control cushion</span></div>
+        <div class="driver-expand"><span class="exp-chip cn">Ceramide base infusion</span><span class="exp-chip cn">Peptide foundation</span><span class="exp-chip cn">Spot concealer ↑</span><span class="exp-chip cn">Premium price band ↑</span></div>
+        <div class="signal-strip">
+          <div class="signal-chip douyin"><div class="chip-desc">Base Category GMV</div><div class="chip-num">¥45B</div><div class="chip-arrow up">+18%</div></div>
+          <div class="signal-chip tmall"><div class="chip-desc">Serum Foundation Search</div><div class="chip-num">+85%</div><div class="chip-arrow up">YoY</div></div>
+          <div class="signal-chip xhs"><div class="chip-desc">Concealer Tutorial Posts</div><div class="chip-num">4.2M+</div><div class="chip-arrow up">+52%</div></div>
+          <div class="signal-chip gtrends"><div class="chip-desc">Q1 New Filings</div><div class="chip-num">88K</div><div class="chip-arrow down">-14.6%</div></div>
+        </div>
+        <div class="action-strip"><span class="action-tag">🎯 Action</span><span class="action-text">Base strategy: ① Serum foundation with 3% niacinamide + ceramides; ② Multi-color spot concealer pen (green/orange/skin); ③ Oil-control cushion for portability. Avoid generic foundation red ocean.</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="heat-section">
+  <div class="heat-panel us-heat">
+    <h4><span style="background:var(--us-blue);color:white;padding:2px 10px;border-radius:4px;font-size:10px;">US</span> Makeup Heat TOP 5</h4>
+    <ul class="heat-accordion">
+      <li class="heat-item"><span class="heat-rank us">1</span><div class="heat-info"><span class="heat-name">Julep Eyeshadow 101 Stick</span><span class="heat-brand"> · Julep</span></div><div class="heat-meter"><div class="heat-fill us-fill" style="width:95%"></div></div><div class="heat-data">124,930 monthly · Amazon #1 · $17.16</div></li>
+      <li class="heat-item"><span class="heat-rank us">2</span><div class="heat-info"><span class="heat-name">Revlon ColorStay Foundation SPF 15</span><span class="heat-brand"> · Revlon</span></div><div class="heat-meter"><div class="heat-fill us-fill" style="width:82%"></div></div><div class="heat-data">15,294 monthly · Amazon · $10.26</div></li>
+      <li class="heat-item"><span class="heat-rank us">3</span><div class="heat-info"><span class="heat-name">Laura Geller Ideal Fix Concealer</span><span class="heat-brand"> · Laura Geller NY</span></div><div class="heat-meter"><div class="heat-fill us-fill" style="width:78%"></div></div><div class="heat-data">14,314 monthly · Amazon · $25.71</div></li>
+      <li class="heat-item"><span class="heat-rank us">4</span><div class="heat-info"><span class="heat-name">MAC Lipstick (All Shades)</span><span class="heat-brand"> · MAC</span></div><div class="heat-meter"><div class="heat-fill us-fill" style="width:72%"></div></div><div class="heat-data">42% Reddit SOV · Sephora Bestseller</div></li>
+      <li class="heat-item"><span class="heat-rank us">5</span><div class="heat-info"><span class="heat-name">Maybelline Sky High Mascara</span><span class="heat-brand"> · Maybelline</span></div><div class="heat-meter"><div class="heat-fill us-fill" style="width:68%"></div></div><div class="heat-data">36.3% mascara SOV · 30.3% engagement</div></li>
+    </ul>
+  </div>
+  <div class="heat-panel cn-heat">
+    <h4><span style="background:var(--cn-yellow);color:#1A1A1A;padding:2px 10px;border-radius:4px;font-size:10px;">CN</span> Makeup Heat TOP 5</h4>
+    <ul class="heat-accordion">
+      <li class="heat-item"><span class="heat-rank cn">1</span><div class="heat-info"><span class="heat-name">Diluowei Wave Water Powder</span><span class="heat-brand"> · Diluowei</span></div><div class="heat-meter"><div class="heat-fill cn-fill" style="width:95%"></div></div><div class="heat-data">Douyin 618 #1 brand · Base category leader</div></li>
+      <li class="heat-item"><span class="heat-rank cn">2</span><div class="heat-info"><span class="heat-name">Florasis Air Loose Powder</span><span class="heat-brand"> · Florasis</span></div><div class="heat-meter"><div class="heat-fill cn-fill" style="width:88%"></div></div><div class="heat-data">Domestic top 3 · Powder evergreen</div></li>
+      <li class="heat-item"><span class="heat-rank cn">3</span><div class="heat-info"><span class="heat-name">INTO YOU Heroine Lip Mud</span><span class="heat-brand"> · INTO YOU</span></div><div class="heat-meter"><div class="heat-fill cn-fill" style="width:82%"></div></div><div class="heat-data">Lip mud category creator · Low-sat leader</div></li>
+      <li class="heat-item"><span class="heat-rank cn">4</span><div class="heat-info"><span class="heat-name">Caitang Primer + Milk Skin Cushion</span><span class="heat-brand"> · Caitang</span></div><div class="heat-meter"><div class="heat-fill cn-fill" style="width:75%"></div></div><div class="heat-data">Yearly favorite · Base set strategy wins</div></li>
+      <li class="heat-item"><span class="heat-rank cn">5</span><div class="heat-info"><span class="heat-name">Judydoll Single Blush</span><span class="heat-brand"> · Judydoll</span></div><div class="heat-meter"><div class="heat-fill cn-fill" style="width:68%"></div></div><div class="heat-data">Blush value benchmark · Rich shade range</div></li>
+    </ul>
+  </div>
+</div>
+
+<div class="radar-section">
+  <div class="radar-subsection"><h4>🆕 New Product Radar — Luxury Makeup</h4>
+    <table class="radar-table">
+      <thead><tr><th>Brand</th><th>Product</th><th>Tier</th><th>Key Selling Points</th><th>Rating</th></tr></thead>
+      <tbody>
+        <tr><td><span class="radar-brand">LANEIGE</span></td><td><span class="radar-product">Glaze Craze Tinted Lip Serum (Cool-Tone)</span></td><td><span class="radar-tier luxury">Luxury</span></td><td class="radar-desc">95% skincare formula, argan ester + pomegranate + peptides; Y2K cool rose + limited Plum Sparkle/Lavender Glaze</td><td><span class="rev-tag rev-pos">Hot at Sephora</span></td></tr>
+        <tr><td><span class="radar-brand">Dolce & Gabbana</span></td><td><span class="radar-product">Icy-Touch Lemon Balm</span></td><td><span class="radar-tier luxury">Luxury</span></td><td class="radar-desc">Italian lemon extract + shea butter; cooling sensation + natural gloss lip care</td><td><span class="rev-tag rev-mid">New release</span></td></tr>
+        <tr><td><span class="radar-brand">Tom Ford</span></td><td><span class="radar-product">Shade and Illuminate Soft Radiance Foundation</span></td><td><span class="radar-tier luxury">Luxury</span></td><td class="radar-desc">Radiance foundation+contour; 12-shade range; Skincare-infused formula</td><td><span class="rev-tag rev-pos">Sephora June launch · High anticipation</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="radar-subsection"><h4>🆕 New Product Radar — Masstige Makeup</h4>
+    <table class="radar-table">
+      <thead><tr><th>Brand</th><th>Product</th><th>Tier</th><th>Key Selling Points</th><th>Rating</th></tr></thead>
+      <tbody>
+        <tr><td><span class="radar-brand">Huda Beauty</span></td><td><span class="radar-product">Find Comfort Hydrating Tinted Moisturizer</span></td><td><span class="radar-tier masstige">Masstige</span></td><td class="radar-desc">Hyating tinted moisturizer; HA+ceramides+blue algae; 30 shades · Clean</td><td><span class="rev-tag rev-pos">$34 · Sephora Pre-order TOP 10</span></td></tr>
+        <tr><td><span class="radar-brand">Fenty Beauty</span></td><td><span class="radar-product">Cloud Set Blurring Powder</span></td><td><span class="radar-tier masstige">Masstige</span></td><td class="radar-desc">Blurring setting powder; Plant film-formers; 8H oil-control zero-powder feel</td><td><span class="rev-tag rev-pos">$32 · Reddit MakeupAddiction trending</span></td></tr>
+        <tr><td><span class="radar-brand">Glossier</span></td><td><span class="radar-product">Glossier You Solid</span></td><td><span class="radar-tier masstige">Masstige</span></td><td class="radar-desc">Pebble-shaped solid perfume; social media sensation + personalized skin musk</td><td><span class="rev-tag rev-pos">Viral sensation</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+
+<div class="next-week-banner">
+  <div style="font-size:32px;">📅</div>
+  <div>
+    <h3>Week 26 Preview (June 16–22)</h3>
+    <p style="opacity:0.8;margin-top:4px;">618 final results, Estée Lauder×Puig merger updates, summer makeup launch peak, functional fragrance competitive landscape</p>
+  </div>
+</div>
+
+<script>
+document.querySelectorAll('.news-card').forEach(card => {
+  card.addEventListener('click', function(e) { this.classList.toggle('open'); });
+});
+</script>
+</body>
 </html>
