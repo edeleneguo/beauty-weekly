@@ -6,9 +6,9 @@
 
 <meta charset="UTF-8">
 
-<meta name="version" content="week25-20260615-v7-div-fix">
+<meta name="version" content="week25-20260615-v8-comprehensive">
 
-<!-- Cache-bust: week25-20260615-v7-div-fix -->
+<!-- Cache-bust: week25-20260615-v8-comprehensive -->
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -234,7 +234,7 @@ body { font-family: var(--font); background: var(--body-bg); color: var(--text);
 
 .news-card-body { padding: 0 18px 14px 42px; font-size: 13px; color: var(--text-secondary); display: none !important; line-height: 1.6; }
 
-.news-card.open .news-card-body { display: block; }
+.news-card.open .news-card-body { display: block !important; }
 
 .news-card.open .news-card-header { border-bottom: 1px solid var(--border); }
 
@@ -244,6 +244,8 @@ body { font-family: var(--font); background: var(--body-bg); color: var(--text);
 .news-card-tag.capital { background: #fef9ee; color: #b8943a; }
 .news-card-tag.data { background: #f5f3fa; color: #7b6faa; }
 .news-card-tag.event { background: #eef6fc; color: #2563EB; }
+.news-card-tag.market { background: #ecfdf5; color: #065F46; }
+.news-card-tag.reg { background: #fff7ed; color: #9a3412; }
 .news-card-chevron { font-size: 18px; color: #ccc; transition: transform 0.25s; flex-shrink: 0; margin-top: 2px; }
 .news-card.open .news-card-chevron { transform: rotate(180deg); }
 .news-card-brief { font-size: 12px; color: var(--text-secondary); margin-top: 6px; padding: 0 18px 10px; line-height: 1.5; }
@@ -984,7 +986,7 @@ body { font-family: var(--font); background: var(--body-bg); color: var(--text);
       <span class="news-region-tag cn">CN</span>
 
       <span class="news-card-title">🛡️ 2026美妆新规：<span style="color:var(--cn-yellow);font-weight:700">"合规"</span>成关键词</span>
-      <span class="news-card-tag data">监管</span>
+      <span class="news-card-tag reg">监管</span>
       <span class="news-card-chevron">&#9662;</span>
 
     </div>
@@ -1036,7 +1038,7 @@ body { font-family: var(--font); background: var(--body-bg); color: var(--text);
       <span class="news-region-tag us">US</span>
 
       <span class="news-card-title">📊 Ulta Q1 香氛：DKNY飙升<span style="color:var(--us-blue);font-weight:700">58位</span></span>
-      <span class="news-card-tag data">数据</span>
+      <span class="news-card-tag market">市场</span>
       <span class="news-card-chevron">&#9662;</span>
 
     </div>
@@ -1098,7 +1100,11 @@ body { font-family: var(--font); background: var(--body-bg); color: var(--text);
 
       <div class="driver-summary">消费者不再满足于"不含什么"，而是追问"含有什么有效成分"——纯净美妆正从排除性宣称转向科学验证的功效导向。</div>
       <div class="driver-bullets">
-        <div class="bullet-group"><div class="bullet-point"><span class="region-tag" style="background:#fef9ee;color:#8b6914;">GLOBAL</span><span>该趋势正在全球范围内加速传播，多平台信号共振中。</span></div></div>
+        <div class="bullet-group">
+          <div class="bullet-point"><span class="region-tag" style="background:#fee2e2;color:#991b1b;">GLOBAL</span><span>Clean Beauty 全球市场达 <strong>$9.02B</strong>，WGSN 评级 A 级长期结构性趋势</span></div>
+          <div class="bullet-point"><span class="region-tag" style="background:#fef3c7;color:#92400e;">CN</span><span>抖音纯净美妆话题 <strong>3.2亿</strong>+45%，国货品牌加速 Clean 认证布局</span></div>
+          <div class="bullet-point"><span class="region-tag" style="background:#dbeafe;color:#1e40af;">US</span><span>Sephora Clean+Planet Aware 标签 SKU 达 <strong>2,800+</strong>，品牌进入壁垒持续提升</span></div>
+        </div>
       </div>
 
       <div class="signal-strip">
@@ -1160,7 +1166,10 @@ body { font-family: var(--font); background: var(--body-bg); color: var(--text);
 
         <div class="driver-summary us">冰蓝眼影、银色高光、珠光蓝唇——Y2K冷调美学在2026年全面爆发，蓝色已从点缀色升级为全脸妆容的主色调。</div>
       <div class="driver-bullets">
-        <div class="bullet-group"><div class="bullet-point"><span class="region-tag" style="background:#fef9ee;color:#8b6914;">GLOBAL</span><span>该趋势正在全球范围内加速传播，多平台信号共振中。</span></div></div>
+        <div class="bullet-group">
+          <div class="bullet-point"><span class="region-tag" style="background:#dbeafe;color:#1e40af;">US</span><span>YouTube 蓝色妆容教程 <strong>480万</strong>+165%，TikTok #BlueBeauty <strong>2.1亿</strong> 浏览+89%</span></div>
+          <div class="bullet-point"><span class="region-tag" style="background:#fef3c7;color:#92400e;">CN</span><span>冰蓝冷调在中国社媒同步升温，小红书蓝色系眼影笔记 <strong>+62%</strong></span></div>
+        </div>
       </div>
 
         <div class="signal-strip">
@@ -1218,7 +1227,10 @@ body { font-family: var(--font); background: var(--body-bg); color: var(--text);
 
         <div class="driver-summary us">"Clean Girl"极简审美退潮，消费者拥抱大胆自我表达——浓郁唇色、图形化眼线、金属光泽全脸妆容正在接管社交媒体。</div>
       <div class="driver-bullets">
-        <div class="bullet-group"><div class="bullet-point"><span class="region-tag" style="background:#fef9ee;color:#8b6914;">GLOBAL</span><span>该趋势正在全球范围内加速传播，多平台信号共振中。</span></div></div>
+        <div class="bullet-group">
+          <div class="bullet-point"><span class="region-tag" style="background:#dbeafe;color:#1e40af;">US</span><span>TikTok #BoldLip <strong>8.7亿</strong>+43%，MAC 占追踪品牌 SOV <strong>42%</strong></span></div>
+          <div class="bullet-point"><span class="region-tag" style="background:#fef3c7;color:#92400e;">CN</span><span>抖音浓郁唇色教程同步增长，深莓果/梅子紫搜索 <strong>+38%</strong></span></div>
+        </div>
       </div>
 
         <div class="signal-strip">
@@ -1276,7 +1288,10 @@ body { font-family: var(--font); background: var(--body-bg); color: var(--text);
 
         <div class="driver-summary us">柔焦"云朵肌"与暖调"烤色妆"成为TikTok双热点——前者追求朦胧滤镜般的无瑕底妆，后者以烤杏仁色调营造温暖高级感。</div>
       <div class="driver-bullets">
-        <div class="bullet-group"><div class="bullet-point"><span class="region-tag" style="background:#fef9ee;color:#8b6914;">GLOBAL</span><span>该趋势正在全球范围内加速传播，多平台信号共振中。</span></div></div>
+        <div class="bullet-group">
+          <div class="bullet-point"><span class="region-tag" style="background:#dbeafe;color:#1e40af;">US</span><span>TikTok #CloudSkin <strong>1.4亿</strong>+112%，混合彩妆品类增长 <strong>+9%</strong></span></div>
+          <div class="bullet-point"><span class="region-tag" style="background:#fef3c7;color:#92400e;">CN</span><span>抖音"云朵肌"相关话题 <strong>6,800万</strong>，柔焦散粉增速 <strong>+25%</strong></span></div>
+        </div>
       </div>
 
         <div class="signal-strip">
@@ -1348,7 +1363,10 @@ body { font-family: var(--font); background: var(--body-bg); color: var(--text);
 
         <div class="driver-summary">抖音精选数据显示82%的18-35岁用户认为低饱和粉彩色系最适合春夏——不突兀、提气色，成为2026年国货彩妆色彩开发的核心方向。</div>
       <div class="driver-bullets">
-        <div class="bullet-group"><div class="bullet-point"><span class="region-tag" style="background:#fef9ee;color:#8b6914;">GLOBAL</span><span>该趋势正在全球范围内加速传播，多平台信号共振中。</span></div></div>
+        <div class="bullet-group">
+          <div class="bullet-point"><span class="region-tag" style="background:#fef3c7;color:#92400e;">CN</span><span>82% 18-35岁用户偏好粉彩色系，小红书奶油腮红 <strong>180万+</strong> 笔记+68%</span></div>
+          <div class="bullet-point"><span class="region-tag" style="background:#dbeafe;color:#1e40af;">US</span><span>Pinterest 黄油黄搜索 <strong>+1,043%</strong>，粉彩趋势北美同步兴起</span></div>
+        </div>
       </div>
 
         <div class="signal-strip">
@@ -1392,7 +1410,10 @@ body { font-family: var(--font); background: var(--body-bg); color: var(--text);
 
         <div class="driver-summary">抖音618彩妆TOP1蒂洛薇成为现象级新锐，同时珀莱雅以近8亿控股花知晓——国货彩妆进入"资本整合+爆品驱动"双引擎时代。</div>
       <div class="driver-bullets">
-        <div class="bullet-group"><div class="bullet-point"><span class="region-tag" style="background:#fef9ee;color:#8b6914;">GLOBAL</span><span>该趋势正在全球范围内加速传播，多平台信号共振中。</span></div></div>
+        <div class="bullet-group">
+          <div class="bullet-point"><span class="region-tag" style="background:#fef3c7;color:#92400e;">CN</span><span>蒂洛薇抖音618彩妆 <strong>TOP1</strong>，珀莱雅近8亿控股花知晓，国货份额 <strong>57.37%</strong></span></div>
+          <div class="bullet-point"><span class="region-tag" style="background:#dbeafe;color:#1e40af;">US</span><span>Indie 品牌在 Sephora 份额提升，Rare Beauty/Tower 28 持续抢占 Masstige 空间</span></div>
+        </div>
       </div>
 
         <div class="signal-strip">
@@ -1436,7 +1457,10 @@ body { font-family: var(--font); background: var(--body-bg); color: var(--text);
 
         <div class="driver-summary">中国底妆市场进入成分驱动阶段——控油持妆仍是核心卖点，但"精华粉底液"（含养肤成分的底妆）和局部精准遮瑕成为新增长极。</div>
       <div class="driver-bullets">
-        <div class="bullet-group"><div class="bullet-point"><span class="region-tag" style="background:#fef9ee;color:#8b6914;">GLOBAL</span><span>该趋势正在全球范围内加速传播，多平台信号共振中。</span></div></div>
+        <div class="bullet-group">
+          <div class="bullet-point"><span class="region-tag" style="background:#fef3c7;color:#92400e;">CN</span><span>底妆品类 GMV <strong>¥45亿</strong>+18%，精华粉底搜索 <strong>+85%</strong> YoY</span></div>
+          <div class="bullet-point"><span class="region-tag" style="background:#dbeafe;color:#1e40af;">US</span><span>Sephora 护肤型底妆 SKU 扩容，Rare Beauty 有色面霜预售即 <strong>TOP 10</strong></span></div>
+        </div>
       </div>
 
         <div class="signal-strip">
@@ -1473,6 +1497,8 @@ body { font-family: var(--font); background: var(--body-bg); color: var(--text);
 
 
 <!-- Heat Ranking -->
+
+<h2 class="section-title">🔥 彩妆热度排行</h2>
 
 <div class="heat-section">
 
@@ -1651,6 +1677,8 @@ body { font-family: var(--font); background: var(--body-bg); color: var(--text);
 
 
 <!-- New Product Radar -->
+
+<h2 class="section-title">🆕 彩妆新品雷达</h2>
 
 <div class="radar-section">
 
@@ -1949,14 +1977,6 @@ body { font-family: var(--font); background: var(--body-bg); color: var(--text);
 
 
 <script>
-
-// News card toggle
-
-document.querySelectorAll('.news-card').forEach(card => {
-
-  card.addEventListener('click', function(e) { this.classList.toggle('open'); });
-
-});
 
 // Week selector stopPropagation already inline
 
