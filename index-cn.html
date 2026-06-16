@@ -2470,6 +2470,33 @@ Heat ranking based on <strong>Sales 50% + Buzz 50%</strong>:<br><br>
 </div>
 </div>
 
+<script>
+// === Accordion: News Cards ===
+document.querySelectorAll('.news-card[onclick]').forEach(function(card) {
+  card.removeAttribute('onclick');
+  card.addEventListener('click', function(e) {
+    if (e.target.closest('a')) return;
+    this.classList.toggle('open');
+  });
+});
 
+// === Accordion: Heat Items ===
+document.querySelectorAll('.heat-item[onclick]').forEach(function(item) {
+  item.removeAttribute('onclick');
+  item.addEventListener('click', function(e) {
+    if (e.target.closest('a')) return;
+    this.classList.toggle('open');
+  });
+});
+
+// === Accordion: Trend Cards ===
+document.querySelectorAll('.trend-v-header[onclick]').forEach(function(header) {
+  header.removeAttribute('onclick');
+  header.addEventListener('click', function(e) {
+    if (e.target.closest('a')) return;
+    this.parentElement.classList.toggle('open');
+  });
+});
+</script>
 </body>
 </html>
