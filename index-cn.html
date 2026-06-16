@@ -262,12 +262,6 @@ body { font-family: var(--font); background: var(--body-bg); color: var(--text);
 .act-header { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
 .act-label { font-size: 11px; font-weight: 700; color: var(--coral); }
 .act-direction { font-size: 12px; color: var(--text); flex: 1; min-width: 200px; }
-.act-strength { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 4px; flex-shrink: 0; }
-.act-strength.strong { background: #fee2e2; color: #991b1b; }
-.act-strength.mid { background: #fef3c7; color: #92400e; }
-.act-content { font-size: 12px; color: var(--text-secondary); margin-top: 8px; line-height: 1.7; }
-.act-content div { margin: 3px 0; }
-.act-content strong { color: var(--text); }
 
 
 /* Trend Grid */
@@ -370,48 +364,6 @@ body { font-family: var(--font); background: var(--body-bg); color: var(--text);
 
 .us .driver-summary { background: #f0fdf4; border-left-color: var(--teal); }
 
-.driver-chain { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; font-size: 12px; }
-
-.chain-node {
-
-  padding: 4px 10px;
-
-  border-radius: 14px;
-
-  font-weight: 600;
-
-  font-size: 11px;
-
-}
-
-.chain-node.trigger { background: #fef3c7; color: #92400E; }
-
-.chain-node.ferment { background: #fce7f3; color: #9D174D; }
-
-.chain-node.diverge { background: #dbeafe; color: #1E40AF; }
-
-.chain-arrow { color: var(--text-muted); }
-
-.driver-expand { display: flex; flex-wrap: wrap; gap: 6px; }
-
-.driver-expand span {
-
-  font-size: 11px;
-
-  padding: 3px 10px;
-
-  border-radius: 12px;
-
-  font-weight: 500;
-
-}
-
-.exp-chip.cn { background: #fef3c7; color: #92400E; }
-
-.exp-chip.us { background: #dbeafe; color: #1E40AF; }
-
-.exp-chip.global { background: #fee2e2; color: #991B1B; }
-
 
 
 /* Signal Strip */
@@ -479,44 +431,6 @@ body { font-family: var(--font); background: var(--body-bg); color: var(--text);
 
 
 /* Action Strip */
-
-.action-strip {
-
-  border: 1px dashed var(--gold);
-
-  border-radius: 8px;
-
-  padding: 12px 14px;
-
-  margin-top: 14px;
-
-  display: flex;
-
-  align-items: flex-start;
-
-  gap: 10px;
-
-}
-
-.action-tag {
-
-  background: var(--coral);
-
-  color: white;
-
-  font-size: 10px;
-
-  font-weight: 700;
-
-  padding: 3px 10px;
-
-  border-radius: 4px;
-
-  flex-shrink: 0;
-
-}
-
-.action-text { font-size: 13px; color: var(--text-secondary); flex: 1; }
 
 
 
@@ -606,7 +520,6 @@ body { font-family: var(--font); background: var(--body-bg); color: var(--text);
 
 .heat-fill.cn-fill { background: linear-gradient(90deg, var(--cn-yellow), #FBBF24); }
 
-.heat-data { font-size: 11px; color: var(--text-muted); margin-top: 4px; }
 /* Heat Accordion - v6 fix */
 .heat-item { cursor: pointer; border-bottom: 1px solid var(--border); padding: 0; }
 .heat-item:last-child { border-bottom: none; }
@@ -634,7 +547,6 @@ body { font-family: var(--font); background: var(--body-bg); color: var(--text);
 .heat-item.open .heat-tier-tag { margin-left: 6px; vertical-align: middle; }
 .heat-item.open .heat-chevron { transform: rotate(180deg); }
 
-/* Heat Detail Grid - v9 reference template */
 .heat-platform-line { font-size:10px; color: var(--text-muted); padding: 0 48px 6px; display:none; }
 .heat-item.open .heat-platform-line { display:block; }
 .heat-detail { display: none; padding: 12px 48px 14px; }
@@ -649,8 +561,6 @@ body { font-family: var(--font); background: var(--body-bg); color: var(--text);
 .heat-social-pill.tt { background:#eff6ff; color:#1e40af; }
 .heat-social-pill.yt { background:#fef2f2; color:#991b1b; }
 .heat-social-pin { background:#fff7ed; color:#9a3412; }
-.heat-product-link { font-size:11px; color:var(--us-blue); text-decoration:none; font-weight:600; }
-.heat-product-link:hover { text-decoration:underline; }
 
 
 
@@ -659,30 +569,6 @@ body { font-family: var(--font); background: var(--body-bg); color: var(--text);
 /* Radar */
 
 .radar-section { margin-bottom: 24px; }
-
-.radar-subsection { margin-bottom: 20px; }
-
-.radar-subsection h4 { font-size: 15px; font-weight: 700; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
-
-.radar-table { width: 100%; border-collapse: collapse; background: var(--card-bg); border-radius: 10px; overflow: hidden; border: 1px solid var(--border); }
-
-.radar-table th { background: #fafafa; padding: 12px 14px; font-size: 11px; font-weight: 700; text-align: left; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid var(--border); }
-
-.radar-table td { padding: 12px 14px; font-size: 13px; border-bottom: 1px solid var(--border); }
-
-.radar-table tr:last-child td { border-bottom: none; }
-
-.radar-brand { font-weight: 700; }
-
-.radar-product { font-weight: 600; }
-
-.radar-desc { color: var(--text-secondary); font-size: 12px; }
-
-.radar-tier { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 4px; }
-
-.radar-tier.luxury { background: #fef3c7; color: #92400E; }
-
-.radar-tier.masstige { background: #dbeafe; color: #1E40AF; }
 
 
 
@@ -708,33 +594,7 @@ body { font-family: var(--font); background: var(--body-bg); color: var(--text);
 
 .hl-coral { color: var(--coral); font-weight: 700; }
 
-.hl-lavender { color: var(--lavender); font-weight: 700; }
-
 .hl-positive { color: #16a34a; font-weight: 700; }
-
-.hl-negative { color: #dc2626; font-weight: 700; }
-
-
-
-/* Fragrance specific */
-
-.frag-note-tag { font-size: 10px; padding: 2px 8px; border-radius: 4px; font-weight: 600; margin: 0 2px; }
-
-.frag-woody { background: #ede9fe; color: #6D28D9; }
-
-.frag-floral { background: #fce7f3; color: #BE185D; }
-
-.frag-fruity { background: #fef3c7; color: #B45309; }
-
-.frag-gourmand { background: #fef9c3; color: #92400E; }
-
-.frag-aquatic { background: #dbeafe; color: #1E40AF; }
-
-.frag-green { background: #dcfce7; color: #166534; }
-
-.frag-musk { background: #f3f4f6; color: #4B5563; }
-
-.frag-tea { background: #ecfdf5; color: #065F46; }
 
 
 
@@ -765,42 +625,6 @@ body { font-family: var(--font); background: var(--body-bg); color: var(--text);
 .appendix-table .cat-divider { background: #fafafa; font-weight: 700; font-size: 12px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px; }
 
 .appendix-table .cat-divider td { padding: 10px 14px; border-bottom: 2px solid var(--border); }
-
-.source-badge { display: inline-block; font-size: 10px; padding: 2px 8px; border-radius: 3px; margin: 1px 2px; }
-
-.source-cn { background: #fef3c7; color: #92400E; }
-
-.source-us { background: #dbeafe; color: #1E40AF; }
-
-
-
-/* Next Week Banner */
-
-.next-week-banner {
-
-  max-width: 1400px;
-
-  margin: 0 auto 40px;
-
-  padding: 20px 32px;
-
-  background: linear-gradient(135deg, #1e293b, #334155);
-
-  color: white;
-
-  border-radius: 12px;
-
-  font-size: 14px;
-
-  display: flex;
-
-  align-items: center;
-
-  gap: 16px;
-
-}
-
-.next-week-banner h3 { font-size: 16px; font-weight: 700; }
 
 
 
