@@ -866,31 +866,6 @@ body {
 .appendix-table .cat-divider td:first-child { border-radius: 6px 0 0 6px; }
 .appendix-table .cat-divider td:last-child { border-radius: 0 6px 6px 0; }
 
-.radar-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 16px; }
-.radar-item {
-  border: 1px solid var(--border-subtle);
-  border-radius: 12px;
-  overflow: hidden;
-  background: var(--bg-card);
-  transition: all 0.25s;
-}
-.radar-item:hover { border-color: rgba(214, 0, 28, 0.25); box-shadow: 0 2px 16px rgba(214, 0, 28, 0.08); }
-.radar-item.open { border-color: rgba(214, 0, 28, 0.25); box-shadow: 0 3px 20px rgba(214, 0, 28, 0.10); }
-.radar-item-header { display: flex; align-items: center; gap: 14px; padding: 16px 18px; cursor: pointer; user-select: none; transition: background 0.2s; }
-.radar-item-header:hover { background: var(--bg-hover); }
-.radar-item .radar-brand { font-size: 15px; font-weight: 700; color: var(--text); width: 155px; flex-shrink: 0; letter-spacing: -0.2px; }
-.radar-item .radar-name { font-size: 14px; font-weight: 500; color: var(--text-secondary); flex: 1; line-height: 1.4; }
-.radar-item .radar-cat { font-size: 11px; font-weight: 500; color: var(--zuru-red); background: var(--zuru-red-light); padding: 4px 12px; border-radius: 20px; flex-shrink: 0; letter-spacing: 0.3px; }
-.radar-item .radar-chevron { font-size: 22px; color: var(--text-tertiary); transition: transform 0.25s; margin-left: 4px; flex-shrink: 0; cursor: pointer; }
-.radar-item.open .radar-chevron { transform: rotate(180deg); color: var(--zuru-red); }
-.radar-detail { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
-.radar-item.open .radar-detail { max-height: 500px; }
-.radar-detail-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 24px; padding: 0 18px 18px; font-size: 13px; }
-.radar-detail-inner .cell-label { font-size: 10px; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 2px; font-weight: 600; }
-.radar-detail-inner .cell-value { font-size: 13px; color: var(--text); line-height: 1.5; }
-.radar-detail-inner .cell-value a { color: var(--zuru-red); text-decoration: none; font-weight: 500; }
-.radar-detail-inner .cell-value a:hover { text-decoration: underline; }
-.radar-detail-inner .cell-tags { display: flex; flex-wrap: wrap; gap: 5px; }
 @media (max-width: 768px) {
   .signal-strip { grid-template-columns: repeat(2, 1fr); }
   .heat-section { grid-template-columns: 1fr; }
