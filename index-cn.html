@@ -6,13 +6,33 @@
 
 <meta charset="UTF-8">
 
-<meta name="version" content="week25-cn-20260618-n03n04-css">
-
-<!-- Cache-bust: week25-cn-20260618-n03n04-css -->
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>美妆行业周报 Week 25 | ZURU EDGE</title>
+
+<meta name="description" content="美妆行业周报 — 2026年第25周。中美市场趋势、热度排名、新品雷达。">
+
+<meta name="author" content="ZURU EDGE NPD Strategy">
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💄</text></svg>">
+
+<meta property="og:title" content="美妆行业周报 Week 25 | ZURU EDGE">
+
+<meta property="og:description" content="美妆行业周报 — 2026年第25周。中美市场趋势、热度排名、新品雷达。">
+
+<meta property="og:type" content="website">
+
+<meta property="og:url" content="https://edeleneguo.github.io/beauty-weekly/index-cn.html">
+
+<meta name="version" content="week25-cn-20260618-phase3-l01to07">
+
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+
+<meta http-equiv="Pragma" content="no-cache">
+
+<meta http-equiv="Expires" content="0">
+
+<!-- Cache-bust: week25-cn-20260618-phase3-l01to07 -->
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 
@@ -319,7 +339,7 @@
 
       <span>|</span>
 
-      <select class="week-select" onchange="if(this.value) window.location.href=this.value" onclick="event.stopPropagation()">
+      <select class="week-select" aria-label="往期回顾周选择器" onchange="if(this.value) window.location.href=this.value">
 
         <option value="">往期回顾 ▾</option>
 
@@ -1968,6 +1988,12 @@ document.querySelectorAll('.trend-v-header').forEach(function(header) {
     this.parentElement.classList.toggle('open');
   });
 });
+
+// === Week Select: stop propagation ===
+var weekSelect = document.querySelector('.week-select');
+if (weekSelect) {
+  weekSelect.addEventListener('click', function(e) { e.stopPropagation(); });
+}
 </script>
 </body>
 </html>
