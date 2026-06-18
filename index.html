@@ -10,7 +10,21 @@
 
 <title>Makeup Industry Weekly | Week 25, 2026</title>
 
-<meta name="version" content="week25-en-20260618-n03n04-css-onclick">
+<meta name="description" content="Makeup industry weekly intelligence — Week 25, 2026. CN & US market trends, heat rankings, new product radar.">
+
+<meta name="author" content="ZURU EDGE NPD Strategy">
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💄</text></svg>">
+
+<meta property="og:title" content="Makeup Industry Weekly | Week 25, 2026">
+
+<meta property="og:description" content="Makeup industry weekly intelligence — Week 25, 2026. CN & US market trends, heat rankings, new product radar.">
+
+<meta property="og:type" content="website">
+
+<meta property="og:url" content="https://edeleneguo.github.io/beauty-weekly/">
+
+<meta name="version" content="week25-en-20260618-phase3-l01to07">
 
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 
@@ -18,7 +32,7 @@
 
 <meta http-equiv="Expires" content="0">
 
-<!-- Cache-bust: week25-en-20260615-v3-template-fix -->
+<!-- Cache-bust: week25-en-20260618-phase3-l01to07 -->
 
 <style>:root {
 
@@ -406,7 +420,7 @@
 
     <div class="week-selector" id="weekSelectorMakeup">
 
-      <button class="week-selector-btn" onclick="event.stopPropagation();toggleWeekDropdown('weekSelectorMakeup')">
+      <button class="week-selector-btn" aria-label="Past issues week selector">
 
         Past Issues <span class="week-arrow">▾</span>
 
@@ -414,7 +428,7 @@
 
       <div class="week-dropdown">
 
-        <button class="week-dropdown-item current" disabled>Week 25 (Current)</button>
+        <button class="week-dropdown-item current" disabled aria-label="Current week">Week 25 (Current)</button>
 
         <div class="week-dropdown-divider"></div>
 
@@ -1918,6 +1932,24 @@ document.querySelectorAll('.radar-item-header').forEach(function(header) {
 
 
 // Week Selector Dropdown
+
+document.querySelector('.week-selector-btn').addEventListener('click', function(e) {
+
+  e.stopPropagation();
+
+  toggleWeekDropdown('weekSelectorMakeup');
+
+});
+
+
+
+document.querySelector('.week-dropdown').addEventListener('click', function(e) {
+
+  e.stopPropagation();
+
+});
+
+
 
 function toggleWeekDropdown(id) {
 
