@@ -24,7 +24,7 @@
 
 <meta property="og:url" content="https://edeleneguo.github.io/beauty-weekly/index-cn.html">
 
-<meta name="version" content="week25-cn-20260618-phase12-rebalance">
+<meta name="version" content="week25-cn-20260618-phase13-chipcolor">
 
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 
@@ -32,7 +32,7 @@
 
 <meta http-equiv="Expires" content="0">
 
-<!-- Cache-bust: week25-cn-20260618-phase12-rebalance -->
+<!-- Cache-bust: week25-cn-20260618-phase13-chipcolor -->
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 
@@ -261,7 +261,27 @@
 
   border: 1px solid var(--border);
 
-}.signal-chip.yt { border-left: 3px solid #FF0000; }.signal-chip.tt { border-left: 3px solid #000000; }.signal-chip.seph { border-left: 3px solid var(--teal); }.signal-chip.pin { border-left: 3px solid #E60023; }.signal-chip.wgsn { border-left: 3px solid var(--lavender); }.signal-chip.gtrends { border-left: 3px solid #4285F4; }.signal-chip.douyin { border-left: 3px solid #FF4D4F; }.signal-chip.xhs { border-left: 3px solid #FF6B6B; }.signal-chip.tmall { border-left: 3px solid #FF6A00; }.chip-num { font-size: 20px; font-weight: 800; margin: 4px 0; }.chip-desc { font-size: 10px; color: var(--text-muted); }.chip-arrow { font-size: 11px; font-weight: 600; }.chip-arrow.up { color: #16a34a; }.chip-arrow.down { color: #dc2626; }.chip-icon { font-size: 16px; margin-bottom: 2px; }.chip-tag { font-size: 9px; color: #16a34a; font-weight: 600; margin-top: 4px; padding: 2px 0; }.chip-sub { font-size: 10px; color: var(--text-muted); margin-top: 2px; }/* Action Strip */
+/* Chip country color coding: US=blue, CN=yellow, GLOBAL=red */
+.signal-chip.chip-us { border-left-color: var(--us-blue); }
+.signal-chip.chip-cn { border-left-color: var(--cn-yellow); }
+.signal-chip.chip-global { border-left-color: var(--zurured); }
+
+/* US blue gradient */
+.signal-chip.chip-us.chip-1 { border-left-color: #2563EB; }
+.signal-chip.chip-us.chip-2 { border-left-color: #60A5FA; }
+.signal-chip.chip-us.chip-3 { border-left-color: #93C5FD; }
+
+/* CN yellow gradient */
+.signal-chip.chip-cn.chip-1 { border-left-color: #F59E0B; }
+.signal-chip.chip-cn.chip-2 { border-left-color: #FBBF24; }
+.signal-chip.chip-cn.chip-3 { border-left-color: #FDE68A; }
+
+/* GLOBAL red gradient */
+.signal-chip.chip-global.chip-1 { border-left-color: #D6001C; }
+.signal-chip.chip-global.chip-2 { border-left-color: #EF4444; }
+.signal-chip.chip-global.chip-3 { border-left-color: #FCA5A5; }
+
+.chip-num { font-size: 20px; font-weight: 800; margin: 4px 0; }.chip-desc { font-size: 10px; color: var(--text-muted); }.chip-arrow { font-size: 11px; font-weight: 600; }.chip-arrow.up { color: #16a34a; }.chip-arrow.down { color: #dc2626; }.chip-icon { font-size: 16px; margin-bottom: 2px; }.chip-tag { font-size: 9px; color: #16a34a; font-weight: 600; margin-top: 4px; padding: 2px 0; }.chip-sub { font-size: 10px; color: var(--text-muted); margin-top: 2px; }/* Action Strip */
 
 
 
@@ -588,12 +608,12 @@
       </div>
 
       <div class="signal-strip">
-        <div class="signal-chip global"><div class="chip-icon">🌍</div><div class="chip-desc">全球混合彩妆市场</div><div class="chip-num">74.5亿美元</div><div class="chip-arrow up">CAGR 8.5%</div><div class="chip-tag">📈市场扩容</div></div>
-        <div class="signal-chip seph"><div class="chip-icon">🛒</div><div class="chip-desc">Sephora</div><div class="chip-num">+65%</div><div class="chip-arrow up">养肤彩妆SKU</div><div class="chip-tag">↑品类扩张</div></div>
-        <div class="signal-chip wgsn"><div class="chip-icon">🔮</div><div class="chip-desc">WGSN 2026关键词</div><div class="chip-num">持久功效</div><div class="chip-sub">高优先级</div><div class="chip-tag">⭐权威认证</div></div>
-        <div class="signal-chip meixiu"><div class="chip-icon">📊</div><div class="chip-desc">美修大数据</div><div class="chip-num">+180%</div><div class="chip-arrow up">神经酰胺备案量</div><div class="chip-tag">↑成分趋势</div></div>
-        <div class="signal-chip tmall"><div class="chip-icon">🛒</div><div class="chip-desc">天猫 精华粉底搜索</div><div class="chip-num">+85%</div><div class="chip-arrow up">YoY</div><div class="chip-tag">↑搜索激增</div></div>
-        <div class="signal-chip douyin"><div class="chip-icon">🎵</div><div class="chip-desc">抖音 干皮粉底消费者</div><div class="chip-num">87%</div><div class="chip-arrow up">关注养肤功效</div><div class="chip-tag">💧需求驱动</div></div>
+        <div class="signal-chip chip-global chip-1"><div class="chip-icon">🌍</div><div class="chip-desc">全球混合彩妆市场</div><div class="chip-num">74.5亿美元</div><div class="chip-arrow up">CAGR 8.5%</div><div class="chip-tag">📈市场扩容</div></div>
+        <div class="signal-chip chip-us chip-1"><div class="chip-icon">🛒</div><div class="chip-desc">Sephora</div><div class="chip-num">+65%</div><div class="chip-arrow up">养肤彩妆SKU</div><div class="chip-tag">↑品类扩张</div></div>
+        <div class="signal-chip chip-global chip-2"><div class="chip-icon">🔮</div><div class="chip-desc">WGSN 2026关键词</div><div class="chip-num">持久功效</div><div class="chip-sub">高优先级</div><div class="chip-tag">⭐权威认证</div></div>
+        <div class="signal-chip chip-cn chip-1"><div class="chip-icon">📊</div><div class="chip-desc">美修大数据</div><div class="chip-num">+180%</div><div class="chip-arrow up">神经酰胺备案量</div><div class="chip-tag">↑成分趋势</div></div>
+        <div class="signal-chip chip-cn chip-2"><div class="chip-icon">🛒</div><div class="chip-desc">天猫 精华粉底搜索</div><div class="chip-num">+85%</div><div class="chip-arrow up">YoY</div><div class="chip-tag">↑搜索激增</div></div>
+        <div class="signal-chip chip-cn chip-3"><div class="chip-icon">🎵</div><div class="chip-desc">抖音 干皮粉底消费者</div><div class="chip-num">87%</div><div class="chip-arrow up">关注养肤功效</div><div class="chip-tag">💧需求驱动</div></div>
       </div>
 
       <div class="action-block">
@@ -627,10 +647,10 @@
       </div>
 
       <div class="signal-strip">
-        <div class="signal-chip douyin"><div class="chip-icon">🎵</div><div class="chip-desc">抖音搜索</div><div class="chip-num">+86,150%</div><div class="chip-arrow up">"水润不沾杯"</div><div class="chip-tag">🔥现象级爆发</div></div>
-        <div class="signal-chip seph"><div class="chip-icon">🛒</div><div class="chip-desc">Sephora</div><div class="chip-num">+42%</div><div class="chip-arrow up">唇部护理品类</div><div class="chip-tag">↑品类升温</div></div>
-        <div class="signal-chip ingredient"><div class="chip-icon">🧪</div><div class="chip-desc">功效唇部配方</div><div class="chip-num">神经酰胺+胜肽</div><div class="chip-sub">核心方向</div><div class="chip-tag">⭐成分驱动</div></div>
-        <div class="signal-chip blue"><div class="chip-icon">🌊</div><div class="chip-desc">蓝海市场</div><div class="chip-num">防晒唇膏</div><div class="chip-sub">双边市场空白</div><div class="chip-tag">👑先发优势</div></div>
+        <div class="signal-chip chip-cn chip-1"><div class="chip-icon">🎵</div><div class="chip-desc">抖音搜索</div><div class="chip-num">+86,150%</div><div class="chip-arrow up">"水润不沾杯"</div><div class="chip-tag">🔥现象级爆发</div></div>
+        <div class="signal-chip chip-us chip-1"><div class="chip-icon">🛒</div><div class="chip-desc">Sephora</div><div class="chip-num">+42%</div><div class="chip-arrow up">唇部护理品类</div><div class="chip-tag">↑品类升温</div></div>
+        <div class="signal-chip chip-global chip-1"><div class="chip-icon">🧪</div><div class="chip-desc">功效唇部配方</div><div class="chip-num">神经酰胺+胜肽</div><div class="chip-sub">核心方向</div><div class="chip-tag">⭐成分驱动</div></div>
+        <div class="signal-chip chip-global chip-2"><div class="chip-icon">🌊</div><div class="chip-desc">蓝海市场</div><div class="chip-num">防晒唇膏</div><div class="chip-sub">双边市场空白</div><div class="chip-tag">👑先发优势</div></div>
       </div>
 
       <div class="action-block">
@@ -669,9 +689,9 @@
       <div class="trend-v-body">
         <div class="driver-summary us">蓝色正从点缀色升级为主色调，形成一组以冷调 Y2K 为视觉锚点的完整彩妆风格：冰蓝、银白、香槟金等多功能彩妆棒是最具代表性的产品形态，既可作眼影也可提亮颧骨与内眼角；这种高饱和冷调与 2000s 未来感金属光泽结合，正在替代大地色成为妆容主视觉。</div>
         <div class="signal-strip">
-          <div class="signal-chip tt"><div class="chip-icon">🎵</div><div class="chip-desc">TikTok #BlueBeauty</div><div class="chip-num">2.1亿</div><div class="chip-arrow up">+89%</div><div class="chip-tag">↑病毒传播</div></div>
-          <div class="signal-chip yt"><div class="chip-icon">📺</div><div class="chip-desc">YouTube 蓝色妆容教程</div><div class="chip-num">480万</div><div class="chip-arrow up">+165%</div><div class="chip-tag">↑爆发式增长</div></div>
-          <div class="signal-chip pin"><div class="chip-icon">📌</div><div class="chip-desc">Pinterest 蓝色美妆搜索</div><div class="chip-num">+210%</div><div class="chip-arrow up">YoY</div><div class="chip-tag">↑搜索激增</div></div>
+          <div class="signal-chip chip-us chip-1"><div class="chip-icon">🎵</div><div class="chip-desc">TikTok #BlueBeauty</div><div class="chip-num">2.1亿</div><div class="chip-arrow up">+89%</div><div class="chip-tag">↑病毒传播</div></div>
+          <div class="signal-chip chip-us chip-2"><div class="chip-icon">📺</div><div class="chip-desc">YouTube 蓝色妆容教程</div><div class="chip-num">480万</div><div class="chip-arrow up">+165%</div><div class="chip-tag">↑爆发式增长</div></div>
+          <div class="signal-chip chip-us chip-3"><div class="chip-icon">📌</div><div class="chip-desc">Pinterest 蓝色美妆搜索</div><div class="chip-num">+210%</div><div class="chip-arrow up">YoY</div><div class="chip-tag">↑搜索激增</div></div>
         </div>
 
         <div class="action-block">
@@ -696,9 +716,9 @@
       <div class="trend-v-body">
         <div class="driver-summary us">新极繁主义是对 Clean Girl 极简审美的一次反弹，强调妆容作为自我表达工具：唇妆走向高饱和浓郁色叠加金属闪粉顶涂，眼线从日常细线扩展为几何图形、双色拼接与猫眼 wing 等创意形态，整体呈现戏剧化、高光泽、多层次的派对妆容美学。</div>
         <div class="signal-strip">
-          <div class="signal-chip tt"><div class="chip-icon">🎵</div><div class="chip-desc">TikTok #BoldLip</div><div class="chip-num">8.7亿</div><div class="chip-arrow up">+43%</div><div class="chip-tag">↑爆发式增长</div></div>
-          <div class="signal-chip yt"><div class="chip-icon">📺</div><div class="chip-desc">YouTube 极繁妆容教程</div><div class="chip-num">320万</div><div class="chip-arrow up">+78%</div><div class="chip-tag">↑教程热度</div></div>
-          <div class="signal-chip pin"><div class="chip-icon">📌</div><div class="chip-desc">Pinterest 大胆彩妆搜索</div><div class="chip-num">+95%</div><div class="chip-arrow up">YoY</div><div class="chip-tag">↑搜索激增</div></div>
+          <div class="signal-chip chip-us chip-1"><div class="chip-icon">🎵</div><div class="chip-desc">TikTok #BoldLip</div><div class="chip-num">8.7亿</div><div class="chip-arrow up">+43%</div><div class="chip-tag">↑爆发式增长</div></div>
+          <div class="signal-chip chip-us chip-2"><div class="chip-icon">📺</div><div class="chip-desc">YouTube 极繁妆容教程</div><div class="chip-num">320万</div><div class="chip-arrow up">+78%</div><div class="chip-tag">↑教程热度</div></div>
+          <div class="signal-chip chip-us chip-3"><div class="chip-icon">📌</div><div class="chip-desc">Pinterest 大胆彩妆搜索</div><div class="chip-num">+95%</div><div class="chip-arrow up">YoY</div><div class="chip-tag">↑搜索激增</div></div>
         </div>
 
         <div class="action-block">
@@ -723,9 +743,9 @@
       <div class="trend-v-body">
         <div class="driver-summary us">"云朵肌"追求的是像柔焦滤镜般的皮肤质感：轻薄、微光泽、无明显粉感，同时保留肌肤自然纹理；"烤色妆"则偏向暖调可可、焦糖与陶土色的面部修容，通过 bronzer 与腮红一体化打造阳光晒后感。两种风格共同指向"底妆+护肤"的复合型产品需求。</div>
         <div class="signal-strip">
-          <div class="signal-chip tt"><div class="chip-icon">🎵</div><div class="chip-desc">TikTok #CloudSkin</div><div class="chip-num">1.4亿</div><div class="chip-arrow up">+112%</div><div class="chip-tag">↑爆发式增长</div></div>
-          <div class="signal-chip gtrends"><div class="chip-icon">📊</div><div class="chip-desc">Google "Toasty Makeup"</div><div class="chip-num">+4525%</div><div class="chip-arrow up">搜索激增</div><div class="chip-tag">🔥全球爆发</div></div>
-          <div class="signal-chip pin"><div class="chip-icon">📌</div><div class="chip-desc">Pinterest "Toasty Makeup"</div><div class="chip-num">+1566%</div><div class="chip-arrow up">搜索激增</div><div class="chip-tag">📌灵感热度</div></div>
+          <div class="signal-chip chip-us chip-1"><div class="chip-icon">🎵</div><div class="chip-desc">TikTok #CloudSkin</div><div class="chip-num">1.4亿</div><div class="chip-arrow up">+112%</div><div class="chip-tag">↑爆发式增长</div></div>
+          <div class="signal-chip chip-us chip-2"><div class="chip-icon">📊</div><div class="chip-desc">Google "Toasty Makeup"</div><div class="chip-num">+4525%</div><div class="chip-arrow up">搜索激增</div><div class="chip-tag">🔥全球爆发</div></div>
+          <div class="signal-chip chip-us chip-3"><div class="chip-icon">📌</div><div class="chip-desc">Pinterest "Toasty Makeup"</div><div class="chip-num">+1566%</div><div class="chip-arrow up">搜索激增</div><div class="chip-tag">📌灵感热度</div></div>
         </div>
 
         <div class="action-block">
@@ -750,8 +770,8 @@
       <div class="trend-v-body">
         <div class="driver-summary us">黄油黄（Butter Yellow）正在从 Pantone 趋势色转化为彩妆产品主色：这种低饱和暖黄色以眼影、腮红、唇蜜为载体，比明黄更日常、比裸色更有活力，适配春夏"阳光感"妆容与暖调肤色。</div>
         <div class="signal-strip">
-          <div class="signal-chip pin"><div class="chip-icon">📌</div><div class="chip-desc">Pinterest "Butter Yellow"</div><div class="chip-num">+1,043%</div><div class="chip-arrow up">YoY</div><div class="chip-tag">🔥搜索激增</div></div>
-          <div class="signal-chip pin"><div class="chip-icon">🏆</div><div class="chip-desc">Pinterest 2026色彩预测</div><div class="chip-num">Top 1</div><div class="chip-sub">年度色彩</div><div class="chip-tag">⭐权威认证</div></div>
+          <div class="signal-chip chip-us chip-1"><div class="chip-icon">📌</div><div class="chip-desc">Pinterest "Butter Yellow"</div><div class="chip-num">+1,043%</div><div class="chip-arrow up">YoY</div><div class="chip-tag">🔥搜索激增</div></div>
+          <div class="signal-chip chip-us chip-2"><div class="chip-icon">🏆</div><div class="chip-desc">Pinterest 2026色彩预测</div><div class="chip-num">Top 1</div><div class="chip-sub">年度色彩</div><div class="chip-tag">⭐权威认证</div></div>
         </div>
 
         <div class="action-block">
@@ -787,10 +807,10 @@
       <div class="trend-v-body">
         <div class="driver-summary">低饱和粉彩色系代表一种"伪素颜"的春夏日常妆容：奶茶粉、杏仁橘、奶油杏等柔和色块以膏状腮红、水光唇釉和透明感妆前乳为载体，强调气色而非色彩冲击力，适配通勤、约会与户外多场景。</div>
         <div class="signal-strip">
-          <div class="signal-chip douyin"><div class="chip-icon">🎵</div><div class="chip-desc">抖音 粉彩偏好调研</div><div class="chip-num">82%</div><div class="chip-sub">18-35岁首选</div><div class="chip-tag">📊用户偏好</div></div>
-          <div class="signal-chip xhs"><div class="chip-icon">📕</div><div class="chip-desc">小红书 奶油腮红笔记</div><div class="chip-num">180万+</div><div class="chip-arrow up">+68%</div><div class="chip-tag">↑笔记激增</div></div>
-          <div class="signal-chip tmall"><div class="chip-icon">🛒</div><div class="chip-desc">天猫 粉色系唇釉GMV</div><div class="chip-num">¥3.2亿</div><div class="chip-arrow up">+32% YoY</div><div class="chip-tag">💰GMV驱动</div></div>
-          <div class="signal-chip wgsn"><div class="chip-icon">🔮</div><div class="chip-desc">抖音商城×WGSN</div><div class="chip-num">粉彩风</div><div class="chip-sub">2026春夏妆容趋势</div><div class="chip-tag">⭐权威联名</div></div>
+          <div class="signal-chip chip-cn chip-1"><div class="chip-icon">🎵</div><div class="chip-desc">抖音 粉彩偏好调研</div><div class="chip-num">82%</div><div class="chip-sub">18-35岁首选</div><div class="chip-tag">📊用户偏好</div></div>
+          <div class="signal-chip chip-cn chip-2"><div class="chip-icon">📕</div><div class="chip-desc">小红书 奶油腮红笔记</div><div class="chip-num">180万+</div><div class="chip-arrow up">+68%</div><div class="chip-tag">↑笔记激增</div></div>
+          <div class="signal-chip chip-cn chip-3"><div class="chip-icon">🛒</div><div class="chip-desc">天猫 粉色系唇釉GMV</div><div class="chip-num">¥3.2亿</div><div class="chip-arrow up">+32% YoY</div><div class="chip-tag">💰GMV驱动</div></div>
+          <div class="signal-chip chip-global chip-1"><div class="chip-icon">🔮</div><div class="chip-desc">抖音商城×WGSN</div><div class="chip-num">粉彩风</div><div class="chip-sub">2026春夏妆容趋势</div><div class="chip-tag">⭐权威联名</div></div>
         </div>
 
         <div class="action-block">
@@ -815,9 +835,9 @@
       <div class="trend-v-body">
         <div class="driver-summary">中国消费者正在从"买单品"转向"购整套"：妆容、发型、服饰、配饰需要风格统一，彩妆与时尚穿搭的协同消费成为新决策逻辑，多功能彩妆盘、同色系套装与场景化妆容教程成为承接需求的核心载体。</div>
         <div class="signal-strip">
-          <div class="signal-chip douyin"><div class="chip-icon">🎵</div><div class="chip-desc">抖音 消费者调研</div><div class="chip-num">96%</div><div class="chip-arrow up">认可完整妆造</div><div class="chip-tag">📊用户共识</div></div>
-          <div class="signal-chip douyin"><div class="chip-icon">📈</div><div class="chip-desc">抖音 圈层化妆造需求</div><div class="chip-num">+170%</div><div class="chip-arrow up">同比增长</div><div class="chip-tag">↑需求爆发</div></div>
-          <div class="signal-chip douyin"><div class="chip-icon">🎨</div><div class="chip-desc">抖音 多功能彩妆盘</div><div class="chip-num">+70%</div><div class="chip-arrow up">增速</div><div class="chip-tag">↑品类升温</div></div>
+          <div class="signal-chip chip-cn chip-1"><div class="chip-icon">🎵</div><div class="chip-desc">抖音 消费者调研</div><div class="chip-num">96%</div><div class="chip-arrow up">认可完整妆造</div><div class="chip-tag">📊用户共识</div></div>
+          <div class="signal-chip chip-cn chip-2"><div class="chip-icon">📈</div><div class="chip-desc">抖音 圈层化妆造需求</div><div class="chip-num">+170%</div><div class="chip-arrow up">同比增长</div><div class="chip-tag">↑需求爆发</div></div>
+          <div class="signal-chip chip-cn chip-3"><div class="chip-icon">🎨</div><div class="chip-desc">抖音 多功能彩妆盘</div><div class="chip-num">+70%</div><div class="chip-arrow up">增速</div><div class="chip-tag">↑品类升温</div></div>
         </div>
 
         <div class="action-block">
