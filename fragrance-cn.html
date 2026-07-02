@@ -17,8 +17,8 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
-<meta name="version" content="week25-fragrance-cn-20260618-phase3-l01to07">
-<!-- Cache-bust: week25-fragrance-cn-20260618-phase3-l01to07 -->
+<meta name="version" content="week25-fragrance-cn-20260702-news-fix">
+<!-- Cache-bust: week25-fragrance-cn-20260702-news-fix -->
 <style>:root {
   /* === ZURU EDGE Design System === */
   --zuru-red: #D6001C;
@@ -94,7 +94,27 @@
   display: flex;
   flex-direction: column;
   gap: 6px;
-}.kpi-card:hover { transform: translateY(-2px); box-shadow: var(--glow-red); }.kpi-card.kpi-red { border-top-color: var(--zuru-red); }.kpi-card.kpi-teal { border-top-color: var(--teal); }.kpi-card.kpi-blue { border-top-color: var(--us-blue); }.kpi-card.kpi-gold { border-top-color: var(--gold); }.kpi-card .kpi-icon { font-size: 20px; }.kpi-card .kpi-tag { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: var(--text-tertiary); }.kpi-card .kpi-value { font-size: 26px; font-weight: 800; letter-spacing: -0.5px; }.kpi-card.kpi-red .kpi-value { color: var(--zuru-red); }.kpi-card.kpi-teal .kpi-value { color: var(--teal); }.kpi-card.kpi-blue .kpi-value { color: var(--us-blue); }.kpi-card.kpi-gold .kpi-value { color: var(--gold); }.kpi-card .kpi-label { font-size: 13px; font-weight: 600; color: var(--text); }.kpi-card .kpi-sub { font-size: 11px; color: var(--text-tertiary); line-height: 1.5; }@media (max-width: 768px) {.kpi-row { grid-template-columns: repeat(2, 1fr); } }/* Section */
+}.kpi-card:hover { transform: translateY(-2px); box-shadow: var(--glow-red); }.kpi-card.kpi-red { border-top-color: var(--zuru-red); }.kpi-card.kpi-teal { border-top-color: var(--teal); }.kpi-card.kpi-blue { border-top-color: var(--us-blue); }.kpi-card.kpi-gold { border-top-color: var(--gold); }.kpi-card .kpi-icon { font-size: 20px; }.kpi-card .kpi-tag { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: var(--text-tertiary); }.kpi-card .kpi-value { font-size: 26px; font-weight: 800; letter-spacing: -0.5px; }.kpi-card.kpi-red .kpi-value { color: var(--zuru-red); }.kpi-card.kpi-teal .kpi-value { color: var(--teal); }.kpi-card.kpi-blue .kpi-value { color: var(--us-blue); }.kpi-card.kpi-gold .kpi-value { color: var(--gold); }.kpi-card .kpi-label { font-size: 13px; font-weight: 600; color: var(--text); }.kpi-card .kpi-sub { font-size: 11px; color: var(--text-tertiary); line-height: 1.5; }@media (max-width: 768px) {.kpi-row { grid-template-columns: repeat(2, 1fr); } }/* News */
+.news-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 14px; margin-bottom: 20px; }
+.news-card { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 10px; cursor: pointer; overflow: hidden; transition: box-shadow 0.2s; }
+.news-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+.news-card-header { padding: 14px 18px; display: flex; align-items: flex-start; gap: 10px; }
+.news-region-tag { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 4px; flex-shrink: 0; margin-top: 2px; }
+.news-region-tag.cn { background: #FEF3C7; color: #92400E; }
+.news-region-tag.us { background: #DBEAFE; color: #1E40AF; }
+.news-region-tag.global { background: #FEE2E2; color: #991B1B; }
+.news-card-title { font-size: 14px; font-weight: 600; flex: 1; color: var(--text); line-height: 1.5; }
+.news-card-body { padding: 0 18px 14px 42px; font-size: 13px; color: var(--text-secondary); display: none !important; line-height: 1.6; }
+.news-card.open .news-card-body { display: block !important; }
+.news-card.open .news-card-header { border-bottom: 1px solid var(--border-subtle); }
+.news-card-tag { padding: 2px 9px; border-radius: 10px; font-size: 10px; font-weight: 700; flex-shrink: 0; margin-top: 2px; }
+.news-card-tag.event { background: #eef6fc; color: #2563EB; }
+.news-card-tag.market { background: #ecfdf5; color: #065F46; }
+.news-card-chevron { font-size: 18px; color: #ccc; transition: transform 0.25s; flex-shrink: 0; margin-top: 2px; }
+.news-card.open .news-card-chevron { transform: rotate(180deg); }
+.news-card-brief { font-size: 12px; color: var(--text-secondary); margin-top: 6px; padding: 0 18px 10px; line-height: 1.5; }
+.news-card-body-inner { padding: 0; }
+/* Section */
 .section { margin-bottom: 36px; }.section-title {
   font-size: 22px; font-weight: 800; margin-bottom: 8px;
   display: flex; align-items: center; gap: 10px; color: var(--text); letter-spacing: -0.3px;
@@ -293,6 +313,28 @@
     <div class="kpi-label">搜索增长</div>
     <div class="kpi-sub">便携趋势驱动</div>
   </div>
+</div>
+
+<!-- ═══════ 香水行业要闻 ═══════ -->
+<div class="section">
+<h2 class="section-title">📰 香水行业要闻</h2>
+<div class="news-grid">
+
+  <!-- US -->
+  <div class="news-card">
+    <div class="news-card-header">
+      <span class="news-region-tag us">US</span>
+      <span class="news-card-title">🌿 Bottega Veneta 发布<span style="color:var(--us-blue);font-weight:700">Alta</span>香水系列：10款全新香氛</span>
+      <span class="news-card-tag event">品牌动态</span>
+      <span class="news-card-chevron">&#9662;</span>
+    </div>
+    <div class="news-card-brief">Bottega Veneta 6月4日推出Alta香水系列10款Eau de Parfum，意大利与世界对话。</div>
+    <div class="news-card-body"><div class="news-card-body-inner">
+      Bottega Veneta于6月4日正式发布Alta香水系列，这是品牌第二支香水系列。10款Eau de Parfum以"意大利与世界对话"为主题，以轻盈与温暖的对比质感铺陈故事。相较前作威尼斯灵感，Alta系列更像一组完整"香气衣橱"，覆盖从清新到温暖的多元风格。通过Bottega Veneta精品店和香水渠道发售。
+    </div></div>
+  </div>
+
+</div>
 </div>
 
 <!-- ═══════ 香水趋势 ═══════ -->
@@ -959,6 +1001,19 @@ TikTok · Sephora · Fragrantica · FridayCharm · WGSN · Circana · Pinterest 
 </div>
 
 <script>
+// === Accordion: News Cards ===
+document.querySelectorAll('.news-card').forEach(function(card) {
+  card.addEventListener('click', function() {
+    this.classList.toggle('open');
+  });
+});
+document.querySelectorAll('.news-card-chevron').forEach(function(chevron) {
+  chevron.addEventListener('click', function(e) {
+    e.stopPropagation();
+    this.closest('.news-card').classList.toggle('open');
+  });
+});
+
 // === Accordion: Heat Items ===
 document.querySelectorAll('.heat-item-header').forEach(function(header) {
   header.addEventListener('click', function(e) {
