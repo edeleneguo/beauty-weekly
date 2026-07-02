@@ -251,6 +251,15 @@
 }.zuru-footer .zuru-logo-text { font-weight: 800; color: var(--zuru-red); letter-spacing: 2px; }/* Methodology tag */
 .mkt-tag { font-size: 11px; padding: 2px 8px; border-radius: 10px; margin-left: 8px; font-weight: 600; }.mkt-tag.cn { background: rgba(245, 158, 11, 0.12); color: #D97706; }.mkt-tag.us { background: var(--us-blue-light); color: var(--us-blue); }@media (max-width: 768px) {.signal-strip { grid-template-columns: repeat(2, 1fr); }.heat-section { grid-template-columns: 1fr; }.kpi-row { grid-template-columns: repeat(2, 1fr); }.lang-switch-bar { top: 10px; right: 12px; }.lang-switch-btn { padding: 6px 14px; font-size: 12px; }.week-selector { margin-left: 6px; }.week-selector-btn { padding: 5px 12px; font-size: 11px; }
 }
+
+/* === Appendix Collapsible === */
+.appendix-collapsible { margin-bottom: 20px; }
+.appendix-collapsible .collapsible-header { display: flex; align-items: center; gap: 10px; cursor: pointer; user-select: none; padding: 4px 0; }
+.appendix-collapsible .collapsible-header::before { content: '▼'; font-size: 11px; color: #999; transition: transform 0.25s; display: inline-block; }
+.appendix-collapsible.collapsed .collapsible-header::before { transform: rotate(-90deg); }
+.appendix-collapsible .collapsible-content { overflow: hidden; transition: max-height 0.35s ease, opacity 0.3s ease; max-height: 3000px; opacity: 1; }
+.appendix-collapsible.collapsed .collapsible-content { max-height: 0; opacity: 0; }
+
 </style>
 </head>
 <body>
@@ -926,8 +935,10 @@
 </div><!-- /fragrance-shell -->
 
 <!-- ═══════ 附录 ═══════ -->
-<div class="appendix-section">
-<h4 style="margin-bottom:12px;font-size:15px;">🔖 信源全景</h4>
+<div class="appendix-section appendix-collapsible">
+<h4 class="collapsible-header" style="margin-bottom:12px;font-size:15px;">🔖 信源全景</h4>
+<div class="collapsible-content">
+
 <table class="appendix-table"><thead><tr><th>信源</th><th>市场</th><th>类型</th><th>覆盖范围</th><th>备注</th></tr></thead><tbody>
 <tr class="cat-divider"><td colspan="5">📊 电商与社媒数据</td></tr>
 <tr><td class="app-name">天猫新品创新中心（TMIC）</td><td><span class="app-mkt cn">CN</span></td><td class="app-type">电商趋势</td><td class="app-desc">品类增长、消费者画像、价格带分析</td><td class="app-note">—</td></tr>
@@ -960,10 +971,16 @@
 <tr><td class="app-name">Who What Wear</td><td><span class="app-mkt us">US</span></td><td class="app-type">时尚与美妆</td><td class="app-desc">Sephora 新品趋势、编辑精选</td><td class="app-note">—</td></tr>
 <tr><td class="app-name">W Magazine</td><td><span class="app-mkt us">US</span></td><td class="app-type">时尚媒体</td><td class="app-desc">年度最佳香水编辑精选</td><td class="app-note">—</td></tr>
 </tbody></table>
+
+</div>
 </div>
 
+<div class="appendix-collapsible">
 <div style="background:#F9FAFB;border:1px solid #E5E7EB;border-radius:12px;padding:20px;margin-top:20px;">
-<h4 style="margin-top:0;">📐 评分方法论</h4>
+<div class="appendix-collapsible">
+<h4 class="collapsible-header" class="collapsible-header" style="margin-top:0;">📐 评分方法论</h4>
+<div class="collapsible-content">
+
 <p style="font-size:13px;color:var(--text-secondary);line-height:1.8;margin:0;">
 热度排名基于 <span style="font-weight:700;color:var(--text);">Sales 50% + Buzz 50%</span> 双维度评分体系：<br>
 <br>
@@ -978,8 +995,10 @@
 排名转换采用分段线性映射（TOP1=100%，TOP5=90%，TOP10=80%）；社媒声量按浏览量/互动量对数归一化；评分仅取平台原生数据（销售排名、浏览量、笔记数、互动量），不含编辑推荐或杂志榜单。
 </p></div>
 
+<div class="collapsible-content">
 <div style="background:#F9FAFB;border:1px solid #E5E7EB;border-radius:12px;padding:20px;margin-top:20px;">
-<h4 style="margin-top:0;">📋 本周数据来源</h4>
+<div class="appendix-collapsible">
+<h4 class="collapsible-header" class="collapsible-header" style="margin-top:0;">📋 本周数据来源</h4>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;font-size:13px;color:var(--text-secondary);line-height:1.8;">
 <div><h5 style="margin:0 0 6px 0;"><span class="mkt-tag cn">中国市场</span></h5>
 天猫TMIC · 抖音/飞瓜数据 · 小红书 · IT之家 · 新浪财经 · 魔镜洞察 · 观夏/气味图书馆/冰希黎官方数据</div>
@@ -988,9 +1007,20 @@ TikTok · Sephora · Fragrantica · FridayCharm · WGSN · Circana · Pinterest 
 </div>
 <p style="font-size:11px;color:#bbb;margin:12px 0 0 0;">权威趋势：WGSN × Coloro SS2026 · Circana高端香水数据 · Fragrantica香调趋势报告 · Pinterest趋势洞察</p>
 </div>
+</div>
+</div>
 
-<div style="text-align:center;margin-top:32px;padding:24px;background:linear-gradient(135deg,rgba(230,0,18,0.08),rgba(123,97,255,0.06),rgba(16,185,129,0.06));border-radius:16px;border:1px solid rgba(230,0,18,0.20);">
+<div class="appendix-collapsible">
+<div
+<div class="collapsible-content">
+ style="text-align:center;margin-top:32px;padding:24px;background:linear-gradient(135deg,rgba(230,0,18,0.08),rgba(123,97,255,0.06),rgba(16,185,129,0.06));border-radius:16px;border:1px solid rgba(230,0,18,0.20);">
 <p style="font-size:14px;color:var(--text-secondary);margin:0;">📅 下周预告：第26周（2026年7月6日–7月12日）自动推送 · 📬 如需调整报告内容或频率，请随时反馈</p>
+
+</div>
+</div>
+</div>
+
+</div>
 </div>
 </div>
 
@@ -1081,6 +1111,114 @@ document.addEventListener('click', function(e) {
     });
   }
 });
+
+
+// Appendix collapsible
+document.querySelectorAll('.appendix-collapsible .collapsible-header').forEach(function(h) {
+  h.addEventListener('click', function() {
+    var c = this.closest('.appendix-collapsible');
+    c.classList.toggle('collapsed');
+  });
+});
+
+</script>
+</body>
+</html<div class="collapsible-content">
+
+</div>
+</div>
+
+<script>
+// === Accordion: News Cards ===
+document.querySelectorAll('.news-card').forEach(function(card) {
+  card.addEventListener('click', function() {
+    this.classList.toggle('open');
+  });
+});
+document.querySelectorAll('.news-card-chevron').forEach(function(chevron) {
+  chevron.addEventListener('click', function(e) {
+    e.stopPropagation();
+    this.closest('.news-card').classList.toggle('open');
+  });
+});
+
+// === Accordion: Heat Items ===
+document.querySelectorAll('.heat-item-header').forEach(function(header) {
+  header.addEventListener('click', function(e) {
+    if (e.target.closest('a')) return;
+    this.parentElement.classList.toggle('open');
+  });
+});
+
+// === Accordion: Radar Items ===
+document.querySelectorAll('.radar-item').forEach(function(item) {
+  var header = item.querySelector('.radar-item-header');
+  var detail = item.querySelector('.radar-detail');
+  if (header && detail) {
+    header.style.cursor = 'pointer';
+    header.addEventListener('click', function() {
+      var isOpen = item.classList.contains('open');
+      item.classList.toggle('open', !isOpen);
+    });
+  }
+});
+
+// === Accordion: Trend Cards ===
+document.querySelectorAll('.trend-v-card').forEach(function(card) {
+  var h = card.querySelector('h4');
+  var body = card.querySelector('.trend-v-body');
+  var sig = card.querySelector('.signal-strip');
+  var act = card.querySelector('.action-block');
+  var dbar = card.querySelector('.trend-decision-bar');
+  if (h && body) {
+    h.style.cursor = 'pointer';
+    h.addEventListener('click', function() {
+      var isOpen = body.style.display !== 'none';
+      body.style.display = isOpen ? 'none' : 'block';
+      if (sig) sig.style.display = isOpen ? 'none' : 'grid';
+      if (act) act.style.display = isOpen ? 'none' : 'block';
+      if (dbar) dbar.style.display = isOpen ? 'none' : 'flex';
+      h.classList.toggle('collapsed', isOpen);
+    });
+  }
+});
+
+// === Week Selector Dropdown ===
+function toggleWeekDropdown(id) {
+  var selector = document.getElementById(id);
+  if (!selector) return;
+  selector.classList.toggle('open');
+}
+
+// Week selector button: toggle dropdown (stopPropagation prevents document handler from closing immediately)
+document.querySelector('.week-selector-btn').addEventListener('click', function(e) {
+  e.stopPropagation();
+  toggleWeekDropdown('weekSelectorFragrance');
+});
+
+// Week dropdown container: stopPropagation prevents clicks inside from closing
+document.querySelector('.week-dropdown').addEventListener('click', function(e) {
+  e.stopPropagation();
+});
+
+// Close dropdowns when clicking outside
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.week-selector')) {
+    document.querySelectorAll('.week-selector.open').forEach(function(sel) {
+      sel.classList.remove('open');
+    });
+  }
+});
+
+
+// Appendix collapsible
+document.querySelectorAll('.appendix-collapsible .collapsible-header').forEach(function(h) {
+  h.addEventListener('click', function() {
+    var c = this.closest('.appendix-collapsible');
+    c.classList.toggle('collapsed');
+  });
+});
+
 </script>
 </body>
 </html>
