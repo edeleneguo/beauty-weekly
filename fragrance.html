@@ -440,6 +440,15 @@
   border-left: 4px solid var(--gold);
   color: #D97706;
 }
+
+/* === Appendix Collapsible === */
+.appendix-collapsible { margin-bottom: 20px; }
+.appendix-collapsible .collapsible-header { display: flex; align-items: center; gap: 10px; cursor: pointer; user-select: none; padding: 4px 0; }
+.appendix-collapsible .collapsible-header::before { content: '▼'; font-size: 11px; color: #999; transition: transform 0.25s; display: inline-block; }
+.appendix-collapsible.collapsed .collapsible-header::before { transform: rotate(-90deg); }
+.appendix-collapsible .collapsible-content { overflow: hidden; transition: max-height 0.35s ease, opacity 0.3s ease; max-height: 3000px; opacity: 1; }
+.appendix-collapsible.collapsed .collapsible-content { max-height: 0; opacity: 0; }
+
 </style>
 </head>
 <body>
@@ -921,8 +930,10 @@
 </div>
 
 <!-- Appendix -->
-<div class="appendix-section">
-<h4 style="margin-bottom:12px;font-size:15px;">🔖 Source Overview</h4>
+<div class="appendix-section appendix-collapsible">
+<h4 class="collapsible-header" style="margin-bottom:12px;font-size:15px;">🔖 Source Overview</h4>
+<div class="collapsible-content">
+
 <table class="appendix-table"><thead><tr><th>Source</th><th>Market</th><th>Type</th><th>Coverage</th><th>Notes</th></tr></thead><tbody>
 <tr class="cat-divider"><td colspan="5">📊 E-Commerce & Social Media Data</td></tr>
 <tr><td class="app-name">Tmall新品创新中心（TMIC）</td><td><span class="app-mkt cn">CN</span></td><td class="app-type">Ecom Trends</td><td class="app-desc">Category growth, consumer profiles, price tier analysis</td><td class="app-note">—</td></tr>
@@ -956,10 +967,16 @@
 <tr><td class="app-name">Bustle</td><td><span class="app-mkt us">US</span></td><td class="app-type">Consumer Media</td><td class="app-desc">Editor-recommended new products</td><td class="app-note">—</td></tr>
 <tr><td class="app-name">Who What Wear</td><td><span class="app-mkt us">US</span></td><td class="app-type">Fashion & Beauty</td><td class="app-desc">Sephora new product trends, editor curation</td><td class="app-note">—</td></tr>
 </tbody></table>
+
+</div>
 </div>
 
+<div class="appendix-collapsible">
 <div style="background:#F9FAFB;border:1px solid #E5E7EB;border-radius:12px;padding:20px;margin-top:20px;">
-<h4 style="margin-top:0;">📐 Scoring Methodology</h4>
+<div class="appendix-collapsible">
+<h4 class="collapsible-header" class="collapsible-header" style="margin-top:0;">📐 Scoring Methodology</h4>
+<div class="collapsible-content">
+
 <p style="font-size:13px;color:var(--text-secondary);line-height:1.8;margin:0;">
 Heat ranking is based on <span style="font-weight:700;color:var(--text);">Sales 50% + Buzz 50%</span> dual-dimension scoring system:<br>
 <br>
@@ -974,8 +991,10 @@ Heat ranking is based on <span style="font-weight:700;color:var(--text);">Sales 
 Rank conversion uses segmented linear mapping (TOP1=100%, TOP5=90%, TOP10=80%, etc.); social buzz is log-normalized by views/engagement; scoring draws exclusively from platform-native data (sales rank, views, note count, engagement), excluding editorial recommendations or magazine lists.
 </p></div>
 
+<div class="collapsible-content">
 <div style="background:#F9FAFB;border:1px solid #E5E7EB;border-radius:12px;padding:20px;margin-top:20px;">
-<h4 style="margin-top:0;">📋 This Week's Sources</h4>
+<div class="appendix-collapsible">
+<h4 class="collapsible-header" class="collapsible-header" style="margin-top:0;">📋 This Week's Sources</h4>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;font-size:13px;color:var(--text-secondary);line-height:1.8;">
 <div><h5 style="margin:0 0 6px 0;"><span class="mkt-tag cn">China Market</span></h5>
 天猫TMIC · 抖音/飞瓜数据 · 小红书 · IT之家 · 新浪财经 · 魔镜洞察 · 观夏/气味图书馆/冰希黎官方数据</div>
@@ -984,9 +1003,20 @@ TikTok #PerfumeTok · Sephora · Fragrantica · FridayCharm · WGSN · Circana �
 </div>
 <p style="font-size:11px;color:#bbb;margin:12px 0 0 0;">Authority Trends: WGSN S-tier Pistachio Classification · Circana Premium Fragrance Data · Fragrantica Note Trend Report · TikTok Creative Center</p>
 </div>
+</div>
+</div>
 
-<div style="text-align:center;margin-top:32px;padding:24px;background:linear-gradient(135deg,rgba(230,0,18,0.08),rgba(123,97,255,0.06),rgba(0,201,167,0.06));border-radius:16px;border:1px solid rgba(230,0,18,0.20);">
+<div class="appendix-collapsible">
+<div
+<div class="collapsible-content">
+ style="text-align:center;margin-top:32px;padding:24px;background:linear-gradient(135deg,rgba(230,0,18,0.08),rgba(123,97,255,0.06),rgba(0,201,167,0.06));border-radius:16px;border:1px solid rgba(230,0,18,0.20);">
 <p style="font-size:14px;color:var(--text-secondary);margin:0;">📅 Next Week Preview: Week 26 (July 6–12, 2026) · Auto-delivery Monday · 📬 Feedback welcome for content or frequency adjustments</p>
+
+</div>
+</div>
+</div>
+
+</div>
 </div>
 </div><!-- end section-shell -->
 </div><!-- end container -->
@@ -1047,6 +1077,90 @@ document.addEventListener('click', function(e) {
 document.querySelectorAll('.news-card-chevron').forEach(function(chevron) {
   chevron.textContent = '\u25BC';
 });
+
+
+// Appendix collapsible
+document.querySelectorAll('.appendix-collapsible .collapsible-header').forEach(function(h) {
+  h.addEventListener('click', function() {
+    var c = this.closest('.appendix-collapsible');
+    c.classList.toggle('collapsed');
+  });
+});
+
+</script>
+
+</body>
+</html<div class="collapsible-content">
+
+</div>
+</div><!-- end container -->
+
+<script>
+// === Accordion: News Cards ===
+document.querySelectorAll('.news-card').forEach(function(card) {
+  card.addEventListener('click', function(e) {
+    if (e.target.closest('a')) return;
+    this.classList.toggle('open');
+  });
+});
+
+// === Accordion: Heat Items ===
+document.querySelectorAll('.heat-item-header').forEach(function(header) {
+  header.addEventListener('click', function(e) {
+    if (e.target.closest('a')) return;
+    this.parentElement.classList.toggle('open');
+  });
+});
+
+// === Accordion: Radar Items ===
+document.querySelectorAll('.radar-item-header').forEach(function(header) {
+  header.addEventListener('click', function(e) {
+    if (e.target.closest('a')) return;
+    this.parentElement.classList.toggle('open');
+  });
+});
+
+// === Week Selector Dropdown ===
+function toggleWeekDropdown(id) {
+  var selector = document.getElementById(id);
+  if (!selector) return;
+  selector.classList.toggle('open');
+}
+
+// Week selector button: toggle dropdown (stopPropagation prevents document handler from closing immediately)
+document.querySelector('.week-selector-btn').addEventListener('click', function(e) {
+  e.stopPropagation();
+  toggleWeekDropdown('weekSelectorFragrance');
+});
+
+// Week dropdown container: stopPropagation prevents clicks inside from closing
+document.querySelector('.week-dropdown').addEventListener('click', function(e) {
+  e.stopPropagation();
+});
+
+// Close dropdowns when clicking outside
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.week-selector')) {
+    document.querySelectorAll('.week-selector.open').forEach(function(sel) {
+      sel.classList.remove('open');
+    });
+  }
+});
+
+// === Chevron initialization for news cards ===
+document.querySelectorAll('.news-card-chevron').forEach(function(chevron) {
+  chevron.textContent = '\u25BC';
+});
+
+
+// Appendix collapsible
+document.querySelectorAll('.appendix-collapsible .collapsible-header').forEach(function(h) {
+  h.addEventListener('click', function() {
+    var c = this.closest('.appendix-collapsible');
+    c.classList.toggle('collapsed');
+  });
+});
+
 </script>
 
 </body>
