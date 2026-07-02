@@ -375,6 +375,15 @@
 
 }
 
+
+/* === Appendix Collapsible === */
+.appendix-collapsible { margin-bottom: 20px; }
+.appendix-collapsible .collapsible-header { display: flex; align-items: center; gap: 10px; cursor: pointer; user-select: none; padding: 4px 0; }
+.appendix-collapsible .collapsible-header::before { content: '▼'; font-size: 11px; color: #999; transition: transform 0.25s; display: inline-block; }
+.appendix-collapsible.collapsed .collapsible-header::before { transform: rotate(-90deg); }
+.appendix-collapsible .collapsible-content { overflow: hidden; transition: max-height 0.35s ease, opacity 0.3s ease; max-height: 3000px; opacity: 1; }
+.appendix-collapsible.collapsed .collapsible-content { max-height: 0; opacity: 0; }
+
 </style>
 </head>
 <body>
@@ -775,8 +784,10 @@
 
 <div class="section">
 <h3 style="font-size:16px;font-weight:700;color:var(--text);margin-bottom:16px;">📚 Sources & Methodology</h3>
-<div class="appendix-section">
-<h4 style="margin-bottom:12px;font-size:15px;">🔖 Source Overview</h4>
+<div class="appendix-section appendix-collapsible">
+<h4 class="collapsible-header" style="margin-bottom:12px;font-size:15px;">🔖 Source Overview</h4>
+<div class="collapsible-content">
+
 <table class="appendix-table"><thead><tr><th>Source</th><th>Market</th><th>Type</th><th>Coverage</th><th>Notes</th></tr></thead><tbody>
 <tr class="cat-divider"><td colspan="5">📊 E-Commerce & Social Media Data</td></tr>
 <tr><td class="app-name">Tmall新品创新中心（TMIC）</td><td><span class="app-mkt cn">CN</span></td><td class="app-type">Ecom Trends</td><td class="app-desc">Category growth, consumer profiles, price tier analysis</td><td class="app-note">—</td></tr>
@@ -810,18 +821,29 @@
 <tr><td class="app-name">Bustle</td><td><span class="app-mkt us">US</span></td><td class="app-type">Consumer Media</td><td class="app-desc">Editor-recommended new products</td><td class="app-note">—</td></tr>
 <tr><td class="app-name">Who What Wear</td><td><span class="app-mkt us">US</span></td><td class="app-type">Fashion & Beauty</td><td class="app-desc">Sephora new product trends, editor curation</td><td class="app-note">—</td></tr>
 </tbody></table>
+
+</div>
 </div>
 
+<div class="appendix-collapsible">
 <div style="background:#fafafa;border:1px solid #eee;border-radius:12px;padding:20px;margin-top:20px;">
-<h4 style="margin-top:0;">Scoring Methodology</h4>
+<h4 class="collapsible-header" style="margin-top:0;">Scoring Methodology</h4>
+<div class="collapsible-content">
+
 <p style="font-size:13px;color:var(--text-secondary);line-height:1.8;margin:0;">
 Heat rankings based on <strong>Sales 50% + Buzz 50%</strong> dual-dimension scoring:<br><br>
 <span class="mkt-tag cn" style="font-size:12px;">China Market</span> | Sales: Tmall GMV 30% + Douyin 20% | Buzz: Douyin 25% + Xiaohongshu 15% + Discussion 10%<br><br>
 <span class="mkt-tag us" style="font-size:12px;">US Market</span> | Sales: Sephora 25% + Ulta 25% | Buzz: TikTok 25% + YouTube 15% + Engagement 10%
-</p></div>
+</p>
+</div>
+</div>
+</div>
 
+<div class="appendix-collapsible">
 <div style="background:linear-gradient(135deg,#fefdfe,#fcf8fa);border:1px solid #f0e8ec;border-radius:12px;padding:20px;margin-top:20px;">
-<h4 style="margin-top:0;">This Week's Sources (Week 26)</h4>
+<h4 class="collapsible-header" style="margin-top:0;">This Week's Sources (Week 26)</h4>
+<div class="collapsible-content">
+
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;font-size:13px;color:var(--text-secondary);line-height:1.8;">
 <div><h5 style="margin:0 0 6px 0;"><span class="mkt-tag cn">China Market</span></h5>
 Douyin 618 Report · Feigua · iResearch · Mojing · Meixiu · CBNData · Chanmama · Xiaohongshu · Tmall · JD · Pinguan</div>
@@ -829,6 +851,9 @@ Douyin 618 Report · Feigua · iResearch · Mojing · Meixiu · CBNData · Chanm
 Sephora · Ulta · Circana · WGSN · Pinterest · TikTok · YouTube · Allure · Cosmopolitan · NYMag · Hypebae · BeautyMatter · Qogita · Fresha · Reddit</div>
 </div>
 <p style="font-size:11px;color:#bbb;margin:12px 0 0 0;">Key trends: WGSN Clean Beauty | Pinterest Color of the Year Butter Yellow | Korean Lash Lift +3,695%</p>
+
+</div>
+</div>
 </div>
 
 <div style="text-align:center;margin-top:32px;padding:24px;background:linear-gradient(135deg,#e8516e15,#8b5cf615,#3b9bcc15);border-radius:16px;border:1px solid #f0e8f0;">
@@ -935,6 +960,16 @@ document.addEventListener('click', function(e) {
 
   }
 
+});
+
+
+
+// Appendix collapsible
+document.querySelectorAll('.appendix-collapsible .collapsible-header').forEach(function(h) {
+  h.addEventListener('click', function() {
+    var c = this.closest('.appendix-collapsible');
+    c.classList.toggle('collapsed');
+  });
 });
 
 </script>
