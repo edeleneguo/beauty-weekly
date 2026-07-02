@@ -17,8 +17,8 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
-<meta name="version" content="week25-fragrance-en-20260618-phase3-l01to07">
-<!-- Cache-bust: week25-fragrance-en-20260618-phase3-l01to07 -->
+<meta name="version" content="week25-fragrance-en-20260702-news-fix">
+<!-- Cache-bust: week25-fragrance-en-20260702-news-fix -->
 <style>:root {
   /* === ZURU EDGE Design System (based on reference dashboard) === */
   --zuru-red: #D6001C;
@@ -99,7 +99,27 @@
   border: 1px solid var(--border-subtle);
   border-top: 4px solid var(--border-subtle);
   transition: transform 0.2s, box-shadow 0.2s;
-}.exec-card:hover { transform: translateY(-2px); box-shadow: var(--glow-red); }.exec-card.cn-makeup { border-top-color: var(--gold); }.exec-card.us-makeup { border-top-color: var(--us-blue); }.exec-card.cn-frag { border-top-color: var(--gold); }.exec-card.us-frag { border-top-color: var(--us-blue); }.exec-card .exec-icon { font-size: 20px; }.exec-card .exec-tag { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: var(--text-tertiary); }.exec-card .exec-headline { font-size: 14px; font-weight: 700; color: var(--text); line-height: 1.4; }.exec-card .exec-detail { font-size: 12px; color: var(--text-secondary); line-height: 1.5; }.exec-card .exec-highlight { display: inline-block; background: var(--zuru-red-light); color: var(--zuru-red); padding: 1px 6px; border-radius: 4px; font-weight: 600; font-size: 12px; }.exec-card .exec-highlight.teal { background: var(--us-blue-light); color: var(--us-blue); }.exec-card .exec-highlight.gold { background: rgba(255, 184, 0, 0.15); color: var(--gold); }.exec-card .exec-highlight.coral { background: rgba(255, 107, 107, 0.15); color: var(--coral); }/* Section */
+}.exec-card:hover { transform: translateY(-2px); box-shadow: var(--glow-red); }.exec-card.cn-makeup { border-top-color: var(--gold); }.exec-card.us-makeup { border-top-color: var(--us-blue); }.exec-card.cn-frag { border-top-color: var(--gold); }.exec-card.us-frag { border-top-color: var(--us-blue); }.exec-card .exec-icon { font-size: 20px; }.exec-card .exec-tag { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: var(--text-tertiary); }.exec-card .exec-headline { font-size: 14px; font-weight: 700; color: var(--text); line-height: 1.4; }.exec-card .exec-detail { font-size: 12px; color: var(--text-secondary); line-height: 1.5; }.exec-card .exec-highlight { display: inline-block; background: var(--zuru-red-light); color: var(--zuru-red); padding: 1px 6px; border-radius: 4px; font-weight: 600; font-size: 12px; }.exec-card .exec-highlight.teal { background: var(--us-blue-light); color: var(--us-blue); }.exec-card .exec-highlight.gold { background: rgba(255, 184, 0, 0.15); color: var(--gold); }.exec-card .exec-highlight.coral { background: rgba(255, 107, 107, 0.15); color: var(--coral); }/* News */
+.news-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 14px; margin-bottom: 20px; }
+.news-card { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 10px; cursor: pointer; overflow: hidden; transition: box-shadow 0.2s; }
+.news-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+.news-card-header { padding: 14px 18px; display: flex; align-items: flex-start; gap: 10px; }
+.news-region-tag { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 4px; flex-shrink: 0; margin-top: 2px; }
+.news-region-tag.cn { background: #FEF3C7; color: #92400E; }
+.news-region-tag.us { background: #DBEAFE; color: #1E40AF; }
+.news-region-tag.global { background: #FEE2E2; color: #991B1B; }
+.news-card-title { font-size: 14px; font-weight: 600; flex: 1; color: var(--text); line-height: 1.5; }
+.news-card-body { padding: 0 18px 14px 42px; font-size: 13px; color: var(--text-secondary); display: none !important; line-height: 1.6; }
+.news-card.open .news-card-body { display: block !important; }
+.news-card.open .news-card-header { border-bottom: 1px solid var(--border-subtle); }
+.news-card-tag { padding: 2px 9px; border-radius: 10px; font-size: 10px; font-weight: 700; flex-shrink: 0; margin-top: 2px; }
+.news-card-tag.event { background: #eef6fc; color: #2563EB; }
+.news-card-tag.market { background: #ecfdf5; color: #065F46; }
+.news-card-chevron { font-size: 18px; color: #ccc; transition: transform 0.25s; flex-shrink: 0; margin-top: 2px; }
+.news-card.open .news-card-chevron { transform: rotate(180deg); }
+.news-card-brief { font-size: 12px; color: var(--text-secondary); margin-top: 6px; padding: 0 18px 10px; line-height: 1.5; }
+.news-card-body-inner { padding: 0; }
+/* Section */
 .section { margin-bottom: 36px; }.section-title {
   font-size: 22px;
   font-weight: 800;
@@ -474,6 +494,28 @@
 </div>
 
 <div class="section-shell fragrance-shell">
+
+<!-- ======== INDUSTRY NEWS ======== -->
+<div class="section">
+<h2 class="section-title">📰 Fragrance Industry News</h2>
+<div class="news-grid">
+
+  <!-- US -->
+  <div class="news-card">
+    <div class="news-card-header">
+      <span class="news-region-tag us">US</span>
+      <span class="news-card-title">🌿 Bottega Veneta Launches <span style="color:var(--us-blue);font-weight:700">Alta</span> Fragrance Collection: 10 New Eau de Parfums</span>
+      <span class="news-card-tag event">Brand</span>
+      <span class="news-card-chevron">&#9662;</span>
+    </div>
+    <div class="news-card-brief">Bottega Veneta debuts Alta on June 4 — 10 fragrances exploring Italy in dialogue with the world.</div>
+    <div class="news-card-body"><div class="news-card-body-inner">
+      Bottega Veneta launched its Alta fragrance collection on June 4, the brand's second fragrance line. 10 Eau de Parfums themed "Italy in dialogue with the world," exploring contrasts of lightness and warmth. Unlike the previous Venice-inspired collection, Alta functions as a complete "fragrance wardrobe" spanning fresh to warm styles. Available through Bottega Veneta boutiques and fragrance channels.
+    </div></div>
+  </div>
+
+</div>
+</div>
 
 <div class="section">
 <div class="section-title">Fragrance Trends</div>
