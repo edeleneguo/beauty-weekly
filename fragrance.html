@@ -451,9 +451,9 @@
 
 
 /* === Heat Score Label === */
-.heat-label { display:inline-flex; align-items:center; gap:4px; font-size:11px; font-weight:600; color:#999; cursor:pointer; position:relative; margin-bottom:8px; }
-.heat-label .heat-help { display:none; font-size:12px; color:#2563EB; margin-left:2px; }
-.heat-label:hover .heat-help { display:inline-block; }
+.heat-score-label { display:inline-flex; align-items:center; gap:2px; font-size:10px; font-weight:600; color:#999; cursor:pointer; position:relative; margin-right:4px; }
+.heat-score-label .heat-help { display:none; font-size:12px; color:#2563EB; margin-left:2px; }
+.heat-score-label:hover .heat-help { display:inline-block; }
 
 </style>
 </head>
@@ -747,14 +747,12 @@
 <div class="heat-panel heat-zone us">
 <h4>US US TOP 5 <span class="heat-methodology-badge" title="Sephora 25% + TikTok 25% + Editorial 15% + Social Buzz 20% + Trend Fit 15%">Scoring</span></h4>
 <ul class="heat-accordion">
-      <div class="heat-label" onclick="document.getElementById('scoring-methodology').scrollIntoView({behavior:'smooth',block:'start'})">热度值<span class="heat-help">❓</span></div>
-      
-<li class="heat-item">
+      <li class="heat-item">
 <div class="heat-item-header">
 <span class="heat-rank r1">1</span>
 <span class="heat-name"><span class="trend-product-tag gold">Trend</span>Sol de Janeiro Cheirosa 91</span><span class="prod-cat-tag frag-floral">Floral</span>
 <div class="heat-bar-wrap"><div class="heat-fill" style="width:95%"></div></div>
-<div class="heat-score-wrap"><span class="heat-score-val">95%</span></div>
+<div class="heat-score-wrap"><span class="heat-score-label" onclick="document.getElementById('scoring-methodology').scrollIntoView({behavior:'smooth',block:'start'})">热度值<span class="heat-help">❓</span></span><span class="heat-score-val">95%</span></div>
 <span class="heat-chevron"></span></div>
 <div class="heat-item-body"><div class="heat-detail-grid">
 <div class="heat-detail-cell"><div class="cell-label">Brand</div><div class="cell-value">Sol de Janeiro</div></div>
@@ -824,7 +822,7 @@
 <span class="heat-rank r1">1</span>
 <span class="heat-name"><span class="trend-product-tag gold">Trend</span>观夏 昆仑煮雪</span><span class="prod-cat-tag frag-woody">Oriental</span>
 <div class="heat-bar-wrap"><div class="heat-fill" style="width:95%"></div></div>
-<div class="heat-score-wrap"><span class="heat-score-val">95%</span></div>
+<div class="heat-score-wrap"><span class="heat-score-label" onclick="document.getElementById('scoring-methodology').scrollIntoView({behavior:'smooth',block:'start'})">热度值<span class="heat-help">❓</span></span><span class="heat-score-val">95%</span></div>
 <span class="heat-chevron"></span></div>
 <div class="heat-item-body"><div class="heat-detail-grid">
 <div class="heat-detail-cell"><div class="cell-label">Brand</div><div class="cell-value">观夏 Documents</div></div>
