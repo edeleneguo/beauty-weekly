@@ -148,7 +148,7 @@ def _render_product(product: Dict[str, Any], lang: str, section: str) -> str:
         display_score = 65
     fill_pct = display_score
 
-    # Placeholder detection: score==0 means placeholder row
+    # Placeholder detection: score==0 means placeholder row (should be pre-filtered)
     is_placeholder = score == 0
 
     # Badges: only for heat section, never for radar
@@ -259,6 +259,47 @@ def _render_panel_heading(
     )
 
 
+def _filter_panel_products(
+    products: List[Dict[str, Any]], section: str
+) -> List[Dict[str, Any]]:
+    """Filter out placeholder and quarantined products from a panel.
+
+    - All sections: remove score=0 placeholder rows.
+    - Radar only: remove quarantined items (quarantine_status != 'verified').
+    """
+    filtered = []
+    for p in products:
+        score = p.get("score", 0)
+        if score == 0:
+            continue
+        if section == "radar" and p.get("quarantine_status") == "out-of-window":
+            continue
+        filtered.append(p)
+    return filtered
+
+
+_EMPTY_STATE_MESSAGES = {
+    ("makeup", "en"): "No qualifying new products this week.",
+    ("makeup", "cn"): "本周无符合标准的新品。",
+    ("fragrance", "en"): "No qualifying new products this week.",
+    ("fragrance", "cn"): "本周无符合标准的新品。",
+}
+
+
+def _render_empty_state_note(lang: str, topic: str, count: int) -> str:
+    """Render a single concise empty-state note when a radar panel has few products."""
+    base_msg = _EMPTY_STATE_MESSAGES.get(
+        (topic, lang), "No qualifying new products this week."
+    )
+    return (
+        '<li class="heat-item" style="list-style:none;border:none;box-shadow:none;background:transparent;padding:12px 16px;">'
+        '<div class="heat-info">'
+        '<span class="heat-name" style="color:#888;font-style:italic;font-weight:400;">'
+        "{note}</span>"
+        "</div></li>"
+    ).format(note=_esc(base_msg))
+
+
 def _render_section(
     products_by_panel: Dict[str, List[Dict[str, Any]]],
     lang: str,
@@ -288,25 +329,29 @@ def _render_section(
         p for p in panel_order if p.startswith("CN") and p in products_by_panel
     ]
 
+    def _render_panel(panel_key: str) -> str:
+        market, tier = panel_key.split()
+        html = _render_panel_heading(market, tier, lang, topic, section) + "\n"
+        raw_products = products_by_panel.get(panel_key, [])
+        products = _filter_panel_products(raw_products, section)
+        html += '<ul class="heat-accordion">'
+        if products:
+            for product in products:
+                html += _render_product(product, lang, section)
+        else:
+            html += _render_empty_state_note(lang, topic, 0)
+        html += "</ul>\n"
+        return html
+
     # Render US panel (left) and CN panel (right)
     us_html = '<div class="heat-panel us-heat">\n'
     for panel_key in us_panels:
-        market, tier = panel_key.split()
-        us_html += _render_panel_heading(market, tier, lang, topic, section) + "\n"
-        us_html += '<ul class="heat-accordion">'
-        for product in products_by_panel[panel_key]:
-            us_html += _render_product(product, lang, section)
-        us_html += "</ul>\n"
+        us_html += _render_panel(panel_key)
     us_html += "</div><!-- end us-heat -->\n"
 
     cn_html = '<div class="heat-panel cn-heat">\n'
     for panel_key in cn_panels:
-        market, tier = panel_key.split()
-        cn_html += _render_panel_heading(market, tier, lang, topic, section) + "\n"
-        cn_html += '<ul class="heat-accordion">'
-        for product in products_by_panel[panel_key]:
-            cn_html += _render_product(product, lang, section)
-        cn_html += "</ul>\n"
+        cn_html += _render_panel(panel_key)
     cn_html += "</div><!-- end cn-heat -->\n"
 
     if section == "heat":

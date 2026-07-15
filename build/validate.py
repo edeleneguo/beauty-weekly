@@ -329,18 +329,22 @@ def _check_data_consistency(data: dict) -> List[ValidationIssue]:
                 )
             for panel_key in PANELS:
                 panel_products = panels.get(panel_key, [])
-                # Rule: heat panels must have exactly 10 rows; radar panels are dynamic (0+)
-                if section == "heat_rankings" and len(panel_products) != 10:
-                    issues.append(
-                        ValidationIssue(
-                            "ERROR",
-                            "data",
-                            "panel-rows",
-                            "{0}/{1}/{2}: expected 10 rows, got {3}".format(
-                                topic, section, panel_key, len(panel_products)
-                            ),
+                # Rule: heat panels must have 1-10 real rows (no placeholders); radar panels are dynamic (0+)
+                if section == "heat_rankings":
+                    real_products = [
+                        p for p in panel_products if _safe_int(p.get("score", 0)) > 0
+                    ]
+                    if len(real_products) < 1 or len(real_products) > 10:
+                        issues.append(
+                            ValidationIssue(
+                                "ERROR",
+                                "data",
+                                "panel-rows",
+                                "{0}/{1}/{2}: expected 1-10 real rows, got {3}".format(
+                                    topic, section, panel_key, len(real_products)
+                                ),
+                            )
                         )
-                    )
                 elif section == "new_product_radar" and len(panel_products) > 10:
                     issues.append(
                         ValidationIssue(
@@ -356,9 +360,24 @@ def _check_data_consistency(data: dict) -> List[ValidationIssue]:
                 for p in panel_products:
                     score = _safe_int(p.get("score", 0))
                     if score == 0:
-                        # Placeholder row – validate name contains signal indicator
+                        # Placeholder row in heat is a defect; in radar it's allowed but filtered
                         name = p.get("name", "")
-                        if (
+                        if section == "heat_rankings":
+                            issues.append(
+                                ValidationIssue(
+                                    "ERROR",
+                                    "data",
+                                    "heat-placeholder",
+                                    "{0}/{1}/{2}: rank {3} has placeholder row (score=0, name='{4}') – must be removed".format(
+                                        topic,
+                                        section,
+                                        panel_key,
+                                        p.get("rank", "?"),
+                                        name[:40],
+                                    ),
+                                )
+                            )
+                        elif (
                             "no more signal" not in name.lower()
                             and "本周无更多" not in name
                         ):
@@ -460,6 +479,106 @@ def _check_data_consistency(data: dict) -> List[ValidationIssue]:
                         )
                     )
 
+    # Rule: radar products must have quarantine_status, launch_date, and trend metadata
+    for topic in ("makeup", "fragrance"):
+        radar = data["products"].get(topic, {}).get("new_product_radar", {})
+        for panel_key, products in radar.items():
+            for p in products:
+                score = _safe_int(p.get("score", 0))
+                if score == 0:
+                    continue
+                name = p.get("name", "?")
+                loc = f"data/{topic}/radar/{panel_key}/{name}"
+
+                # quarantine_status required
+                qs = p.get("quarantine_status")
+                if qs is None:
+                    issues.append(
+                        ValidationIssue(
+                            "ERROR",
+                            loc,
+                            "missing-quarantine-status",
+                            "Radar product missing quarantine_status field",
+                        )
+                    )
+                elif qs not in ("verified", "out-of-window"):
+                    issues.append(
+                        ValidationIssue(
+                            "ERROR",
+                            loc,
+                            "invalid-quarantine-status",
+                            f"Invalid quarantine_status '{qs}'",
+                        )
+                    )
+
+                # launch_date required
+                ld = p.get("launch_date")
+                if ld is None:
+                    issues.append(
+                        ValidationIssue(
+                            "ERROR",
+                            loc,
+                            "missing-launch-date",
+                            "Radar product missing launch_date field",
+                        )
+                    )
+
+                # trend metadata consistency
+                trend_badge = p.get("trend_badge")
+                trend_id = p.get("trend_id")
+                trend_tag = p.get("trend_tag")
+                trend_tag_cn = p.get("trend_tag_cn")
+                trend_rationale = p.get("trend_rationale")
+
+                if trend_badge:
+                    if not trend_id:
+                        issues.append(
+                            ValidationIssue(
+                                "ERROR",
+                                loc,
+                                "missing-trend-id",
+                                "Trend-badge radar product missing trend_id",
+                            )
+                        )
+                    if not trend_tag:
+                        issues.append(
+                            ValidationIssue(
+                                "ERROR",
+                                loc,
+                                "missing-trend-tag-field",
+                                "Trend-badge radar product missing trend_tag field",
+                            )
+                        )
+                    if not trend_tag_cn:
+                        issues.append(
+                            ValidationIssue(
+                                "ERROR",
+                                loc,
+                                "missing-trend-tag-cn-field",
+                                "Trend-badge radar product missing trend_tag_cn field",
+                            )
+                        )
+                    if not trend_rationale:
+                        issues.append(
+                            ValidationIssue(
+                                "ERROR",
+                                loc,
+                                "missing-trend-rationale",
+                                "Trend-badge radar product missing trend_rationale field",
+                            )
+                        )
+                else:
+                    # No trend_badge → trend fields should be null
+                    if trend_id is not None:
+                        issues.append(
+                            ValidationIssue(
+                                "ERROR",
+                                loc,
+                                "stale-trend-id",
+                                "Non-trend radar product has trend_id set",
+                            )
+                        )
+
     return issues
 
 
@@ -489,18 +608,40 @@ def _check_html_panels(filename: str, html: str) -> List[ValidationIssue]:
                     ),
                 )
             )
+        # Check for placeholder text in any section
+        if "no more signal" in section_html.lower():
+            issues.append(
+                ValidationIssue(
+                    "ERROR",
+                    filename,
+                    "placeholder-in-section",
+                    "Section 0{0}: contains placeholder text 'no more signal'".format(
+                        section_num
+                    ),
+                )
+            )
+        if "本周无更多" in section_html:
+            issues.append(
+                ValidationIssue(
+                    "ERROR",
+                    filename,
+                    "placeholder-in-section",
+                    "Section 0{0}: contains placeholder text '本周无更多'".format(
+                        section_num
+                    ),
+                )
+            )
         item_count = _count_items(section_html)
-        # Section 03 (heat) should have exactly 40 items; Section 04 (radar) is dynamic
+        # Section 03 (heat) should have 1-40 items (dynamic, no placeholders); Section 04 (radar) is dynamic
         if section_num == 3:
-            expected_items = 40
-            if item_count != expected_items:
+            if item_count < 1 or item_count > 40:
                 issues.append(
                     ValidationIssue(
                         "ERROR",
                         filename,
                         "item-count",
-                        "Section 0{0}: expected {1} items, found {2}".format(
-                            section_num, expected_items, item_count
+                        "Section 0{0}: expected 1-40 items, found {1}".format(
+                            section_num, item_count
                         ),
                     )
                 )
@@ -517,20 +658,34 @@ def _check_html_panels(filename: str, html: str) -> List[ValidationIssue]:
                         ),
                     )
                 )
-        # Score labels: exactly 4 in Section 03 (rank #1 per subcategory), 0 in Section 04
+        # Score labels: rank #1 per panel in Section 03; 0 in Section 04
         label_count = _count_score_labels(section_html)
-        expected_labels = 4 if section_num == 3 else 0
-        if label_count != expected_labels:
-            issues.append(
-                ValidationIssue(
-                    "ERROR",
-                    filename,
-                    "score-label-count",
-                    "Section 0{0}: expected {1} score labels, found {2}".format(
-                        section_num, expected_labels, label_count
-                    ),
+        if section_num == 3:
+            # Count panels that have products
+            panel_heading_count = _count_panels(section_html)
+            if label_count != panel_heading_count:
+                issues.append(
+                    ValidationIssue(
+                        "ERROR",
+                        filename,
+                        "score-label-count",
+                        "Section 0{0}: expected {1} score labels (one per panel), found {2}".format(
+                            section_num, panel_heading_count, label_count
+                        ),
+                    )
                 )
-            )
+        else:
+            if label_count != 0:
+                issues.append(
+                    ValidationIssue(
+                        "ERROR",
+                        filename,
+                        "score-label-count",
+                        "Section 0{0}: expected 0 score labels, found {1}".format(
+                            section_num, label_count
+                        ),
+                    )
+                )
     return issues
 
 

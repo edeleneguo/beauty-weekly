@@ -197,20 +197,26 @@ class TestNewProductTracking:
             )
 
     def test_radar_items_match_data(self, data, html_files):
-        """Regression: HTML radar item count must match actual data products."""
+        """Regression: HTML radar item count must match actual data products (excluding empty-state notes)."""
         for topic in ("makeup", "fragrance"):
             for lang in ("en",):
                 html = html_files[(topic, lang)]
-                total_data = sum(
-                    len(products)
-                    for products in data["products"][topic][
-                        "new_product_radar"
-                    ].values()
-                )
+                # Count only real products (score > 0, not quarantined)
+                total_data = 0
+                for panel, products in data["products"][topic][
+                    "new_product_radar"
+                ].items():
+                    for p in products:
+                        if (
+                            p.get("score", 0) > 0
+                            and p.get("quarantine_status") != "out-of-window"
+                        ):
+                            total_data += 1
                 total_html = _count_items(html, 4)
-                assert total_html == total_data, (
+                # HTML may include empty-state note <li> elements for panels with 0 products
+                assert total_html >= total_data, (
                     f"{topic} {lang}: radar HTML has {total_html} items "
-                    f"but data has {total_data}"
+                    f"but data has {total_data} qualifying products"
                 )
 
     def test_radar_products_have_evidence_urls(self, data):
@@ -323,18 +329,32 @@ class TestFourByTenInvariant:
     """4x10 invariant applies to heat rankings only, not new product radar."""
 
     def test_heat_has_40_items(self, html_files):
-        """Regression: heat sections must have exactly 40 items."""
+        """Regression: heat sections must have no placeholder items, only real products."""
         for (topic, lang), html in html_files.items():
             count = _count_items(html, 3)
-            assert count == 40, f"{topic} {lang}: heat has {count} items (expected 40)"
+            # Heat must have at least some real products and no placeholders
+            assert count >= 1, f"{topic} {lang}: heat has {count} items (expected >= 1)"
+            section_html = _extract_section(html, 3)
+            assert "no more signal" not in section_html.lower(), (
+                f"{topic} {lang}: placeholder text 'no more signal' in heat"
+            )
+            assert "本周无更多" not in section_html, (
+                f"{topic} {lang}: placeholder text '本周无更多' in heat"
+            )
 
     def test_heat_data_has_10_per_panel(self, data):
-        """Regression: heat panels must have exactly 10 products."""
+        """Regression: heat panels must have 1-10 real products (no placeholders)."""
         for topic in ("makeup", "fragrance"):
             for panel in PANELS:
                 products = data["products"][topic]["heat_rankings"].get(panel, [])
-                assert len(products) == 10, (
-                    f"{topic}/heat/{panel}: {len(products)} products (expected 10)"
+                real = [p for p in products if p.get("score", 0) > 0]
+                assert 1 <= len(real) <= 10, (
+                    f"{topic}/heat/{panel}: {len(real)} real products (expected 1-10)"
+                )
+                # No placeholders should remain
+                placeholders = [p for p in products if p.get("score", 0) == 0]
+                assert len(placeholders) == 0, (
+                    f"{topic}/heat/{panel}: {len(placeholders)} placeholder products remain"
                 )
 
     def test_radar_not_forced_to_40(self, data, html_files):
@@ -806,3 +826,179 @@ class TestTrendTaxonomy:
                 assert tag in cn_labels, (
                     f"{topic} CN: non-canonical CN trend tag '{tag}' in HTML"
                 )
+
+
+# ═══════════════════════════════════════════════════════════════════════
+# 10. Quarantine and launch-date validation
+# ═══════════════════════════════════════════════════════════════════════
+
+
+class TestQuarantineAndLaunchDate:
+    """Radar items must have quarantine_status, launch_date, and be within window."""
+
+    def test_all_radar_products_have_quarantine_status(self, data):
+        """Every radar product must have a quarantine_status field."""
+        for topic in ("makeup", "fragrance"):
+            for panel, products in data["products"][topic]["new_product_radar"].items():
+                for p in products:
+                    if p.get("score", 0) == 0:
+                        continue
+                    assert "quarantine_status" in p, (
+                        f"{topic}/radar/{panel}/{p['name']}: missing quarantine_status"
+                    )
+                    assert p["quarantine_status"] in ("verified", "out-of-window"), (
+                        f"{topic}/radar/{panel}/{p['name']}: "
+                        f"invalid quarantine_status '{p['quarantine_status']}'"
+                    )
+
+    def test_all_radar_products_have_launch_date(self, data):
+        """Every radar product must have a launch_date field."""
+        for topic in ("makeup", "fragrance"):
+            for panel, products in data["products"][topic]["new_product_radar"].items():
+                for p in products:
+                    if p.get("score", 0) == 0:
+                        continue
+                    assert "launch_date" in p, (
+                        f"{topic}/radar/{panel}/{p['name']}: missing launch_date"
+                    )
+
+    def test_quarantined_items_not_rendered_in_html(self, data, html_files):
+        """Quarantined radar items must not appear in rendered HTML."""
+        quarantined_names = set()
+        for topic in ("makeup", "fragrance"):
+            for panel, products in data["products"][topic]["new_product_radar"].items():
+                for p in products:
+                    if p.get("quarantine_status") == "out-of-window":
+                        quarantined_names.add(p["name"])
+        for (topic, lang), html in html_files.items():
+            s4 = _extract_section(html, 4)
+            for name in quarantined_names:
+                assert name not in s4, (
+                    f"{topic} {lang}: quarantined item '{name}' found in radar HTML"
+                )
+
+    def test_out_of_window_items_have_reason(self, data):
+        """Quarantined items must have a quarantine_reason."""
+        for topic in ("makeup", "fragrance"):
+            for panel, products in data["products"][topic]["new_product_radar"].items():
+                for p in products:
+                    if p.get("quarantine_status") == "out-of-window":
+                        assert p.get("quarantine_reason"), (
+                            f"{topic}/radar/{panel}/{p['name']}: "
+                            f"quarantined but missing quarantine_reason"
+                        )
+
+    def test_no_heat_placeholders_in_data(self, data):
+        """Heat rankings must have zero placeholder (score=0) products."""
+        for topic in ("makeup", "fragrance"):
+            for panel, products in data["products"][topic]["heat_rankings"].items():
+                for p in products:
+                    assert p.get("score", 0) > 0, (
+                        f"{topic}/heat/{panel}/{p.get('name')}: "
+                        f"placeholder (score=0) found in heat rankings"
+                    )
+
+    def test_no_heat_placeholders_in_html(self, html_files):
+        """Rendered heat sections must contain no placeholder text."""
+        for (topic, lang), html in html_files.items():
+            s3 = _extract_section(html, 3)
+            assert "no more signal" not in s3.lower(), (
+                f"{topic} {lang}: placeholder text 'no more signal' in heat HTML"
+            )
+            assert "本周无更多" not in s3, (
+                f"{topic} {lang}: placeholder text '本周无更多' in heat HTML"
+            )
+
+
+# ═══════════════════════════════════════════════════════════════════════
+# 11. Trend metadata consistency for radar items
+# ═══════════════════════════════════════════════════════════════════════
+
+
+class TestRadarTrendMetadata:
+    """Radar items with trend_badge must have complete trend metadata."""
+
+    def test_trend_badge_products_have_all_metadata(self, data):
+        """Trend-badge radar products must have trend_id, trend_tag, trend_tag_cn, trend_rationale."""
+        for topic in ("makeup", "fragrance"):
+            for panel, products in data["products"][topic]["new_product_radar"].items():
+                for p in products:
+                    if p.get("score", 0) == 0:
+                        continue
+                    if p.get("trend_badge"):
+                        assert p.get("trend_id"), (
+                            f"{topic}/radar/{panel}/{p['name']}: "
+                            f"trend-badge product missing trend_id"
+                        )
+                        assert p.get("trend_tag"), (
+                            f"{topic}/radar/{panel}/{p['name']}: "
+                            f"trend-badge product missing trend_tag"
+                        )
+                        assert p.get("trend_tag_cn"), (
+                            f"{topic}/radar/{panel}/{p['name']}: "
+                            f"trend-badge product missing trend_tag_cn"
+                        )
+                        assert p.get("trend_rationale"), (
+                            f"{topic}/radar/{panel}/{p['name']}: "
+                            f"trend-badge product missing trend_rationale"
+                        )
+
+    def test_non_trend_products_have_null_metadata(self, data):
+        """Non-trend radar products should have null/empty trend metadata."""
+        for topic in ("makeup", "fragrance"):
+            for panel, products in data["products"][topic]["new_product_radar"].items():
+                for p in products:
+                    if p.get("score", 0) == 0:
+                        continue
+                    if not p.get("trend_badge"):
+                        assert not p.get("trend_id"), (
+                            f"{topic}/radar/{panel}/{p['name']}: "
+                            f"non-trend product has trend_id set"
+                        )
+
+    def test_trend_tag_matches_trend_tags_in_key_features(self, data):
+        """trend_tag field must match trend_tags[0] in key_features for trend-badge products."""
+        for topic in ("makeup", "fragrance"):
+            for panel, products in data["products"][topic]["new_product_radar"].items():
+                for p in products:
+                    if p.get("score", 0) == 0:
+                        continue
+                    if p.get("trend_badge") and p.get("trend_tag"):
+                        kf = p.get("detail", {}).get("key_features", {})
+                        en_tags = kf.get("trend_tags", [])
+                        if en_tags:
+                            assert p["trend_tag"] == en_tags[0], (
+                                f"{topic}/radar/{panel}/{p['name']}: "
+                                f"trend_tag '{p['trend_tag']}' != "
+                                f"key_features.trend_tags[0] '{en_tags[0]}'"
+                            )
+
+    def test_quarantined_items_not_in_heat(self, data):
+        """Products quarantined in radar should not appear in heat rankings.
+
+        Note: Some products (e.g. DedCool Mochi Milk) may legitimately appear
+        in heat (trending) while quarantined in radar (not new). This test
+        only checks that quarantined items are not padded into heat.
+        """
+        for topic in ("makeup", "fragrance"):
+            radar = data["products"][topic]["new_product_radar"]
+            heat = data["products"][topic]["heat_rankings"]
+            # Collect quarantined items that are NOT also in heat with real scores
+            quarantined_only = set()
+            for panel, products in radar.items():
+                for p in products:
+                    if p.get("quarantine_status") == "out-of-window":
+                        # Check if this product is also in heat (legitimately trending)
+                        in_heat = False
+                        for hp in heat.get(panel, []):
+                            if hp["name"] == p["name"] and hp.get("score", 0) > 0:
+                                in_heat = True
+                                break
+                        if not in_heat:
+                            quarantined_only.add(p["name"])
+            for panel, products in heat.items():
+                for p in products:
+                    assert p["name"] not in quarantined_only, (
+                        f"{topic}/heat/{panel}/{p['name']}: "
+                        f"quarantined-only radar item found in heat rankings"
+                    )

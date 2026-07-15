@@ -1204,7 +1204,14 @@
                 "en": "2026 · Radiant foundation benchmark · Shade expansion",
                 "cn": "2026 · 光泽粉底液标杆 · 色号扩展"
               }
-            }
+            },
+            "launch_date": "2026-H1",
+            "quarantine_status": "verified",
+            "quarantine_reason": "",
+            "trend_id": null,
+            "trend_tag": null,
+            "trend_tag_cn": null,
+            "trend_rationale": null
           },
           {
             "rank": 2,
@@ -1231,7 +1238,14 @@
                 "en": "2026.6.22 · Sephora new launch · Clean Beauty luxury",
                 "cn": "2026.6.22 · Sephora渠道首发 · Clean Beauty高端化"
               }
-            }
+            },
+            "launch_date": "2026-H1",
+            "quarantine_status": "verified",
+            "quarantine_reason": "",
+            "trend_id": null,
+            "trend_tag": null,
+            "trend_tag_cn": null,
+            "trend_rationale": null
           },
           {
             "rank": 3,
@@ -1258,7 +1272,14 @@
                 "en": "2026.6 Summer collection · Rouge Coco Gloss formula upgrade",
                 "cn": "2026.6 Summer系列 · Rouge Coco Gloss配方升级"
               }
-            }
+            },
+            "launch_date": "2026-H1",
+            "quarantine_status": "verified",
+            "quarantine_reason": "",
+            "trend_id": null,
+            "trend_tag": null,
+            "trend_tag_cn": null,
+            "trend_rationale": null
           },
           {
             "rank": 4,
@@ -1285,7 +1306,14 @@
                 "en": "2026 · Find Comfort line · Skincare base makeup",
                 "cn": "2026 · Find Comfort线 · 养肤底妆"
               }
-            }
+            },
+            "launch_date": "2026-H1",
+            "quarantine_status": "verified",
+            "quarantine_reason": "",
+            "trend_id": null,
+            "trend_tag": null,
+            "trend_tag_cn": null,
+            "trend_rationale": null
           },
           {
             "rank": 5,
@@ -1312,7 +1340,14 @@
                 "en": "2026 · Shade & Illuminate line extension",
                 "cn": "2026 · Shade & Illuminate系列延伸"
               }
-            }
+            },
+            "launch_date": "2026-H1",
+            "quarantine_status": "verified",
+            "quarantine_reason": "",
+            "trend_id": null,
+            "trend_tag": null,
+            "trend_tag_cn": null,
+            "trend_rationale": null
           }
         ],
         "US MASSTIGE": [
@@ -1341,7 +1376,14 @@
                 "en": "2026 · Liquid blush benchmark",
                 "cn": "2026 · 液体腮红标杆"
               }
-            }
+            },
+            "launch_date": "2026-H1",
+            "quarantine_status": "verified",
+            "quarantine_reason": "",
+            "trend_id": null,
+            "trend_tag": null,
+            "trend_tag_cn": null,
+            "trend_rationale": null
           },
           {
             "rank": 2,
@@ -1368,7 +1410,14 @@
                 "en": "2026.6 · Entirely new product line",
                 "cn": "2026.6 · 全新产品线"
               }
-            }
+            },
+            "launch_date": "2026-H1",
+            "quarantine_status": "verified",
+            "quarantine_reason": "",
+            "trend_id": null,
+            "trend_tag": null,
+            "trend_tag_cn": null,
+            "trend_rationale": null
           },
           {
             "rank": 3,
@@ -1395,7 +1444,14 @@
                 "en": "2026 · Splashy line extension",
                 "cn": "2026 · Splashy系列延伸"
               }
-            }
+            },
+            "launch_date": "2026-H1",
+            "quarantine_status": "verified",
+            "quarantine_reason": "",
+            "trend_id": null,
+            "trend_tag": null,
+            "trend_tag_cn": null,
+            "trend_rationale": null
           }
         ],
         "CN LUXURY": [],
@@ -1425,7 +1481,14 @@
                 "en": "2026.5 · Existing Lip Powder Foundation line new shades",
                 "cn": "2026.5 · 已有唇粉霜线新色号"
               }
-            }
+            },
+            "launch_date": "2026-H1",
+            "quarantine_status": "verified",
+            "quarantine_reason": "",
+            "trend_id": null,
+            "trend_tag": null,
+            "trend_tag_cn": null,
+            "trend_rationale": null
           },
           {
             "rank": 2,
@@ -1452,7 +1515,14 @@
                 "en": "2026 · Good Complexion base makeup line new product",
                 "cn": "2026 · 好气色底妆线新品"
               }
-            }
+            },
+            "launch_date": "2026-H1",
+            "quarantine_status": "verified",
+            "quarantine_reason": "",
+            "trend_id": null,
+            "trend_tag": null,
+            "trend_tag_cn": null,
+            "trend_rationale": null
           }
         ]
       }
@@ -1649,84 +1719,6 @@
               "brand": {
                 "en": "Spanish luxury fragrance · 1 Million premium extension",
                 "cn": "西班牙奢品香水 · 1 Million系列高端延伸"
-              }
-            }
-          },
-          {
-            "rank": 8,
-            "market": "US",
-            "tier": "LUXURY",
-            "name": "No more signal products this week",
-            "category_badge": "—",
-            "score": 0,
-            "detail": {
-              "price_link": {
-                "en": "",
-                "cn": ""
-              },
-              "key_features": {
-                "en": "",
-                "cn": ""
-              },
-              "buzz": {
-                "en": "",
-                "cn": ""
-              },
-              "brand": {
-                "en": "",
-                "cn": ""
-              }
-            }
-          },
-          {
-            "rank": 9,
-            "market": "US",
-            "tier": "LUXURY",
-            "name": "No more signal products this week",
-            "category_badge": "—",
-            "score": 0,
-            "detail": {
-              "price_link": {
-                "en": "",
-                "cn": ""
-              },
-              "key_features": {
-                "en": "",
-                "cn": ""
-              },
-              "buzz": {
-                "en": "",
-                "cn": ""
-              },
-              "brand": {
-                "en": "",
-                "cn": ""
-              }
-            }
-          },
-          {
-            "rank": 10,
-            "market": "US",
-            "tier": "LUXURY",
-            "name": "No more signal products this week",
-            "category_badge": "—",
-            "score": 0,
-            "detail": {
-              "price_link": {
-                "en": "",
-                "cn": ""
-              },
-              "key_features": {
-                "en": "",
-                "cn": ""
-              },
-              "buzz": {
-                "en": "",
-                "cn": ""
-              },
-              "brand": {
-                "en": "",
-                "cn": ""
               }
             }
           }
@@ -1985,58 +1977,6 @@
                 "cn": "美国Masstige香水 · 玫瑰复兴标杆"
               }
             }
-          },
-          {
-            "rank": 9,
-            "market": "US",
-            "tier": "MASSTIGE",
-            "name": "No more signal products this week",
-            "category_badge": "—",
-            "score": 0,
-            "detail": {
-              "price_link": {
-                "en": "",
-                "cn": ""
-              },
-              "key_features": {
-                "en": "",
-                "cn": ""
-              },
-              "buzz": {
-                "en": "",
-                "cn": ""
-              },
-              "brand": {
-                "en": "",
-                "cn": ""
-              }
-            }
-          },
-          {
-            "rank": 10,
-            "market": "US",
-            "tier": "MASSTIGE",
-            "name": "No more signal products this week",
-            "category_badge": "—",
-            "score": 0,
-            "detail": {
-              "price_link": {
-                "en": "",
-                "cn": ""
-              },
-              "key_features": {
-                "en": "",
-                "cn": ""
-              },
-              "buzz": {
-                "en": "",
-                "cn": ""
-              },
-              "brand": {
-                "en": "",
-                "cn": ""
-              }
-            }
           }
         ],
         "CN LUXURY": [
@@ -2099,214 +2039,6 @@
               "brand": {
                 "en": "French conceptual fragrance · Skin musk",
                 "cn": "法国概念香水 · 肌肤感麝香"
-              }
-            }
-          },
-          {
-            "rank": 3,
-            "market": "CN",
-            "tier": "LUXURY",
-            "name": "本周无更多有信号产品",
-            "category_badge": "—",
-            "score": 0,
-            "detail": {
-              "price_link": {
-                "en": "",
-                "cn": ""
-              },
-              "key_features": {
-                "en": "",
-                "cn": ""
-              },
-              "buzz": {
-                "en": "",
-                "cn": ""
-              },
-              "brand": {
-                "en": "",
-                "cn": ""
-              }
-            }
-          },
-          {
-            "rank": 4,
-            "market": "CN",
-            "tier": "LUXURY",
-            "name": "本周无更多有信号产品",
-            "category_badge": "—",
-            "score": 0,
-            "detail": {
-              "price_link": {
-                "en": "",
-                "cn": ""
-              },
-              "key_features": {
-                "en": "",
-                "cn": ""
-              },
-              "buzz": {
-                "en": "",
-                "cn": ""
-              },
-              "brand": {
-                "en": "",
-                "cn": ""
-              }
-            }
-          },
-          {
-            "rank": 5,
-            "market": "CN",
-            "tier": "LUXURY",
-            "name": "本周无更多有信号产品",
-            "category_badge": "—",
-            "score": 0,
-            "detail": {
-              "price_link": {
-                "en": "",
-                "cn": ""
-              },
-              "key_features": {
-                "en": "",
-                "cn": ""
-              },
-              "buzz": {
-                "en": "",
-                "cn": ""
-              },
-              "brand": {
-                "en": "",
-                "cn": ""
-              }
-            }
-          },
-          {
-            "rank": 6,
-            "market": "CN",
-            "tier": "LUXURY",
-            "name": "本周无更多有信号产品",
-            "category_badge": "—",
-            "score": 0,
-            "detail": {
-              "price_link": {
-                "en": "",
-                "cn": ""
-              },
-              "key_features": {
-                "en": "",
-                "cn": ""
-              },
-              "buzz": {
-                "en": "",
-                "cn": ""
-              },
-              "brand": {
-                "en": "",
-                "cn": ""
-              }
-            }
-          },
-          {
-            "rank": 7,
-            "market": "CN",
-            "tier": "LUXURY",
-            "name": "本周无更多有信号产品",
-            "category_badge": "—",
-            "score": 0,
-            "detail": {
-              "price_link": {
-                "en": "",
-                "cn": ""
-              },
-              "key_features": {
-                "en": "",
-                "cn": ""
-              },
-              "buzz": {
-                "en": "",
-                "cn": ""
-              },
-              "brand": {
-                "en": "",
-                "cn": ""
-              }
-            }
-          },
-          {
-            "rank": 8,
-            "market": "CN",
-            "tier": "LUXURY",
-            "name": "本周无更多有信号产品",
-            "category_badge": "—",
-            "score": 0,
-            "detail": {
-              "price_link": {
-                "en": "",
-                "cn": ""
-              },
-              "key_features": {
-                "en": "",
-                "cn": ""
-              },
-              "buzz": {
-                "en": "",
-                "cn": ""
-              },
-              "brand": {
-                "en": "",
-                "cn": ""
-              }
-            }
-          },
-          {
-            "rank": 9,
-            "market": "CN",
-            "tier": "LUXURY",
-            "name": "本周无更多有信号产品",
-            "category_badge": "—",
-            "score": 0,
-            "detail": {
-              "price_link": {
-                "en": "",
-                "cn": ""
-              },
-              "key_features": {
-                "en": "",
-                "cn": ""
-              },
-              "buzz": {
-                "en": "",
-                "cn": ""
-              },
-              "brand": {
-                "en": "",
-                "cn": ""
-              }
-            }
-          },
-          {
-            "rank": 10,
-            "market": "CN",
-            "tier": "LUXURY",
-            "name": "本周无更多有信号产品",
-            "category_badge": "—",
-            "score": 0,
-            "detail": {
-              "price_link": {
-                "en": "",
-                "cn": ""
-              },
-              "key_features": {
-                "en": "",
-                "cn": ""
-              },
-              "buzz": {
-                "en": "",
-                "cn": ""
-              },
-              "brand": {
-                "en": "",
-                "cn": ""
               }
             }
           }
@@ -2409,188 +2141,6 @@
               }
             },
             "name_cn": "冰希黎流沙金"
-          },
-          {
-            "rank": 4,
-            "market": "CN",
-            "tier": "MASSTIGE",
-            "name": "本周无更多有信号产品",
-            "category_badge": "—",
-            "score": 0,
-            "detail": {
-              "price_link": {
-                "en": "",
-                "cn": ""
-              },
-              "key_features": {
-                "en": "",
-                "cn": ""
-              },
-              "buzz": {
-                "en": "",
-                "cn": ""
-              },
-              "brand": {
-                "en": "",
-                "cn": ""
-              }
-            }
-          },
-          {
-            "rank": 5,
-            "market": "CN",
-            "tier": "MASSTIGE",
-            "name": "本周无更多有信号产品",
-            "category_badge": "—",
-            "score": 0,
-            "detail": {
-              "price_link": {
-                "en": "",
-                "cn": ""
-              },
-              "key_features": {
-                "en": "",
-                "cn": ""
-              },
-              "buzz": {
-                "en": "",
-                "cn": ""
-              },
-              "brand": {
-                "en": "",
-                "cn": ""
-              }
-            }
-          },
-          {
-            "rank": 6,
-            "market": "CN",
-            "tier": "MASSTIGE",
-            "name": "本周无更多有信号产品",
-            "category_badge": "—",
-            "score": 0,
-            "detail": {
-              "price_link": {
-                "en": "",
-                "cn": ""
-              },
-              "key_features": {
-                "en": "",
-                "cn": ""
-              },
-              "buzz": {
-                "en": "",
-                "cn": ""
-              },
-              "brand": {
-                "en": "",
-                "cn": ""
-              }
-            }
-          },
-          {
-            "rank": 7,
-            "market": "CN",
-            "tier": "MASSTIGE",
-            "name": "本周无更多有信号产品",
-            "category_badge": "—",
-            "score": 0,
-            "detail": {
-              "price_link": {
-                "en": "",
-                "cn": ""
-              },
-              "key_features": {
-                "en": "",
-                "cn": ""
-              },
-              "buzz": {
-                "en": "",
-                "cn": ""
-              },
-              "brand": {
-                "en": "",
-                "cn": ""
-              }
-            }
-          },
-          {
-            "rank": 8,
-            "market": "CN",
-            "tier": "MASSTIGE",
-            "name": "本周无更多有信号产品",
-            "category_badge": "—",
-            "score": 0,
-            "detail": {
-              "price_link": {
-                "en": "",
-                "cn": ""
-              },
-              "key_features": {
-                "en": "",
-                "cn": ""
-              },
-              "buzz": {
-                "en": "",
-                "cn": ""
-              },
-              "brand": {
-                "en": "",
-                "cn": ""
-              }
-            }
-          },
-          {
-            "rank": 9,
-            "market": "CN",
-            "tier": "MASSTIGE",
-            "name": "本周无更多有信号产品",
-            "category_badge": "—",
-            "score": 0,
-            "detail": {
-              "price_link": {
-                "en": "",
-                "cn": ""
-              },
-              "key_features": {
-                "en": "",
-                "cn": ""
-              },
-              "buzz": {
-                "en": "",
-                "cn": ""
-              },
-              "brand": {
-                "en": "",
-                "cn": ""
-              }
-            }
-          },
-          {
-            "rank": 10,
-            "market": "CN",
-            "tier": "MASSTIGE",
-            "name": "本周无更多有信号产品",
-            "category_badge": "—",
-            "score": 0,
-            "detail": {
-              "price_link": {
-                "en": "",
-                "cn": ""
-              },
-              "key_features": {
-                "en": "",
-                "cn": ""
-              },
-              "buzz": {
-                "en": "",
-                "cn": ""
-              },
-              "brand": {
-                "en": "",
-                "cn": ""
-              }
-            }
           }
         ]
       },
@@ -2622,7 +2172,14 @@
                 "en": "2026 · D&G new fragrance · Floral Gourmand",
                 "cn": "2026 · D&G新香 · 花香美食调"
               }
-            }
+            },
+            "launch_date": "2026-H1",
+            "quarantine_status": "verified",
+            "quarantine_reason": "",
+            "trend_id": null,
+            "trend_tag": null,
+            "trend_tag_cn": null,
+            "trend_rationale": null
           },
           {
             "rank": 2,
@@ -2649,7 +2206,14 @@
                 "en": "2026.7.25 · KAYALI new fragrance",
                 "cn": "2026.7.25 · KAYALI新香"
               }
-            }
+            },
+            "launch_date": "2026-07-25",
+            "quarantine_status": "out-of-window",
+            "quarantine_reason": "Global launch Jul 25 2026; only preview events during report window Jul 7-13",
+            "trend_id": null,
+            "trend_tag": null,
+            "trend_tag_cn": null,
+            "trend_rationale": null
           },
           {
             "rank": 3,
@@ -2677,7 +2241,14 @@
                 "en": "2026 · Private Blend series · Summer seasonal limited",
                 "cn": "2026 · Private Blend系列 · 夏季季节限定"
               }
-            }
+            },
+            "launch_date": "2026-H1",
+            "quarantine_status": "verified",
+            "quarantine_reason": "",
+            "trend_id": null,
+            "trend_tag": null,
+            "trend_tag_cn": null,
+            "trend_rationale": null
           },
           {
             "rank": 4,
@@ -2704,7 +2275,14 @@
                 "en": "2026 · Tea culture theme",
                 "cn": "2026 · 茶文化主题"
               }
-            }
+            },
+            "launch_date": "2026-H1",
+            "quarantine_status": "verified",
+            "quarantine_reason": "",
+            "trend_id": null,
+            "trend_tag": null,
+            "trend_tag_cn": null,
+            "trend_rationale": null
           },
           {
             "rank": 5,
@@ -2731,7 +2309,14 @@
                 "en": "2026 · Woody spicy",
                 "cn": "2026 · 木质辛香调"
               }
-            }
+            },
+            "launch_date": "2026-H1",
+            "quarantine_status": "verified",
+            "quarantine_reason": "",
+            "trend_id": null,
+            "trend_tag": null,
+            "trend_tag_cn": null,
+            "trend_rationale": null
           },
           {
             "rank": 6,
@@ -2758,7 +2343,14 @@
                 "en": "2026 · Aqua Allegoria rose revival",
                 "cn": "2026 · Aqua Allegoria玫瑰复兴"
               }
-            }
+            },
+            "launch_date": "2026-H1",
+            "quarantine_status": "verified",
+            "quarantine_reason": "",
+            "trend_id": null,
+            "trend_tag": null,
+            "trend_tag_cn": null,
+            "trend_rationale": null
           }
         ],
         "US MASSTIGE": [
@@ -2787,7 +2379,14 @@
                 "en": "2026 · Body Mist format · Rose revival",
                 "cn": "2026 · Body Mist形态 · 玫瑰复兴"
               }
-            }
+            },
+            "launch_date": "2026-H1",
+            "quarantine_status": "verified",
+            "quarantine_reason": "",
+            "trend_id": null,
+            "trend_tag": null,
+            "trend_tag_cn": null,
+            "trend_rationale": null
           },
           {
             "rank": 2,
@@ -2822,7 +2421,14 @@
                 "en": "2025 · Clean Gourmand · Layering benchmark",
                 "cn": "2025 · 纯净美食调 · 叠香标杆"
               }
-            }
+            },
+            "launch_date": "2025-03-18",
+            "quarantine_status": "out-of-window",
+            "quarantine_reason": "Launched March 18 2025; not a new product in Jul 2026 window",
+            "trend_id": "trend_milky_musk",
+            "trend_tag": "Milky Musk",
+            "trend_tag_cn": "乳感麝香趋势",
+            "trend_rationale": "Gourmand milk/musk note resurgence; DedCool Mochi Milk + Glossier You solid format riding skin-musk gourmand wave"
           },
           {
             "rank": 3,
@@ -2849,7 +2455,14 @@
                 "en": "Solid format 2026 trend · Skin scent solid version",
                 "cn": "固体香型2026趋势 · 皮肤香固体版"
               }
-            }
+            },
+            "launch_date": "2026-H1",
+            "quarantine_status": "verified",
+            "quarantine_reason": "",
+            "trend_id": null,
+            "trend_tag": null,
+            "trend_tag_cn": null,
+            "trend_rationale": null
           }
         ],
         "CN LUXURY": [],
