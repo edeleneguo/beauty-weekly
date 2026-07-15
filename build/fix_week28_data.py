@@ -13,70 +13,59 @@ Changes:
 
 import json
 import os
-import copy
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_PATH = os.path.join(ROOT, "data", "week28.json")
 
+# ── Trend taxonomy: canonical trends from current issue trend sections ──
+# Only trends defined in the trend report sections may be used as trend_tags.
+# Makeup vertical trends:
+#   Skincare Foundation Trend / 养肤底妆趋势  (from "养肤底妆持续升温")
+#   Functional Lip Trend / 唇部功效化趋势      (from "唇部功效化")
+#   Low-Saturation Pastel Trend / 低饱和粉彩趋势 (from "粉彩妆持续主导")
+# Fragrance vertical trends:
+#   Milky Musk Trend / 乳感麝香趋势            (from "乳感麝香 2.0")
+#   Matcha Fragrance Trend / 抹茶香水趋势      (from "抹茶香水独立成赛道")
+#   Rose Revival Trend / 玫瑰复兴趋势          (from "玫瑰复兴")
+#   Oriental Narrative Trend / 东方叙事香趋势    (from "Oriental Narrative香")
+
+# Products whose trend_badge must be REMOVED (evidence does not support any
+# current-issue trend section):
+#   - Rare Beauty Find Comfort Tinted Moisturizer (tinted moisturizer ≠ current trend)
+#   - Kosas Cloud Set Blurring Powder (clean powder ≠ current trend)
+#   - Maison Margiela Replica Lazy Sunday Morning (Lazy Sunday not a trend section)
+#   - Lake & Skye 11 11 Moon EDP (Moon Theme not a trend section)
+#   - Maison Margiela Lazy Weekend (pseudo-body-scent ≠ Oriental Narrative for French brand)
+#   - Bingxili Mirage Quicksand Gold (ambiguous 国货花果, no current trend match)
+
 # ── Trend tags: concrete qualifying tags for each trend-badge product ──
 # Format: (topic, section, panel, product_name, tag_en, tag_cn)
 TREND_TAGS = [
-    # Makeup heat
+    # ── Makeup heat ──
+    # Skincare Foundation Trend products
     (
         "makeup",
         "heat_rankings",
         "US LUXURY",
         "YSL Skin Affair Soft Glow Cushion Foundation",
         "Skincare Foundation",
-        "养肤粉底",
+        "养肤底妆趋势",
     ),
     (
         "makeup",
         "heat_rankings",
         "US LUXURY",
         "Westman Atelier Vital Skin Foundation",
-        "Clean Beauty",
-        "纯净美妆",
-    ),
-    (
-        "makeup",
-        "heat_rankings",
-        "US MASSTIGE",
-        "Rare Beauty Find Comfort Tinted Moisturizer",
-        "Tinted Moisturizer",
-        "有色面霜",
-    ),
-    (
-        "makeup",
-        "heat_rankings",
-        "US MASSTIGE",
-        "Fenty Beauty Gloss Bomb",
-        "Lip Gloss Revival",
-        "唇彩复兴",
-    ),
-    (
-        "makeup",
-        "heat_rankings",
-        "US MASSTIGE",
-        "NYX Professional Fat Oil Lip Drip",
-        "Lip Oil",
-        "唇油",
-    ),
-    (
-        "makeup",
-        "heat_rankings",
-        "US MASSTIGE",
-        "Kosas Cloud Set Blurring Powder",
-        "Clean Powder",
-        "纯净定妆",
+        "Skincare Foundation",
+        "养肤底妆趋势",
     ),
     (
         "makeup",
         "heat_rankings",
         "CN LUXURY",
         "LA MER Soft Fluid Long Wear Cushion",
-        "Skincare Cushion",
-        "养肤气垫",
+        "Skincare Foundation",
+        "养肤底妆趋势",
     ),
     (
         "makeup",
@@ -84,146 +73,157 @@ TREND_TAGS = [
         "CN LUXURY",
         "Helena Rubinstein Powercell Foundation",
         "Skincare Foundation",
-        "养肤粉底",
+        "养肤底妆趋势",
     ),
+    # Functional Lip Trend products
+    (
+        "makeup",
+        "heat_rankings",
+        "US MASSTIGE",
+        "Fenty Beauty Gloss Bomb",
+        "Functional Lip",
+        "唇部功效化趋势",
+    ),
+    (
+        "makeup",
+        "heat_rankings",
+        "US MASSTIGE",
+        "NYX Professional Fat Oil Lip Drip",
+        "Functional Lip",
+        "唇部功效化趋势",
+    ),
+    # Low-Saturation Pastel Trend products
     (
         "makeup",
         "heat_rankings",
         "CN MASSTIGE",
         "Judydoll Blush Palette",
-        "Low Saturation",
-        "低饱和",
+        "Low-Saturation Pastel",
+        "低饱和粉彩趋势",
     ),
     (
         "makeup",
         "heat_rankings",
         "CN MASSTIGE",
         "Judydoll Lip Powder Foundation N31-N34",
-        "Lip Powder",
-        "唇粉",
+        "Low-Saturation Pastel",
+        "低饱和粉彩趋势",
     ),
     (
         "makeup",
         "heat_rankings",
         "CN MASSTIGE",
         "3CE Nine-Pan Eyeshadow Palette",
-        "Nine-Pan Palette",
-        "九宫格",
+        "Low-Saturation Pastel",
+        "低饱和粉彩趋势",
     ),
     (
         "makeup",
         "heat_rankings",
         "CN MASSTIGE",
         "Flower Knows Unicorn Lip Gloss",
-        "Unicorn IP",
-        "独角兽IP",
+        "Low-Saturation Pastel",
+        "低饱和粉彩趋势",
     ),
-    # Fragrance heat
-    (
-        "fragrance",
-        "heat_rankings",
-        "US LUXURY",
-        "Maison Margiela Replica Lazy Sunday Morning",
-        "Lazy Sunday",
-        "慵懒周日",
-    ),
+    # ── Fragrance heat ──
+    # Milky Musk Trend products
     (
         "fragrance",
         "heat_rankings",
         "US MASSTIGE",
         "Phlur Missing Person",
-        "Skin Scent",
-        "肌肤香",
-    ),
-    (
-        "fragrance",
-        "heat_rankings",
-        "US MASSTIGE",
-        "Kayali Freedom Musk Matcha",
-        "Gourmand Matcha",
-        "美食调抹茶",
+        "Milky Musk",
+        "乳感麝香趋势",
     ),
     (
         "fragrance",
         "heat_rankings",
         "US MASSTIGE",
         "DedCool Mochi Milk",
-        "Milky Scent",
-        "奶香",
+        "Milky Musk",
+        "乳感麝香趋势",
     ),
     (
         "fragrance",
         "heat_rankings",
         "US MASSTIGE",
         "Glossier You",
-        "Skin Scent",
-        "肌肤香",
+        "Milky Musk",
+        "乳感麝香趋势",
     ),
+    # Matcha Fragrance Trend products
     (
         "fragrance",
         "heat_rankings",
         "US MASSTIGE",
-        "Lake & Skye 11 11 Moon EDP",
-        "Moon Theme",
-        "月光主题",
-    ),
-    (
-        "fragrance",
-        "heat_rankings",
-        "US MASSTIGE",
-        "Phlur Rose Whip EDP",
-        "Rose Revival",
-        "玫瑰复兴",
+        "Kayali Freedom Musk Matcha",
+        "Matcha Fragrance",
+        "抹茶香水趋势",
     ),
     (
         "fragrance",
         "heat_rankings",
         "CN LUXURY",
         "Le Labo Thé Matcha 26",
-        "Tea Scent",
-        "茶香",
+        "Matcha Fragrance",
+        "抹茶香水趋势",
     ),
+    # Rose Revival Trend products
     (
         "fragrance",
         "heat_rankings",
-        "CN LUXURY",
-        "Maison Margiela Lazy Weekend",
-        "Pseudo Body Scent",
-        "伪体香",
+        "US MASSTIGE",
+        "Phlur Rose Whip EDP",
+        "Rose Revival",
+        "玫瑰复兴趋势",
     ),
+    # Oriental Narrative Trend products
     (
         "fragrance",
         "heat_rankings",
         "CN MASSTIGE",
         "To Summer Kunlun Snow",
-        "Chinese Niche",
-        "国货小众",
+        "Oriental Narrative",
+        "东方叙事香趋势",
     ),
     (
         "fragrance",
         "heat_rankings",
         "CN MASSTIGE",
         "Scent Library Boiled Water",
-        "Chinese Nostalgic",
-        "国货记忆",
+        "Oriental Narrative",
+        "东方叙事香趋势",
     ),
-    (
-        "fragrance",
-        "heat_rankings",
-        "CN MASSTIGE",
-        "Bingxili Mirage Quicksand Gold",
-        "C-beauty Floral",
-        "国货花果",
-    ),
-    # Fragrance radar (only one with trend_badge)
+    # ── Fragrance radar ──
     (
         "fragrance",
         "new_product_radar",
         "US MASSTIGE",
         "DedCool Mochi Milk",
-        "Milky Scent",
-        "奶香",
+        "Milky Musk",
+        "乳感麝香趋势",
     ),
+]
+
+# Products whose trend_badge must be REMOVED entirely (no valid current trend).
+# Format: (topic, section, panel, product_name)
+TREND_BADGE_REMOVALS = [
+    (
+        "makeup",
+        "heat_rankings",
+        "US MASSTIGE",
+        "Rare Beauty Find Comfort Tinted Moisturizer",
+    ),
+    ("makeup", "heat_rankings", "US MASSTIGE", "Kosas Cloud Set Blurring Powder"),
+    (
+        "fragrance",
+        "heat_rankings",
+        "US LUXURY",
+        "Maison Margiela Replica Lazy Sunday Morning",
+    ),
+    ("fragrance", "heat_rankings", "US MASSTIGE", "Lake & Skye 11 11 Moon EDP"),
+    ("fragrance", "heat_rankings", "CN LUXURY", "Maison Margiela Lazy Weekend"),
+    ("fragrance", "heat_rankings", "CN MASSTIGE", "Bingxili Mirage Quicksand Gold"),
 ]
 
 # ── CN translations for heat products with identical EN/CN key_features ──
@@ -748,6 +748,21 @@ def fix_data():
                 name = p.get("name", "")
                 detail = p.get("detail", {})
 
+                # 0. Remove trend_badge for products without valid current trend
+                for removal in TREND_BADGE_REMOVALS:
+                    if (
+                        removal[0] == topic
+                        and removal[1] == "heat_rankings"
+                        and removal[2] == panel_key
+                        and removal[3] == name
+                    ):
+                        p.pop("trend_badge", None)
+                        kf = detail.get("key_features", {})
+                        kf.pop("trend_tags", None)
+                        kf.pop("trend_tags_cn", None)
+                        detail["key_features"] = kf
+                        break
+
                 # 1. Add trend_tags to key_features for trend-badge products
                 for t in TREND_TAGS:
                     if t[0] == topic and t[2] == panel_key and t[3] == name:
@@ -806,12 +821,34 @@ def fix_data():
                 name = p.get("name", "")
                 detail = p.get("detail", {})
 
-                # Add trend_tags for DedCool Mochi Milk (only radar product with trend_badge)
-                if p.get("trend_badge") == "Trend" and name == "DedCool Mochi Milk":
-                    kf = detail.get("key_features", {})
-                    kf["trend_tags"] = ["Milky Scent"]
-                    kf["trend_tags_cn"] = ["奶香"]
-                    detail["key_features"] = kf
+                # Remove trend_badge for radar products without valid current trend
+                for removal in TREND_BADGE_REMOVALS:
+                    if (
+                        removal[0] == topic
+                        and removal[1] == "new_product_radar"
+                        and removal[2] == panel_key
+                        and removal[3] == name
+                    ):
+                        p.pop("trend_badge", None)
+                        kf = detail.get("key_features", {})
+                        kf.pop("trend_tags", None)
+                        kf.pop("trend_tags_cn", None)
+                        detail["key_features"] = kf
+                        break
+
+                # Add trend_tags for radar products with trend_badge
+                for t in TREND_TAGS:
+                    if (
+                        t[0] == topic
+                        and t[1] == "new_product_radar"
+                        and t[2] == panel_key
+                        and t[3] == name
+                    ):
+                        kf = detail.get("key_features", {})
+                        kf["trend_tags"] = [t[4]]
+                        kf["trend_tags_cn"] = [t[5]]
+                        detail["key_features"] = kf
+                        break
 
                 # Fix EN language leakage
                 for fix in RADAR_EN_FIXES:
@@ -826,11 +863,11 @@ def fix_data():
                 p["detail"] = detail
 
     # Update version
-    data["version"] = "week28-v2"
-    data["version_en_makeup"] = "week28-en-20260713-v2"
-    data["version_cn_makeup"] = "week28-cn-20260713-v2"
-    data["version_en_fragrance"] = "week28-fragrance-en-20260713-v2"
-    data["version_cn_fragrance"] = "week28-fragrance-cn-20260713-v2"
+    data["version"] = "week28-v3"
+    data["version_en_makeup"] = "week28-en-20260715-v3"
+    data["version_cn_makeup"] = "week28-cn-20260715-v3"
+    data["version_en_fragrance"] = "week28-fragrance-en-20260715-v3"
+    data["version_cn_fragrance"] = "week28-fragrance-cn-20260715-v3"
 
     with open(DATA_PATH, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2, sort_keys=False)

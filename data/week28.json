@@ -2,11 +2,11 @@
   "week": 28,
   "date_range": "Jul 7 – Jul 13, 2026",
   "date_range_cn": "7月7日 – 7月13日",
-  "version": "week28-v2",
-  "version_en_makeup": "week28-en-20260713-v2",
-  "version_cn_makeup": "week28-cn-20260713-v2",
-  "version_en_fragrance": "week28-fragrance-en-20260713-v2",
-  "version_cn_fragrance": "week28-fragrance-cn-20260713-v2",
+  "version": "week28-v3",
+  "version_en_makeup": "week28-en-20260715-v3",
+  "version_cn_makeup": "week28-cn-20260715-v3",
+  "version_en_fragrance": "week28-fragrance-en-20260715-v3",
+  "version_cn_fragrance": "week28-fragrance-cn-20260715-v3",
   "products": {
     "makeup": {
       "heat_rankings": {
@@ -86,7 +86,7 @@
                   "Skincare Foundation"
                 ],
                 "trend_tags_cn": [
-                  "养肤粉底"
+                  "养肤底妆趋势"
                 ]
               },
               "buzz": {
@@ -225,10 +225,10 @@
                 "en": "Clean Beauty · Squalane + coconut oil · Medium coverage",
                 "cn": "纯净美妆 · 角鲨烷+椰子油 · 中等遮瑕",
                 "trend_tags": [
-                  "Clean Beauty"
+                  "Skincare Foundation"
                 ],
                 "trend_tags_cn": [
-                  "纯净美妆"
+                  "养肤底妆趋势"
                 ]
               },
               "buzz": {
@@ -358,7 +358,6 @@
             "tier": "MASSTIGE",
             "name": "Rare Beauty Find Comfort Tinted Moisturizer",
             "category_badge": "Tinted Moisturizer",
-            "trend_badge": "Trend",
             "new_badge": "New",
             "score": 88,
             "detail": {
@@ -369,13 +368,7 @@
               },
               "key_features": {
                 "en": "Tinted moisturizer · Light coverage · Skincare ingredients",
-                "cn": "有色面霜 · 轻薄遮瑕 · 护肤成分",
-                "trend_tags": [
-                  "Tinted Moisturizer"
-                ],
-                "trend_tags_cn": [
-                  "有色面霜"
-                ]
+                "cn": "有色面霜 · 轻薄遮瑕 · 护肤成分"
               },
               "buzz": {
                 "en": "Sephora Bestseller · Selena Gomez endorsed · 4.7★",
@@ -405,10 +398,10 @@
                 "en": "High gloss · Non-sticky · Multiple shades",
                 "cn": "高光泽 · 不粘腻 · 多色号",
                 "trend_tags": [
-                  "Lip Gloss Revival"
+                  "Functional Lip"
                 ],
                 "trend_tags_cn": [
-                  "唇彩复兴"
+                  "唇部功效化趋势"
                 ]
               },
               "buzz": {
@@ -493,10 +486,10 @@
                 "en": "High gloss · Hydrating · 8 shades",
                 "cn": "高光泽 · 滋润 · 8色号",
                 "trend_tags": [
-                  "Lip Oil"
+                  "Functional Lip"
                 ],
                 "trend_tags_cn": [
-                  "唇油"
+                  "唇部功效化趋势"
                 ]
               },
               "buzz": {
@@ -515,7 +508,6 @@
             "tier": "MASSTIGE",
             "name": "Kosas Cloud Set Blurring Powder",
             "category_badge": "Blurring Powder",
-            "trend_badge": "Trend",
             "score": 72,
             "detail": {
               "price_link": {
@@ -525,13 +517,7 @@
               },
               "key_features": {
                 "en": "Talc-free · Skincare-grade formula · Soft-focus effect",
-                "cn": "无滑石粉 · 护肤级配方 · 柔焦效果",
-                "trend_tags": [
-                  "Clean Powder"
-                ],
-                "trend_tags_cn": [
-                  "纯净定妆"
-                ]
+                "cn": "无滑石粉 · 护肤级配方 · 柔焦效果"
               },
               "buzz": {
                 "en": "Dry skin friendly · viral deserved · 4.6★",
@@ -752,10 +738,10 @@
                 "en": "Skincare cushion · Dual-core · SPF30 · 10 shades",
                 "cn": "养肤气垫 · 双核芯 · SPF30 · 10色号",
                 "trend_tags": [
-                  "Skincare Cushion"
+                  "Skincare Foundation"
                 ],
                 "trend_tags_cn": [
-                  "养肤气垫"
+                  "养肤底妆趋势"
                 ]
               },
               "buzz": {
@@ -816,7 +802,7 @@
                   "Skincare Foundation"
                 ],
                 "trend_tags_cn": [
-                  "养肤粉底"
+                  "养肤底妆趋势"
                 ]
               },
               "buzz": {
@@ -958,10 +944,10 @@
                 "en": "Low-saturation creamy tones · Daily commute · Value",
                 "cn": "低饱和奶油色调 · 通勤日常 · 高性价比",
                 "trend_tags": [
-                  "Low Saturation"
+                  "Low-Saturation Pastel"
                 ],
                 "trend_tags_cn": [
-                  "低饱和"
+                  "低饱和粉彩趋势"
                 ]
               },
               "buzz": {
@@ -1021,10 +1007,10 @@
                 "en": "Lip powder foundation · N31 low-sat pink-brown · New shades",
                 "cn": "唇粉霜 · N31低饱和粉棕色 · 新色号",
                 "trend_tags": [
-                  "Lip Powder"
+                  "Low-Saturation Pastel"
                 ],
                 "trend_tags_cn": [
-                  "唇粉"
+                  "低饱和粉彩趋势"
                 ]
               },
               "buzz": {
@@ -1110,10 +1096,10 @@
                 "en": "Low-sat pink-brown · 9-pan design · Beginner friendly",
                 "cn": "低饱和粉棕 · 九宫格设计 · 新手友好",
                 "trend_tags": [
-                  "Nine-Pan Palette"
+                  "Low-Saturation Pastel"
                 ],
                 "trend_tags_cn": [
-                  "九宫格"
+                  "低饱和粉彩趋势"
                 ]
               },
               "buzz": {
@@ -1172,10 +1158,10 @@
                 "en": "Unicorn series · Low saturation · Girly packaging",
                 "cn": "独角兽系列 · 低饱和度 · 少女包装",
                 "trend_tags": [
-                  "Unicorn IP"
+                  "Low-Saturation Pastel"
                 ],
                 "trend_tags_cn": [
-                  "独角兽IP"
+                  "低饱和粉彩趋势"
                 ]
               },
               "buzz": {
@@ -1617,7 +1603,6 @@
             "tier": "LUXURY",
             "name": "Maison Margiela Replica Lazy Sunday Morning",
             "category_badge": "Skin Scent EDP",
-            "trend_badge": "Trend",
             "score": 70,
             "detail": {
               "price_link": {
@@ -1627,13 +1612,7 @@
               },
               "key_features": {
                 "en": "Lily of valley + aldehyde + white musk · Lazy Sunday · Replica memory series",
-                "cn": "铃兰+醛香+白麝香 · 慵懒周日 · Replica记忆系列",
-                "trend_tags": [
-                  "Lazy Sunday"
-                ],
-                "trend_tags_cn": [
-                  "慵懒周日"
-                ]
+                "cn": "铃兰+醛香+白麝香 · 慵懒周日 · Replica记忆系列"
               },
               "buzz": {
                 "en": "Skin musk classic · Weekend scenario benchmark",
@@ -1825,10 +1804,10 @@
                 "en": "White flower + musk + wood · Sexy skin scent · Viral hit · #SkinScent 1.2B",
                 "cn": "白花+麝香+木质 · 性感肌肤香 · viral爆款·#SkinScent 12亿",
                 "trend_tags": [
-                  "Skin Scent"
+                  "Milky Musk"
                 ],
                 "trend_tags_cn": [
-                  "肌肤香"
+                  "乳感麝香趋势"
                 ]
               },
               "buzz": {
@@ -1859,10 +1838,10 @@
                 "en": "Gourmand·marshmallow + caramel + chocolate · High concentration · $11M+ sales",
                 "cn": "美食调·棉花糖+焦糖+巧克力 · 高浓度 · $11M+ sales",
                 "trend_tags": [
-                  "Gourmand Matcha"
+                  "Matcha Fragrance"
                 ],
                 "trend_tags_cn": [
-                  "美食调抹茶"
+                  "抹茶香水趋势"
                 ]
               },
               "buzz": {
@@ -1894,10 +1873,10 @@
                 "en": "Milky + musk + incense · Unisex · 5000+ waitlist",
                 "cn": "奶香+麝香+焚香 · 无性别 · 5000+候补名单",
                 "trend_tags": [
-                  "Milky Scent"
+                  "Milky Musk"
                 ],
                 "trend_tags_cn": [
-                  "奶香"
+                  "乳感麝香趋势"
                 ]
               },
               "buzz": {
@@ -1928,10 +1907,10 @@
                 "en": "Skin scent·amber + musk + iris · Body temp fusion · Glossier classic",
                 "cn": "肌肤香·琥珀+麝香+鸢尾 · 体温融合 · Glossier经典",
                 "trend_tags": [
-                  "Skin Scent"
+                  "Milky Musk"
                 ],
                 "trend_tags_cn": [
-                  "肌肤香"
+                  "乳感麝香趋势"
                 ]
               },
               "buzz": {
@@ -1950,7 +1929,6 @@
             "tier": "MASSTIGE",
             "name": "Lake & Skye 11 11 Moon EDP",
             "category_badge": "Skin Scent EDP",
-            "trend_badge": "Trend",
             "new_badge": "New",
             "score": 72,
             "detail": {
@@ -1961,13 +1939,7 @@
               },
               "key_features": {
                 "en": "White flower + sea salt + wood · Moonlight theme · EDP",
-                "cn": "白花+海盐+木质 · 月光主题 · EDP",
-                "trend_tags": [
-                  "Moon Theme"
-                ],
-                "trend_tags_cn": [
-                  "月光主题"
-                ]
+                "cn": "白花+海盐+木质 · 月光主题 · EDP"
               },
               "buzz": {
                 "en": "Parfumo: Mood boost · Stellar skin scent",
@@ -2001,7 +1973,7 @@
                   "Rose Revival"
                 ],
                 "trend_tags_cn": [
-                  "玫瑰复兴"
+                  "玫瑰复兴趋势"
                 ]
               },
               "buzz": {
@@ -2086,10 +2058,10 @@
                 "en": "Matcha + green tea + musk · Unisex · Thé series newcomer",
                 "cn": "抹茶+绿茶+麝香 · 无性别 · Thé系列新作",
                 "trend_tags": [
-                  "Tea Scent"
+                  "Matcha Fragrance"
                 ],
                 "trend_tags_cn": [
-                  "茶香"
+                  "抹茶香水趋势"
                 ]
               },
               "buzz": {
@@ -2108,7 +2080,6 @@
             "tier": "LUXURY",
             "name": "Maison Margiela Lazy Weekend",
             "category_badge": "Skin Scent EDP",
-            "trend_badge": "Trend",
             "raw_score": 62,
             "score": 65,
             "detail": {
@@ -2119,13 +2090,7 @@
               },
               "key_features": {
                 "en": "Skin musk · Replica memory series · Douyin pseudo-body-scent topic",
-                "cn": "肌肤感麝香 · Replica记忆系列 · 抖音伪体香话题",
-                "trend_tags": [
-                  "Pseudo Body Scent"
-                ],
-                "trend_tags_cn": [
-                  "伪体香"
-                ]
+                "cn": "肌肤感麝香 · Replica记忆系列 · 抖音伪体香话题"
               },
               "buzz": {
                 "en": "Skin musk CN · Douyin pseudo-body-scent topic",
@@ -2365,10 +2330,10 @@
                 "en": "Skin musk · Kunlun snow narrative · Chinese niche storytelling",
                 "cn": "肌肤感麝香 · 昆仑雪叙事 · 国货小众故事香",
                 "trend_tags": [
-                  "Chinese Niche"
+                  "Oriental Narrative"
                 ],
                 "trend_tags_cn": [
-                  "国货小众"
+                  "东方叙事香趋势"
                 ]
               },
               "buzz": {
@@ -2400,10 +2365,10 @@
                 "en": "Boiled water + aquatic + citrus · Nostalgic narrative · C-beauty memory",
                 "cn": "凉白开+水生+柑橘 · 怀旧叙事 · 国货记忆",
                 "trend_tags": [
-                  "Chinese Nostalgic"
+                  "Oriental Narrative"
                 ],
                 "trend_tags_cn": [
-                  "国货记忆"
+                  "东方叙事香趋势"
                 ]
               },
               "buzz": {
@@ -2423,7 +2388,6 @@
             "tier": "MASSTIGE",
             "name": "Bingxili Mirage Quicksand Gold",
             "category_badge": "Floral Gourmand EDP",
-            "trend_badge": "Trend",
             "score": 78,
             "detail": {
               "price_link": {
@@ -2433,13 +2397,7 @@
               },
               "key_features": {
                 "en": "Quicksand gold + fruity-floral + musk · Oriental floral-fruity · C-beauty affordable",
-                "cn": "流沙金+花果+麝香 · 东方花果 · 国货平价",
-                "trend_tags": [
-                  "C-beauty Floral"
-                ],
-                "trend_tags_cn": [
-                  "国货花果"
-                ]
+                "cn": "流沙金+花果+麝香 · 东方花果 · 国货平价"
               },
               "buzz": {
                 "en": "C-beauty fragrance hit · Incense inspiration",
@@ -2850,10 +2808,10 @@
                 "en": "Marshmallow + peach + incense · Clean Gourmand",
                 "cn": "棉花糖+桃子+焚香 · 纯净美食调",
                 "trend_tags": [
-                  "Milky Scent"
+                  "Milky Musk"
                 ],
                 "trend_tags_cn": [
-                  "奶香"
+                  "乳感麝香趋势"
                 ]
               },
               "buzz": {

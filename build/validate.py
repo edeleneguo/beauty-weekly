@@ -590,6 +590,122 @@ def _check_trend_new_badges(data: dict) -> List[ValidationIssue]:
     return issues
 
 
+def _check_trend_tags_rules(data: dict, filename: str) -> List[ValidationIssue]:
+    """Validate trend_tags against canonical taxonomy.
+
+    Rules enforced:
+    1. Only canonical trend tags from current issue trend sections are allowed.
+    2. EN and CN tag labels must form a valid localized pair.
+    3. Makeup trends may only appear on makeup products; fragrance on fragrance.
+    4. trend_badge products must have at least one valid trend_tag.
+    5. trend_badge without any matching canonical trend is forbidden.
+    """
+    issues = []
+
+    # Canonical trend taxonomy: {tag_value: [en_canonical, cn_canonical]}
+    # Only trends defined in current issue trend sections are valid.
+    CANONICAL_TREND_CATEGORIES = {
+        # Makeup vertical trends
+        "Skincare Foundation": ["Skincare Foundation Trend", "养肤底妆趋势"],
+        "Functional Lip": ["Functional Lip Trend", "唇部功效化趋势"],
+        "Low-Saturation Pastel": ["Low-Saturation Pastel Trend", "低饱和粉彩趋势"],
+        # Fragrance vertical trends
+        "Milky Musk": ["Milky Musk Trend", "乳感麝香趋势"],
+        "Matcha Fragrance": ["Matcha Fragrance Trend", "抹茶香水趋势"],
+        "Rose Revival": ["Rose Revival Trend", "玫瑰复兴趋势"],
+        "Oriental Narrative": ["Oriental Narrative Trend", "东方叙事香趋势"],
+    }
+
+    # Valid trend tags per vertical (for cross-vertical isolation)
+    MAKEUP_TREND_TAGS = {
+        "Skincare Foundation",
+        "Functional Lip",
+        "Low-Saturation Pastel",
+    }
+    FRAGRANCE_TREND_TAGS = {
+        "Milky Musk",
+        "Matcha Fragrance",
+        "Rose Revival",
+        "Oriental Narrative",
+    }
+
+    for topic in ("makeup", "fragrance"):
+        valid_vertical_tags = (
+            MAKEUP_TREND_TAGS if topic == "makeup" else FRAGRANCE_TREND_TAGS
+        )
+        products = data["products"].get(topic, {})
+        for section in ("heat_rankings", "new_product_radar"):
+            for panel_key, panel_products in products.get(section, {}).items():
+                for p in panel_products:
+                    if not p.get("trend_badge") or p.get("score", 0) == 0:
+                        continue
+
+                    kf = p.get("detail", {}).get("key_features", {})
+                    en_tags = kf.get("trend_tags", [])
+                    cn_tags = kf.get("trend_tags_cn", [])
+                    pname = p.get("name", "?")
+                    loc = f"{filename}/{topic}/{section}/{panel_key}/{pname}"
+
+                    if not en_tags:
+                        issues.append(
+                            ValidationIssue(
+                                "ERROR",
+                                loc,
+                                "missing-trend-tag",
+                                "Trend-badge product missing trend_tags on key_features",
+                            )
+                        )
+                        continue
+
+                    for en_tag in en_tags:
+                        if en_tag not in CANONICAL_TREND_CATEGORIES:
+                            issues.append(
+                                ValidationIssue(
+                                    "ERROR",
+                                    loc,
+                                    "arbitrary-trend-tag",
+                                    f"Unknown trend tag '{en_tag}' – not in canonical taxonomy",
+                                )
+                            )
+                            continue
+
+                        # Cross-vertical check
+                        if en_tag not in valid_vertical_tags:
+                            other = "fragrance" if topic == "makeup" else "makeup"
+                            issues.append(
+                                ValidationIssue(
+                                    "ERROR",
+                                    loc,
+                                    "cross-vertical-trend",
+                                    f"Trend tag '{en_tag}' belongs to {other} vertical, used on {topic} product",
+                                )
+                            )
+
+                        # EN/CN pair consistency
+                        canon_en, canon_cn = CANONICAL_TREND_CATEGORIES[en_tag]
+                        if cn_tags:
+                            if cn_tags[0] != canon_cn:
+                                issues.append(
+                                    ValidationIssue(
+                                        "ERROR",
+                                        loc,
+                                        "trend-cn-mismatch",
+                                        f"CN tag '{cn_tags[0]}' does not match canonical '{canon_cn}' for EN tag '{en_tag}'",
+                                    )
+                                )
+                        else:
+                            issues.append(
+                                ValidationIssue(
+                                    "ERROR",
+                                    loc,
+                                    "missing-trend-tag-cn",
+                                    f"Missing trend_tags_cn for EN tag '{en_tag}'",
+                                )
+                            )
+
+    return issues
+
+
 def main() -> int:
     data = _load_data()
     all_issues: List[ValidationIssue] = []
@@ -597,6 +713,7 @@ def main() -> int:
     # Data-level checks
     all_issues.extend(_check_data_consistency(data))
     all_issues.extend(_check_trend_new_badges(data))
+    all_issues.extend(_check_trend_tags_rules(data, "data/week28.json"))
 
     # HTML-level checks
     for (topic, lang), filename in FILES.items():

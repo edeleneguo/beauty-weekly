@@ -17,7 +17,6 @@ import hashlib
 import json
 import os
 import re
-import sys
 
 import pytest
 
@@ -578,3 +577,232 @@ class TestCrossSectionConsistency:
                         f"score mismatch heat={heat_names[name]} "
                         f"radar={radar_names[name]}"
                     )
+
+
+# ═══════════════════════════════════════════════════════════════════════
+# 9. Closed trend taxonomy invariants
+# ═══════════════════════════════════════════════════════════════════════
+
+# Canonical trends from current issue trend sections only.
+MAKEUP_CANONICAL_TAGS = {
+    "Skincare Foundation",
+    "Functional Lip",
+    "Low-Saturation Pastel",
+}
+FRAGRANCE_CANONICAL_TAGS = {
+    "Milky Musk",
+    "Matcha Fragrance",
+    "Rose Revival",
+    "Oriental Narrative",
+}
+ALL_CANONICAL_TAGS = MAKEUP_CANONICAL_TAGS | FRAGRANCE_CANONICAL_TAGS
+
+# Canonical EN→CN label pairs
+CANONICAL_TAG_PAIRS = {
+    "Skincare Foundation": "养肤底妆趋势",
+    "Functional Lip": "唇部功效化趋势",
+    "Low-Saturation Pastel": "低饱和粉彩趋势",
+    "Milky Musk": "乳感麝香趋势",
+    "Matcha Fragrance": "抹茶香水趋势",
+    "Rose Revival": "玫瑰复兴趋势",
+    "Oriental Narrative": "东方叙事香趋势",
+}
+
+
+class TestTrendTaxonomy:
+    """Closed taxonomy: only canonical trends from current issue trend sections."""
+
+    def test_only_canonical_trend_tags_used(self, data):
+        """Every trend_tag must be in the canonical taxonomy."""
+        for topic in ("makeup", "fragrance"):
+            for section in ("heat_rankings", "new_product_radar"):
+                for panel, products in data["products"][topic][section].items():
+                    for p in products:
+                        if p.get("trend_badge") and p.get("score", 0) > 0:
+                            kf = p.get("detail", {}).get("key_features", {})
+                            for tag in kf.get("trend_tags", []):
+                                assert tag in ALL_CANONICAL_TAGS, (
+                                    f"{topic}/{section}/{panel}/{p['name']}: "
+                                    f"non-canonical trend tag '{tag}'"
+                                )
+
+    def test_cross_vertical_isolation(self, data):
+        """Makeup trends must not appear on fragrance products and vice versa."""
+        for topic in ("makeup", "fragrance"):
+            wrong = (
+                FRAGRANCE_CANONICAL_TAGS if topic == "makeup" else MAKEUP_CANONICAL_TAGS
+            )
+            for section in ("heat_rankings", "new_product_radar"):
+                for panel, products in data["products"][topic][section].items():
+                    for p in products:
+                        if p.get("trend_badge") and p.get("score", 0) > 0:
+                            kf = p.get("detail", {}).get("key_features", {})
+                            for tag in kf.get("trend_tags", []):
+                                assert tag not in wrong, (
+                                    f"{topic}/{section}/{panel}/{p['name']}: "
+                                    f"cross-vertical tag '{tag}'"
+                                )
+
+    def test_en_cn_tag_pairs_consistent(self, data):
+        """EN trend_tags must have matching CN trend_tags_cn."""
+        for topic in ("makeup", "fragrance"):
+            for section in ("heat_rankings", "new_product_radar"):
+                for panel, products in data["products"][topic][section].items():
+                    for p in products:
+                        if p.get("trend_badge") and p.get("score", 0) > 0:
+                            kf = p.get("detail", {}).get("key_features", {})
+                            en_tags = kf.get("trend_tags", [])
+                            cn_tags = kf.get("trend_tags_cn", [])
+                            for en_tag in en_tags:
+                                expected_cn = CANONICAL_TAG_PAIRS.get(en_tag)
+                                assert expected_cn, (
+                                    f"{p['name']}: EN tag '{en_tag}' has no canonical CN pair"
+                                )
+                                assert cn_tags, (
+                                    f"{p['name']}: EN tag '{en_tag}' missing trend_tags_cn"
+                                )
+                                assert cn_tags[0] == expected_cn, (
+                                    f"{p['name']}: CN tag '{cn_tags[0]}' != expected '{expected_cn}' "
+                                    f"for EN tag '{en_tag}'"
+                                )
+
+    def test_no_arbitrary_trend_tags(self, data):
+        """Tags like 'Lip Oil', 'Unicorn IP', 'Clean Powder' must not appear."""
+        forbidden_tags = {
+            "Lip Oil",
+            "Lip Powder",
+            "Skincare Cushion",
+            "Clean Powder",
+            "Clean Beauty",
+            "Tinted Moisturizer",
+            "Lip Gloss Revival",
+            "Nine-Pan Palette",
+            "Unicorn IP",
+            "Low Saturation",
+            "Lazy Sunday",
+            "Moon Theme",
+            "Skin Scent",
+            "Milky Scent",
+            "Gourmand Matcha",
+            "Tea Scent",
+            "Pseudo Body Scent",
+            "Chinese Niche",
+            "Chinese Nostalgic",
+            "C-beauty Floral",
+        }
+        for topic in ("makeup", "fragrance"):
+            for section in ("heat_rankings", "new_product_radar"):
+                for panel, products in data["products"][topic][section].items():
+                    for p in products:
+                        if p.get("score", 0) == 0:
+                            continue
+                        kf = p.get("detail", {}).get("key_features", {})
+                        for tag in kf.get("trend_tags", []):
+                            assert tag not in forbidden_tags, (
+                                f"{topic}/{section}/{panel}/{p['name']}: "
+                                f"forbidden arbitrary tag '{tag}'"
+                            )
+
+    def test_nine_pan_maps_to_low_saturation_pastel(self, data):
+        """九宫格 (3CE Nine-Pan) must map to Low-Saturation Pastel / 低饱和粉彩趋势."""
+        p = None
+        for prod in data["products"]["makeup"]["heat_rankings"]["CN MASSTIGE"]:
+            if prod["name"] == "3CE Nine-Pan Eyeshadow Palette":
+                p = prod
+                break
+        assert p is not None
+        kf = p["detail"]["key_features"]
+        assert kf["trend_tags"] == ["Low-Saturation Pastel"]
+        assert kf["trend_tags_cn"] == ["低饱和粉彩趋势"]
+
+    def test_matcha_fragrance_maps_to_matcha_trend(self, data):
+        """美食调抹茶 (Kayali) must map to Matcha Fragrance / 抹茶香水趋势."""
+        p = None
+        for prod in data["products"]["fragrance"]["heat_rankings"]["US MASSTIGE"]:
+            if prod["name"] == "Kayali Freedom Musk Matcha":
+                p = prod
+                break
+        assert p is not None
+        kf = p["detail"]["key_features"]
+        assert kf["trend_tags"] == ["Matcha Fragrance"]
+        assert kf["trend_tags_cn"] == ["抹茶香水趋势"]
+
+    def test_chinese_nostalgic_maps_to_oriental_narrative(self, data):
+        """国货记忆 (Scent Library) must map to Oriental Narrative / 东方叙事香趋势."""
+        p = None
+        for prod in data["products"]["fragrance"]["heat_rankings"]["CN MASSTIGE"]:
+            if prod["name"] == "Scent Library Boiled Water":
+                p = prod
+                break
+        assert p is not None
+        kf = p["detail"]["key_features"]
+        assert kf["trend_tags"] == ["Oriental Narrative"]
+        assert kf["trend_tags_cn"] == ["东方叙事香趋势"]
+
+    def test_ambiguous_cbeauty_floral_no_trend_badge(self, data):
+        """国货花果 (Bingxili) must NOT have trend_badge (ambiguous, no evidence)."""
+        for prod in data["products"]["fragrance"]["heat_rankings"]["CN MASSTIGE"]:
+            if prod["name"] == "Bingxili Mirage Quicksand Gold":
+                assert not prod.get("trend_badge"), (
+                    "Bingxili Mirage Quicksand Gold should not have trend_badge"
+                )
+                kf = prod.get("detail", {}).get("key_features", {})
+                assert not kf.get("trend_tags"), (
+                    "Bingxili Mirage Quicksand Gold should not have trend_tags"
+                )
+                return
+        pytest.fail("Bingxili Mirage Quicksand Gold not found in data")
+
+    def test_products_without_valid_evidence_no_badge(self, data):
+        """Products without evidence for any current trend must not have trend_badge."""
+        no_badge_products = {
+            "makeup": {
+                "heat_rankings": {
+                    "US MASSTIGE": [
+                        "Rare Beauty Find Comfort Tinted Moisturizer",
+                        "Kosas Cloud Set Blurring Powder",
+                    ],
+                },
+            },
+            "fragrance": {
+                "heat_rankings": {
+                    "US LUXURY": ["Maison Margiela Replica Lazy Sunday Morning"],
+                    "US MASSTIGE": ["Lake & Skye 11 11 Moon EDP"],
+                    "CN LUXURY": ["Maison Margiela Lazy Weekend"],
+                    "CN MASSTIGE": ["Bingxili Mirage Quicksand Gold"],
+                },
+            },
+        }
+        for topic, sections in no_badge_products.items():
+            for section, panels in sections.items():
+                for panel, names in panels.items():
+                    for name in names:
+                        for p in data["products"][topic][section].get(panel, []):
+                            if p["name"] == name:
+                                assert not p.get("trend_badge"), (
+                                    f"{topic}/{section}/{panel}/{name}: "
+                                    f"should not have trend_badge '{p.get('trend_badge')}'"
+                                )
+
+    def test_trend_tags_render_in_en_html(self, html_files):
+        """EN HTML trend_tags must all be canonical."""
+        for (topic, lang), html in html_files.items():
+            if lang != "en":
+                continue
+            tags = re.findall(r'<span\s+class="heat-trend-tag">([^<]+)</span>', html)
+            for tag in tags:
+                assert tag in ALL_CANONICAL_TAGS, (
+                    f"{topic} EN: non-canonical trend tag '{tag}' in HTML"
+                )
+
+    def test_trend_tags_render_in_cn_html(self, html_files):
+        """CN HTML trend_tags must all be canonical CN labels."""
+        cn_labels = set(CANONICAL_TAG_PAIRS.values())
+        for (topic, lang), html in html_files.items():
+            if lang != "cn":
+                continue
+            tags = re.findall(r'<span\s+class="heat-trend-tag">([^<]+)</span>', html)
+            for tag in tags:
+                assert tag in cn_labels, (
+                    f"{topic} CN: non-canonical CN trend tag '{tag}' in HTML"
+                )
