@@ -3,7 +3,7 @@
 
 Implements all IT cross-check rules (all hard-fail, no warnings):
   1. 4 panels per section (US LUXURY, US MASSTIGE, CN LUXURY, CN MASSTIGE)
-  2. 10 rows per panel (both heat and radar)
+  2. 10 rows per panel for heat; dynamic (0+) for radar/new_product_radar
   3. Scores, ranks, products aligned across EN/CN
   4. Exactly four score labels (Heat/热度值) - rank #1 only
   5. Trend/New badge semantics (Trend=趋势产品, New=新品)
@@ -17,6 +17,9 @@ Implements all IT cross-check rules (all hard-fail, no warnings):
  13. Scoring/category/trend consistency (score range 65-98, monotonic rank)
  14. Radar cards must be plain text (no badges/trend/heat indicators)
  15. Placeholder rows recognized (score=0, no score/detail exemption for real products)
+ 16. Trend tags: products with trend_badge must have trend_tags on key_features
+ 17. Language isolation: no Chinese in EN fields, no English-only in CN fields
+ 18. Dynamic radar: item count matches actual products (no fixed 40)
 
 Exit code 0 = all pass, 1 = failures found.
 """
@@ -270,17 +273,18 @@ def _check_evidence_urls(filename: str, html: str) -> List[ValidationIssue]:
 
 
 def _check_radar_plain_text(filename: str, html: str) -> List[ValidationIssue]:
-    """Section 04 (radar) must have plain text cards - no badges, pills, trend indicators."""
+    """Section 04 (radar) must have plain text cards - no badges/pills in card headers.
+    Note: heat-trend-tag in detail cells IS allowed (concrete qualifying tags)."""
     issues = []
     section_html = _extract_section_html(html, 4)
     if not section_html:
         return issues
-    # Radar must not have heat-trend-badge, heat-new-badge, heat-score-label
+    # Radar must not have header-level badges: heat-trend-badge, heat-new-badge, heat-score-label
+    # heat-trend-tag in detail cells IS allowed (concrete qualifying trend tags)
     forbidden_in_radar = [
         (r'<span\s+class="heat-trend-badge"', "heat-trend-badge"),
         (r'<span\s+class="heat-new-badge"', "heat-new-badge"),
         (r'<span\s+class="heat-score-label"', "heat-score-label"),
-        (r'<span\s+class="heat-trend-tag"', "heat-trend-tag"),
     ]
     for pattern, tag_name in forbidden_in_radar:
         matches = re.findall(pattern, section_html)
@@ -325,14 +329,25 @@ def _check_data_consistency(data: dict) -> List[ValidationIssue]:
                 )
             for panel_key in PANELS:
                 panel_products = panels.get(panel_key, [])
-                # Rule: panels should have exactly 10 rows
-                if len(panel_products) != 10:
+                # Rule: heat panels must have exactly 10 rows; radar panels are dynamic (0+)
+                if section == "heat_rankings" and len(panel_products) != 10:
                     issues.append(
                         ValidationIssue(
                             "ERROR",
                             "data",
                             "panel-rows",
                             "{0}/{1}/{2}: expected 10 rows, got {3}".format(
+                                topic, section, panel_key, len(panel_products)
+                            ),
+                        )
+                    )
+                elif section == "new_product_radar" and len(panel_products) > 10:
+                    issues.append(
+                        ValidationIssue(
+                            "ERROR",
+                            "data",
+                            "panel-rows",
+                            "{0}/{1}/{2}: radar panel has {3} rows (max 10)".format(
                                 topic, section, panel_key, len(panel_products)
                             ),
                         )
@@ -475,19 +490,33 @@ def _check_html_panels(filename: str, html: str) -> List[ValidationIssue]:
                 )
             )
         item_count = _count_items(section_html)
-        # Section 03 (heat) should have exactly 40 items; Section 04 (radar) should have 40 items
-        expected_items = 40
-        if item_count != expected_items:
-            issues.append(
-                ValidationIssue(
-                    "ERROR",
-                    filename,
-                    "item-count",
-                    "Section 0{0}: expected {1} items, found {2}".format(
-                        section_num, expected_items, item_count
-                    ),
+        # Section 03 (heat) should have exactly 40 items; Section 04 (radar) is dynamic
+        if section_num == 3:
+            expected_items = 40
+            if item_count != expected_items:
+                issues.append(
+                    ValidationIssue(
+                        "ERROR",
+                        filename,
+                        "item-count",
+                        "Section 0{0}: expected {1} items, found {2}".format(
+                            section_num, expected_items, item_count
+                        ),
+                    )
                 )
-            )
+        else:
+            # Section 04 (radar): must have 0-40 items (dynamic, no padding)
+            if item_count > 40:
+                issues.append(
+                    ValidationIssue(
+                        "ERROR",
+                        filename,
+                        "item-count",
+                        "Section 0{0}: found {1} items (max 40)".format(
+                            section_num, item_count
+                        ),
+                    )
+                )
         # Score labels: exactly 4 in Section 03 (rank #1 per subcategory), 0 in Section 04
         label_count = _count_score_labels(section_html)
         expected_labels = 4 if section_num == 3 else 0
@@ -506,7 +535,8 @@ def _check_html_panels(filename: str, html: str) -> List[ValidationIssue]:
 
 
 def _check_trend_new_badges(data: dict) -> List[ValidationIssue]:
-    """Verify trend/new badge semantics: Trend means rising product, New means recent launch."""
+    """Verify trend/new badge semantics: Trend means rising product, New means recent launch.
+    Also verify that trend-badge products have concrete trend_tags on key_features."""
     issues = []
     for topic in ("makeup", "fragrance"):
         products = data["products"].get(topic, {})
@@ -539,6 +569,24 @@ def _check_trend_new_badges(data: dict) -> List[ValidationIssue]:
                                 ),
                             )
                         )
+                    # Rule: trend-badge products must have concrete trend_tags on key_features
+                    if trend and trend in ("Trend", "趋势产品"):
+                        score = _safe_int(p.get("score", 0))
+                        if score > 0:  # skip placeholders
+                            detail = p.get("detail", {})
+                            kf = detail.get("key_features", {})
+                            tags = kf.get("trend_tags") or kf.get("trend_tags_cn")
+                            if not tags:
+                                issues.append(
+                                    ValidationIssue(
+                                        "ERROR",
+                                        "data",
+                                        "trend-tags-missing",
+                                        "{0}/{1}/{2}: trend-badge product missing concrete trend_tags on key_features".format(
+                                            topic, panel_key, p.get("name", "?")
+                                        ),
+                                    )
+                                )
     return issues
 
 

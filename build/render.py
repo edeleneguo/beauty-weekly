@@ -104,7 +104,11 @@ def _render_detail_cell(label: str, cell_data: Dict[str, Any], lang: str) -> str
             _esc(link_url),
             "View product" if lang == "en" else "查看产品",
         )
-    trend_tags = cell_data.get("trend_tags", [])
+    # Per-language trend_tags: prefer language-specific, fall back to generic
+    if lang == "cn":
+        trend_tags = cell_data.get("trend_tags_cn") or cell_data.get("trend_tags", [])
+    else:
+        trend_tags = cell_data.get("trend_tags", [])
     trend_html = ""
     if trend_tags:
         trend_html = " " + "".join(
@@ -125,8 +129,15 @@ def _render_product(product: Dict[str, Any], lang: str, section: str) -> str:
     """Render a single heat-item li element."""
     rank = product["rank"]
     market = product["market"].lower()
-    name = product["name"]
+    # Per-language product name: prefer name_cn for CN pages, name_en or name for EN
+    if lang == "cn":
+        name = product.get("name_cn") or product.get("name", "")
+    else:
+        name = product.get("name_en") or product.get("name", "")
     cat = product.get("category_badge", "")
+    cat_cn = product.get("category_badge_cn", "")
+    if lang == "cn" and cat_cn:
+        cat = cat_cn
     score = product.get("score", 0)
     trend_badge = product.get("trend_badge")
     new_badge = product.get("new_badge")
