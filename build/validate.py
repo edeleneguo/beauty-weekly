@@ -64,6 +64,24 @@ SCORE_LABELS_CN = ["热度值"]
 # EDP spacing: "EDP" must have a space before it when preceded by a word character
 EDP_PATTERN = re.compile(r"\wEDP\b")
 
+# Vague/non-ISO date patterns that must NOT appear as launch_date on verified items
+VAGUE_DATE_PATTERNS = [
+    re.compile(r"^\d{4}-H[12]$"),  # 2026-H1, 2025-H2
+    re.compile(r"^\d{4}$"),  # 2026
+    re.compile(r"^\d{4}-Q[1-4]$"),  # 2026-Q1
+    re.compile(r"^\d{4}-\d{2}$"),  # 2026-07 (not day-precise)
+    re.compile(r"^Q[1-4]\s+\d{4}$"),  # Q1 2026
+    re.compile(r"^(Early|Mid|Late)\s+", re.I),  # Early 2026, Mid-July, etc.
+]
+
+# Generic brand homepage / Sephora homepage patterns that are NOT direct product evidence
+GENERIC_EVIDENCE_URLS = [
+    re.compile(r"^https?://www\.sephora\.com/?$"),
+    re.compile(r"^https?://www\.sephora\.com/(?:index\.jsp)?/?$"),
+    re.compile(r"^https?://www\.[a-z]+\.com/?$"),  # bare brand homepage
+    re.compile(r"^https?://www\.[a-z]+\.com\.cn/?$"),  # bare CN brand homepage
+]
+
 
 class ValidationIssue:
     def __init__(self, severity: str, file: str, rule: str, message: str):
@@ -302,6 +320,73 @@ def _check_radar_plain_text(filename: str, html: str) -> List[ValidationIssue]:
     return issues
 
 
+def _check_unverified_not_rendered(
+    filename: str, html: str, data: dict, topic: str
+) -> List[ValidationIssue]:
+    """Unverified/out-of-window radar items must not appear in rendered Section 04 HTML."""
+    issues = []
+    section_html = _extract_section_html(html, 4)
+    if not section_html:
+        return issues
+    radar = data["products"].get(topic, {}).get("new_product_radar", {})
+    hidden_names = set()
+    for panel, products in radar.items():
+        for p in products:
+            qs = p.get("quarantine_status")
+            if qs in ("out-of-window", "unverified"):
+                hidden_names.add(p["name"])
+    for name in hidden_names:
+        if name in section_html:
+            issues.append(
+                ValidationIssue(
+                    "ERROR",
+                    filename,
+                    "unverified-in-rendered-radar",
+                    f"Quarantined/unverified radar item '{name}' found in rendered Section 04",
+                )
+            )
+    return issues
+
+
+def _check_heat_panel_notes(
+    filename: str, html: str, data: dict, topic: str
+) -> List[ValidationIssue]:
+    """Heat panels with fewer than 10 products must have a panel note in rendered HTML."""
+    issues = []
+    section_html = _extract_section_html(html, 3)
+    if not section_html:
+        return issues
+    # Look for the panel note pattern in the rendered HTML
+    has_note_pattern = re.findall(
+        r"products met this week|款产品达到信号", section_html
+    )
+    heat = data["products"].get(topic, {}).get("heat_rankings", {})
+    panels_with_few = 0
+    for panel_key, products in heat.items():
+        real = [p for p in products if _safe_int(p.get("score", 0)) > 0]
+        if 1 <= len(real) < 10:
+            panels_with_few += 1
+    if panels_with_few > 0 and len(has_note_pattern) == 0:
+        issues.append(
+            ValidationIssue(
+                "ERROR",
+                filename,
+                "missing-heat-panel-note",
+                f"Section 03 has {panels_with_few} panels with <10 products but no panel note found",
+            )
+        )
+    elif panels_with_few == 0 and len(has_note_pattern) > 0:
+        issues.append(
+            ValidationIssue(
+                "ERROR",
+                filename,
+                "spurious-heat-panel-note",
+                "Section 03 has panel notes but no panels with <10 products",
+            )
+        )
+    return issues
+
+
 def _safe_int(val: Any, default: int = 0) -> int:
     try:
         return int(val)
@@ -479,105 +564,188 @@ def _check_data_consistency(data: dict) -> List[ValidationIssue]:
                         )
                     )
 
-    # Rule: radar products must have quarantine_status, launch_date, and trend metadata
-    for topic in ("makeup", "fragrance"):
-        radar = data["products"].get(topic, {}).get("new_product_radar", {})
-        for panel_key, products in radar.items():
-            for p in products:
-                score = _safe_int(p.get("score", 0))
-                if score == 0:
-                    continue
-                name = p.get("name", "?")
-                loc = f"data/{topic}/radar/{panel_key}/{name}"
+    # Rule: fragrance radar products must have quarantine_status, launch_date, and trend metadata
+    # Makeup radar items are exempt (metadata reverted per rule 3)
+    frag_radar = data["products"].get("fragrance", {}).get("new_product_radar", {})
+    for panel_key, products in frag_radar.items():
+        for p in products:
+            score = _safe_int(p.get("score", 0))
+            if score == 0:
+                continue
+            name = p.get("name", "?")
+            loc = f"data/fragrance/radar/{panel_key}/{name}"
 
-                # quarantine_status required
-                qs = p.get("quarantine_status")
-                if qs is None:
+            # quarantine_status required
+            qs = p.get("quarantine_status")
+            if qs is None:
+                issues.append(
+                    ValidationIssue(
+                        "ERROR",
+                        loc,
+                        "missing-quarantine-status",
+                        "Radar product missing quarantine_status field",
+                    )
+                )
+            elif qs not in ("verified", "out-of-window", "unverified"):
+                issues.append(
+                    ValidationIssue(
+                        "ERROR",
+                        loc,
+                        "invalid-quarantine-status",
+                        f"Invalid quarantine_status '{qs}'",
+                    )
+                )
+
+            # launch_date required
+            ld = p.get("launch_date")
+            if ld is None:
+                issues.append(
+                    ValidationIssue(
+                        "ERROR",
+                        loc,
+                        "missing-launch-date",
+                        "Radar product missing launch_date field",
+                    )
+                )
+
+            # Rule: vague dates must not be used
+            if ld and qs == "verified":
+                is_vague = any(pat.match(ld) for pat in VAGUE_DATE_PATTERNS)
+                if is_vague:
                     issues.append(
                         ValidationIssue(
                             "ERROR",
                             loc,
-                            "missing-quarantine-status",
-                            "Radar product missing quarantine_status field",
+                            "vague-launch-date",
+                            f"Verified radar product has vague launch_date '{ld}' – must be exact ISO date within report window",
                         )
                     )
-                elif qs not in ("verified", "out-of-window"):
+
+            # Rule: verified items must have evidence_url, evidence_type, evidence_checked_at
+            if qs == "verified":
+                evidence_url = p.get("evidence_url")
+                evidence_type = p.get("evidence_type")
+                evidence_checked_at = p.get("evidence_checked_at")
+                if not evidence_url:
                     issues.append(
                         ValidationIssue(
                             "ERROR",
                             loc,
-                            "invalid-quarantine-status",
-                            f"Invalid quarantine_status '{qs}'",
+                            "missing-evidence-url",
+                            "Verified radar product missing evidence_url",
                         )
                     )
-
-                # launch_date required
-                ld = p.get("launch_date")
-                if ld is None:
+                elif any(pat.match(evidence_url) for pat in GENERIC_EVIDENCE_URLS):
                     issues.append(
                         ValidationIssue(
                             "ERROR",
                             loc,
-                            "missing-launch-date",
-                            "Radar product missing launch_date field",
+                            "generic-evidence-url",
+                            f"Verified radar product has generic/homepage evidence_url '{evidence_url}' – must be direct product page",
+                        )
+                    )
+                if not evidence_type:
+                    issues.append(
+                        ValidationIssue(
+                            "ERROR",
+                            loc,
+                            "missing-evidence-type",
+                            "Verified radar product missing evidence_type",
+                        )
+                    )
+                if not evidence_checked_at:
+                    issues.append(
+                        ValidationIssue(
+                            "ERROR",
+                            loc,
+                            "missing-evidence-checked-at",
+                            "Verified radar product missing evidence_checked_at",
                         )
                     )
 
-                # trend metadata consistency
-                trend_badge = p.get("trend_badge")
-                trend_id = p.get("trend_id")
-                trend_tag = p.get("trend_tag")
-                trend_tag_cn = p.get("trend_tag_cn")
-                trend_rationale = p.get("trend_rationale")
-
-                if trend_badge:
-                    if not trend_id:
-                        issues.append(
-                            ValidationIssue(
-                                "ERROR",
-                                loc,
-                                "missing-trend-id",
-                                "Trend-badge radar product missing trend_id",
-                            )
+            # Rule: verified launch_date must be exact ISO within report window
+            if ld and qs == "verified":
+                iso_match = re.match(r"^(\d{4})-(\d{2})-(\d{2})$", ld)
+                if not iso_match:
+                    issues.append(
+                        ValidationIssue(
+                            "ERROR",
+                            loc,
+                            "non-iso-launch-date",
+                            f"Verified radar product has non-ISO launch_date '{ld}' – must be YYYY-MM-DD",
                         )
-                    if not trend_tag:
-                        issues.append(
-                            ValidationIssue(
-                                "ERROR",
-                                loc,
-                                "missing-trend-tag-field",
-                                "Trend-badge radar product missing trend_tag field",
-                            )
-                        )
-                    if not trend_tag_cn:
-                        issues.append(
-                            ValidationIssue(
-                                "ERROR",
-                                loc,
-                                "missing-trend-tag-cn-field",
-                                "Trend-badge radar product missing trend_tag_cn field",
-                            )
-                        )
-                    if not trend_rationale:
-                        issues.append(
-                            ValidationIssue(
-                                "ERROR",
-                                loc,
-                                "missing-trend-rationale",
-                                "Trend-badge radar product missing trend_rationale field",
-                            )
-                        )
+                    )
                 else:
-                    # No trend_badge → trend fields should be null
-                    if trend_id is not None:
+                    y, m, d = (
+                        int(iso_match.group(1)),
+                        int(iso_match.group(2)),
+                        int(iso_match.group(3)),
+                    )
+                    if not (2026 == y and m == 7 and 7 <= d <= 13):
                         issues.append(
                             ValidationIssue(
                                 "ERROR",
                                 loc,
-                                "stale-trend-id",
-                                "Non-trend radar product has trend_id set",
+                                "launch-date-outside-window",
+                                f"Verified radar product launch_date '{ld}' is outside report window 2026-07-07..2026-07-13",
                             )
                         )
+
+            # trend metadata consistency
+            trend_badge = p.get("trend_badge")
+            trend_id = p.get("trend_id")
+            trend_tag = p.get("trend_tag")
+            trend_tag_cn = p.get("trend_tag_cn")
+            trend_rationale = p.get("trend_rationale")
+
+            if trend_badge:
+                if not trend_id:
+                    issues.append(
+                        ValidationIssue(
+                            "ERROR",
+                            loc,
+                            "missing-trend-id",
+                            "Trend-badge radar product missing trend_id",
+                        )
+                    )
+                if not trend_tag:
+                    issues.append(
+                        ValidationIssue(
+                            "ERROR",
+                            loc,
+                            "missing-trend-tag-field",
+                            "Trend-badge radar product missing trend_tag field",
+                        )
+                    )
+                if not trend_tag_cn:
+                    issues.append(
+                        ValidationIssue(
+                            "ERROR",
+                            loc,
+                            "missing-trend-tag-cn-field",
+                            "Trend-badge radar product missing trend_tag_cn field",
+                        )
+                    )
+                if not trend_rationale:
+                    issues.append(
+                        ValidationIssue(
+                            "ERROR",
+                            loc,
+                            "missing-trend-rationale",
+                            "Trend-badge radar product missing trend_rationale field",
+                        )
+                    )
+            else:
+                # No trend_badge → trend fields should be null
+                if trend_id is not None:
+                    issues.append(
+                        ValidationIssue(
+                            "ERROR",
+                            loc,
+                            "stale-trend-id",
+                            "Non-trend radar product has trend_id set",
+                        )
+                    )
 
     return issues
 
@@ -892,6 +1060,15 @@ def main() -> int:
         all_issues.extend(_check_evidence_urls(filename, html))
         all_issues.extend(_check_html_panels(filename, html))
         all_issues.extend(_check_radar_plain_text(filename, html))
+        # Unverified item rendering check
+        for topic_check in ("makeup", "fragrance"):
+            if filename == FILES.get((topic_check, lang)):
+                all_issues.extend(
+                    _check_unverified_not_rendered(filename, html, data, topic_check)
+                )
+                all_issues.extend(
+                    _check_heat_panel_notes(filename, html, data, topic_check)
+                )
 
     # Print results
     errors = [i for i in all_issues if i.severity == "ERROR"]

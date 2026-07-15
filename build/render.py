@@ -187,6 +187,28 @@ def _render_product(product: Dict[str, Any], lang: str, section: str) -> str:
         label = labels[i] if i < len(labels) else dkey
         cells_html += _render_detail_cell(label, cell_data, lang)
 
+    # Radar trend tag + expandable rationale (Section 04 only)
+    radar_trend_html = ""
+    if section == "radar" and trend_badge:
+        trend_tag_val = product.get("trend_tag") or ""
+        trend_tag_cn_val = product.get("trend_tag_cn") or ""
+        trend_rationale_val = product.get("trend_rationale") or ""
+        if trend_tag_val:
+            display_tag = trend_tag_cn_val if lang == "cn" else trend_tag_val
+            radar_trend_html = (
+                '<div class="heat-detail" style="padding:8px 16px 4px;">'
+                '<span class="heat-trend-tag" style="margin-right:8px;">{tag}</span>'
+                '<details style="display:inline;font-size:12px;color:#666;">'
+                '<summary style="cursor:pointer;color:#888;">{rationale_label}</summary>'
+                '<p style="margin:4px 0 0;color:#555;font-size:12px;line-height:1.5;">{rationale}</p>'
+                "</details>"
+                "</div>"
+            ).format(
+                tag=_esc(display_tag),
+                rationale_label="Rationale" if lang == "en" else "趋势说明",
+                rationale=_esc(trend_rationale_val),
+            )
+
     # Score label HTML: only rendered for rank #1 heat items
     score_label_html = ""
     if show_score_label:
@@ -216,7 +238,9 @@ def _render_product(product: Dict[str, Any], lang: str, section: str) -> str:
         "</div>"
         '<div class="heat-detail"><div class="heat-detail-grid">'
         "{cells}"
-        "</div></div>"
+        "</div>"
+        "{radar_trend}"
+        "</div>"
         "</li>"
     ).format(
         market=market,
@@ -228,6 +252,7 @@ def _render_product(product: Dict[str, Any], lang: str, section: str) -> str:
         score_label=score_label_html,
         score=display_score,
         cells=cells_html,
+        radar_trend=radar_trend_html,
     )
 
 
@@ -272,8 +297,10 @@ def _filter_panel_products(
         score = p.get("score", 0)
         if score == 0:
             continue
-        if section == "radar" and p.get("quarantine_status") == "out-of-window":
-            continue
+        if section == "radar":
+            qs = p.get("quarantine_status")
+            if qs in ("out-of-window", "unverified"):
+                continue
         filtered.append(p)
     return filtered
 
@@ -283,6 +310,11 @@ _EMPTY_STATE_MESSAGES = {
     ("makeup", "cn"): "本周无符合标准的新品。",
     ("fragrance", "en"): "No qualifying new products this week.",
     ("fragrance", "cn"): "本周无符合标准的新品。",
+}
+
+_HEAT_PANEL_NOTE_MESSAGES = {
+    "en": "{n} products met this week's signal and evidence thresholds; rankings are not padded.",
+    "cn": "本周共有 {n} 款产品达到信号与证据门槛；榜单不作补位。",
 }
 
 
@@ -298,6 +330,19 @@ def _render_empty_state_note(lang: str, topic: str, count: int) -> str:
         "{note}</span>"
         "</div></li>"
     ).format(note=_esc(base_msg))
+
+
+def _render_heat_panel_note(lang: str, count: int) -> str:
+    """Render a concise note when a heat panel has fewer than 10 products."""
+    msg_template = _HEAT_PANEL_NOTE_MESSAGES.get(lang, _HEAT_PANEL_NOTE_MESSAGES["en"])
+    msg = msg_template.format(n=count)
+    return (
+        '<li class="heat-item" style="list-style:none;border:none;box-shadow:none;background:transparent;padding:12px 16px;">'
+        '<div class="heat-info">'
+        '<span class="heat-name" style="color:#888;font-style:italic;font-weight:400;">'
+        "{note}</span>"
+        "</div></li>"
+    ).format(note=_esc(msg))
 
 
 def _render_section(
@@ -338,8 +383,10 @@ def _render_section(
         if products:
             for product in products:
                 html += _render_product(product, lang, section)
+            if section == "heat" and len(products) < 10:
+                html += _render_heat_panel_note(lang, len(products))
         else:
-            html += _render_empty_state_note(lang, topic, 0)
+            html += _render_empty_state_note(lang, topic, len(products))
         html += "</ul>\n"
         return html
 

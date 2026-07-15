@@ -1204,14 +1204,7 @@
                 "en": "2026 · Radiant foundation benchmark · Shade expansion",
                 "cn": "2026 · 光泽粉底液标杆 · 色号扩展"
               }
-            },
-            "launch_date": "2026-H1",
-            "quarantine_status": "verified",
-            "quarantine_reason": "",
-            "trend_id": null,
-            "trend_tag": null,
-            "trend_tag_cn": null,
-            "trend_rationale": null
+            }
           },
           {
             "rank": 2,
@@ -1238,14 +1231,7 @@
                 "en": "2026.6.22 · Sephora new launch · Clean Beauty luxury",
                 "cn": "2026.6.22 · Sephora渠道首发 · Clean Beauty高端化"
               }
-            },
-            "launch_date": "2026-H1",
-            "quarantine_status": "verified",
-            "quarantine_reason": "",
-            "trend_id": null,
-            "trend_tag": null,
-            "trend_tag_cn": null,
-            "trend_rationale": null
+            }
           },
           {
             "rank": 3,
@@ -1272,14 +1258,7 @@
                 "en": "2026.6 Summer collection · Rouge Coco Gloss formula upgrade",
                 "cn": "2026.6 Summer系列 · Rouge Coco Gloss配方升级"
               }
-            },
-            "launch_date": "2026-H1",
-            "quarantine_status": "verified",
-            "quarantine_reason": "",
-            "trend_id": null,
-            "trend_tag": null,
-            "trend_tag_cn": null,
-            "trend_rationale": null
+            }
           },
           {
             "rank": 4,
@@ -1306,14 +1285,7 @@
                 "en": "2026 · Find Comfort line · Skincare base makeup",
                 "cn": "2026 · Find Comfort线 · 养肤底妆"
               }
-            },
-            "launch_date": "2026-H1",
-            "quarantine_status": "verified",
-            "quarantine_reason": "",
-            "trend_id": null,
-            "trend_tag": null,
-            "trend_tag_cn": null,
-            "trend_rationale": null
+            }
           },
           {
             "rank": 5,
@@ -1340,14 +1312,7 @@
                 "en": "2026 · Shade & Illuminate line extension",
                 "cn": "2026 · Shade & Illuminate系列延伸"
               }
-            },
-            "launch_date": "2026-H1",
-            "quarantine_status": "verified",
-            "quarantine_reason": "",
-            "trend_id": null,
-            "trend_tag": null,
-            "trend_tag_cn": null,
-            "trend_rationale": null
+            }
           }
         ],
         "US MASSTIGE": [
@@ -1376,14 +1341,7 @@
                 "en": "2026 · Liquid blush benchmark",
                 "cn": "2026 · 液体腮红标杆"
               }
-            },
-            "launch_date": "2026-H1",
-            "quarantine_status": "verified",
-            "quarantine_reason": "",
-            "trend_id": null,
-            "trend_tag": null,
-            "trend_tag_cn": null,
-            "trend_rationale": null
+            }
           },
           {
             "rank": 2,
@@ -1410,14 +1368,7 @@
                 "en": "2026.6 · Entirely new product line",
                 "cn": "2026.6 · 全新产品线"
               }
-            },
-            "launch_date": "2026-H1",
-            "quarantine_status": "verified",
-            "quarantine_reason": "",
-            "trend_id": null,
-            "trend_tag": null,
-            "trend_tag_cn": null,
-            "trend_rationale": null
+            }
           },
           {
             "rank": 3,
@@ -1444,14 +1395,7 @@
                 "en": "2026 · Splashy line extension",
                 "cn": "2026 · Splashy系列延伸"
               }
-            },
-            "launch_date": "2026-H1",
-            "quarantine_status": "verified",
-            "quarantine_reason": "",
-            "trend_id": null,
-            "trend_tag": null,
-            "trend_tag_cn": null,
-            "trend_rationale": null
+            }
           }
         ],
         "CN LUXURY": [],
@@ -1481,14 +1425,7 @@
                 "en": "2026.5 · Existing Lip Powder Foundation line new shades",
                 "cn": "2026.5 · 已有唇粉霜线新色号"
               }
-            },
-            "launch_date": "2026-H1",
-            "quarantine_status": "verified",
-            "quarantine_reason": "",
-            "trend_id": null,
-            "trend_tag": null,
-            "trend_tag_cn": null,
-            "trend_rationale": null
+            }
           },
           {
             "rank": 2,
@@ -1515,14 +1452,7 @@
                 "en": "2026 · Good Complexion base makeup line new product",
                 "cn": "2026 · 好气色底妆线新品"
               }
-            },
-            "launch_date": "2026-H1",
-            "quarantine_status": "verified",
-            "quarantine_reason": "",
-            "trend_id": null,
-            "trend_tag": null,
-            "trend_tag_cn": null,
-            "trend_rationale": null
+            }
           }
         ]
       }
@@ -2174,8 +2104,8 @@
               }
             },
             "launch_date": "2026-H1",
-            "quarantine_status": "verified",
-            "quarantine_reason": "",
+            "quarantine_status": "unverified",
+            "quarantine_reason": "Cannot verify: launch_date '2026-H1' is not an exact ISO date within report window 2026-07-07 to 2026-07-13; no direct attributable evidence_url, evidence_type, or evidence_checked_at",
             "trend_id": null,
             "trend_tag": null,
             "trend_tag_cn": null,
@@ -2243,8 +2173,8 @@
               }
             },
             "launch_date": "2026-H1",
-            "quarantine_status": "verified",
-            "quarantine_reason": "",
+            "quarantine_status": "unverified",
+            "quarantine_reason": "Cannot verify: launch_date '2026-H1' is not an exact ISO date within report window 2026-07-07 to 2026-07-13; no direct attributable evidence_url, evidence_type, or evidence_checked_at",
             "trend_id": null,
             "trend_tag": null,
             "trend_tag_cn": null,
@@ -2277,8 +2207,8 @@
               }
             },
             "launch_date": "2026-H1",
-            "quarantine_status": "verified",
-            "quarantine_reason": "",
+            "quarantine_status": "unverified",
+            "quarantine_reason": "Cannot verify: launch_date '2026-H1' is not an exact ISO date within report window 2026-07-07 to 2026-07-13; no direct attributable evidence_url, evidence_type, or evidence_checked_at",
             "trend_id": null,
             "trend_tag": null,
             "trend_tag_cn": null,
@@ -2311,8 +2241,8 @@
               }
             },
             "launch_date": "2026-H1",
-            "quarantine_status": "verified",
-            "quarantine_reason": "",
+            "quarantine_status": "unverified",
+            "quarantine_reason": "Cannot verify: launch_date '2026-H1' is not an exact ISO date within report window 2026-07-07 to 2026-07-13; no direct attributable evidence_url, evidence_type, or evidence_checked_at",
             "trend_id": null,
             "trend_tag": null,
             "trend_tag_cn": null,
@@ -2345,8 +2275,8 @@
               }
             },
             "launch_date": "2026-H1",
-            "quarantine_status": "verified",
-            "quarantine_reason": "",
+            "quarantine_status": "unverified",
+            "quarantine_reason": "Cannot verify: launch_date '2026-H1' is not an exact ISO date within report window 2026-07-07 to 2026-07-13; no direct attributable evidence_url, evidence_type, or evidence_checked_at",
             "trend_id": null,
             "trend_tag": null,
             "trend_tag_cn": null,
@@ -2381,8 +2311,8 @@
               }
             },
             "launch_date": "2026-H1",
-            "quarantine_status": "verified",
-            "quarantine_reason": "",
+            "quarantine_status": "unverified",
+            "quarantine_reason": "Cannot verify: launch_date '2026-H1' is not an exact ISO date within report window 2026-07-07 to 2026-07-13; no direct attributable evidence_url, evidence_type, or evidence_checked_at",
             "trend_id": null,
             "trend_tag": null,
             "trend_tag_cn": null,
@@ -2457,8 +2387,8 @@
               }
             },
             "launch_date": "2026-H1",
-            "quarantine_status": "verified",
-            "quarantine_reason": "",
+            "quarantine_status": "unverified",
+            "quarantine_reason": "Cannot verify: launch_date '2026-H1' is not an exact ISO date within report window 2026-07-07 to 2026-07-13; no direct attributable evidence_url, evidence_type, or evidence_checked_at",
             "trend_id": null,
             "trend_tag": null,
             "trend_tag_cn": null,

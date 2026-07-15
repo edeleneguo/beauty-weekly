@@ -201,15 +201,15 @@ class TestNewProductTracking:
         for topic in ("makeup", "fragrance"):
             for lang in ("en",):
                 html = html_files[(topic, lang)]
-                # Count only real products (score > 0, not quarantined)
+                # Count only real products (score > 0, not quarantined/unverified)
                 total_data = 0
                 for panel, products in data["products"][topic][
                     "new_product_radar"
                 ].items():
                     for p in products:
-                        if (
-                            p.get("score", 0) > 0
-                            and p.get("quarantine_status") != "out-of-window"
+                        if p.get("score", 0) > 0 and p.get("quarantine_status") in (
+                            None,
+                            "verified",
                         ):
                             total_data += 1
                 total_html = _count_items(html, 4)
@@ -834,33 +834,40 @@ class TestTrendTaxonomy:
 
 
 class TestQuarantineAndLaunchDate:
-    """Radar items must have quarantine_status, launch_date, and be within window."""
+    """Fragrance radar items must have quarantine_status, launch_date, and be within window.
+    Makeup radar items are exempt (metadata reverted per rule 3)."""
 
-    def test_all_radar_products_have_quarantine_status(self, data):
-        """Every radar product must have a quarantine_status field."""
-        for topic in ("makeup", "fragrance"):
-            for panel, products in data["products"][topic]["new_product_radar"].items():
-                for p in products:
-                    if p.get("score", 0) == 0:
-                        continue
-                    assert "quarantine_status" in p, (
-                        f"{topic}/radar/{panel}/{p['name']}: missing quarantine_status"
-                    )
-                    assert p["quarantine_status"] in ("verified", "out-of-window"), (
-                        f"{topic}/radar/{panel}/{p['name']}: "
-                        f"invalid quarantine_status '{p['quarantine_status']}'"
-                    )
+    def test_fragrance_radar_products_have_quarantine_status(self, data):
+        """Every fragrance radar product must have a quarantine_status field."""
+        for panel, products in data["products"]["fragrance"][
+            "new_product_radar"
+        ].items():
+            for p in products:
+                if p.get("score", 0) == 0:
+                    continue
+                assert "quarantine_status" in p, (
+                    f"fragrance/radar/{panel}/{p['name']}: missing quarantine_status"
+                )
+                assert p["quarantine_status"] in (
+                    "verified",
+                    "out-of-window",
+                    "unverified",
+                ), (
+                    f"fragrance/radar/{panel}/{p['name']}: "
+                    f"invalid quarantine_status '{p['quarantine_status']}'"
+                )
 
-    def test_all_radar_products_have_launch_date(self, data):
-        """Every radar product must have a launch_date field."""
-        for topic in ("makeup", "fragrance"):
-            for panel, products in data["products"][topic]["new_product_radar"].items():
-                for p in products:
-                    if p.get("score", 0) == 0:
-                        continue
-                    assert "launch_date" in p, (
-                        f"{topic}/radar/{panel}/{p['name']}: missing launch_date"
-                    )
+    def test_fragrance_radar_products_have_launch_date(self, data):
+        """Every fragrance radar product must have a launch_date field."""
+        for panel, products in data["products"]["fragrance"][
+            "new_product_radar"
+        ].items():
+            for p in products:
+                if p.get("score", 0) == 0:
+                    continue
+                assert "launch_date" in p, (
+                    f"fragrance/radar/{panel}/{p['name']}: missing launch_date"
+                )
 
     def test_quarantined_items_not_rendered_in_html(self, data, html_files):
         """Quarantined radar items must not appear in rendered HTML."""
@@ -987,7 +994,7 @@ class TestRadarTrendMetadata:
             quarantined_only = set()
             for panel, products in radar.items():
                 for p in products:
-                    if p.get("quarantine_status") == "out-of-window":
+                    if p.get("quarantine_status") in ("out-of-window", "unverified"):
                         # Check if this product is also in heat (legitimately trending)
                         in_heat = False
                         for hp in heat.get(panel, []):
@@ -1002,3 +1009,172 @@ class TestRadarTrendMetadata:
                         f"{topic}/heat/{panel}/{p['name']}: "
                         f"quarantined-only radar item found in heat rankings"
                     )
+
+
+# ═══════════════════════════════════════════════════════════════════════
+# 12. Vague date and evidence validation
+# ═══════════════════════════════════════════════════════════════════════
+
+VAGUE_DATE_PATTERNS = [
+    re.compile(r"^\d{4}-H[12]$"),
+    re.compile(r"^\d{4}$"),
+    re.compile(r"^\d{4}-Q[1-4]$"),
+    re.compile(r"^\d{4}-\d{2}$"),
+    re.compile(r"^Q[1-4]\s+\d{4}$"),
+    re.compile(r"^(Early|Mid|Late)\s+", re.I),
+]
+
+GENERIC_EVIDENCE_URLS = [
+    re.compile(r"^https?://www\.sephora\.com/?$"),
+    re.compile(r"^https?://www\.sephora\.com/(?:index\.jsp)?/?$"),
+    re.compile(r"^https?://www\.[a-z]+\.com/?$"),
+    re.compile(r"^https?://www\.[a-z]+\.com\.cn/?$"),
+]
+
+
+class TestVagueDateRejection:
+    """Verified radar items must not have vague dates like 2026-H1."""
+
+    def test_no_vague_dates_on_verified_items(self, data):
+        """Verified radar items must have exact ISO dates, not vague like '2026-H1'."""
+        for topic in ("makeup", "fragrance"):
+            for panel, products in data["products"][topic]["new_product_radar"].items():
+                for p in products:
+                    if p.get("score", 0) == 0:
+                        continue
+                    if p.get("quarantine_status") == "verified":
+                        ld = p.get("launch_date", "")
+                        is_vague = any(pat.match(ld) for pat in VAGUE_DATE_PATTERNS)
+                        assert not is_vague, (
+                            f"{topic}/radar/{panel}/{p['name']}: "
+                            f"verified item has vague launch_date '{ld}'"
+                        )
+
+    def test_no_vague_dates_in_makeup_radar(self, data):
+        """Makeup radar items must not have launch_date fields (reverted from 41b7eef)."""
+        for panel, products in data["products"]["makeup"]["new_product_radar"].items():
+            for p in products:
+                assert "launch_date" not in p, (
+                    f"makeup/radar/{panel}/{p['name']}: "
+                    f"launch_date should not exist on makeup radar items"
+                )
+                assert "quarantine_status" not in p, (
+                    f"makeup/radar/{panel}/{p['name']}: "
+                    f"quarantine_status should not exist on makeup radar items"
+                )
+
+    def test_verified_items_have_exact_iso_date(self, data):
+        """Verified items must have YYYY-MM-DD format dates within Jul 7-13, 2026."""
+        for topic in ("makeup", "fragrance"):
+            for panel, products in data["products"][topic]["new_product_radar"].items():
+                for p in products:
+                    if p.get("score", 0) == 0:
+                        continue
+                    if p.get("quarantine_status") == "verified":
+                        ld = p.get("launch_date", "")
+                        m = re.match(r"^(\d{4})-(\d{2})-(\d{2})$", ld)
+                        assert m, (
+                            f"{topic}/radar/{panel}/{p['name']}: "
+                            f"verified item launch_date '{ld}' is not ISO YYYY-MM-DD"
+                        )
+                        y, mo, d = int(m.group(1)), int(m.group(2)), int(m.group(3))
+                        assert y == 2026 and mo == 7 and 7 <= d <= 13, (
+                            f"{topic}/radar/{panel}/{p['name']}: "
+                            f"verified item launch_date '{ld}' outside window 2026-07-07..2026-07-13"
+                        )
+
+
+class TestEvidenceValidation:
+    """Verified radar items must have evidence_url, evidence_type, evidence_checked_at."""
+
+    def test_verified_items_have_evidence_fields(self, data):
+        """Every verified radar product must have evidence_url, evidence_type, evidence_checked_at."""
+        for topic in ("makeup", "fragrance"):
+            for panel, products in data["products"][topic]["new_product_radar"].items():
+                for p in products:
+                    if p.get("score", 0) == 0:
+                        continue
+                    if p.get("quarantine_status") == "verified":
+                        assert p.get("evidence_url"), (
+                            f"{topic}/radar/{panel}/{p['name']}: "
+                            f"verified item missing evidence_url"
+                        )
+                        assert p.get("evidence_type"), (
+                            f"{topic}/radar/{panel}/{p['name']}: "
+                            f"verified item missing evidence_type"
+                        )
+                        assert p.get("evidence_checked_at"), (
+                            f"{topic}/radar/{panel}/{p['name']}: "
+                            f"verified item missing evidence_checked_at"
+                        )
+
+    def test_no_generic_homepage_evidence_urls(self, data):
+        """Verified items must have direct product page URLs, not generic homepages."""
+        for topic in ("makeup", "fragrance"):
+            for panel, products in data["products"][topic]["new_product_radar"].items():
+                for p in products:
+                    if p.get("score", 0) == 0:
+                        continue
+                    if p.get("quarantine_status") == "verified":
+                        url = p.get("evidence_url", "")
+                        is_generic = any(
+                            pat.match(url) for pat in GENERIC_EVIDENCE_URLS
+                        )
+                        assert not is_generic, (
+                            f"{topic}/radar/{panel}/{p['name']}: "
+                            f"verified item has generic homepage evidence_url '{url}'"
+                        )
+
+
+class TestUnverifiedNotRendered:
+    """Unverified/out-of-window radar items must not appear in rendered HTML."""
+
+    def test_unverified_items_hidden_from_radar_html(self, data, html_files):
+        """Quarantined/unverified radar items must not appear in rendered Section 04."""
+        hidden_names = set()
+        for topic in ("makeup", "fragrance"):
+            for panel, products in data["products"][topic]["new_product_radar"].items():
+                for p in products:
+                    if p.get("quarantine_status") in ("out-of-window", "unverified"):
+                        hidden_names.add(p["name"])
+        for (topic, lang), html in html_files.items():
+            s4 = _extract_section(html, 4)
+            for name in hidden_names:
+                assert name not in s4, (
+                    f"{topic} {lang}: quarantined/unverified item '{name}' found in radar HTML"
+                )
+
+
+class TestHeatPanelNotes:
+    """Heat panels with fewer than 10 products must show a panel note."""
+
+    def test_heat_panel_notes_present_when_fewer_than_10(self, data, html_files):
+        """All heat panels with 1-9 products must have a panel note in rendered HTML."""
+        for topic in ("makeup", "fragrance"):
+            heat = data["products"][topic]["heat_rankings"]
+            has_few = False
+            for panel, products in heat.items():
+                real = [p for p in products if p.get("score", 0) > 0]
+                if 1 <= len(real) < 10:
+                    has_few = True
+            for lang in ("en", "cn"):
+                html = html_files[(topic, lang)]
+                s3 = _extract_section(html, 3)
+                if has_few:
+                    if lang == "en":
+                        assert "products met this week" in s3, (
+                            f"{topic} EN: heat panel note missing when panels have <10 products"
+                        )
+                    else:
+                        assert "款产品达到信号" in s3, (
+                            f"{topic} CN: heat panel note missing when panels have <10 products"
+                        )
+
+    def test_fewer_than_10_products_per_panel(self, data):
+        """All heat panels must have fewer than 10 real products (no padding)."""
+        for topic in ("makeup", "fragrance"):
+            for panel, products in data["products"][topic]["heat_rankings"].items():
+                real = [p for p in products if p.get("score", 0) > 0]
+                assert len(real) <= 10, (
+                    f"{topic}/heat/{panel}: {len(real)} products (max 10)"
+                )
