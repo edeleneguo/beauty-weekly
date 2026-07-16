@@ -23,6 +23,7 @@ hash_files() {
 python3 build/check_secrets.py
 python3 -m ruff check .
 python3 -m pytest -q
+python3 build/validate_schema.py
 python3 build/validate.py
 
 hash_files >"$BEFORE"

@@ -7,11 +7,15 @@ Automated extract → render → validate pipeline for the ZURU EDGE Beauty Week
 ```
 archive/week-28/          ← Historical snapshots (immutable)
 data/week28.json          ← Canonical structured data source
+beauty_weekly/
+  models.py               ← Target + legacy Pydantic models (extra forbid)
+  loader.py               ← Legacy → target adapter with migration warnings
 build/
   extract_data.py         ← Extracts product records from root HTML → data/week28.json
   render.py               ← Regenerates 4 root HTML files from data/week28.json
   validate.py             ← Cross-check validator (IT rules)
-  check.sh                 ← Single fail-closed local/CI quality gate
+  validate_schema.py      ← Pydantic schema validation + migration gap check
+  check.sh                ← Single fail-closed local/CI quality gate
   check_secrets.py        ← Scans tracked and untracked repository files
   verify_deploy.sh        ← Deployment hash verification
 .github/workflows/ci.yml  ← CI: secrets → lint → tests → validate → deterministic render
@@ -68,3 +72,39 @@ The GitHub Actions workflow runs on every push/PR:
 6. Verify generated files match the committed HTML exactly
 
 Any missing tool, failed check, output drift, or validation error stops CI.
+
+## Phase 2A: Pydantic Models & Migration Boundary
+
+The `beauty_weekly` package provides strict canonical data models:
+
+```python
+from beauty_weekly.loader import load_report
+report, warnings = load_report("data/week28.json")
+```
+
+### Target vs Legacy schema
+
+| Aspect | Target (`WeeklyReport`) | Legacy (`LegacyWeeklyReport`) |
+|--------|------------------------|-------------------------------|
+| `extra` | `"forbid"` — no unknown fields | `"forbid"` — exact JSON shape |
+| `strict` | `True` — no implicit coercion | Off — backward-compatible |
+| Enums | `Market`, `Tier`, `TrendBadgeType` | `str` — accepts any value |
+| Trend data | Nested `Trend` sub-object | Flat fields (`trend_id`, etc.) |
+| Launch evidence | `LaunchEvidence` sub-object | Flat fields (`quarantine_status`, etc.) |
+
+### Migration gaps (Phase 2A scope boundary)
+
+The legacy→target adapter documents these gaps explicitly.  **No fields
+are fabricated** — missing data surfaces as `None` or migration warnings:
+
+- `raw_score`, per-topic version strings, `category_badge_cn` are isolated
+- Makeup radar products have no `launch_evidence` (quarantine/launch fields)
+- Trend tags embedded in `key_features` detail cell, not standalone `Trend`
+
+### Schema validation
+
+```bash
+python3 build/validate_schema.py   # runs in build/check.sh
+```
+
+Validates legacy exact roundtrip, target mapping, and migration documentation.
