@@ -11,30 +11,30 @@ build/
   extract_data.py         ← Extracts product records from root HTML → data/week28.json
   render.py               ← Regenerates 4 root HTML files from data/week28.json
   validate.py             ← Cross-check validator (IT rules)
+  check.sh                 ← Single fail-closed local/CI quality gate
+  check_secrets.py        ← Scans tracked and untracked repository files
   verify_deploy.sh        ← Deployment hash verification
-.github/workflows/ci.yml  ← CI: extract → render → validate → lint → drift check
+.github/workflows/ci.yml  ← CI: secrets → lint → tests → validate → deterministic render
 ```
 
 ## Quick Start
 
 ```bash
-python3 build/extract_data.py   # Extract → data/week28.json
-python3 build/render.py         # Render → 4 root HTML files
-python3 build/validate.py       # Validate all rules
-python3 -m pytest tests/ -v     # Run regression tests
+pip install -r requirements-dev.txt
+./build/check.sh                # Required before commit/push
+./build/verify_deploy.sh        # Required after Pages deployment
 ```
 
 ## Data Flow
 
 ```
-Root HTML (source of truth)
-    ↓  extract_data.py
-data/week28.json (canonical)
+data/week28.json (canonical source of truth)
     ↓  render.py
 Root HTML (regenerated, deterministic)
 ```
 
 One edit in `data/week28.json` propagates to all 4 language/topic variants.
+`extract_data.py` is a legacy migration utility, not the normal production entry point.
 
 ## Validation Rules
 
@@ -60,9 +60,11 @@ One edit in `data/week28.json` propagates to all 4 language/topic variants.
 ## CI
 
 The GitHub Actions workflow runs on every push/PR:
-1. Extract canonical data
-2. Render HTML from data
-3. Validate all rules
-4. Run regression tests (pytest)
-5. Lint with ruff
-6. Verify no uncommitted drift (build output must match git state)
+1. Scan tracked and untracked repository files for GitHub PAT patterns
+2. Lint Python with ruff
+3. Run regression tests (pytest)
+4. Validate business and HTML rules
+5. Render twice and compare complete SHA256 hashes
+6. Verify generated files match the committed HTML exactly
+
+Any missing tool, failed check, output drift, or validation error stops CI.
