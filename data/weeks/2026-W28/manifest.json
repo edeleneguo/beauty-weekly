@@ -1,13 +1,9 @@
 {
-  "schema_version": 2,
-  "week": 28,
-  "iso_week": "2026-W28",
-  "date_range": "Jul 7 \u2013 Jul 13, 2026",
-  "date_range_cn": "7\u67087\u65e5 \u2013 7\u670813\u65e5",
+  "canonical_hash": "d5852ba2b71d9c3854e6bb19e1506afa901671e9b99fbc4fcd86aab45ca3272e",
   "data_pointer": "../../week28.json",
   "data_sha256": "db31d10d682ace6f4ae43183816d2c31913b4da09c5030db1fedfaf6f1221ac8",
-  "note": "Phase 3: structured domain model with trend extraction from key_features, explicit evidence-absence markers. Full dataset migration in a later phase.",
-  "phase": "3",
+  "date_range": "Jul 7 – Jul 13, 2026",
+  "date_range_cn": "7月7日 – 7月13日",
   "domain_separation": [
     "stable trend entities (TrendTag, Trend)",
     "bilingual product fields (LocalizedText, PriceLink, Category)",
@@ -15,6 +11,7 @@
     "new-product qualification evidence (LaunchEvidence)",
     "shared scoring data (rank, score, market, tier in Product)"
   ],
+  "iso_week": "2026-W28",
   "legacy_fields_isolated": [
     "raw_score",
     "version_en_makeup",
@@ -27,9 +24,15 @@
     "makeup radar products have no launch_evidence (quarantine_status, launch_date, evidence_url, evidence_type, evidence_checked_at)",
     "2 CN MASSTIGE fragrance heat products have empty links (To Summer Kunlun Snow, Scent Library Boiled Water)"
   ],
+  "note": "Phase 4: canonical independent weekly dataset with normalized sources, reproducible scoring model (non-recomputable for legacy data), and lossless adapter-generated report.json.",
+  "phase": "4",
+  "remaining_warnings": 2,
   "resolved_warnings": [
     "18 trend-badge heat products now have Trend extracted from key_features.trend_tags (was: trend_id missing)",
     "adapter derives trend id deterministically from canonical tag name"
   ],
-  "remaining_warnings": 2
+  "schema_version": 3,
+  "scoring_hash": "71f1b5b6da70d25b97a74287670c025286b1c4e837ed9ff62f722eaeaca6ee9a",
+  "sources_hash": "729c58c18d2e31728f98e3fce8bd9823935cd6be9ed2cf9e0aee4a415737eb64",
+  "week": 28
 }

@@ -1,0 +1,565 @@
+{
+  "generated_from": "data/week28.json",
+  "sources": [
+    {
+      "id": "src_0001",
+      "panel": "US LUXURY",
+      "product_name": "Armani Luminous Silk Foundation",
+      "section": "heat_rankings",
+      "topic": "makeup",
+      "type": "product_page",
+      "url": "https://www.sephora.com/product/luminous-silk-foundation-P875017"
+    },
+    {
+      "id": "src_0002",
+      "panel": "US LUXURY",
+      "product_name": "Marc Jacobs Joystick Blush Stick",
+      "section": "heat_rankings",
+      "topic": "makeup",
+      "type": "product_page",
+      "url": "https://www.sephora.com/product/joystick-soft-blush-stick-P504762"
+    },
+    {
+      "id": "src_0003",
+      "panel": "US LUXURY",
+      "product_name": "YSL Skin Affair Soft Glow Cushion Foundation",
+      "section": "heat_rankings",
+      "topic": "makeup",
+      "type": "product_page",
+      "url": "https://www.yslbeauty.com"
+    },
+    {
+      "id": "src_0004",
+      "panel": "US LUXURY",
+      "product_name": "Dior Rouge Dior Forever Liquid",
+      "section": "heat_rankings",
+      "topic": "makeup",
+      "type": "product_page",
+      "url": "https://www.sephora.com/product/rouge-dior-forever-liquid-P504518"
+    },
+    {
+      "id": "src_0005",
+      "panel": "US LUXURY",
+      "product_name": "Dior Forever Skin Glow Foundation",
+      "section": "heat_rankings",
+      "topic": "makeup",
+      "type": "product_page",
+      "url": "https://www.sephora.com/product/dior-forever-skin-glow-P454517"
+    },
+    {
+      "id": "src_0006",
+      "panel": "US LUXURY",
+      "product_name": "Chanel Le Rouge Duo Ultra Tenue",
+      "section": "heat_rankings",
+      "topic": "makeup",
+      "type": "product_page",
+      "url": "https://www.chanel.com"
+    },
+    {
+      "id": "src_0007",
+      "panel": "US LUXURY",
+      "product_name": "Charlotte Tilbury Pillow Talk",
+      "section": "heat_rankings",
+      "topic": "makeup",
+      "type": "product_page",
+      "url": "https://www.sephora.com/product/pillow-talk-P454517"
+    },
+    {
+      "id": "src_0008",
+      "panel": "US LUXURY",
+      "product_name": "Westman Atelier Vital Skin Foundation",
+      "section": "heat_rankings",
+      "topic": "makeup",
+      "type": "product_page",
+      "url": "https://www.sephora.com/product/westman-atelier-vital-skin-foundation-stick-P468429"
+    },
+    {
+      "id": "src_0009",
+      "panel": "US LUXURY",
+      "product_name": "Dior Forever Glow Maximizer",
+      "section": "heat_rankings",
+      "topic": "makeup",
+      "type": "product_page",
+      "url": "https://www.sephora.com/product/dior-forever-glow-maximizer-P454517"
+    },
+    {
+      "id": "src_0010",
+      "panel": "US LUXURY",
+      "product_name": "Pat McGrath Labs Divine Blush",
+      "section": "heat_rankings",
+      "topic": "makeup",
+      "type": "product_page",
+      "url": "https://www.sephora.com/product/pat-mcgrath-divine-blush-P454517"
+    },
+    {
+      "id": "src_0011",
+      "panel": "US MASSTIGE",
+      "product_name": "Julep Eyeshadow 101 Stick",
+      "section": "heat_rankings",
+      "topic": "makeup",
+      "type": "product_page",
+      "url": "https://www.julep.com"
+    },
+    {
+      "id": "src_0012",
+      "panel": "US MASSTIGE",
+      "product_name": "Saie Dew Blush",
+      "section": "heat_rankings",
+      "topic": "makeup",
+      "type": "product_page",
+      "url": "https://www.sephora.com/product/saie-dew-blush-P504517"
+    },
+    {
+      "id": "src_0013",
+      "panel": "US MASSTIGE",
+      "product_name": "Rare Beauty Find Comfort Tinted Moisturizer",
+      "section": "heat_rankings",
+      "topic": "makeup",
+      "type": "product_page",
+      "url": "https://www.sephora.com/product/rare-beauty-find-comfort-P504517"
+    },
+    {
+      "id": "src_0014",
+      "panel": "US MASSTIGE",
+      "product_name": "Fenty Beauty Gloss Bomb",
+      "section": "heat_rankings",
+      "topic": "makeup",
+      "type": "product_page",
+      "url": "https://www.sephora.com/product/fenty-gloss-bomb-P454517"
+    },
+    {
+      "id": "src_0015",
+      "panel": "US MASSTIGE",
+      "product_name": "Urban Decay All Nighter Setting Spray",
+      "section": "heat_rankings",
+      "topic": "makeup",
+      "type": "product_page",
+      "url": "https://www.sephora.com/product/urban-decay-all-nighter-P454517"
+    },
+    {
+      "id": "src_0016",
+      "panel": "US MASSTIGE",
+      "product_name": "NARS Natural Radiant Longwear Foundation",
+      "section": "heat_rankings",
+      "topic": "makeup",
+      "type": "product_page",
+      "url": "https://www.sephora.com/product/nars-natural-radiant-longwear-P454517"
+    },
+    {
+      "id": "src_0017",
+      "panel": "US MASSTIGE",
+      "product_name": "NYX Professional Fat Oil Lip Drip",
+      "section": "heat_rankings",
+      "topic": "makeup",
+      "type": "product_page",
+      "url": "https://www.sephora.com/product/nyx-fat-oil-P454517"
+    },
+    {
+      "id": "src_0018",
+      "panel": "US MASSTIGE",
+      "product_name": "Kosas Cloud Set Blurring Powder",
+      "section": "heat_rankings",
+      "topic": "makeup",
+      "type": "product_page",
+      "url": "https://www.sephora.com/product/kosas-cloud-set-P454517"
+    },
+    {
+      "id": "src_0019",
+      "panel": "US MASSTIGE",
+      "product_name": "Glossier Cloud Paint",
+      "section": "heat_rankings",
+      "topic": "makeup",
+      "type": "product_page",
+      "url": "https://www.sephora.com/product/glossier-cloud-paint-P454517"
+    },
+    {
+      "id": "src_0020",
+      "panel": "US MASSTIGE",
+      "product_name": "e.l.f. Halo Glow Liquid Filter",
+      "section": "heat_rankings",
+      "topic": "makeup",
+      "type": "product_page",
+      "url": "https://www.sephora.com/product/elf-halo-glow-P454517"
+    },
+    {
+      "id": "src_0021",
+      "panel": "CN LUXURY",
+      "product_name": "YSL Vinyl Cream Lip Stain",
+      "section": "heat_rankings",
+      "topic": "makeup",
+      "type": "product_page",
+      "url": "https://www.yslbeauty.com.cn"
+    },
+    {
+      "id": "src_0022",
+      "panel": "CN LUXURY",
+      "product_name": "Estée Lauder Double Wear Foundation",
+      "section": "heat_rankings",
+      "topic": "makeup",
+      "type": "product_page",
+      "url": "https://www.esteelauder.com.cn"
+    },
+    {
+      "id": "src_0023",
+      "panel": "CN LUXURY",
+      "product_name": "Lancôme Teint Idôle Ultra Wear Foundation",
+      "section": "heat_rankings",
+      "topic": "makeup",
+      "type": "product_page",
+      "url": "https://www.lancome.com.cn"
+    },
+    {
+      "id": "src_0024",
+      "panel": "CN LUXURY",
+      "product_name": "Dior Forever Skin Conceal Foundation",
+      "section": "heat_rankings",
+      "topic": "makeup",
+      "type": "product_page",
+      "url": "https://www.dior.com"
+    },
+    {
+      "id": "src_0025",
+      "panel": "CN LUXURY",
+      "product_name": "Gucci Rouge à Lèvres Mat",
+      "section": "heat_rankings",
+      "topic": "makeup",
+      "type": "product_page",
+      "url": "https://www.gucci.com"
+    },
+    {
+      "id": "src_0026",
+      "panel": "CN LUXURY",
+      "product_name": "LA MER Soft Fluid Long Wear Cushion",
+      "section": "heat_rankings",
+      "topic": "makeup",
+      "type": "product_page",
+      "url": "https://www.lamer.com.cn"
+    },
+    {
+      "id": "src_0027",
+      "panel": "CN LUXURY",
+      "product_name": "Chanel Rouge Coco Gloss",
+      "section": "heat_rankings",
+      "topic": "makeup",
+      "type": "product_page",
+      "url": "https://www.chanel.cn"
+    },
+    {
+      "id": "src_0028",
+      "panel": "CN LUXURY",
+      "product_name": "Helena Rubinstein Powercell Foundation",
+      "section": "heat_rankings",
+      "topic": "makeup",
+      "type": "product_page",
+      "url": "https://www.helenarubinstein.cn"
+    },
+    {
+      "id": "src_0029",
+      "panel": "CN LUXURY",
+      "product_name": "Givenchy Le Rouge Liquide",
+      "section": "heat_rankings",
+      "topic": "makeup",
+      "type": "product_page",
+      "url": "https://www.givenchybeauty.cn"
+    },
+    {
+      "id": "src_0030",
+      "panel": "CN LUXURY",
+      "product_name": "Mao Geping Light Sculpting Foundation",
+      "section": "heat_rankings",
+      "topic": "makeup",
+      "type": "product_page",
+      "url": "https://www.maogeping.com"
+    },
+    {
+      "id": "src_0031",
+      "panel": "CN MASSTIGE",
+      "product_name": "Florasis Air Loose Powder",
+      "section": "heat_rankings",
+      "topic": "makeup",
+      "type": "product_page",
+      "url": "https://flowersknows.tmall.com"
+    },
+    {
+      "id": "src_0032",
+      "panel": "CN MASSTIGE",
+      "product_name": "INTO YOU Lip Mud EM08",
+      "section": "heat_rankings",
+      "topic": "makeup",
+      "type": "product_page",
+      "url": "https://intoyou.tmall.com"
+    },
+    {
+      "id": "src_0033",
+      "panel": "CN MASSTIGE",
+      "product_name": "Judydoll Blush Palette",
+      "section": "heat_rankings",
+      "topic": "makeup",
+      "type": "product_page",
+      "url": "https://judydoll.tmall.com"
+    },
+    {
+      "id": "src_0034",
+      "panel": "CN MASSTIGE",
+      "product_name": "Joocyee Shell Series Lip Mud",
+      "section": "heat_rankings",
+      "topic": "makeup",
+      "type": "product_page",
+      "url": "https://joocyee.tmall.com"
+    },
+    {
+      "id": "src_0035",
+      "panel": "CN MASSTIGE",
+      "product_name": "Carslan Black Magnetic Powder",
+      "section": "heat_rankings",
+      "topic": "makeup",
+      "type": "product_page",
+      "url": "https://carslan.tmall.com"
+    },
+    {
+      "id": "src_0036",
+      "panel": "CN MASSTIGE",
+      "product_name": "Colorkey Air Lip Tint",
+      "section": "heat_rankings",
+      "topic": "makeup",
+      "type": "product_page",
+      "url": "https://colorkey.tmall.com"
+    },
+    {
+      "id": "src_0037",
+      "panel": "CN MASSTIGE",
+      "product_name": "3CE Nine-Pan Eyeshadow Palette",
+      "section": "heat_rankings",
+      "topic": "makeup",
+      "type": "product_page",
+      "url": "https://3ce.tmall.com"
+    },
+    {
+      "id": "src_0038",
+      "panel": "CN MASSTIGE",
+      "product_name": "Perfect Diary Slim Lipstick",
+      "section": "heat_rankings",
+      "topic": "makeup",
+      "type": "product_page",
+      "url": "https://perfectdiary.tmall.com"
+    },
+    {
+      "id": "src_0039",
+      "panel": "CN MASSTIGE",
+      "product_name": "Flower Knows Unicorn Lip Gloss",
+      "section": "heat_rankings",
+      "topic": "makeup",
+      "type": "product_page",
+      "url": "https://flowerknows.tmall.com"
+    },
+    {
+      "id": "src_0040",
+      "panel": "US LUXURY",
+      "product_name": "NARS Light Reflecting Foundation (expanded shades)",
+      "section": "new_product_radar",
+      "topic": "makeup",
+      "type": "product_page",
+      "url": "https://www.sephora.com/product/nars-light-reflecting-foundation-P427417"
+    },
+    {
+      "id": "src_0041",
+      "panel": "US LUXURY",
+      "product_name": "Ogee Sculpted Complexion Stick",
+      "section": "new_product_radar",
+      "topic": "makeup",
+      "type": "product_page",
+      "url": "https://www.ogee.com"
+    },
+    {
+      "id": "src_0042",
+      "panel": "US LUXURY",
+      "product_name": "CHANEL Rouge Coco Hydra Gloss",
+      "section": "new_product_radar",
+      "topic": "makeup",
+      "type": "product_page",
+      "url": "https://www.chanel.com/us/makeup/p/158444/rouge-coco-hydra-gloss-hydrating-and-smoothing-high-shine-lipgloss/"
+    },
+    {
+      "id": "src_0043",
+      "panel": "US LUXURY",
+      "product_name": "Rare Beauty Find Comfort Tinted Moisturizer",
+      "section": "new_product_radar",
+      "topic": "makeup",
+      "type": "product_page",
+      "url": "https://www.rarebeauty.com/pages/find-comfort-collection"
+    },
+    {
+      "id": "src_0044",
+      "panel": "US LUXURY",
+      "product_name": "Tom Ford Shade & Illuminate Soft Radiance",
+      "section": "new_product_radar",
+      "topic": "makeup",
+      "type": "product_page",
+      "url": "https://www.sephora.com/product/shade-illuminate-P422574"
+    },
+    {
+      "id": "src_0045",
+      "panel": "US MASSTIGE",
+      "product_name": "Saie Dew Blush",
+      "section": "new_product_radar",
+      "topic": "makeup",
+      "type": "product_page",
+      "url": "https://www.sephora.com/product/saie-dew-blush-liquid-cheek-blush-P427421"
+    },
+    {
+      "id": "src_0046",
+      "panel": "US MASSTIGE",
+      "product_name": "e.l.f. Thirst Burst Lip Treatment",
+      "section": "new_product_radar",
+      "topic": "makeup",
+      "type": "product_page",
+      "url": "https://www.elfcosmetics.com/products/thirst-burst-lip-treatment"
+    },
+    {
+      "id": "src_0047",
+      "panel": "US MASSTIGE",
+      "product_name": "Tower 28 Splashy Hydrosilica Lip Gloss",
+      "section": "new_product_radar",
+      "topic": "makeup",
+      "type": "product_page",
+      "url": "https://www.sephora.com/product/tower-28-splashy-hydrosilica-lip-gloss-P472607"
+    },
+    {
+      "id": "src_0048",
+      "panel": "CN MASSTIGE",
+      "product_name": "橘朵 Lip Powder Foundation N31-N34新色",
+      "section": "new_product_radar",
+      "topic": "makeup",
+      "type": "product_page",
+      "url": "https://judydoll.tmall.com/"
+    },
+    {
+      "id": "src_0049",
+      "panel": "CN MASSTIGE",
+      "product_name": "花西子 好气色粉底液",
+      "section": "new_product_radar",
+      "topic": "makeup",
+      "type": "product_page",
+      "url": "https://huaxizi.tmall.com/"
+    },
+    {
+      "id": "src_0050",
+      "panel": "US LUXURY",
+      "product_name": "D&G Your Devotion EDP Intense",
+      "section": "heat_rankings",
+      "topic": "fragrance",
+      "type": "product_page",
+      "url": "https://www.dolcegabbana.com"
+    },
+    {
+      "id": "src_0051",
+      "panel": "US LUXURY",
+      "product_name": "Tom Ford Taormina Orange EDP",
+      "section": "heat_rankings",
+      "topic": "fragrance",
+      "type": "product_page",
+      "url": "https://www.tomfordbeauty.com"
+    },
+    {
+      "id": "src_0052",
+      "panel": "US LUXURY",
+      "product_name": "Kilian Love Don't Be Shy",
+      "section": "heat_rankings",
+      "topic": "fragrance",
+      "type": "product_page",
+      "url": "https://www.kilianparis.com"
+    },
+    {
+      "id": "src_0053",
+      "panel": "US LUXURY",
+      "product_name": "Valentino Donna Born In Roma",
+      "section": "heat_rankings",
+      "topic": "fragrance",
+      "type": "product_page",
+      "url": "https://www.sephora.com"
+    },
+    {
+      "id": "src_0054",
+      "panel": "US LUXURY",
+      "product_name": "Maison Margiela Replica Lazy Sunday Morning",
+      "section": "heat_rankings",
+      "topic": "fragrance",
+      "type": "product_page",
+      "url": "https://www.maisonmargiela.com"
+    },
+    {
+      "id": "src_0055",
+      "panel": "US LUXURY",
+      "product_name": "Rabanne Million Gold For Her Pure Diamonds",
+      "section": "heat_rankings",
+      "topic": "fragrance",
+      "type": "product_page",
+      "url": "https://www.rabanne.com"
+    },
+    {
+      "id": "src_0056",
+      "panel": "US MASSTIGE",
+      "product_name": "DedCool Mochi Milk",
+      "section": "heat_rankings",
+      "topic": "fragrance",
+      "type": "product_page",
+      "url": "https://www.dedcool.com"
+    },
+    {
+      "id": "src_0057",
+      "panel": "US MASSTIGE",
+      "product_name": "Lake & Skye 11 11 Moon EDP",
+      "section": "heat_rankings",
+      "topic": "fragrance",
+      "type": "product_page",
+      "url": "https://www.lakeandskye.com"
+    },
+    {
+      "id": "src_0058",
+      "panel": "CN LUXURY",
+      "product_name": "Le Labo Thé Matcha 26",
+      "section": "heat_rankings",
+      "topic": "fragrance",
+      "type": "product_page",
+      "url": "https://www.lelabofragrances.com"
+    },
+    {
+      "id": "src_0059",
+      "panel": "CN MASSTIGE",
+      "product_name": "Bingxili Mirage Quicksand Gold",
+      "section": "heat_rankings",
+      "topic": "fragrance",
+      "type": "product_page",
+      "url": "https://www.boitown.com"
+    },
+    {
+      "id": "src_0060",
+      "panel": "US LUXURY",
+      "product_name": "Bvlgari Eau Parfumée Thé Impérial",
+      "section": "new_product_radar",
+      "topic": "fragrance",
+      "type": "product_page",
+      "url": "https://www.bvlgari.com"
+    },
+    {
+      "id": "src_0061",
+      "panel": "US LUXURY",
+      "product_name": "L’Artisan Parfumeur L’Amant EDP",
+      "section": "new_product_radar",
+      "topic": "fragrance",
+      "type": "product_page",
+      "url": "https://www.artisanparfumeur.com"
+    },
+    {
+      "id": "src_0062",
+      "panel": "US LUXURY",
+      "product_name": "Guerlain Aqua Allegoria Perle Rosa Rossa",
+      "section": "new_product_radar",
+      "topic": "fragrance",
+      "type": "product_page",
+      "url": "https://www.guerlain.com"
+    }
+  ],
+  "total_sources": 62,
+  "version": "1.0.0"
+}

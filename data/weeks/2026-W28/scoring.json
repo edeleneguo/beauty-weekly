@@ -1,0 +1,52 @@
+{
+  "components": null,
+  "known_constraints": {
+    "field": "score",
+    "max": 100,
+    "min": 0,
+    "monotonic_by_rank": false,
+    "observed_max": 98,
+    "observed_min": 65,
+    "panel_independent": true,
+    "type": "integer"
+  },
+  "missing_components": [
+    "score_breakdown — no per-dimension scores available",
+    "weights — no weighting factors documented",
+    "methodology — no scoring rubric or algorithm provided",
+    "raw_signals — no underlying metrics (sales volume, review counts, social-media engagement) available as structured data"
+  ],
+  "observed_statistics": {
+    "monotonic_by_rank": false,
+    "observed_max": 98,
+    "observed_min": 65,
+    "total_scored_products": 79
+  },
+  "reason": "Legacy week28.json stores opaque integer scores (0-100) with no decomposable components, weights, or methodology documentation. Scores cannot be independently recomputed from available data.",
+  "recomputable": false,
+  "schema": "beauty-weekly-scoring-v1",
+  "validation_rules": [
+    {
+      "checkable": true,
+      "description": "All non-zero scores must be between 0 and 100",
+      "rule": "score_range"
+    },
+    {
+      "checkable": true,
+      "description": "Within each panel, scores must be non-increasing by rank",
+      "rule": "monotonic_by_rank"
+    },
+    {
+      "checkable": true,
+      "description": "Heat rankings must not contain score=0 placeholder products",
+      "rule": "no_placeholder_in_heat"
+    },
+    {
+      "checkable": false,
+      "description": "Cannot recompute: no score components available",
+      "rule": "recompute_total"
+    }
+  ],
+  "version": "1.0.0",
+  "weights": null
+}
