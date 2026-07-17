@@ -1,12 +1,20 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "week": 28,
   "iso_week": "2026-W28",
   "date_range": "Jul 7 \u2013 Jul 13, 2026",
   "date_range_cn": "7\u67087\u65e5 \u2013 7\u670813\u65e5",
   "data_pointer": "../../week28.json",
   "data_sha256": "db31d10d682ace6f4ae43183816d2c31913b4da09c5030db1fedfaf6f1221ac8",
-  "note": "Phase 2A: pointer avoids duplicating data. Full dataset migration happens in a later phase.",
+  "note": "Phase 3: structured domain model with trend extraction from key_features, explicit evidence-absence markers. Full dataset migration in a later phase.",
+  "phase": "3",
+  "domain_separation": [
+    "stable trend entities (TrendTag, Trend)",
+    "bilingual product fields (LocalizedText, PriceLink, Category)",
+    "source / evidence records (Evidence, EvidenceAbsence)",
+    "new-product qualification evidence (LaunchEvidence)",
+    "shared scoring data (rank, score, market, tier in Product)"
+  ],
   "legacy_fields_isolated": [
     "raw_score",
     "version_en_makeup",
@@ -17,6 +25,11 @@
   ],
   "migration_gaps": [
     "makeup radar products have no launch_evidence (quarantine_status, launch_date, evidence_url, evidence_type, evidence_checked_at)",
-    "trend_tags embedded in key_features.detail cell, not standalone Trend sub-object"
-  ]
+    "2 CN MASSTIGE fragrance heat products have empty links (To Summer Kunlun Snow, Scent Library Boiled Water)"
+  ],
+  "resolved_warnings": [
+    "18 trend-badge heat products now have Trend extracted from key_features.trend_tags (was: trend_id missing)",
+    "adapter derives trend id deterministically from canonical tag name"
+  ],
+  "remaining_warnings": 2
 }

@@ -5,6 +5,18 @@ and ``strict = True``.  LegacyWeeklyReport captures the *exact* shape
 of the current ``data/week28.json`` with ``extra = "forbid"`` for exact
 JSON roundtrip — none of its fields are silently discarded.  The adapter
 in ``loader.py`` maps between the two and documents migration gaps.
+
+Domain separation (Phase 3)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The target model is decomposed into five orthogonal concerns:
+
+1. **Stable trend entities** — ``TrendTag``, ``Trend``
+2. **Bilingual product fields** — ``LocalizedText``, ``PriceLink``,
+   ``Category``
+3. **Source / evidence records** — ``Evidence``, ``EvidenceAbsence``
+4. **New-product qualification evidence** — ``LaunchEvidence``
+5. **Shared scoring data** — embedded in ``Product`` (rank, score,
+   market, tier)
 """
 
 from __future__ import annotations
@@ -24,7 +36,6 @@ class Market(str, Enum):
     CN = "CN"
 
 
-
 class Tier(str, Enum):
     """Price tier classification."""
 
@@ -32,12 +43,10 @@ class Tier(str, Enum):
     MASSTIGE = "MASSTIGE"
 
 
-
 class TrendBadgeType(str, Enum):
     """Trend badge value used in heat rankings."""
 
     TREND = "Trend"
-
 
 
 class NewBadgeType(str, Enum):
@@ -47,14 +56,12 @@ class NewBadgeType(str, Enum):
     NEW_UPPER = "NEW"
 
 
-
 class QuarantineStatus(str, Enum):
     """Radar quarantine / verification status."""
 
     VERIFIED = "verified"
     OUT_OF_WINDOW = "out-of-window"
     UNVERIFIED = "unverified"
-
 
 
 # ── Localized text ────────────────────────────────────────────────────────────
@@ -85,6 +92,25 @@ class PriceLink(LocalizedText):
     model_config = {"strict": True, "extra": "forbid"}
 
 
+# ── Trend tag (stable bilingual pair) ───────────────────────────────────────
+
+
+class TrendTag(BaseModel):
+    """Bilingual trend tag pair — the stable identity of a trend.
+
+    A ``TrendTag`` is a shared vocabulary element: every product tagged
+    with the same trend references the same ``TrendTag`` (e.g.
+    ``"Skincare Foundation"`` / ``"养肤底妆趋势"``).  Trend tags are
+    defined once per issue in the trend taxonomy and referenced by
+    multiple products.
+    """
+
+    en: str = Field(min_length=1)
+    cn: str = Field(min_length=1)
+
+    model_config = {"strict": True, "extra": "forbid"}
+
+
 # ── Evidence / Source ─────────────────────────────────────────────────────────
 
 
@@ -98,23 +124,40 @@ class Evidence(BaseModel):
     model_config = {"extra": "forbid"}
 
 
-# ── Launch evidence ───────────────────────────────────────────────────────────
+class EvidenceAbsence(BaseModel):
+    """Explicit marker for absent evidence.
+
+    When evidence cannot be provided, the adapter records *why* rather
+    than silently leaving the field ``None``.  This makes data gaps
+    queryable and auditable.
+    """
+
+    reason: str = Field(min_length=1, description="Why evidence is absent")
+    gap_type: str = Field(description="Category: no_url | vague_date | no_evidence | generic_url")
+
+    model_config = {"extra": "forbid"}
+
+
+# ── Launch / qualification evidence ──────────────────────────────────────────
 
 
 class LaunchEvidence(BaseModel):
-    """Quarantine + launch metadata for a radar product.
+    """Quarantine + launch metadata for a new-product radar item.
 
     Only fragrance radar products carry these fields today.  Makeup
-    radar products have **no** launch-evidence fields in the legacy data.
+    radar products have **no** launch-evidence fields in the legacy data
+    and will have ``LaunchEvidence = None`` in the target model.
+
     ``launch_date`` accepts ISO-8601 date strings (``YYYY-MM-DD``) as
-    well as vague legacy values (``2026-H1``) which are surfaced as
-    migration warnings by the adapter.
+    well as vague legacy values (``2026-H1``).  When evidence is absent,
+    ``absence_markers`` records *why* explicitly.
     """
 
     launch_date: str = Field(description="ISO date YYYY-MM-DD or vague legacy value")
     quarantine_status: QuarantineStatus
     quarantine_reason: str | None = None
     evidence: Evidence | None = None
+    absence_markers: list[EvidenceAbsence] = Field(default_factory=list)
 
     model_config = {"extra": "forbid"}
 
@@ -123,17 +166,23 @@ class LaunchEvidence(BaseModel):
 
 
 class Trend(BaseModel):
-    """Trend-tag metadata for a trend-badge product.
+    """Trend metadata for a trend-badge product.
 
     In the legacy JSON these live as flat fields on the product
     (``trend_id``, ``trend_tag``, ``trend_tag_cn``, ``trend_rationale``).
     The target model groups them under a single ``Trend`` object.
+
+    For radar products, all four fields are populated from the flat
+    legacy fields.  For heat products, the adapter falls back to
+    extracting ``tag`` / ``tag_cn`` from ``key_features.trend_tags``
+    and derives ``id`` deterministically; ``rationale`` is ``None``
+    because heat products never carry a rationale field.
     """
 
     id: str = Field(min_length=1)
     tag: str = Field(min_length=1)
     tag_cn: str = Field(min_length=1)
-    rationale: str = Field(min_length=1)
+    rationale: str | None = None
 
     model_config = {"extra": "forbid"}
 

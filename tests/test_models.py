@@ -8,6 +8,7 @@ Covers:
   4. Legacy exact JSON roundtrip / no-loss behaviour
   5. Manifest canonical-directory integrity
   6. Migration gap documentation
+  7. Phase 3 domain model separation and trend extraction
 """
 
 import json
@@ -24,6 +25,7 @@ from beauty_weekly.loader import (
     validate_legacy,
 )
 from beauty_weekly.models import (
+    EvidenceAbsence,
     LaunchEvidence,
     LegacyLocalizedText,
     LegacyPriceLink,
@@ -36,7 +38,10 @@ from beauty_weekly.models import (
     Product,
     ProductDetail,
     Products,
+    QuarantineStatus,
     Tier,
+    Trend,
+    TrendTag,
     WeeklyReport,
 )
 from pydantic import ValidationError
@@ -315,9 +320,17 @@ class TestLegacyRoundTrip:
                 for panel in legacy_section:
                     for lp, tp in zip(legacy_section[panel], target_section[panel]):
                         if lp.trend_badge and lp.trend_id:
+                            # Radar product with flat fields — full Trend
                             assert tp.trend is not None
                             assert tp.trend.id == lp.trend_id
+                        elif lp.trend_badge and lp.detail.key_features.trend_tags:
+                            # Heat product — Trend extracted from key_features
+                            assert tp.trend is not None
+                            tag = lp.detail.key_features.trend_tags[0]
+                            assert tp.trend.tag == tag
+                            assert tp.trend.rationale is None
                         elif lp.trend_badge and not lp.trend_id:
+                            # No trend data available — trend is None
                             assert tp.trend is None
                         else:
                             assert tp.trend is None
@@ -391,3 +404,146 @@ class TestManifestIntegrity:
 
     def test_canonical_dir_exists(self):
         assert (ROOT / "data" / "weeks" / "2026-W28").is_dir()
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+# 7. Phase 3 domain model separation and trend extraction
+# ══════════════════════════════════════════════════════════════════════════════
+
+
+class TestPhase3DomainModel:
+    """Phase 3: structured domain model with trend extraction and evidence absence."""
+
+    def test_trend_tag_bilingual_pair(self):
+        """TrendTag requires both en and cn, rejects extras."""
+        tt = TrendTag(en="Skincare Foundation", cn="养肤底妆趋势")
+        assert tt.en == "Skincare Foundation"
+        assert tt.cn == "养肤底妆趋势"
+        with pytest.raises(ValidationError):
+            TrendTag(en="", cn="养肤底妆趋势")
+        with pytest.raises(ValidationError):
+            TrendTag(en="Skincare Foundation", cn="")
+        with pytest.raises(ValidationError):
+            TrendTag(en="Skincare Foundation", cn="养肤底妆趋势", bogus="x")
+
+    def test_evidence_absence_model(self):
+        """EvidenceAbsence records gap reason and type."""
+        ea = EvidenceAbsence(reason="No URL provided", gap_type="no_url")
+        assert ea.reason == "No URL provided"
+        assert ea.gap_type == "no_url"
+        with pytest.raises(ValidationError):
+            EvidenceAbsence(reason="", gap_type="no_url")
+        with pytest.raises(ValidationError):
+            EvidenceAbsence(reason="x", gap_type="x", bogus=True)
+
+    def test_trend_rationale_optional(self):
+        """Trend.rationale is optional — heat products have None."""
+        t = Trend(id="trend_skincare", tag="Skincare Foundation", tag_cn="养肤底妆趋势")
+        assert t.rationale is None
+        t2 = Trend(
+            id="trend_milky_musk",
+            tag="Milky Musk",
+            tag_cn="乳感麝香趋势",
+            rationale="Gourmand milk/musk resurgence",
+        )
+        assert t2.rationale == "Gourmand milk/musk resurgence"
+
+    def test_launch_evidence_has_absence_markers(self):
+        """LaunchEvidence supports explicit absence markers."""
+        le = LaunchEvidence(
+            launch_date="2026-H1",
+            quarantine_status=QuarantineStatus.OUT_OF_WINDOW,
+            quarantine_reason="Vague date",
+            absence_markers=[
+                EvidenceAbsence(reason="Vague date 2026-H1", gap_type="vague_date"),
+            ],
+        )
+        assert len(le.absence_markers) == 1
+        assert le.absence_markers[0].gap_type == "vague_date"
+
+    def test_heat_trends_extracted_from_key_features(self, legacy_report, target_report):
+        """All 18 heat trend-badge products now have Trend extracted from key_features."""
+        count_extracted = 0
+        for topic in ("makeup", "fragrance"):
+            lps = getattr(legacy_report.products, topic).heat_rankings
+            tps = getattr(target_report.products, topic).heat_rankings
+            for panel in lps:
+                for lp, tp in zip(lps[panel], tps[panel]):
+                    if lp.trend_badge and lp.detail.key_features.trend_tags:
+                        assert tp.trend is not None
+                        assert tp.trend.tag == lp.detail.key_features.trend_tags[0]
+                        assert tp.trend.tag_cn == lp.detail.key_features.trend_tags_cn[0]
+                        assert tp.trend.rationale is None
+                        count_extracted += 1
+        assert count_extracted >= 10, (
+            f"Expected at least 10 heat trends extracted, got {count_extracted}"
+        )
+
+    def test_radar_trends_still_use_flat_fields(self, legacy_report, target_report):
+        """Radar products with flat trend fields still use them (with rationale)."""
+        lps = legacy_report.products.fragrance.new_product_radar
+        tps = target_report.products.fragrance.new_product_radar
+        for panel in lps:
+            for lp, tp in zip(lps[panel], tps[panel]):
+                if lp.trend_badge and lp.trend_id:
+                    assert tp.trend is not None
+                    assert tp.trend.id == lp.trend_id
+                    assert tp.trend.tag == lp.trend_tag
+                    assert tp.trend.rationale is not None
+
+    def test_migration_warnings_reduced_to_two(self):
+        """Phase 3: only 2 warnings remain (empty links on CN niche fragrances)."""
+        _, warnings = load_report(DATA_PATH)
+        assert len(warnings) == 2
+        assert all("empty link" in w for w in warnings)
+
+    def test_absence_markers_populated_for_radar(self, target_report):
+        """Radar products with missing evidence get absence_markers."""
+        fps = target_report.products.fragrance.new_product_radar
+        for _panel, products in fps.items():
+            for p in products:
+                if p.launch_evidence is not None:
+                    assert isinstance(p.launch_evidence.absence_markers, list)
+
+    def test_manifest_phase3_metadata(self, manifest):
+        """Manifest has Phase 3 metadata: schema_version >= 2, resolved_warnings."""
+        assert manifest["schema_version"] >= 2
+        assert "resolved_warnings" in manifest
+        assert "remaining_warnings" in manifest
+        assert manifest["remaining_warnings"] == 2
+        assert len(manifest["resolved_warnings"]) >= 1
+
+    def test_domain_separation_documented(self, manifest):
+        """Manifest documents the five domain separation concerns."""
+        assert "domain_separation" in manifest
+        ds = manifest["domain_separation"]
+        assert len(ds) >= 5
+        assert any("trend" in item.lower() for item in ds)
+        assert any("evidence" in item.lower() for item in ds)
+        assert any("scoring" in item.lower() for item in ds)
+
+    def test_trend_id_deterministic_derivation(self):
+        """Derived trend IDs are deterministic from canonical tag names."""
+        from beauty_weekly.loader import _map_legacy_trend
+        from beauty_weekly.models import LegacyLocalizedText, LegacyPriceLink, LegacyProductDetail
+
+        lp = _legacy_product(
+            trend_badge="Trend",
+            detail=LegacyProductDetail(
+                price_link=LegacyPriceLink(en="x", cn="x", link="http://x"),
+                key_features=LegacyLocalizedText(
+                    en="test",
+                    cn="test",
+                    trend_tags=["Low-Saturation Pastel"],
+                    trend_tags_cn=["低饱和粉彩趋势"],
+                ),
+                buzz=LegacyLocalizedText(en="x", cn="x"),
+                brand=LegacyLocalizedText(en="x", cn="x"),
+            ),
+        )
+        trend = _map_legacy_trend(lp)
+        assert trend is not None
+        assert trend.id == "trend_low_saturation_pastel"
+        assert trend.tag == "Low-Saturation Pastel"
+        assert trend.tag_cn == "低饱和粉彩趋势"
+        assert trend.rationale is None

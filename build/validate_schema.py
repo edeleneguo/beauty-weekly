@@ -69,8 +69,8 @@ def _check_target_mapping(data: dict) -> tuple[WeeklyReport, list[str], list[str
 def _check_migration_documentation() -> list[str]:
     """Verify migration gaps and isolated fields are documented."""
     errors = []
-    if len(MIGRATION_GAPS) < 2:
-        errors.append("MIGRATION_GAPS must have at least 2 entries")
+    if len(MIGRATION_GAPS) < 1:
+        errors.append("MIGRATION_GAPS must have at least 1 entry")
     if len(LEGACY_ISOLATED_FIELDS) < 5:
         errors.append("LEGACY_ISOLATED_FIELDS must have at least 5 entries")
     expected_isolated = {
@@ -100,10 +100,18 @@ def _check_schema_metadata() -> list[str]:
         manifest = json.load(f)
     if "schema_version" not in manifest:
         errors.append("Manifest missing schema_version")
+    if manifest.get("schema_version", 1) < 2:
+        errors.append(
+            f"Manifest schema_version {manifest.get('schema_version')} < 2 (Phase 3 required)"
+        )
     if "migration_gaps" not in manifest:
         errors.append("Manifest missing migration_gaps")
     if "legacy_fields_isolated" not in manifest:
         errors.append("Manifest missing legacy_fields_isolated")
+    if "resolved_warnings" not in manifest:
+        errors.append("Manifest missing resolved_warnings")
+    if "remaining_warnings" not in manifest:
+        errors.append("Manifest missing remaining_warnings")
     return errors
 
 

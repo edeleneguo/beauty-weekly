@@ -21,6 +21,7 @@ from pathlib import Path
 
 from beauty_weekly.models import (
     Evidence,
+    EvidenceAbsence,
     LaunchEvidence,
     LegacyLocalizedText,
     LegacyProduct,
@@ -114,23 +115,49 @@ _VAGUE_DATE_RE = re.compile(
 
 
 def _map_legacy_trend(lp: LegacyProduct) -> Trend | None:
-    """Extract a Trend from flat legacy fields.
+    """Extract a Trend from legacy product fields.
 
-    Returns ``None`` when the product has no ``trend_badge`` OR when
-    the trend metadata fields are missing (e.g. heat products with
-    ``trend_badge`` but no ``trend_id``).
+    Radar products carry flat ``trend_id`` / ``trend_tag`` /
+    ``trend_tag_cn`` / ``trend_rationale`` fields.  Heat products carry
+    ``trend_tags`` / ``trend_tags_cn`` embedded inside
+    ``detail.key_features`` instead.
+
+    The adapter first tries flat fields; when they are absent it falls
+    back to ``key_features.trend_tags`` and derives ``id``
+    deterministically.  ``rationale`` is ``None`` for heat products
+    because they never carry a rationale field.
+
+    Returns ``None`` only when no trend data is available at all.
     """
     if not lp.trend_badge:
         return None
-    # Heat products may have trend_badge without trend_id/tag/etc.
-    if not lp.trend_id or not lp.trend_tag or not lp.trend_tag_cn:
-        return None
-    return Trend(
-        id=lp.trend_id,
-        tag=lp.trend_tag,
-        tag_cn=lp.trend_tag_cn or "",
-        rationale=lp.trend_rationale or "",
-    )
+
+    # Prefer flat fields (radar products have these)
+    if lp.trend_id and lp.trend_tag and lp.trend_tag_cn:
+        return Trend(
+            id=lp.trend_id,
+            tag=lp.trend_tag,
+            tag_cn=lp.trend_tag_cn,
+            rationale=lp.trend_rationale or None,
+        )
+
+    # Fall back to key_features trend_tags (heat products have these)
+    kf = lp.detail.key_features
+    en_tags = kf.trend_tags or []
+    cn_tags = kf.trend_tags_cn or []
+    if en_tags and cn_tags:
+        tag = en_tags[0]
+        tag_cn = cn_tags[0]
+        # Deterministic id derivation from canonical tag name
+        trend_id = "trend_" + tag.lower().replace(" ", "_").replace("-", "_")
+        return Trend(
+            id=trend_id,
+            tag=tag,
+            tag_cn=tag_cn,
+            rationale=None,
+        )
+
+    return None
 
 
 def _map_legacy_launch_evidence(lp: LegacyProduct) -> LaunchEvidence | None:
@@ -138,22 +165,61 @@ def _map_legacy_launch_evidence(lp: LegacyProduct) -> LaunchEvidence | None:
 
     Returns ``None`` when the product has no ``quarantine_status``
     (typical for makeup radar products).
+
+    When evidence is partially absent (e.g. missing URL or vague date),
+    ``EvidenceAbsence`` markers record *why* explicitly.
     """
     if lp.quarantine_status is None:
         return None
     qs = QuarantineStatus(lp.quarantine_status)
     evidence = None
+    absence_markers: list[EvidenceAbsence] = []
+
     if lp.evidence_url and lp.evidence_type and lp.evidence_checked_at:
         evidence = Evidence(
             url=lp.evidence_url,
             type=lp.evidence_type,
             checked_at=lp.evidence_checked_at,
         )
+    else:
+        # Document what is absent
+        if not lp.evidence_url:
+            absence_markers.append(
+                EvidenceAbsence(
+                    reason="No evidence URL provided in legacy data",
+                    gap_type="no_url",
+                )
+            )
+        if not lp.evidence_type:
+            absence_markers.append(
+                EvidenceAbsence(
+                    reason="No evidence type provided in legacy data",
+                    gap_type="no_evidence",
+                )
+            )
+        if not lp.evidence_checked_at:
+            absence_markers.append(
+                EvidenceAbsence(
+                    reason="No evidence verification timestamp provided",
+                    gap_type="no_evidence",
+                )
+            )
+
+    # Vague dates produce an absence marker (informational, not blocking)
+    if lp.launch_date and _VAGUE_DATE_RE.match(lp.launch_date):
+        absence_markers.append(
+            EvidenceAbsence(
+                reason=f"Launch date '{lp.launch_date}' is not exact ISO-8601",
+                gap_type="vague_date",
+            )
+        )
+
     return LaunchEvidence(
         launch_date=lp.launch_date or "",
         quarantine_status=qs,
         quarantine_reason=lp.quarantine_reason,
         evidence=evidence,
+        absence_markers=absence_markers,
     )
 
 
@@ -223,7 +289,15 @@ def _map_legacy_section(sec: LegacySectionProducts) -> SectionProducts:
 
 
 def _collect_warnings(legacy: LegacyWeeklyReport) -> list[str]:
-    """Collect migration warnings for the legacy → target mapping."""
+    """Collect migration warnings for the legacy → target mapping.
+
+    Phase 3: trend metadata for heat products is extracted from
+    ``key_features.trend_tags`` when flat fields are absent — no
+    warning is emitted because the data is present and verifiable.
+
+    Remaining warnings are genuine data gaps (e.g. empty links on
+    Chinese niche fragrances with no public e-commerce URL).
+    """
     warnings: list[str] = []
     for topic in ("makeup", "fragrance"):
         for section in ("heat_rankings", "new_product_radar"):
@@ -231,7 +305,7 @@ def _collect_warnings(legacy: LegacyWeeklyReport) -> list[str]:
             for panel, products in lps.items():
                 for lp in products:
                     loc = f"{topic}/{section}/{panel}/{lp.name}"
-                    # Missing / empty links
+                    # Missing / empty links — genuine data gap
                     if not lp.detail.price_link.link:
                         warnings.append(f"{loc}: empty link (migration gap)")
                     # Vague launch dates on verified items
@@ -247,9 +321,6 @@ def _collect_warnings(legacy: LegacyWeeklyReport) -> list[str]:
                     # Missing evidence on verified items
                     if lp.quarantine_status == "verified" and not lp.evidence_url:
                         warnings.append(f"{loc}: verified item missing evidence_url")
-                    # Trend badge without full metadata
-                    if lp.trend_badge and not lp.trend_id:
-                        warnings.append(f"{loc}: trend_badge present but trend_id missing")
     return warnings
 
 
