@@ -9,8 +9,9 @@ downstream rendering logic receives legacy-shaped fields.
 it is NOT the authoritative read path.
 
 Only replaces Sections 03 (heat rankings) and 04 (new product radar).
-All other content (banner, news, trends, appendix, CSS, JS) is preserved
-verbatim from the original HTML files, which are treated as templates.
+All other content (banner, news, trends, appendix, CSS, JS) comes from the
+versioned page shells in ``templates/pages``.  Root HTML files are outputs
+only and are never read as runtime templates.
 
 Design invariants
 -----------------
@@ -32,7 +33,8 @@ sys.path.insert(0, ROOT)
 from beauty_weekly.canonical_adapter import canonical_to_legacy  # noqa: E402
 
 CANONICAL_PATH = os.path.join(ROOT, "data", "weeks", "2026-W28", "report.json")
-TEMPLATES = {
+PAGE_SHELL_DIR = os.path.join(ROOT, "templates", "pages")
+PAGES = {
     ("makeup", "en"): "index.html",
     ("makeup", "cn"): "index-cn.html",
     ("fragrance", "en"): "fragrance.html",
@@ -433,8 +435,8 @@ def main() -> None:
         canonical = json.load(f)
     data = canonical_to_legacy(canonical)
 
-    for (topic, lang), template_name in TEMPLATES.items():
-        template_path = os.path.join(ROOT, template_name)
+    for (topic, lang), output_name in PAGES.items():
+        template_path = os.path.join(PAGE_SHELL_DIR, output_name)
         with open(template_path, "r", encoding="utf-8") as f:
             html = f.read()
 
@@ -454,10 +456,11 @@ def main() -> None:
         if lang == "en" and 'lang="zh-CN"' in html:
             html = html.replace('lang="zh-CN"', 'lang="en"', 1)
 
-        with open(template_path, "w", encoding="utf-8") as f:
+        output_path = os.path.join(ROOT, output_name)
+        with open(output_path, "w", encoding="utf-8") as f:
             f.write(html)
 
-        print("Rendered: {0} ({1})".format(template_name, lang))
+        print("Rendered: {0} ({1})".format(output_name, lang))
 
 
 if __name__ == "__main__":

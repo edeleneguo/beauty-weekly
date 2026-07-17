@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
-"""Fix all data defects in data/week28.json.
+"""LEGACY ONE-TIME REPAIR TOOL — not a production pipeline entrypoint.
+
+Fix all data defects in data/week28.json.
 
 Changes:
 1. Add concrete trend_tags to key_features for every trend-badge product

@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
-"""Extract canonical product data from Week 28 HTML files.
+"""LEGACY ONE-TIME IMPORT TOOL — not a production pipeline entrypoint.
+
+Extract canonical product data from Week 28 HTML files.
 
 Reads from a pristine HTML backup (data/html_pristine/) rather than root
 files, so re-running the pipeline never overwrites manual canonical fixes

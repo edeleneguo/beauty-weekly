@@ -28,6 +28,7 @@ python3 build/validate.py
 python3 build/validate_canonical.py
 python3 build/validate_scoring.py
 python3 build/validate_evidence.py
+python3 build/validate_pipeline.py
 python3 build/check_parity.py
 
 hash_files >"$BEFORE"
@@ -38,4 +39,4 @@ hash_files | diff -u "$FIRST" -
 diff -u "$BEFORE" "$FIRST"
 git diff --exit-code -- "${FILES[@]}"
 
-echo "PASS: secrets, lint, tests, validation, scoring, evidence, parity, and deterministic render"
+echo "PASS: secrets, lint, tests, validation, scoring, evidence, pipeline, parity, and deterministic render"
