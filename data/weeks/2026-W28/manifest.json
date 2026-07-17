@@ -24,8 +24,8 @@
     "makeup radar products have no launch_evidence (quarantine_status, launch_date, evidence_url, evidence_type, evidence_checked_at)",
     "2 CN MASSTIGE fragrance heat products have empty links (To Summer Kunlun Snow, Scent Library Boiled Water)"
   ],
-  "note": "Phase 4→5: canonical independent weekly dataset with normalized sources, reproducible scoring model (non-recomputable for legacy data), lossless adapter-generated report.json, and canonical-to-legacy compatibility adapter making data/weeks/2026-W28 the authoritative read path. Legacy data/week28.json preserved as compatibility baseline only.",
-  "phase": "5",
+  "note": "Phase 5→6: added versioned recomputable scoring engine with deterministic computation, policy validation, and recomputation guard. Week 28 historical data remains explicitly non-recomputable; future complete records must deterministically recompute.",
+  "phase": "6",
   "migration_deprecation": {
     "data_week28_json": {
       "status": "legacy_compat",

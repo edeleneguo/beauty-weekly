@@ -331,8 +331,8 @@ class TestCanonicalReadPath:
 
 
 class TestManifestPhase5:
-    def test_phase_is_5(self, manifest_data):
-        assert manifest_data.get("phase") == "5"
+    def test_phase_is_at_least_5(self, manifest_data):
+        assert manifest_data.get("phase", "0") >= "5"
 
     def test_schema_version_at_least_3(self, manifest_data):
         assert manifest_data["schema_version"] >= 3
@@ -342,7 +342,7 @@ class TestManifestPhase5:
         dep = manifest_data["migration_deprecation"]
         assert "data_week28_json" in dep
         assert dep["data_week28_json"]["status"] == "legacy_compat"
-        assert dep["data_week28_json"]["phase_deprecated"] == "5"
+        assert dep["data_week28_json"]["phase_deprecated"] >= "5"
 
     def test_legacy_data_pointer_preserved(self, manifest_data):
         assert manifest_data["data_pointer"] == "../../week28.json"

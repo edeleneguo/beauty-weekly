@@ -40,6 +40,12 @@ from beauty_weekly.models import (
     LegacyWeeklyReport,
     WeeklyReport,
 )
+from beauty_weekly.scoring import (
+    validate_recomputed_scoring as _validate_recomputed_scoring,
+)
+from beauty_weekly.scoring import (
+    validate_scoring_json as _validate_scoring_engine,
+)
 
 _ROOT = Path(__file__).resolve().parent.parent
 WEEKS_DIR = _ROOT / "data" / "weeks"
@@ -405,19 +411,10 @@ def validate_canonical(weeks_dir: Path) -> list[str]:
     except Exception as exc:
         errors.append(f"Projection parity check failed: {exc}")
 
-    # 5. Validate scoring.json
-    if scoring.get("recomputable") is not False:
-        errors.append("scoring.json must have recomputable=false for legacy data")
-    if scoring.get("components") is not None:
-        errors.append("scoring.json components must be null (no components available)")
-    if scoring.get("weights") is not None:
-        errors.append("scoring.json weights must be null (no weights available)")
-    if "version" not in scoring:
-        errors.append("scoring.json missing version")
-    if "missing_components" not in scoring:
-        errors.append("scoring.json missing missing_components list")
-    if "validation_rules" not in scoring:
-        errors.append("scoring.json missing validation_rules")
+    # 5. Validate scoring.json via scoring engine (Phase 6)
+    scoring_errors = _validate_scoring_engine(scoring)
+    for e in scoring_errors:
+        errors.append(f"scoring.json: {e}")
 
     # 6. Validate scoring rules against actual data
     scoring_stats = scoring.get("observed_statistics", {})
@@ -446,6 +443,11 @@ def validate_canonical(weeks_dir: Path) -> list[str]:
                 f"Scoring observed_max mismatch: "
                 f"{scoring_stats.get('observed_max')} != {actual_max}"
             )
+
+    # 6b. Recompute validation (Phase 6) — fail-closed for recomputable records
+    recompute_errors = _validate_recomputed_scoring(scoring, report)
+    for e in recompute_errors:
+        errors.append(f"scoring recompute: {e}")
 
     # 7. Validate sources.json
     if "version" not in sources:
