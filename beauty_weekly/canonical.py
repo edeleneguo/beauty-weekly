@@ -164,11 +164,51 @@ def generate_sources(legacy: LegacyWeeklyReport) -> dict:
                             checked_at=lp.evidence_checked_at,
                         )
 
+    sources_list = sorted(seen_urls.values(), key=lambda s: s["id"])
+    for src in sources_list:
+        # The legacy data contains no verification timestamp.  Preserve that
+        # fact explicitly instead of inventing one during migration.
+        src["checked_at"] = None
+        src["provenance"] = {
+            "verification_status": "legacy_unverified",
+            "reason": "No source-verification timestamp exists in legacy week28 data.",
+        }
+
     return {
-        "version": "1.0.0",
+        "version": "2.0.0",
         "generated_from": "data/week28.json",
         "total_sources": len(seen_urls),
-        "sources": sorted(seen_urls.values(), key=lambda s: s["id"]),
+        "provenance": {
+            "migration_recorded_at": "2026-07-17T00:00:00Z",
+            "phase": 7,
+            "evidence_absences": [
+                {
+                    "product_name": "To Summer Kunlun Snow",
+                    "panel": "CN MASSTIGE",
+                    "section": "heat_rankings",
+                    "topic": "fragrance",
+                    "gap_type": "no_url",
+                    "reason": (
+                        "No official e-commerce or product page URL exists in repository "
+                        "data for To Summer Kunlun Snow. Chinese niche fragrance with "
+                        "no verified public URL."
+                    ),
+                },
+                {
+                    "product_name": "Scent Library Boiled Water",
+                    "panel": "CN MASSTIGE",
+                    "section": "heat_rankings",
+                    "topic": "fragrance",
+                    "gap_type": "no_url",
+                    "reason": (
+                        "No official e-commerce or product page URL exists in repository "
+                        "data for Scent Library Boiled Water. Chinese niche fragrance "
+                        "with no verified public URL."
+                    ),
+                },
+            ],
+        },
+        "sources": sources_list,
     }
 
 

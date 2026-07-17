@@ -65,13 +65,13 @@ def main() -> int:
         manifest = json.load(f)
 
     manifest["schema_version"] = 3
-    manifest["phase"] = "4"
+    manifest["phase"] = "7"
     manifest["canonical_hash"] = report_hash
     manifest["sources_hash"] = sources_hash
     manifest["scoring_hash"] = scoring_hash
     manifest["remaining_warnings"] = len(warnings)
     manifest["note"] = (
-        "Phase 4: canonical independent weekly dataset with normalized sources, "
+        "Phase 7: canonical weekly dataset with truthful legacy source provenance, "
         "reproducible scoring model (non-recomputable for legacy data), and "
         "lossless adapter-generated report.json."
     )

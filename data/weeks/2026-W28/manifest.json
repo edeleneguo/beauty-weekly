@@ -20,19 +20,7 @@
     "version_cn_fragrance",
     "category_badge_cn"
   ],
-  "migration_gaps": [
-    "makeup radar products have no launch_evidence (quarantine_status, launch_date, evidence_url, evidence_type, evidence_checked_at)",
-    "2 CN MASSTIGE fragrance heat products have empty links (To Summer Kunlun Snow, Scent Library Boiled Water)"
-  ],
-  "note": "Phase 5→6: added versioned recomputable scoring engine with deterministic computation, policy validation, and recomputation guard. Week 28 historical data remains explicitly non-recomputable; future complete records must deterministically recompute.",
-  "phase": "6",
   "migration_deprecation": {
-    "data_week28_json": {
-      "status": "legacy_compat",
-      "read_path": "data/weeks/2026-W28/report.json via beauty_weekly.canonical_adapter",
-      "action": "DO NOT DELETE — preserved as drift-detection baseline until Phase 6 removes downstream readers",
-      "phase_deprecated": "5"
-    },
     "build_render_py": {
       "change": "reads from canonical report.json via canonical_to_legacy() adapter",
       "legacy_data_pointer": "replaced CANONICAL_PATH"
@@ -43,8 +31,20 @@
     },
     "build_validate_schema_py": {
       "change": "adds _check_canonical_report_schema() — validates report.json against WeeklyReport model"
+    },
+    "data_week28_json": {
+      "action": "DO NOT DELETE — preserved as drift-detection baseline until Phase 6 removes downstream readers",
+      "phase_deprecated": "5",
+      "read_path": "data/weeks/2026-W28/report.json via beauty_weekly.canonical_adapter",
+      "status": "legacy_compat"
     }
   },
+  "migration_gaps": [
+    "makeup radar products have no launch_evidence (quarantine_status, launch_date, evidence_url, evidence_type, evidence_checked_at)",
+    "2 CN MASSTIGE fragrance heat products have empty links (To Summer Kunlun Snow, Scent Library Boiled Water)"
+  ],
+  "note": "Phase 7: canonical weekly dataset with truthful legacy source provenance, reproducible scoring model (non-recomputable for legacy data), and lossless adapter-generated report.json.",
+  "phase": "7",
   "remaining_warnings": 2,
   "resolved_warnings": [
     "18 trend-badge heat products now have Trend extracted from key_features.trend_tags (was: trend_id missing)",
@@ -52,6 +52,6 @@
   ],
   "schema_version": 3,
   "scoring_hash": "71f1b5b6da70d25b97a74287670c025286b1c4e837ed9ff62f722eaeaca6ee9a",
-  "sources_hash": "729c58c18d2e31728f98e3fce8bd9823935cd6be9ed2cf9e0aee4a415737eb64",
+  "sources_hash": "6965ce46788dbf543314b7b3aaf2dbc2be461cb827726735fdda1b427c5679ca",
   "week": 28
 }
