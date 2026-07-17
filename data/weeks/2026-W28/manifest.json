@@ -24,8 +24,27 @@
     "makeup radar products have no launch_evidence (quarantine_status, launch_date, evidence_url, evidence_type, evidence_checked_at)",
     "2 CN MASSTIGE fragrance heat products have empty links (To Summer Kunlun Snow, Scent Library Boiled Water)"
   ],
-  "note": "Phase 4: canonical independent weekly dataset with normalized sources, reproducible scoring model (non-recomputable for legacy data), and lossless adapter-generated report.json.",
-  "phase": "4",
+  "note": "Phase 4→5: canonical independent weekly dataset with normalized sources, reproducible scoring model (non-recomputable for legacy data), lossless adapter-generated report.json, and canonical-to-legacy compatibility adapter making data/weeks/2026-W28 the authoritative read path. Legacy data/week28.json preserved as compatibility baseline only.",
+  "phase": "5",
+  "migration_deprecation": {
+    "data_week28_json": {
+      "status": "legacy_compat",
+      "read_path": "data/weeks/2026-W28/report.json via beauty_weekly.canonical_adapter",
+      "action": "DO NOT DELETE — preserved as drift-detection baseline until Phase 6 removes downstream readers",
+      "phase_deprecated": "5"
+    },
+    "build_render_py": {
+      "change": "reads from canonical report.json via canonical_to_legacy() adapter",
+      "legacy_data_pointer": "replaced CANONICAL_PATH"
+    },
+    "build_validate_py": {
+      "change": "reads from canonical report.json via canonical_to_legacy() adapter",
+      "legacy_data_pointer": "replaced CANONICAL_PATH"
+    },
+    "build_validate_schema_py": {
+      "change": "adds _check_canonical_report_schema() — validates report.json against WeeklyReport model"
+    }
+  },
   "remaining_warnings": 2,
   "resolved_warnings": [
     "18 trend-badge heat products now have Trend extracted from key_features.trend_tags (was: trend_id missing)",

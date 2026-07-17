@@ -264,7 +264,9 @@ class TestManifestPhase4:
         assert manifest_data["schema_version"] == 3
 
     def test_phase_4(self, manifest_data):
-        assert manifest_data.get("phase") == "4"
+        assert manifest_data.get("phase") in ("4", "5"), (
+            f"Expected phase 4 or 5, got {manifest_data.get('phase')}"
+        )
 
     def test_week_and_iso_week(self, manifest_data):
         assert manifest_data["week"] == 28

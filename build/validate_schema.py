@@ -27,6 +27,7 @@ from beauty_weekly.models import (  # noqa: E402
 )
 
 DATA_PATH = os.path.join(ROOT, "data", "week28.json")
+CANONICAL_PATH = os.path.join(ROOT, "data", "weeks", "2026-W28", "report.json")
 
 
 def _check_legacy_schema(data: dict) -> list[str]:
@@ -89,6 +90,20 @@ def _check_migration_documentation() -> list[str]:
     return errors
 
 
+def _check_canonical_report_schema() -> list[str]:
+    """Validate canonical report.json against the target WeeklyReport schema."""
+    errors = []
+    try:
+        with open(CANONICAL_PATH, encoding="utf-8") as f:
+            data = json.load(f)
+        from beauty_weekly.models import WeeklyReport
+
+        WeeklyReport.model_validate(data, strict=False)
+    except Exception as exc:
+        errors.append(f"Canonical report.json schema validation failed: {exc}")
+    return errors
+
+
 def _check_schema_metadata() -> list[str]:
     """Verify schema_version and migration_gaps exist in manifest."""
     errors = []
@@ -120,28 +135,38 @@ def main() -> int:
     all_errors: list[str] = []
 
     print("Schema validation: legacy schema ... ", end="")
+    prev_count = len(all_errors)
     all_errors.extend(_check_legacy_schema(data))
-    print("OK" if not all_errors else "FAIL")
+    print("OK" if len(all_errors) == prev_count else "FAIL")
 
     print("Schema validation: exact roundtrip ... ", end="")
+    prev_count = len(all_errors)
     all_errors.extend(_check_exact_roundtrip(data))
-    print("OK" if len(all_errors) == 0 else "FAIL")
+    print("OK" if len(all_errors) == prev_count else "FAIL")
 
     print("Schema validation: target mapping ... ", end="")
+    prev_count = len(all_errors)
     target, mapping_errors, warnings = _check_target_mapping(data)
     all_errors.extend(mapping_errors)
-    print("OK" if not mapping_errors else "FAIL")
+    print("OK" if len(all_errors) == prev_count else "FAIL")
 
     if warnings:
         print(f"  Migration warnings: {len(warnings)}")
 
     print("Schema validation: migration documentation ... ", end="")
+    prev_count = len(all_errors)
     all_errors.extend(_check_migration_documentation())
-    print("OK" if len(all_errors) == 0 else "FAIL")
+    print("OK" if len(all_errors) == prev_count else "FAIL")
+
+    print("Schema validation: canonical report schema ... ", end="")
+    prev_count = len(all_errors)
+    all_errors.extend(_check_canonical_report_schema())
+    print("OK" if len(all_errors) == prev_count else "FAIL")
 
     print("Schema validation: manifest metadata ... ", end="")
+    prev_count = len(all_errors)
     all_errors.extend(_check_schema_metadata())
-    print("OK" if len(all_errors) == 0 else "FAIL")
+    print("OK" if len(all_errors) == prev_count else "FAIL")
 
     if all_errors:
         print("\n=== Schema Validation Failures ===")

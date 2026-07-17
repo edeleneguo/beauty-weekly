@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 """Comprehensive validator for beauty-weekly HTML output.
 
+Phase 5: reads from ``data/weeks/2026-W28/report.json`` (canonical dataset)
+transformed through the lossless compatibility adapter.  ``data/week28.json``
+is preserved as a legacy compatibility baseline only.
+
 Implements all IT cross-check rules (all hard-fail, no warnings):
   1. 4 panels per section (US LUXURY, US MASSTIGE, CN LUXURY, CN MASSTIGE)
   2. 10 rows per panel for heat; dynamic (0+) for radar/new_product_radar
@@ -31,7 +35,11 @@ import sys
 from typing import Any, List
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DATA_PATH = os.path.join(ROOT, "data", "week28.json")
+sys.path.insert(0, ROOT)
+
+from beauty_weekly.canonical_adapter import canonical_to_legacy  # noqa: E402
+
+CANONICAL_PATH = os.path.join(ROOT, "data", "weeks", "2026-W28", "report.json")
 
 FILES = {
     ("makeup", "en"): "index.html",
@@ -91,14 +99,13 @@ class ValidationIssue:
         self.message = message
 
     def __str__(self):
-        return "[{0}] {1} | {2}: {3}".format(
-            self.severity, self.file, self.rule, self.message
-        )
+        return "[{0}] {1} | {2}: {3}".format(self.severity, self.file, self.rule, self.message)
 
 
 def _load_data() -> dict:
-    with open(DATA_PATH, "r", encoding="utf-8") as f:
-        return json.load(f)
+    with open(CANONICAL_PATH, "r", encoding="utf-8") as f:
+        canonical = json.load(f)
+    return canonical_to_legacy(canonical)
 
 
 def _read_html(filename: str) -> str:
@@ -147,19 +154,14 @@ def _count_items(section_html: str) -> int:
 
 def _extract_scores_from_html(section_html: str) -> List[int]:
     """Extract all heat-score values from HTML."""
-    return [
-        int(m)
-        for m in re.findall(r'<span\s+class="heat-score">(\d+)</span>', section_html)
-    ]
+    return [int(m) for m in re.findall(r'<span\s+class="heat-score">(\d+)</span>', section_html)]
 
 
 def _extract_ranks_from_html(section_html: str) -> List[int]:
     """Extract all rank values from HTML."""
     return [
         int(m)
-        for m in re.findall(
-            r'<span\s+class="heat-rank\s+(us|cn)">(\d+)</span>', section_html
-        )
+        for m in re.findall(r'<span\s+class="heat-rank\s+(us|cn)">(\d+)</span>', section_html)
     ]
 
 
@@ -173,9 +175,7 @@ def _count_score_labels(section_html: str) -> int:
     return len(re.findall(r'<span\s+class="heat-score-label"', section_html))
 
 
-def _check_language_purity(
-    filename: str, lang: str, html: str
-) -> List[ValidationIssue]:
+def _check_language_purity(filename: str, lang: str, html: str) -> List[ValidationIssue]:
     issues = []
     # Check lang attribute
     if lang == "en":
@@ -239,14 +239,9 @@ def _check_edp_spacing(filename: str, html: str) -> List[ValidationIssue]:
 def _check_href_policy(filename: str, html: str) -> List[ValidationIssue]:
     issues = []
     # Check all heat-link-icon links have target="_blank"
-    all_link_tags = re.findall(
-        r'<a\s+href="([^"]*)"[^>]*class="heat-link-icon"[^>]*>', html
-    )
+    all_link_tags = re.findall(r'<a\s+href="([^"]*)"[^>]*class="heat-link-icon"[^>]*>', html)
     for link in all_link_tags:
-        if (
-            'target="_blank"'
-            not in html[html.index(link) - 100 : html.index(link) + 200]
-        ):
+        if 'target="_blank"' not in html[html.index(link) - 100 : html.index(link) + 200]:
             issues.append(
                 ValidationIssue(
                     "ERROR",
@@ -357,9 +352,7 @@ def _check_heat_panel_notes(
     if not section_html:
         return issues
     # Look for the panel note pattern in the rendered HTML
-    has_note_pattern = re.findall(
-        r"products met this week|款产品达到信号", section_html
-    )
+    has_note_pattern = re.findall(r"products met this week|款产品达到信号", section_html)
     heat = data["products"].get(topic, {}).get("heat_rankings", {})
     panels_with_few = 0
     for panel_key, products in heat.items():
@@ -407,18 +400,14 @@ def _check_data_consistency(data: dict) -> List[ValidationIssue]:
                         "ERROR",
                         "data",
                         "panel-count",
-                        "{0}/{1}: expected 4 panels, got {2}".format(
-                            topic, section, len(panels)
-                        ),
+                        "{0}/{1}: expected 4 panels, got {2}".format(topic, section, len(panels)),
                     )
                 )
             for panel_key in PANELS:
                 panel_products = panels.get(panel_key, [])
                 # Rule: heat panels must have 1-10 real rows (no placeholders); radar panels are dynamic (0+)
                 if section == "heat_rankings":
-                    real_products = [
-                        p for p in panel_products if _safe_int(p.get("score", 0)) > 0
-                    ]
+                    real_products = [p for p in panel_products if _safe_int(p.get("score", 0)) > 0]
                     if len(real_products) < 1 or len(real_products) > 10:
                         issues.append(
                             ValidationIssue(
@@ -462,10 +451,7 @@ def _check_data_consistency(data: dict) -> List[ValidationIssue]:
                                     ),
                                 )
                             )
-                        elif (
-                            "no more signal" not in name.lower()
-                            and "本周无更多" not in name
-                        ):
+                        elif "no more signal" not in name.lower() and "本周无更多" not in name:
                             issues.append(
                                 ValidationIssue(
                                     "ERROR",
@@ -540,12 +526,9 @@ def _check_data_consistency(data: dict) -> List[ValidationIssue]:
         heat = data["products"].get(topic, {}).get("heat_rankings", {})
         radar = data["products"].get(topic, {}).get("new_product_radar", {})
         for panel_key in PANELS:
-            heat_names = {
-                p["name"]: _safe_int(p.get("score", 0)) for p in heat.get(panel_key, [])
-            }
+            heat_names = {p["name"]: _safe_int(p.get("score", 0)) for p in heat.get(panel_key, [])}
             radar_names = {
-                p["name"]: _safe_int(p.get("score", 0))
-                for p in radar.get(panel_key, [])
+                p["name"]: _safe_int(p.get("score", 0)) for p in radar.get(panel_key, [])
             }
             for name in set(heat_names.keys()) & set(radar_names.keys()):
                 if heat_names[name] != radar_names[name]:
@@ -771,9 +754,7 @@ def _check_html_panels(filename: str, html: str) -> List[ValidationIssue]:
                     "ERROR",
                     filename,
                     "panel-count",
-                    "Section 0{0}: expected 4 panels, found {1}".format(
-                        section_num, panel_count
-                    ),
+                    "Section 0{0}: expected 4 panels, found {1}".format(section_num, panel_count),
                 )
             )
         # Check for placeholder text in any section
@@ -783,9 +764,7 @@ def _check_html_panels(filename: str, html: str) -> List[ValidationIssue]:
                     "ERROR",
                     filename,
                     "placeholder-in-section",
-                    "Section 0{0}: contains placeholder text 'no more signal'".format(
-                        section_num
-                    ),
+                    "Section 0{0}: contains placeholder text 'no more signal'".format(section_num),
                 )
             )
         if "本周无更多" in section_html:
@@ -794,9 +773,7 @@ def _check_html_panels(filename: str, html: str) -> List[ValidationIssue]:
                     "ERROR",
                     filename,
                     "placeholder-in-section",
-                    "Section 0{0}: contains placeholder text '本周无更多'".format(
-                        section_num
-                    ),
+                    "Section 0{0}: contains placeholder text '本周无更多'".format(section_num),
                 )
             )
         item_count = _count_items(section_html)
@@ -821,9 +798,7 @@ def _check_html_panels(filename: str, html: str) -> List[ValidationIssue]:
                         "ERROR",
                         filename,
                         "item-count",
-                        "Section 0{0}: found {1} items (max 40)".format(
-                            section_num, item_count
-                        ),
+                        "Section 0{0}: found {1} items (max 40)".format(section_num, item_count),
                     )
                 )
         # Score labels: rank #1 per panel in Section 03; 0 in Section 04
@@ -887,9 +862,7 @@ def _check_trend_new_badges(data: dict) -> List[ValidationIssue]:
                                 "ERROR",
                                 "data",
                                 "new-badge-value",
-                                "{0}/{1}: unexpected new badge '{2}'".format(
-                                    topic, panel_key, new
-                                ),
+                                "{0}/{1}: unexpected new badge '{2}'".format(topic, panel_key, new),
                             )
                         )
                     # Rule: trend-badge products must have concrete trend_tags on key_features
@@ -953,9 +926,7 @@ def _check_trend_tags_rules(data: dict, filename: str) -> List[ValidationIssue]:
     }
 
     for topic in ("makeup", "fragrance"):
-        valid_vertical_tags = (
-            MAKEUP_TREND_TAGS if topic == "makeup" else FRAGRANCE_TREND_TAGS
-        )
+        valid_vertical_tags = MAKEUP_TREND_TAGS if topic == "makeup" else FRAGRANCE_TREND_TAGS
         products = data["products"].get(topic, {})
         for section in ("heat_rankings", "new_product_radar"):
             for panel_key, panel_products in products.get(section, {}).items():
@@ -1063,12 +1034,8 @@ def main() -> int:
         # Unverified item rendering check
         for topic_check in ("makeup", "fragrance"):
             if filename == FILES.get((topic_check, lang)):
-                all_issues.extend(
-                    _check_unverified_not_rendered(filename, html, data, topic_check)
-                )
-                all_issues.extend(
-                    _check_heat_panel_notes(filename, html, data, topic_check)
-                )
+                all_issues.extend(_check_unverified_not_rendered(filename, html, data, topic_check))
+                all_issues.extend(_check_heat_panel_notes(filename, html, data, topic_check))
 
     # Print results
     errors = [i for i in all_issues if i.severity == "ERROR"]

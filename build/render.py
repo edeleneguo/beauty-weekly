@@ -1,5 +1,12 @@
 #!/usr/bin/env python3
-"""Deterministic renderer: regenerate the four root HTML files from data/week28.json.
+"""Deterministic renderer: regenerate the four root HTML files from canonical data.
+
+Phase 5: reads from ``data/weeks/2026-W28/report.json`` (the canonical weekly
+dataset), transformed through the lossless compatibility adapter so that all
+downstream rendering logic receives legacy-shaped fields.
+
+``data/week28.json`` is preserved as a legacy compatibility baseline only —
+it is NOT the authoritative read path.
 
 Only replaces Sections 03 (heat rankings) and 04 (new product radar).
 All other content (banner, news, trends, appendix, CSS, JS) is preserved
@@ -7,19 +14,24 @@ verbatim from the original HTML files, which are treated as templates.
 
 Design invariants
 -----------------
-* Deterministic: same JSON + same templates = identical HTML output.
+* Deterministic: same canonical JSON + same templates = identical HTML output.
 * No global split/join mutation.
-* One record edit in JSON propagates to all language variants.
+* One record edit in canonical dataset propagates to all language variants.
 * Archives are never touched.
 """
 
 import json
 import os
 import re
+import sys
 from typing import Any, Dict, List
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DATA_PATH = os.path.join(ROOT, "data", "week28.json")
+sys.path.insert(0, ROOT)
+
+from beauty_weekly.canonical_adapter import canonical_to_legacy  # noqa: E402
+
+CANONICAL_PATH = os.path.join(ROOT, "data", "weeks", "2026-W28", "report.json")
 TEMPLATES = {
     ("makeup", "en"): "index.html",
     ("makeup", "cn"): "index-cn.html",
@@ -85,10 +97,7 @@ RADAR_PANEL_SUB_LABELS = {
 def _esc(text: str) -> str:
     """HTML-escape text."""
     return (
-        text.replace("&", "&amp;")
-        .replace("<", "&lt;")
-        .replace(">", "&gt;")
-        .replace('"', "&quot;")
+        text.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;").replace('"', "&quot;")
     )
 
 
@@ -100,9 +109,11 @@ def _render_detail_cell(label: str, cell_data: Dict[str, Any], lang: str) -> str
     value_clean = value.replace(" 🔗", "").replace("🔗", "").strip()
     link_html = ""
     if link_url:
-        link_html = ' <a href="{0}" target="_blank" class="heat-link-icon" title="{1}">🔗</a>'.format(
-            _esc(link_url),
-            "View product" if lang == "en" else "查看产品",
+        link_html = (
+            ' <a href="{0}" target="_blank" class="heat-link-icon" title="{1}">🔗</a>'.format(
+                _esc(link_url),
+                "View product" if lang == "en" else "查看产品",
+            )
         )
     # Per-language trend_tags: prefer language-specific, fall back to generic
     if lang == "cn":
@@ -112,17 +123,14 @@ def _render_detail_cell(label: str, cell_data: Dict[str, Any], lang: str) -> str
     trend_html = ""
     if trend_tags:
         trend_html = " " + "".join(
-            '<span class="heat-trend-tag">{0}</span>'.format(_esc(t))
-            for t in trend_tags
+            '<span class="heat-trend-tag">{0}</span>'.format(_esc(t)) for t in trend_tags
         )
     return (
         '<div class="heat-detail-cell">'
         '<div class="heat-detail-label">{label}</div>'
         '<div class="heat-detail-value">{trend}{value}{link}</div>'
         "</div>"
-    ).format(
-        label=_esc(label), trend=trend_html, value=_esc(value_clean), link=link_html
-    )
+    ).format(label=_esc(label), trend=trend_html, value=_esc(value_clean), link=link_html)
 
 
 def _render_product(product: Dict[str, Any], lang: str, section: str) -> str:
@@ -160,16 +168,12 @@ def _render_product(product: Dict[str, Any], lang: str, section: str) -> str:
                 badge_text = "趋势产品"
             elif lang == "cn" and badge_text == "NEW":
                 badge_text = "新品"
-            badges_html += '<span class="heat-trend-badge">{0}</span>'.format(
-                _esc(badge_text)
-            )
+            badges_html += '<span class="heat-trend-badge">{0}</span>'.format(_esc(badge_text))
         if new_badge:
             badge_text = new_badge
             if lang == "cn" and badge_text in ("New", "NEW"):
                 badge_text = "新品"
-            badges_html += '<span class="heat-new-badge">{0}</span>'.format(
-                _esc(badge_text)
-            )
+            badges_html += '<span class="heat-new-badge">{0}</span>'.format(_esc(badge_text))
 
     # Heat-score-label: only on rank #1 of each subcategory for heat section
     score_label = ""
@@ -178,9 +182,7 @@ def _render_product(product: Dict[str, Any], lang: str, section: str) -> str:
         score_label = "Heat" if lang == "en" else "热度值"
 
     detail = product.get("detail", {})
-    labels = CELL_LABELS.get(lang, CELL_LABELS["en"]).get(
-        section, CELL_LABELS["en"]["heat"]
-    )
+    labels = CELL_LABELS.get(lang, CELL_LABELS["en"]).get(section, CELL_LABELS["en"]["heat"])
     cells_html = ""
     for i, dkey in enumerate(DETAIL_KEYS):
         cell_data = detail.get(dkey, {})
@@ -256,17 +258,13 @@ def _render_product(product: Dict[str, Any], lang: str, section: str) -> str:
     )
 
 
-def _render_panel_heading(
-    market: str, tier: str, lang: str, topic: str, section: str
-) -> str:
+def _render_panel_heading(market: str, tier: str, lang: str, topic: str, section: str) -> str:
     """Render the h4 heading for a panel."""
     market_color = "var(--us-blue)" if market == "US" else "var(--cn-yellow)"
     tier_bg = "#fef9ee" if tier == "LUXURY" else "#f0fdf4"
     tier_color = "#b8943a" if tier == "LUXURY" else "#166534"
     if section == "heat":
-        sub_label = PANEL_SUB_LABELS.get((topic, lang), {}).get(
-            tier, "{0} TOP 10".format(tier)
-        )
+        sub_label = PANEL_SUB_LABELS.get((topic, lang), {}).get(tier, "{0} TOP 10".format(tier))
     else:
         sub_label = RADAR_PANEL_SUB_LABELS.get((topic, lang), "New Arrivals")
     return (
@@ -284,9 +282,7 @@ def _render_panel_heading(
     )
 
 
-def _filter_panel_products(
-    products: List[Dict[str, Any]], section: str
-) -> List[Dict[str, Any]]:
+def _filter_panel_products(products: List[Dict[str, Any]], section: str) -> List[Dict[str, Any]]:
     """Filter out placeholder and quarantined products from a panel.
 
     - All sections: remove score=0 placeholder rows.
@@ -320,9 +316,7 @@ _HEAT_PANEL_NOTE_MESSAGES = {
 
 def _render_empty_state_note(lang: str, topic: str, count: int) -> str:
     """Render a single concise empty-state note when a radar panel has few products."""
-    base_msg = _EMPTY_STATE_MESSAGES.get(
-        (topic, lang), "No qualifying new products this week."
-    )
+    base_msg = _EMPTY_STATE_MESSAGES.get((topic, lang), "No qualifying new products this week.")
     return (
         '<li class="heat-item" style="list-style:none;border:none;box-shadow:none;background:transparent;padding:12px 16px;">'
         '<div class="heat-info">'
@@ -352,9 +346,7 @@ def _render_section(
     section: str,
 ) -> str:
     """Render Section 03 or 04 HTML."""
-    titles = SECTION_TITLES.get(
-        (topic, lang), ("", "Heat", "Rankings", "New Product", "Radar")
-    )
+    titles = SECTION_TITLES.get((topic, lang), ("", "Heat", "Rankings", "New Product", "Radar"))
     if section == "heat":
         sec_title = '<h2 class="section-title">{0} <em>{1}</em> {2} <span class="sec-label">Section 03</span></h2>'.format(
             _esc(titles[0]), _esc(titles[1]), _esc(titles[2])
@@ -367,12 +359,8 @@ def _render_section(
     # Determine panel order: US panels first, then CN
     panel_order = ["US LUXURY", "US MASSTIGE", "CN LUXURY", "CN MASSTIGE"]
     # Split into US and CN groups
-    us_panels = [
-        p for p in panel_order if p.startswith("US") and p in products_by_panel
-    ]
-    cn_panels = [
-        p for p in panel_order if p.startswith("CN") and p in products_by_panel
-    ]
+    us_panels = [p for p in panel_order if p.startswith("US") and p in products_by_panel]
+    cn_panels = [p for p in panel_order if p.startswith("CN") and p in products_by_panel]
 
     def _render_panel(panel_key: str) -> str:
         market, tier = panel_key.split()
@@ -408,16 +396,7 @@ def _render_section(
         container_open = '<div class="radar-section" style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">'
         container_close = "</div><!-- end radar-section -->"
 
-    return (
-        sec_title
-        + "\n"
-        + container_open
-        + "\n"
-        + us_html
-        + cn_html
-        + container_close
-        + "\n"
-    )
+    return sec_title + "\n" + container_open + "\n" + us_html + cn_html + container_close + "\n"
 
 
 def _replace_section(html: str, section_num: int, new_content: str) -> str:
@@ -450,8 +429,9 @@ def _strip_emoji(text: str) -> str:
 
 
 def main() -> None:
-    with open(DATA_PATH, "r", encoding="utf-8") as f:
-        data = json.load(f)
+    with open(CANONICAL_PATH, "r", encoding="utf-8") as f:
+        canonical = json.load(f)
+    data = canonical_to_legacy(canonical)
 
     for (topic, lang), template_name in TEMPLATES.items():
         template_path = os.path.join(ROOT, template_name)

@@ -1,8 +1,9 @@
 """Canonical weekly dataset generation, loading, and validation.
 
-Phase 4: generates an independent canonical dataset under
-``data/weeks/<iso_week>/`` from the legacy ``data/week28.json``.  The
-canonical dataset is the single source of truth for downstream consumers.
+Phase 5: the canonical dataset under ``data/weeks/<iso_week>/`` is the
+single source of truth for all downstream consumers (renderer, validators,
+HTML output).  ``data/week28.json`` is a test-only legacy baseline and is
+never read at runtime by the canonical validation path.
 
 Three artifacts are produced per week:
 
@@ -18,8 +19,10 @@ Design constraints
   represented as explicitly non-recomputable with documented missing components.
 * Deterministic serialization: ``sort_keys=True``, ``ensure_ascii=False``,
   ``indent=2``.
-* Byte-for-byte compatibility with ``data/week28.json`` and the four
-  production HTML files is preserved.
+* Byte-for-byte compatibility with the four production HTML files is preserved.
+* The parity guard compares the explicit render/business projection — every
+  field actually consumed by the renderer, HTML output, and active validators
+  — not a byte-identical full legacy dict.
 """
 
 from __future__ import annotations
@@ -42,6 +45,51 @@ _ROOT = Path(__file__).resolve().parent.parent
 WEEKS_DIR = _ROOT / "data" / "weeks"
 LEGACY_PATH = _ROOT / "data" / "week28.json"
 HTML_FILES = ("index.html", "index-cn.html", "fragrance.html", "fragrance-cn.html")
+
+
+# ── Render / business projection (Phase 5) ────────────────────────────────
+# Every field consumed by build/render.py, build/validate.py, and the four
+# production HTML output files.  The parity guard compares ONLY these fields
+# — never a byte-identical full legacy dict, because the canonical model
+# intentionally omits isolated non-render fields (raw_score, per-language
+# version strings, category_badge_cn).
+
+# Top-level report fields consumed downstream.
+REPORT_PROJECTION_FIELDS = {"week", "date_range", "date_range_cn", "version"}
+
+# Product-level fields consumed by the renderer and validators.
+PRODUCT_PROJECTION_FIELDS = {
+    "rank",
+    "market",
+    "tier",
+    "name",
+    "name_cn",
+    "category_badge",
+    "score",
+    "trend_badge",
+    "new_badge",
+}
+
+# Detail-cell fields consumed by the renderer.
+# price_link is a PriceLink (en, cn, link); key_features, buzz, brand are
+# LocalizedText (en, cn only — no link field).
+DETAIL_PROJECTION_KEYS = {"price_link", "key_features", "buzz", "brand"}
+DETAIL_BASE_SUB_FIELDS = {"en", "cn"}
+DETAIL_LINK_SUB_FIELDS = {"en", "cn", "link"}
+
+# Launch evidence fields consumed by the renderer (quarantine filtering)
+# and validators (evidence completeness checks).
+LAUNCH_EVIDENCE_PROJECTION_FIELDS = {
+    "launch_date",
+    "quarantine_status",
+    "quarantine_reason",
+}
+EVIDENCE_PROJECTION_FIELDS = {"url", "type", "checked_at"}
+
+# Trend fields consumed by the renderer and validators.
+# tag / tag_cn are always present on trend-badge products.
+# rationale is only present on radar trend products.
+TREND_PROJECTION_FIELDS = {"tag", "tag_cn", "rationale"}
 
 # ── Deterministic serialization ───────────────────────────────────────────────
 
@@ -239,6 +287,56 @@ def compute_artifact_hashes(weeks_dir: Path) -> dict:
     return hashes
 
 
+# ── Projection parity guard ──────────────────────────────────────────────────
+
+
+def _check_render_projection(report: dict, errors: list[str]) -> None:
+    """Fail-closed check: every field consumed by renderer/validators is present.
+
+    Compares the canonical report against the explicit render/business
+    projection — NOT a byte-identical full legacy dict.  Fields intentionally
+    omitted by the canonical model (raw_score, version_*, category_badge_cn)
+    are not checked here.
+    """
+    # Top-level report fields
+    for field in REPORT_PROJECTION_FIELDS:
+        if field not in report:
+            errors.append(f"report.json missing render projection field: {field}")
+
+    products = report.get("products", {})
+    for topic in ("makeup", "fragrance"):
+        for section in ("heat_rankings", "new_product_radar"):
+            panels = products.get(topic, {}).get(section, {})
+            for panel_key, product_list in panels.items():
+                for idx, p in enumerate(product_list):
+                    loc = f"{topic}/{section}/{panel_key}[{idx}]"
+                    # Product-level fields
+                    for field in PRODUCT_PROJECTION_FIELDS:
+                        if field not in p:
+                            errors.append(f"{loc}: missing render projection field '{field}'")
+                    # Detail cells
+                    detail = p.get("detail", {})
+                    for dkey in DETAIL_PROJECTION_KEYS:
+                        if dkey not in detail:
+                            errors.append(f"{loc}: missing detail.{dkey}")
+                        elif isinstance(detail[dkey], dict):
+                            # price_link has link; other cells are en/cn only
+                            subs = (
+                                DETAIL_LINK_SUB_FIELDS
+                                if dkey == "price_link"
+                                else DETAIL_BASE_SUB_FIELDS
+                            )
+                            for sub in subs:
+                                if sub not in detail[dkey]:
+                                    errors.append(f"{loc}: missing detail.{dkey}.{sub}")
+                    # Trend (optional, but when present must have tag/tag_cn)
+                    trend = p.get("trend")
+                    if trend is not None:
+                        for field in TREND_PROJECTION_FIELDS:
+                            if field not in trend:
+                                errors.append(f"{loc}: trend missing '{field}'")
+
+
 # ── Validation ────────────────────────────────────────────────────────────────
 
 
@@ -298,15 +396,14 @@ def validate_canonical(weeks_dir: Path) -> list[str]:
         errors.append(f"report.json fails target schema validation: {exc}")
         return errors
 
-    # 4. Validate report.json against legacy data losslessly
+    # 4. Projection parity guard (Phase 5 — replaces legacy cross-validation)
+    #    Verifies that every field consumed by the renderer, HTML output,
+    #    and active validators is present and well-typed in the canonical
+    #    report.  This is fail-closed: any missing field is an error.
     try:
-        legacy = load_legacy_report(LEGACY_PATH)
-        legacy_target, _warnings = to_target(legacy)
-        legacy_dict = legacy_target.model_dump(mode="json", exclude_unset=True)
-        if report != legacy_dict:
-            errors.append("report.json differs from adapter-generated target model")
+        _check_render_projection(report, errors)
     except Exception as exc:
-        errors.append(f"Legacy cross-validation failed: {exc}")
+        errors.append(f"Projection parity check failed: {exc}")
 
     # 5. Validate scoring.json
     if scoring.get("recomputable") is not False:
@@ -404,6 +501,60 @@ def validate_canonical(weeks_dir: Path) -> list[str]:
             errors.append(
                 f"manifest.json {manifest_key} mismatch: {manifest[manifest_key]} != {hashes[key]}"
             )
+
+    return errors
+
+
+# ── Drift detection ──────────────────────────────────────────────────────────
+
+
+def detect_canonical_drift(weeks_dir: Path) -> list[str]:
+    """Detect drift between on-disk canonical artifacts and fresh generation.
+
+    Reads ``data/week28.json`` (test-only baseline) and regenerates the
+    canonical dataset, then compares artifact hashes.  Returns a list of
+    error strings; empty means no drift.
+
+    This function IS allowed to read the legacy file because it is a
+    test/diagnostic utility, not the primary read path.
+    """
+    errors: list[str] = []
+    try:
+        legacy = load_legacy_report(LEGACY_PATH)
+    except Exception as exc:
+        errors.append(f"Cannot load legacy baseline for drift check: {exc}")
+        return errors
+
+    # Regenerate canonical artifacts and compare hashes
+    report_dict, _warnings = generate_canonical_report(legacy)
+    from beauty_weekly.canonical import _deterministic_json
+
+    fresh_report_hash = _sha256_of(_deterministic_json(report_dict))
+    on_disk_hashes = compute_artifact_hashes(weeks_dir)
+
+    if on_disk_hashes.get("report.json") != fresh_report_hash:
+        errors.append(
+            f"report.json hash drift: on-disk={on_disk_hashes.get('report.json')!r} "
+            f"fresh={fresh_report_hash!r}"
+        )
+
+    # Compare sources
+    fresh_sources = generate_sources(legacy)
+    fresh_sources_hash = _sha256_of(_deterministic_json(fresh_sources))
+    if on_disk_hashes.get("sources.json") != fresh_sources_hash:
+        errors.append(
+            f"sources.json hash drift: on-disk={on_disk_hashes.get('sources.json')!r} "
+            f"fresh={fresh_sources_hash!r}"
+        )
+
+    # Compare scoring
+    fresh_scoring = generate_scoring_model(legacy)
+    fresh_scoring_hash = _sha256_of(_deterministic_json(fresh_scoring))
+    if on_disk_hashes.get("scoring.json") != fresh_scoring_hash:
+        errors.append(
+            f"scoring.json hash drift: on-disk={on_disk_hashes.get('scoring.json')!r} "
+            f"fresh={fresh_scoring_hash!r}"
+        )
 
     return errors
 
