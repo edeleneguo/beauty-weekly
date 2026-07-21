@@ -5,6 +5,15 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
+  schedule:
+    # Monday 09:00 Asia/Shanghai — fail if current-week canonical input is absent.
+    - cron: "0 1 * * 1"
+  workflow_dispatch:
+    inputs:
+      target_week:
+        description: "ISO week to update (e.g. 2026-W29). Leave empty for auto-resolve."
+        required: false
+        type: string
 
 permissions:
   contents: read
@@ -30,3 +39,22 @@ jobs:
 
       - name: Full fail-closed quality gate
         run: ./build/check.sh
+
+  weekly-update:
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dev dependencies
+        run: pip install --upgrade pip && pip install -r requirements-dev.txt
+
+      - name: Weekly update (fail-closed)
+        env:
+          BEAUTY_WEEKLY_WEEK: ${{ inputs.target_week || '' }}
+          BEAUTY_WEEKLY_REQUIRE_CURRENT: ${{ github.event_name == 'schedule' && '1' || '0' }}
+        run: ./build/weekly_update.sh

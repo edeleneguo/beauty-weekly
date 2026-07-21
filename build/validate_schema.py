@@ -25,9 +25,11 @@ from beauty_weekly.models import (  # noqa: E402
     LegacyWeeklyReport,
     WeeklyReport,
 )
+from beauty_weekly.week import report_path, resolve_week, weeks_dir  # noqa: E402
 
 DATA_PATH = os.path.join(ROOT, "data", "week28.json")
-CANONICAL_PATH = os.path.join(ROOT, "data", "weeks", "2026-W28", "report.json")
+_weeks_dir_name = resolve_week()
+CANONICAL_PATH = str(report_path(_weeks_dir_name))
 
 
 def _check_legacy_schema(data: dict) -> list[str]:
@@ -107,7 +109,7 @@ def _check_canonical_report_schema() -> list[str]:
 def _check_schema_metadata() -> list[str]:
     """Verify schema_version and migration_gaps exist in manifest."""
     errors = []
-    manifest_path = os.path.join(ROOT, "data", "weeks", "2026-W28", "manifest.json")
+    manifest_path = str(weeks_dir(_weeks_dir_name) / "manifest.json")
     if not os.path.exists(manifest_path):
         errors.append(f"Manifest not found: {manifest_path}")
         return errors

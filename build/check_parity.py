@@ -31,8 +31,10 @@ sys.path.insert(0, ROOT)
 
 from beauty_weekly.canonical_adapter import canonical_to_legacy  # noqa: E402
 from beauty_weekly.loader import load_legacy_raw  # noqa: E402
+from beauty_weekly.week import resolve_week, weeks_dir  # noqa: E402
 
-WEEKS_DIR = Path(ROOT) / "data" / "weeks" / "2026-W28"
+_weeks_dir_name = resolve_week()
+WEEKS_DIR = weeks_dir(_weeks_dir_name)
 LEGACY_PATH = Path(ROOT) / "data" / "week28.json"
 
 # Top-level fields that the canonical model preserves.

@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Comprehensive validator for beauty-weekly HTML output.
 
-Phase 5: reads from ``data/weeks/2026-W28/report.json`` (canonical dataset)
-transformed through the lossless compatibility adapter.  ``data/week28.json``
-is preserved as a legacy compatibility baseline only.
+Reads from ``data/weeks/<target-week>/report.json`` (canonical dataset)
+transformed through the lossless compatibility adapter.  Target week is
+resolved dynamically via environment variable or latest available data.
 
 Implements all IT cross-check rules (all hard-fail, no warnings):
   1. 4 panels per section (US LUXURY, US MASSTIGE, CN LUXURY, CN MASSTIGE)
@@ -38,8 +38,9 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
 
 from beauty_weekly.canonical_adapter import canonical_to_legacy  # noqa: E402
+from beauty_weekly.week import report_path  # noqa: E402
 
-CANONICAL_PATH = os.path.join(ROOT, "data", "weeks", "2026-W28", "report.json")
+CANONICAL_PATH = str(report_path())
 
 FILES = {
     ("makeup", "en"): "index.html",

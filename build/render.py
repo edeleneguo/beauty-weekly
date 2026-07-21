@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
 """Deterministic renderer: regenerate the four root HTML files from canonical data.
 
-Phase 5: reads from ``data/weeks/2026-W28/report.json`` (the canonical weekly
+Reads from ``data/weeks/<target-week>/report.json`` (the canonical weekly
 dataset), transformed through the lossless compatibility adapter so that all
 downstream rendering logic receives legacy-shaped fields.
 
-``data/week28.json`` is preserved as a legacy compatibility baseline only —
-it is NOT the authoritative read path.
+The target week is resolved dynamically via ``beauty_weekly.week``:
+  1. ``BEAUTY_WEEKLY_WEEK`` env var, or
+  2. Most recent ``data/weeks/<iso-week>/`` with report.json, or
+  3. Current calendar ISO week.
 
 Only replaces Sections 03 (heat rankings) and 04 (new product radar).
 All other content (banner, news, trends, appendix, CSS, JS) comes from the
@@ -19,6 +21,7 @@ Design invariants
 * No global split/join mutation.
 * One record edit in canonical dataset propagates to all language variants.
 * Archives are never touched.
+* Idempotent: running twice produces identical output.
 """
 
 import json
@@ -31,9 +34,12 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
 
 from beauty_weekly.canonical_adapter import canonical_to_legacy  # noqa: E402
+from beauty_weekly.week import report_path  # noqa: E402
 
-CANONICAL_PATH = os.path.join(ROOT, "data", "weeks", "2026-W28", "report.json")
 PAGE_SHELL_DIR = os.path.join(ROOT, "templates", "pages")
+
+
+CANONICAL_PATH = str(report_path())
 PAGES = {
     ("makeup", "en"): "index.html",
     ("makeup", "cn"): "index-cn.html",
@@ -431,6 +437,7 @@ def _strip_emoji(text: str) -> str:
 
 
 def main() -> None:
+    print(f"Rendering from canonical: {CANONICAL_PATH}")
     with open(CANONICAL_PATH, "r", encoding="utf-8") as f:
         canonical = json.load(f)
     data = canonical_to_legacy(canonical)

@@ -604,8 +604,12 @@ def detect_canonical_drift(weeks_dir: Path) -> list[str]:
 # ── Convenience ───────────────────────────────────────────────────────────────
 
 
-def load_canonical_report(iso_week: str = "2026-W28") -> WeeklyReport:
+def load_canonical_report(iso_week: str | None = None) -> WeeklyReport:
     """Load and validate the canonical report for *iso_week*."""
+    if iso_week is None:
+        from beauty_weekly.week import resolve_week
+
+        iso_week = resolve_week()
     report_path = WEEKS_DIR / iso_week / "report.json"
     data = json.loads(report_path.read_text(encoding="utf-8"))
     return WeeklyReport.model_validate(data, strict=False)

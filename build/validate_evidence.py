@@ -8,18 +8,19 @@ Called from build/check.sh.
 import json
 import os
 import sys
-from pathlib import Path
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
 
 from beauty_weekly.evidence import validate_evidence_integrity  # noqa: E402
+from beauty_weekly.week import resolve_week, weeks_dir  # noqa: E402
 
-WEEKS_DIR = Path(ROOT) / "data" / "weeks" / "2026-W28"
+_weeks_dir_name = resolve_week()
+WEEKS_DIR = weeks_dir(_weeks_dir_name)
 
 
 def main() -> int:
-    print("Evidence & qualification integrity ... ", end="")
+    print(f"Evidence & qualification integrity ({_weeks_dir_name}) ... ", end="")
 
     report_path = WEEKS_DIR / "report.json"
     sources_path = WEEKS_DIR / "sources.json"

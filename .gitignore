@@ -8,3 +8,4 @@ dist/
 *.egg
 .venv/
 venv/
+.beauty-weekly-state/
