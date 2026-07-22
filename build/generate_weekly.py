@@ -20,6 +20,7 @@ import json
 import os
 import re
 import sys
+import time
 import urllib.error
 import urllib.request
 from datetime import date, datetime, timedelta
@@ -77,9 +78,23 @@ def call_llm(system_prompt: str, user_prompt: str, max_tokens: int = 8000) -> st
             "Authorization": f"Bearer {API_KEY}",
         },
     )
-    with urllib.request.urlopen(req, timeout=120) as resp:
-        result = json.loads(resp.read().decode("utf-8"))
-        return result["choices"][0]["message"]["content"]
+    for attempt in range(3):
+        try:
+            with urllib.request.urlopen(req, timeout=120) as resp:
+                result = json.loads(resp.read().decode("utf-8"))
+                return result["choices"][0]["message"]["content"]
+        except urllib.error.HTTPError as exc:
+            if exc.code != 429 or attempt == 2:
+                raise
+            retry_after = exc.headers.get("Retry-After")
+            delay = (
+                int(retry_after)
+                if retry_after and retry_after.isdigit()
+                else 30 * (attempt + 1)
+            )
+            print(f"  LLM rate limited; retrying in {delay}s", file=sys.stderr)
+            time.sleep(delay)
+    raise RuntimeError("LLM request retry loop exhausted")
 
 
 def parse_json_response(response: str) -> dict:
