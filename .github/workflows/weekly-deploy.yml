@@ -82,6 +82,12 @@ jobs:
           fi
           echo "OK raw_collected.json exists for $WEEK"
 
+      - name: Gate — Intentional failure check
+        if: ${{ inputs.intentional_failure }}
+        run: |
+          echo "FATAL: intentional_failure is set — aborting before deploy"
+          exit 1
+
       - name: Stage 2 — Generate canonical content
         env:
           LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
@@ -119,12 +125,6 @@ jobs:
             SIZE=$(wc -c < "$f")
             echo "OK $f ($SIZE bytes)"
           done
-
-      - name: Gate — Intentional failure check
-        if: ${{ inputs.intentional_failure }}
-        run: |
-          echo "FATAL: intentional_failure is set — aborting before deploy"
-          exit 1
 
       - name: Generate artifact manifest
         id: manifest

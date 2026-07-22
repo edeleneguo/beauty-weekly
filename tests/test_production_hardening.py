@@ -317,6 +317,19 @@ class TestIntentionalFailure:
         )
         assert "exit 1" in content, "deploy workflow must exit 1 when intentional_failure is set"
 
+    def test_gate_precedes_stage2_generation(self):
+        """Gate must appear before Stage 2 LLM generation in the workflow."""
+        workflow_path = os.path.join(ROOT, ".github", "workflows", "weekly-deploy.yml")
+        with open(workflow_path, "r", encoding="utf-8") as f:
+            content = f.read()
+        gate_pos = content.find("Intentional failure")
+        assert gate_pos > 0, "Gate step not found in workflow"
+        gen_pos = content.find("generate_weekly")
+        assert gen_pos > 0, "Stage 2 generation (generate_weekly) not found"
+        assert gate_pos < gen_pos, (
+            f"Gate (pos {gate_pos}) must precede Stage 2 generation (pos {gen_pos})"
+        )
+
 
 # ═══════════════════════════════════════════════════════════════════════
 # Req 6: Manifest hash proof

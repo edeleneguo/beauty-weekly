@@ -98,6 +98,20 @@ class TestIntentionalFailureGate:
         block = gate_match.group()
         assert "exit 1" in block, "Gate step must call exit 1 to abort"
 
+    def test_gate_before_stage2_generation(self, step_names: list[str]):
+        gate_idx = None
+        gen_idx = None
+        for i, name in enumerate(step_names):
+            if "intentional failure" in name.lower() and gate_idx is None:
+                gate_idx = i
+            if "generate" in name.lower() and "canonical" in name.lower() and gen_idx is None:
+                gen_idx = i
+        assert gate_idx is not None, "Gate step not found"
+        assert gen_idx is not None, "Stage 2 generate step not found"
+        assert gate_idx < gen_idx, (
+            f"Gate (step {gate_idx}) must come before Stage 2 generation (step {gen_idx})"
+        )
+
     def test_gate_before_git_commit(self, step_names: list[str]):
         gate_idx = None
         commit_idx = None
@@ -165,7 +179,21 @@ class TestStepOrdering:
         if validate_idx is not None and render_idx is not None:
             assert validate_idx <= render_idx
 
-    def test_gate_before_commit(self, step_names: list[str]):
+    def test_gate_before_stage2_generation(self, step_names: list[str]):
+        gate_idx = None
+        gen_idx = None
+        for i, n in enumerate(step_names):
+            if "intentional failure" in n.lower() and gate_idx is None:
+                gate_idx = i
+            if "generate" in n.lower() and "canonical" in n.lower() and gen_idx is None:
+                gen_idx = i
+        assert gate_idx is not None, "Gate step not found in step list"
+        assert gen_idx is not None, "Stage 2 generation step not found"
+        assert gate_idx < gen_idx, (
+            f"Gate (step {gate_idx}) must precede Stage 2 generation (step {gen_idx})"
+        )
+
+    def test_gate_before_manifest(self, step_names: list[str]):
         gate_idx = None
         commit_idx = None
         for i, n in enumerate(step_names):
@@ -238,6 +266,21 @@ class TestNoMutationBeforeGate:
         assert "/contents/" not in workflow_raw, (
             "GitHub Contents API upload (/contents/) must not be used — "
             "use atomic git commit instead"
+        )
+
+    def test_no_llm_generation_before_gate(self, workflow_raw: str):
+        gate_pos = workflow_raw.find("Intentional failure")
+        assert gate_pos > 0, "Gate step not found"
+        before_gate = workflow_raw[:gate_pos]
+        assert "generate_weekly" not in before_gate, (
+            "LLM generation (generate_weekly) must not appear before the intentional-failure gate"
+        )
+
+    def test_no_manifest_before_gate(self, workflow_raw: str):
+        gate_pos = workflow_raw.find("Intentional failure")
+        before_gate = workflow_raw[:gate_pos]
+        assert "deploy-manifest" not in before_gate, (
+            "Manifest generation must not appear before the intentional-failure gate"
         )
 
 
