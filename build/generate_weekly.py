@@ -245,12 +245,13 @@ def _score_article_relevance(article: dict, category: str) -> int:
 
     title = article.get("title", "").lower()
     summary = article.get("summary", "").lower()
-    combined = f"{title} {summary}"
-
+    generic_cues = {"beauty", "makeup", "skin care", "美妆", "彩妆", "香", "fragrance"}
     score = 0
     for cue in cues:
-        if cue in combined:
-            score += 1
+        if cue in title:
+            score += 1 if cue in generic_cues else 4
+        elif cue in summary:
+            score += 1 if cue in generic_cues else 2
     return score
 
 
