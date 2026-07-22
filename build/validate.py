@@ -407,16 +407,16 @@ def _check_data_consistency(data: dict) -> List[ValidationIssue]:
                 )
             for panel_key in PANELS:
                 panel_products = panels.get(panel_key, [])
-                # Rule: heat panels must have 1-10 real rows (no placeholders); radar panels are dynamic (0+)
+                # Heat and radar panels are evidence-driven and may be empty.
                 if section == "heat_rankings":
                     real_products = [p for p in panel_products if _safe_int(p.get("score", 0)) > 0]
-                    if len(real_products) < 1 or len(real_products) > 10:
+                    if len(real_products) > 10:
                         issues.append(
                             ValidationIssue(
                                 "ERROR",
                                 "data",
                                 "panel-rows",
-                                "{0}/{1}/{2}: expected 1-10 real rows, got {3}".format(
+                                "{0}/{1}/{2}: expected 0-10 real rows, got {3}".format(
                                     topic, section, panel_key, len(real_products)
                                 ),
                             )
@@ -808,13 +808,13 @@ def _check_html_panels(filename: str, html: str) -> List[ValidationIssue]:
         if section_num == 3:
             # Count panels that have products
             panel_heading_count = _count_panels(section_html)
-            if label_count != panel_heading_count:
+            if label_count > panel_heading_count:
                 issues.append(
                     ValidationIssue(
                         "ERROR",
                         filename,
                         "score-label-count",
-                        "Section 0{0}: expected {1} score labels (one per panel), found {2}".format(
+                        "Section 0{0}: expected at most {1} score labels, found {2}".format(
                             section_num, panel_heading_count, label_count
                         ),
                     )

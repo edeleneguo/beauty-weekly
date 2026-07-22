@@ -397,7 +397,7 @@ def _make_launch_evidence(
         evidence_url = best.get("url", product_link)
         evidence_title = best.get("title", f"{product_name} — {topic} product listing")
         return {
-            "launch_date": iso_week,
+            "launch_date": published_at[:10],
             "quarantine_status": "verified",
             "quarantine_reason": None,
             "evidence": {
@@ -601,8 +601,7 @@ Rules:
                             if source_url and source_url not in article_urls:
                                 source_url = None
                             try:
-                                canonical_products.append(
-                                    make_product(
+                                candidate = make_product(
                                         name=name,
                                         name_cn=p.get("name_cn") or "",
                                         rank=p.get("rank", 1),
@@ -633,7 +632,17 @@ Rules:
                                         launch_evidence=p.get("launch_evidence"),
                                         source_url=source_url,
                                     )
-                                )
+                                if section == "new_product_radar":
+                                    year, week = map(int, iso_week.split("-W"))
+                                    week_start = date.fromisocalendar(year, week, 1).isoformat()
+                                    week_end = date.fromisocalendar(year, week, 7).isoformat()
+                                    launch_date = candidate["launch_evidence"]["launch_date"]
+                                    if not week_start <= launch_date <= week_end:
+                                        raise ValueError(
+                                            f"radar launch date {launch_date} outside "
+                                            f"{week_start}..{week_end}"
+                                        )
+                                canonical_products.append(candidate)
                             except ValueError as e:
                                 print(
                                     f"  WARNING: Quarantining '{name}' in {section}/{panel}: {e}",
