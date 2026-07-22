@@ -117,6 +117,7 @@ jobs:
           WEEK=$(python3 -c "from beauty_weekly.week import resolve_week; print(resolve_week())")
           git add data/weeks/$WEEK/ archive/week-*/ index.html index-cn.html fragrance.html fragrance-cn.html templates/ 2>/dev/null || true
           git diff --staged --quiet && echo "No changes to commit" || git commit -m "Weekly auto-update: $WEEK"
+          git pull --rebase origin main  
           git push
 
       - name: Stage 6 — Verify live deployment
