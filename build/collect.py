@@ -17,10 +17,9 @@ Output: data/weeks/<iso-week>/raw_collected.json
 from __future__ import annotations
 
 import json
-import os
 import sys
-import urllib.request
 import urllib.error
+import urllib.request
 from datetime import date, datetime
 from pathlib import Path
 from xml.etree import ElementTree
@@ -103,7 +102,7 @@ def collect_all() -> dict:
     """Collect data from all configured sources."""
     iso_week = current_iso_week()
     today = date.today().isoformat()
-    
+
     result = {
         "iso_week": iso_week,
         "collected_at": datetime.utcnow().isoformat() + "Z",
@@ -114,12 +113,12 @@ def collect_all() -> dict:
         "products": [],
         "trends": [],
     }
-    
+
     for name, config in SOURCES.items():
         try:
             print(f"  Fetching {name}...")
             content = fetch_url(config["url"])
-            
+
             if config["type"] == "rss":
                 articles = parse_rss(content, name)
                 result["articles"].extend(articles)
@@ -161,7 +160,7 @@ def collect_all() -> dict:
                     "summary": content[:2000],
                 })
                 print(f"    ✓ {len(content)} chars from API")
-                
+
         except Exception as e:
             result["sources_failed"].append({
                 "name": name,
@@ -169,43 +168,43 @@ def collect_all() -> dict:
                 "url": config["url"],
             })
             print(f"    ✗ FAILED: {e}")
-    
+
     result["total_articles"] = len(result["articles"])
     result["total_sources_ok"] = len(result["sources_fetched"])
     result["total_sources_fail"] = len(result["sources_failed"])
-    
+
     return result
 
 
 def main() -> int:
     iso_week = current_iso_week()
-    print(f"=== Beauty Weekly Data Collection ===")
+    print("=== Beauty Weekly Data Collection ===")
     print(f"ISO Week: {iso_week}")
     print(f"Date: {date.today().isoformat()}")
     print()
-    
+
     data = collect_all()
-    
+
     # Write to data/weeks/<iso-week>/raw_collected.json
     output_dir = ROOT / "data" / "weeks" / iso_week
     output_dir.mkdir(parents=True, exist_ok=True)
     output_path = output_dir / "raw_collected.json"
-    
+
     with open(output_path, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
-    
+
     print()
-    print(f"=== Collection Complete ===")
+    print("=== Collection Complete ===")
     print(f"Output: {output_path}")
     print(f"Articles: {data['total_articles']}")
     print(f"Sources OK: {data['total_sources_ok']}")
     print(f"Sources Failed: {data['total_sources_fail']}")
-    
+
     # Fail if no data collected at all
     if data["total_articles"] == 0:
         print("FATAL: No data collected from any source.")
         return 1
-    
+
     return 0
 
 

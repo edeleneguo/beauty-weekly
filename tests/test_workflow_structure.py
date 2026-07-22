@@ -25,7 +25,7 @@ WORKFLOW_PATH = os.path.join(ROOT, ".github", "workflows", "weekly-deploy.yml")
 
 @pytest.fixture(scope="module")
 def workflow_raw() -> str:
-    with open(WORKFLOW_PATH, "r", encoding="utf-8") as f:
+    with open(WORKFLOW_PATH, encoding="utf-8") as f:
         return f.read()
 
 
@@ -120,9 +120,8 @@ class TestIntentionalFailureGate:
                 gate_idx = i
             if "commit" in name.lower() and "git" not in name.lower() and commit_idx is None:
                 commit_idx = i
-            if "atomic" in name.lower() or "push" in name.lower():
-                if commit_idx is None:
-                    commit_idx = i
+            if ("atomic" in name.lower() or "push" in name.lower()) and commit_idx is None:
+                commit_idx = i
         if gate_idx is not None and commit_idx is not None:
             assert gate_idx < commit_idx, (
                 f"Gate (step {gate_idx}) must come before commit/push (step {commit_idx})"

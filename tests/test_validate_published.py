@@ -31,7 +31,7 @@ import pytest
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
-from beauty_weekly.validate_published import (
+from beauty_weekly.validate_published import (  # noqa: E402
     validate_bilingual_parity,
     validate_evidence_completeness,
     validate_evidence_types,

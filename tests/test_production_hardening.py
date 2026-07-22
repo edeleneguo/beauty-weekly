@@ -36,25 +36,25 @@ ARCHIVE_FILES = {
 
 @pytest.fixture(scope="session")
 def w28_report():
-    with open(W28_REPORT, "r", encoding="utf-8") as f:
+    with open(W28_REPORT, encoding="utf-8") as f:
         return json.load(f)
 
 
 @pytest.fixture(scope="session")
 def w28_sources():
-    with open(W28_SOURCES, "r", encoding="utf-8") as f:
+    with open(W28_SOURCES, encoding="utf-8") as f:
         return json.load(f)
 
 
 @pytest.fixture(scope="session")
 def w28_scoring():
-    with open(W28_SCORING, "r", encoding="utf-8") as f:
+    with open(W28_SCORING, encoding="utf-8") as f:
         return json.load(f)
 
 
 @pytest.fixture(scope="session")
 def w28_manifest():
-    with open(W28_MANIFEST, "r", encoding="utf-8") as f:
+    with open(W28_MANIFEST, encoding="utf-8") as f:
         return json.load(f)
 
 
@@ -64,7 +64,7 @@ def archive_html():
     for (topic, lang), fname in ARCHIVE_FILES.items():
         fpath = os.path.join(ROOT, fname)
         if os.path.exists(fpath):
-            with open(fpath, "r", encoding="utf-8") as f:
+            with open(fpath, encoding="utf-8") as f:
                 result[(topic, lang)] = f.read()
     return result
 
@@ -89,7 +89,7 @@ class TestLaunchEvidenceNotNull:
         known_gaps = set()
         manifest_path = os.path.join(ROOT, "data", "weeks", "2026-W28", "manifest.json")
         if os.path.exists(manifest_path):
-            with open(manifest_path, "r", encoding="utf-8") as f:
+            with open(manifest_path, encoding="utf-8") as f:
                 manifest = json.load(f)
             for gap in manifest.get("migration_gaps", []):
                 if "launch_evidence" in gap.lower() or "makeup radar" in gap.lower():
@@ -195,8 +195,8 @@ class TestEvidenceSchemaEnforcement:
 
     def test_evidence_rejects_unsupported_field(self):
         """Evidence with unsupported supported_fields must fail validation."""
-        from pydantic import ValidationError
         from beauty_weekly.models import Evidence
+        from pydantic import ValidationError
 
         with pytest.raises(ValidationError):
             Evidence(
@@ -226,8 +226,8 @@ class TestEvidenceSchemaEnforcement:
 
     def test_evidence_rejects_empty_url(self):
         """Evidence with empty url must fail (min_length=1)."""
-        from pydantic import ValidationError
         from beauty_weekly.models import Evidence
+        from pydantic import ValidationError
 
         with pytest.raises(ValidationError):
             Evidence(
@@ -293,7 +293,7 @@ class TestIntentionalFailure:
     def test_deploy_workflow_has_intentional_failure_input(self):
         """weekly-deploy.yml must have intentional_failure boolean input."""
         workflow_path = os.path.join(ROOT, ".github", "workflows", "weekly-deploy.yml")
-        with open(workflow_path, "r", encoding="utf-8") as f:
+        with open(workflow_path, encoding="utf-8") as f:
             content = f.read()
         assert "intentional_failure" in content, (
             "weekly-deploy.yml missing intentional_failure input"
@@ -303,14 +303,14 @@ class TestIntentionalFailure:
     def test_ci_workflow_has_intentional_failure_input(self):
         """ci.yml must have intentional_failure boolean input."""
         workflow_path = os.path.join(ROOT, ".github", "workflows", "ci.yml")
-        with open(workflow_path, "r", encoding="utf-8") as f:
+        with open(workflow_path, encoding="utf-8") as f:
             content = f.read()
         assert "intentional_failure" in content, "ci.yml missing intentional_failure input"
 
     def test_deploy_workflow_has_failure_gate_step(self):
         """deploy workflow must have a gate step that fails when intentional_failure is set."""
         workflow_path = os.path.join(ROOT, ".github", "workflows", "weekly-deploy.yml")
-        with open(workflow_path, "r", encoding="utf-8") as f:
+        with open(workflow_path, encoding="utf-8") as f:
             content = f.read()
         assert "inputs.intentional_failure" in content, (
             "deploy workflow missing conditional check on intentional_failure"
@@ -320,7 +320,7 @@ class TestIntentionalFailure:
     def test_gate_precedes_stage2_generation(self):
         """Gate must appear before Stage 2 LLM generation in the workflow."""
         workflow_path = os.path.join(ROOT, ".github", "workflows", "weekly-deploy.yml")
-        with open(workflow_path, "r", encoding="utf-8") as f:
+        with open(workflow_path, encoding="utf-8") as f:
             content = f.read()
         gate_pos = content.find("Intentional failure")
         assert gate_pos > 0, "Gate step not found in workflow"
@@ -374,7 +374,7 @@ class TestOnlineVerification:
     def test_deploy_workflow_has_hash_verification(self):
         """Deploy workflow must verify SHA256 hash of live content."""
         workflow_path = os.path.join(ROOT, ".github", "workflows", "weekly-deploy.yml")
-        with open(workflow_path, "r", encoding="utf-8") as f:
+        with open(workflow_path, encoding="utf-8") as f:
             content = f.read()
         assert "sha256" in content.lower() or "hash" in content.lower(), (
             "deploy workflow must verify content hash"
@@ -386,7 +386,7 @@ class TestOnlineVerification:
     def test_deploy_workflow_checks_week_number(self):
         """Verification must compare actual week number vs expected."""
         workflow_path = os.path.join(ROOT, ".github", "workflows", "weekly-deploy.yml")
-        with open(workflow_path, "r", encoding="utf-8") as f:
+        with open(workflow_path, encoding="utf-8") as f:
             content = f.read()
         assert "week_ok" in content or "week_num" in content, (
             "deploy workflow must compute week_ok from week comparison"

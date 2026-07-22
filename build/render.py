@@ -438,7 +438,6 @@ def _update_banner_week(html: str, week: int, date_range: str, date_range_cn: st
     and the banner header with the canonical week number and date range.
     This ensures the rendered HTML always displays the correct week (Req 3).
     """
-    old_week_pattern = re.compile(r"Week\s+\d+")
     new_week_str = f"Week {week}"
 
     # Update <title>

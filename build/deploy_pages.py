@@ -8,20 +8,21 @@ Environment variables:
   GITHUB_TOKEN — GitHub PAT with repo:write permission (required)
   TARGET_WEEK  — ISO week string (auto-calculated if not set)
 """
+
 from __future__ import annotations
 
 import json
 import os
 import sys
 import time
-import urllib.request
 import urllib.error
+import urllib.request
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
-from beauty_weekly.week import current_iso_week, resolve_week  # noqa: E402
+from beauty_weekly.week import resolve_week  # noqa: E402
 
 TOKEN = os.environ.get("GITHUB_TOKEN", "")
 REPO = "edeleneguo/beauty-weekly"
@@ -56,12 +57,13 @@ def upload_file(filename: str, local_path: Path) -> bool:
     if not local_path.exists():
         print(f"  {filename}: SKIP (not found)")
         return False
-    
+
     # Get current SHA for update
     status, resp = api_request("GET", f"/repos/{REPO}/contents/{filename}")
     sha = resp.get("sha") if status == 200 else None
-    
+
     import base64
+
     content = base64.b64encode(local_path.read_bytes()).decode("ascii")
     payload = {
         "message": f"Weekly update: {filename}",
@@ -70,7 +72,7 @@ def upload_file(filename: str, local_path: Path) -> bool:
     }
     if sha:
         payload["sha"] = sha
-    
+
     status, resp = api_request("PUT", f"/repos/{REPO}/contents/{filename}", payload)
     if status in (200, 201):
         print(f"  {filename}: DEPLOYED ({status})")
@@ -99,11 +101,12 @@ def verify_version(url: str) -> str | None:
             html = resp.read().decode("utf-8", errors="replace")
             # Look for version meta tag or week marker
             import re
+
             m = re.search(r'<meta\s+name=["\']version["\']\s+content=["\']([^"\']+)["\']', html)
             if m:
                 return m.group(1)
             # Fallback: look for Week number in title
-            m = re.search(r'Week\s+(\d+)', html)
+            m = re.search(r"Week\s+(\d+)", html)
             if m:
                 return f"week{m.group(1)}"
             return "unknown"
@@ -115,15 +118,15 @@ def main() -> int:
     if not TOKEN:
         print("FATAL: GITHUB_TOKEN not set")
         return 1
-    
+
     iso_week = resolve_week()
     week_num = int(iso_week.split("-W")[1])
-    
-    print(f"=== GitHub Pages Deployment ===")
+
+    print("=== GitHub Pages Deployment ===")
     print(f"ISO Week: {iso_week} (Week {week_num})")
     print(f"Repo: {REPO}")
     print()
-    
+
     # Step 1: Upload 4 root HTML files
     print("--- Step 1: Upload HTML files ---")
     all_ok = True
@@ -131,7 +134,7 @@ def main() -> int:
         local_path = ROOT / fname
         if not upload_file(fname, local_path):
             all_ok = False
-    
+
     # Upload archive files
     archive_dir = ROOT / "archive" / f"week-{week_num}"
     if archive_dir.exists():
@@ -143,27 +146,33 @@ def main() -> int:
                 status, resp = api_request("GET", api_path)
                 sha = resp.get("sha") if status == 200 else None
                 import base64
+
                 content = base64.b64encode(archive_path.read_bytes()).decode("ascii")
-                payload = {"message": f"Archive week-{week_num}: {fname}", "content": content, "branch": BRANCH}
+                payload = {
+                    "message": f"Archive week-{week_num}: {fname}",
+                    "content": content,
+                    "branch": BRANCH,
+                }
                 if sha:
                     payload["sha"] = sha
                 status, resp = api_request("PUT", api_path, payload)
-                print(f"    archive/week-{week_num}/{fname}: {'OK' if status in (200, 201) else 'FAIL'}")
-    
+                result = "OK" if status in (200, 201) else "FAIL"
+                print(f"    archive/week-{week_num}/{fname}: {result}")
+
     if not all_ok:
         print("\nDEPLOY FAILED: Some files failed to upload")
         return 1
-    
+
     # Step 2: Trigger Pages build
     print("\n--- Step 2: Trigger Pages build ---")
     trigger_pages_build()
-    
+
     # Step 3: Wait for CDN propagation
     print("\n--- Step 3: Wait for CDN propagation (60s) ---")
     for i in range(60, 0, -10):
         print(f"  Waiting... {i}s remaining")
         time.sleep(10)
-    
+
     # Step 4: 3-layer verification
     print("\n--- Step 4: 3-Layer Verification ---")
     all_verified = True
@@ -171,26 +180,31 @@ def main() -> int:
         local_version = verify_version(f"file://{ROOT / fname}") or "unknown"
         raw_url = f"https://raw.githubusercontent.com/{REPO}/{BRANCH}/{fname}?v={int(time.time())}"
         cdn_url = f"https://edeleneguo.github.io/beauty-weekly/{fname}?v={int(time.time())}"
-        
+
         raw_version = verify_version(raw_url)
         cdn_version = verify_version(cdn_url)
-        
+
         raw_match = "✓" if raw_version == local_version else "✗"
         cdn_match = "✓" if cdn_version == local_version else "✗"
-        
-        print(f"  {fname}: local={local_version} | raw={raw_version} {raw_match} | cdn={cdn_version} {cdn_match}")
-        
+
+        parts = (
+            f"  {fname}: local={local_version}"
+            f" | raw={raw_version} {raw_match}"
+            f" | cdn={cdn_version} {cdn_match}"
+        )
+        print(parts)
+
         if raw_version != local_version or cdn_version != local_version:
             all_verified = False
-    
+
     print()
     if all_verified:
         print("=== DEPLOY VERIFIED: All 3 layers consistent ===")
-        print(f"\nLive URLs:")
-        print(f"  EN Makeup:    https://edeleneguo.github.io/beauty-weekly/")
-        print(f"  CN Makeup:    https://edeleneguo.github.io/beauty-weekly/index-cn.html")
-        print(f"  EN Fragrance: https://edeleneguo.github.io/beauty-weekly/fragrance.html")
-        print(f"  CN Fragrance: https://edeleneguo.github.io/beauty-weekly/fragrance-cn.html")
+        print("\nLive URLs:")
+        print("  EN Makeup:    https://edeleneguo.github.io/beauty-weekly/")
+        print("  CN Makeup:    https://edeleneguo.github.io/beauty-weekly/index-cn.html")
+        print("  EN Fragrance: https://edeleneguo.github.io/beauty-weekly/fragrance.html")
+        print("  CN Fragrance: https://edeleneguo.github.io/beauty-weekly/fragrance-cn.html")
         return 0
     else:
         print("=== VERIFICATION FAILED: CDN may still be propagating ===")

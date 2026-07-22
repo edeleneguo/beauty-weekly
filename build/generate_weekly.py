@@ -42,7 +42,10 @@ def iso_week_date_range(week_str: str) -> tuple[str, str, str, str]:
     year, week = int(week_str[:4]), int(week_str[-2:])
     monday = date.fromisocalendar(year, week, 1)
     sunday = monday + timedelta(days=6)
-    en_range = f"{monday.strftime('%b')} {monday.day} \u2013 {sunday.strftime('%b')} {sunday.day}, {monday.year}"
+    en_range = (
+        f"{monday.strftime('%b')} {monday.day}"
+        f" \u2013 {sunday.strftime('%b')} {sunday.day}, {monday.year}"
+    )
     cn_range = (
         f"{monday.month}\u6708{monday.day}\u65e5 \u2013 {sunday.month}\u6708{sunday.day}\u65e5"
     )
@@ -120,7 +123,7 @@ def _find_supporting_articles(
     for article in articles:
         title = article.get("title", "").lower()
         url = article.get("url", "")
-        summary = article.get("summary", "").lower()
+        _summary = article.get("summary", "").lower()
         # Match by: product name substring in title, or product URL in article
         name_match = name_lower in title or any(
             word in title for word in name_lower.split() if len(word) > 3
@@ -255,7 +258,8 @@ def generate_products(
         f"- [{a['source']}] {a['title']}: {a.get('summary', '')[:200]}" for a in articles[:30]
     )
 
-    system_prompt = f"""You are a beauty industry analyst. Generate product data for the {category} category.
+    system_prompt = f"""You are a beauty industry analyst. Generate product \
+data for the {category} category.
 Output ONLY valid JSON with this exact structure:
 {{
   "heat_rankings": {{
@@ -305,7 +309,11 @@ Rules:
 - Each product link MUST point to a real, accessible product page URL.
 - Do NOT generate products for which you cannot provide a real URL."""
 
-    user_prompt = f"Generate {category} product data for ISO Week {iso_week} ({en_range}).\n\nRaw data:\n{articles_text}"
+    user_prompt = (
+        f"Generate {category} product data"
+        f" for ISO Week {iso_week} ({en_range})."
+        f"\n\nRaw data:\n{articles_text}"
+    )
 
     print(f"  Calling LLM for {category} products...")
     response = call_llm(system_prompt, user_prompt)
@@ -379,7 +387,7 @@ def _build_product_sources(
     for topic in ("makeup", "fragrance"):
         for section in ("heat_rankings", "new_product_radar"):
             panels = report["products"][topic][section]
-            for panel_key, products in panels.items():
+            for _panel_key, products in panels.items():
                 for p in products:
                     # Product price_link URL
                     link = p.get("detail", {}).get("price_link", {}).get("link", "")
@@ -446,7 +454,7 @@ def _build_scoring_json(report: dict, fetched_at: str) -> dict:
     monotonic = True
     for cat in ("makeup", "fragrance"):
         for section in ("heat_rankings", "new_product_radar"):
-            for panel, products in report["products"][cat][section].items():
+            for _panel, products in report["products"][cat][section].items():
                 scores = [p.get("score", 0) for p in products if p.get("score", 0) > 0]
                 for i in range(1, len(scores)):
                     if scores[i] > scores[i - 1]:
@@ -535,7 +543,8 @@ def _build_manifest(
         "legacy_fields_isolated": [],
         "migration_deprecation": {},
         "migration_gaps": [
-            "CN LUXURY and CN MASSTIGE panels may be empty (no Chinese-market evidence from US RSS sources)",
+            "CN LUXURY and CN MASSTIGE panels may be empty"
+            " (no Chinese-market evidence from US RSS sources)",
         ],
         "note": "Auto-generated from public RSS data using LLM synthesis.",
         "phase": "auto",
@@ -611,7 +620,8 @@ def main() -> int:
                     if le is None:
                         loc = f"{topic}/{section}/{panel}[{idx}] {p.get('name', '?')}"
                         evidence_errors.append(
-                            f"{loc}: null launch_evidence — every published product must carry evidence"
+                            f"{loc}: null launch_evidence —"
+                            " every published product must carry evidence"
                         )
                     elif le.get("evidence") is None and not le.get("absence_markers"):
                         loc = f"{topic}/{section}/{panel}[{idx}] {p.get('name', '?')}"
@@ -682,8 +692,8 @@ def main() -> int:
     manifest_json = det_json(manifest)
 
     report_hash = sha256(report_json)
-    sources_hash = sha256(sources_json)
-    scoring_hash = sha256(scoring_json)
+    _sources_hash = sha256(sources_json)
+    _scoring_hash = sha256(scoring_json)
 
     # Write files
     output_dir = ROOT / "data" / "weeks" / iso_week

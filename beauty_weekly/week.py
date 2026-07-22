@@ -26,6 +26,7 @@ from pathlib import Path
 _ROOT = Path(__file__).resolve().parent.parent
 _DATA_WEEKS = _ROOT / "data" / "weeks"
 
+
 def current_iso_week(d: date | None = None) -> str:
     """Return the ISO week string for *d* (default: today).
 
@@ -44,7 +45,9 @@ def available_weeks() -> list[str]:
     if not _DATA_WEEKS.exists():
         return weeks
     for entry in sorted(_DATA_WEEKS.iterdir()):
-        if entry.is_dir() and ((entry / "report.json").exists() or (entry / "raw_collected.json").exists()):
+        if entry.is_dir() and (
+            (entry / "report.json").exists() or (entry / "raw_collected.json").exists()
+        ):
             weeks.append(entry.name)
     return weeks
 
