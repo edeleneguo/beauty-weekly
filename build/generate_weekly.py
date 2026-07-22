@@ -30,6 +30,7 @@ from urllib.parse import urlparse
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
+from beauty_weekly.evidence import EXPLICIT_EVIDENCE_ABSENCES  # noqa: E402
 from beauty_weekly.week import current_iso_week  # noqa: E402
 
 API_KEY = os.environ.get("LLM_API_KEY", "")
@@ -997,7 +998,7 @@ def main() -> int:
         "provenance": {
             "phase": 7,
             "migration_recorded_at": fetched_at,
-            "evidence_absences": [],
+            "evidence_absences": EXPLICIT_EVIDENCE_ABSENCES,
         },
         "articles": articles,
     }

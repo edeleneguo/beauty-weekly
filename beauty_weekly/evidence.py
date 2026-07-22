@@ -181,6 +181,12 @@ def validate_source_product_referential_integrity(
                     if link:
                         loc = f"{topic}/{section}/{panel_key}[{idx}] {p.get('name', '?')}"
                         report_urls.setdefault(link, []).append(loc)
+                    launch_evidence = p.get("launch_evidence") or {}
+                    evidence = launch_evidence.get("evidence") or {}
+                    evidence_url = evidence.get("url", "")
+                    if evidence_url:
+                        loc = f"{topic}/{section}/{panel_key}[{idx}] {p.get('name', '?')}"
+                        report_urls.setdefault(evidence_url, []).append(loc)
 
     # Check: every report URL with a non-empty link has a matching source
     for url, locations in report_urls.items():
