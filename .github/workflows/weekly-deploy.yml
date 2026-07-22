@@ -1,0 +1,148 @@
+name: Weekly Beauty Report — Zero-Input Auto-Deploy
+
+on:
+  schedule:
+    # Every Monday 09:00 UTC+8 (01:00 UTC)
+    - cron: "0 1 * * 1"
+  workflow_dispatch:
+    inputs:
+      target_week:
+        description: "ISO week to generate (e.g. 2026-W30). Leave empty for auto-resolve."
+        required: false
+        type: string
+      skip_collect:
+        description: "Skip data collection (use existing raw_collected.json)"
+        required: false
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+env:
+  PYTHON_VERSION: "3.12"
+
+jobs:
+  generate-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements-dev.txt
+          pip install requests
+
+      - name: Show resolved ISO week
+        run: |
+          python3 -c "from beauty_weekly.week import current_iso_week; print(f'Current ISO Week: {current_iso_week()}')"
+
+      - name: Stage 1 — Collect raw data
+        if: ${{ !inputs.skip_collect }}
+        run: |
+          echo "=== STAGE 1: Data Collection ==="
+          python3 build/collect.py
+
+      - name: Stage 1 — Verify collection
+        run: |
+          WEEK=$(python3 -c "from beauty_weekly.week import resolve_week; print(resolve_week())")
+          if [ ! -f "data/weeks/$WEEK/raw_collected.json" ]; then
+            echo "FATAL: raw_collected.json not found for $WEEK"
+            exit 1
+          fi
+          echo "OK raw_collected.json exists for $WEEK"
+
+      - name: Stage 2 — Generate canonical content
+        env:
+          LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+          LLM_BASE_URL: ${{ secrets.LLM_BASE_URL }}
+          LLM_MODEL: ${{ secrets.LLM_MODEL }}
+        run: |
+          echo "=== STAGE 2: Content Generation ==="
+          if [ -z "$LLM_API_KEY" ]; then
+            echo "FATAL: LLM_API_KEY secret not set"
+            exit 1
+          fi
+          python3 build/generate_weekly.py
+
+      - name: Stage 2 — Verify canonical files
+        run: |
+          WEEK=$(python3 -c "from beauty_weekly.week import resolve_week; print(resolve_week())")
+          for f in report.json sources.json scoring.json manifest.json; do
+            if [ ! -f "data/weeks/$WEEK/$f" ]; then
+              echo "FATAL: Missing $f for $WEEK"
+              exit 1
+            fi
+            echo "OK $f exists"
+          done
+
+      - name: Stage 3 — Validate and render
+        env:
+          BEAUTY_WEEKLY_WEEK: ${{ inputs.target_week || '' }}
+          BEAUTY_WEEKLY_REQUIRE_CURRENT: "1"
+        run: |
+          echo "=== STAGE 3: Validation & Rendering ==="
+          ./build/weekly_update.sh
+
+      - name: Stage 3 — Verify HTML output
+        run: |
+          for f in index.html index-cn.html fragrance.html fragrance-cn.html; do
+            if [ ! -f "$f" ]; then echo "FATAL: $f not rendered"; exit 1; fi
+            SIZE=$(wc -c < "$f")
+            echo "OK $f ($SIZE bytes)"
+          done
+
+      - name: Stage 4 — Deploy to GitHub Pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "=== STAGE 4: GitHub Pages Deployment ==="
+          python3 build/deploy_pages.py
+
+      - name: Stage 5 — Commit canonical data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          WEEK=$(python3 -c "from beauty_weekly.week import resolve_week; print(resolve_week())")
+          git add data/weeks/$WEEK/ archive/week-*/ index.html index-cn.html fragrance.html fragrance-cn.html templates/ 2>/dev/null || true
+          git diff --staged --quiet && echo "No changes to commit" || git commit -m "Weekly auto-update: $WEEK"
+          git push
+
+      - name: Stage 6 — Verify live deployment
+        run: |
+          echo "=== STAGE 6: Live Verification ==="
+          sleep 30
+          python3 -c "
+          import urllib.request, re, sys, time
+          PAGES = {
+              'index.html': 'https://edeleneguo.github.io/beauty-weekly/',
+              'index-cn.html': 'https://edeleneguo.github.io/beauty-weekly/index-cn.html',
+              'fragrance.html': 'https://edeleneguo.github.io/beauty-weekly/fragrance.html',
+              'fragrance-cn.html': 'https://edeleneguo.github.io/beauty-weekly/fragrance-cn.html',
+          }
+          all_ok = True
+          for name, url in PAGES.items():
+              try:
+                  req = urllib.request.Request(url + '?v=' + str(time.time()), headers={'User-Agent': 'verify'})
+                  html = urllib.request.urlopen(req, timeout=15).read().decode('utf-8', errors='replace')
+                  m = re.search(r'Week\s+(\d+)', html)
+                  week = m.group(1) if m else '?'
+                  print(f'  {name}: Week {week} — {\"LIVE\" if week != \"?\" else \"FAILED\"} ({len(html)} bytes)')
+                  if week == '?': all_ok = False
+              except Exception as e:
+                  print(f'  {name}: ERROR: {e}')
+                  all_ok = False
+          print()
+          sys.exit(0 if all_ok else 1)
+          "
