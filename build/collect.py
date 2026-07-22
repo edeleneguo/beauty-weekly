@@ -35,35 +35,35 @@ TIMEOUT = 15  # seconds per request
 USER_AGENT = "BeautyWeeklyBot/1.0 (automated data collection)"
 
 SOURCES = {
-    "allure": {
-        "url": "https://www.allure.com/feed/rss-full.xml",
+    "elle_beauty": {
+        "url": "https://www.elle.com/rss/beauty",
         "type": "rss",
         "market": "US",
         "category": "makeup",
     },
-    "beautymatter": {
-        "url": "https://www.beautymatter.com/rss",
+    "harpers_bazaar_beauty": {
+        "url": "https://www.harpersbazaar.com/rss/beauty",
+        "type": "rss",
+        "market": "US",
+        "category": "makeup",
+    },
+    "glossy": {
+        "url": "https://www.glossy.co/feed",
         "type": "rss",
         "market": "GLOBAL",
         "category": "industry",
     },
-    "fragrantica_news": {
-        "url": "https://www.fragrantica.com/news/rss.xml",
+    "now_smell_this": {
+        "url": "https://www.nstperfume.com/feed/",
         "type": "rss",
         "market": "GLOBAL",
         "category": "fragrance",
     },
-    "sephora_bestsellers": {
-        "url": "https://www.sephora.com/shop/bestselling-makeup",
-        "type": "scrape",
+    "cosmopolitan_beauty": {
+        "url": "https://www.cosmopolitan.com/rss/beauty",
+        "type": "rss",
         "market": "US",
         "category": "makeup",
-    },
-    "google_trends_beauty": {
-        "url": "https://trends.google.com/trends/api/dailytrends?hl=en-US&geo=US",
-        "type": "api",
-        "market": "US",
-        "category": "trends",
     },
 }
 
