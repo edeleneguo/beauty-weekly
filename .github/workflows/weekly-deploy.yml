@@ -1,4 +1,4 @@
-name: Weekly Beauty Report — Zero-Input Auto-Deploy
+name: Weekly Beauty Report — Atomic Deploy
 
 on:
   schedule:
@@ -12,6 +12,11 @@ on:
         type: string
       skip_collect:
         description: "Skip data collection (use existing raw_collected.json)"
+        required: false
+        type: boolean
+        default: false
+      intentional_failure:
+        description: "Force workflow to fail before deploy (Req 6 — deterministic failure test)"
         required: false
         type: boolean
         default: false
@@ -44,9 +49,24 @@ jobs:
           pip install -r requirements-dev.txt
           pip install requests
 
-      - name: Show resolved ISO week
+      - name: Compute target week
+        id: iso_week
+        env:
+          TARGET_WEEK: ${{ inputs.target_week }}
+          SCHEDULE_EVENT: ${{ github.event_name == 'schedule' }}
         run: |
-          python3 -c "from beauty_weekly.week import current_iso_week; print(f'Current ISO Week: {current_iso_week()}')"
+          WEEK="${TARGET_WEEK}"
+          if [ -z "$WEEK" ]; then
+            WEEK=$(python3 -c "from beauty_weekly.week import resolve_week; print(resolve_week())")
+          fi
+          if [ ! "$WEEK" =~ ^[0-9]{4}-W[0-9]{2}$ ]; then
+            echo "FATAL: invalid ISO week: $WEEK" >&2; exit 1
+          fi
+          {
+            echo "week=$WEEK"
+            echo "BEAUTY_WEEKLY_WEEK=$WEEK"
+          } >> "$GITHUB_OUTPUT"
+          echo "ISO week resolved: $WEEK"
 
       - name: Stage 1 — Collect raw data
         if: ${{ !inputs.skip_collect }}
@@ -56,10 +76,9 @@ jobs:
 
       - name: Stage 1 — Verify collection
         run: |
-          WEEK=$(python3 -c "from beauty_weekly.week import resolve_week; print(resolve_week())")
+          WEEK=${{ steps.iso_week.outputs.week }}
           if [ ! -f "data/weeks/$WEEK/raw_collected.json" ]; then
-            echo "FATAL: raw_collected.json not found for $WEEK"
-            exit 1
+            echo "FATAL: raw_collected.json not found for $WEEK"; exit 1
           fi
           echo "OK raw_collected.json exists for $WEEK"
 
@@ -71,25 +90,23 @@ jobs:
         run: |
           echo "=== STAGE 2: Content Generation ==="
           if [ -z "$LLM_API_KEY" ]; then
-            echo "FATAL: LLM_API_KEY secret not set"
-            exit 1
+            echo "FATAL: LLM_API_KEY secret not set"; exit 1
           fi
           python3 build/generate_weekly.py
 
       - name: Stage 2 — Verify canonical files
         run: |
-          WEEK=$(python3 -c "from beauty_weekly.week import resolve_week; print(resolve_week())")
+          WEEK=${{ steps.iso_week.outputs.week }}
           for f in report.json sources.json scoring.json manifest.json; do
             if [ ! -f "data/weeks/$WEEK/$f" ]; then
-              echo "FATAL: Missing $f for $WEEK"
-              exit 1
+              echo "FATAL: Missing $f for $WEEK"; exit 1
             fi
             echo "OK $f exists"
           done
 
       - name: Stage 3 — Validate and render
         env:
-          BEAUTY_WEEKLY_WEEK: ${{ inputs.target_week || '' }}
+          BEAUTY_WEEKLY_WEEK: ${{ steps.iso_week.outputs.week }}
           BEAUTY_WEEKLY_REQUIRE_CURRENT: "1"
         run: |
           echo "=== STAGE 3: Validation & Rendering ==="
@@ -103,47 +120,170 @@ jobs:
             echo "OK $f ($SIZE bytes)"
           done
 
-      - name: Stage 4 — Deploy to GitHub Pages
+      - name: Gate — Intentional failure check
+        if: ${{ inputs.intentional_failure }}
+        run: |
+          echo "FATAL: intentional_failure is set — aborting before deploy"
+          exit 1
+
+      - name: Generate artifact manifest
+        id: manifest
+        env:
+          WEEK: ${{ steps.iso_week.outputs.week }}
+        run: |
+          echo "=== Generating artifact manifest for $WEEK ==="
+          python3 -c "
+          import hashlib, json, os, sys
+          week = os.environ['WEEK']
+          files = ['index.html', 'index-cn.html', 'fragrance.html', 'fragrance-cn.html']
+          manifest = {'week': week, 'artifacts': {}}
+          for fn in files:
+              if not os.path.isfile(fn):
+                  print(f'FATAL: {fn} not found', file=sys.stderr); sys.exit(1)
+              with open(fn, 'rb') as f:
+                  h = hashlib.sha256(f.read()).hexdigest()
+              manifest['artifacts'][fn] = {'sha256': h, 'size': os.path.getsize(fn)}
+              print(f'  {fn}: sha256={h}')
+          with open('deploy-manifest.json', 'w') as f:
+              json.dump(manifest, f, indent=2)
+          print('Manifest written to deploy-manifest.json')
+          "
+
+      - name: Stage 4 — Atomic commit and push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          echo "=== STAGE 4: GitHub Pages Deployment ==="
-          python3 build/deploy_pages.py
+          echo "=== STAGE 4: Atomic Commit & Push ==="
+          WEEK=${{ steps.iso_week.outputs.week }}
+          WEEK_NUM=$((10#${WEEK#*-W}))
 
-      - name: Stage 5 — Commit canonical data
-        run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          WEEK=$(python3 -c "from beauty_weekly.week import resolve_week; print(resolve_week())")
-          git add data/weeks/$WEEK/ archive/week-*/ index.html index-cn.html fragrance.html fragrance-cn.html templates/ 2>/dev/null || true
-          git diff --staged --quiet && echo "No changes to commit" || git commit -m "Weekly auto-update: $WEEK"
-          git pull --rebase origin main  
-          git push
+
+          git add \
+            "index.html" "index-cn.html" "fragrance.html" "fragrance-cn.html" \
+            "data/weeks/$WEEK/" "archive/week-$WEEK_NUM/" "deploy-manifest.json" \
+            2>/dev/null || true
+
+          if git diff --staged --quiet; then
+            echo "No changes to commit"; exit 0
+          fi
+
+          git commit -m "Weekly auto-update: $WEEK"
+
+          git fetch origin main
+          git rebase origin/main || { echo "Rebase conflict — aborting"; git rebase --abort; exit 1; }
+
+          REMOTE_URL=$(git remote get-url origin)
+          git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git push origin HEAD:main
+          git remote set-url origin "$REMOTE_URL"
+          echo "Pushed commit $(git rev-parse HEAD)"
+
+      - name: Stage 5 — Wait for GitHub Pages build
+        id: pages_build
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "=== STAGE 5: Waiting for GitHub Pages build ==="
+          python3 -c "
+          import json, sys, time, urllib.request, urllib.error
+
+          token = __import__('os').environ['GITHUB_TOKEN']
+          repo = '${{ github.repository }}'
+          headers = {
+              'Authorization': f'token {token}',
+              'Accept': 'application/vnd.github+json',
+              'User-Agent': 'beauty-weekly-deploy',
+          }
+          TIMEOUT = 600
+          POLL = 15
+          start = time.time()
+
+          while time.time() - start < TIMEOUT:
+              url = f'https://api.github.com/repos/{repo}/pages/builds/latest'
+              req = urllib.request.Request(url, headers=headers)
+              try:
+                  resp = urllib.request.urlopen(req, timeout=15)
+                  data = json.loads(resp.read())
+                  status = data.get('status', '')
+                  print(f'  Build status: {status}')
+                  if status in ('built', 'ready'):
+                      print(f'  Pages build complete ({int(time.time()-start)}s)')
+                      sys.exit(0)
+                  if status == 'failed':
+                      print(f'  Pages build FAILED'); sys.exit(1)
+              except urllib.error.HTTPError as e:
+                  if e.code == 404:
+                      print(f'  No build yet (404), waiting...')
+                  else:
+                      print(f'  HTTP {e.code}, retrying...')
+              except Exception as e:
+                  print(f'  Error: {e}, retrying...')
+              time.sleep(POLL)
+
+          print(f'  Timed out after {TIMEOUT}s'); sys.exit(1)
+          "
 
       - name: Stage 6 — Verify live deployment
         run: |
           echo "=== STAGE 6: Live Verification ==="
-          sleep 30
           python3 -c "
-          import urllib.request, re, sys, time
+          import hashlib, json, os, re, sys, time, urllib.request
+
+          WEEK = '${{ steps.iso_week.outputs.week }}'
+          REPO = '${{ github.repository }}'
           PAGES = {
+              'index.html': f'https://raw.githubusercontent.com/{REPO}/main/index.html',
+              'index-cn.html': f'https://raw.githubusercontent.com/{REPO}/main/index-cn.html',
+              'fragrance.html': f'https://raw.githubusercontent.com/{REPO}/main/fragrance.html',
+              'fragrance-cn.html': f'https://raw.githubusercontent.com/{REPO}/main/fragrance-cn.html',
+          }
+          CDN = {
               'index.html': 'https://edeleneguo.github.io/beauty-weekly/',
               'index-cn.html': 'https://edeleneguo.github.io/beauty-weekly/index-cn.html',
               'fragrance.html': 'https://edeleneguo.github.io/beauty-weekly/fragrance.html',
               'fragrance-cn.html': 'https://edeleneguo.github.io/beauty-weekly/fragrance-cn.html',
           }
+
+          manifest = {}
+          if os.path.isfile('deploy-manifest.json'):
+              with open('deploy-manifest.json') as f:
+                  manifest = json.load(f)
+
+          expected_num = WEEK.split('-W')[-1] if '-W' in WEEK else '?'
           all_ok = True
-          for name, url in PAGES.items():
-              try:
-                  req = urllib.request.Request(url + '?v=' + str(time.time()), headers={'User-Agent': 'verify'})
-                  html = urllib.request.urlopen(req, timeout=15).read().decode('utf-8', errors='replace')
-                  m = re.search(r'Week\s+(\d+)', html)
-                  week = m.group(1) if m else '?'
-                  print(f'  {name}: Week {week} — {\"LIVE\" if week != \"?\" else \"FAILED\"} ({len(html)} bytes)')
-                  if week == '?': all_ok = False
-              except Exception as e:
-                  print(f'  {name}: ERROR: {e}')
-                  all_ok = False
+
+          for name in PAGES:
+              for label, url in [('raw', PAGES[name]), ('cdn', CDN[name])]:
+                  try:
+                      req = urllib.request.Request(
+                          url + '?v=' + str(time.time()),
+                          headers={'User-Agent': 'beauty-weekly-verify'},
+                      )
+                      html = urllib.request.urlopen(req, timeout=15).read()
+                      text = html.decode('utf-8', errors='replace')
+
+                      m = re.search(r'Week\s+(\d+)', text)
+                      week_num = m.group(1) if m else '?'
+                      week_ok = week_num == expected_num
+
+                      remote_hash = hashlib.sha256(html).hexdigest()
+                      manifest_hash = manifest.get('artifacts', {}).get(name, {}).get('sha256', '')
+                      hash_ok = remote_hash == manifest_hash if manifest_hash else False
+
+                      status = 'LIVE' if (week_ok and hash_ok) else 'FAILED'
+                      print(f'  {name} ({label}): Week {week_num} (expect {expected_num}) sha256={remote_hash[:16]}... {status}')
+                      if not week_ok:
+                          print(f'    week mismatch: expected {expected_num}, got {week_num}')
+                      if not hash_ok:
+                          print(f'    hash mismatch: remote={remote_hash}, manifest={manifest_hash}')
+                      if not (week_ok and hash_ok):
+                          all_ok = False
+                  except Exception as e:
+                      print(f'  {name} ({label}): ERROR: {e}')
+                      all_ok = False
+
           print()
           sys.exit(0 if all_ok else 1)
           "

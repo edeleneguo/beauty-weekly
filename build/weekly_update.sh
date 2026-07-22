@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Fail-closed, resumable weekly publication workflow.
-# Modified: skip strict validation for auto-generated data (BEAUTY_WEEKLY_REQUIRE_CURRENT=1)
+# Always runs strict validation — no exceptions for auto-generated data.
+# Pre-publish validation ensures stable Pages (Req 5).
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
@@ -30,16 +31,16 @@ done
 echo "Target week: $TARGET_WEEK"
 echo "Canonical files: OK"
 
-# Skip strict validation for auto-generated data
-if [[ "${BEAUTY_WEEKLY_REQUIRE_CURRENT:-0}" == "1" ]]; then
-  echo "SKIP: Strict validation bypassed for auto-generated current week data"
-else
-  echo "Running strict validation..."
-  python3 build/validate_canonical.py
-  python3 build/validate_schema.py
-  python3 build/validate_scoring.py
-  python3 build/validate_evidence.py
-fi
+# Always run strict validation (no BEAUTY_WEEKLY_REQUIRE_CURRENT skip)
+echo "Running strict validation..."
+python3 build/validate_canonical.py
+python3 build/validate_schema.py
+python3 build/validate_scoring.py
+python3 build/validate_evidence.py
+
+# Pre-publish validation (Req 2): launch evidence, counts, parity, citation
+echo "Running pre-publish validation..."
+python3 build/validate_published.py
 
 # Render in staging directory
 echo "Rendering HTML..."
@@ -52,14 +53,12 @@ tar --exclude=.beauty-weekly-state -cf - . | tar -xf - -C "$STAGE_DIR"
   export BEAUTY_WEEKLY_WEEK="$TARGET_WEEK"
   python3 build/render.py
 
-  # Skip staged validation for auto-generated data
-  if [[ "${BEAUTY_WEEKLY_REQUIRE_CURRENT:-0}" != "1" ]]; then
-    python3 build/validate.py
-    python3 build/validate_canonical.py
-    python3 build/validate_scoring.py
-    python3 build/validate_evidence.py
-    python3 build/validate_pipeline.py
-  fi
+  # Staged validation: always runs (no skip)
+  python3 build/validate.py
+  python3 build/validate_canonical.py
+  python3 build/validate_scoring.py
+  python3 build/validate_evidence.py
+  python3 build/validate_pipeline.py
 )
 
 echo "Staged render: OK"
@@ -72,5 +71,15 @@ for page in index.html index-cn.html fragrance.html fragrance-cn.html; do
   cp "$STAGE_DIR/$page" "$page"
   cp "$STAGE_DIR/$page" "$ARCHIVE_DIR/$page"
 done
+
+# Save manifest hash proof for online verification (Req 6)
+MANIFEST_HASH=$(python3 -c "
+import json, hashlib, sys
+with open('$SOURCE_DIR/manifest.json') as f:
+    m = json.load(f)
+print(m.get('canonical_hash', ''))
+")
+echo "Manifest hash: $MANIFEST_HASH"
+echo "$MANIFEST_HASH" > ".deploy-manifest-hash"
 
 echo "PASS: $TARGET_WEEK rendered and promoted locally."

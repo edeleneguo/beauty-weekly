@@ -431,6 +431,90 @@ def _replace_section(html: str, section_num: int, new_content: str) -> str:
     return html[: match.start()] + new_content + html[match.end() :]
 
 
+def _update_banner_week(html: str, week: int, date_range: str, date_range_cn: str) -> str:
+    """Update the banner and meta tags to reflect the current ISO week.
+
+    Replaces hardcoded 'Week NN' references in titles, descriptions,
+    and the banner header with the canonical week number and date range.
+    This ensures the rendered HTML always displays the correct week (Req 3).
+    """
+    old_week_pattern = re.compile(r"Week\s+\d+")
+    new_week_str = f"Week {week}"
+
+    # Update <title>
+    html = re.sub(
+        r"(<title>[^<]*?)Week\s+\d+",
+        rf"\g<1>{new_week_str}",
+        html,
+    )
+    # Update meta description
+    html = re.sub(
+        r'(<meta\s+name="description"\s+content="[^"]*?)Week\s+\d+',
+        rf"\g<1>{new_week_str}",
+        html,
+    )
+    # Update og:title
+    html = re.sub(
+        r'(<meta\s+property="og:title"\s+content="[^"]*?)Week\s+\d+',
+        rf"\g<1>{new_week_str}",
+        html,
+    )
+    # Update og:description
+    html = re.sub(
+        r'(<meta\s+property="og:description"\s+content="[^"]*?)Week\s+\d+',
+        rf"\g<1>{new_week_str}",
+        html,
+    )
+    # Update banner h1: "Makeup Industry Weekly · Week NN"
+    html = re.sub(
+        r"(<h1>[^<]*?)Week\s+\d+",
+        rf"\g<1>{new_week_str}",
+        html,
+    )
+    # Update banner date span (first occurrence after banner)
+    html = re.sub(
+        r'(<div\s+class="banner-date"><span>)\d+月\d+日[^<]*(</span>)',
+        rf"\g<1>{date_range_cn}\g<2>",
+        html,
+        count=1,
+    )
+    html = re.sub(
+        r'(<div\s+class="banner-date"><span>)\w+\s+\d+[^<]*(</span>)',
+        rf"\g<1>{date_range}\g<2>",
+        html,
+        count=1,
+    )
+    # Update version meta tag
+    html = re.sub(
+        r'(<meta\s+name="version"\s+content=")week\d+',
+        rf"\g<1>week{week}",
+        html,
+    )
+    # Update appendix sources label
+    html = re.sub(
+        r"(This Week\'s Sources \(Week\s+)\d+",
+        rf"\g<1>{week}",
+        html,
+    )
+    html = re.sub(
+        r"(本周数据来源 \(Week\s+)\d+",
+        rf"\g<1>{week}",
+        html,
+    )
+    # Update "Next Week Preview" line
+    html = re.sub(
+        r"(Next Week Preview:\s*Week\s+)\d+",
+        rf"\g<1>{week + 1}",
+        html,
+    )
+    html = re.sub(
+        r"(下周预告：Week\s+)\d+",
+        rf"\g<1>{week + 1}",
+        html,
+    )
+    return html
+
+
 def _strip_emoji(text: str) -> str:
     """Remove emoji from value text for clean rendering."""
     return text.replace("🔗", "").replace("❓", "").strip()
@@ -441,6 +525,10 @@ def main() -> None:
     with open(CANONICAL_PATH, "r", encoding="utf-8") as f:
         canonical = json.load(f)
     data = canonical_to_legacy(canonical)
+
+    week = canonical.get("week", 0)
+    date_range = canonical.get("date_range", "")
+    date_range_cn = canonical.get("date_range_cn", "")
 
     for (topic, lang), output_name in PAGES.items():
         template_path = os.path.join(PAGE_SHELL_DIR, output_name)
@@ -458,6 +546,9 @@ def main() -> None:
         # Render and replace Section 04
         radar_html = _render_section(radar_panels, lang, topic, "radar")
         html = _replace_section(html, 4, radar_html)
+
+        # Update banner to reflect current ISO week (Req 3)
+        html = _update_banner_week(html, week, date_range, date_range_cn)
 
         # Fix lang attribute: fragrance.html should be lang="en" not lang="zh-CN"
         if lang == "en" and 'lang="zh-CN"' in html:

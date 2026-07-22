@@ -2,11 +2,13 @@
 """Tests for build/verify_deploy.sh deploy verification behavior.
 
 Uses a local HTTP server to test hash comparison, retry logic,
-and failure reporting without touching the real deployment.
+manifest verification, ISO week checking, and failure reporting
+without touching the real deployment.
 """
 
 import hashlib
 import http.server
+import json
 import os
 import subprocess
 import threading
@@ -22,7 +24,7 @@ def _sha256(data: bytes) -> str:
 
 
 class _QuietHandler(http.server.SimpleHTTPRequestHandler):
-    def log_message(self, *_args):
+    def log_message(self, format, *args):
         pass  # suppress server logs during tests
 
 
@@ -53,7 +55,7 @@ class TestVerifyDeployMatch:
             )
             assert result.returncode == 0, result.stdout + result.stderr
             assert "RESULT: PASS" in result.stdout
-            assert "FAIL: 0" in result.stdout or "FAIL: 0" in result.stdout
+            assert "PASS: 4" in result.stdout
         finally:
             srv.shutdown()
 
@@ -118,7 +120,7 @@ class TestVerifyDeployRetry:
         for fn in FILES:
             (tmp_path / fn).write_bytes(f"<html>{fn}</html>".encode())
 
-        # No server started – curl will fail, retries should exhaust
+        # No server started - curl will fail, retries should exhaust
         result = subprocess.run(
             [VERIFY_SCRIPT, "http://127.0.0.1:19999"],
             capture_output=True,
@@ -129,3 +131,226 @@ class TestVerifyDeployRetry:
         assert result.returncode == 1
         assert "DOWNLOAD FAILED" in result.stdout
         assert "RESULT: FAIL" in result.stdout
+
+
+class TestVerifyDeployManifest:
+    """Script verifies SHA256 hashes against a manifest file."""
+
+    def test_manifest_match(self, tmp_path):
+        content_map = {}
+        size_map = {}
+        for fn in FILES:
+            content = f"<html>{fn} manifest content</html>".encode()
+            (tmp_path / fn).write_bytes(content)
+            content_map[fn] = _sha256(content)
+            size_map[fn] = len(content)
+
+        manifest = {
+            "week": "2026-W30",
+            "artifacts": {fn: {"sha256": h, "size": size_map[fn]} for fn, h in content_map.items()},
+        }
+        manifest_path = tmp_path / "deploy-manifest.json"
+        manifest_path.write_text(json.dumps(manifest))
+
+        srv = _start_server(str(tmp_path), 18923)
+        try:
+            result = subprocess.run(
+                [
+                    VERIFY_SCRIPT,
+                    "http://127.0.0.1:18923",
+                    "--manifest",
+                    str(manifest_path),
+                ],
+                capture_output=True,
+                text=True,
+                cwd=str(tmp_path),
+                timeout=15,
+            )
+            assert result.returncode == 0, result.stdout + result.stderr
+            assert "RESULT: PASS" in result.stdout
+            assert "MANIFEST OK" in result.stdout
+        finally:
+            srv.shutdown()
+
+    def test_manifest_mismatch(self, tmp_path):
+        for fn in FILES:
+            (tmp_path / fn).write_bytes(f"<html>{fn} local</html>".encode())
+
+        # Serve different content so remote hash differs from manifest
+        srv_dir = tmp_path / "remote"
+        srv_dir.mkdir()
+        for fn in FILES:
+            (srv_dir / fn).write_bytes(f"<html>{fn} REMOTE</html>".encode())
+
+        # Manifest says local hashes are correct, but remote is different
+        content_map = {}
+        size_map = {}
+        for fn in FILES:
+            raw = (tmp_path / fn).read_bytes()
+            content_map[fn] = _sha256(raw)
+            size_map[fn] = len(raw)
+
+        manifest = {
+            "week": "2026-W30",
+            "artifacts": {fn: {"sha256": h, "size": size_map[fn]} for fn, h in content_map.items()},
+        }
+        manifest_path = tmp_path / "deploy-manifest.json"
+        manifest_path.write_text(json.dumps(manifest))
+
+        srv = _start_server(str(srv_dir), 18924)
+        try:
+            result = subprocess.run(
+                [
+                    VERIFY_SCRIPT,
+                    "http://127.0.0.1:18924",
+                    "--manifest",
+                    str(manifest_path),
+                ],
+                capture_output=True,
+                text=True,
+                cwd=str(tmp_path),
+                timeout=15,
+            )
+            assert result.returncode == 1
+            assert "MANIFEST MISMATCH" in result.stdout
+            assert "RESULT: FAIL" in result.stdout
+        finally:
+            srv.shutdown()
+
+
+class TestVerifyDeployWeek:
+    """Script verifies ISO week number is present in remote content."""
+
+    def test_week_found(self, tmp_path):
+        for fn in FILES:
+            content = f"<html><h1>Week 30</h1>{fn} content</html>".encode()
+            (tmp_path / fn).write_bytes(content)
+
+        srv = _start_server(str(tmp_path), 18925)
+        try:
+            result = subprocess.run(
+                [
+                    VERIFY_SCRIPT,
+                    "http://127.0.0.1:18925",
+                    "--week",
+                    "2026-W30",
+                ],
+                capture_output=True,
+                text=True,
+                cwd=str(tmp_path),
+                timeout=15,
+            )
+            assert result.returncode == 0, result.stdout + result.stderr
+            assert "WEEK OK" in result.stdout
+            assert "RESULT: PASS" in result.stdout
+        finally:
+            srv.shutdown()
+
+    def test_week_not_found(self, tmp_path):
+        for fn in FILES:
+            # Content has Week 25 instead of expected Week 30
+            content = f"<html><h1>Week 25</h1>{fn} content</html>".encode()
+            (tmp_path / fn).write_bytes(content)
+
+        srv = _start_server(str(tmp_path), 18926)
+        try:
+            result = subprocess.run(
+                [
+                    VERIFY_SCRIPT,
+                    "http://127.0.0.1:18926",
+                    "--week",
+                    "2026-W30",
+                ],
+                capture_output=True,
+                text=True,
+                cwd=str(tmp_path),
+                timeout=15,
+            )
+            assert result.returncode == 1
+            assert "expected Week 30 in content but not found" in result.stdout
+            assert "RESULT: FAIL" in result.stdout
+        finally:
+            srv.shutdown()
+
+
+class TestVerifyDeployManifestAndWeek:
+    """Script combines manifest and week verification."""
+
+    def test_manifest_and_week_match(self, tmp_path):
+        content_map = {}
+        size_map = {}
+        for fn in FILES:
+            content = f"<html><h1>Week 30</h1>{fn} content</html>".encode()
+            (tmp_path / fn).write_bytes(content)
+            content_map[fn] = _sha256(content)
+            size_map[fn] = len(content)
+
+        manifest = {
+            "week": "2026-W30",
+            "artifacts": {fn: {"sha256": h, "size": size_map[fn]} for fn, h in content_map.items()},
+        }
+        manifest_path = tmp_path / "deploy-manifest.json"
+        manifest_path.write_text(json.dumps(manifest))
+
+        srv = _start_server(str(tmp_path), 18927)
+        try:
+            result = subprocess.run(
+                [
+                    VERIFY_SCRIPT,
+                    "http://127.0.0.1:18927",
+                    "--manifest",
+                    str(manifest_path),
+                    "--week",
+                    "2026-W30",
+                ],
+                capture_output=True,
+                text=True,
+                cwd=str(tmp_path),
+                timeout=15,
+            )
+            assert result.returncode == 0, result.stdout + result.stderr
+            assert "MANIFEST OK" in result.stdout
+            assert "WEEK OK" in result.stdout
+            assert "RESULT: PASS" in result.stdout
+        finally:
+            srv.shutdown()
+
+    def test_manifest_ok_but_week_wrong(self, tmp_path):
+        content_map = {}
+        size_map = {}
+        for fn in FILES:
+            # Content has wrong week
+            content = f"<html><h1>Week 25</h1>{fn} content</html>".encode()
+            (tmp_path / fn).write_bytes(content)
+            content_map[fn] = _sha256(content)
+            size_map[fn] = len(content)
+
+        manifest = {
+            "week": "2026-W30",
+            "artifacts": {fn: {"sha256": h, "size": size_map[fn]} for fn, h in content_map.items()},
+        }
+        manifest_path = tmp_path / "deploy-manifest.json"
+        manifest_path.write_text(json.dumps(manifest))
+
+        srv = _start_server(str(tmp_path), 18928)
+        try:
+            result = subprocess.run(
+                [
+                    VERIFY_SCRIPT,
+                    "http://127.0.0.1:18928",
+                    "--manifest",
+                    str(manifest_path),
+                    "--week",
+                    "2026-W30",
+                ],
+                capture_output=True,
+                text=True,
+                cwd=str(tmp_path),
+                timeout=15,
+            )
+            assert result.returncode == 1
+            assert "MANIFEST OK" in result.stdout
+            assert "expected Week 30 in content but not found" in result.stdout
+            assert "RESULT: FAIL" in result.stdout
+        finally:
+            srv.shutdown()

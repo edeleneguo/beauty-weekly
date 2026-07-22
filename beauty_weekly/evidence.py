@@ -13,6 +13,9 @@ Design constraints
 * The two missing product links (To Summer Kunlun Snow, Scent Library
   Boiled Water) are treated as explicit EvidenceAbsence unless a
   verified official URL exists in repository data.
+* Every Evidence object must carry url, title, published_at, fetched_at,
+  and supported_fields — no nulls or empty strings accepted.
+* Unsupported claim fields cause validation failure.
 """
 
 from __future__ import annotations
@@ -94,6 +97,32 @@ QUALIFICATION_REQUIRED_FIELDS = frozenset(
     {
         "quarantine_status",
         "launch_date",
+    }
+)
+
+# Fields that every Evidence object must carry (non-null, non-empty).
+EVIDENCE_REQUIRED_FIELDS = frozenset(
+    {
+        "url",
+        "title",
+        "type",
+        "published_at",
+        "fetched_at",
+        "checked_at",
+        "supported_fields",
+    }
+)
+
+# Fields that evidence supported_fields may reference.
+VALID_EVIDENCE_SUPPORTED_FIELDS = frozenset(
+    {
+        "price",
+        "features",
+        "buzz",
+        "brand",
+        "category",
+        "launch_date",
+        "link",
     }
 )
 

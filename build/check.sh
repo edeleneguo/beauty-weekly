@@ -28,6 +28,7 @@ python3 build/validate.py
 python3 build/validate_canonical.py
 python3 build/validate_scoring.py
 python3 build/validate_evidence.py
+python3 build/validate_published.py
 python3 build/validate_pipeline.py
 python3 build/check_parity.py
 

@@ -48,8 +48,13 @@ def data():
 
 @pytest.fixture(scope="session")
 def html_files():
+    """Read W28 archived HTML (never changes) instead of root files.
+
+    Root HTML files are re-rendered each week and may contain data from
+    a different week than W28, causing false test failures.
+    """
     result = {}
-    for (topic, lang), fname in FILES.items():
+    for (topic, lang), fname in ARCHIVE_FILES.items():
         fpath = os.path.join(ROOT, fname)
         with open(fpath, "r", encoding="utf-8") as f:
             result[(topic, lang)] = f.read()
@@ -134,9 +139,7 @@ class TestTrendTags:
         for (topic, lang), html in html_files.items():
             if lang != "en":
                 continue
-            trend_tags = re.findall(
-                r'<span\s+class="heat-trend-tag">([^<]+)</span>', html
-            )
+            trend_tags = re.findall(r'<span\s+class="heat-trend-tag">([^<]+)</span>', html)
             assert len(trend_tags) > 0, f"{topic} EN: no trend_tags found in HTML"
             for tag in trend_tags:
                 assert tag != "Trend Signal", (
@@ -148,14 +151,10 @@ class TestTrendTags:
         for (topic, lang), html in html_files.items():
             if lang != "cn":
                 continue
-            trend_tags = re.findall(
-                r'<span\s+class="heat-trend-tag">([^<]+)</span>', html
-            )
+            trend_tags = re.findall(r'<span\s+class="heat-trend-tag">([^<]+)</span>', html)
             assert len(trend_tags) > 0, f"{topic} CN: no trend_tags found in HTML"
             for tag in trend_tags:
-                assert _has_chinese(tag), (
-                    f"{topic} CN: trend_tag '{tag}' is not in Chinese"
-                )
+                assert _has_chinese(tag), f"{topic} CN: trend_tag '{tag}' is not in Chinese"
 
 
 # ═══════════════════════════════════════════════════════════════════════
@@ -181,9 +180,7 @@ class TestNewProductTracking:
         for topic in ("makeup", "fragrance"):
             for panel, products in data["products"][topic]["new_product_radar"].items():
                 count = len(products)
-                assert 0 <= count <= 10, (
-                    f"{topic}/radar/{panel}: {count} products (expected 0-10)"
-                )
+                assert 0 <= count <= 10, f"{topic}/radar/{panel}: {count} products (expected 0-10)"
 
     def test_radar_no_padding_in_html(self, html_files):
         """Regression: radar sections must not contain placeholder text."""
@@ -192,9 +189,7 @@ class TestNewProductTracking:
             assert "no more signal" not in s4.lower(), (
                 f"{topic} {lang}: placeholder text 'no more signal' in radar"
             )
-            assert "本周无更多" not in s4, (
-                f"{topic} {lang}: placeholder text '本周无更多' in radar"
-            )
+            assert "本周无更多" not in s4, f"{topic} {lang}: placeholder text '本周无更多' in radar"
 
     def test_radar_items_match_data(self, data, html_files):
         """Regression: HTML radar item count must match actual data products (excluding empty-state notes)."""
@@ -203,9 +198,7 @@ class TestNewProductTracking:
                 html = html_files[(topic, lang)]
                 # Count only real products (score > 0, not quarantined/unverified)
                 total_data = 0
-                for panel, products in data["products"][topic][
-                    "new_product_radar"
-                ].items():
+                for panel, products in data["products"][topic]["new_product_radar"].items():
                     for p in products:
                         if p.get("score", 0) > 0 and p.get("quarantine_status") in (
                             None,
@@ -226,12 +219,10 @@ class TestNewProductTracking:
                 for p in products:
                     link = p.get("detail", {}).get("price_link", {}).get("link", "")
                     assert link, (
-                        f"{topic}/radar/{panel}/{p['name']}: "
-                        f"no evidence URL (source link required)"
+                        f"{topic}/radar/{panel}/{p['name']}: no evidence URL (source link required)"
                     )
                     assert not link.startswith("https://example.com"), (
-                        f"{topic}/radar/{panel}/{p['name']}: "
-                        f"placeholder URL (example.com)"
+                        f"{topic}/radar/{panel}/{p['name']}: placeholder URL (example.com)"
                     )
 
 
@@ -272,17 +263,13 @@ class TestLocalization:
         """Regression: CN pages must have lang='zh-CN'."""
         for (topic, lang), html in html_files.items():
             if lang == "cn":
-                assert 'lang="zh-CN"' in html, (
-                    f"{topic} {lang}: missing lang='zh-CN' attribute"
-                )
+                assert 'lang="zh-CN"' in html, f"{topic} {lang}: missing lang='zh-CN' attribute"
 
     def test_en_pages_have_lang_attribute(self, html_files):
         """Regression: EN pages must have lang='en'."""
         for (topic, lang), html in html_files.items():
             if lang == "en":
-                assert 'lang="en"' in html, (
-                    f"{topic} {lang}: missing lang='en' attribute"
-                )
+                assert 'lang="en"' in html, f"{topic} {lang}: missing lang='en' attribute"
 
     def test_cn_trend_tags_are_chinese(self, data):
         """Regression: CN trend_tags must be in Chinese."""
@@ -309,9 +296,7 @@ class TestLocalization:
         for topic in ("makeup",):
             html = html_files[(topic, "cn")]
             for en_name, cn_name in cn_brand_names.items():
-                assert cn_name in html, (
-                    f"{topic} CN: Chinese brand name '{cn_name}' not found"
-                )
+                assert cn_name in html, f"{topic} CN: Chinese brand name '{cn_name}' not found"
                 # EN name should NOT appear on CN page
                 if en_name != cn_name:
                     assert en_name not in html, (
@@ -361,8 +346,7 @@ class TestFourByTenInvariant:
         """Regression: radar sections must NOT be forced to 40 items."""
         for topic in ("makeup", "fragrance"):
             total_data = sum(
-                len(products)
-                for products in data["products"][topic]["new_product_radar"].values()
+                len(products) for products in data["products"][topic]["new_product_radar"].values()
             )
             # Radar count should be dynamic, not exactly 40
             # (it can be any value from 0 to 40)
@@ -439,9 +423,7 @@ class TestDataIntegrity:
         assert margiela is not None, "Maison Margiela Lazy Weekend not found"
         ts_kf = to_summer["detail"]["key_features"]["en"]
         mm_kf = margiela["detail"]["key_features"]["en"]
-        assert ts_kf != mm_kf, (
-            "To Summer key_features is identical to Margiela (copy-paste error)"
-        )
+        assert ts_kf != mm_kf, "To Summer key_features is identical to Margiela (copy-paste error)"
 
     def test_ysl_key_features_no_malformed_text(self, data):
         """Regression: YSL Skin Affair key_features must not have 'Trend31'."""
@@ -464,8 +446,7 @@ class TestDataIntegrity:
                 section = _extract_section(html, section_num)
                 for phrase in forbidden:
                     assert phrase.lower() not in section.lower(), (
-                        f"{topic} {lang} Section 0{section_num}: "
-                        f"forbidden phrase '{phrase}' found"
+                        f"{topic} {lang} Section 0{section_num}: forbidden phrase '{phrase}' found"
                     )
 
     def test_no_placeholder_urls(self, data):
@@ -477,8 +458,7 @@ class TestDataIntegrity:
                         link = p.get("detail", {}).get("price_link", {}).get("link", "")
                         if link:
                             assert "example.com" not in link, (
-                                f"{topic}/{section}/{panel}/{p['name']}: "
-                                f"placeholder URL"
+                                f"{topic}/{section}/{panel}/{p['name']}: placeholder URL"
                             )
                             assert "localhost" not in link, (
                                 f"{topic}/{section}/{panel}/{p['name']}: localhost URL"
@@ -503,9 +483,7 @@ class TestDeterministicRendering:
     def test_all_links_have_target_blank(self, html_files):
         """Regression: all product links must use target='_blank'."""
         for (topic, lang), html in html_files.items():
-            links = re.findall(
-                r'<a\s+href="([^"]*)"[^>]*class="heat-link-icon"[^>]*>', html
-            )
+            links = re.findall(r'<a\s+href="([^"]*)"[^>]*class="heat-link-icon"[^>]*>', html)
             for link in links:
                 # Find the full anchor tag
                 pattern = r'<a\s+href="' + re.escape(link) + r'"[^>]*>'
@@ -519,9 +497,7 @@ class TestDeterministicRendering:
         """Regression: 'EDP' must have a space before it."""
         for (topic, lang), html in html_files.items():
             matches = re.findall(r"\wEDP\b", html)
-            assert len(matches) == 0, (
-                f"{topic} {lang}: EDP without space before it: {matches[:5]}"
-            )
+            assert len(matches) == 0, f"{topic} {lang}: EDP without space before it: {matches[:5]}"
 
 
 # ═══════════════════════════════════════════════════════════════════════
@@ -557,8 +533,7 @@ class TestArchive:
                 section = _extract_section(html, section_num)
                 h4_count = len(re.findall(r"<h4[^>]*>.*?</h4>", section, re.DOTALL))
                 assert h4_count == 4, (
-                    f"{fname} Section 0{section_num}: "
-                    f"expected 4 panels, found {h4_count}"
+                    f"{fname} Section 0{section_num}: expected 4 panels, found {h4_count}"
                 )
 
     def test_archive_lang_attributes(self):
@@ -588,9 +563,7 @@ class TestCrossSectionConsistency:
             radar = data["products"][topic]["new_product_radar"]
             for panel in PANELS:
                 heat_names = {p["name"]: p.get("score", 0) for p in heat.get(panel, [])}
-                radar_names = {
-                    p["name"]: p.get("score", 0) for p in radar.get(panel, [])
-                }
+                radar_names = {p["name"]: p.get("score", 0) for p in radar.get(panel, [])}
                 for name in set(heat_names.keys()) & set(radar_names.keys()):
                     assert heat_names[name] == radar_names[name], (
                         f"{topic}/{panel}/{name}: "
@@ -649,9 +622,7 @@ class TestTrendTaxonomy:
     def test_cross_vertical_isolation(self, data):
         """Makeup trends must not appear on fragrance products and vice versa."""
         for topic in ("makeup", "fragrance"):
-            wrong = (
-                FRAGRANCE_CANONICAL_TAGS if topic == "makeup" else MAKEUP_CANONICAL_TAGS
-            )
+            wrong = FRAGRANCE_CANONICAL_TAGS if topic == "makeup" else MAKEUP_CANONICAL_TAGS
             for section in ("heat_rankings", "new_product_radar"):
                 for panel, products in data["products"][topic][section].items():
                     for p in products:
@@ -823,9 +794,7 @@ class TestTrendTaxonomy:
                 continue
             tags = re.findall(r'<span\s+class="heat-trend-tag">([^<]+)</span>', html)
             for tag in tags:
-                assert tag in cn_labels, (
-                    f"{topic} CN: non-canonical CN trend tag '{tag}' in HTML"
-                )
+                assert tag in cn_labels, f"{topic} CN: non-canonical CN trend tag '{tag}' in HTML"
 
 
 # ═══════════════════════════════════════════════════════════════════════
@@ -839,9 +808,7 @@ class TestQuarantineAndLaunchDate:
 
     def test_fragrance_radar_products_have_quarantine_status(self, data):
         """Every fragrance radar product must have a quarantine_status field."""
-        for panel, products in data["products"]["fragrance"][
-            "new_product_radar"
-        ].items():
+        for panel, products in data["products"]["fragrance"]["new_product_radar"].items():
             for p in products:
                 if p.get("score", 0) == 0:
                     continue
@@ -859,9 +826,7 @@ class TestQuarantineAndLaunchDate:
 
     def test_fragrance_radar_products_have_launch_date(self, data):
         """Every fragrance radar product must have a launch_date field."""
-        for panel, products in data["products"]["fragrance"][
-            "new_product_radar"
-        ].items():
+        for panel, products in data["products"]["fragrance"]["new_product_radar"].items():
             for p in products:
                 if p.get("score", 0) == 0:
                     continue
@@ -959,8 +924,7 @@ class TestRadarTrendMetadata:
                         continue
                     if not p.get("trend_badge"):
                         assert not p.get("trend_id"), (
-                            f"{topic}/radar/{panel}/{p['name']}: "
-                            f"non-trend product has trend_id set"
+                            f"{topic}/radar/{panel}/{p['name']}: non-trend product has trend_id set"
                         )
 
     def test_trend_tag_matches_trend_tags_in_key_features(self, data):
@@ -1096,8 +1060,7 @@ class TestEvidenceValidation:
                         continue
                     if p.get("quarantine_status") == "verified":
                         assert p.get("evidence_url"), (
-                            f"{topic}/radar/{panel}/{p['name']}: "
-                            f"verified item missing evidence_url"
+                            f"{topic}/radar/{panel}/{p['name']}: verified item missing evidence_url"
                         )
                         assert p.get("evidence_type"), (
                             f"{topic}/radar/{panel}/{p['name']}: "
@@ -1117,9 +1080,7 @@ class TestEvidenceValidation:
                         continue
                     if p.get("quarantine_status") == "verified":
                         url = p.get("evidence_url", "")
-                        is_generic = any(
-                            pat.match(url) for pat in GENERIC_EVIDENCE_URLS
-                        )
+                        is_generic = any(pat.match(url) for pat in GENERIC_EVIDENCE_URLS)
                         assert not is_generic, (
                             f"{topic}/radar/{panel}/{p['name']}: "
                             f"verified item has generic homepage evidence_url '{url}'"
@@ -1175,6 +1136,4 @@ class TestHeatPanelNotes:
         for topic in ("makeup", "fragrance"):
             for panel, products in data["products"][topic]["heat_rankings"].items():
                 real = [p for p in products if p.get("score", 0) > 0]
-                assert len(real) <= 10, (
-                    f"{topic}/heat/{panel}: {len(real)} products (max 10)"
-                )
+                assert len(real) <= 10, f"{topic}/heat/{panel}: {len(real)} products (max 10)"

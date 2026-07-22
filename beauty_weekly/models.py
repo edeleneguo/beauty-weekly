@@ -115,13 +115,49 @@ class TrendTag(BaseModel):
 
 
 class Evidence(BaseModel):
-    """Provenance of a radar product claim."""
+    """Provenance of a radar product claim.
 
-    url: str = Field(description="Direct product-page URL")
+    All fields are required and non-null.  Unsupported claims (missing
+    title, published_at, fetched_at, or supported_fields) cause a
+    validation failure rather than silently accepting incomplete evidence.
+    """
+
+    url: str = Field(min_length=1, description="Direct product-page URL")
+    title: str = Field(min_length=1, description="Title of the source page or article")
     type: str = Field(description="Evidence category (e.g. review, launch-announcement)")
+    published_at: str = Field(
+        min_length=1,
+        description="ISO-8601 date/time the source was published",
+    )
+    fetched_at: str = Field(
+        min_length=1,
+        description="ISO-8601 timestamp when evidence was fetched/verified",
+    )
     checked_at: str = Field(description="ISO-8601 timestamp of verification")
+    supported_fields: list[str] = Field(
+        min_length=1,
+        description="List of product fields this evidence supports (e.g. price, features, buzz)",
+    )
 
     model_config = {"extra": "forbid"}
+
+    @model_validator(mode="after")
+    def _validate_evidence_completeness(self) -> Evidence:
+        """Fail-closed: reject evidence with empty required strings."""
+        for field_name in ("url", "title", "type", "published_at", "fetched_at", "checked_at"):
+            val = getattr(self, field_name)
+            if isinstance(val, str) and not val.strip():
+                raise ValueError(f"Evidence.{field_name} must be non-empty")
+        if not self.supported_fields:
+            raise ValueError("Evidence.supported_fields must contain at least one field name")
+        valid_fields = {"price", "features", "buzz", "brand", "category", "launch_date", "link"}
+        for sf in self.supported_fields:
+            if sf not in valid_fields:
+                raise ValueError(
+                    f"Evidence.supported_fields contains unsupported field '{sf}' — "
+                    f"must be one of: {', '.join(sorted(valid_fields))}"
+                )
+        return self
 
 
 class EvidenceAbsence(BaseModel):

@@ -14,6 +14,11 @@ on:
         description: "ISO week to update (e.g. 2026-W29). Leave empty for auto-resolve."
         required: false
         type: string
+      intentional_failure:
+        description: "Force workflow to fail before deploy (Req 6 — deterministic failure test)"
+        required: false
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -30,6 +35,13 @@ jobs:
 
       - name: Install dev dependencies
         run: pip install --upgrade pip && pip install -r requirements-dev.txt
+
+      - name: Intentional failure guard (Req 6)
+        if: ${{ inputs.intentional_failure }}
+        run: |
+          echo "INTENTIONAL_FAILURE: workflow disabled by intentional_failure input."
+          echo "This proves the guard works: no deploy occurs."
+          exit 1
 
       - name: Secret scanner
         run: python build/check_secrets.py
