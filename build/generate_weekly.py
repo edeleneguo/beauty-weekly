@@ -70,17 +70,19 @@ def make_product(name: str, name_cn: str, rank: int, score: int, market: str,
                  trend_badge: str = None, new_badge: str = None,
                  launch_evidence: dict = None) -> dict:
     """Create a product in the exact canonical format."""
+    # Ensure all required string fields have at least 1 character (Pydantic min_length=1)
+    def s(v): return v if v and len(v.strip()) > 0 else "N/A"
     return {
-        "category_badge": category_badge,
+        "category_badge": s(category_badge),
         "detail": {
-            "brand": {"cn": brand_cn, "en": brand_en},
-            "buzz": {"cn": buzz_cn, "en": buzz_en},
-            "key_features": {"cn": features_cn, "en": features_en},
-            "price_link": {"cn": price_cn, "en": price_en, "link": link},
+            "brand": {"cn": s(brand_cn), "en": s(brand_en)},
+            "buzz": {"cn": s(buzz_cn), "en": s(buzz_en)},
+            "key_features": {"cn": s(features_cn), "en": s(features_en)},
+            "price_link": {"cn": s(price_cn), "en": s(price_en), "link": link or ""},
         },
         "launch_evidence": launch_evidence,
         "market": market,
-        "name": name,
+        "name": s(name),
         "name_cn": name_cn,
         "new_badge": new_badge,
         "rank": rank,
