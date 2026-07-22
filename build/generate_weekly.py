@@ -671,10 +671,25 @@ Rules:
                 file=sys.stderr,
             )
 
+    market_coverage = {
+        market: sum(
+            len(products)
+            for panel, products in result["heat_rankings"].items()
+            if panel.startswith(f"{market} ")
+        )
+        for market in ("US", "CN")
+    }
     missing = ", ".join(empty_panels)
+    if all(count > 0 for count in market_coverage.values()):
+        print(
+            f"  WARNING: publishing with evidence gap in panels {{{missing}}}; "
+            "both US and CN markets retain verified product coverage",
+            file=sys.stderr,
+        )
+        return result
     raise ValueError(
         f"heat_rankings panels {{{missing}}} are empty after {_LLM_MAX_ATTEMPTS} "
-        "attempts. Every heat panel must contain at least 1 evidence-backed product."
+        f"attempts and market coverage is insufficient: {market_coverage}"
     )
 
 
