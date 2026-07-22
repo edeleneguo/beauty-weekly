@@ -351,9 +351,14 @@ def generate_products(
     articles = raw_data.get("articles", [])
     article_urls = {a.get("url", "") for a in articles if a.get("url")}
 
+    # Keep both markets visible to the model.  A simple first-N slice allowed
+    # high-volume US feeds to crowd all Chinese evidence out of the prompt.
+    cn_articles = [a for a in articles if a.get("market") == "CN"]
+    non_cn_articles = [a for a in articles if a.get("market") != "CN"]
+    prompt_articles = cn_articles[:60] + non_cn_articles[:60]
     articles_text = "\n".join(
         f"[{i}] {a['title']}: {a.get('summary', '')[:200]} (URL: {a['url']})"
-        for i, a in enumerate(articles[:30])
+        for i, a in enumerate(prompt_articles)
     )
 
     system_prompt = f"""You are a beauty industry analyst. Generate product \
@@ -405,6 +410,8 @@ Rules:
 - CN LUXURY and CN MASSTIGE panels: only provide products if you have
   real Chinese-market evidence.  Empty arrays [] are acceptable and
   preferred over fabricated products.
+- Treat the configured main references as mandatory research targets, not a
+  whitelist. Other valid public sources are allowed under identical evidence rules.
 - Each product link MUST point to a real, accessible product page URL.
 - Do NOT generate products for which you cannot provide a real URL.
 - IMPORTANT: Each product MUST include a "source_url" field set to the

@@ -19,7 +19,9 @@ from __future__ import annotations
 import json
 import sys
 import urllib.error
+import urllib.parse
 import urllib.request
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import date, datetime
 from pathlib import Path
 from xml.etree import ElementTree
@@ -66,6 +68,8 @@ SOURCES = {
     },
 }
 
+REFERENCE_CONFIG = ROOT / "config" / "reference_sources.json"
+
 
 def fetch_url(url: str) -> str:
     """Fetch URL content with timeout and user agent."""
@@ -74,7 +78,9 @@ def fetch_url(url: str) -> str:
         return resp.read().decode("utf-8", errors="replace")
 
 
-def parse_rss(xml_text: str, source_name: str) -> list[dict]:
+def parse_rss(
+    xml_text: str, source_name: str, *, market: str = "GLOBAL", reference_type: str = ""
+) -> list[dict]:
     """Parse RSS XML and extract articles."""
     articles = []
     try:
@@ -92,10 +98,52 @@ def parse_rss(xml_text: str, source_name: str) -> list[dict]:
                     "url": link.strip(),
                     "date": pub_date.strip(),
                     "summary": description.strip()[:500] if description else "",
+                    "market": market,
+                    "reference_type": reference_type,
                 })
     except ElementTree.ParseError:
         pass
     return articles[:20]  # Limit to 20 articles per source
+
+
+def _load_main_references() -> list[dict]:
+    with open(REFERENCE_CONFIG, encoding="utf-8") as f:
+        config = json.load(f)
+    return config["main_references"]
+
+
+def _reference_search_url(reference: dict) -> str:
+    query = f'{reference["name"]} (美妆 OR 护肤 OR 香水 OR 彩妆)'
+    if reference["market"] == "US":
+        query = f'{reference["name"]} (beauty OR makeup OR fragrance OR skincare)'
+        params = {"q": query, "hl": "en-US", "gl": "US", "ceid": "US:en"}
+    else:
+        params = {"q": query, "hl": "zh-CN", "gl": "CN", "ceid": "CN:zh-Hans"}
+    return "https://news.google.com/rss/search?" + urllib.parse.urlencode(params)
+
+
+def _fetch_main_reference(reference: dict) -> tuple[dict, list[dict]]:
+    """Search one mandatory reference and return its audit record plus results."""
+    url = _reference_search_url(reference)
+    content = fetch_url(url)
+    articles = parse_rss(
+        content,
+        reference["name"],
+        market=reference["market"],
+        reference_type=reference["type"],
+    )
+    return (
+        {
+            "name": reference["name"],
+            "market": reference["market"],
+            "reference_type": reference["type"],
+            "type": "search_rss",
+            "articles_count": len(articles),
+            "url": url,
+            "mandatory_search": True,
+        },
+        articles,
+    )
 
 
 def collect_all() -> dict:
@@ -109,6 +157,7 @@ def collect_all() -> dict:
         "date": today,
         "sources_fetched": [],
         "sources_failed": [],
+        "main_reference_audit": [],
         "articles": [],
         "products": [],
         "trends": [],
@@ -120,7 +169,12 @@ def collect_all() -> dict:
             content = fetch_url(config["url"])
 
             if config["type"] == "rss":
-                articles = parse_rss(content, name)
+                articles = parse_rss(
+                    content,
+                    name,
+                    market=config["market"],
+                    reference_type=config["category"],
+                )
                 result["articles"].extend(articles)
                 result["sources_fetched"].append({
                     "name": name,
@@ -168,6 +222,38 @@ def collect_all() -> dict:
                 "url": config["url"],
             })
             print(f"    ✗ FAILED: {e}")
+
+    # Main references are mandatory searches, not a publication whitelist.
+    # Search every entry on every run and preserve failures in the audit trail.
+    references = _load_main_references()
+    print(f"  Searching {len(references)} mandatory main references...")
+    with ThreadPoolExecutor(max_workers=8) as executor:
+        future_map = {executor.submit(_fetch_main_reference, ref): ref for ref in references}
+        for future in as_completed(future_map):
+            ref = future_map[future]
+            try:
+                audit, articles = future.result()
+                result["main_reference_audit"].append(audit)
+                result["articles"].extend(articles)
+            except Exception as exc:
+                result["main_reference_audit"].append(
+                    {
+                        "name": ref["name"],
+                        "market": ref["market"],
+                        "reference_type": ref["type"],
+                        "type": "search_rss",
+                        "articles_count": 0,
+                        "url": _reference_search_url(ref),
+                        "mandatory_search": True,
+                        "error": str(exc)[:200],
+                    }
+                )
+
+    result["main_reference_audit"].sort(key=lambda item: (item["market"], item["name"]))
+    result["main_references_searched"] = len(result["main_reference_audit"])
+    result["main_references_with_results"] = sum(
+        item["articles_count"] > 0 for item in result["main_reference_audit"]
+    )
 
     result["total_articles"] = len(result["articles"])
     result["total_sources_ok"] = len(result["sources_fetched"])
