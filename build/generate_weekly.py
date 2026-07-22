@@ -319,6 +319,8 @@ def _find_supporting_articles(
     """
     name_lower = product_name.lower()
     name_tokens = [w for w in name_lower.split() if len(w) > 3]
+    latin_tokens = re.findall(r"[a-z][a-z0-9'-]{2,}", name_lower)
+    cjk_chars = set(re.findall(r"[\u3400-\u9fff]", product_name))
     supporting = []
     for article in articles:
         url = article.get("url", "")
@@ -343,6 +345,18 @@ def _find_supporting_articles(
         if len(matched_tokens) >= 2:
             supporting.append(article)
             continue
+
+        # 4. Chinese product names are not whitespace-tokenized. Require
+        # high CJK character coverage and, for mixed names, a matching Latin
+        # brand token. This recognizes e.g. "PRADA 0度紫润唇膏" in a title
+        # containing "PRADA…0度紫…润唇膏" without accepting a brand-only page.
+        if len(cjk_chars) >= 4:
+            matched_cjk = sum(char in combined for char in cjk_chars)
+            cjk_coverage = matched_cjk / len(cjk_chars)
+            latin_ok = not latin_tokens or any(token in combined for token in latin_tokens)
+            if cjk_coverage >= 0.7 and latin_ok:
+                supporting.append(article)
+                continue
 
     # Sort by date descending, preferring source_url matches
     supporting.sort(
