@@ -15,6 +15,7 @@ Covers:
 
 import hashlib
 import json
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -672,11 +673,14 @@ class TestFailClosed:
 
 class TestValidateEvidenceScript:
     def test_script_exits_zero(self):
+        env = os.environ.copy()
+        env["BEAUTY_WEEKLY_WEEK"] = "2026-W28"
         result = subprocess.run(
             [sys.executable, str(ROOT / "build" / "validate_evidence.py")],
             capture_output=True,
             text=True,
             cwd=str(ROOT),
+            env=env,
         )
         assert result.returncode == 0, f"Script failed:\n{result.stdout}\n{result.stderr}"
         assert "OK" in result.stdout

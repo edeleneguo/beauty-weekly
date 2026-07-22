@@ -520,6 +520,7 @@ def _strip_emoji(text: str) -> str:
 
 
 def main() -> None:
+    output_dir = os.environ.get("BEAUTY_WEEKLY_OUTPUT_DIR") or ROOT
     print(f"Rendering from canonical: {CANONICAL_PATH}")
     with open(CANONICAL_PATH, "r", encoding="utf-8") as f:
         canonical = json.load(f)
@@ -553,7 +554,8 @@ def main() -> None:
         if lang == "en" and 'lang="zh-CN"' in html:
             html = html.replace('lang="zh-CN"', 'lang="en"', 1)
 
-        output_path = os.path.join(ROOT, output_name)
+        os.makedirs(output_dir, exist_ok=True)
+        output_path = os.path.join(output_dir, output_name)
         with open(output_path, "w", encoding="utf-8") as f:
             f.write(html)
 

@@ -17,6 +17,9 @@ import hashlib
 import json
 import os
 import re
+import subprocess
+import sys
+import tempfile
 
 import pytest
 
@@ -48,16 +51,30 @@ def data():
 
 @pytest.fixture(scope="session")
 def html_files():
-    """Read W28 archived HTML (never changes) instead of root files.
+    """Render W28 HTML into a temporary directory and read the generated pages.
 
-    Root HTML files are re-rendered each week and may contain data from
-    a different week than W28, causing false test failures.
+    Uses BEAUTY_WEEKLY_WEEK=2026-W28 and BEAUTY_WEEKLY_OUTPUT_DIR so the
+    rendered output is fresh and deterministic, rather than reading stale
+    archive or root HTML files.
     """
-    result = {}
-    for (topic, lang), fname in ARCHIVE_FILES.items():
-        fpath = os.path.join(ROOT, fname)
-        with open(fpath, "r", encoding="utf-8") as f:
-            result[(topic, lang)] = f.read()
+    render_script = os.path.join(ROOT, "build", "render.py")
+    with tempfile.TemporaryDirectory() as tmpdir:
+        env = os.environ.copy()
+        env["BEAUTY_WEEKLY_WEEK"] = "2026-W28"
+        env["BEAUTY_WEEKLY_OUTPUT_DIR"] = tmpdir
+        result = subprocess.run(
+            [sys.executable, render_script],
+            capture_output=True,
+            text=True,
+            cwd=ROOT,
+            env=env,
+        )
+        assert result.returncode == 0, f"render.py failed:\n{result.stdout}\n{result.stderr}"
+        result = {}
+        for (topic, lang), fname in FILES.items():
+            fpath = os.path.join(tmpdir, fname)
+            with open(fpath, "r", encoding="utf-8") as f:
+                result[(topic, lang)] = f.read()
     return result
 
 
