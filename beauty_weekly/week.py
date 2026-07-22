@@ -44,7 +44,7 @@ def available_weeks() -> list[str]:
     if not _DATA_WEEKS.exists():
         return weeks
     for entry in sorted(_DATA_WEEKS.iterdir()):
-        if entry.is_dir() and (entry / "report.json").exists():
+        if entry.is_dir() and ((entry / "report.json").exists() or (entry / "raw_collected.json").exists()):
             weeks.append(entry.name)
     return weeks
 
@@ -58,6 +58,10 @@ def resolve_week(target: str | None = None) -> str:
       3. Most recent available week from ``data/weeks/``
       4. Current calendar ISO week
     """
+    # 0. If BEAUTY_WEEKLY_REQUIRE_CURRENT=1, always use current week
+    if os.environ.get("BEAUTY_WEEKLY_REQUIRE_CURRENT") == "1":
+        return current_iso_week()
+
     # 1. Environment variable override
     env_week = os.environ.get("BEAUTY_WEEKLY_WEEK")
     if env_week:
