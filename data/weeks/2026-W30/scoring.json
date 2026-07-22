@@ -1,192 +1,82 @@
 {
-  "observed_max": 95,
-  "observed_min": 75,
+  "components": null,
+  "known_constraints": {
+    "field": "score",
+    "max": 100,
+    "min": 0,
+    "monotonic_by_rank": true,
+    "observed_max": 92,
+    "observed_min": 85,
+    "panel_independent": true,
+    "type": "integer"
+  },
+  "missing_components": [
+    "score_breakdown — no per-dimension scores available",
+    "weights — no weighting factors documented"
+  ],
+  "observed_statistics": {
+    "monotonic_by_rank": true,
+    "observed_max": 92,
+    "observed_min": 85,
+    "total_scored_products": 7
+  },
   "products": [
     {
-      "has_price": true,
-      "has_url": true,
-      "name": "Rare Beauty Soft Pinch Liquid Blush",
+      "name": "Guerlain Rouge Lipstick",
       "panel": "US LUXURY",
+      "score": 90
+    },
+    {
+      "name": "Rare Beauty Lip Oil Stick",
+      "panel": "US LUXURY",
+      "score": 88
+    },
+    {
+      "name": "气垫粉底",
+      "panel": "CN LUXURY",
+      "score": 85
+    },
+    {
+      "name": "Jean Paul Gaultier La Favorite",
+      "panel": "US LUXURY",
+      "score": 90
+    },
+    {
+      "name": "Replica Beach Walk",
+      "panel": "US MASSTIGE",
+      "score": 85
+    },
+    {
+      "name": "冰希黎幻彩鎏金香水",
+      "panel": "CN LUXURY",
       "score": 92
     },
     {
-      "has_price": true,
-      "has_url": true,
-      "name": "Charlotte Tilbury Airbrush Flawless Foundation",
-      "panel": "US LUXURY",
-      "score": 90
-    },
-    {
-      "has_price": true,
-      "has_url": true,
-      "name": "Fenty Beauty Gloss Bomb Universal Lip Luminizer",
-      "panel": "US LUXURY",
+      "name": "国货香水",
+      "panel": "CN MASSTIGE",
       "score": 88
-    },
-    {
-      "has_price": true,
-      "has_url": true,
-      "name": "Dior Backstage Face & Body Foundation",
-      "panel": "US LUXURY",
-      "score": 87
-    },
-    {
-      "has_price": true,
-      "has_url": true,
-      "name": "Pat McGrath Labs Mothership V Eyeshadow Palette",
-      "panel": "US LUXURY",
-      "score": 85
-    },
-    {
-      "has_price": true,
-      "has_url": true,
-      "name": "L'Oreal Paris Infallible Pro-Matte Foundation",
-      "panel": "US MASSTIGE",
-      "score": 86
-    },
-    {
-      "has_price": true,
-      "has_url": true,
-      "name": "Maybelline New York Superstay Matte Ink Liquid Lipstick",
-      "panel": "US MASSTIGE",
-      "score": 84
-    },
-    {
-      "has_price": true,
-      "has_url": true,
-      "name": "e.l.f. Cosmetics Poreless Putty Primer",
-      "panel": "US MASSTIGE",
-      "score": 82
-    },
-    {
-      "has_price": true,
-      "has_url": true,
-      "name": "NYX Professional Makeup Ultimate Shadow Palette",
-      "panel": "US MASSTIGE",
-      "score": 80
-    },
-    {
-      "has_price": true,
-      "has_url": true,
-      "name": "Revlon Super Lustrous Lipstick",
-      "panel": "US MASSTIGE",
-      "score": 78
-    },
-    {
-      "has_price": true,
-      "has_url": true,
-      "name": "Rare Beauty Lip Soufflé Matte Cream Lipstick",
-      "panel": "US LUXURY",
-      "score": 75
-    },
-    {
-      "has_price": true,
-      "has_url": true,
-      "name": "Charlotte Tilbury Pillow Talk Lip & Cheek Glow",
-      "panel": "US LUXURY",
-      "score": 75
-    },
-    {
-      "has_price": true,
-      "has_url": true,
-      "name": "Maybelline New York Lifter Gloss",
-      "panel": "US MASSTIGE",
-      "score": 75
-    },
-    {
-      "has_price": true,
-      "has_url": true,
-      "name": "L'Oreal Paris Age Perfect Radiant Serum Foundation",
-      "panel": "US MASSTIGE",
-      "score": 75
-    },
-    {
-      "has_price": true,
-      "has_url": true,
-      "name": "Maison Francis Kurkdjian Baccarat Rouge 540",
-      "panel": "US LUXURY",
-      "score": 95
-    },
-    {
-      "has_price": true,
-      "has_url": true,
-      "name": "Tom Ford Black Orchid",
-      "panel": "US LUXURY",
-      "score": 90
-    },
-    {
-      "has_price": true,
-      "has_url": true,
-      "name": "Chanel Coco Mademoiselle",
-      "panel": "US LUXURY",
-      "score": 88
-    },
-    {
-      "has_price": true,
-      "has_url": true,
-      "name": "Dior Sauvage",
-      "panel": "US LUXURY",
-      "score": 87
-    },
-    {
-      "has_price": true,
-      "has_url": true,
-      "name": "Yves Saint Laurent Libre",
-      "panel": "US LUXURY",
-      "score": 86
-    },
-    {
-      "has_price": true,
-      "has_url": true,
-      "name": "Marc Jacobs Daisy",
-      "panel": "US MASSTIGE",
-      "score": 85
-    },
-    {
-      "has_price": true,
-      "has_url": true,
-      "name": "Viktor & Rolf Flowerbomb",
-      "panel": "US MASSTIGE",
-      "score": 84
-    },
-    {
-      "has_price": true,
-      "has_url": true,
-      "name": "Dolce & Gabbana Light Blue",
-      "panel": "US MASSTIGE",
-      "score": 82
-    },
-    {
-      "has_price": true,
-      "has_url": true,
-      "name": "Calvin Klein CK One",
-      "panel": "US MASSTIGE",
-      "score": 80
-    },
-    {
-      "has_price": true,
-      "has_url": true,
-      "name": "Burberry Her",
-      "panel": "US MASSTIGE",
-      "score": 78
-    },
-    {
-      "has_price": true,
-      "has_url": true,
-      "name": "Creed Aventus",
-      "panel": "US LUXURY",
-      "score": 90
-    },
-    {
-      "has_price": true,
-      "has_url": true,
-      "name": "Marc Jacobs Perfect",
-      "panel": "US MASSTIGE",
-      "score": 85
     }
   ],
+  "reason": "LLM-generated scores with no decomposable components.",
   "recomputable": false,
   "schema_version": "1.0.0",
   "scoring_formula": "Sales Score (≤50) + Buzz Score (≤50) = Total (≤100)",
+  "validation_rules": [
+    {
+      "checkable": true,
+      "description": "All non-zero scores must be between 0 and 100",
+      "rule": "score_range"
+    },
+    {
+      "checkable": true,
+      "description": "Within each panel, scores must be non-increasing by rank",
+      "rule": "monotonic_by_rank"
+    },
+    {
+      "checkable": true,
+      "description": "All ranks must be between 1 and 10",
+      "rule": "rank_range"
+    }
+  ],
   "version": "1.0.0"
 }
