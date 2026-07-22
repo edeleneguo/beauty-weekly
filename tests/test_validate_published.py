@@ -954,6 +954,20 @@ class TestGenerateProductsBatch:
             }
         )
 
+    def test_repeated_product_uses_heat_score_in_radar(self):
+        from build.generate_weekly import _align_cross_section_scores
+
+        result = {
+            "heat_rankings": {"US LUXURY": [{"name": "La Favorite", "score": 90}]},
+            "new_product_radar": {
+                "US LUXURY": [{"name": "la favorite", "score": 75}]
+            },
+        }
+
+        _align_cross_section_scores(result)
+
+        assert result["new_product_radar"]["US LUXURY"][0]["score"] == 90
+
     def test_mixed_supported_unsupported_retains_supported(self):
         """Supported products retained; unsupported products quarantined."""
         from build.generate_weekly import generate_products
