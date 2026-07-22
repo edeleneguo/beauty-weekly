@@ -477,3 +477,38 @@ class TestSourcesStructure:
             assert prov.get("verification_status"), (
                 f"source {src.get('id', '?')} provenance missing verification_status"
             )
+
+
+# ═══════════════════════════════════════════════════════════════════════
+# parse_json_response hardening
+# ═══════════════════════════════════════════════════════════════════════
+
+
+class TestParseJsonResponse:
+    """parse_json_response must strip fences, escape control chars, reject non-objects."""
+
+    def test_fenced_object(self):
+        from build.generate_weekly import parse_json_response
+
+        raw = '```json\n{"key": "value"}\n```'
+        result = parse_json_response(raw)
+        assert result == {"key": "value"}
+
+    def test_literal_newline_inside_value(self):
+        from build.generate_weekly import parse_json_response
+
+        raw = '{"key": "line1\nline2"}'
+        result = parse_json_response(raw)
+        assert result == {"key": "line1\nline2"}
+
+    def test_irreparable_malformed_json(self):
+        from build.generate_weekly import parse_json_response
+
+        with pytest.raises((json.JSONDecodeError, ValueError)):
+            parse_json_response("{bad: json}")
+
+    def test_non_object_json_raises_valueerror(self):
+        from build.generate_weekly import parse_json_response
+
+        with pytest.raises(ValueError, match="expected a JSON object"):
+            parse_json_response('["an", "array"]')

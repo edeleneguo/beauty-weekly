@@ -84,7 +84,42 @@ def parse_json_response(response: str) -> dict:
     response = response.strip()
     if response.startswith("```"):
         response = response.split("\n", 1)[1].rsplit("```", 1)[0].strip()
-    return json.loads(response)
+
+    def _safe_loads(s: str) -> dict:
+        try:
+            obj = json.loads(s)
+        except json.JSONDecodeError as exc:
+            if "Invalid control character" not in str(exc):
+                raise
+            buf: list[str] = []
+            in_str = False
+            esc = False
+            for ch in s:
+                if not in_str:
+                    buf.append(ch)
+                    if ch == '"':
+                        in_str = True
+                elif esc:
+                    buf.append(ch)
+                    esc = False
+                elif ch == "\\":
+                    buf.append(ch)
+                    esc = True
+                elif ch == '"':
+                    buf.append(ch)
+                    in_str = False
+                elif ord(ch) < 0x20:
+                    buf.append(f"\\u{ord(ch):04x}")
+                else:
+                    buf.append(ch)
+            obj = json.loads("".join(buf))
+        if not isinstance(obj, dict):
+            raise ValueError(
+                f"parse_json_response expected a JSON object, got {type(obj).__name__}"
+            )
+        return obj
+
+    return _safe_loads(response)
 
 
 def _parse_article_date(date_str: str) -> str | None:
