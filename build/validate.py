@@ -32,6 +32,7 @@ import json
 import os
 import re
 import sys
+from datetime import date
 from typing import Any, List
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -391,6 +392,11 @@ def _safe_int(val: Any, default: int = 0) -> int:
 
 def _check_data_consistency(data: dict) -> List[ValidationIssue]:
     issues = []
+    version_year = re.search(r"-(\d{4})", data.get("version", ""))
+    report_year = int(version_year.group(1)) if version_year else date.today().year
+    report_week = int(data.get("week", 0))
+    report_start = date.fromisocalendar(report_year, report_week, 1).isoformat()
+    report_end = date.fromisocalendar(report_year, report_week, 7).isoformat()
     for topic in ("makeup", "fragrance"):
         products = data["products"].get(topic, {})
         for section in ("heat_rankings", "new_product_radar"):
@@ -661,18 +667,14 @@ def _check_data_consistency(data: dict) -> List[ValidationIssue]:
                         )
                     )
                 else:
-                    y, m, d = (
-                        int(iso_match.group(1)),
-                        int(iso_match.group(2)),
-                        int(iso_match.group(3)),
-                    )
-                    if not (2026 == y and m == 7 and 7 <= d <= 13):
+                    if not report_start <= ld <= report_end:
                         issues.append(
                             ValidationIssue(
                                 "ERROR",
                                 loc,
                                 "launch-date-outside-window",
-                                f"Verified radar product launch_date '{ld}' is outside report window 2026-07-07..2026-07-13",
+                                f"Verified radar product launch_date '{ld}' is outside "
+                                f"report window {report_start}..{report_end}",
                             )
                         )
 
