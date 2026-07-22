@@ -1,5 +1,5 @@
 {
-  "canonical_hash": "2191d101a33bcf2125e6805bc9359cdc9be1c2d5e56818783d0801574d23ad71",
+  "canonical_hash": "1b6bd0d041577a2861028039a2d62b47794c9376f9560630723ce0e0b986690a",
   "data_pointer": "../../week30.json",
   "data_sha256": null,
   "date_range": "Jul 20 – Jul 26, 2026",
@@ -22,7 +22,7 @@
   "remaining_warnings": 1,
   "resolved_warnings": [],
   "schema_version": 3,
-  "scoring_hash": "1a725b5c39e782e4a733fc0685b616bee9d51671c9bfad76ae001455cc56f308",
-  "sources_hash": "ff046a1b04ce5691d6b607ff83142b45d8f2cc586ddac5d066f9106b56bd5443",
+  "scoring_hash": "c5d90e071bc006038c5ffa3ecef879c3c45a52d016420e7dff8b3fe6fd03d273",
+  "sources_hash": "19a9705138f54d4a0571ad1350e6702c291f4c74b8409ad839201a88feb8eb56",
   "week": 30
 }

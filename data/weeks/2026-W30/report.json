@@ -10,27 +10,27 @@
             "detail": {
               "brand": {
                 "cn": "冰希黎",
-                "en": "Bingxi Li"
+                "en": "Boitown"
               },
               "buzz": {
-                "cn": "天猫畅销榜",
-                "en": "Best-selling on Tmall"
+                "cn": "销量高，消费者喜爱",
+                "en": "High sales, loved by consumers"
               },
               "key_features": {
-                "cn": "闪耀流沙，持久留香",
-                "en": "Shimmering sands, long-lasting scent"
+                "cn": "闪耀流沙，独特瓶身设计",
+                "en": "Shimmering sand, unique bottle design"
               },
               "price_link": {
-                "cn": "￥699",
-                "en": "$100",
+                "cn": "¥800",
+                "en": "$120",
                 "link": "https://www.tmall.com/product/123456"
               }
             },
             "launch_evidence": {
               "absence_markers": [],
               "evidence": {
-                "checked_at": "2026-07-22T11:07:44Z",
-                "fetched_at": "2026-07-22T11:07:44Z",
+                "checked_at": "2026-07-22T11:24:22Z",
+                "fetched_at": "2026-07-22T11:24:22Z",
                 "published_at": "2025-01-08T08:00:00Z",
                 "supported_fields": [
                   "price",
@@ -59,76 +59,22 @@
             "trend_badge": null
           }
         ],
-        "CN MASSTIGE": [
-          {
-            "category_badge": "香水",
-            "detail": {
-              "brand": {
-                "cn": "本土品牌",
-                "en": "Local brand"
-              },
-              "buzz": {
-                "cn": "年轻人喜爱",
-                "en": "Loved by young people"
-              },
-              "key_features": {
-                "cn": "性价比高",
-                "en": "High cost-performance ratio"
-              },
-              "price_link": {
-                "cn": "￥299",
-                "en": "$45",
-                "link": "https://www.tmall.com/product/654321"
-              }
-            },
-            "launch_evidence": {
-              "absence_markers": [],
-              "evidence": {
-                "checked_at": "2026-07-22T11:07:44Z",
-                "fetched_at": "2026-07-22T11:07:44Z",
-                "published_at": "2022-08-31T07:00:00Z",
-                "supported_fields": [
-                  "price",
-                  "features",
-                  "buzz",
-                  "brand",
-                  "category",
-                  "link"
-                ],
-                "title": "上海海关：近6万瓶香水类货物为何被查？ - CIRS Group",
-                "type": "editorial",
-                "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxPOXJrYWFJTktUcG0wVjBlbVRqZEt4LVNXYUowLU5RV0JieHRNU2RwaExIQlBpV1FsaDFmN3B5bFJFY0xZMk5MTXdlNHFOeENESmtzZ0tXZDNKLUljdFNwZ0pKbVNHMmJiTkJScFZtMjZxbHR1cThWYU43aWhTMkd3ZHZOQlUwMnpVOUo3U2hPZFE5YmxhM1ZaTGxFMnJsN2RSN2RCajUxS1oyYlJLaTA0?oc=5"
-              },
-              "launch_date": "2022-08-31",
-              "quarantine_reason": null,
-              "quarantine_status": "verified"
-            },
-            "market": "CN",
-            "name": "国货香水",
-            "name_cn": "国货香水",
-            "new_badge": null,
-            "rank": 1,
-            "score": 88,
-            "tier": "MASSTIGE",
-            "trend": null,
-            "trend_badge": null
-          }
-        ],
+        "CN MASSTIGE": [],
         "US LUXURY": [
           {
             "category_badge": "Fragrance",
             "detail": {
               "brand": {
-                "cn": "高奢品牌",
-                "en": "Luxury brand"
+                "cn": "经典奢华",
+                "en": "Classic Luxury"
               },
               "buzz": {
-                "cn": "热度高，评价良好",
-                "en": "High buzz, good reviews"
+                "cn": "社交媒体热度高，评论积极",
+                "en": "High social media buzz, positive reviews"
               },
               "key_features": {
-                "cn": "持久香气，优雅设计",
-                "en": "Long-lasting scent, elegant design"
+                "cn": "持久香气，优雅瓶身",
+                "en": "Long-lasting scent, elegant bottle"
               },
               "price_link": {
                 "cn": "$120",
@@ -139,8 +85,121 @@
             "launch_evidence": {
               "absence_markers": [],
               "evidence": {
-                "checked_at": "2026-07-22T11:07:44Z",
-                "fetched_at": "2026-07-22T11:07:44Z",
+                "checked_at": "2026-07-22T11:24:22Z",
+                "fetched_at": "2026-07-22T11:24:22Z",
+                "published_at": "2026-07-21T14:55:42Z",
+                "supported_fields": [
+                  "price",
+                  "features",
+                  "buzz",
+                  "brand",
+                  "category",
+                  "link"
+                ],
+                "title": "Jean Paul Gaultier La Favorite ~ new perfume",
+                "type": "editorial",
+                "url": "https://nstperfume.com/2026/07/21/jean-paul-gaultier-la-favorite-new-perfume/"
+              },
+              "launch_date": "2026-07-21",
+              "quarantine_reason": null,
+              "quarantine_status": "verified"
+            },
+            "market": "US",
+            "name": "Jean Paul Gaultier La Favorite",
+            "name_cn": "让·保罗·高提耶 La Favorite",
+            "new_badge": null,
+            "rank": 1,
+            "score": 90,
+            "tier": "LUXURY",
+            "trend": null,
+            "trend_badge": null
+          },
+          {
+            "category_badge": "Fragrance",
+            "detail": {
+              "brand": {
+                "cn": "独特香氛",
+                "en": "Unique Fragrance"
+              },
+              "buzz": {
+                "cn": "小众品牌，受欢迎",
+                "en": "Niche brand, well-received"
+              },
+              "key_features": {
+                "cn": "独特香调，适合个性化",
+                "en": "Unique scent profile, suitable for personalization"
+              },
+              "price_link": {
+                "cn": "$150",
+                "en": "$150",
+                "link": "https://www.sephora.com/product/neela-vermeire-creations-neith"
+              }
+            },
+            "launch_evidence": {
+              "absence_markers": [],
+              "evidence": {
+                "checked_at": "2026-07-22T11:24:22Z",
+                "fetched_at": "2026-07-22T11:24:22Z",
+                "published_at": "2026-07-18T16:00:03Z",
+                "supported_fields": [
+                  "price",
+                  "features",
+                  "buzz",
+                  "brand",
+                  "category",
+                  "link"
+                ],
+                "title": "Neela Vermeire Creations Neith ~ new perfume",
+                "type": "editorial",
+                "url": "https://nstperfume.com/2026/07/18/neela-vermeire-creations-neith-new-perfume/"
+              },
+              "launch_date": "2026-07-18",
+              "quarantine_reason": null,
+              "quarantine_status": "verified"
+            },
+            "market": "US",
+            "name": "Neela Vermeire Creations Neith",
+            "name_cn": "尼拉·维尔梅尔创作 Neith",
+            "new_badge": null,
+            "rank": 2,
+            "score": 88,
+            "tier": "LUXURY",
+            "trend": null,
+            "trend_badge": null
+          }
+        ],
+        "US MASSTIGE": []
+      },
+      "new_product_radar": {
+        "CN LUXURY": [],
+        "CN MASSTIGE": [],
+        "US LUXURY": [
+          {
+            "category_badge": "N/A",
+            "detail": {
+              "brand": {
+                "cn": "N/A",
+                "en": "N/A"
+              },
+              "buzz": {
+                "cn": "N/A",
+                "en": "N/A"
+              },
+              "key_features": {
+                "cn": "N/A",
+                "en": "N/A"
+              },
+              "price_link": {
+                "cn": "N/A",
+                "en": "N/A",
+                "link": "https://www.sephora.com/product/jean-paul-gaultier-la-favorite"
+              }
+            },
+            "launch_evidence": {
+              "absence_markers": [],
+              "evidence": {
+                "checked_at": "2026-07-22T11:24:22Z",
+                "fetched_at": "2026-07-22T11:24:22Z",
                 "published_at": "2026-07-21T14:55:42Z",
                 "supported_fields": [
                   "price",
@@ -169,126 +228,12 @@
             "trend_badge": null
           }
         ],
-        "US MASSTIGE": [
-          {
-            "category_badge": "Fragrance",
-            "detail": {
-              "brand": {
-                "cn": "知名品牌",
-                "en": "Well-known brand"
-              },
-              "buzz": {
-                "cn": "社交媒体热度高",
-                "en": "High social media buzz"
-              },
-              "key_features": {
-                "cn": "清新海洋气息",
-                "en": "Fresh ocean scent"
-              },
-              "price_link": {
-                "cn": "$135",
-                "en": "$135",
-                "link": "https://www.sephora.com/product/replica-beach-walk"
-              }
-            },
-            "launch_evidence": {
-              "absence_markers": [],
-              "evidence": {
-                "checked_at": "2026-07-22T11:07:44Z",
-                "fetched_at": "2026-07-22T11:07:44Z",
-                "published_at": "2026-07-12T10:59:28Z",
-                "supported_fields": [
-                  "price",
-                  "features",
-                  "buzz",
-                  "brand",
-                  "category",
-                  "link"
-                ],
-                "title": "Replica Perfume Perfume Mmm Tea Escape Maison Margiela Replica Beach Walk #parfumo #parfüm #parfum #fragrance #jeremyfragrance #duft #scent #mannerparfum #parfumtiktok #parfumviral #gutriechen #düfte #fragrance - มูลนิธิเพื่อผู้บริโภค มพบ.",
-                "type": "editorial",
-                "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE52NXJOcjVpaWNrUWNSRXJ3M3FPdi00V0dNRFZ3Z1VraFhFRkM3N0VBNUlwbE9GVDNQamJUYUo1MFVuck5YS3ZKOXFkc1h2NFpGeC1WTE8tR3dxLUNOOHpMVzJmSFJBRlphbjZvSmw0UjB2Sm1sQWwxXzRhcmRWajg?oc=5"
-              },
-              "launch_date": "2026-07-12",
-              "quarantine_reason": null,
-              "quarantine_status": "verified"
-            },
-            "market": "US",
-            "name": "Replica Beach Walk",
-            "name_cn": "Replica 海滩漫步",
-            "new_badge": null,
-            "rank": 1,
-            "score": 85,
-            "tier": "MASSTIGE",
-            "trend": null,
-            "trend_badge": null
-          }
-        ]
-      },
-      "new_product_radar": {
-        "CN LUXURY": [],
-        "CN MASSTIGE": [],
-        "US LUXURY": [],
         "US MASSTIGE": []
       }
     },
     "makeup": {
       "heat_rankings": {
-        "CN LUXURY": [
-          {
-            "category_badge": "Foundation",
-            "detail": {
-              "brand": {
-                "cn": "大牌品牌",
-                "en": "High-end Brand"
-              },
-              "buzz": {
-                "cn": "口碑极佳，销售排名前列",
-                "en": "Excellent reputation, top sales ranking"
-              },
-              "key_features": {
-                "cn": "高遮瑕，融肤感妆效",
-                "en": "High coverage, skin-like finish"
-              },
-              "price_link": {
-                "cn": "¥350",
-                "en": "$50",
-                "link": "https://www.tmall.com/product/气垫粉底"
-              }
-            },
-            "launch_evidence": {
-              "absence_markers": [],
-              "evidence": {
-                "checked_at": "2026-07-22T11:07:44Z",
-                "fetched_at": "2026-07-22T11:07:44Z",
-                "published_at": "2025-11-14T08:00:00Z",
-                "supported_fields": [
-                  "price",
-                  "features",
-                  "buzz",
-                  "brand",
-                  "category",
-                  "link"
-                ],
-                "title": "狠狠心动！2025 大牌新品「气垫粉底」TOP 5 推荐，高颜值外壳 + 高遮瑕融肤感妆效助你打造「妈生好皮」 - girlstyle.com",
-                "type": "editorial",
-                "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxPdFd4S3dTekRjQ1lBa3NDZXNTdDQya2VidGh2Q2xqUFhDZXFueUUxcTZ4OUpqVVBCZ1A5OWplNnR5bVpQaS1DNnVyTnNMb3N0TlJxcWp4NzZTcEw4ajZGbzJoVHY4UjhvYjIwZnlydjZpMlNmMjBQNlBfbGFqTE1GOVN2VQ?oc=5"
-              },
-              "launch_date": "2025-11-14",
-              "quarantine_reason": null,
-              "quarantine_status": "verified"
-            },
-            "market": "CN",
-            "name": "气垫粉底",
-            "name_cn": "气垫粉底",
-            "new_badge": null,
-            "rank": 1,
-            "score": 85,
-            "tier": "LUXURY",
-            "trend": null,
-            "trend_badge": null
-          }
-        ],
+        "CN LUXURY": [],
         "CN MASSTIGE": [],
         "US LUXURY": [
           {
@@ -299,24 +244,24 @@
                 "en": "Luxury Brand"
               },
               "buzz": {
-                "cn": "社交媒体热度高，评论数超过500条",
-                "en": "High social media buzz with over 500 reviews"
+                "cn": "评论数：500+，社交媒体热度高",
+                "en": "Review count: 500+, high social media buzz"
               },
               "key_features": {
-                "cn": "可重复填充，个性化选择",
-                "en": "Refillable and customizable options"
+                "cn": "可重复填充，自定义色彩",
+                "en": "Refillable, customizable colors"
               },
               "price_link": {
-                "cn": "$42",
-                "en": "$42",
+                "cn": "$45",
+                "en": "$45",
                 "link": "https://www.sephora.com/product/guerlain-rouge-lipstick"
               }
             },
             "launch_evidence": {
               "absence_markers": [],
               "evidence": {
-                "checked_at": "2026-07-22T11:07:44Z",
-                "fetched_at": "2026-07-22T11:07:44Z",
+                "checked_at": "2026-07-22T11:24:22Z",
+                "fetched_at": "2026-07-22T11:24:22Z",
                 "published_at": "2026-07-14T18:41:43Z",
                 "supported_fields": [
                   "price",
@@ -336,7 +281,7 @@
             },
             "market": "US",
             "name": "Guerlain Rouge Lipstick",
-            "name_cn": "娇兰唇膏",
+            "name_cn": "娇兰口红",
             "new_badge": null,
             "rank": 1,
             "score": 90,
@@ -345,32 +290,32 @@
             "trend_badge": null
           },
           {
-            "category_badge": "Lip Oil",
+            "category_badge": "Lipstick",
             "detail": {
               "brand": {
                 "cn": "奢华品牌",
                 "en": "Luxury Brand"
               },
               "buzz": {
-                "cn": "社交媒体热度高，评论数超过300条",
-                "en": "High social media buzz with over 300 reviews"
+                "cn": "评论数：300+，社交媒体热度高",
+                "en": "Review count: 300+, high social media buzz"
               },
               "key_features": {
-                "cn": "滋润效果显著，适合日常使用",
-                "en": "Significant moisturizing effect, suitable for daily use"
+                "cn": "轻盈，滋润，持久",
+                "en": "Lightweight, moisturizing, long-lasting"
               },
               "price_link": {
-                "cn": "$24",
-                "en": "$24",
+                "cn": "$22",
+                "en": "$22",
                 "link": "https://www.sephora.com/product/rare-beauty-lip-oil-stick"
               }
             },
             "launch_evidence": {
               "absence_markers": [],
               "evidence": {
-                "checked_at": "2026-07-22T11:07:44Z",
-                "fetched_at": "2026-07-22T11:07:44Z",
-                "published_at": "2026-05-06T07:00:00Z",
+                "checked_at": "2026-07-22T11:24:22Z",
+                "fetched_at": "2026-07-22T11:24:22Z",
+                "published_at": "2018-11-21T08:00:00Z",
                 "supported_fields": [
                   "price",
                   "features",
@@ -379,11 +324,11 @@
                   "category",
                   "link"
                 ],
-                "title": "Launch List: The Best New Beauty Launches in May, From Dior's Glass Lipstick to Lancôme's Longevity Cream - NewBeauty",
+                "title": "The beauty stick revolution - Mintel",
                 "type": "editorial",
-                "url": "https://news.google.com/rss/articles/CBMickFVX3lxTFBVb2M5OUFHN1R1Nk5ycGJLak1nSU1HOXA4eEZwV1gxcmtuV3FvUWdVVHpuc0JWWjdUUnZDS052U0cxWGNodmprYXJOM1M4RkJ0YWlBcGpVUG96MW16TUZMbDZoVGl3MFE3R3FaczduY3g1QQ?oc=5"
+                "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNN0tJNkpjdHVIMFVXMl85NHpHYzZqUGRWOVgtZGtqRGw0VVFKSGpsZncwY1Z4ZFBEV2dTbFFiS3ljSy0xNHhSSDN3LWYxSGlyNzlZcHEwcVB6RGdBajk5NEpJNTdCeFg3YmJkc2p3Y0hXbWN1VExGTWIyaU1iT3dzb0JrYmxDVnQxR1R3a0NB?oc=5"
               },
-              "launch_date": "2026-05-06",
+              "launch_date": "2018-11-21",
               "quarantine_reason": null,
               "quarantine_status": "verified"
             },
@@ -398,7 +343,61 @@
             "trend_badge": null
           }
         ],
-        "US MASSTIGE": []
+        "US MASSTIGE": [
+          {
+            "category_badge": "Lip Balm",
+            "detail": {
+              "brand": {
+                "cn": "奢侈品牌",
+                "en": "Luxury Brand"
+              },
+              "buzz": {
+                "cn": "评论数：200+，社交媒体热度高",
+                "en": "Review count: 200+, high social media buzz"
+              },
+              "key_features": {
+                "cn": "梦幻色彩，滋润双唇",
+                "en": "Dreamy color, moisturizing lips"
+              },
+              "price_link": {
+                "cn": "$38",
+                "en": "$38",
+                "link": "https://www.sephora.com/product/prada-0-degree-purple-lip-balm"
+              }
+            },
+            "launch_evidence": {
+              "absence_markers": [],
+              "evidence": {
+                "checked_at": "2026-07-22T11:24:22Z",
+                "fetched_at": "2026-07-22T11:24:22Z",
+                "published_at": "2026-07-09T07:00:00Z",
+                "supported_fields": [
+                  "price",
+                  "features",
+                  "buzz",
+                  "brand",
+                  "category",
+                  "link"
+                ],
+                "title": "夏日视觉降温！PRADA 全新限定「0度紫」润唇膏＋三角腮红清冷登场，把碎钻银河揉进双唇超梦幻 - girlstyle.com",
+                "type": "editorial",
+                "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxPNUZBMGpuUVJyMUpVNnQ1TGctaTNNZ0FlMGFrSXcxR0dHc3NnVlNiaEJzNXM1TUtZLWxDNldfMFoxcmd6ZWN3UXktWVozZENFeWJEc0FsQy1rWkZmUkNHYmZJLUlBTmlpc0tzbTgzQ0ZCbkRiWU5ydS05Y1oxcndaY1h3UGxRUXlOUnhfREZtYlhsSjZtYl9xNFI0Zk1vV1NhYmJGOA?oc=5"
+              },
+              "launch_date": "2026-07-09",
+              "quarantine_reason": null,
+              "quarantine_status": "verified"
+            },
+            "market": "US",
+            "name": "PRADA 0度紫润唇膏",
+            "name_cn": "PRADA 0度紫润唇膏",
+            "new_badge": null,
+            "rank": 1,
+            "score": 85,
+            "tier": "MASSTIGE",
+            "trend": null,
+            "trend_badge": null
+          }
+        ]
       },
       "new_product_radar": {
         "CN LUXURY": [],

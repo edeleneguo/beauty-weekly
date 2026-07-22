@@ -2,20 +2,20 @@
   "week": "2026-W30",
   "artifacts": {
     "index.html": {
-      "sha256": "be4f2ffa7596394725090c5c9d156e171dfb438c29b6acdb0111227f1c6f0643",
-      "size": 64764
+      "sha256": "255a5e4622df1f057bec9146b98ac11699aa6a80fb432cfc3a4229d262521768",
+      "size": 64770
     },
     "index-cn.html": {
-      "sha256": "7903127c59c63d1d5415046c9e84ae57e00de89ecb94cd35d30e4949b81b5b16",
-      "size": 64824
+      "sha256": "236f230f5d0192e463078907b38e620d05a03e936e9e58b3d0dcb85a2ab3d150",
+      "size": 64833
     },
     "fragrance.html": {
-      "sha256": "00e61bb28c94a632a8e33be6efd376b02448479a7b015d0583c3402bb277f869",
-      "size": 62366
+      "sha256": "7feb3419ac1bf338cf152d1e456de5a27e4090eafcc37546d60e3f942dd19ce5",
+      "size": 61713
     },
     "fragrance-cn.html": {
-      "sha256": "b83b41f8d31dcca1f4c547de41627e4078cb9612bec876c9a06c9858351fabb0",
-      "size": 62330
+      "sha256": "df9bbb70cd7e318def978aab74a7d28c2e29b12e1c0f26a83540f17803c34475",
+      "size": 61688
     }
   }
 }

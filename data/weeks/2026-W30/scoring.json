@@ -32,8 +32,8 @@
       "score": 88
     },
     {
-      "name": "气垫粉底",
-      "panel": "CN LUXURY",
+      "name": "PRADA 0度紫润唇膏",
+      "panel": "US MASSTIGE",
       "score": 85
     },
     {
@@ -42,9 +42,9 @@
       "score": 90
     },
     {
-      "name": "Replica Beach Walk",
-      "panel": "US MASSTIGE",
-      "score": 85
+      "name": "Neela Vermeire Creations Neith",
+      "panel": "US LUXURY",
+      "score": 88
     },
     {
       "name": "冰希黎幻彩鎏金香水",
@@ -52,9 +52,9 @@
       "score": 92
     },
     {
-      "name": "国货香水",
-      "panel": "CN MASSTIGE",
-      "score": 88
+      "name": "Jean Paul Gaultier La Favorite",
+      "panel": "US LUXURY",
+      "score": 90
     }
   ],
   "reason": "LLM-generated scores with no decomposable components.",
