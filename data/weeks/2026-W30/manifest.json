@@ -1,0 +1,15 @@
+{
+  "canonical_hash": "6b776e226ba98a06a66153be4785fa90f8d5a85cd5bd3ac188fd4ef13097465c",
+  "data_pointer": "../../week30.json",
+  "date_range": "Jul 20 – Jul 26, 2026",
+  "date_range_cn": "7月20日 – 7月26日",
+  "iso_week": "2026-W30",
+  "note": "Auto-generated from public RSS data using LLM synthesis.",
+  "phase": "auto",
+  "remaining_warnings": 0,
+  "resolved_warnings": [],
+  "schema_version": 3,
+  "scoring_hash": "6e5ad25a0a4fda8ac4e4c443feb8801dd8b1dd2fb3af325e80faa4afb8518e3b",
+  "sources_hash": "91e7933f575870ddc9a42d32db8f53938cae135c2824f7e41e946d471220e816",
+  "week": 30
+}

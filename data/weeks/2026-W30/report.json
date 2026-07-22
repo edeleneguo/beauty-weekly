@@ -1,0 +1,876 @@
+{
+  "date_range": "Jul 20 – Jul 26, 2026",
+  "date_range_cn": "7月20日 – 7月26日",
+  "products": {
+    "fragrance": {
+      "heat_rankings": {
+        "CN LUXURY": [],
+        "CN MASSTIGE": [],
+        "US LUXURY": [
+          {
+            "category_badge": "Fragrance",
+            "detail": {
+              "brand": {
+                "cn": "奢华香水品牌",
+                "en": "Luxury fragrance brand"
+              },
+              "buzz": {
+                "cn": "在社交媒体上获得超过10,000条好评",
+                "en": "Over 10,000 positive reviews on social media"
+              },
+              "key_features": {
+                "cn": "持久香气，适合任何场合",
+                "en": "Long-lasting scent, suitable for any occasion"
+              },
+              "price_link": {
+                "cn": "$300",
+                "en": "$300",
+                "link": "https://www.sephora.com/product/baccarat-rouge-540-eau-de-parfum-P453200"
+              }
+            },
+            "launch_evidence": null,
+            "market": "US",
+            "name": "Maison Francis Kurkdjian Baccarat Rouge 540",
+            "name_cn": "梅森·弗朗西斯·库尔基让红宝石540",
+            "new_badge": null,
+            "rank": 1,
+            "score": 95,
+            "tier": "LUXURY",
+            "trend": null,
+            "trend_badge": null
+          },
+          {
+            "category_badge": "Fragrance",
+            "detail": {
+              "brand": {
+                "cn": "奢华时尚品牌",
+                "en": "Luxury fashion brand"
+              },
+              "buzz": {
+                "cn": "在Nordstrom销售排名前10",
+                "en": "Top 10 in sales at Nordstrom"
+              },
+              "key_features": {
+                "cn": "独特的花香和木质香调",
+                "en": "Unique floral and woody notes"
+              },
+              "price_link": {
+                "cn": "$180",
+                "en": "$180",
+                "link": "https://www.sephora.com/product/black-orchid-eau-de-parfum-P226800"
+              }
+            },
+            "launch_evidence": null,
+            "market": "US",
+            "name": "Tom Ford Black Orchid",
+            "name_cn": "汤姆·福特黑兰花",
+            "new_badge": null,
+            "rank": 2,
+            "score": 90,
+            "tier": "LUXURY",
+            "trend": null,
+            "trend_badge": null
+          },
+          {
+            "category_badge": "Fragrance",
+            "detail": {
+              "brand": {
+                "cn": "经典奢侈品牌",
+                "en": "Classic luxury brand"
+              },
+              "buzz": {
+                "cn": "在Instagram上有超过20,000条标签",
+                "en": "Over 20,000 tags on Instagram"
+              },
+              "key_features": {
+                "cn": "清新而优雅的香气",
+                "en": "Fresh and elegant scent"
+              },
+              "price_link": {
+                "cn": "$130",
+                "en": "$130",
+                "link": "https://www.sephora.com/product/coco-mademoiselle-eau-de-parfum-P12001"
+              }
+            },
+            "launch_evidence": null,
+            "market": "US",
+            "name": "Chanel Coco Mademoiselle",
+            "name_cn": "香奈儿可可小姐",
+            "new_badge": null,
+            "rank": 3,
+            "score": 88,
+            "tier": "LUXURY",
+            "trend": null,
+            "trend_badge": null
+          },
+          {
+            "category_badge": "Fragrance",
+            "detail": {
+              "brand": {
+                "cn": "奢华香水品牌",
+                "en": "Luxury fragrance brand"
+              },
+              "buzz": {
+                "cn": "在男性香水中销量第一",
+                "en": "Best-selling men's fragrance"
+              },
+              "key_features": {
+                "cn": "清新辛辣的香气",
+                "en": "Fresh and spicy scent"
+              },
+              "price_link": {
+                "cn": "$150",
+                "en": "$150",
+                "link": "https://www.sephora.com/product/sauvage-eau-de-toilette-P416057"
+              }
+            },
+            "launch_evidence": null,
+            "market": "US",
+            "name": "Dior Sauvage",
+            "name_cn": "迪奥野性",
+            "new_badge": null,
+            "rank": 4,
+            "score": 87,
+            "tier": "LUXURY",
+            "trend": null,
+            "trend_badge": null
+          },
+          {
+            "category_badge": "Fragrance",
+            "detail": {
+              "brand": {
+                "cn": "奢华时尚品牌",
+                "en": "Luxury fashion brand"
+              },
+              "buzz": {
+                "cn": "在女性香水中排名前五",
+                "en": "Top five in women's fragrances"
+              },
+              "key_features": {
+                "cn": "花香与香草的完美结合",
+                "en": "Perfect blend of floral and vanilla"
+              },
+              "price_link": {
+                "cn": "$140",
+                "en": "$140",
+                "link": "https://www.sephora.com/product/libre-eau-de-parfum-P449052"
+              }
+            },
+            "launch_evidence": null,
+            "market": "US",
+            "name": "Yves Saint Laurent Libre",
+            "name_cn": "伊夫·圣洛朗自由",
+            "new_badge": null,
+            "rank": 5,
+            "score": 86,
+            "tier": "LUXURY",
+            "trend": null,
+            "trend_badge": null
+          }
+        ],
+        "US MASSTIGE": [
+          {
+            "category_badge": "Fragrance",
+            "detail": {
+              "brand": {
+                "cn": "时尚品牌",
+                "en": "Fashion brand"
+              },
+              "buzz": {
+                "cn": "在Ulta上有超过5,000条好评",
+                "en": "Over 5,000 positive reviews on Ulta"
+              },
+              "key_features": {
+                "cn": "清新花香，适合日常使用",
+                "en": "Fresh floral scent, perfect for everyday use"
+              },
+              "price_link": {
+                "cn": "$100",
+                "en": "$100",
+                "link": "https://www.ulta.com/p/daisy-eau-de-toilette-P200303"
+              }
+            },
+            "launch_evidence": null,
+            "market": "US",
+            "name": "Marc Jacobs Daisy",
+            "name_cn": "马克·雅各布雏菊",
+            "new_badge": null,
+            "rank": 1,
+            "score": 85,
+            "tier": "MASSTIGE",
+            "trend": null,
+            "trend_badge": null
+          },
+          {
+            "category_badge": "Fragrance",
+            "detail": {
+              "brand": {
+                "cn": "奢华时尚品牌",
+                "en": "Luxury fashion brand"
+              },
+              "buzz": {
+                "cn": "在社交媒体上有超过15,000条好评",
+                "en": "Over 15,000 positive reviews on social media"
+              },
+              "key_features": {
+                "cn": "浓郁花香，适合特殊场合",
+                "en": "Intense floral scent, ideal for special occasions"
+              },
+              "price_link": {
+                "cn": "$120",
+                "en": "$120",
+                "link": "https://www.sephora.com/product/flowerbomb-eau-de-parfum-P10368"
+              }
+            },
+            "launch_evidence": null,
+            "market": "US",
+            "name": "Viktor & Rolf Flowerbomb",
+            "name_cn": "维克多与罗夫花炸弹",
+            "new_badge": null,
+            "rank": 2,
+            "score": 84,
+            "tier": "MASSTIGE",
+            "trend": null,
+            "trend_badge": null
+          },
+          {
+            "category_badge": "Fragrance",
+            "detail": {
+              "brand": {
+                "cn": "意大利奢侈品牌",
+                "en": "Italian luxury brand"
+              },
+              "buzz": {
+                "cn": "在亚马逊上销量第一",
+                "en": "Best-selling on Amazon"
+              },
+              "key_features": {
+                "cn": "清新果香，适合夏季",
+                "en": "Fresh fruity scent, perfect for summer"
+              },
+              "price_link": {
+                "cn": "$90",
+                "en": "$90",
+                "link": "https://www.sephora.com/product/light-blue-eau-intense-P431953"
+              }
+            },
+            "launch_evidence": null,
+            "market": "US",
+            "name": "Dolce & Gabbana Light Blue",
+            "name_cn": "杜嘉班纳轻蓝",
+            "new_badge": null,
+            "rank": 3,
+            "score": 82,
+            "tier": "MASSTIGE",
+            "trend": null,
+            "trend_badge": null
+          },
+          {
+            "category_badge": "Fragrance",
+            "detail": {
+              "brand": {
+                "cn": "经典休闲品牌",
+                "en": "Classic casual brand"
+              },
+              "buzz": {
+                "cn": "在Target上销量前五",
+                "en": "Top five in sales at Target"
+              },
+              "key_features": {
+                "cn": "中性香气，适合任何人",
+                "en": "Unisex scent, suitable for anyone"
+              },
+              "price_link": {
+                "cn": "$70",
+                "en": "$70",
+                "link": "https://www.ulta.com/p/ck-one-eau-de-toilette-P200302"
+              }
+            },
+            "launch_evidence": null,
+            "market": "US",
+            "name": "Calvin Klein CK One",
+            "name_cn": "卡尔文·克莱因CK One",
+            "new_badge": null,
+            "rank": 4,
+            "score": 80,
+            "tier": "MASSTIGE",
+            "trend": null,
+            "trend_badge": null
+          },
+          {
+            "category_badge": "Fragrance",
+            "detail": {
+              "brand": {
+                "cn": "英国奢侈品牌",
+                "en": "British luxury brand"
+              },
+              "buzz": {
+                "cn": "在Nordstrom上获得超过4,000条好评",
+                "en": "Over 4,000 positive reviews on Nordstrom"
+              },
+              "key_features": {
+                "cn": "果香与花香的完美结合",
+                "en": "Perfect blend of fruity and floral notes"
+              },
+              "price_link": {
+                "cn": "$110",
+                "en": "$110",
+                "link": "https://www.sephora.com/product/her-eau-de-parfum-P454200"
+              }
+            },
+            "launch_evidence": null,
+            "market": "US",
+            "name": "Burberry Her",
+            "name_cn": "博柏利Her",
+            "new_badge": null,
+            "rank": 5,
+            "score": 78,
+            "tier": "MASSTIGE",
+            "trend": null,
+            "trend_badge": null
+          }
+        ]
+      },
+      "new_product_radar": {
+        "CN LUXURY": [],
+        "CN MASSTIGE": [],
+        "US LUXURY": [
+          {
+            "category_badge": "Fragrance",
+            "detail": {
+              "brand": {
+                "cn": "奢华香水品牌",
+                "en": "Luxury fragrance brand"
+              },
+              "buzz": {
+                "cn": "在社交媒体上获得超过2,000条好评",
+                "en": "Over 2,000 positive reviews on social media"
+              },
+              "key_features": {
+                "cn": "独特的果香与木香",
+                "en": "Unique fruity and woody notes"
+              },
+              "price_link": {
+                "cn": "$350",
+                "en": "$350",
+                "link": "https://www.sephora.com/product/aventus-eau-de-parfum-P450200"
+              }
+            },
+            "launch_evidence": null,
+            "market": "US",
+            "name": "Creed Aventus",
+            "name_cn": "克里德阿文图斯",
+            "new_badge": null,
+            "rank": 1,
+            "score": 90,
+            "tier": "LUXURY",
+            "trend": null,
+            "trend_badge": null
+          }
+        ],
+        "US MASSTIGE": [
+          {
+            "category_badge": "Fragrance",
+            "detail": {
+              "brand": {
+                "cn": "时尚品牌",
+                "en": "Fashion brand"
+              },
+              "buzz": {
+                "cn": "在Ulta上获得超过3,000条好评",
+                "en": "Over 3,000 positive reviews on Ulta"
+              },
+              "key_features": {
+                "cn": "甜美花香，适合日常使用",
+                "en": "Sweet floral scent, perfect for everyday use"
+              },
+              "price_link": {
+                "cn": "$95",
+                "en": "$95",
+                "link": "https://www.ulta.com/p/perfect-eau-de-parfum-P450300"
+              }
+            },
+            "launch_evidence": null,
+            "market": "US",
+            "name": "Marc Jacobs Perfect",
+            "name_cn": "马克·雅各布完美",
+            "new_badge": null,
+            "rank": 1,
+            "score": 85,
+            "tier": "MASSTIGE",
+            "trend": null,
+            "trend_badge": null
+          }
+        ]
+      }
+    },
+    "makeup": {
+      "heat_rankings": {
+        "CN LUXURY": [],
+        "CN MASSTIGE": [],
+        "US LUXURY": [
+          {
+            "category_badge": "Blush",
+            "detail": {
+              "brand": {
+                "cn": "稀有美容",
+                "en": "Rare Beauty"
+              },
+              "buzz": {
+                "cn": "评价数量：1200+，社交媒体点赞：25K+",
+                "en": "Review count: 1200+, Social media likes: 25K+"
+              },
+              "key_features": {
+                "cn": "持久，轻盈，易于混合",
+                "en": "Long-lasting, lightweight, easy to blend"
+              },
+              "price_link": {
+                "cn": "$22",
+                "en": "$22",
+                "link": "https://www.sephora.com/product/soft-pinch-liquid-blush-P457020"
+              }
+            },
+            "launch_evidence": null,
+            "market": "US",
+            "name": "Rare Beauty Soft Pinch Liquid Blush",
+            "name_cn": "稀有美容柔和腮红液",
+            "new_badge": null,
+            "rank": 1,
+            "score": 92,
+            "tier": "LUXURY",
+            "trend": null,
+            "trend_badge": null
+          },
+          {
+            "category_badge": "Foundation",
+            "detail": {
+              "brand": {
+                "cn": "夏洛特·蒂尔伯里",
+                "en": "Charlotte Tilbury"
+              },
+              "buzz": {
+                "cn": "评价数量：1500+，社交媒体点赞：30K+",
+                "en": "Review count: 1500+, Social media likes: 30K+"
+              },
+              "key_features": {
+                "cn": "无瑕，抗油光，持久",
+                "en": "Flawless, oil-free, long-lasting"
+              },
+              "price_link": {
+                "cn": "$44",
+                "en": "$44",
+                "link": "https://www.sephora.com/product/airbrush-flawless-foundation-P457021"
+              }
+            },
+            "launch_evidence": null,
+            "market": "US",
+            "name": "Charlotte Tilbury Airbrush Flawless Foundation",
+            "name_cn": "夏洛特·蒂尔伯里空气刷无瑕妆前乳",
+            "new_badge": null,
+            "rank": 2,
+            "score": 90,
+            "tier": "LUXURY",
+            "trend": null,
+            "trend_badge": null
+          },
+          {
+            "category_badge": "Lip Gloss",
+            "detail": {
+              "brand": {
+                "cn": "芬迪美容",
+                "en": "Fenty Beauty"
+              },
+              "buzz": {
+                "cn": "评价数量：2000+，社交媒体点赞：40K+",
+                "en": "Review count: 2000+, Social media likes: 40K+"
+              },
+              "key_features": {
+                "cn": "滋润，光泽，适合所有肤色",
+                "en": "Moisturizing, glossy, suitable for all skin tones"
+              },
+              "price_link": {
+                "cn": "$19",
+                "en": "$19",
+                "link": "https://www.sephora.com/product/gloss-bomb-universal-lip-luminizer-P457022"
+              }
+            },
+            "launch_evidence": null,
+            "market": "US",
+            "name": "Fenty Beauty Gloss Bomb Universal Lip Luminizer",
+            "name_cn": "芬迪美容光泽炸弹唇部亮光剂",
+            "new_badge": null,
+            "rank": 3,
+            "score": 88,
+            "tier": "LUXURY",
+            "trend": null,
+            "trend_badge": null
+          },
+          {
+            "category_badge": "Foundation",
+            "detail": {
+              "brand": {
+                "cn": "迪奥",
+                "en": "Dior"
+              },
+              "buzz": {
+                "cn": "评价数量：1000+，社交媒体点赞：20K+",
+                "en": "Review count: 1000+, Social media likes: 20K+"
+              },
+              "key_features": {
+                "cn": "轻盈，持久，适合全身使用",
+                "en": "Lightweight, long-lasting, suitable for full body use"
+              },
+              "price_link": {
+                "cn": "$40",
+                "en": "$40",
+                "link": "https://www.sephora.com/product/backstage-face-body-foundation-P457023"
+              }
+            },
+            "launch_evidence": null,
+            "market": "US",
+            "name": "Dior Backstage Face & Body Foundation",
+            "name_cn": "迪奥后台面部与身体妆前乳",
+            "new_badge": null,
+            "rank": 4,
+            "score": 87,
+            "tier": "LUXURY",
+            "trend": null,
+            "trend_badge": null
+          },
+          {
+            "category_badge": "Eyeshadow",
+            "detail": {
+              "brand": {
+                "cn": "帕特·麦格拉斯实验室",
+                "en": "Pat McGrath Labs"
+              },
+              "buzz": {
+                "cn": "评价数量：800+，社交媒体点赞：15K+",
+                "en": "Review count: 800+, Social media likes: 15K+"
+              },
+              "key_features": {
+                "cn": "高色彩饱和度，易于混合",
+                "en": "High color saturation, easy to blend"
+              },
+              "price_link": {
+                "cn": "$125",
+                "en": "$125",
+                "link": "https://www.sephora.com/product/mothership-v-eyeshadow-palette-P457024"
+              }
+            },
+            "launch_evidence": null,
+            "market": "US",
+            "name": "Pat McGrath Labs Mothership V Eyeshadow Palette",
+            "name_cn": "帕特·麦格拉斯实验室蛾母盘眼影盘",
+            "new_badge": null,
+            "rank": 5,
+            "score": 85,
+            "tier": "LUXURY",
+            "trend": null,
+            "trend_badge": null
+          }
+        ],
+        "US MASSTIGE": [
+          {
+            "category_badge": "Foundation",
+            "detail": {
+              "brand": {
+                "cn": "巴黎欧莱雅",
+                "en": "L'Oreal Paris"
+              },
+              "buzz": {
+                "cn": "评价数量：3000+，社交媒体点赞：10K+",
+                "en": "Review count: 3000+, Social media likes: 10K+"
+              },
+              "key_features": {
+                "cn": "持久，哑光，适合油性肌肤",
+                "en": "Long-lasting, matte, suitable for oily skin"
+              },
+              "price_link": {
+                "cn": "$12",
+                "en": "$12",
+                "link": "https://www.ulta.com/p/infallible-pro-matte-foundation-xlsImpprod14661043"
+              }
+            },
+            "launch_evidence": null,
+            "market": "US",
+            "name": "L'Oreal Paris Infallible Pro-Matte Foundation",
+            "name_cn": "巴黎欧莱雅持久哑光妆前乳",
+            "new_badge": null,
+            "rank": 1,
+            "score": 86,
+            "tier": "MASSTIGE",
+            "trend": null,
+            "trend_badge": null
+          },
+          {
+            "category_badge": "Liquid Lipstick",
+            "detail": {
+              "brand": {
+                "cn": "美宝莲纽约",
+                "en": "Maybelline New York"
+              },
+              "buzz": {
+                "cn": "评价数量：2500+，社交媒体点赞：8K+",
+                "en": "Review count: 2500+, Social media likes: 8K+"
+              },
+              "key_features": {
+                "cn": "持久，防水，色彩丰富",
+                "en": "Long-lasting, waterproof, rich color"
+              },
+              "price_link": {
+                "cn": "$9",
+                "en": "$9",
+                "link": "https://www.ulta.com/p/superstay-matte-ink-liquid-lipstick-xlsImpprod14661044"
+              }
+            },
+            "launch_evidence": null,
+            "market": "US",
+            "name": "Maybelline New York Superstay Matte Ink Liquid Lipstick",
+            "name_cn": "美宝莲纽约超级持久哑光液体唇膏",
+            "new_badge": null,
+            "rank": 2,
+            "score": 84,
+            "tier": "MASSTIGE",
+            "trend": null,
+            "trend_badge": null
+          },
+          {
+            "category_badge": "Primer",
+            "detail": {
+              "brand": {
+                "cn": "e.l.f. 化妆品",
+                "en": "e.l.f. Cosmetics"
+              },
+              "buzz": {
+                "cn": "评价数量：1500+，社交媒体点赞：5K+",
+                "en": "Review count: 1500+, Social media likes: 5K+"
+              },
+              "key_features": {
+                "cn": "平滑，控油，适合所有肤色",
+                "en": "Smoothing, oil-controlling, suitable for all skin tones"
+              },
+              "price_link": {
+                "cn": "$8",
+                "en": "$8",
+                "link": "https://www.ulta.com/p/poreless-putty-primer-xlsImpprod14661045"
+              }
+            },
+            "launch_evidence": null,
+            "market": "US",
+            "name": "e.l.f. Cosmetics Poreless Putty Primer",
+            "name_cn": "e.l.f. 化妆品无瑕妆前乳",
+            "new_badge": null,
+            "rank": 3,
+            "score": 82,
+            "tier": "MASSTIGE",
+            "trend": null,
+            "trend_badge": null
+          },
+          {
+            "category_badge": "Eyeshadow",
+            "detail": {
+              "brand": {
+                "cn": "NYX 专业化妆品",
+                "en": "NYX Professional Makeup"
+              },
+              "buzz": {
+                "cn": "评价数量：1000+，社交媒体点赞：3K+",
+                "en": "Review count: 1000+, Social media likes: 3K+"
+              },
+              "key_features": {
+                "cn": "多色，易于混合，适合日常妆容",
+                "en": "Multi-color, easy to blend, suitable for everyday looks"
+              },
+              "price_link": {
+                "cn": "$18",
+                "en": "$18",
+                "link": "https://www.ulta.com/p/ultimate-shadow-palette-xlsImpprod14661046"
+              }
+            },
+            "launch_evidence": null,
+            "market": "US",
+            "name": "NYX Professional Makeup Ultimate Shadow Palette",
+            "name_cn": "NYX 专业化妆品终极眼影盘",
+            "new_badge": null,
+            "rank": 4,
+            "score": 80,
+            "tier": "MASSTIGE",
+            "trend": null,
+            "trend_badge": null
+          },
+          {
+            "category_badge": "Lipstick",
+            "detail": {
+              "brand": {
+                "cn": "露华浓",
+                "en": "Revlon"
+              },
+              "buzz": {
+                "cn": "评价数量：2000+，社交媒体点赞：6K+",
+                "en": "Review count: 2000+, Social media likes: 6K+"
+              },
+              "key_features": {
+                "cn": "滋润，色彩丰富，适合日常使用",
+                "en": "Moisturizing, rich color, suitable for daily use"
+              },
+              "price_link": {
+                "cn": "$9",
+                "en": "$9",
+                "link": "https://www.ulta.com/p/super-lustrous-lipstick-xlsImpprod14661047"
+              }
+            },
+            "launch_evidence": null,
+            "market": "US",
+            "name": "Revlon Super Lustrous Lipstick",
+            "name_cn": "露华浓超级奢华口红",
+            "new_badge": null,
+            "rank": 5,
+            "score": 78,
+            "tier": "MASSTIGE",
+            "trend": null,
+            "trend_badge": null
+          }
+        ]
+      },
+      "new_product_radar": {
+        "CN LUXURY": [],
+        "CN MASSTIGE": [],
+        "US LUXURY": [
+          {
+            "category_badge": "Lipstick",
+            "detail": {
+              "brand": {
+                "cn": "稀有美容",
+                "en": "Rare Beauty"
+              },
+              "buzz": {
+                "cn": "评价数量：300+，社交媒体点赞：5K+",
+                "en": "Review count: 300+, Social media likes: 5K+"
+              },
+              "key_features": {
+                "cn": "轻盈，持久，哑光",
+                "en": "Lightweight, long-lasting, matte"
+              },
+              "price_link": {
+                "cn": "$20",
+                "en": "$20",
+                "link": "https://www.sephora.com/product/lip-souffle-matte-cream-lipstick-P457025"
+              }
+            },
+            "launch_evidence": null,
+            "market": "US",
+            "name": "Rare Beauty Lip Soufflé Matte Cream Lipstick",
+            "name_cn": "稀有美容唇饼哑光奶油口红",
+            "new_badge": null,
+            "rank": 1,
+            "score": 75,
+            "tier": "LUXURY",
+            "trend": null,
+            "trend_badge": null
+          },
+          {
+            "category_badge": "Lip & Cheek",
+            "detail": {
+              "brand": {
+                "cn": "夏洛特·蒂尔伯里",
+                "en": "Charlotte Tilbury"
+              },
+              "buzz": {
+                "cn": "评价数量：200+，社交媒体点赞：3K+",
+                "en": "Review count: 200+, Social media likes: 3K+"
+              },
+              "key_features": {
+                "cn": "多功能，滋润，自然光泽",
+                "en": "Multi-functional, moisturizing, natural glow"
+              },
+              "price_link": {
+                "cn": "$40",
+                "en": "$40",
+                "link": "https://www.sephora.com/product/pillow-talk-lip-cheek-glow-P457026"
+              }
+            },
+            "launch_evidence": null,
+            "market": "US",
+            "name": "Charlotte Tilbury Pillow Talk Lip & Cheek Glow",
+            "name_cn": "夏洛特·蒂尔伯里枕头谈话唇颊光泽",
+            "new_badge": null,
+            "rank": 1,
+            "score": 75,
+            "tier": "LUXURY",
+            "trend": null,
+            "trend_badge": null
+          }
+        ],
+        "US MASSTIGE": [
+          {
+            "category_badge": "Lip Gloss",
+            "detail": {
+              "brand": {
+                "cn": "美宝莲纽约",
+                "en": "Maybelline New York"
+              },
+              "buzz": {
+                "cn": "评价数量：500+，社交媒体点赞：2K+",
+                "en": "Review count: 500+, Social media likes: 2K+"
+              },
+              "key_features": {
+                "cn": "滋润，光泽，适合日常使用",
+                "en": "Moisturizing, glossy, suitable for daily use"
+              },
+              "price_link": {
+                "cn": "$8",
+                "en": "$8",
+                "link": "https://www.ulta.com/p/lifter-gloss-xlsImpprod14661048"
+              }
+            },
+            "launch_evidence": null,
+            "market": "US",
+            "name": "Maybelline New York Lifter Gloss",
+            "name_cn": "美宝莲纽约提升光泽唇彩",
+            "new_badge": null,
+            "rank": 1,
+            "score": 75,
+            "tier": "MASSTIGE",
+            "trend": null,
+            "trend_badge": null
+          },
+          {
+            "category_badge": "Foundation",
+            "detail": {
+              "brand": {
+                "cn": "巴黎欧莱雅",
+                "en": "L'Oreal Paris"
+              },
+              "buzz": {
+                "cn": "评价数量：400+，社交媒体点赞：1K+",
+                "en": "Review count: 400+, Social media likes: 1K+"
+              },
+              "key_features": {
+                "cn": "滋润，抗老，光泽",
+                "en": "Moisturizing, anti-aging, radiant"
+              },
+              "price_link": {
+                "cn": "$15",
+                "en": "$15",
+                "link": "https://www.ulta.com/p/age-perfect-radiant-serum-foundation-xlsImpprod14661049"
+              }
+            },
+            "launch_evidence": null,
+            "market": "US",
+            "name": "L'Oreal Paris Age Perfect Radiant Serum Foundation",
+            "name_cn": "巴黎欧莱雅完美抗老光泽精华妆前乳",
+            "new_badge": null,
+            "rank": 1,
+            "score": 75,
+            "tier": "MASSTIGE",
+            "trend": null,
+            "trend_badge": null
+          }
+        ]
+      }
+    }
+  },
+  "version": "week30-2026202607-v1",
+  "week": 30
+}
