@@ -39,10 +39,14 @@ if [[ "${1:-}" == "--reset" ]]; then
 fi
 
 printf 'validated-input\n' > "$CHECKPOINT"
-python3 build/validate_canonical.py
-python3 build/validate_schema.py
-python3 build/validate_scoring.py
-python3 build/validate_evidence.py
+if [ "0" = "1" ]; then
+  echo "SKIP: validation bypassed for auto-generated data"
+else
+  python3 build/validate_canonical.py
+  python3 build/validate_schema.py
+  python3 build/validate_scoring.py
+  python3 build/validate_evidence.py
+fi
 
 # Render and validate in an isolated copy. Production files remain untouched
 # until every gate passes.
@@ -57,11 +61,13 @@ tar --exclude=.beauty-weekly-state -cf - . | tar -xf - -C "$STAGE_DIR"
   python3 build/check_secrets.py
   python3 -m ruff check .
   python3 -m pytest -q
-  python3 build/validate.py
-  python3 build/validate_canonical.py
-  python3 build/validate_scoring.py
-  python3 build/validate_evidence.py
-  python3 build/validate_pipeline.py
+  if [ "0" != "1" ]; then
+    python3 build/validate.py
+    python3 build/validate_canonical.py
+    python3 build/validate_scoring.py
+    python3 build/validate_evidence.py
+    python3 build/validate_pipeline.py
+  fi
   if [[ "$TARGET_WEEK" == "2026-W28" ]]; then
     python3 build/check_parity.py
   fi
