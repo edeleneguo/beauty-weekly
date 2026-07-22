@@ -256,32 +256,30 @@ jobs:
 
           for name in PAGES:
               for label, url in [('raw', PAGES[name]), ('cdn', CDN[name])]:
-                  try:
-                      req = urllib.request.Request(
-                          url + '?v=' + str(time.time()),
-                          headers={'User-Agent': 'beauty-weekly-verify'},
-                      )
-                      html = urllib.request.urlopen(req, timeout=15).read()
-                      text = html.decode('utf-8', errors='replace')
-
-                      m = re.search(r'Week\s+(\d+)', text)
-                      week_num = m.group(1) if m else '?'
-                      week_ok = week_num == expected_num
-
-                      remote_hash = hashlib.sha256(html).hexdigest()
-                      manifest_hash = manifest.get('artifacts', {}).get(name, {}).get('sha256', '')
-                      hash_ok = remote_hash == manifest_hash if manifest_hash else False
-
-                      status = 'LIVE' if (week_ok and hash_ok) else 'FAILED'
-                      print(f'  {name} ({label}): Week {week_num} (expect {expected_num}) sha256={remote_hash[:16]}... {status}')
-                      if not week_ok:
-                          print(f'    week mismatch: expected {expected_num}, got {week_num}')
-                      if not hash_ok:
-                          print(f'    hash mismatch: remote={remote_hash}, manifest={manifest_hash}')
-                      if not (week_ok and hash_ok):
-                          all_ok = False
-                  except Exception as e:
-                      print(f'  {name} ({label}): ERROR: {e}')
+                  endpoint_ok = False
+                  attempts = 12 if label == 'cdn' else 1
+                  for attempt in range(1, attempts + 1):
+                      try:
+                          req = urllib.request.Request(
+                              url + '?v=' + str(time.time()),
+                              headers={'User-Agent': 'beauty-weekly-verify'},
+                          )
+                          html = urllib.request.urlopen(req, timeout=15).read()
+                          text = html.decode('utf-8', errors='replace')
+                          m = re.search(r'Week\s+(\d+)', text)
+                          week_num = m.group(1) if m else '?'
+                          remote_hash = hashlib.sha256(html).hexdigest()
+                          manifest_hash = manifest.get('artifacts', {}).get(name, {}).get('sha256', '')
+                          endpoint_ok = week_num == expected_num and remote_hash == manifest_hash
+                          status = 'LIVE' if endpoint_ok else f'WAIT {attempt}/{attempts}'
+                          print(f'  {name} ({label}): Week {week_num} (expect {expected_num}) sha256={remote_hash[:16]}... {status}')
+                          if endpoint_ok:
+                              break
+                      except Exception as e:
+                          print(f'  {name} ({label}) attempt {attempt}: ERROR: {e}')
+                      if attempt < attempts:
+                          time.sleep(15)
+                  if not endpoint_ok:
                       all_ok = False
 
           print()
