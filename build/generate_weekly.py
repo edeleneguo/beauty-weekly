@@ -229,14 +229,25 @@ def build_scoring(makeup: dict, fragrance: dict) -> dict:
         for panel in ["us_luxury", "cn_luxury"]:
             products = section.get("heat_rankings", {}).get(panel, [])
             for p in products:
-                all_products.append({
-                    "name": p.get("name", ""),
-                    "panel": panel,
-                    "score": p.get("score", 0),
-                    "has_price": bool(p.get("price")),
-                    "has_url": bool(p.get("url")),
-                    "has_buzz": bool(p.get("buzz_cn") or p.get("buzz_en")),
-                })
+                # Handle both dict and string products from LLM
+                if isinstance(p, str):
+                    all_products.append({
+                        "name": p,
+                        "panel": panel,
+                        "score": 0,
+                        "has_price": False,
+                        "has_url": False,
+                        "has_buzz": False,
+                    })
+                elif isinstance(p, dict):
+                    all_products.append({
+                        "name": p.get("name", ""),
+                        "panel": panel,
+                        "score": p.get("score", 0),
+                        "has_price": bool(p.get("price")),
+                        "has_url": bool(p.get("url")),
+                        "has_buzz": bool(p.get("buzz_cn") or p.get("buzz_en")),
+                    })
     
     return {
         "schema_version": "1.0.0",
