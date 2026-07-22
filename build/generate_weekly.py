@@ -18,11 +18,13 @@ from __future__ import annotations
 import hashlib
 import json
 import os
+import re
 import sys
 import urllib.error
 import urllib.request
 from datetime import date, datetime, timedelta
 from pathlib import Path
+from urllib.parse import urlparse
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
@@ -141,6 +143,15 @@ def _parse_article_date(date_str: str) -> str | None:
     return None
 
 
+def _normalize_slug(url: str) -> str:
+    """Extract and normalize the URL path slug into space-separated words."""
+    path = urlparse(url).path
+    path = re.sub(r"\.[a-z]+$", "", path, flags=re.IGNORECASE)
+    path = re.sub(r"[-_/]", " ", path)
+    path = re.sub(r"[^\w\s]", "", path)
+    return re.sub(r"\s+", " ", path).strip().casefold()
+
+
 def _find_supporting_articles(
     product_name: str,
     product_link: str,
@@ -158,9 +169,14 @@ def _find_supporting_articles(
 
     Matching rules (applied in order):
       1. Product URL is a substring of article URL
-      2. Full normalized product name appears in title or summary
+      2. Full normalized product name appears in title, summary, or
+         URL slug
       3. At least two meaningful product-name tokens (len > 3) appear
-         in title or summary
+         in title, summary, or URL slug
+
+    URL slugs are normalized (hyphens/underscores/punctuation → spaces,
+    casefolded) so that e.g. ``guerlain-rouge-lipstick-editor-review``
+    matches product name "Guerlain Rouge Lipstick".
 
     Avoids overly broad single-token matches.
     Articles matching ``source_url`` are preferred in sort order.
@@ -181,7 +197,8 @@ def _find_supporting_articles(
 
         title = article.get("title", "").lower()
         summary = article.get("summary", "").lower()
-        combined = f"{title} {summary}"
+        url_slug = _normalize_slug(url)
+        combined = f"{title} {summary} {url_slug}"
 
         # 2. Full normalized product name in combined text
         if name_lower in combined:

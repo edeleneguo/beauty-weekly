@@ -617,3 +617,20 @@ class TestFindSupportingArticles:
             source_url="https://elle.com/exact-article",
         )
         assert len(result) == 0
+
+    def test_url_slug_match(self):
+        """Product name must match via normalized URL slug."""
+        from build.generate_weekly import _find_supporting_articles
+
+        articles = [
+            {
+                "title": "Editor Review",
+                "url": "https://elle.com/guerlain-rouge-lipstick-editor-review",
+                "date": "2026-07-20",
+            },
+        ]
+        result = _find_supporting_articles(
+            "Guerlain Rouge Lipstick", "https://sephora.com/test", articles
+        )
+        assert len(result) == 1
+        assert result[0]["url"] == "https://elle.com/guerlain-rouge-lipstick-editor-review"

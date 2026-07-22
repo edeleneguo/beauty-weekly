@@ -753,6 +753,27 @@ class TestGenerateWeeklyHelpers:
         assert len(result) == 1
         assert result[0]["url"] == "https://elle.com/trends"
 
+    def test_find_supporting_articles_by_url_slug(self):
+        from build.generate_weekly import _find_supporting_articles
+
+        articles = [
+            {
+                "title": "Editor Review",
+                "url": "https://elle.com/guerlain-rouge-lipstick-editor-review",
+                "date": "2026-07-20",
+            },
+            {
+                "title": "Hair Trends for Summer",
+                "url": "https://elle.com/hair",
+                "date": "2026-07-19",
+            },
+        ]
+        result = _find_supporting_articles(
+            "Guerlain Rouge Lipstick", "https://sephora.com/test", articles
+        )
+        assert len(result) == 1
+        assert result[0]["url"] == "https://elle.com/guerlain-rouge-lipstick-editor-review"
+
     def test_find_supporting_articles_unrelated_fails(self):
         from build.generate_weekly import _find_supporting_articles
 
