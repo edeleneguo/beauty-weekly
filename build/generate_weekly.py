@@ -656,6 +656,12 @@ Rules:
                 for i, p in enumerate(panel_products, start=1):
                     p["rank"] = i
 
+        # A product can legitimately appear in both weekly heat and new-product
+        # radar.  Treat the heat score as the canonical weekly score so a
+        # stochastic LLM response cannot assign two scores to the same product
+        # in the same market/tier panel.
+        _align_cross_section_scores(result)
+
         # Require every heat_rankings panel to exist and contain >= 1 evidence-backed product
         required_heat_panels = {"US LUXURY", "US MASSTIGE", "CN LUXURY", "CN MASSTIGE"}
         empty_panels = sorted(
@@ -701,6 +707,19 @@ Rules:
         f"heat_rankings panels {{{missing}}} are empty after {_LLM_MAX_ATTEMPTS} "
         f"attempts and market coverage is insufficient: {market_coverage}"
     )
+
+
+def _align_cross_section_scores(result: dict) -> None:
+    """Use the heat score for a product repeated in radar in the same panel."""
+    for panel, radar_products in result["new_product_radar"].items():
+        heat_scores = {
+            p["name"].strip().casefold(): p["score"]
+            for p in result["heat_rankings"].get(panel, [])
+        }
+        for product in radar_products:
+            canonical_score = heat_scores.get(product["name"].strip().casefold())
+            if canonical_score is not None:
+                product["score"] = canonical_score
 
 
 def _build_product_sources(
