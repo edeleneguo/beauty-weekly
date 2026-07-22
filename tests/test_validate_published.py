@@ -1126,7 +1126,7 @@ class TestGenerateProductsBatch:
 
         with (
             patch("build.generate_weekly.call_llm", return_value=self._make_response(heat)),
-            pytest.raises(ValueError, match="empty after filtering"),
+            pytest.raises(ValueError, match="are empty after 3 attempts"),
         ):
             generate_products(raw_data, "makeup", "2026-W30", "test", "2026-07-22T00:00:00Z")
 

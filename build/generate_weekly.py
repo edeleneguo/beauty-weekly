@@ -544,82 +544,108 @@ Rules:
         f"\n\nRaw data (article index, title, summary, URL):\n{articles_text}"
     )
 
-    print(f"  Calling LLM for {category} products...")
-    response = call_llm(system_prompt, user_prompt)
-    data = parse_json_response(response)
+    _LLM_MAX_ATTEMPTS = 3
+    current_user_prompt = user_prompt
+    empty_panels: list[str] = []
 
-    # Transform to canonical format — quarantine unsupported products instead of
-    # failing the entire category
-    result: dict = {"heat_rankings": {}, "new_product_radar": {}}
-    for section in ["heat_rankings", "new_product_radar"]:
-        if section in data:
-            for panel, products in data[section].items():
-                canonical_products: list[dict] = []
-                if isinstance(products, list):
-                    for p in products:
-                        if not isinstance(p, dict):
-                            continue
-                        name = p.get("name", "?")
-                        # Reject products whose source_url is not a collected article URL
-                        source_url = p.get("source_url")
-                        if source_url and source_url not in article_urls:
-                            source_url = None
-                        try:
-                            canonical_products.append(
-                                make_product(
-                                    name=name,
-                                    name_cn=p.get("name_cn") or "",
-                                    rank=p.get("rank", 1),
-                                    score=p.get("score", 75),
-                                    market=p.get("market", panel.split()[0]),
-                                    tier=p.get(
-                                        "tier",
-                                        panel.split()[1] if len(panel.split()) > 1 else "LUXURY",
-                                    ),
-                                    category_badge=p.get("category_badge", ""),
-                                    brand_cn=p.get("brand_cn", ""),
-                                    brand_en=p.get("brand_en", ""),
-                                    buzz_cn=p.get("buzz_cn", ""),
-                                    buzz_en=p.get("buzz_en", ""),
-                                    features_cn=p.get("features_cn", ""),
-                                    features_en=p.get("features_en", ""),
-                                    price_cn=p.get("price_cn", ""),
-                                    price_en=p.get("price_en", ""),
-                                    link=p.get("link", ""),
-                                    topic=category,
-                                    iso_week=iso_week,
-                                    fetched_at=fetched_at,
-                                    articles=articles,
-                                    trend_badge=p.get("trend_badge"),
-                                    new_badge=p.get("new_badge"),
-                                    launch_evidence=p.get("launch_evidence"),
-                                    source_url=source_url,
+    for attempt in range(1, _LLM_MAX_ATTEMPTS + 1):
+        print(f"  Calling LLM for {category} products (attempt {attempt}/{_LLM_MAX_ATTEMPTS})...")
+        response = call_llm(system_prompt, current_user_prompt)
+        data = parse_json_response(response)
+
+        # Transform to canonical format — quarantine unsupported products instead of
+        # failing the entire category
+        result: dict = {"heat_rankings": {}, "new_product_radar": {}}
+        for section in ["heat_rankings", "new_product_radar"]:
+            if section in data:
+                for panel, products in data[section].items():
+                    canonical_products: list[dict] = []
+                    if isinstance(products, list):
+                        for p in products:
+                            if not isinstance(p, dict):
+                                continue
+                            name = p.get("name", "?")
+                            # Reject products whose source_url is not a collected article URL
+                            source_url = p.get("source_url")
+                            if source_url and source_url not in article_urls:
+                                source_url = None
+                            try:
+                                canonical_products.append(
+                                    make_product(
+                                        name=name,
+                                        name_cn=p.get("name_cn") or "",
+                                        rank=p.get("rank", 1),
+                                        score=p.get("score", 75),
+                                        market=p.get("market", panel.split()[0]),
+                                        tier=p.get(
+                                            "tier",
+                                            panel.split()[1]
+                                            if len(panel.split()) > 1
+                                            else "LUXURY",
+                                        ),
+                                        category_badge=p.get("category_badge", ""),
+                                        brand_cn=p.get("brand_cn", ""),
+                                        brand_en=p.get("brand_en", ""),
+                                        buzz_cn=p.get("buzz_cn", ""),
+                                        buzz_en=p.get("buzz_en", ""),
+                                        features_cn=p.get("features_cn", ""),
+                                        features_en=p.get("features_en", ""),
+                                        price_cn=p.get("price_cn", ""),
+                                        price_en=p.get("price_en", ""),
+                                        link=p.get("link", ""),
+                                        topic=category,
+                                        iso_week=iso_week,
+                                        fetched_at=fetched_at,
+                                        articles=articles,
+                                        trend_badge=p.get("trend_badge"),
+                                        new_badge=p.get("new_badge"),
+                                        launch_evidence=p.get("launch_evidence"),
+                                        source_url=source_url,
+                                    )
                                 )
-                            )
-                        except ValueError as e:
-                            print(
-                                f"  WARNING: Quarantining '{name}' in {section}/{panel}: {e}",
-                                file=sys.stderr,
-                            )
-                result[section][panel] = canonical_products
+                            except ValueError as e:
+                                print(
+                                    f"  WARNING: Quarantining '{name}' in {section}/{panel}: {e}",
+                                    file=sys.stderr,
+                                )
+                    result[section][panel] = canonical_products
 
-    # Renumber ranks sequentially per panel after filtering
-    for section in ["heat_rankings", "new_product_radar"]:
-        for panel_products in result[section].values():
-            for i, p in enumerate(panel_products, start=1):
-                p["rank"] = i
+        # Renumber ranks sequentially per panel after filtering
+        for section in ["heat_rankings", "new_product_radar"]:
+            for panel_products in result[section].values():
+                for i, p in enumerate(panel_products, start=1):
+                    p["rank"] = i
 
-    # Require every heat_rankings panel to exist and contain >= 1 evidence-backed product
-    required_heat_panels = {"US LUXURY", "US MASSTIGE", "CN LUXURY", "CN MASSTIGE"}
-    for panel in required_heat_panels:
-        products = result["heat_rankings"].get(panel, [])
-        if not products:
-            raise ValueError(
-                f"heat_rankings panel '{panel}' is empty after filtering. "
-                "Every heat panel must contain at least 1 evidence-backed product."
+        # Require every heat_rankings panel to exist and contain >= 1 evidence-backed product
+        required_heat_panels = {"US LUXURY", "US MASSTIGE", "CN LUXURY", "CN MASSTIGE"}
+        empty_panels = sorted(
+            panel for panel in required_heat_panels if not result["heat_rankings"].get(panel, [])
+        )
+
+        if not empty_panels:
+            return result
+
+        if attempt < _LLM_MAX_ATTEMPTS:
+            missing = ", ".join(empty_panels)
+            retry_note = (
+                f"\n\n[RETRY {attempt}/{_LLM_MAX_ATTEMPTS}] "
+                f"The following required heat panels are empty: {missing}. "
+                "For each empty panel, provide 1–5 products whose names are explicitly "
+                "present in the supplied article titles or summaries and whose source_url "
+                "is an exact URL from the Raw data list. Do not fabricate products or "
+                "source URLs."
+            )
+            current_user_prompt = user_prompt + retry_note
+            print(
+                f"  Retrying: panels {{{missing}}} empty after attempt {attempt}",
+                file=sys.stderr,
             )
 
-    return result
+    missing = ", ".join(empty_panels)
+    raise ValueError(
+        f"heat_rankings panels {{{missing}}} are empty after {_LLM_MAX_ATTEMPTS} "
+        "attempts. Every heat panel must contain at least 1 evidence-backed product."
+    )
 
 
 def _build_product_sources(
