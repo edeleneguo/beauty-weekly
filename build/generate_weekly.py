@@ -145,29 +145,63 @@ def _find_supporting_articles(
     product_name: str,
     product_link: str,
     articles: list[dict],
+    source_url: str | None = None,
 ) -> list[dict]:
     """Find source articles that could support a product claim.
 
     An RSS feed URL is NOT product evidence. Only actual article URLs
     that mention the product name or match the product URL qualify.
 
-    Returns a list of matching articles sorted by date (newest first).
+    ``source_url`` is an optional exact article URL from the LLM output.
+    It is NOT independent evidence — it only restricts/prefers a candidate
+    among articles that satisfy name-based evidence requirements.
+
+    Matching rules (applied in order):
+      1. Product URL is a substring of article URL
+      2. Full normalized product name appears in title or summary
+      3. At least two meaningful product-name tokens (len > 3) appear
+         in title or summary
+
+    Avoids overly broad single-token matches.
+    Articles matching ``source_url`` are preferred in sort order.
+
+    Returns a list of matching articles sorted by date (newest first),
+    with ``source_url`` matches ranked first.
     """
     name_lower = product_name.lower()
+    name_tokens = [w for w in name_lower.split() if len(w) > 3]
     supporting = []
     for article in articles:
-        title = article.get("title", "").lower()
         url = article.get("url", "")
-        _summary = article.get("summary", "").lower()
-        # Match by: product name substring in title, or product URL in article
-        name_match = name_lower in title or any(
-            word in title for word in name_lower.split() if len(word) > 3
-        )
-        url_match = product_link and url and product_link in url
-        if name_match or url_match:
+
+        # 1. Product URL match (strongest signal)
+        if product_link and url and product_link in url:
             supporting.append(article)
-    # Sort by date descending
-    supporting.sort(key=lambda a: a.get("date", ""), reverse=True)
+            continue
+
+        title = article.get("title", "").lower()
+        summary = article.get("summary", "").lower()
+        combined = f"{title} {summary}"
+
+        # 2. Full normalized product name in combined text
+        if name_lower in combined:
+            supporting.append(article)
+            continue
+
+        # 3. At least two meaningful tokens (>3 chars) must match
+        matched_tokens = [t for t in name_tokens if t in combined]
+        if len(matched_tokens) >= 2:
+            supporting.append(article)
+            continue
+
+    # Sort by date descending, preferring source_url matches
+    supporting.sort(
+        key=lambda a: (
+            a.get("date", ""),
+            1 if source_url and a.get("url", "") == source_url else 0,
+        ),
+        reverse=True,
+    )
     return supporting
 
 
@@ -178,6 +212,7 @@ def _make_launch_evidence(
     iso_week: str,
     fetched_at: str,
     articles: list[dict],
+    source_url: str | None = None,
 ) -> dict:
     """Create a Phase 7 launch_evidence dict for a product.
 
@@ -187,7 +222,7 @@ def _make_launch_evidence(
     Raises ValueError if no supporting articles are found, causing
     generation to fail rather than emit fabricated evidence.
     """
-    supporting = _find_supporting_articles(product_name, product_link, articles)
+    supporting = _find_supporting_articles(product_name, product_link, articles, source_url)
 
     if supporting:
         # Use the best matching article as evidence source
@@ -243,12 +278,17 @@ def make_product(
     trend_badge: str | None = None,
     new_badge: str | None = None,
     launch_evidence: dict | None = None,
+    source_url: str | None = None,
 ) -> dict:
     """Create a product in the exact canonical format.
 
     ``launch_evidence`` is auto-generated when not provided, using real
     source articles as backing evidence.  Raises ValueError if no
     supporting articles exist (fail-closed, no fabricated evidence).
+
+    ``source_url`` is an optional exact article URL from the LLM output,
+    used as evidence matching hint; it is NOT retained in the final
+    product dict.
     """
 
     def s(v):
@@ -256,7 +296,7 @@ def make_product(
 
     if launch_evidence is None:
         launch_evidence = _make_launch_evidence(
-            name, link, topic, iso_week, fetched_at, articles or []
+            name, link, topic, iso_week, fetched_at, articles or [], source_url
         )
 
     return {
@@ -290,7 +330,8 @@ def generate_products(
     """
     articles = raw_data.get("articles", [])
     articles_text = "\n".join(
-        f"- [{a['source']}] {a['title']}: {a.get('summary', '')[:200]}" for a in articles[:30]
+        f"[{i}] {a['title']}: {a.get('summary', '')[:200]} (URL: {a['url']})"
+        for i, a in enumerate(articles[:30])
     )
 
     system_prompt = f"""You are a beauty industry analyst. Generate product \
@@ -315,7 +356,8 @@ Output ONLY valid JSON with this exact structure:
         "features_en": "Key features",
         "price_cn": "$XX",
         "price_en": "$XX",
-        "link": "https://www.sephora.com/product/..."
+        "link": "https://www.sephora.com/product/...",
+        "source_url": "https://www.elle.com/beauty/...exact URL from the Raw data list..."
       }}
     ],
     "US MASSTIGE": [...],
@@ -324,7 +366,7 @@ Output ONLY valid JSON with this exact structure:
   }},
   "new_product_radar": {{
     "US LUXURY": [...],
-    "US MASSTIGE": [...],
+    "US MASSTIGE": [],
     "CN LUXURY": [],
     "CN MASSTIGE": []
   }}
@@ -342,12 +384,16 @@ Rules:
   real Chinese-market evidence.  Empty arrays [] are acceptable and
   preferred over fabricated products.
 - Each product link MUST point to a real, accessible product page URL.
-- Do NOT generate products for which you cannot provide a real URL."""
+- Do NOT generate products for which you cannot provide a real URL.
+- IMPORTANT: Each product MUST include a "source_url" field set to the
+  exact URL of one of the articles listed in the Raw data below.  This
+  is the article that supports the product claim.  The source_url value
+  must match the full URL exactly from the supplied list."""
 
     user_prompt = (
         f"Generate {category} product data"
         f" for ISO Week {iso_week} ({en_range})."
-        f"\n\nRaw data:\n{articles_text}"
+        f"\n\nRaw data (article index, title, summary, URL):\n{articles_text}"
     )
 
     print(f"  Calling LLM for {category} products...")
@@ -394,6 +440,7 @@ Rules:
                                         trend_badge=p.get("trend_badge"),
                                         new_badge=p.get("new_badge"),
                                         launch_evidence=p.get("launch_evidence"),
+                                        source_url=p.get("source_url"),
                                     )
                                 )
                             except ValueError as e:

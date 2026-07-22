@@ -512,3 +512,108 @@ class TestParseJsonResponse:
 
         with pytest.raises(ValueError, match="expected a JSON object"):
             parse_json_response('["an", "array"]')
+
+
+# ═══════════════════════════════════════════════════════════════════════
+# _find_supporting_articles evidence matching rules
+# ═══════════════════════════════════════════════════════════════════════
+
+
+class TestFindSupportingArticles:
+    """_find_supporting_articles must enforce name-based evidence rules.
+
+    source_url alone does NOT qualify as evidence.  Every match requires
+    product_link URL substring match, full product name, or >=2 meaningful
+    tokens in title+summary.
+    """
+
+    def test_summary_backed_match(self):
+        """Product name in summary must qualify."""
+        from build.generate_weekly import _find_supporting_articles
+
+        articles = [
+            {
+                "title": "Best Summer Beauty Trends",
+                "url": "https://elle.com/trends",
+                "date": "2026-07-20",
+                "summary": "Rare Beauty Blush is taking over social media this season",
+            },
+            {
+                "title": "Hair Trends for Summer",
+                "url": "https://elle.com/hair",
+                "date": "2026-07-19",
+            },
+        ]
+        result = _find_supporting_articles(
+            "Rare Beauty Blush", "https://sephora.com/test", articles
+        )
+        assert len(result) == 1
+        assert result[0]["url"] == "https://elle.com/trends"
+
+    def test_unrelated_product_rejected(self):
+        """Article about skincare must not match a blush product."""
+        from build.generate_weekly import _find_supporting_articles
+
+        articles = [
+            {
+                "title": "Best Summer Beauty Trends",
+                "url": "https://elle.com/trends",
+                "date": "2026-07-20",
+                "summary": "Everything you need to know about skincare",
+            },
+        ]
+        result = _find_supporting_articles(
+            "Rare Beauty Blush", "https://sephora.com/test", articles
+        )
+        assert len(result) == 0
+
+    def test_single_generic_token_rejected(self):
+        """A single matching token <=3 chars must not qualify."""
+        from build.generate_weekly import _find_supporting_articles
+
+        articles = [
+            {
+                "title": "Color Trends for Summer",
+                "url": "https://elle.com/color",
+                "date": "2026-07-20",
+                "summary": "Bright hues are in this season",
+            },
+        ]
+        result = _find_supporting_articles("Color Wow", "https://sephora.com/test", articles)
+        assert len(result) == 0
+
+    def test_product_link_url_match(self):
+        """Product URL substring in article URL must qualify."""
+        from build.generate_weekly import _find_supporting_articles
+
+        articles = [
+            {
+                "title": "Sephora product page roundup",
+                "url": "https://sephora.com/product/test-item",
+                "date": "2026-07-20",
+            },
+        ]
+        result = _find_supporting_articles(
+            "Unknown Product", "https://sephora.com/product/test-item", articles
+        )
+        assert len(result) == 1
+
+    def test_unrelated_source_url_rejected(self):
+        """source_url matching must NOT qualify an unrelated article."""
+        from build.generate_weekly import _find_supporting_articles
+
+        articles = [
+            {
+                "title": "Completely Unrelated Article",
+                "url": "https://elle.com/exact-article",
+                "date": "2026-07-20",
+                "summary": "No product information here",
+            },
+        ]
+        result = _find_supporting_articles(
+            "Mystery Product",
+            "https://sephora.com/test",
+            articles,
+            source_url="https://elle.com/exact-article",
+        )
+        assert len(result) == 0

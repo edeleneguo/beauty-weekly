@@ -706,8 +706,8 @@ class TestGenerateWeeklyHelpers:
 
         articles = [
             {
-                "title": "Product listing",
-                "url": "https://elle.com/product/sephora.com/product/test",
+                "title": "Sephora product page roundup",
+                "url": "https://sephora.com/product/test",
                 "date": "2026-07-20",
             },
         ]
@@ -728,6 +728,78 @@ class TestGenerateWeeklyHelpers:
         ]
         result = _find_supporting_articles(
             "Completely Different Product", "https://other.com/x", articles
+        )
+        assert len(result) == 0
+
+    def test_find_supporting_articles_by_summary(self):
+        from build.generate_weekly import _find_supporting_articles
+
+        articles = [
+            {
+                "title": "Best Summer Beauty Trends",
+                "url": "https://elle.com/trends",
+                "date": "2026-07-20",
+                "summary": "Rare Beauty Blush is taking over social media this season",
+            },
+            {
+                "title": "Hair Trends for Summer",
+                "url": "https://elle.com/hair",
+                "date": "2026-07-19",
+            },
+        ]
+        result = _find_supporting_articles(
+            "Rare Beauty Blush", "https://sephora.com/test", articles
+        )
+        assert len(result) == 1
+        assert result[0]["url"] == "https://elle.com/trends"
+
+    def test_find_supporting_articles_unrelated_fails(self):
+        from build.generate_weekly import _find_supporting_articles
+
+        articles = [
+            {
+                "title": "Best Summer Beauty Trends",
+                "url": "https://elle.com/trends",
+                "date": "2026-07-20",
+                "summary": "Everything you need to know about skincare",
+            },
+        ]
+        result = _find_supporting_articles(
+            "Rare Beauty Blush", "https://sephora.com/test", articles
+        )
+        assert len(result) == 0
+
+    def test_find_supporting_articles_single_token_not_enough(self):
+        from build.generate_weekly import _find_supporting_articles
+
+        articles = [
+            {
+                "title": "Color Trends for Summer",
+                "url": "https://elle.com/color",
+                "date": "2026-07-20",
+                "summary": "Bright hues are in this season",
+            },
+        ]
+        result = _find_supporting_articles("Color Wow", "https://sephora.com/test", articles)
+        assert len(result) == 0
+
+    def test_find_supporting_articles_unrelated_source_url_rejected(self):
+        """source_url alone must NOT qualify as evidence without name match."""
+        from build.generate_weekly import _find_supporting_articles
+
+        articles = [
+            {
+                "title": "Unrelated Title No Match",
+                "url": "https://elle.com/exact-article",
+                "date": "2026-07-20",
+                "summary": "Some content",
+            },
+        ]
+        result = _find_supporting_articles(
+            "Mystery Product",
+            "https://sephora.com/test",
+            articles,
+            source_url="https://elle.com/exact-article",
         )
         assert len(result) == 0
 
