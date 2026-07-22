@@ -680,10 +680,10 @@ Rules:
         for market in ("US", "CN")
     }
     missing = ", ".join(empty_panels)
-    if all(count > 0 for count in market_coverage.values()):
+    if market_coverage["US"] > 0:
         print(
             f"  WARNING: publishing with evidence gap in panels {{{missing}}}; "
-            "both US and CN markets retain verified product coverage",
+            f"verified market coverage is {market_coverage}",
             file=sys.stderr,
         )
         return result
@@ -921,6 +921,19 @@ def main() -> int:
         fragrance = generate_products(raw_data, "fragrance", iso_week, en_range, fetched_at)
     except ValueError as e:
         print(f"FATAL: {e}", file=sys.stderr)
+        return 1
+
+    cn_product_count = sum(
+        len(products)
+        for category in (makeup, fragrance)
+        for panel, products in category["heat_rankings"].items()
+        if panel.startswith("CN ")
+    )
+    if cn_product_count == 0:
+        print(
+            "FATAL: Weekly report has no evidence-backed Chinese-market heat products",
+            file=sys.stderr,
+        )
         return 1
 
     # Build report.json (exact canonical format)
