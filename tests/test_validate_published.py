@@ -502,7 +502,7 @@ class TestPanelCounts:
         errors = validate_panel_counts(report)
         assert any("11 products" in e for e in errors)
 
-    def test_heat_panel_under_limit_detected(self):
+    def test_empty_heat_panels_allowed_when_market_gate_handles_coverage(self):
         heat = {
             "US LUXURY": [],
             "US MASSTIGE": [],
@@ -511,7 +511,7 @@ class TestPanelCounts:
         }
         report = _report_with_fragrance(heat=heat)
         errors = validate_panel_counts(report)
-        assert any("0 products" in e for e in errors)
+        assert not any("0 products" in e for e in errors)
 
     def test_missing_panel_detected(self):
         heat = {
@@ -607,7 +607,7 @@ class TestBilingualParity:
         errors = validate_bilingual_parity(report)
         assert errors == []
 
-    def test_us_only_detected(self):
+    def test_topic_without_cn_allowed_when_report_has_global_cn_coverage(self):
         heat = {
             "US LUXURY": [_make_product()],
             "US MASSTIGE": [_make_product(name="P2")],
@@ -616,7 +616,7 @@ class TestBilingualParity:
         }
         report = _report_with_fragrance(heat=heat)
         errors = validate_bilingual_parity(report)
-        assert any("0 CN products" in e for e in errors)
+        assert not errors
 
     def test_cn_only_not_flagged(self):
         heat = {

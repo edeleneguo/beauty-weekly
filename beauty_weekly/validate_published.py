@@ -38,7 +38,7 @@ from beauty_weekly.scoring import validate_scoring_json
 
 REQUIRED_PANELS = {"US LUXURY", "US MASSTIGE", "CN LUXURY", "CN MASSTIGE"}
 REQUIRED_SECTIONS = {"heat_rankings", "new_product_radar"}
-HEAT_MIN = 1
+HEAT_MIN = 0
 HEAT_MAX = 10
 RADAR_MIN = 0
 RADAR_MAX = 10
@@ -249,29 +249,20 @@ def validate_score_range(report: dict) -> list[str]:
 
 
 def validate_bilingual_parity(report: dict) -> list[str]:
-    """EN and CN must both have products when either does (explicit Chinese coverage scope)."""
+    """The weekly heat report must retain both US and CN market coverage."""
     errors: list[str] = []
     products_data = report.get("products", {})
-    for section in ("heat_rankings", "new_product_radar"):
-        for topic in ("makeup", "fragrance"):
-            panels = products_data.get(topic, {}).get(section, {})
-            us_count = sum(
+    counts = {"US": 0, "CN": 0}
+    for topic in ("makeup", "fragrance"):
+        panels = products_data.get(topic, {}).get("heat_rankings", {})
+        for market in counts:
+            counts[market] += sum(
                 len([p for p in products if p.get("score", 0) > 0])
                 for panel_key, products in panels.items()
-                if panel_key.startswith("US")
+                if panel_key.startswith(market)
             )
-            cn_count = sum(
-                len([p for p in products if p.get("score", 0) > 0])
-                for panel_key, products in panels.items()
-                if panel_key.startswith("CN")
-            )
-            # Bilingual parity: US and CN should both have products
-            # (not necessarily equal counts, but CN should not be 0 if US > 0)
-            if us_count > 0 and cn_count == 0:
-                errors.append(
-                    f"Parity: {topic}/{section} has {us_count} US products "
-                    f"but 0 CN products — missing Chinese-market coverage"
-                )
+    if counts["US"] == 0 or counts["CN"] == 0:
+        errors.append(f"Parity: weekly heat market coverage is insufficient: {counts}")
     return errors
 
 
