@@ -1465,6 +1465,93 @@ class TestGenerateProductsBatch:
         assert us_lux[2]["name"] == "Product Gamma"
         assert us_lux[2]["rank"] == 3
 
+    def test_invalid_source_url_survives_by_name_match(self):
+        """Invalid source_url (product page) is discarded; product survives
+        only when its name matches a collected article for evidence."""
+        from build.generate_weekly import generate_products
+
+        articles = [
+            {
+                "title": "Rare Beauty Blush Summer Review",
+                "url": "https://elle.com/rare-beauty-review",
+                "date": "Mon, 20 Jul 2026 18:00:00 +0000",
+                "summary": "Rare Beauty Blush is the must-have blush this summer",
+            },
+            {
+                "title": "Fenty Foundation Review",
+                "url": "https://elle.com/fenty-foundation",
+                "date": "Mon, 20 Jul 2026 18:00:00 +0000",
+                "summary": "Fenty Foundation is getting rave reviews",
+            },
+            {
+                "title": "Chanel Lipstick Trends",
+                "url": "https://elle.com/chanel-lipstick",
+                "date": "Mon, 20 Jul 2026 18:00:00 +0000",
+                "summary": "Chanel Lipstick is trending this season",
+            },
+            {
+                "title": "Dior Skincare Essentials",
+                "url": "https://elle.com/dior-skincare",
+                "date": "Mon, 20 Jul 2026 18:00:00 +0000",
+                "summary": "Dior Skincare essential for summer",
+            },
+        ]
+
+        raw_data = {"articles": articles}
+
+        heat = {
+            "US LUXURY": [
+                self._make_llm_product(
+                    "Rare Beauty Blush",
+                    rank=1,
+                    score=88,
+                    source_url="https://sephora.com/product/rare-beauty-blush",
+                    link="https://sephora.com/rare-beauty-blush",
+                ),
+            ],
+            "US MASSTIGE": [
+                self._make_llm_product(
+                    "Fenty Foundation",
+                    source_url="https://elle.com/fenty-foundation",
+                    market="US",
+                    tier="MASSTIGE",
+                    link="https://sephora.com/fenty-foundation",
+                ),
+            ],
+            "CN LUXURY": [
+                self._make_llm_product(
+                    "Chanel Lipstick",
+                    source_url="https://elle.com/chanel-lipstick",
+                    market="CN",
+                    link="https://tmall.com/chanel-lipstick",
+                ),
+            ],
+            "CN MASSTIGE": [
+                self._make_llm_product(
+                    "Dior Skincare",
+                    source_url="https://elle.com/dior-skincare",
+                    market="CN",
+                    tier="MASSTIGE",
+                    link="https://tmall.com/dior-skincare",
+                ),
+            ],
+        }
+
+        with patch("build.generate_weekly.call_llm", return_value=self._make_response(heat)):
+            result = generate_products(
+                raw_data, "makeup", "2026-W30", "test", "2026-07-22T00:00:00Z"
+            )
+
+        us_lux = result["heat_rankings"]["US LUXURY"]
+        assert len(us_lux) == 1
+        assert us_lux[0]["name"] == "Rare Beauty Blush"
+
+        ev = us_lux[0]["launch_evidence"]
+        assert ev is not None
+        assert ev["quarantine_status"] == "verified"
+        assert ev["evidence"] is not None
+        assert ev["evidence"]["url"] == "https://elle.com/rare-beauty-review"
+
 
 # ══════════════════════════════════════════════════════════════════════════════
 # 13. build/validate_published.py CLI script

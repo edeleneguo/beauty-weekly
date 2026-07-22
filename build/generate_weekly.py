@@ -447,13 +447,7 @@ Rules:
                         # Reject products whose source_url is not a collected article URL
                         source_url = p.get("source_url")
                         if source_url and source_url not in article_urls:
-                            print(
-                                f"  WARNING: Quarantining '{name}'"
-                                f" in {section}/{panel}:"
-                                f" source_url '{source_url}' not in collected articles",
-                                file=sys.stderr,
-                            )
-                            continue
+                            source_url = None
                         try:
                             canonical_products.append(
                                 make_product(
