@@ -351,11 +351,14 @@ def generate_products(
     articles = raw_data.get("articles", [])
     article_urls = {a.get("url", "") for a in articles if a.get("url")}
 
-    # Keep both markets visible to the model.  A simple first-N slice allowed
-    # high-volume US feeds to crowd all Chinese evidence out of the prompt.
+    # Keep both markets visible without exceeding providers' request-body
+    # limits. A simple first-N slice crowded out CN evidence; passing the full
+    # expanded reference set caused HTTP 413. Fifteen per market preserves a
+    # balanced 30-record evidence window, while the complete article set is
+    # still retained for post-generation evidence matching.
     cn_articles = [a for a in articles if a.get("market") == "CN"]
     non_cn_articles = [a for a in articles if a.get("market") != "CN"]
-    prompt_articles = cn_articles[:60] + non_cn_articles[:60]
+    prompt_articles = cn_articles[:15] + non_cn_articles[:15]
     articles_text = "\n".join(
         f"[{i}] {a['title']}: {a.get('summary', '')[:200]} (URL: {a['url']})"
         for i, a in enumerate(prompt_articles)
