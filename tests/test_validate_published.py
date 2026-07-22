@@ -22,9 +22,11 @@ Covers:
 
 from __future__ import annotations
 
+import json
 import subprocess
 import sys
 from pathlib import Path
+from unittest.mock import patch
 
 import pytest
 
@@ -905,7 +907,567 @@ class TestGenerateWeeklyHelpers:
 
 
 # ══════════════════════════════════════════════════════════════════════════════
-# 12. build/validate_published.py CLI script
+# 12. generate_products batch behavior
+# ══════════════════════════════════════════════════════════════════════════════
+
+
+class TestGenerateProductsBatch:
+    """Batch processing: quarantine unsupported products, renumber, validate panels."""
+
+    @staticmethod
+    def _make_llm_product(
+        name: str,
+        rank: int = 1,
+        score: int = 85,
+        market: str = "US",
+        tier: str = "LUXURY",
+        category_badge: str = "Foundation",
+        source_url: str = "https://elle.com/article-1",
+        link: str = "https://sephora.com/product",
+    ) -> dict:
+        return {
+            "name": name,
+            "name_cn": name,
+            "rank": rank,
+            "score": score,
+            "market": market,
+            "tier": tier,
+            "category_badge": category_badge,
+            "brand_cn": "brand_cn",
+            "brand_en": "brand_en",
+            "buzz_cn": "buzz_cn",
+            "buzz_en": "buzz_en",
+            "features_cn": "features_cn",
+            "features_en": "features_en",
+            "price_cn": "$50",
+            "price_en": "$50",
+            "link": link,
+            "source_url": source_url,
+        }
+
+    def _make_response(self, heat: dict, radar: dict | None = None) -> str:
+        return json.dumps(
+            {
+                "heat_rankings": heat,
+                "new_product_radar": radar
+                or {k: [] for k in ("US LUXURY", "US MASSTIGE", "CN LUXURY", "CN MASSTIGE")},
+            }
+        )
+
+    def test_mixed_supported_unsupported_retains_supported(self):
+        """Supported products retained; unsupported products quarantined."""
+        from build.generate_weekly import generate_products
+
+        articles = [
+            {
+                "title": "Rare Beauty Blush Launch",
+                "url": "https://elle.com/rare-beauty-blush",
+                "date": "Mon, 20 Jul 2026 18:00:00 +0000",
+                "summary": "Rare Beauty Blush is the hottest new launch",
+            },
+            {
+                "title": "Fenty Foundation Review",
+                "url": "https://elle.com/fenty-foundation",
+                "date": "Mon, 20 Jul 2026 18:00:00 +0000",
+                "summary": "Fenty Foundation is getting rave reviews",
+            },
+            {
+                "title": "Chanel Lipstick Trends",
+                "url": "https://elle.com/chanel-lipstick",
+                "date": "Mon, 20 Jul 2026 18:00:00 +0000",
+                "summary": "Chanel Lipstick is trending this season",
+            },
+            {
+                "title": "Dior Skincare Essentials",
+                "url": "https://elle.com/dior-skincare",
+                "date": "Mon, 20 Jul 2026 18:00:00 +0000",
+                "summary": "Dior Skincare essential for summer",
+            },
+        ]
+
+        raw_data = {"articles": articles}
+
+        heat = {
+            "US LUXURY": [
+                self._make_llm_product(
+                    "Rare Beauty Blush",
+                    rank=1,
+                    score=88,
+                    source_url="https://elle.com/rare-beauty-blush",
+                    link="https://sephora.com/rare-beauty-blush",
+                ),
+                self._make_llm_product(
+                    "Ghost Unsupportable",
+                    rank=2,
+                    score=75,
+                    source_url="https://elle.com/ghost",
+                    link="https://sephora.com/ghost",
+                ),
+            ],
+            "US MASSTIGE": [
+                self._make_llm_product(
+                    "Fenty Foundation",
+                    rank=1,
+                    score=85,
+                    market="US",
+                    tier="MASSTIGE",
+                    source_url="https://elle.com/fenty-foundation",
+                    link="https://sephora.com/fenty-foundation",
+                ),
+            ],
+            "CN LUXURY": [
+                self._make_llm_product(
+                    "Chanel Lipstick",
+                    rank=1,
+                    score=82,
+                    market="CN",
+                    tier="LUXURY",
+                    source_url="https://elle.com/chanel-lipstick",
+                    link="https://tmall.com/chanel-lipstick",
+                ),
+            ],
+            "CN MASSTIGE": [
+                self._make_llm_product(
+                    "Dior Skincare",
+                    rank=1,
+                    score=80,
+                    market="CN",
+                    tier="MASSTIGE",
+                    source_url="https://elle.com/dior-skincare",
+                    link="https://tmall.com/dior-skincare",
+                ),
+            ],
+        }
+
+        with patch("build.generate_weekly.call_llm", return_value=self._make_response(heat)):
+            result = generate_products(
+                raw_data, "makeup", "2026-W30", "test", "2026-07-22T00:00:00Z"
+            )
+
+        # Only Rare Beauty Blush retained in US LUXURY (ghost was quarantined)
+        us_lux = result["heat_rankings"]["US LUXURY"]
+        assert len(us_lux) == 1
+        assert us_lux[0]["name"] == "Rare Beauty Blush"
+        assert us_lux[0]["rank"] == 1
+
+        # Other panels unchanged
+        assert result["heat_rankings"]["US MASSTIGE"][0]["name"] == "Fenty Foundation"
+        assert result["heat_rankings"]["CN LUXURY"][0]["name"] == "Chanel Lipstick"
+        assert result["heat_rankings"]["CN MASSTIGE"][0]["name"] == "Dior Skincare"
+
+    def test_all_unsupported_heat_panel_raises(self):
+        """All products unsupported => empty heat panel => ValueError."""
+        from build.generate_weekly import generate_products
+
+        articles = [
+            {
+                "title": "Random Content",
+                "url": "https://elle.com/article-1",
+                "date": "Mon, 20 Jul 2026 18:00:00 +0000",
+                "summary": "No product mentions here at all",
+            },
+            {
+                "title": "More Random",
+                "url": "https://elle.com/article-2",
+                "date": "Mon, 20 Jul 2026 18:00:00 +0000",
+                "summary": "Still no product mentions",
+            },
+            {
+                "title": "Other News",
+                "url": "https://elle.com/article-3",
+                "date": "Mon, 20 Jul 2026 18:00:00 +0000",
+                "summary": "Beauty industry trends analysis",
+            },
+            {
+                "title": "Final Article",
+                "url": "https://elle.com/article-4",
+                "date": "Mon, 20 Jul 2026 18:00:00 +0000",
+                "summary": "Market research data",
+            },
+        ]
+
+        raw_data = {"articles": articles}
+
+        heat = {
+            "US LUXURY": [
+                self._make_llm_product(
+                    "Random A",
+                    source_url="https://elle.com/article-1",
+                    link="https://sephora.com/a",
+                ),
+            ],
+            "US MASSTIGE": [
+                self._make_llm_product(
+                    "Random B",
+                    source_url="https://elle.com/article-2",
+                    market="US",
+                    tier="MASSTIGE",
+                    link="https://sephora.com/b",
+                ),
+            ],
+            "CN LUXURY": [
+                self._make_llm_product(
+                    "Random C",
+                    source_url="https://elle.com/article-3",
+                    market="CN",
+                    link="https://tmall.com/c",
+                ),
+            ],
+            "CN MASSTIGE": [
+                self._make_llm_product(
+                    "Random D",
+                    source_url="https://elle.com/article-4",
+                    market="CN",
+                    tier="MASSTIGE",
+                    link="https://tmall.com/d",
+                ),
+            ],
+        }
+
+        with (
+            patch("build.generate_weekly.call_llm", return_value=self._make_response(heat)),
+            pytest.raises(ValueError, match="empty after filtering"),
+        ):
+            generate_products(raw_data, "makeup", "2026-W30", "test", "2026-07-22T00:00:00Z")
+
+    def test_radar_unsupported_becomes_empty(self):
+        """Unsupported radar products are dropped; heat panels must remain intact."""
+        from build.generate_weekly import generate_products
+
+        articles = [
+            {
+                "title": "Rare Beauty Blush Launch",
+                "url": "https://elle.com/rare-beauty-blush",
+                "date": "Mon, 20 Jul 2026 18:00:00 +0000",
+                "summary": "Rare Beauty Blush is the hottest new launch",
+            },
+            {
+                "title": "Fenty Foundation Review",
+                "url": "https://elle.com/fenty-foundation",
+                "date": "Mon, 20 Jul 2026 18:00:00 +0000",
+                "summary": "Fenty Foundation is getting rave reviews",
+            },
+            {
+                "title": "Chanel Lipstick Trends",
+                "url": "https://elle.com/chanel-lipstick",
+                "date": "Mon, 20 Jul 2026 18:00:00 +0000",
+                "summary": "Chanel Lipstick is trending this season",
+            },
+            {
+                "title": "Dior Skincare Essentials",
+                "url": "https://elle.com/dior-skincare",
+                "date": "Mon, 20 Jul 2026 18:00:00 +0000",
+                "summary": "Dior Skincare essential for summer",
+            },
+            {
+                "title": "Random Unrelated",
+                "url": "https://elle.com/random",
+                "date": "Mon, 20 Jul 2026 18:00:00 +0000",
+                "summary": "Unrelated content",
+            },
+        ]
+
+        raw_data = {"articles": articles}
+
+        heat = {
+            "US LUXURY": [
+                self._make_llm_product(
+                    "Rare Beauty Blush",
+                    source_url="https://elle.com/rare-beauty-blush",
+                    link="https://sephora.com/rare-beauty-blush",
+                ),
+            ],
+            "US MASSTIGE": [
+                self._make_llm_product(
+                    "Fenty Foundation",
+                    source_url="https://elle.com/fenty-foundation",
+                    market="US",
+                    tier="MASSTIGE",
+                    link="https://sephora.com/fenty-foundation",
+                ),
+            ],
+            "CN LUXURY": [
+                self._make_llm_product(
+                    "Chanel Lipstick",
+                    source_url="https://elle.com/chanel-lipstick",
+                    market="CN",
+                    link="https://tmall.com/chanel-lipstick",
+                ),
+            ],
+            "CN MASSTIGE": [
+                self._make_llm_product(
+                    "Dior Skincare",
+                    source_url="https://elle.com/dior-skincare",
+                    market="CN",
+                    tier="MASSTIGE",
+                    link="https://tmall.com/dior-skincare",
+                ),
+            ],
+        }
+
+        radar = {
+            "US LUXURY": [
+                self._make_llm_product(
+                    "Radar Ghost",
+                    source_url="https://elle.com/random",
+                    link="https://sephora.com/radar-ghost",
+                ),
+            ],
+            "US MASSTIGE": [
+                self._make_llm_product(
+                    "Radar Ghost 2",
+                    source_url="https://elle.com/random",
+                    market="US",
+                    tier="MASSTIGE",
+                    link="https://sephora.com/radar-ghost2",
+                ),
+            ],
+            "CN LUXURY": [
+                self._make_llm_product(
+                    "Radar Ghost 3",
+                    source_url="https://elle.com/random",
+                    market="CN",
+                    link="https://tmall.com/radar-ghost3",
+                ),
+            ],
+            "CN MASSTIGE": [
+                self._make_llm_product(
+                    "Radar Ghost 4",
+                    source_url="https://elle.com/random",
+                    market="CN",
+                    tier="MASSTIGE",
+                    link="https://tmall.com/radar-ghost4",
+                ),
+            ],
+        }
+
+        with patch("build.generate_weekly.call_llm", return_value=self._make_response(heat, radar)):
+            result = generate_products(
+                raw_data, "makeup", "2026-W30", "test", "2026-07-22T00:00:00Z"
+            )
+
+        # Heat panels intact
+        assert len(result["heat_rankings"]["US LUXURY"]) == 1
+        assert result["heat_rankings"]["US LUXURY"][0]["name"] == "Rare Beauty Blush"
+
+        # Radar panels should be empty — all radar products were unsupported
+        for panel_key in ("US LUXURY", "US MASSTIGE", "CN LUXURY", "CN MASSTIGE"):
+            assert result["new_product_radar"][panel_key] == [], (
+                f"Radar panel '{panel_key}' should be empty"
+            )
+
+    def test_non_collected_source_url_rejected(self):
+        """Product with source_url not in collected articles must be quarantined."""
+        from build.generate_weekly import generate_products
+
+        articles = [
+            {
+                "title": "Beauty Roundup July 2026",
+                "url": "https://elle.com/beauty-roundup",
+                "date": "Mon, 20 Jul 2026 18:00:00 +0000",
+                "summary": "Rare Beauty Blush is the hottest new launch. "
+                "Fenty Foundation is getting rave reviews. "
+                "Chanel Lipstick is trending this season. "
+                "Dior Skincare essential for summer.",
+            },
+        ]
+
+        raw_data = {"articles": articles}
+
+        heat = {
+            "US LUXURY": [
+                self._make_llm_product(
+                    "Rare Beauty Blush",
+                    source_url="https://elle.com/beauty-roundup",
+                    link="https://sephora.com/rare-beauty-blush",
+                ),
+                self._make_llm_product(
+                    "Fake Source Product",
+                    rank=2,
+                    score=70,
+                    source_url="https://fabricated.example.com/not-collected",
+                    link="https://sephora.com/fake",
+                ),
+            ],
+            "US MASSTIGE": [
+                self._make_llm_product(
+                    "Fenty Foundation",
+                    source_url="https://elle.com/beauty-roundup",
+                    market="US",
+                    tier="MASSTIGE",
+                    link="https://sephora.com/fenty-foundation",
+                ),
+            ],
+            "CN LUXURY": [
+                self._make_llm_product(
+                    "Chanel Lipstick",
+                    source_url="https://elle.com/beauty-roundup",
+                    market="CN",
+                    link="https://tmall.com/chanel-lipstick",
+                ),
+            ],
+            "CN MASSTIGE": [
+                self._make_llm_product(
+                    "Dior Skincare",
+                    source_url="https://elle.com/beauty-roundup",
+                    market="CN",
+                    tier="MASSTIGE",
+                    link="https://tmall.com/dior-skincare",
+                ),
+            ],
+        }
+
+        with patch("build.generate_weekly.call_llm", return_value=self._make_response(heat)):
+            result = generate_products(
+                raw_data, "makeup", "2026-W30", "test", "2026-07-22T00:00:00Z"
+            )
+
+        # The product with non-collected source_url must be absent
+        names = [p["name"] for p in result["heat_rankings"]["US LUXURY"]]
+        assert "Rare Beauty Blush" in names
+        assert "Fake Source Product" not in names
+
+        # Renumbering: only Rare Beauty Blush left, should be rank 1
+        assert result["heat_rankings"]["US LUXURY"][0]["rank"] == 1
+
+    def test_renumbering_after_filtering(self):
+        """Ranks must be sequential starting from 1 after quarantine filtering."""
+        from build.generate_weekly import generate_products
+
+        articles = [
+            {
+                "title": "Product Alpha Review",
+                "url": "https://elle.com/alpha",
+                "date": "Mon, 20 Jul 2026 18:00:00 +0000",
+                "summary": "Product Alpha is amazing",
+            },
+            {
+                "title": "Product Beta Launch",
+                "url": "https://elle.com/beta",
+                "date": "Mon, 20 Jul 2026 18:00:00 +0000",
+                "summary": "Product Beta is new",
+            },
+            {
+                "title": "Product Gamma News",
+                "url": "https://elle.com/gamma",
+                "date": "Mon, 20 Jul 2026 18:00:00 +0000",
+                "summary": "Product Gamma is trending",
+            },
+            {
+                "title": "Product Delta Report",
+                "url": "https://elle.com/delta",
+                "date": "Mon, 20 Jul 2026 18:00:00 +0000",
+                "summary": "Product Delta analysis",
+            },
+            {
+                "title": "Random Unrelated",
+                "url": "https://elle.com/random",
+                "date": "Mon, 20 Jul 2026 18:00:00 +0000",
+                "summary": "No product mention",
+            },
+            {
+                "title": "Chanel Lipstick China Launch",
+                "url": "https://elle.com/chanel-china",
+                "date": "Mon, 20 Jul 2026 18:00:00 +0000",
+                "summary": "Chanel Lipstick is launching in China",
+            },
+            {
+                "title": "Dior Skincare China Report",
+                "url": "https://elle.com/dior-china",
+                "date": "Mon, 20 Jul 2026 18:00:00 +0000",
+                "summary": "Dior Skincare is growing in China",
+            },
+        ]
+
+        raw_data = {"articles": articles}
+
+        heat = {
+            "US LUXURY": [
+                self._make_llm_product(
+                    "Product Alpha",
+                    rank=1,
+                    score=95,
+                    source_url="https://elle.com/alpha",
+                    link="https://sephora.com/alpha",
+                ),
+                self._make_llm_product(
+                    "Ghost Mid",
+                    rank=2,
+                    score=85,
+                    source_url="https://elle.com/random",
+                    link="https://sephora.com/ghost-mid",
+                ),
+                self._make_llm_product(
+                    "Product Beta",
+                    rank=3,
+                    score=80,
+                    source_url="https://elle.com/beta",
+                    link="https://sephora.com/beta",
+                ),
+                self._make_llm_product(
+                    "Ghost End",
+                    rank=4,
+                    score=70,
+                    source_url="https://elle.com/random",
+                    link="https://sephora.com/ghost-end",
+                ),
+                self._make_llm_product(
+                    "Product Gamma",
+                    rank=5,
+                    score=65,
+                    source_url="https://elle.com/gamma",
+                    link="https://sephora.com/gamma",
+                ),
+            ],
+            "US MASSTIGE": [
+                self._make_llm_product(
+                    "Product Delta",
+                    rank=1,
+                    score=80,
+                    market="US",
+                    tier="MASSTIGE",
+                    source_url="https://elle.com/delta",
+                    link="https://sephora.com/delta",
+                ),
+            ],
+            "CN LUXURY": [
+                self._make_llm_product(
+                    "Chanel Lipstick",
+                    source_url="https://elle.com/chanel-china",
+                    market="CN",
+                    link="https://tmall.com/chanel-lipstick",
+                ),
+            ],
+            "CN MASSTIGE": [
+                self._make_llm_product(
+                    "Dior Skincare",
+                    source_url="https://elle.com/dior-china",
+                    market="CN",
+                    tier="MASSTIGE",
+                    link="https://tmall.com/dior-skincare",
+                ),
+            ],
+        }
+
+        with patch("build.generate_weekly.call_llm", return_value=self._make_response(heat)):
+            result = generate_products(
+                raw_data, "makeup", "2026-W30", "test", "2026-07-22T00:00:00Z"
+            )
+
+        us_lux = result["heat_rankings"]["US LUXURY"]
+        # Ghost Mid and Ghost End were quarantined (source_url not in article_urls)
+        # Retained: Product Alpha (rank 1), Product Beta (rank 2), Product Gamma (rank 3)
+        assert len(us_lux) == 3
+        assert us_lux[0]["name"] == "Product Alpha"
+        assert us_lux[0]["rank"] == 1
+        assert us_lux[1]["name"] == "Product Beta"
+        assert us_lux[1]["rank"] == 2
+        assert us_lux[2]["name"] == "Product Gamma"
+        assert us_lux[2]["rank"] == 3
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+# 13. build/validate_published.py CLI script
 # ══════════════════════════════════════════════════════════════════════════════
 
 

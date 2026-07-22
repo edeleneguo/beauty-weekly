@@ -343,9 +343,14 @@ def generate_products(
     """Generate products for a category using LLM, returning canonical format.
 
     Every product receives non-null launch_evidence backed by real source
-    articles.  Generation FAILS if source articles cannot support products.
+    articles.  Unsupported products are quarantined (dropped) with a stderr
+    warning; the remaining products are renumbered sequentially per panel.
+    Every heat_rankings panel must retain at least 1 evidence-backed product
+    or generation fails.  Radar panels may be empty.
     """
     articles = raw_data.get("articles", [])
+    article_urls = {a.get("url", "") for a in articles if a.get("url")}
+
     articles_text = "\n".join(
         f"[{i}] {a['title']}: {a.get('summary', '')[:200]} (URL: {a['url']})"
         for i, a in enumerate(articles[:30])
@@ -417,53 +422,83 @@ Rules:
     response = call_llm(system_prompt, user_prompt)
     data = parse_json_response(response)
 
-    # Transform to canonical format — fail if articles cannot support products
-    result = {"heat_rankings": {}, "new_product_radar": {}}
+    # Transform to canonical format — quarantine unsupported products instead of
+    # failing the entire category
+    result: dict = {"heat_rankings": {}, "new_product_radar": {}}
     for section in ["heat_rankings", "new_product_radar"]:
         if section in data:
             for panel, products in data[section].items():
-                canonical_products = []
+                canonical_products: list[dict] = []
                 if isinstance(products, list):
                     for p in products:
-                        if isinstance(p, dict):
-                            try:
-                                canonical_products.append(
-                                    make_product(
-                                        name=p.get("name", ""),
-                                        name_cn=p.get("name_cn") or "",
-                                        rank=p.get("rank", 1),
-                                        score=p.get("score", 75),
-                                        market=p.get("market", panel.split()[0]),
-                                        tier=p.get(
-                                            "tier",
-                                            panel.split()[1]
-                                            if len(panel.split()) > 1
-                                            else "LUXURY",
-                                        ),
-                                        category_badge=p.get("category_badge", ""),
-                                        brand_cn=p.get("brand_cn", ""),
-                                        brand_en=p.get("brand_en", ""),
-                                        buzz_cn=p.get("buzz_cn", ""),
-                                        buzz_en=p.get("buzz_en", ""),
-                                        features_cn=p.get("features_cn", ""),
-                                        features_en=p.get("features_en", ""),
-                                        price_cn=p.get("price_cn", ""),
-                                        price_en=p.get("price_en", ""),
-                                        link=p.get("link", ""),
-                                        topic=category,
-                                        iso_week=iso_week,
-                                        fetched_at=fetched_at,
-                                        articles=articles,
-                                        trend_badge=p.get("trend_badge"),
-                                        new_badge=p.get("new_badge"),
-                                        launch_evidence=p.get("launch_evidence"),
-                                        source_url=p.get("source_url"),
-                                    )
+                        if not isinstance(p, dict):
+                            continue
+                        name = p.get("name", "?")
+                        # Reject products whose source_url is not a collected article URL
+                        source_url = p.get("source_url")
+                        if source_url and source_url not in article_urls:
+                            print(
+                                f"  WARNING: Quarantining '{name}'"
+                                f" in {section}/{panel}:"
+                                f" source_url '{source_url}' not in collected articles",
+                                file=sys.stderr,
+                            )
+                            continue
+                        try:
+                            canonical_products.append(
+                                make_product(
+                                    name=name,
+                                    name_cn=p.get("name_cn") or "",
+                                    rank=p.get("rank", 1),
+                                    score=p.get("score", 75),
+                                    market=p.get("market", panel.split()[0]),
+                                    tier=p.get(
+                                        "tier",
+                                        panel.split()[1] if len(panel.split()) > 1 else "LUXURY",
+                                    ),
+                                    category_badge=p.get("category_badge", ""),
+                                    brand_cn=p.get("brand_cn", ""),
+                                    brand_en=p.get("brand_en", ""),
+                                    buzz_cn=p.get("buzz_cn", ""),
+                                    buzz_en=p.get("buzz_en", ""),
+                                    features_cn=p.get("features_cn", ""),
+                                    features_en=p.get("features_en", ""),
+                                    price_cn=p.get("price_cn", ""),
+                                    price_en=p.get("price_en", ""),
+                                    link=p.get("link", ""),
+                                    topic=category,
+                                    iso_week=iso_week,
+                                    fetched_at=fetched_at,
+                                    articles=articles,
+                                    trend_badge=p.get("trend_badge"),
+                                    new_badge=p.get("new_badge"),
+                                    launch_evidence=p.get("launch_evidence"),
+                                    source_url=source_url,
                                 )
-                            except ValueError as e:
-                                print(f"  FAIL: {e}", file=sys.stderr)
-                                raise
+                            )
+                        except ValueError as e:
+                            print(
+                                f"  WARNING: Quarantining '{name}' in {section}/{panel}: {e}",
+                                file=sys.stderr,
+                            )
                 result[section][panel] = canonical_products
+
+    # Renumber ranks sequentially per panel after filtering
+    for section in ["heat_rankings", "new_product_radar"]:
+        for panel_products in result[section].values():
+            for i, p in enumerate(panel_products, start=1):
+                p["rank"] = i
+
+    # Require every heat_rankings panel to exist and contain >= 1 evidence-backed product
+    required_heat_panels = {"US LUXURY", "US MASSTIGE", "CN LUXURY", "CN MASSTIGE"}
+    for panel in required_heat_panels:
+        products = result["heat_rankings"].get(panel, [])
+        if not products:
+            raise ValueError(
+                f"heat_rankings panel '{panel}' is empty after filtering. "
+                "Every heat panel must contain at least 1 evidence-backed product."
+            )
+
     return result
 
 
