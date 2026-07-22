@@ -152,6 +152,124 @@ def _normalize_slug(url: str) -> str:
     return re.sub(r"\s+", " ", path).strip().casefold()
 
 
+_CATEGORY_CUES: dict[str, frozenset[str]] = {
+    "makeup": frozenset(
+        {
+            "makeup",
+            "lipstick",
+            "blush",
+            "foundation",
+            "mascara",
+            "eyeshadow",
+            "contour",
+            "highlighter",
+            "bronzer",
+            "concealer",
+            "lip gloss",
+            "eyeliner",
+            "brow",
+            "powder",
+            "lip",
+            "eye",
+            "face",
+            "skin care",
+            "beauty",
+            "彩妆",
+            "美妆",
+            "口红",
+            "唇膏",
+            "唇釉",
+            "唇泥",
+            "腮红",
+            "粉底",
+            "气垫",
+            "睫毛膏",
+            "眼影",
+            "眼线",
+            "遮瑕",
+            "高光",
+            "修容",
+        }
+    ),
+    "fragrance": frozenset(
+        {
+            "fragrance",
+            "perfume",
+            "cologne",
+            "scent",
+            "oud",
+            "eau de parfum",
+            "eau de toilette",
+            "edp",
+            "edt",
+            "aromatic",
+            "notes",
+            "sillage",
+            "spray",
+            "mist",
+            "香",
+            "香水",
+            "淡香水",
+            "浓香水",
+        }
+    ),
+}
+
+
+def _score_article_relevance(article: dict, category: str) -> int:
+    """Score how relevant an article is to a given beauty category.
+
+    Returns an integer relevance score.  Higher means more relevant.
+    The score is based on keyword matches in the title and summary.
+    Equal-score ordering is NOT determined here — callers must use a
+    stable sort key (e.g. insertion order) to preserve determinism.
+    """
+    cues = _CATEGORY_CUES.get(category, frozenset())
+    if not cues:
+        return 0
+
+    title = article.get("title", "").lower()
+    summary = article.get("summary", "").lower()
+    combined = f"{title} {summary}"
+
+    score = 0
+    for cue in cues:
+        if cue in combined:
+            score += 1
+    return score
+
+
+def _select_category_relevant_articles(
+    articles: list[dict],
+    category: str,
+    max_cn: int = 15,
+    max_non_cn: int = 15,
+) -> list[dict]:
+    """Select up to *max_cn* CN and *max_non_cn* non-CN articles that are
+    most relevant to *category*.
+
+    Articles are scored by ``_score_article_relevance``.  Within the same
+    score tier the original relative order (insertion order) is preserved
+    so that the result is deterministic for a given input list.
+
+    The complete ``articles`` list is still available for post-generation
+    evidence matching — this function only constrains the *prompt* window.
+    """
+    cn: list[tuple[int, int, dict]] = []
+    non_cn: list[tuple[int, int, dict]] = []
+
+    for idx, article in enumerate(articles):
+        score = _score_article_relevance(article, category)
+        bucket = cn if article.get("market") == "CN" else non_cn
+        bucket.append((score, idx, article))
+
+    # Sort descending by score, then ascending by insertion index (stable)
+    cn.sort(key=lambda t: (-t[0], t[1]))
+    non_cn.sort(key=lambda t: (-t[0], t[1]))
+
+    return [a for _, _, a in cn[:max_cn]] + [a for _, _, a in non_cn[:max_non_cn]]
+
+
 def _find_supporting_articles(
     product_name: str,
     product_link: str,
@@ -351,14 +469,12 @@ def generate_products(
     articles = raw_data.get("articles", [])
     article_urls = {a.get("url", "") for a in articles if a.get("url")}
 
-    # Keep both markets visible without exceeding providers' request-body
-    # limits. A simple first-N slice crowded out CN evidence; passing the full
-    # expanded reference set caused HTTP 413. Fifteen per market preserves a
-    # balanced 30-record evidence window, while the complete article set is
-    # still retained for post-generation evidence matching.
-    cn_articles = [a for a in articles if a.get("market") == "CN"]
-    non_cn_articles = [a for a in articles if a.get("market") != "CN"]
-    prompt_articles = cn_articles[:15] + non_cn_articles[:15]
+    # Category-aware selection: pick articles whose titles/summaries
+    # contain category-relevant cues (makeup vs fragrance keywords) so
+    # that the LLM prompt includes evidence proportional to the topic
+    # rather than simply taking the first 15 per market.  The full
+    # article set is still retained for post-generation evidence matching.
+    prompt_articles = _select_category_relevant_articles(articles, category)
     articles_text = "\n".join(
         f"[{i}] {a['title']}: {a.get('summary', '')[:200]} (URL: {a['url']})"
         for i, a in enumerate(prompt_articles)

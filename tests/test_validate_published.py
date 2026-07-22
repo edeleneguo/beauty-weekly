@@ -1554,7 +1554,166 @@ class TestGenerateProductsBatch:
 
 
 # ══════════════════════════════════════════════════════════════════════════════
-# 13. build/validate_published.py CLI script
+# 13. Category-aware article relevance selection
+# ══════════════════════════════════════════════════════════════════════════════
+
+
+class TestCategoryAwareArticleSelection:
+    """Verify _select_category_relevant_articles surfaces category-relevant
+    CN/US articles that would be missed by a naive first-15 slice, while
+    maintaining the 30-record bound and deterministic ordering."""
+
+    @staticmethod
+    def _make_article(title: str, url: str, market: str, summary: str = "") -> dict:
+        return {"title": title, "url": url, "market": market, "summary": summary}
+
+    def test_relevant_cn_luxury_makeup_article_past_first_15(self):
+        """A CN makeup article at index 20 should enter the prompt when the
+        first 15 CN articles are all fragrance-related."""
+        from build.generate_weekly import _select_category_relevant_articles
+
+        # 16 CN articles: first 15 are fragrance, last one is makeup
+        frag_cn = [
+            self._make_article(
+                f"Fragrance CN {i}",
+                f"https://cn.example.com/frag-{i}",
+                "CN",
+                f"perfume release {i}",
+            )
+            for i in range(15)
+        ]
+        makeup_cn = [
+            self._make_article(
+                "Lipstick Launch CN",
+                "https://cn.example.com/lipstick",
+                "CN",
+                "New luxury lipstick collection",
+            )
+        ]
+        articles = (
+            frag_cn
+            + makeup_cn
+            + [
+                self._make_article(
+                    "US Makeup Roundup",
+                    "https://us.example.com/makeup",
+                    "US",
+                    "Foundation and blush review",
+                ),
+            ]
+        )
+
+        selected = _select_category_relevant_articles(articles, "makeup")
+        selected_urls = [a["url"] for a in selected]
+
+        # The makeup-relevant CN article should be selected
+        assert "https://cn.example.com/lipstick" in selected_urls
+        # Fragrance-only CN articles should be deprioritized / dropped
+        assert "https://cn.example.com/frag-14" not in selected_urls
+
+    def test_relevant_us_article_past_first_15(self):
+        """A US fragrance article at index 20 should enter the prompt when
+        the first 15 US articles are all makeup-related."""
+        from build.generate_weekly import _select_category_relevant_articles
+
+        makeup_us = [
+            self._make_article(
+                f"Makeup US {i}",
+                f"https://us.example.com/makeup-{i}",
+                "US",
+                f"lipstick review {i}",
+            )
+            for i in range(15)
+        ]
+        fragrance_us = [
+            self._make_article(
+                "Perfume Launch US",
+                "https://us.example.com/perfume",
+                "US",
+                "New eau de parfum fragrance release",
+            )
+        ]
+        articles = (
+            [
+                self._make_article(
+                    "CN Makeup Article",
+                    "https://cn.example.com/mk",
+                    "CN",
+                    "blush collection",
+                ),
+            ]
+            + makeup_us
+            + fragrance_us
+        )
+
+        selected = _select_category_relevant_articles(articles, "fragrance")
+        selected_urls = [a["url"] for a in selected]
+
+        assert "https://us.example.com/perfume" in selected_urls
+        assert "https://us.example.com/makeup-14" not in selected_urls
+
+    def test_30_record_bound_respected(self):
+        """At most 15 CN + 15 non-CN = 30 articles returned."""
+        from build.generate_weekly import _select_category_relevant_articles
+
+        articles = [
+            self._make_article(
+                f"Article {i}",
+                f"https://example.com/{i}",
+                "CN" if i < 30 else "US",
+                f"fragrance perfume {i}",
+            )
+            for i in range(60)
+        ]
+
+        selected = _select_category_relevant_articles(articles, "fragrance")
+        cn_count = sum(1 for a in selected if a.get("market") == "CN")
+        non_cn_count = sum(1 for a in selected if a.get("market") != "CN")
+
+        assert cn_count <= 15
+        assert non_cn_count <= 15
+        assert len(selected) <= 30
+
+    def test_stable_ordering_for_equal_scores(self):
+        """Articles with identical relevance scores keep their original order."""
+        from build.generate_weekly import _select_category_relevant_articles
+
+        articles = [
+            self._make_article(
+                f"Generic News {i}",
+                f"https://news.example.com/{i}",
+                "CN",
+                "Industry analysis",
+            )
+            for i in range(20)
+        ]
+
+        selected = _select_category_relevant_articles(articles, "makeup")
+        selected_urls = [a["url"] for a in selected]
+
+        # All have score 0 — first 15 in insertion order should be kept
+        assert len(selected) == 15
+        for i in range(15):
+            assert selected_urls[i] == f"https://news.example.com/{i}"
+
+    def test_empty_articles_returns_empty(self):
+        from build.generate_weekly import _select_category_relevant_articles
+
+        assert _select_category_relevant_articles([], "makeup") == []
+
+    def test_fewer_than_max_articles_returns_all(self):
+        from build.generate_weekly import _select_category_relevant_articles
+
+        articles = [
+            self._make_article("Frag A", "https://a.com", "CN", "perfume"),
+            self._make_article("Frag B", "https://b.com", "US", "cologne"),
+        ]
+        selected = _select_category_relevant_articles(articles, "fragrance")
+        assert len(selected) == 2
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+# 14. build/validate_published.py CLI script
 # ══════════════════════════════════════════════════════════════════════════════
 
 
