@@ -368,6 +368,43 @@ class TestPagesBuildWait:
         )
 
 
+CI_WORKFLOW_PATH = os.path.join(ROOT, ".github", "workflows", "ci.yml")
+DEPLOY_WORKFLOW_PATH = os.path.join(ROOT, ".github", "workflows", "weekly-deploy.yml")
+
+
+class TestCIBaselineWeek:
+    """CI quality gate must pin a known-good canonical fixture week."""
+
+    @pytest.fixture(scope="class")
+    def ci_workflow_raw(self) -> str:
+        with open(CI_WORKFLOW_PATH, encoding="utf-8") as f:
+            return f.read()
+
+    def test_ci_has_w28_baseline(self, ci_workflow_raw: str):
+        assert "BEAUTY_WEEKLY_WEEK: 2026-W28" in ci_workflow_raw, (
+            "ci job must set BEAUTY_WEEKLY_WEEK=2026-W28 for the quality gate"
+        )
+
+    def test_ci_has_historical_fixture_flag(self, ci_workflow_raw: str):
+        assert "BEAUTY_WEEKLY_HISTORICAL_FIXTURE: 1" in ci_workflow_raw, (
+            "ci job must set BEAUTY_WEEKLY_HISTORICAL_FIXTURE=1 for the quality gate"
+        )
+
+    def test_weekly_deploy_no_historical_fixture_flag(self):
+        with open(DEPLOY_WORKFLOW_PATH, encoding="utf-8") as f:
+            deploy_raw = f.read()
+        assert "BEAUTY_WEEKLY_HISTORICAL_FIXTURE" not in deploy_raw, (
+            "weekly-deploy must not set BEAUTY_WEEKLY_HISTORICAL_FIXTURE"
+        )
+
+    def test_weekly_deploy_no_hardcoded_w28(self):
+        with open(DEPLOY_WORKFLOW_PATH, encoding="utf-8") as f:
+            deploy_raw = f.read()
+        assert "2026-W28" not in deploy_raw, (
+            "weekly-deploy must not hardcode 2026-W28; it must validate the target week"
+        )
+
+
 class TestVerification:
     """Verification must check both ISO week and SHA256 hash."""
 

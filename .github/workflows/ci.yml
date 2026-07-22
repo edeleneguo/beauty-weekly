@@ -49,7 +49,10 @@ jobs:
       - name: Ruff lint
         run: ruff check .
 
-      - name: Full fail-closed quality gate
+      - name: Historical fixture regression gate
+        env:
+          BEAUTY_WEEKLY_WEEK: 2026-W28
+          BEAUTY_WEEKLY_HISTORICAL_FIXTURE: 1
         run: ./build/check.sh
 
   weekly-update:

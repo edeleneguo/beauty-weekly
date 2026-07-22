@@ -110,7 +110,8 @@ def _load_data() -> dict:
 
 
 def _read_html(filename: str) -> str:
-    path = os.path.join(ROOT, filename)
+    output_dir = os.environ.get("BEAUTY_WEEKLY_OUTPUT_DIR") or ROOT
+    path = os.path.join(output_dir, filename)
     with open(path, "r", encoding="utf-8") as f:
         return f.read()
 

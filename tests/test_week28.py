@@ -1154,3 +1154,47 @@ class TestHeatPanelNotes:
             for panel, products in data["products"][topic]["heat_rankings"].items():
                 real = [p for p in products if p.get("score", 0) > 0]
                 assert len(real) <= 10, f"{topic}/heat/{panel}: {len(real)} products (max 10)"
+
+
+# ═══════════════════════════════════════════════════════════════════════
+# 13. Isolated render validation (BEAUTY_WEEKLY_OUTPUT_DIR)
+# ═══════════════════════════════════════════════════════════════════════
+
+
+class TestIsolatedRenderValidation:
+    """validate.py must read HTML from BEAUTY_WEEKLY_OUTPUT_DIR, not from ROOT."""
+
+    def test_validate_reads_from_output_dir(self, html_files):
+        """validate.py _read_html() respects BEAUTY_WEEKLY_OUTPUT_DIR env var.
+
+        Render W28 HTML to a temp dir, set the env var, then call validate.main()
+        and verify it exits cleanly.  Without the env var it would read stale
+        committed HTML and potentially fail.
+        """
+        with tempfile.TemporaryDirectory() as tmpdir:
+            env = os.environ.copy()
+            env["BEAUTY_WEEKLY_WEEK"] = "2026-W28"
+            env["BEAUTY_WEEKLY_OUTPUT_DIR"] = tmpdir
+            # First render to the temp dir
+            render_result = subprocess.run(
+                [sys.executable, os.path.join(ROOT, "build", "render.py")],
+                capture_output=True,
+                text=True,
+                cwd=ROOT,
+                env=env,
+            )
+            assert render_result.returncode == 0, (
+                f"render.py failed:\n{render_result.stdout}\n{render_result.stderr}"
+            )
+            # Then validate against the freshly rendered HTML
+            result = subprocess.run(
+                [sys.executable, os.path.join(ROOT, "build", "validate.py")],
+                capture_output=True,
+                text=True,
+                cwd=ROOT,
+                env=env,
+            )
+            assert result.returncode == 0, (
+                f"validate.py failed with BEAUTY_WEEKLY_OUTPUT_DIR:\n"
+                f"{result.stdout}\n{result.stderr}"
+            )
