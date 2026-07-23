@@ -12,7 +12,8 @@ The target month is resolved dynamically via ``beauty_weekly.month``:
 
 Only replaces Sections 03 (heat rankings) and 04 (new product radar).
 All other content (banner, news, trends, appendix, CSS, JS) comes from the
-versioned page shells in ``templates/pages``.  Root HTML files are outputs
+versioned page shells in ``templates/pages`` or, when present, a month-specific
+override in ``data/months/<YYYY-MM>/page_shells``. Root HTML files are outputs
 only and are never read as runtime templates.
 
 Design invariants
@@ -476,6 +477,13 @@ def _update_banner_month(html: str, month_label: str, date_range: str) -> str:
     return html
 
 
+def _resolve_template_path(month_label: str, output_name: str) -> str:
+    month_specific = os.path.join(ROOT, "data", "months", month_label, "page_shells", output_name)
+    if os.path.exists(month_specific):
+        return month_specific
+    return os.path.join(PAGE_SHELL_DIR, output_name)
+
+
 def _strip_emoji(text: str) -> str:
     """Remove emoji from value text for clean rendering."""
     return text.replace("🔗", "").replace("❓", "").strip()
@@ -497,7 +505,7 @@ def main() -> None:
             monthly_evidence_available = bool(json.load(f).get("articles"))
 
     for (topic, lang), output_name in PAGES.items():
-        template_path = os.path.join(PAGE_SHELL_DIR, output_name)
+        template_path = _resolve_template_path(month_label, output_name)
         with open(template_path, "r", encoding="utf-8") as f:
             html = f.read()
 

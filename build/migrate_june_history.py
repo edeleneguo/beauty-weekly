@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# ruff: noqa: E501
 """Recover June 2026 English historical candidates from the archive snapshot.
 
 This script reads only the required archive pages from commit ``709c63b``:
@@ -9,9 +10,15 @@ This script reads only the required archive pages from commit ``709c63b``:
 * ``archive/week-27/{index,fragrance}.html``
 
 It extracts English-only Makeup / Fragrance Section 03 and Section 04 items,
-applies the strict W27 item-level date filter, deduplicates repeated products
-across weeks, preserves provenance for every occurrence, and writes the result
-to ``data/months/2026-06/recovered_candidates.json``.
+deduplicates repeated products across weeks, preserves provenance for every
+occurrence, and writes the result to
+``data/months/2026-06/recovered_candidates.json``.
+
+Week 27 requires special handling. Those HTML pages are the verified final
+June month-report shells, not ordinary weekly digests. Heat rankings from the
+final month report are always eligible. New-product radar rows from week 27
+must still carry explicit June launch evidence at either the day level
+(``2026.6.1``) or the month level (``2026.6``).
 """
 
 from __future__ import annotations
@@ -70,14 +77,26 @@ PANEL_LABEL_TO_KEY = {
 
 DETAIL_KEY_MAP = {
     "price/link": "price_link",
+    "price": "price_link",
+    "product link": "price_link",
+    "link": "price_link",
     "价格": "price_link",
     "key features": "key_features",
     "核心卖点": "key_features",
+    "key notes": "key_features",
+    "notes": "key_features",
     "notes & longevity": "key_features",
     "notes & positioning": "key_features",
     "buzz/reviews/sales": "buzz",
+    "buzz / heat": "buzz",
+    "heat / buzz": "buzz",
+    "buzz": "buzz",
     "社媒热度": "buzz",
     "brand/positioning": "brand",
+    "brand": "brand",
+    "positioning": "brand",
+    "type": "brand",
+    "launch date": "brand",
     "口碑": "brand",
     "brand/gender/occasion": "brand",
     "launch/category": "brand",
@@ -85,7 +104,7 @@ DETAIL_KEY_MAP = {
     "上市日期": "key_features",
 }
 
-W27_ALLOWED_DATES = {"2026-06-29", "2026-06-30"}
+JUNE_MONTH = "2026-06"
 
 
 def _run_git_show(path: str) -> str:
@@ -138,15 +157,39 @@ def _extract_section(content: str, section_key: str) -> str:
         body_end = min(candidates) if candidates else len(content)
         return content[body_start + 1 : body_end]
 
+    for heading_match in re.finditer(
+        r'<div\s+class="section-title"[^>]*>(.*?)</div>',
+        content,
+        re.DOTALL,
+    ):
+        heading_text = _strip_tags(heading_match.group(1)).upper()
+        if section_key == "heat_rankings":
+            if "HEAT" not in heading_text:
+                continue
+        elif "RADAR" not in heading_text:
+            continue
+        section_start = content.find(f'<div class="{section_class}"', heading_match.end())
+        if section_start == -1 and section_key == "new_product_radar":
+            section_start = content.find('<div class="radar-section', heading_match.end())
+        if section_start == -1:
+            continue
+        next_div_heading = content.find('<div class="section-title">', section_start)
+        next_h2_heading = content.find('<h2 class="section-title"', section_start)
+        appendix = content.find("<!-- APPENDIX", section_start)
+        generic_section = content.find('<div class="section">\n<h3', section_start)
+        candidates = [idx for idx in (next_div_heading, next_h2_heading, appendix, generic_section) if idx != -1]
+        body_end = min(candidates) if candidates else len(content)
+        return content[section_start:body_end]
+
     if section_key == "heat_rankings":
         fallback = re.search(
-            r"<!--.*?Heat.*?-->\s*<div class=\"heat-section\">(.*?)(?=<!--.*?Radar.*?-->)",
+            r"<!--.*?Heat.*?-->\s*(?:<div class=\"section\">.*?<div class=\"heat-section\">|<div class=\"heat-section\">)(.*?)(?=<!--.*?Radar.*?-->|<!--\s+APPENDIX|<div class=\"section\">\s*<h3)",
             content,
             re.DOTALL,
         )
     else:
         fallback = re.search(
-            r"<!--.*?Radar.*?-->\s*(.*?)(?=<!--\s+APPENDIX|<div class=\"section\">\s*<h3)",
+            r"<!--.*?Radar.*?-->\s*(?:<div class=\"section\">)?\s*(.*?)(?=<!--\s+APPENDIX|<div class=\"section\">\s*<h3)",
             content,
             re.DOTALL,
         )
@@ -248,7 +291,7 @@ def _map_detail_key(label_slug: str) -> str | None:
 
 def _extract_iso_dates(text: str) -> list[str]:
     dates: set[str] = set()
-    for year, month, day in re.findall(r"\b(2026)[./-](0?6)[./-](\d{1,2})\b", text):
+    for year, month, day in re.findall(r"(?<!\d)(2026)[./-](0?6)[./-](\d{1,2})", text):
         dates.add(f"{year}-{int(month):02d}-{int(day):02d}")
 
     month_names = {"jun": 6, "june": 6}
@@ -260,6 +303,15 @@ def _extract_iso_dates(text: str) -> list[str]:
         dates.add(f"2026-{int(month):02d}-{int(day):02d}")
 
     return sorted(dates)
+
+
+def _extract_month_markers(text: str) -> list[str]:
+    markers: set[str] = set()
+    for year, month in re.findall(r"(?<!\d)(2026)[./-](0?6)(?![./-]\d)", text):
+        markers.add(f"{year}-{int(month):02d}")
+    if re.search(r"\bJun(?:e)?\s+2026\b", text, re.I):
+        markers.add(JUNE_MONTH)
+    return sorted(markers)
 
 
 def _extract_span_contents(item_html: str, class_name: str) -> str | None:
@@ -298,6 +350,18 @@ def _extract_numeric_score(item_html: str) -> int | None:
     return None
 
 
+def _extract_item_blocks(panel_html: str, section: str) -> list[str]:
+    """Extract product blocks from a panel across legacy and current schemas."""
+    if section == "new_product_radar" and 'class="radar-item"' in panel_html:
+        starts = [m.start() for m in re.finditer(r'<div\s+class="radar-item">', panel_html)]
+        blocks: list[str] = []
+        for idx, start in enumerate(starts):
+            end = starts[idx + 1] if idx + 1 < len(starts) else len(panel_html)
+            blocks.append(panel_html[start:end])
+        return blocks
+    return re.findall(r'<li\s+class="heat-item">(.*?)</li>', panel_html, re.DOTALL)
+
+
 def _parse_item(
     item_html: str,
     *,
@@ -306,14 +370,19 @@ def _parse_item(
     panel: str,
     week: str,
     path: str,
+    item_index: int | None = None,
 ) -> dict[str, Any]:
+    is_legacy_radar = 'class="radar-item"' in item_html
     market_match = re.search(r'<span\s+class="heat-rank\s+(us|cn)"[^>]*>(\d+)</span>', item_html)
     legacy_rank_match = re.search(r'<span\s+class="heat-rank[^"]*"[^>]*>(\d+)</span>', item_html)
-    if not market_match and not legacy_rank_match:
+    if not is_legacy_radar and not market_match and not legacy_rank_match:
         raise ValueError(f"Unable to parse rank/market for {topic} {section} {panel}")
 
     detail = _extract_detail_cells(item_html)
-    if market_match:
+    if is_legacy_radar:
+        rank = item_index or 0
+        market = panel.split()[0]
+    elif market_match:
         rank = int(market_match.group(2))
         market = market_match.group(1).upper()
     else:
@@ -329,17 +398,24 @@ def _parse_item(
         item_html,
     )
     new_badge_match = re.search(r'<span\s+class="heat-new-badge">([^<]+)</span>', item_html)
-    score = _extract_numeric_score(item_html)
+    score = 0 if is_legacy_radar else _extract_numeric_score(item_html)
     product_name_html = _extract_span_contents(item_html, "heat-name")
+    if product_name_html is None and is_legacy_radar:
+        product_name_html = _extract_span_contents(item_html, "radar-name")
     category_match = re.search(r'<span\s+class="heat-cat-badge">([^<]+)</span>', item_html)
     if category_match is None:
         category_match = re.search(r'<span\s+class="prod-cat-tag[^"]*">([^<]+)</span>', item_html)
+    if category_match is None and is_legacy_radar:
+        category_match = re.search(r'<span\s+class="radar-cat">([^<]+)</span>', item_html)
 
     if not product_name_html or score is None:
         raise ValueError(f"Unable to parse core product fields for {topic} {section} {panel}")
 
     combined_text = _strip_tags(item_html)
     explicit_dates = _extract_iso_dates(combined_text)
+    month_markers = _extract_month_markers(combined_text)
+    if explicit_dates:
+        month_markers = sorted(set(month_markers) | {date_value[:7] for date_value in explicit_dates})
     platform_line_match = re.search(
         r'<div\s+class="heat-platform-line">(.*?)</div>',
         item_html,
@@ -384,6 +460,7 @@ def _parse_item(
         "trend_tag": detail.get("key_features", {}).get("trend_tag"),
         "launch_text": launch_text,
         "explicit_dates": explicit_dates,
+        "month_markers": month_markers,
         "detail": {
             "price_text": price_text,
             "price_link": link,
@@ -462,7 +539,11 @@ def _dedupe_candidates(candidates: list[dict[str, Any]]) -> tuple[list[dict[str,
 def _should_include_candidate(week: str, candidate: dict[str, Any]) -> bool:
     if week != "week-27":
         return True
-    return bool(set(candidate["explicit_dates"]) & W27_ALLOWED_DATES)
+    if candidate["section"] == "heat_rankings":
+        return True
+    if any(date_value.startswith(f"{JUNE_MONTH}-") for date_value in candidate["explicit_dates"]):
+        return True
+    return JUNE_MONTH in candidate.get("month_markers", [])
 
 
 def _recover_all_candidates() -> tuple[list[dict[str, Any]], dict[str, Any]]:
@@ -479,12 +560,8 @@ def _recover_all_candidates() -> tuple[list[dict[str, Any]], dict[str, Any]]:
                 if not section_html:
                     continue
                 for panel, panel_html in _extract_panels(section_html):
-                    item_blocks = re.findall(
-                        r'<li\s+class="heat-item">(.*?)</li>',
-                        panel_html,
-                        re.DOTALL,
-                    )
-                    for item_html in item_blocks:
+                    item_blocks = _extract_item_blocks(panel_html, section)
+                    for item_index, item_html in enumerate(item_blocks, start=1):
                         try:
                             candidate = _parse_item(
                                 item_html,
@@ -493,6 +570,7 @@ def _recover_all_candidates() -> tuple[list[dict[str, Any]], dict[str, Any]]:
                                 panel=panel,
                                 week=week,
                                 path=archive_path,
+                                item_index=item_index,
                             )
                         except ValueError:
                             parse_failures += 1
@@ -529,7 +607,10 @@ def main() -> int:
         "window_start": "2026-06-01",
         "window_end": "2026-06-30",
         "included_weeks": ["week-23", "week-25", "week-26", "week-27"],
-        "w27_rule": "Only keep W27 items with explicit item-level June 29 or June 30 dates.",
+        "w27_rule": (
+            "Week-27 heat rankings are preserved as the verified final June month report; "
+            "week-27 radar rows require explicit June day-level or month-level launch evidence."
+        ),
         "summary": summary,
         "candidates": candidates,
     }

@@ -243,16 +243,26 @@ def test_parse_item_handles_week26_legacy_radar_schema_drift(migration_module):
     assert item["launch_text"] == "IP联名新品"
 
 
-def test_week27_filter_requires_item_level_june_29_or_30(migration_module):
+def test_week27_filter_allows_heat_and_june_window_radar(migration_module):
     candidate = {
+        "section": "new_product_radar",
         "explicit_dates": ["2026-06-30"],
+        "month_markers": ["2026-06"],
     }
     excluded = {
-        "explicit_dates": ["2026-06-01"],
+        "section": "new_product_radar",
+        "explicit_dates": [],
+        "month_markers": ["2026-05"],
+    }
+    heat = {
+        "section": "heat_rankings",
+        "explicit_dates": [],
+        "month_markers": [],
     }
 
     assert migration_module._should_include_candidate("week-27", candidate) is True
     assert migration_module._should_include_candidate("week-27", excluded) is False
+    assert migration_module._should_include_candidate("week-27", heat) is True
     assert migration_module._should_include_candidate("week-26", excluded) is True
 
 
@@ -302,3 +312,11 @@ def test_extract_iso_dates_supports_chinese_month_day(migration_module):
     dates = migration_module._extract_iso_dates("Sephora · 6月29日上线 · 补货 6月30日")
 
     assert dates == ["2026-06-29", "2026-06-30"]
+
+
+def test_extract_month_markers_supports_month_level_evidence(migration_module):
+    markers = migration_module._extract_month_markers(
+        "Launch/Category2026.6 Summer collection · June 2026 capsule"
+    )
+
+    assert markers == ["2026-06"]
