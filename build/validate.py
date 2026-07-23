@@ -27,17 +27,19 @@ Implements all IT cross-check rules (all hard-fail, no warnings):
 Exit code 0 = all pass, 1 = failures found.
 """
 
+import calendar
 import json
 import os
 import re
 import sys
-from typing import Any, List
+from typing import Any, List, Optional
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
 
 from beauty_weekly.canonical_adapter import canonical_to_legacy  # noqa: E402
 from beauty_weekly.month import month_report_path  # noqa: E402
+from beauty_weekly.monthly_trend_inference import infer_monthly_historical_trend  # noqa: E402
 
 CANONICAL_PATH = str(month_report_path())
 
@@ -111,6 +113,22 @@ def _read_html(filename: str) -> str:
     path = os.path.join(output_dir, filename)
     with open(path, "r", encoding="utf-8") as f:
         return f.read()
+
+
+def _monthly_expected_trend_tag(topic: str, product: dict[str, Any]) -> Optional[str]:
+    detail = product.get("detail") or {}
+    return infer_monthly_historical_trend(
+        topic,
+        product.get("name", ""),
+        (
+            product.get("trend_tag", ""),
+            product.get("trend_tag_cn", ""),
+            detail.get("brand", {}).get("en", ""),
+            detail.get("buzz", {}).get("en", ""),
+            detail.get("key_features", {}).get("en", ""),
+            detail.get("price_link", {}).get("en", ""),
+        ),
+    )
 
 
 def _extract_section_html(html: str, section_num: int) -> str:
@@ -413,9 +431,18 @@ def _check_data_consistency(data: dict) -> List[ValidationIssue]:
         report_start = date_range.get("start", "")
         report_end = date_range.get("end", "")
     else:
-        # Legacy string format like "Jun 1 – Jun 30, 2026"
-        report_start = str(date_range) if date_range else ""
-        report_end = report_start
+        report_start = ""
+        report_end = ""
+        month_label = str(data.get("month", ""))
+        if re.fullmatch(r"\d{4}-\d{2}", month_label):
+            year, month = int(month_label[:4]), int(month_label[5:7])
+            last_day = calendar.monthrange(year, month)[1]
+            report_start = f"{year}-{month:02d}-01"
+            report_end = f"{year}-{month:02d}-{last_day:02d}"
+        elif date_range:
+            # Legacy string fallback like "Jun 1 – Jun 30, 2026"
+            report_start = str(date_range)
+            report_end = report_start
     if not report_start or not report_end:
         issues.append(
             ValidationIssue(
@@ -777,13 +804,19 @@ def _check_data_consistency(data: dict) -> List[ValidationIssue]:
                 evidence_verified = p.get("quarantine_status") == "verified" or bool(
                     isinstance(launch_evidence, dict) and launch_evidence.get("url")
                 )
-                if (
-                    evidence_verified
-                    and not trend_badge
-                    and not historical_fixture
-                ):
+                expected_monthly_trend = None
+                if os.environ.get("BEAUTY_MONTHLY_MONTH"):
+                    expected_monthly_trend = _monthly_expected_trend_tag(topic, p)
+
+                if evidence_verified and not trend_badge and not historical_fixture:
                     qs = p.get("quarantine_status")
-                    if score > 0 and qs not in ("out-of-window", "unverified"):
+                    missing_expected_monthly_trend = bool(
+                        os.environ.get("BEAUTY_MONTHLY_MONTH") and expected_monthly_trend
+                    )
+                    if score > 0 and qs not in ("out-of-window", "unverified") and (
+                        not os.environ.get("BEAUTY_MONTHLY_MONTH")
+                        or missing_expected_monthly_trend
+                    ):
                         issues.append(
                             ValidationIssue(
                                 "ERROR",

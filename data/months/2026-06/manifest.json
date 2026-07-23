@@ -1,5 +1,5 @@
 {
-  "canonical_hash": "eeba5c3f13c3ae2394731b4f6c9aae4d90b6fb504ee7388a9e30278c23169ec9",
+  "canonical_hash": "ed9893eb40308b1c3127511f9e169db8c8346cdda2e5f29b75a3bf7d2b028262",
   "data_pointer": "../../month2026-06.json",
   "data_sha256": null,
   "date_range": "Jun 1 – Jun 30, 2026",
@@ -14,18 +14,21 @@
   "legacy_fields_isolated": [],
   "migration_deprecation": {},
   "migration_gaps": [
-    "CN panels remain empty unless verified June evidence exists; publication proceeds with truthful sparse-panel notes.",
-    "Fragrance radar launch dates recovered from the archive fell outside the June 1-30 qualification window and were omitted."
+    "Legacy fragrance radar rows did not carry explicit numeric scores; deterministic descending scores were derived from preserved rank order.",
+    "Templates do not model Section 01/02 canonically; verified historical month shells carry those sections."
   ],
   "month": "2026-06",
-  "note": "Deterministic June 2026 monthly report built from historical snapshot recovery with explicit provenance labeling.",
-  "phase": "auto",
+  "note": "Verified June 2026 monthly report restored from historical week-23/week-25/week-26/week-27 HTML snapshots.",
+  "phase": "historical_restored",
   "remaining_warnings": 0,
   "resolved_warnings": [
-    "historical_snapshot_recovery_connected",
-    "sparse_panel_notes_enabled"
+    "historical_month_shells_restored",
+    "week27_heat_rankings_recovered",
+    "cn_market_panels_restored",
+    "product_specific_details_restored"
   ],
   "schema_version": 3,
-  "scoring_hash": "1040d31101087a95a620cad2d37d146f05f6bff06a85264f8607634146b905f2",
-  "sources_hash": "1d291224655ff9f36d290679f58925cf68eb956690c145739b18021086e14034"
+  "scoring_hash": "cfef423ff84049b2918b6ea62d44bcd353c4b493f6ed50e7856c55369d92eb43",
+  "source_reference_hash": "e4fdc3512702a469f9443c4e6c85b0210038f2ce0facfa45ef4634ba38681ef4",
+  "sources_hash": "4a0ab62ef2b70e8732584344c3b9e29cf3ba6e3f5fa671ca673a8672bcb0d9bb"
 }

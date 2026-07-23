@@ -2,63 +2,93 @@
   "canonical_counts": {
     "fragrance": {
       "heat_rankings": {
-        "CN LUXURY": 0,
-        "CN MASSTIGE": 0,
-        "US LUXURY": 2,
-        "US MASSTIGE": 2
+        "CN LUXURY": 2,
+        "CN MASSTIGE": 3,
+        "US LUXURY": 7,
+        "US MASSTIGE": 8
       },
       "new_product_radar": {
         "CN LUXURY": 0,
         "CN MASSTIGE": 0,
-        "US LUXURY": 0,
-        "US MASSTIGE": 0
+        "US LUXURY": 6,
+        "US MASSTIGE": 6
       }
     },
     "makeup": {
       "heat_rankings": {
-        "CN LUXURY": 0,
-        "CN MASSTIGE": 0,
-        "US LUXURY": 3,
-        "US MASSTIGE": 3
+        "CN LUXURY": 10,
+        "CN MASSTIGE": 10,
+        "US LUXURY": 10,
+        "US MASSTIGE": 10
       },
       "new_product_radar": {
-        "CN LUXURY": 0,
-        "CN MASSTIGE": 0,
-        "US LUXURY": 2,
-        "US MASSTIGE": 2
+        "CN LUXURY": 1,
+        "CN MASSTIGE": 2,
+        "US LUXURY": 8,
+        "US MASSTIGE": 6
       }
     }
   },
   "errors": [],
   "month": "2026-06",
   "reference": {
-    "canonical_counts": {
+    "candidate_counts": {
       "fragrance": {
         "heat_rankings": {
-          "CN LUXURY": 0,
-          "CN MASSTIGE": 0,
-          "US LUXURY": 2,
-          "US MASSTIGE": 2
+          "CN LUXURY": 2,
+          "CN MASSTIGE": 3,
+          "US LUXURY": 7,
+          "US MASSTIGE": 8
         },
         "new_product_radar": {
           "CN LUXURY": 0,
           "CN MASSTIGE": 0,
-          "US LUXURY": 0,
-          "US MASSTIGE": 0
+          "US LUXURY": 6,
+          "US MASSTIGE": 6
         }
       },
       "makeup": {
         "heat_rankings": {
-          "CN LUXURY": 0,
-          "CN MASSTIGE": 0,
-          "US LUXURY": 3,
-          "US MASSTIGE": 3
+          "CN LUXURY": 10,
+          "CN MASSTIGE": 10,
+          "US LUXURY": 10,
+          "US MASSTIGE": 10
+        },
+        "new_product_radar": {
+          "CN LUXURY": 1,
+          "CN MASSTIGE": 2,
+          "US LUXURY": 8,
+          "US MASSTIGE": 6
+        }
+      }
+    },
+    "canonical_counts": {
+      "fragrance": {
+        "heat_rankings": {
+          "CN LUXURY": 2,
+          "CN MASSTIGE": 3,
+          "US LUXURY": 7,
+          "US MASSTIGE": 8
         },
         "new_product_radar": {
           "CN LUXURY": 0,
           "CN MASSTIGE": 0,
-          "US LUXURY": 2,
-          "US MASSTIGE": 2
+          "US LUXURY": 6,
+          "US MASSTIGE": 6
+        }
+      },
+      "makeup": {
+        "heat_rankings": {
+          "CN LUXURY": 10,
+          "CN MASSTIGE": 10,
+          "US LUXURY": 10,
+          "US MASSTIGE": 10
+        },
+        "new_product_radar": {
+          "CN LUXURY": 1,
+          "CN MASSTIGE": 2,
+          "US LUXURY": 8,
+          "US MASSTIGE": 6
         }
       }
     },
@@ -66,97 +96,97 @@
       "fragrance": {
         "heat_rankings": {
           "CN LUXURY": {
-            "eligible": 0,
-            "excluded": 2,
-            "reason": "Recovered historical rows remain excluded by current deterministic publication rules (trend taxonomy, score parity, launch qualification, or URL integrity)."
+            "eligible": 2,
+            "excluded": 0,
+            "reason": "Week-27 month-end heat panel preserved as authoritative June baseline."
           },
           "CN MASSTIGE": {
-            "eligible": 0,
-            "excluded": 3,
-            "reason": "Recovered historical rows remain excluded by current deterministic publication rules (trend taxonomy, score parity, launch qualification, or URL integrity)."
+            "eligible": 3,
+            "excluded": 0,
+            "reason": "Week-27 month-end heat panel preserved as authoritative June baseline."
           },
           "US LUXURY": {
-            "eligible": 2,
-            "excluded": 5,
-            "reason": "Recovered historical rows remain excluded by current deterministic publication rules (trend taxonomy, score parity, launch qualification, or URL integrity)."
+            "eligible": 7,
+            "excluded": 0,
+            "reason": "Week-27 month-end heat panel preserved as authoritative June baseline."
           },
           "US MASSTIGE": {
-            "eligible": 2,
-            "excluded": 6,
-            "reason": "Recovered historical rows remain excluded by current deterministic publication rules (trend taxonomy, score parity, launch qualification, or URL integrity)."
+            "eligible": 8,
+            "excluded": 0,
+            "reason": "Week-27 month-end heat panel preserved as authoritative June baseline."
           }
         },
         "new_product_radar": {
           "CN LUXURY": {
             "eligible": 0,
             "excluded": 0,
-            "reason": "No qualifying June launch evidence was preserved in the historical archive."
+            "reason": "No eligible historical June radar rows were recovered for this panel."
           },
           "CN MASSTIGE": {
             "eligible": 0,
             "excluded": 0,
-            "reason": "No qualifying June launch evidence was preserved in the historical archive."
+            "reason": "No eligible historical June radar rows were recovered for this panel."
           },
           "US LUXURY": {
-            "eligible": 0,
-            "excluded": 6,
-            "reason": "Recovered historical rows remain excluded by current deterministic publication rules (trend taxonomy, score parity, launch qualification, or URL integrity)."
+            "eligible": 6,
+            "excluded": 0,
+            "reason": "All eligible historical radar products were preserved."
           },
           "US MASSTIGE": {
-            "eligible": 0,
-            "excluded": 6,
-            "reason": "Recovered historical rows remain excluded by current deterministic publication rules (trend taxonomy, score parity, launch qualification, or URL integrity)."
+            "eligible": 6,
+            "excluded": 0,
+            "reason": "All eligible historical radar products were preserved."
           }
         }
       },
       "makeup": {
         "heat_rankings": {
           "CN LUXURY": {
-            "eligible": 0,
-            "excluded": 15,
-            "reason": "Recovered historical rows remain excluded by current deterministic publication rules (trend taxonomy, score parity, launch qualification, or URL integrity)."
+            "eligible": 10,
+            "excluded": 0,
+            "reason": "Week-27 month-end heat panel preserved as authoritative June baseline."
           },
           "CN MASSTIGE": {
-            "eligible": 0,
-            "excluded": 15,
-            "reason": "Recovered historical rows remain excluded by current deterministic publication rules (trend taxonomy, score parity, launch qualification, or URL integrity)."
+            "eligible": 10,
+            "excluded": 0,
+            "reason": "Week-27 month-end heat panel preserved as authoritative June baseline."
           },
           "US LUXURY": {
-            "eligible": 3,
-            "excluded": 10,
-            "reason": "Recovered historical rows remain excluded by current deterministic publication rules (trend taxonomy, score parity, launch qualification, or URL integrity)."
+            "eligible": 10,
+            "excluded": 0,
+            "reason": "Week-27 month-end heat panel preserved as authoritative June baseline."
           },
           "US MASSTIGE": {
-            "eligible": 3,
-            "excluded": 10,
-            "reason": "Recovered historical rows remain excluded by current deterministic publication rules (trend taxonomy, score parity, launch qualification, or URL integrity)."
+            "eligible": 10,
+            "excluded": 0,
+            "reason": "Week-27 month-end heat panel preserved as authoritative June baseline."
           }
         },
         "new_product_radar": {
           "CN LUXURY": {
-            "eligible": 0,
-            "excluded": 1,
-            "reason": "Recovered historical rows remain excluded by current deterministic publication rules (trend taxonomy, score parity, launch qualification, or URL integrity)."
+            "eligible": 1,
+            "excluded": 0,
+            "reason": "All eligible historical radar products were preserved."
           },
           "CN MASSTIGE": {
-            "eligible": 0,
-            "excluded": 2,
-            "reason": "Recovered historical rows remain excluded by current deterministic publication rules (trend taxonomy, score parity, launch qualification, or URL integrity)."
+            "eligible": 2,
+            "excluded": 0,
+            "reason": "All eligible historical radar products were preserved."
           },
           "US LUXURY": {
-            "eligible": 2,
-            "excluded": 6,
-            "reason": "Recovered historical rows remain excluded by current deterministic publication rules (trend taxonomy, score parity, launch qualification, or URL integrity)."
+            "eligible": 8,
+            "excluded": 0,
+            "reason": "All eligible historical radar products were preserved."
           },
           "US MASSTIGE": {
-            "eligible": 2,
-            "excluded": 4,
-            "reason": "Recovered historical rows remain excluded by current deterministic publication rules (trend taxonomy, score parity, launch qualification, or URL integrity)."
+            "eligible": 6,
+            "excluded": 0,
+            "reason": "All eligible historical radar products were preserved."
           }
         }
       }
     },
-    "generated_at": "2026-07-23T09:35:18Z",
+    "generated_at": "2026-07-23T10:52:46Z",
     "historical_snapshot": "709c63b",
     "historical_snapshot_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
     "month": "2026-06",
@@ -199,40 +229,194 @@
         "trend_cards": 7
       }
     },
+    "source_counts": {
+      "fragrance": {
+        "heat_rankings": {
+          "CN LUXURY": 2,
+          "CN MASSTIGE": 3,
+          "US LUXURY": 7,
+          "US MASSTIGE": 8
+        },
+        "new_product_radar": {
+          "CN LUXURY": 0,
+          "CN MASSTIGE": 0,
+          "US LUXURY": 6,
+          "US MASSTIGE": 6
+        }
+      },
+      "makeup": {
+        "heat_rankings": {
+          "CN LUXURY": 10,
+          "CN MASSTIGE": 10,
+          "US LUXURY": 10,
+          "US MASSTIGE": 10
+        },
+        "new_product_radar": {
+          "CN LUXURY": 1,
+          "CN MASSTIGE": 2,
+          "US LUXURY": 8,
+          "US MASSTIGE": 6
+        }
+      }
+    },
+    "source_manifest": {
+      "per_week": {
+        "week-23": {
+          "fragrance": {
+            "heat_rankings": {
+              "CN LUXURY": 0,
+              "CN MASSTIGE": 0,
+              "US LUXURY": 0,
+              "US MASSTIGE": 0
+            },
+            "new_product_radar": {
+              "CN LUXURY": 0,
+              "CN MASSTIGE": 0,
+              "US LUXURY": 0,
+              "US MASSTIGE": 0
+            }
+          },
+          "makeup": {
+            "heat_rankings": {
+              "CN LUXURY": 0,
+              "CN MASSTIGE": 0,
+              "US LUXURY": 0,
+              "US MASSTIGE": 0
+            },
+            "new_product_radar": {
+              "CN LUXURY": 0,
+              "CN MASSTIGE": 0,
+              "US LUXURY": 0,
+              "US MASSTIGE": 0
+            }
+          }
+        },
+        "week-25": {
+          "fragrance": {
+            "heat_rankings": {
+              "CN LUXURY": 0,
+              "CN MASSTIGE": 0,
+              "US LUXURY": 0,
+              "US MASSTIGE": 0
+            },
+            "new_product_radar": {
+              "CN LUXURY": 0,
+              "CN MASSTIGE": 0,
+              "US LUXURY": 6,
+              "US MASSTIGE": 6
+            }
+          },
+          "makeup": {
+            "heat_rankings": {
+              "CN LUXURY": 0,
+              "CN MASSTIGE": 0,
+              "US LUXURY": 0,
+              "US MASSTIGE": 0
+            },
+            "new_product_radar": {
+              "CN LUXURY": 0,
+              "CN MASSTIGE": 0,
+              "US LUXURY": 0,
+              "US MASSTIGE": 0
+            }
+          }
+        },
+        "week-26": {
+          "fragrance": {
+            "heat_rankings": {
+              "CN LUXURY": 0,
+              "CN MASSTIGE": 0,
+              "US LUXURY": 0,
+              "US MASSTIGE": 0
+            },
+            "new_product_radar": {
+              "CN LUXURY": 0,
+              "CN MASSTIGE": 0,
+              "US LUXURY": 6,
+              "US MASSTIGE": 6
+            }
+          },
+          "makeup": {
+            "heat_rankings": {
+              "CN LUXURY": 5,
+              "CN MASSTIGE": 5,
+              "US LUXURY": 10,
+              "US MASSTIGE": 5
+            },
+            "new_product_radar": {
+              "CN LUXURY": 1,
+              "CN MASSTIGE": 2,
+              "US LUXURY": 3,
+              "US MASSTIGE": 3
+            }
+          }
+        },
+        "week-27": {
+          "fragrance": {
+            "heat_rankings": {
+              "CN LUXURY": 2,
+              "CN MASSTIGE": 3,
+              "US LUXURY": 7,
+              "US MASSTIGE": 8
+            },
+            "new_product_radar": {
+              "CN LUXURY": 0,
+              "CN MASSTIGE": 0,
+              "US LUXURY": 6,
+              "US MASSTIGE": 6
+            }
+          },
+          "makeup": {
+            "heat_rankings": {
+              "CN LUXURY": 10,
+              "CN MASSTIGE": 10,
+              "US LUXURY": 10,
+              "US MASSTIGE": 10
+            },
+            "new_product_radar": {
+              "CN LUXURY": 0,
+              "CN MASSTIGE": 1,
+              "US LUXURY": 6,
+              "US MASSTIGE": 3
+            }
+          }
+        }
+      }
+    },
     "w27_rule": "Week-27 heat rankings are preserved as the verified final June month report; week-27 radar rows require explicit June day-level or month-level launch evidence."
   },
   "rendered_counts": {
     "fragrance": {
       "heat_panels": {
-        "CN LUXURY": 0,
-        "CN MASSTIGE": 0,
-        "US LUXURY": 2,
-        "US MASSTIGE": 2
+        "CN LUXURY": 2,
+        "CN MASSTIGE": 3,
+        "US LUXURY": 7,
+        "US MASSTIGE": 8
       },
       "news_cards": 3,
       "placeholders_present": false,
       "radar_panels": {
         "CN LUXURY": 0,
         "CN MASSTIGE": 0,
-        "US LUXURY": 0,
-        "US MASSTIGE": 0
+        "US LUXURY": 6,
+        "US MASSTIGE": 6
       },
       "trend_cards": 7
     },
     "makeup": {
       "heat_panels": {
-        "CN LUXURY": 0,
-        "CN MASSTIGE": 0,
-        "US LUXURY": 3,
-        "US MASSTIGE": 3
+        "CN LUXURY": 10,
+        "CN MASSTIGE": 10,
+        "US LUXURY": 10,
+        "US MASSTIGE": 10
       },
       "news_cards": 5,
       "placeholders_present": false,
       "radar_panels": {
-        "CN LUXURY": 0,
-        "CN MASSTIGE": 0,
-        "US LUXURY": 2,
-        "US MASSTIGE": 2
+        "CN LUXURY": 1,
+        "CN MASSTIGE": 2,
+        "US LUXURY": 8,
+        "US MASSTIGE": 6
       },
       "trend_cards": 7
     }
