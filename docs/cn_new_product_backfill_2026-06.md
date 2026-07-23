@@ -1,52 +1,54 @@
-# CN New-Product Backfill Audit — 2026-06
+# CN New-Product Backfill Audit - 2026-06
 
-This audit records candidates discovered after the June dashboard was locked.
-It does not alter the published report. A candidate moves into the dashboard
-only after product-page, market, tier, price, and exact-date verification.
+## Result
 
-## Fragrance
+The evidence-reviewed backfill was applied to the June report on 2026-07-23.
+It raised the CN new-product radar from 3 to 8 makeup products and from 0 to
+6 fragrance products.
 
-| Candidate | June evidence | Current status |
-| --- | --- | --- |
-| Dior Sauvage Esprit de Parfum | China News reported the Shanghai Dior preview held on June 8 and named the new fragrance. | Strong CN launch evidence; official CN product page and price still required. |
-| Reimagined Miss Dior fragrance | The same Dior Shanghai preview described the renewed Miss Dior scent. | Strong CN preview evidence; exact commercial SKU and on-sale date still required. |
-| DOCUMENTS Homeland city-limited fragrance series | A June 16 report states that the nine-city limited collection formally launched that day. | Exact launch date available; official or authorized product page still required. |
-| Cloud AiYang Life Four Seasons fragrance series | A June 26 event report documents the Chinese fragrance launch. | Direct article recovered; official product page and price still required. |
-| Acqua di Parma La Caletta limited summer series | Vogue Taiwan's June 9 roundup identifies it as a June fragrance launch. | Greater-China evidence only; Mainland China availability must be verified. |
-| Amouage and other June roundup launches | Vogue Taiwan's June roundup lists additional perfume releases. | Discovery evidence only; each SKU needs separate CN availability and product-page checks. |
+The soft floor remains a discovery trigger rather than a quota. Products were
+added only when a June 2026 Mainland China launch, listing, preorder, preview,
+or credible first verified mention could be tied to the named product.
 
-## Makeup
+## Approved Products
 
-| Candidate | June evidence | Current status |
-| --- | --- | --- |
-| INTO YOU third-generation Float Air Lip Mud | A direct June article reports the product release. | Strong launch evidence; official product page, price, and exact date still required. |
-| Shiseido Maquillage Dramatic Essence Liquid / powder launch | Shiseido Taiwan records a June 2026 launch. | Official Greater-China evidence; Mainland China availability must be verified. |
-| HOURGLASS Veil lipstick launch | A decoded June social article states the lipstick launched. | Credible discovery signal; official product page and exact launch date required. |
-| Dries Van Noten tinted lip balm series | A decoded June social article describes the new five-shade series. | Credible discovery signal; CN retail availability required. |
-| r.e.m. beauty Blur Butter lip product | Hypebae Chinese published a direct June launch article. | Direct editorial evidence; CN retail availability required. |
-| Ebeishi caviar glow cushion | A decoded June launch post identifies the new cushion. | Discovery evidence available; official product page and price required. |
-| Youyi Zhiheng foundation | A decoded June post states that the foundation launched. | Discovery evidence available; official product page and price required. |
-| Flower Knows Unicorn collection products | June social evidence references new blush, cushion, and lip products. | Product-level deduplication and official listing checks required. |
+| Topic | Product | Evidence grade | Date basis |
+| --- | --- | --- | --- |
+| Makeup | Dior Rouge Dior Couture Color Lip Collection | B | Source publication |
+| Makeup | INTO YOU Floating Airy Lip Mud 3.0 | B | Source publication |
+| Makeup | RED CHAMBER Zhiheng Foundation | B | Source publication |
+| Makeup | RIBECS Caviar Glow Flawless Cushion | C | First verified mention |
+| Makeup | Pixian Douban Heritage Lipstick | B | Source publication |
+| Fragrance | Dior Sauvage Extrait | B | Source publication |
+| Fragrance | Dior Paradise Eau de Parfum | B | Source publication |
+| Fragrance | DOCUMENTS Homeland City-Limited Extrait Collection | B | First listing |
+| Fragrance | To Summer x Isabel Marant Blue Heat | B | Source publication |
+| Fragrance | Cloud AiYang Four Seasons Collection | B | Source publication |
+| Fragrance | Love and Deepspace Caleb Midsummer Fruit | A | First listing |
 
-## Source Notes
+When a verified launch did not disclose price or size, the dashboard states
+that the price and size are not publicly disclosed. Known verified prices are
+retained. This makes the product signal useful without inventing commercial
+data.
 
-- China News Dior preview:
-  https://www.chinanews.com.cn/cj/2026/06-11/10638139.shtml
-- DOCUMENTS Homeland launch:
-  https://www.watchtop.com/2026/06/11702/
-- Vogue Taiwan June fragrance roundup:
-  https://www.vogue.com.tw/article/2026-jun-%E9%A6%99%E6%B0%9B%E7%BE%8E%E9%AB%94part1
-- Shiseido Taiwan June launch:
-  https://www.shiseido.com.tw/zh-TW/news/detail/062203
-- INTO YOU launch:
-  https://cn.concall.com/article/detail/article_id/5458
-- r.e.m. beauty launch:
-  https://hypebae.com/sc/2026/6/r-e-m-beauty-ariana-grande-blur-butter-lip-balm-where-to-buy
-- Cloud AiYang launch:
-  https://mtz.china.com/touzi/2026/0626/244621.html
+## Excluded Candidates
 
-## Recommendation
+- Reimagined Miss Dior: the source did not expose a sufficiently exact SKU.
+- Dries Van Noten and r.e.m. beauty: Mainland China availability was not verified.
+- HOURGLASS Veil lipstick: the verified launch fell in July.
+- Flower Knows Unicorn products: the available evidence was only a personal swatch.
+- Acqua di Parma La Caletta: evidence covered Greater China, not Mainland China.
+- BEAST candidate: the direct article did not expose an exact publication date.
 
-Run product-page verification before changing the locked June report. The first
-backfill target is 8 verified CN makeup radar products and 4 verified CN
-fragrance radar products. The soft floor is a research trigger, not a quota.
+## Reproducibility
+
+The reviewed records and rejected candidates are stored in
+`data/months/2026-06/cn_radar_backfill.json`. Run:
+
+```bash
+python3 build/apply_cn_radar_backfill.py --month 2026-06
+BEAUTY_MONTHLY_MONTH=2026-06 ./build/monthly_update.sh
+```
+
+The pre-backfill rollback commit is
+`3315fd8357ee44a652344390098cfaa442aff6ac`.

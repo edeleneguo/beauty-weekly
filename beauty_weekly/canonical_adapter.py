@@ -11,7 +11,8 @@ is fabricated — fields absent from the canonical model are simply omitted.
 Adapter decisions
 ~~~~~~~~~~~~~~~~~
 * ``launch_evidence`` (nested) → flat ``quarantine_status``, ``quarantine_reason``,
-  ``launch_date``, ``evidence_url``, ``evidence_type``, ``evidence_checked_at``.
+  ``launch_date``, ``evidence_grade``, ``date_basis``, ``evidence_url``,
+  ``evidence_type``, ``evidence_checked_at``.
 * ``trend`` (nested, radar products only) → flat ``trend_id``, ``trend_tag``,
   ``trend_tag_cn``, ``trend_rationale``.  Heat products never carried these flat
   fields in the legacy data and do not get them now.
@@ -41,6 +42,8 @@ LAUNCH_EVIDENCE_MAP: dict[str, str] = {
     "quarantine_status": "quarantine_status",
     "quarantine_reason": "quarantine_reason",
     "launch_date": "launch_date",
+    "evidence_grade": "evidence_grade",
+    "date_basis": "date_basis",
 }
 
 EVIDENCE_MAP: dict[str, str] = {

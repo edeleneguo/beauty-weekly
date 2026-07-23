@@ -56,6 +56,7 @@
     }
   ],
   "provenance": {
+    "cn_radar_backfill_reviewed_at": "2026-07-23T16:05:00Z",
     "direct_access_blockers": [],
     "evidence_absences": [
       {
@@ -81,24 +82,24 @@
   "schema_version": "2.0.0",
   "sources": [
     {
-      "checked_at": "2026-07-23T11:12:46Z",
+      "checked_at": "2026-07-23T16:05:00Z",
       "id": "src_0001",
       "provenance": {
-        "reason": "Direct product URL referenced inside the verified historical month report.",
-        "verification_status": "verified"
-      },
-      "type": "product_page",
-      "url": "https://www.lamer.eu/at/en/product/5817/40984/skincolor/the-soft-fluid-long-wear-foundation-spf20/weightless-touch-for-luxurious-long-wear"
-    },
-    {
-      "checked_at": "2026-07-23T11:12:46Z",
-      "id": "src_0002",
-      "provenance": {
-        "reason": "Launch evidence cited by the verified historical month report.",
+        "reason": "Evidence-reviewed June 2026 CN radar backfill source.",
         "verification_status": "verified"
       },
       "type": "editorial",
-      "url": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-27/index.html"
+      "url": "https://beautymatter.com/articles/east-meets-west-to-summer-x-isabel-marant"
+    },
+    {
+      "checked_at": "2026-07-23T16:05:00Z",
+      "id": "src_0002",
+      "provenance": {
+        "reason": "Evidence-reviewed June 2026 CN radar backfill source.",
+        "verification_status": "verified"
+      },
+      "type": "editorial",
+      "url": "https://cn.concall.com/article/detail/article_id/5458"
     },
     {
       "checked_at": "2026-07-23T11:12:46Z",
@@ -108,47 +109,47 @@
         "verification_status": "verified"
       },
       "type": "product_page",
-      "url": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-27/index.html"
+      "url": "https://dedcool.com/products/mochi-milk-fragrance"
     },
     {
       "checked_at": "2026-07-23T11:12:46Z",
       "id": "src_0004",
       "provenance": {
-        "reason": "Direct product URL referenced inside the verified historical month report.",
+        "reason": "Launch evidence cited by the verified historical month report.",
         "verification_status": "verified"
       },
-      "type": "product_page",
-      "url": "https://www.givenchybeauty.cn/p/rose-perfecto-liquid-lip-balm-F20100155.html"
+      "type": "editorial",
+      "url": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-26/fragrance.html"
     },
     {
       "checked_at": "2026-07-23T11:12:46Z",
       "id": "src_0005",
       "provenance": {
-        "reason": "Direct product URL referenced inside the verified historical month report.",
+        "reason": "Launch evidence cited by the verified historical month report.",
         "verification_status": "verified"
       },
-      "type": "product_page",
-      "url": "https://www.yslbeautycn.com/product/index.html?id=Kef2UR5pSGT32h7tnRAtcB"
+      "type": "editorial",
+      "url": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-26/index.html"
     },
     {
       "checked_at": "2026-07-23T11:12:46Z",
       "id": "src_0006",
       "provenance": {
-        "reason": "Direct product URL referenced inside the verified historical month report.",
+        "reason": "Launch evidence cited by the verified historical month report.",
         "verification_status": "verified"
       },
-      "type": "product_page",
-      "url": "https://www.dior.com/en_hk/beauty/products/dior-forever-skin-glow-E000001358.html"
+      "type": "editorial",
+      "url": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-27/fragrance.html"
     },
     {
       "checked_at": "2026-07-23T11:12:46Z",
       "id": "src_0007",
       "provenance": {
-        "reason": "Direct product URL referenced inside the verified historical month report.",
+        "reason": "Launch evidence cited by the verified historical month report.",
         "verification_status": "verified"
       },
-      "type": "product_page",
-      "url": "https://www.lancome-usa.com/makeup/face-makeup/foundation/teint-idole-ultra-wear-foundation/00716-LAC.html"
+      "type": "editorial",
+      "url": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-27/index.html"
     },
     {
       "checked_at": "2026-07-23T11:12:46Z",
@@ -158,7 +159,7 @@
         "verification_status": "verified"
       },
       "type": "product_page",
-      "url": "https://www.chanel.cn/cn/makeup/p/174280/rouge-coco-flash-hydrating-vibrant-shine-lip-colour/"
+      "url": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-27/index.html"
     },
     {
       "checked_at": "2026-07-23T11:12:46Z",
@@ -188,7 +189,7 @@
         "verification_status": "verified"
       },
       "type": "product_page",
-      "url": "https://www.maogepingbeauty.com/makeup/face/powder/179.html"
+      "url": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-27/index.html"
     },
     {
       "checked_at": "2026-07-23T11:12:46Z",
@@ -298,7 +299,7 @@
         "verification_status": "verified"
       },
       "type": "product_page",
-      "url": "https://www.sephora.com/product/dior-rouge-dior-forever-liquid-transfer-proof-lipstick-P472977"
+      "url": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-27/index.html"
     },
     {
       "checked_at": "2026-07-23T11:12:46Z",
@@ -308,7 +309,7 @@
         "verification_status": "verified"
       },
       "type": "product_page",
-      "url": "https://www.sephora.com/product/luminous-silk-natural-glow-blurring-liquid-foundation-with-24-hour-wear-P519887"
+      "url": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-27/index.html"
     },
     {
       "checked_at": "2026-07-23T11:12:46Z",
@@ -318,39 +319,37 @@
         "verification_status": "verified"
       },
       "type": "product_page",
-      "url": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-27/index.html"
+      "url": "https://hudabeauty.com/en-us/products/easy-bake-intense-eau-de-parfum-50ml-hb01351"
     },
     {
-      "checked_at": "2026-07-23T11:12:46Z",
+      "checked_at": "2026-07-23T16:05:00Z",
       "id": "src_0025",
       "provenance": {
-        "reason": "Direct product URL referenced inside the verified historical month report.",
+        "reason": "Product or retail link verified during the June 2026 CN radar backfill.",
         "verification_status": "verified"
       },
       "type": "product_page",
-      "url": "https://www.sephora.com/product/joystick-buildable-cream-blush-stick-P524934"
+      "url": "https://isabelmarant.com/en/blogs/journal/isabel-marant-x-to-summer-pop-up-launch"
     },
     {
-      "checked_at": "2026-07-23T11:12:46Z",
+      "checked_at": "2026-07-23T16:05:00Z",
       "id": "src_0026",
       "provenance": {
-        "reason": "Direct product URL referenced inside the verified historical month report.",
+        "reason": "Evidence-reviewed June 2026 CN radar backfill source.",
         "verification_status": "verified"
       },
-      "type": "product_page",
-      "url": "https://www.sephora.com/product/shade-illuminate-P422574"
+      "type": "editorial",
+      "url": "https://m.jiemian.com/article/14584682.html"
     },
     {
-      "checked_at": "2026-07-23T14:45:00Z",
+      "checked_at": "2026-07-23T16:05:00Z",
       "id": "src_0027",
       "provenance": {
-        "reason": "Direct product URL referenced inside the verified historical month report.",
+        "reason": "Evidence-reviewed June 2026 CN radar backfill source.",
         "verification_status": "verified"
       },
-      "type": "product_page",
-      "url": "https://www.yslbeauty.com/int/makeup/face/liquid-foundation/all-hours-foundation/WW-50960YSL.html",
-      "fetched_at": "2026-07-23T14:45:00Z",
-      "title": "YSL All Hours Foundation - YSL Beauty"
+      "type": "editorial",
+      "url": "https://mtz.china.com/touzi/2026/0626/244621.html"
     },
     {
       "checked_at": "2026-07-23T11:12:46Z",
@@ -360,7 +359,7 @@
         "verification_status": "verified"
       },
       "type": "product_page",
-      "url": "https://www.sephora.com/product/dior-forever-glow-maximizer-longwear-liquid-highlighter-P510547"
+      "url": "https://phlur.com/pages/rose-whip"
     },
     {
       "checked_at": "2026-07-23T11:12:46Z",
@@ -370,7 +369,7 @@
         "verification_status": "verified"
       },
       "type": "product_page",
-      "url": "https://www.sephora.com/product/pat-mcgrath-labs-skin-fetish-divine-powder-blush-P472489"
+      "url": "https://phlur.com/products/missing-person"
     },
     {
       "checked_at": "2026-07-23T11:12:46Z",
@@ -380,17 +379,17 @@
         "verification_status": "verified"
       },
       "type": "product_page",
-      "url": "https://www.chanel.com/us/makeup/p/175182/le-rouge-duo-ultra-tenue-ultrawear-liquid-lip-colour/"
+      "url": "https://soldejaneiro.com/products/cheirosa-91-perfume-mist"
     },
     {
       "checked_at": "2026-07-23T11:12:46Z",
       "id": "src_0031",
       "provenance": {
-        "reason": "Direct product URL referenced inside the verified historical month report.",
+        "reason": "Official KAYALI product page confirming product identity, sizes, price, and notes.",
         "verification_status": "verified"
       },
       "type": "product_page",
-      "url": "https://www.julep.com/products/eyeshadow-10-creme-to-powder-eyeshadow-stick"
+      "url": "https://us.kayali.com/products/freedom-musk-matcha-45"
     },
     {
       "checked_at": "2026-07-23T11:12:46Z",
@@ -400,37 +399,41 @@
         "verification_status": "verified"
       },
       "type": "product_page",
-      "url": "https://www.sephora.com/product/gloss-bomb-universal-lip-luminizer-P67988453"
+      "url": "https://www.artisanparfumeur.com/us/en_US/p/l-amant-eau-de-parfum-100-ml--000000000065228189"
     },
     {
-      "checked_at": "2026-07-23T11:12:46Z",
+      "checked_at": "2026-07-23T14:52:00Z",
+      "fetched_at": "2026-07-23T14:52:00Z",
       "id": "src_0033",
       "provenance": {
-        "reason": "Direct product URL referenced inside the verified historical month report.",
+        "reason": "Product page confirming Pillow Talk Matte Revolution SKU identity.",
         "verification_status": "verified"
       },
+      "title": "Charlotte Tilbury Matte Revolution Hydrating Lipstick Pillow Talk - Beautylish",
       "type": "product_page",
-      "url": "https://www.sephora.com/product/all-nighter-setting-spray-P518812"
+      "url": "https://www.beautylish.com/s/charlotte-tilbury-matte-revolution-hydrating-lipstick-pillow-talk"
     },
     {
-      "checked_at": "2026-07-23T11:12:46Z",
+      "checked_at": "2026-07-23T16:05:00Z",
       "id": "src_0034",
       "provenance": {
-        "reason": "Direct product URL referenced inside the verified historical month report.",
+        "reason": "Evidence-reviewed June 2026 CN radar backfill source.",
         "verification_status": "verified"
       },
-      "type": "product_page",
-      "url": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-27/index.html"
+      "type": "editorial",
+      "url": "https://www.beautytop100.com/21839.html"
     },
     {
-      "checked_at": "2026-07-23T11:12:46Z",
+      "checked_at": "2026-07-23T14:45:00Z",
+      "fetched_at": "2026-07-23T14:45:00Z",
       "id": "src_0035",
       "provenance": {
         "reason": "Direct product URL referenced inside the verified historical month report.",
         "verification_status": "verified"
       },
+      "title": "Le Labo Thé Matcha 26 Eau de Parfum - Bloomingdale's",
       "type": "product_page",
-      "url": "https://www.sephora.com/product/natural-radiant-longwear-foundation-P427301"
+      "url": "https://www.bloomingdales.com/shop/product/le-labo-the-matcha-26-eau-de-parfum?ID=5219679"
     },
     {
       "checked_at": "2026-07-23T11:12:46Z",
@@ -440,7 +443,7 @@
         "verification_status": "verified"
       },
       "type": "product_page",
-      "url": "https://www.nyxcosmetics.com/lip/lip-gloss/fat-oil-lip-drip/NYX_1054.html"
+      "url": "https://www.bykilian.com/love-dont-be-shy-iconic-kilian-fragrance"
     },
     {
       "checked_at": "2026-07-23T11:12:46Z",
@@ -450,7 +453,7 @@
         "verification_status": "verified"
       },
       "type": "product_page",
-      "url": "https://www.sephora.com/product/kosas-cloud-set-translucent-loose-setting-blurring-powder-P515091"
+      "url": "https://www.chanel.cn/cn/makeup/p/174280/rouge-coco-flash-hydrating-vibrant-shine-lip-colour/"
     },
     {
       "checked_at": "2026-07-23T11:12:46Z",
@@ -460,7 +463,7 @@
         "verification_status": "verified"
       },
       "type": "product_page",
-      "url": "https://www.sephora.com/product/cloud-paint-plush-blush-P518494"
+      "url": "https://www.chanel.com/us/makeup/p/158444/rouge-coco-hydra-gloss-hydrating-and-smoothing-high-shine-lipgloss/"
     },
     {
       "checked_at": "2026-07-23T11:12:46Z",
@@ -470,17 +473,17 @@
         "verification_status": "verified"
       },
       "type": "product_page",
-      "url": "https://www.elfcosmetics.com/halo-glow-liquid-filter/81513.html"
+      "url": "https://www.chanel.com/us/makeup/p/175182/le-rouge-duo-ultra-tenue-ultrawear-liquid-lip-colour/"
     },
     {
-      "checked_at": "2026-07-23T11:12:46Z",
+      "checked_at": "2026-07-23T16:05:00Z",
       "id": "src_0040",
       "provenance": {
-        "reason": "Direct product URL referenced inside the verified historical month report.",
+        "reason": "Evidence-reviewed June 2026 CN radar backfill source.",
         "verification_status": "verified"
       },
-      "type": "product_page",
-      "url": "https://www.sephora.com/product/tower-28-splashy-hydrosilica-lip-gloss-P472607"
+      "type": "editorial",
+      "url": "https://www.chinanews.com.cn/cj/2026/06-11/10638139.shtml"
     },
     {
       "checked_at": "2026-07-23T11:12:46Z",
@@ -490,29 +493,27 @@
         "verification_status": "verified"
       },
       "type": "product_page",
-      "url": "https://www.maogepingbeauty.com/makeup/face/powder/179.html"
+      "url": "https://www.dior.com/en_hk/beauty/products/dior-forever-skin-glow-E000001358.html"
     },
     {
       "checked_at": "2026-07-23T11:12:46Z",
       "id": "src_0042",
       "provenance": {
-        "reason": "Launch evidence cited by the verified historical month report.",
+        "reason": "Direct product URL referenced inside the verified historical month report.",
         "verification_status": "verified"
       },
-      "type": "editorial",
-      "url": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-26/index.html"
+      "type": "product_page",
+      "url": "https://www.elfcosmetics.com/halo-glow-liquid-filter/81513.html"
     },
     {
-      "checked_at": "2026-07-23T14:45:00Z",
+      "checked_at": "2026-07-23T11:12:46Z",
       "id": "src_0043",
       "provenance": {
         "reason": "Direct product URL referenced inside the verified historical month report.",
         "verification_status": "verified"
       },
-      "type": "editorial",
-      "url": "https://www.vogue.com.cn/beauty/new-in-store/news_111g3fa47d40aa74.html",
-      "fetched_at": "2026-07-23T14:45:00Z",
-      "title": "Vogue China: Carslan x Dunhuang Museum collection"
+      "type": "product_page",
+      "url": "https://www.elfcosmetics.com/products/thirst-burst-lip-treatment"
     },
     {
       "checked_at": "2026-07-23T11:12:46Z",
@@ -522,7 +523,7 @@
         "verification_status": "verified"
       },
       "type": "product_page",
-      "url": "https://www.yami.com/zh/p/shell-amber-mirror-lip-glaze-matte-lip-mud-lipstick-v01/3023274121"
+      "url": "https://www.givenchybeauty.cn/p/rose-perfecto-liquid-lip-balm-F20100155.html"
     },
     {
       "checked_at": "2026-07-23T11:12:46Z",
@@ -532,7 +533,7 @@
         "verification_status": "verified"
       },
       "type": "product_page",
-      "url": "https://www.sephora.com/product/drawn-this-way-long-wear-waterproof-gel-eyeliner-P524951"
+      "url": "https://www.glossier.com/products/glossier-you"
     },
     {
       "checked_at": "2026-07-23T11:12:46Z",
@@ -542,7 +543,7 @@
         "verification_status": "verified"
       },
       "type": "product_page",
-      "url": "https://www.sephora.com/product/heart-on-long-lasting-soft-shine-lipstick-P524918"
+      "url": "https://www.glossier.com/products/glossier-you-solid"
     },
     {
       "checked_at": "2026-07-23T11:12:46Z",
@@ -562,17 +563,17 @@
         "verification_status": "verified"
       },
       "type": "product_page",
-      "url": "https://www.chanel.com/us/makeup/p/158444/rouge-coco-hydra-gloss-hydrating-and-smoothing-high-shine-lipgloss/"
+      "url": "https://www.guerlain.com/sg/en-sg/p/aqua-allegoria-perle-rosa-rossa-perle---eau-de-parfum-P062205.html"
     },
     {
-      "checked_at": "2026-07-23T11:12:46Z",
+      "checked_at": "2026-07-23T16:05:00Z",
       "id": "src_0049",
       "provenance": {
-        "reason": "Direct product URL referenced inside the verified historical month report.",
+        "reason": "Product or retail link verified during the June 2026 CN radar backfill.",
         "verification_status": "verified"
       },
-      "type": "product_page",
-      "url": "https://www.maccosmetics.com/vivaglam"
+      "type": "e-commerce_listing",
+      "url": "https://www.jd.com/jiage/1316170c52460ba2780e.html"
     },
     {
       "checked_at": "2026-07-23T11:12:46Z",
@@ -582,7 +583,7 @@
         "verification_status": "verified"
       },
       "type": "product_page",
-      "url": "https://www.elfcosmetics.com/products/thirst-burst-lip-treatment"
+      "url": "https://www.julep.com/products/eyeshadow-10-creme-to-powder-eyeshadow-stick"
     },
     {
       "checked_at": "2026-07-23T11:12:46Z",
@@ -592,29 +593,27 @@
         "verification_status": "verified"
       },
       "type": "product_page",
-      "url": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-27/index.html"
+      "url": "https://www.lakeandskye.com/products/11-11-moon-eau-de-parfum"
     },
     {
-      "checked_at": "2026-07-23T14:45:00Z",
+      "checked_at": "2026-07-23T11:12:46Z",
       "id": "src_0052",
       "provenance": {
         "reason": "Direct product URL referenced inside the verified historical month report.",
         "verification_status": "verified"
       },
       "type": "product_page",
-      "url": "https://www.bloomingdales.com/shop/product/le-labo-the-matcha-26-eau-de-parfum?ID=5219679",
-      "fetched_at": "2026-07-23T14:45:00Z",
-      "title": "Le Labo Thé Matcha 26 Eau de Parfum - Bloomingdale's"
+      "url": "https://www.lamer.eu/at/en/product/5817/40984/skincolor/the-soft-fluid-long-wear-foundation-spf20/weightless-touch-for-luxurious-long-wear"
     },
     {
       "checked_at": "2026-07-23T11:12:46Z",
       "id": "src_0053",
       "provenance": {
-        "reason": "Launch evidence cited by the verified historical month report.",
+        "reason": "Direct product URL referenced inside the verified historical month report.",
         "verification_status": "verified"
       },
-      "type": "editorial",
-      "url": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-27/fragrance.html"
+      "type": "product_page",
+      "url": "https://www.lancome-usa.com/makeup/face-makeup/foundation/teint-idole-ultra-wear-foundation/00716-LAC.html"
     },
     {
       "checked_at": "2026-07-23T11:12:46Z",
@@ -624,7 +623,7 @@
         "verification_status": "verified"
       },
       "type": "product_page",
-      "url": "https://www.maisonmargiela-fragrances.us/fragrances/replica/replica-lazy-sunday-morning/MM006.html"
+      "url": "https://www.maccosmetics.com/vivaglam"
     },
     {
       "checked_at": "2026-07-23T11:12:46Z",
@@ -634,7 +633,7 @@
         "verification_status": "verified"
       },
       "type": "product_page",
-      "url": "https://www.yami.com/en/p/kunlun-snow-eau-de-toilette-oriental-woody-unisex-fragrance-30ml/3023922521"
+      "url": "https://www.maisonmargiela-fragrances.us/fragrances/replica/replica-lazy-sunday-morning/MM006.html"
     },
     {
       "checked_at": "2026-07-23T11:12:46Z",
@@ -644,7 +643,7 @@
         "verification_status": "verified"
       },
       "type": "product_page",
-      "url": "https://www.yami.com/en/p/l-b-k-water-eau-de-toilette-50ml/3023862421"
+      "url": "https://www.maogepingbeauty.com/makeup/face/powder/179.html"
     },
     {
       "checked_at": "2026-07-23T11:12:46Z",
@@ -654,7 +653,7 @@
         "verification_status": "verified"
       },
       "type": "product_page",
-      "url": "https://www.sayweee.com/en/product/BOITOWN-BY-BOITOWN-Illusory-Gilded-Edition/2810458"
+      "url": "https://www.maogepingbeauty.com/makeup/face/powder/179.html"
     },
     {
       "checked_at": "2026-07-23T11:12:46Z",
@@ -664,7 +663,7 @@
         "verification_status": "verified"
       },
       "type": "product_page",
-      "url": "https://www.tomfordbeauty.com/products/taormina-orange-eau-de-parfum"
+      "url": "https://www.nordstrom.com/s/eau-parfumee-the-imperial-150-eau-de-toilette/8867990"
     },
     {
       "checked_at": "2026-07-23T11:12:46Z",
@@ -674,7 +673,7 @@
         "verification_status": "verified"
       },
       "type": "product_page",
-      "url": "https://www.bykilian.com/love-dont-be-shy-iconic-kilian-fragrance"
+      "url": "https://www.nyxcosmetics.com/lip/lip-gloss/fat-oil-lip-drip/NYX_1054.html"
     },
     {
       "checked_at": "2026-07-23T11:12:46Z",
@@ -684,17 +683,19 @@
         "verification_status": "verified"
       },
       "type": "product_page",
-      "url": "https://www.sephora.com/product/le-male-in-blue-limited-edition-P525202"
+      "url": "https://www.rabanne.com/ww/en/fragrance/p/million-gold-for-her-pure-diamonds--000000000065242102"
     },
     {
-      "checked_at": "2026-07-23T11:12:46Z",
+      "checked_at": "2026-07-23T14:52:00Z",
+      "fetched_at": "2026-07-23T14:52:00Z",
       "id": "src_0061",
       "provenance": {
-        "reason": "Direct product URL referenced inside the verified historical month report.",
+        "reason": "Official Rare Beauty product page confirming Positive Light tinted moisturizer identity, size, and features.",
         "verification_status": "verified"
       },
+      "title": "Positive Light Tinted Moisturizer Broad Spectrum SPF 20 Sunscreen - Rare Beauty",
       "type": "product_page",
-      "url": "https://www.nordstrom.com/s/eau-parfumee-the-imperial-150-eau-de-toilette/8867990"
+      "url": "https://www.rarebeauty.com/products/positive-light-tinted-moisturizer-broad-spectrum-spf-20-sunscreen"
     },
     {
       "checked_at": "2026-07-23T11:12:46Z",
@@ -704,7 +705,7 @@
         "verification_status": "verified"
       },
       "type": "product_page",
-      "url": "https://www.guerlain.com/sg/en-sg/p/aqua-allegoria-perle-rosa-rossa-perle---eau-de-parfum-P062205.html"
+      "url": "https://www.sayweee.com/en/product/BOITOWN-BY-BOITOWN-Illusory-Gilded-Edition/2810458"
     },
     {
       "checked_at": "2026-07-23T11:12:46Z",
@@ -714,7 +715,7 @@
         "verification_status": "verified"
       },
       "type": "product_page",
-      "url": "https://www.artisanparfumeur.com/us/en_US/p/l-amant-eau-de-parfum-100-ml--000000000065228189"
+      "url": "https://www.sephora.com/product/all-nighter-setting-spray-P518812"
     },
     {
       "checked_at": "2026-07-23T11:12:46Z",
@@ -724,7 +725,7 @@
         "verification_status": "verified"
       },
       "type": "product_page",
-      "url": "https://www.rabanne.com/ww/en/fragrance/p/million-gold-for-her-pure-diamonds--000000000065242102"
+      "url": "https://www.sephora.com/product/cloud-paint-plush-blush-P518494"
     },
     {
       "checked_at": "2026-07-23T11:12:46Z",
@@ -734,7 +735,7 @@
         "verification_status": "verified"
       },
       "type": "product_page",
-      "url": "https://soldejaneiro.com/products/cheirosa-91-perfume-mist"
+      "url": "https://www.sephora.com/product/dior-forever-glow-maximizer-longwear-liquid-highlighter-P510547"
     },
     {
       "checked_at": "2026-07-23T11:12:46Z",
@@ -744,7 +745,7 @@
         "verification_status": "verified"
       },
       "type": "product_page",
-      "url": "https://phlur.com/products/missing-person"
+      "url": "https://www.sephora.com/product/dior-rouge-dior-forever-liquid-transfer-proof-lipstick-P472977"
     },
     {
       "checked_at": "2026-07-23T11:12:46Z",
@@ -754,7 +755,7 @@
         "verification_status": "verified"
       },
       "type": "product_page",
-      "url": "https://phlur.com/pages/rose-whip"
+      "url": "https://www.sephora.com/product/drawn-this-way-long-wear-waterproof-gel-eyeliner-P524951"
     },
     {
       "checked_at": "2026-07-23T11:12:46Z",
@@ -764,7 +765,7 @@
         "verification_status": "verified"
       },
       "type": "product_page",
-      "url": "https://hudabeauty.com/en-us/products/easy-bake-intense-eau-de-parfum-50ml-hb01351"
+      "url": "https://www.sephora.com/product/gloss-bomb-universal-lip-luminizer-P67988453"
     },
     {
       "checked_at": "2026-07-23T11:12:46Z",
@@ -774,7 +775,7 @@
         "verification_status": "verified"
       },
       "type": "product_page",
-      "url": "https://www.lakeandskye.com/products/11-11-moon-eau-de-parfum"
+      "url": "https://www.sephora.com/product/heart-on-long-lasting-soft-shine-lipstick-P524918"
     },
     {
       "checked_at": "2026-07-23T11:12:46Z",
@@ -784,7 +785,7 @@
         "verification_status": "verified"
       },
       "type": "product_page",
-      "url": "https://dedcool.com/products/mochi-milk-fragrance"
+      "url": "https://www.sephora.com/product/joystick-buildable-cream-blush-stick-P524934"
     },
     {
       "checked_at": "2026-07-23T11:12:46Z",
@@ -794,17 +795,17 @@
         "verification_status": "verified"
       },
       "type": "product_page",
-      "url": "https://www.glossier.com/products/glossier-you"
+      "url": "https://www.sephora.com/product/kosas-cloud-set-translucent-loose-setting-blurring-powder-P515091"
     },
     {
       "checked_at": "2026-07-23T11:12:46Z",
       "id": "src_0072",
       "provenance": {
-        "reason": "Launch evidence cited by the verified historical month report.",
+        "reason": "Direct product URL referenced inside the verified historical month report.",
         "verification_status": "verified"
       },
-      "type": "editorial",
-      "url": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-26/fragrance.html"
+      "type": "product_page",
+      "url": "https://www.sephora.com/product/le-male-in-blue-limited-edition-P525202"
     },
     {
       "checked_at": "2026-07-23T11:12:46Z",
@@ -814,67 +815,177 @@
         "verification_status": "verified"
       },
       "type": "product_page",
-      "url": "https://www.glossier.com/products/glossier-you-solid"
+      "url": "https://www.sephora.com/product/luminous-silk-natural-glow-blurring-liquid-foundation-with-24-hour-wear-P519887"
     },
     {
       "checked_at": "2026-07-23T11:12:46Z",
       "id": "src_0074",
       "provenance": {
-        "reason": "Official KAYALI product page confirming product identity, sizes, price, and notes.",
+        "reason": "Direct product URL referenced inside the verified historical month report.",
         "verification_status": "verified"
       },
       "type": "product_page",
-      "url": "https://us.kayali.com/products/freedom-musk-matcha-45"
+      "url": "https://www.sephora.com/product/natural-radiant-longwear-foundation-P427301"
     },
     {
+      "checked_at": "2026-07-23T11:12:46Z",
       "id": "src_0075",
-      "title": "YSL Skin Affair Soft Glow Cushion Foundation - Sephora",
-      "url": "https://www.sephora.com/product/skin-affair-soft-glow-cushion-foundation-P524839",
+      "provenance": {
+        "reason": "Direct product URL referenced inside the verified historical month report.",
+        "verification_status": "verified"
+      },
       "type": "product_page",
+      "url": "https://www.sephora.com/product/pat-mcgrath-labs-skin-fetish-divine-powder-blush-P472489"
+    },
+    {
+      "checked_at": "2026-07-23T11:12:46Z",
+      "id": "src_0076",
+      "provenance": {
+        "reason": "Direct product URL referenced inside the verified historical month report.",
+        "verification_status": "verified"
+      },
+      "type": "product_page",
+      "url": "https://www.sephora.com/product/shade-illuminate-P422574"
+    },
+    {
       "checked_at": "2026-07-23T14:52:00Z",
       "fetched_at": "2026-07-23T14:52:00Z",
+      "id": "src_0077",
       "provenance": {
         "reason": "Official Sephora product page confirming Skin Affair cushion identity and price.",
         "verification_status": "verified"
-      }
-    },
-    {
-      "id": "src_0076",
-      "title": "Charlotte Tilbury Matte Revolution Hydrating Lipstick Pillow Talk - Beautylish",
-      "url": "https://www.beautylish.com/s/charlotte-tilbury-matte-revolution-hydrating-lipstick-pillow-talk",
+      },
+      "title": "YSL Skin Affair Soft Glow Cushion Foundation - Sephora",
       "type": "product_page",
-      "checked_at": "2026-07-23T14:52:00Z",
-      "fetched_at": "2026-07-23T14:52:00Z",
-      "provenance": {
-        "reason": "Product page confirming Pillow Talk Matte Revolution SKU identity.",
-        "verification_status": "verified"
-      }
+      "url": "https://www.sephora.com/product/skin-affair-soft-glow-cushion-foundation-P524839"
     },
     {
-      "id": "src_0077",
-      "title": "Positive Light Tinted Moisturizer Broad Spectrum SPF 20 Sunscreen - Rare Beauty",
-      "url": "https://www.rarebeauty.com/products/positive-light-tinted-moisturizer-broad-spectrum-spf-20-sunscreen",
-      "type": "product_page",
-      "checked_at": "2026-07-23T14:52:00Z",
-      "fetched_at": "2026-07-23T14:52:00Z",
-      "provenance": {
-        "reason": "Official Rare Beauty product page confirming Positive Light tinted moisturizer identity, size, and features.",
-        "verification_status": "verified"
-      }
-    },
-    {
+      "checked_at": "2026-07-23T11:12:46Z",
       "id": "src_0078",
-      "title": "ColourPop Jelly Much Gel Eyeshadow Stick - Ulta Beauty",
-      "url": "https://www.ulta.com/p/jelly-much-gel-eyeshadow-stick-pimprod2059170",
+      "provenance": {
+        "reason": "Direct product URL referenced inside the verified historical month report.",
+        "verification_status": "verified"
+      },
       "type": "product_page",
+      "url": "https://www.sephora.com/product/tower-28-splashy-hydrosilica-lip-gloss-P472607"
+    },
+    {
+      "checked_at": "2026-07-23T16:05:00Z",
+      "id": "src_0079",
+      "provenance": {
+        "reason": "Evidence-reviewed June 2026 CN radar backfill source.",
+        "verification_status": "verified"
+      },
+      "type": "social_media",
+      "url": "https://www.sina.cn/news/detail/5308614606587372.html"
+    },
+    {
+      "checked_at": "2026-07-23T16:05:00Z",
+      "id": "src_0080",
+      "provenance": {
+        "reason": "Evidence-reviewed June 2026 CN radar backfill source.",
+        "verification_status": "verified"
+      },
+      "type": "social_media",
+      "url": "https://www.sina.cn/news/detail/5313383519751445.html"
+    },
+    {
+      "checked_at": "2026-07-23T11:12:46Z",
+      "id": "src_0081",
+      "provenance": {
+        "reason": "Direct product URL referenced inside the verified historical month report.",
+        "verification_status": "verified"
+      },
+      "type": "product_page",
+      "url": "https://www.tomfordbeauty.com/products/taormina-orange-eau-de-parfum"
+    },
+    {
       "checked_at": "2026-07-23T14:52:00Z",
       "fetched_at": "2026-07-23T14:52:00Z",
+      "id": "src_0082",
       "provenance": {
         "reason": "Ulta product page confirming ColourPop Jelly Much Gel Eyeshadow Stick identity and retail context.",
         "verification_status": "verified"
-      }
+      },
+      "title": "ColourPop Jelly Much Gel Eyeshadow Stick - Ulta Beauty",
+      "type": "product_page",
+      "url": "https://www.ulta.com/p/jelly-much-gel-eyeshadow-stick-pimprod2059170"
+    },
+    {
+      "checked_at": "2026-07-23T14:45:00Z",
+      "fetched_at": "2026-07-23T14:45:00Z",
+      "id": "src_0083",
+      "provenance": {
+        "reason": "Direct product URL referenced inside the verified historical month report.",
+        "verification_status": "verified"
+      },
+      "title": "Vogue China: Carslan x Dunhuang Museum collection",
+      "type": "editorial",
+      "url": "https://www.vogue.com.cn/beauty/new-in-store/news_111g3fa47d40aa74.html"
+    },
+    {
+      "checked_at": "2026-07-23T16:05:00Z",
+      "id": "src_0084",
+      "provenance": {
+        "reason": "Evidence-reviewed June 2026 CN radar backfill source.",
+        "verification_status": "verified"
+      },
+      "type": "editorial",
+      "url": "https://www.watchtop.com/2026/06/11702/"
+    },
+    {
+      "checked_at": "2026-07-23T11:12:46Z",
+      "id": "src_0085",
+      "provenance": {
+        "reason": "Direct product URL referenced inside the verified historical month report.",
+        "verification_status": "verified"
+      },
+      "type": "product_page",
+      "url": "https://www.yami.com/en/p/kunlun-snow-eau-de-toilette-oriental-woody-unisex-fragrance-30ml/3023922521"
+    },
+    {
+      "checked_at": "2026-07-23T11:12:46Z",
+      "id": "src_0086",
+      "provenance": {
+        "reason": "Direct product URL referenced inside the verified historical month report.",
+        "verification_status": "verified"
+      },
+      "type": "product_page",
+      "url": "https://www.yami.com/en/p/l-b-k-water-eau-de-toilette-50ml/3023862421"
+    },
+    {
+      "checked_at": "2026-07-23T11:12:46Z",
+      "id": "src_0087",
+      "provenance": {
+        "reason": "Direct product URL referenced inside the verified historical month report.",
+        "verification_status": "verified"
+      },
+      "type": "product_page",
+      "url": "https://www.yami.com/zh/p/shell-amber-mirror-lip-glaze-matte-lip-mud-lipstick-v01/3023274121"
+    },
+    {
+      "checked_at": "2026-07-23T14:45:00Z",
+      "fetched_at": "2026-07-23T14:45:00Z",
+      "id": "src_0088",
+      "provenance": {
+        "reason": "Direct product URL referenced inside the verified historical month report.",
+        "verification_status": "verified"
+      },
+      "title": "YSL All Hours Foundation - YSL Beauty",
+      "type": "product_page",
+      "url": "https://www.yslbeauty.com/int/makeup/face/liquid-foundation/all-hours-foundation/WW-50960YSL.html"
+    },
+    {
+      "checked_at": "2026-07-23T11:12:46Z",
+      "id": "src_0089",
+      "provenance": {
+        "reason": "Direct product URL referenced inside the verified historical month report.",
+        "verification_status": "verified"
+      },
+      "type": "product_page",
+      "url": "https://www.yslbeautycn.com/product/index.html?id=Kef2UR5pSGT32h7tnRAtcB"
     }
   ],
-  "total_sources": 74,
+  "total_sources": 89,
   "version": "2.0.0"
 }

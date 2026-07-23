@@ -38,8 +38,8 @@
         "US MASSTIGE": 8
       },
       "new_product_radar": {
-        "CN LUXURY": 0,
-        "CN MASSTIGE": 0,
+        "CN LUXURY": 5,
+        "CN MASSTIGE": 1,
         "US LUXURY": 6,
         "US MASSTIGE": 6
       }
@@ -52,10 +52,10 @@
         "US MASSTIGE": 10
       },
       "new_product_radar": {
-        "CN LUXURY": 1,
-        "CN MASSTIGE": 2,
-        "US LUXURY": 8,
-        "US MASSTIGE": 6
+        "CN LUXURY": 2,
+        "CN MASSTIGE": 6,
+        "US LUXURY": 5,
+        "US MASSTIGE": 3
       }
     }
   },
@@ -76,8 +76,8 @@
       },
       "news_cards": 3,
       "radar_panel_counts": {
-        "CN LUXURY": 0,
-        "CN MASSTIGE": 0,
+        "CN LUXURY": 5,
+        "CN MASSTIGE": 1,
         "US LUXURY": 6,
         "US MASSTIGE": 6
       },
@@ -99,8 +99,8 @@
       },
       "news_cards": 5,
       "radar_panel_counts": {
-        "CN LUXURY": 1,
-        "CN MASSTIGE": 2,
+        "CN LUXURY": 2,
+        "CN MASSTIGE": 6,
         "US LUXURY": 5,
         "US MASSTIGE": 3
       },
@@ -323,32 +323,40 @@
       "new_product_radar": {
         "CN LUXURY": {
           "candidate_count": 0,
-          "canonical_count": 0,
+          "canonical_count": 5,
           "detail_completeness": {
-            "brand": 0,
-            "buzz": 0,
-            "key_features": 0,
-            "price_link": 0
+            "brand": 5,
+            "buzz": 5,
+            "key_features": 5,
+            "price_link": 5
           },
-          "dom_count": 0,
+          "dom_count": 5,
           "excluded_products": [],
           "exclusion_reason": "No eligible historical June radar rows were recovered for this panel.",
-          "included_products": [],
+          "included_products": [
+            "Dior Sauvage Extrait",
+            "Dior Paradise Eau de Parfum",
+            "DOCUMENTS Homeland City-Limited Extrait Collection",
+            "To Summer x Isabel Marant Blue Heat",
+            "Cloud AiYang Four Seasons Collection"
+          ],
           "source_count": 0
         },
         "CN MASSTIGE": {
           "candidate_count": 0,
-          "canonical_count": 0,
+          "canonical_count": 1,
           "detail_completeness": {
-            "brand": 0,
-            "buzz": 0,
-            "key_features": 0,
-            "price_link": 0
+            "brand": 1,
+            "buzz": 1,
+            "key_features": 1,
+            "price_link": 1
           },
-          "dom_count": 0,
+          "dom_count": 1,
           "excluded_products": [],
           "exclusion_reason": "No eligible historical June radar rows were recovered for this panel.",
-          "included_products": [],
+          "included_products": [
+            "Love and Deepspace Caleb Midsummer Fruit"
+          ],
           "source_count": 0
         },
         "US LUXURY": {
@@ -507,23 +515,6 @@
       "new_product_radar": {
         "CN LUXURY": {
           "candidate_count": 1,
-          "canonical_count": 1,
-          "detail_completeness": {
-            "brand": 1,
-            "buzz": 1,
-            "key_features": 1,
-            "price_link": 1
-          },
-          "dom_count": 1,
-          "excluded_products": [],
-          "exclusion_reason": "All eligible historical radar products were preserved.",
-          "included_products": [
-            "MAOGEPING Luxurious Radiant Foundation Cream"
-          ],
-          "source_count": 1
-        },
-        "CN MASSTIGE": {
-          "candidate_count": 2,
           "canonical_count": 2,
           "detail_completeness": {
             "brand": 2,
@@ -535,14 +526,36 @@
           "excluded_products": [],
           "exclusion_reason": "All eligible historical radar products were preserved.",
           "included_products": [
+            "MAOGEPING Luxurious Radiant Foundation Cream",
+            "Dior Rouge Dior Couture Color Lip Collection"
+          ],
+          "source_count": 1
+        },
+        "CN MASSTIGE": {
+          "candidate_count": 2,
+          "canonical_count": 6,
+          "detail_completeness": {
+            "brand": 6,
+            "buzz": 6,
+            "key_features": 6,
+            "price_link": 6
+          },
+          "dom_count": 6,
+          "excluded_products": [],
+          "exclusion_reason": "All eligible historical radar products were preserved.",
+          "included_products": [
             "Carslan x Dunhuang Museum Collection",
-            "JOOCYEE Shell Series Lip Mud New Shades"
+            "INTO YOU Floating Airy Lip Mud 3.0",
+            "RED CHAMBER Zhiheng Foundation",
+            "JOOCYEE Shell Series Lip Mud New Shades",
+            "RIBECS Caviar Glow Flawless Cushion",
+            "Pixian Douban Heritage Lipstick"
           ],
           "source_count": 2
         },
         "US LUXURY": {
           "candidate_count": 8,
-          "canonical_count": 8,
+          "canonical_count": 5,
           "detail_completeness": {
             "brand": 5,
             "buzz": 5,
@@ -563,7 +576,7 @@
         },
         "US MASSTIGE": {
           "candidate_count": 6,
-          "canonical_count": 6,
+          "canonical_count": 3,
           "detail_completeness": {
             "brand": 3,
             "buzz": 3,

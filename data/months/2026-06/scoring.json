@@ -55,7 +55,7 @@
     "monotonic_by_rank": true,
     "observed_max": 98,
     "observed_min": 65,
-    "total_scored_products": 89
+    "total_scored_products": 94
   },
   "products": [
     {
@@ -74,7 +74,7 @@
       "score": 80
     },
     {
-      "name": "Charlotte Tilbury Pillow Talk Collection",
+      "name": "Charlotte Tilbury Pillow Talk Matte Revolution Lipstick",
       "panel": "US LUXURY",
       "score": 78
     },
@@ -89,7 +89,7 @@
       "score": 75
     },
     {
-      "name": "YSL Pure Shots Foundation",
+      "name": "YSL All Hours Foundation",
       "panel": "US LUXURY",
       "score": 72
     },
@@ -124,7 +124,7 @@
       "score": 80
     },
     {
-      "name": "Rare Beauty Find Comfort Tinted Moisturizer",
+      "name": "Rare Beauty Positive Light Tinted Moisturizer",
       "panel": "US MASSTIGE",
       "score": 80
     },
@@ -259,11 +259,6 @@
       "score": 65
     },
     {
-      "name": "Marc Jacobs Drawn This Way Eyeliner",
-      "panel": "US LUXURY",
-      "score": 90
-    },
-    {
       "name": "Marc Jacobs Drawn This Way Gel Eyeliner",
       "panel": "US LUXURY",
       "score": 88
@@ -272,11 +267,6 @@
       "name": "Marc Jacobs Heart On Lipstick",
       "panel": "US LUXURY",
       "score": 85
-    },
-    {
-      "name": "Tom Ford Shade & Illuminate Foundation",
-      "panel": "US LUXURY",
-      "score": 75
     },
     {
       "name": "Gucci Flora Eye Palette Sunset Orchid",
@@ -294,16 +284,6 @@
       "score": 75
     },
     {
-      "name": "Marc Jacobs Money Shot Highlighter Gel",
-      "panel": "US LUXURY",
-      "score": 75
-    },
-    {
-      "name": "Marc Jacobs Joystick Blush Stick",
-      "panel": "US MASSTIGE",
-      "score": 88
-    },
-    {
       "name": "MAC x Chappell Roan VIVA GLAM",
       "panel": "US MASSTIGE",
       "score": 82
@@ -314,34 +294,49 @@
       "score": 80
     },
     {
-      "name": "Marc Jacobs Money Shot Highlighter Gel",
-      "panel": "US MASSTIGE",
-      "score": 80
-    },
-    {
       "name": "ColourPop Jelly Much Eyeshadow Stick",
       "panel": "US MASSTIGE",
       "score": 75
     },
     {
-      "name": "Tower 28 Splashy Cream Blush Hydrating Gel",
-      "panel": "US MASSTIGE",
-      "score": 72
-    },
-    {
-      "name": "毛戈平 光韵奢华粉底霜",
+      "name": "MAOGEPING Luxurious Radiant Foundation Cream",
       "panel": "CN LUXURY",
       "score": 88
     },
     {
-      "name": "卡姿兰 敦煌联名系列",
+      "name": "Dior Rouge Dior Couture Color Lip Collection",
+      "panel": "CN LUXURY",
+      "score": 86
+    },
+    {
+      "name": "Carslan x Dunhuang Museum Collection",
       "panel": "CN MASSTIGE",
       "score": 85
     },
     {
-      "name": "酵色 贝壳系列唇泥（新色）",
+      "name": "INTO YOU Floating Airy Lip Mud 3.0",
+      "panel": "CN MASSTIGE",
+      "score": 83
+    },
+    {
+      "name": "RED CHAMBER Zhiheng Foundation",
+      "panel": "CN MASSTIGE",
+      "score": 81
+    },
+    {
+      "name": "JOOCYEE Shell Series Lip Mud New Shades",
       "panel": "CN MASSTIGE",
       "score": 78
+    },
+    {
+      "name": "RIBECS Caviar Glow Flawless Cushion",
+      "panel": "CN MASSTIGE",
+      "score": 76
+    },
+    {
+      "name": "Pixian Douban Heritage Lipstick",
+      "panel": "CN MASSTIGE",
+      "score": 73
     },
     {
       "name": "Tom Ford Taormina Orange EDP",
@@ -369,7 +364,7 @@
       "score": 72
     },
     {
-      "name": "L’Artisan Parfumeur L’Amant EDP",
+      "name": "L'Artisan Parfumeur L'Amant EDP",
       "panel": "US LUXURY",
       "score": 70
     },
@@ -379,7 +374,7 @@
       "score": 68
     },
     {
-      "name": "Sol de Janeiro Cheirosa 91",
+      "name": "Sol de Janeiro Cheirosa 91 Perfume Mist",
       "panel": "US MASSTIGE",
       "score": 95
     },
@@ -429,82 +424,113 @@
       "score": 65
     },
     {
-      "name": "Documents 昆仑煮雪 (Kunlun Boiled Snow)",
+      "name": "To Summer Kunlun Boiled Snow",
       "panel": "CN MASSTIGE",
       "score": 95
     },
     {
-      "name": "Scent Library 凉白开 (Cool Boiled Water)",
+      "name": "Scent Library Cool Boiled Water",
       "panel": "CN MASSTIGE",
       "score": 85
     },
     {
-      "name": "Boitown 幻境流沙金 (Mirage Quicksand Gold)",
+      "name": "Boitown Mirage Quicksand Gold",
       "panel": "CN MASSTIGE",
       "score": 78
     },
     {
-      "name": "Taormina Orange EDP",
+      "name": "Tom Ford Taormina Orange EDP",
       "panel": "US LUXURY",
-      "score": 95
+      "score": 80
     },
     {
-      "name": "Thé Impérial",
+      "name": "Jean Paul Gaultier Le Male In Blue",
       "panel": "US LUXURY",
-      "score": 90
+      "score": 75
     },
     {
-      "name": "L'Amant",
+      "name": "Bvlgari Eau Parfumée Thé Impérial",
       "panel": "US LUXURY",
-      "score": 84
+      "score": 72
     },
     {
-      "name": "Million Gold",
+      "name": "Guerlain Aqua Allegoria Perle Rosa Rossa",
       "panel": "US LUXURY",
-      "score": 79
+      "score": 72
     },
     {
-      "name": "Le Male In Blue",
+      "name": "L'Artisan Parfumeur L'Amant EDP",
       "panel": "US LUXURY",
-      "score": 73
+      "score": 70
     },
     {
-      "name": "Rosa Rossa",
+      "name": "Rabanne Million Gold For Her Pure Diamonds",
       "panel": "US LUXURY",
       "score": 68
     },
     {
-      "name": "Easy Bake Intense EDP",
+      "name": "Sol de Janeiro Cheirosa 91 Perfume Mist",
       "panel": "US MASSTIGE",
       "score": 95
     },
     {
-      "name": "Rose Whip",
-      "panel": "US MASSTIGE",
-      "score": 90
-    },
-    {
-      "name": "You Solid",
+      "name": "Glossier You Solid",
       "panel": "US MASSTIGE",
       "score": 84
     },
     {
-      "name": "Cheirosa 91",
+      "name": "Phlur Rose Whip EDP",
       "panel": "US MASSTIGE",
-      "score": 79
+      "score": 78
     },
     {
-      "name": "11 11 Moon",
+      "name": "Huda Beauty Easy Bake Intense EDP",
       "panel": "US MASSTIGE",
-      "score": 73
+      "score": 75
     },
     {
-      "name": "Mochi Milk",
+      "name": "Lake & Skye 11 11 Moon EDP",
       "panel": "US MASSTIGE",
-      "score": 68
+      "score": 72
+    },
+    {
+      "name": "DedCool Mochi Milk",
+      "panel": "US MASSTIGE",
+      "score": 70
+    },
+    {
+      "name": "Dior Sauvage Extrait",
+      "panel": "CN LUXURY",
+      "score": 90
+    },
+    {
+      "name": "Dior Paradise Eau de Parfum",
+      "panel": "CN LUXURY",
+      "score": 87
+    },
+    {
+      "name": "DOCUMENTS Homeland City-Limited Extrait Collection",
+      "panel": "CN LUXURY",
+      "score": 85
+    },
+    {
+      "name": "To Summer x Isabel Marant Blue Heat",
+      "panel": "CN LUXURY",
+      "score": 83
+    },
+    {
+      "name": "Cloud AiYang Four Seasons Collection",
+      "panel": "CN LUXURY",
+      "score": 80
+    },
+    {
+      "name": "Love and Deepspace Caleb Midsummer Fruit",
+      "panel": "CN MASSTIGE",
+      "score": 82
     }
   ],
   "provenance": {
+    "cn_radar_backfill": "evidence_reviewed",
     "historical_radar_zero_scores_normalized": true,
     "status": "recomputed"
   },

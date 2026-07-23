@@ -1,5 +1,10 @@
 {
-  "canonical_hash": "1618e3463adadfd0963614f3e20182ea6f0923467b619c3c6d8602e7ce45f75f",
+  "canonical_hash": "76485c056ba18b21807650949ffc1e24204e2db1b333c1eb5c14de5571c7f6e7",
+  "cn_radar_backfill": {
+    "audit_file": "cn_radar_backfill.json",
+    "reviewed_at": "2026-07-23T16:05:00Z",
+    "rollback_commit": "3315fd8357ee44a652344390098cfaa442aff6ac"
+  },
   "data_pointer": "../../month2026-06.json",
   "data_sha256": null,
   "date_range": "Jun 1 – Jun 30, 2026",
@@ -28,7 +33,7 @@
     "product_specific_details_restored"
   ],
   "schema_version": 3,
-  "scoring_hash": "6dd5605a687d8a7e0d1007f0ab06be5ba149873e57c9e3dab7ba915b090ed8cb",
-  "source_reference_hash": "e4fdc3512702a469f9443c4e6c85b0210038f2ce0facfa45ef4634ba38681ef4",
-  "sources_hash": "7ac1054718822dcc0c0c3cdbbd2f27110a181a3a7b23b198846d7d2e4c053178"
+  "scoring_hash": "49e72f739b04e03350be5a79c69d48ac18f482c1745f7a33dde233970584a6a0",
+  "source_reference_hash": "42054df1ea1cac67d79989f13e9568f1dbe2db7d002197caca16a8a21d6c1a06",
+  "sources_hash": "87487ab8a57a7166472600193a975824d6fa0029723634b8bc904e15f0f99759"
 }

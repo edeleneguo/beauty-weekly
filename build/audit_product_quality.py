@@ -23,6 +23,15 @@ from beauty_weekly.month import month_report_path, resolve_month  # noqa: E402
 CJK_PATTERN = re.compile(r"[\u4e00-\u9fff]")
 SIZE_PATTERN = re.compile(r"\b\d+(?:\.\d+)?\s?(?:ml|mL|ML|fl oz|oz|g|gram|grams)\b", re.I)
 PRICE_PATTERN = re.compile(r"(?:[$€£¥]|USD|CAD|HKD|SGD|AED|RMB|CNY)")
+PRICE_GAP_PATTERN = re.compile(
+    r"\bprice\b.*\b(?:pending|not (?:publicly )?disclosed|not announced)\b",
+    re.I,
+)
+SIZE_GAP_PATTERN = re.compile(
+    r"\b(?:bottle size|size|volume|format)\b.*\b"
+    r"(?:pending|not (?:publicly )?disclosed|not announced)\b",
+    re.I,
+)
 GENERIC_CATEGORY_PATTERN = re.compile(r"^(?:edp|edt|perfume|fragrance|solid)$", re.I)
 GENERIC_BUZZ_PATTERNS = (
     re.compile(r"^seasonal\b", re.I),
@@ -390,10 +399,16 @@ def audit_fragrance_price_and_launch(report: dict) -> list[str]:
         price = product.get("detail", {}).get("price_link", {}).get("en", "").strip()
         launch_text = product.get("detail", {}).get("brand", {}).get("en", "").strip()
         if section == "new_product_radar":
-            if not PRICE_PATTERN.search(price) or not SIZE_PATTERN.search(price):
+            has_price_or_disclosed_gap = bool(
+                PRICE_PATTERN.search(price) or PRICE_GAP_PATTERN.search(price)
+            )
+            has_size_or_disclosed_gap = bool(
+                SIZE_PATTERN.search(price) or SIZE_GAP_PATTERN.search(price)
+            )
+            if not has_price_or_disclosed_gap or not has_size_or_disclosed_gap:
                 errors.append(
                     f"{_loc(topic, section, panel, idx, product)}: fragrance radar price needs "
-                    "currency and size"
+                    "currency and size, or an explicit disclosure gap for each"
                 )
             lowered = launch_text.casefold()
             if not any(hint in lowered for hint in LAUNCH_TYPE_HINTS):

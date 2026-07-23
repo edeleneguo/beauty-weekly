@@ -38,8 +38,8 @@
         "US MASSTIGE": 8
       },
       "new_product_radar": {
-        "CN LUXURY": 0,
-        "CN MASSTIGE": 0,
+        "CN LUXURY": 5,
+        "CN MASSTIGE": 1,
         "US LUXURY": 6,
         "US MASSTIGE": 6
       }
@@ -52,12 +52,28 @@
         "US MASSTIGE": 10
       },
       "new_product_radar": {
-        "CN LUXURY": 1,
-        "CN MASSTIGE": 2,
-        "US LUXURY": 8,
-        "US MASSTIGE": 6
+        "CN LUXURY": 2,
+        "CN MASSTIGE": 6,
+        "US LUXURY": 5,
+        "US MASSTIGE": 3
       }
     }
+  },
+  "cn_radar_backfill": {
+    "approved_count": 11,
+    "rejected_count": 7,
+    "resulting_cn_radar_counts": {
+      "fragrance": {
+        "CN LUXURY": 5,
+        "CN MASSTIGE": 1
+      },
+      "makeup": {
+        "CN LUXURY": 2,
+        "CN MASSTIGE": 6
+      }
+    },
+    "reviewed_at": "2026-07-23T16:05:00Z",
+    "rollback_commit": "3315fd8357ee44a652344390098cfaa442aff6ac"
   },
   "exclusions": {
     "fragrance": {

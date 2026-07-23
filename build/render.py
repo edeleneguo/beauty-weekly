@@ -187,9 +187,11 @@ def _render_launch_evidence(product: Dict[str, Any], section: str) -> str:
     if section != "radar":
         return ""
     launch_evidence = product.get("launch_evidence") or {}
-    grade = launch_evidence.get("evidence_grade")
-    date_basis = str(launch_evidence.get("date_basis") or "").replace("_", " ")
-    launch_date = launch_evidence.get("launch_date")
+    grade = launch_evidence.get("evidence_grade") or product.get("evidence_grade")
+    date_basis = str(
+        launch_evidence.get("date_basis") or product.get("date_basis") or ""
+    ).replace("_", " ")
+    launch_date = launch_evidence.get("launch_date") or product.get("launch_date")
     if not grade and not launch_date:
         return ""
     value = f"Grade {grade or 'n/a'} · {launch_date or 'date unavailable'}"
