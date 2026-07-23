@@ -31,6 +31,36 @@ RSS should stay as the broad discovery layer because it is stable and cheap. Cra
 - Prefer structured data, RSS metadata, and platform APIs when available.
 - Store raw signal snapshots separately from the curated report so scores can become recomputable later.
 
+### CN New-Product Coverage
+
+CN makeup and fragrance use category-specific discovery queries and brand-level searches.
+The monthly collector bounds every query to the target calendar month and keeps the
+discovery audit in `raw_collected.json`.
+
+Generation uses two passes:
+
+1. Broad discovery produces candidate products from monthly articles and brand searches.
+2. Candidate verification searches unsupported CN radar names again and retains only
+   products with matching launch evidence.
+
+Google News URLs are discovery-only. The collector decodes them to the publisher's
+direct URL, fetches structured page metadata when available, and rejects unresolved
+aggregator URLs as publishable product evidence.
+
+Coverage targets are soft health checks, not publication quotas:
+
+- CN makeup radar: 8 verified products
+- CN fragrance radar: 4 verified products
+
+Falling below a soft floor triggers another discovery pass and is recorded as
+`below_soft_floor`. It never pads a ranking with unsupported products.
+
+Launch evidence is graded:
+
+- A: official launch or dated official product listing
+- B: dated retailer listing or reputable editorial evidence
+- C: dated credible discovery or social-commerce evidence
+
 ## Quality Gates
 
 The audit should be reasonable rather than overly tight:

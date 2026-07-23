@@ -194,6 +194,13 @@ class LaunchEvidence(BaseModel):
     quarantine_reason: str | None = None
     evidence: Evidence | None = None
     absence_markers: list[EvidenceAbsence] = Field(default_factory=list)
+    evidence_grade: Literal["A", "B", "C"] | None = None
+    date_basis: Literal[
+        "official_launch",
+        "first_listing",
+        "source_publication",
+        "first_verified_mention",
+    ] | None = None
 
     model_config = {"extra": "forbid"}
 

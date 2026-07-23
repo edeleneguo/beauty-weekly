@@ -90,6 +90,20 @@ class TestRadarTrendRendering:
         assert "<summary" in html
         assert "Gourmand milk musk resurgence" in html
 
+    def test_radar_renders_launch_evidence_grade(self):
+        product = _make_radar_product()
+        product["launch_evidence"] = {
+            "launch_date": "2026-06-12",
+            "quarantine_status": "verified",
+            "evidence_grade": "A",
+            "date_basis": "official_launch",
+        }
+        html = _render_product(product, "en", "radar")
+        assert "Launch Evidence" in html
+        assert "Grade A" in html
+        assert "2026-06-12" in html
+        assert "official launch" in html
+
 
 class TestRadarTrendValidation:
     """Verify that validation catches missing trend metadata on radar products."""

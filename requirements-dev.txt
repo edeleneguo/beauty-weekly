@@ -3,3 +3,4 @@ ruff==0.12.4
 pydantic==2.13.4
 eval_type_backport==0.4.0
 PyYAML==6.0.3
+googlenewsdecoder==0.1.7

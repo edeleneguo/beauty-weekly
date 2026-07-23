@@ -23,6 +23,7 @@ import sys
 import time
 import urllib.error
 import urllib.request
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import date, datetime, timedelta
 from pathlib import Path
 from urllib.parse import urlparse
@@ -31,7 +32,8 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
 from beauty_weekly.evidence import EXPLICIT_EVIDENCE_ABSENCES  # noqa: E402
-from beauty_weekly.month import previous_month_str  # noqa: E402
+from beauty_weekly.month import previous_month_str, resolve_month  # noqa: E402
+from build.collect import search_product_evidence  # noqa: E402
 
 API_KEY = os.environ.get("LLM_API_KEY", "")
 BASE_URL = os.environ.get("LLM_BASE_URL", "https://api.openai.com/v1")
@@ -40,6 +42,16 @@ MODEL = os.environ.get("LLM_MODEL", "gpt-4o-mini")
 VALID_EVIDENCE_SUPPORTED_FIELDS = frozenset(
     {"price", "features", "buzz", "brand", "category", "launch_date", "link"}
 )
+CN_DISCOVERY_CONFIG = ROOT / "config" / "cn_new_product_sources.json"
+
+
+def _load_cn_discovery_config() -> dict:
+    with open(CN_DISCOVERY_CONFIG, encoding="utf-8") as f:
+        return json.load(f)
+
+
+def _cn_radar_soft_floor(category: str) -> int:
+    return int(_load_cn_discovery_config()["soft_floor"][category])
 
 
 def iso_week_date_range(week_str: str) -> tuple[str, str, str, str]:
@@ -263,7 +275,7 @@ def _score_article_relevance(article: dict, category: str) -> int:
     title = article.get("title", "").lower()
     summary = article.get("summary", "").lower()
     generic_cues = {"beauty", "makeup", "skin care", "美妆", "彩妆", "香", "fragrance"}
-    score = 0
+    score = 10 if article.get("category") == category else 0
     for cue in cues:
         if cue in title:
             score += 1 if cue in generic_cues else 4
@@ -342,6 +354,8 @@ def _find_supporting_articles(
     supporting = []
     for article in articles:
         url = article.get("url", "")
+        if urlparse(url).netloc.casefold() == "news.google.com":
+            continue
 
         # 1. Product URL match (strongest signal)
         if product_link and url and product_link in url:
@@ -387,6 +401,105 @@ def _find_supporting_articles(
     return supporting
 
 
+def _classify_evidence(article: dict, product_link: str) -> tuple[str, str, str]:
+    """Return (grade, date_basis, evidence_type) for one verified source."""
+    reference_type = str(article.get("reference_type", "")).casefold()
+    source = str(article.get("source", "")).casefold()
+    url = str(article.get("url", ""))
+    combined = f"{reference_type} {source}"
+
+    if article.get("source_authority") == "official" or "official launch" in combined:
+        return "A", "official_launch", "launch_announcement"
+    if product_link and url and product_link in url:
+        return "A", "first_listing", "product_page"
+    if any(
+        cue in combined
+        for cue in (
+            "retailer",
+            "e-commerce",
+            "product page",
+            "editorial",
+            "candidate_verification",
+            "new_product_discovery",
+        )
+    ):
+        return "B", "source_publication", "editorial"
+    if any(cue in combined for cue in ("social", "douyin", "xiaohongshu", "小红书", "抖音")):
+        return "C", "first_verified_mention", "social_media"
+    return "B", "source_publication", "editorial"
+
+
+def _merge_unique_articles(target: list[dict], additions: list[dict]) -> int:
+    seen_urls = {article.get("url", "") for article in target}
+    added = 0
+    for article in additions:
+        url = article.get("url", "")
+        if not url or url in seen_urls:
+            continue
+        seen_urls.add(url)
+        target.append(article)
+        added += 1
+    return added
+
+
+def _supplement_cn_radar_evidence(
+    data: dict,
+    raw_data: dict,
+    category: str,
+    month_label: str,
+) -> None:
+    """Search candidate names that the broad CN discovery pass did not support."""
+    if not re.fullmatch(r"\d{4}-\d{2}", month_label):
+        return
+
+    articles = raw_data.setdefault("articles", [])
+    unsupported_names: list[str] = []
+    for panel, products in data.get("new_product_radar", {}).items():
+        if not panel.startswith("CN ") or not isinstance(products, list):
+            continue
+        for product in products:
+            if not isinstance(product, dict):
+                continue
+            name = str(product.get("name", "")).strip()
+            if not name:
+                continue
+            link = str(product.get("link", "")).strip()
+            source_url = str(product.get("source_url", "")).strip() or None
+            if not _find_supporting_articles(name, link, articles, source_url):
+                unsupported_names.append(name)
+
+    names = list(dict.fromkeys(unsupported_names))[:12]
+    if not names:
+        return
+
+    audit = raw_data.setdefault("candidate_evidence_audit", [])
+    with ThreadPoolExecutor(max_workers=6) as executor:
+        future_map = {
+            executor.submit(search_product_evidence, name, category, month_label): name
+            for name in names
+        }
+        for future in as_completed(future_map):
+            name = future_map[future]
+            try:
+                record, discovered = future.result()
+                record["articles_added"] = _merge_unique_articles(articles, discovered)
+                audit.append(record)
+            except Exception as exc:
+                audit.append(
+                    {
+                        "product_name": name,
+                        "category": category,
+                        "market": "CN",
+                        "type": "candidate_verification",
+                        "articles_count": 0,
+                        "articles_added": 0,
+                        "error": str(exc)[:200],
+                    }
+                )
+    audit.sort(key=lambda item: (item.get("category", ""), item.get("product_name", "")))
+    raw_data["total_articles"] = len(articles)
+
+
 def _make_launch_evidence(
     product_name: str,
     product_link: str,
@@ -412,18 +525,29 @@ def _make_launch_evidence(
         published_at = _parse_article_date(best.get("date", "")) or fetched_at
         evidence_url = best.get("url", product_link)
         evidence_title = best.get("title", f"{product_name} — {topic} product listing")
+        evidence_grade, date_basis, evidence_type = _classify_evidence(best, product_link)
         return {
             "launch_date": published_at[:10],
             "quarantine_status": "verified",
             "quarantine_reason": None,
+            "evidence_grade": evidence_grade,
+            "date_basis": date_basis,
             "evidence": {
                 "url": evidence_url,
                 "title": evidence_title,
-                "type": "editorial",
+                "type": evidence_type,
                 "published_at": published_at,
                 "fetched_at": fetched_at,
                 "checked_at": fetched_at,
-                "supported_fields": ["price", "features", "buzz", "brand", "category", "link"],
+                "supported_fields": [
+                    "price",
+                    "features",
+                    "buzz",
+                    "brand",
+                    "category",
+                    "launch_date",
+                    "link",
+                ],
             },
             "absence_markers": [],
         }
@@ -502,6 +626,49 @@ def make_product(
     }
 
 
+def _accumulate_cn_radar_candidates(
+    accumulated: dict[str, list[dict]],
+    generated: dict,
+) -> None:
+    for panel, products in generated.get("new_product_radar", {}).items():
+        if not panel.startswith("CN ") or not isinstance(products, list):
+            continue
+        existing = {
+            str(product.get("name", "")).strip().casefold()
+            for product in accumulated.setdefault(panel, [])
+        }
+        for product in products:
+            if not isinstance(product, dict):
+                continue
+            key = str(product.get("name", "")).strip().casefold()
+            if key and key not in existing:
+                accumulated[panel].append(product)
+                existing.add(key)
+
+
+def _record_cn_radar_coverage(
+    raw_data: dict,
+    category: str,
+    result: dict,
+    soft_floor: int,
+) -> None:
+    if not soft_floor:
+        return
+    verified_count = sum(
+        len(products)
+        for panel, products in result["new_product_radar"].items()
+        if panel.startswith("CN ")
+    )
+    raw_data.setdefault("coverage_health", {})[category] = {
+        "market": "CN",
+        "section": "new_product_radar",
+        "soft_floor": soft_floor,
+        "verified_count": verified_count,
+        "status": "met" if verified_count >= soft_floor else "below_soft_floor",
+        "policy": "Soft floor triggers discovery; rankings are never padded.",
+    }
+
+
 def generate_products(
     raw_data: dict, category: str, month_label: str, en_range: str, fetched_at: str
 ) -> dict:
@@ -514,8 +681,6 @@ def generate_products(
     or generation fails.  Radar panels may be empty.
     """
     articles = raw_data.get("articles", [])
-    article_urls = {a.get("url", "") for a in articles if a.get("url")}
-
     # Category-aware selection: pick articles whose titles/summaries
     # contain category-relevant cues (makeup vs fragrance keywords) so
     # that the LLM prompt includes evidence proportional to the topic
@@ -567,11 +732,13 @@ Output ONLY valid JSON with this exact structure:
 
 Rules:
 - Generate 5-10 products per heat_rankings panel
-- Generate 2-5 new products per radar panel (only products launched within 4 weeks)
+- Generate 2-5 new products per radar panel whose first official launch,
+  first retail listing, or first credible publication falls inside {month_label}
 - All products must be REAL, publicly available {category} products
 - Scores: 65-98 range (85=Trending, 90=Viral)
 - CN fields in Chinese, EN in English
-- Links must be real Sephora/Ulta/Tmall URLs
+- Links must be real official-brand, Sephora, Ulta, Tmall, JD, Douyin-shop,
+  or reputable retailer product URLs
 - Use real buzz data (review counts, sales rankings, social media metrics)
 - CN LUXURY and CN MASSTIGE panels: only provide products if you have
   real Chinese-market evidence.  Empty arrays [] are acceptable and
@@ -594,11 +761,24 @@ Rules:
     _LLM_MAX_ATTEMPTS = 3
     current_user_prompt = user_prompt
     empty_panels: list[str] = []
+    accumulated_cn_radar: dict[str, list[dict]] = {}
+    cn_radar_floor = (
+        _cn_radar_soft_floor(category) if re.fullmatch(r"\d{4}-\d{2}", month_label) else 0
+    )
 
     for attempt in range(1, _LLM_MAX_ATTEMPTS + 1):
         print(f"  Calling LLM for {category} products (attempt {attempt}/{_LLM_MAX_ATTEMPTS})...")
         response = call_llm(system_prompt, current_user_prompt)
         data = parse_json_response(response)
+        _accumulate_cn_radar_candidates(accumulated_cn_radar, data)
+        if accumulated_cn_radar:
+            radar_data = data.setdefault("new_product_radar", {})
+            for panel, products in accumulated_cn_radar.items():
+                radar_data[panel] = products
+
+        _supplement_cn_radar_evidence(data, raw_data, category, month_label)
+        articles = raw_data.get("articles", [])
+        article_urls = {a.get("url", "") for a in articles if a.get("url")}
 
         # Transform to canonical format — quarantine unsupported products instead of
         # failing the entire category
@@ -643,7 +823,7 @@ Rules:
                                     articles=articles,
                                     trend_badge=p.get("trend_badge"),
                                     new_badge=p.get("new_badge"),
-                                    launch_evidence=p.get("launch_evidence"),
+                                    launch_evidence=None,
                                     source_url=source_url,
                                 )
                                 if section == "new_product_radar":
@@ -679,23 +859,53 @@ Rules:
         empty_panels = sorted(
             panel for panel in required_heat_panels if not result["heat_rankings"].get(panel, [])
         )
+        cn_radar_count = sum(
+            len(products)
+            for panel, products in result["new_product_radar"].items()
+            if panel.startswith("CN ")
+        )
 
-        if not empty_panels:
+        if not empty_panels and (not cn_radar_floor or cn_radar_count >= cn_radar_floor):
+            _record_cn_radar_coverage(raw_data, category, result, cn_radar_floor)
             return result
 
         if attempt < _LLM_MAX_ATTEMPTS:
-            missing = ", ".join(empty_panels)
+            retry_reasons: list[str] = []
+            if empty_panels:
+                missing = ", ".join(empty_panels)
+                retry_reasons.append(
+                    f"The following required heat panels are empty: {missing}. "
+                    "For each empty panel, provide 1–5 evidence-backed products."
+                )
+            if cn_radar_floor and cn_radar_count < cn_radar_floor:
+                retry_reasons.append(
+                    f"CN new-product radar has {cn_radar_count} verified products; "
+                    f"the discovery soft floor is {cn_radar_floor}. Search the supplied "
+                    "CN launch evidence for additional real in-window products across "
+                    "CN LUXURY and CN MASSTIGE."
+                )
+            expanded_articles = _select_category_relevant_articles(
+                articles,
+                category,
+                max_cn=40,
+                max_non_cn=15,
+            )
+            expanded_articles_text = "\n".join(
+                f"[{i}] {article['title']}: {article.get('summary', '')[:200]} "
+                f"(URL: {article['url']})"
+                for i, article in enumerate(expanded_articles)
+            )
             retry_note = (
                 f"\n\n[RETRY {attempt}/{_LLM_MAX_ATTEMPTS}] "
-                f"The following required heat panels are empty: {missing}. "
-                "For each empty panel, provide 1–5 products whose names are explicitly "
-                "present in the supplied article titles or summaries and whose source_url "
-                "is an exact URL from the Raw data list. Do not fabricate products or "
-                "source URLs."
+                + " ".join(retry_reasons)
+                + " Each source_url must be an exact URL below. Do not fabricate "
+                "products or source URLs."
+                + f"\n\nExpanded evidence:\n{expanded_articles_text}"
             )
             current_user_prompt = user_prompt + retry_note
             print(
-                f"  Retrying: panels {{{missing}}} empty after attempt {attempt}",
+                f"  Retrying: heat gaps={empty_panels}, "
+                f"CN radar={cn_radar_count}/{cn_radar_floor or 'n/a'}",
                 file=sys.stderr,
             )
 
@@ -709,6 +919,13 @@ Rules:
     }
     missing = ", ".join(empty_panels)
     if market_coverage["US"] > 0:
+        _record_cn_radar_coverage(raw_data, category, result, cn_radar_floor)
+        if cn_radar_floor and cn_radar_count < cn_radar_floor:
+            print(
+                f"  WARNING: CN {category} radar remained below the discovery soft floor "
+                f"({cn_radar_count}/{cn_radar_floor}); publishing only verified products",
+                file=sys.stderr,
+            )
         print(
             f"  WARNING: publishing with evidence gap in panels {{{missing}}}; "
             f"verified market coverage is {market_coverage}",
@@ -907,10 +1124,13 @@ def _build_manifest(
         "legacy_fields_isolated": [],
         "migration_deprecation": {},
         "migration_gaps": [
-            "CN LUXURY and CN MASSTIGE panels may be empty"
-            " (no Chinese-market evidence from US RSS sources)",
+            "CN new-product soft floors trigger a second discovery pass but "
+            "panels may remain below target when evidence is insufficient.",
         ],
-        "note": "Auto-generated from public RSS data using LLM synthesis.",
+        "note": (
+            "Auto-generated from public RSS data with dedicated CN discovery, "
+            "candidate verification, and evidence-graded LLM synthesis."
+        ),
         "phase": "auto",
         "remaining_warnings": 1,
         "resolved_warnings": [],
@@ -921,7 +1141,7 @@ def _build_manifest(
 
 
 def main() -> int:
-    month = previous_month_str()
+    month = resolve_month(previous_month_str())
     en_range, cn_range, start_date, end_date = month_date_range(month)
     fetched_at = datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
 
@@ -959,6 +1179,14 @@ def main() -> int:
     except ValueError as e:
         print(f"FATAL: {e}", file=sys.stderr)
         return 1
+
+    # Candidate-specific searches are part of the auditable raw collection,
+    # not transient generation context.
+    raw_data["total_articles"] = len(raw_data.get("articles", []))
+    raw_path.write_text(
+        json.dumps(raw_data, ensure_ascii=False, indent=2, sort_keys=True),
+        encoding="utf-8",
+    )
 
     cn_product_count = sum(
         len(products)

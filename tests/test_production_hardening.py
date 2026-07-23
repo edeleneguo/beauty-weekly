@@ -618,6 +618,24 @@ class TestFindSupportingArticles:
         )
         assert len(result) == 0
 
+    def test_google_news_aggregator_url_is_not_publishable_evidence(self):
+        from build.generate_weekly import _find_supporting_articles
+
+        articles = [
+            {
+                "title": "Rare Beauty Blush official launch",
+                "url": "https://news.google.com/rss/articles/encoded",
+                "date": "2026-06-12",
+                "summary": "Rare Beauty Blush official launch",
+            }
+        ]
+        result = _find_supporting_articles(
+            "Rare Beauty Blush",
+            "https://brand.example/products/blush",
+            articles,
+        )
+        assert result == []
+
     def test_url_slug_match(self):
         """Product name must match via normalized URL slug."""
         from build.generate_weekly import _find_supporting_articles

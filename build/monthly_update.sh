@@ -27,6 +27,9 @@ done
 echo "Target month: $TARGET_MONTH"
 echo "Canonical files: OK"
 
+echo "Enriching dashboard metrics..."
+python3 build/enrich_dashboard_metrics.py
+
 echo "Running strict validation..."
 python3 build/validate_canonical.py
 python3 build/validate_schema.py

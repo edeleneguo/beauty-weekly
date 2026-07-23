@@ -183,6 +183,26 @@ def _render_score_breakdown(product: Dict[str, Any]) -> str:
     )
 
 
+def _render_launch_evidence(product: Dict[str, Any], section: str) -> str:
+    if section != "radar":
+        return ""
+    launch_evidence = product.get("launch_evidence") or {}
+    grade = launch_evidence.get("evidence_grade")
+    date_basis = str(launch_evidence.get("date_basis") or "").replace("_", " ")
+    launch_date = launch_evidence.get("launch_date")
+    if not grade and not launch_date:
+        return ""
+    value = f"Grade {grade or 'n/a'} · {launch_date or 'date unavailable'}"
+    if date_basis:
+        value += f" · {date_basis}"
+    return (
+        '<div class="heat-detail-cell full-width">'
+        '<div class="heat-detail-label">Launch Evidence</div>'
+        '<div class="heat-detail-value">{value}</div>'
+        "</div>"
+    ).format(value=_esc(value))
+
+
 def _render_product(product: Dict[str, Any], lang: str, section: str) -> str:
     """Render a single heat-item li element."""
     rank = product["rank"]
@@ -223,6 +243,7 @@ def _render_product(product: Dict[str, Any], lang: str, section: str) -> str:
         cell_data = detail.get(dkey, {})
         label = labels[i] if i < len(labels) else dkey
         cells_html += _render_detail_cell(label, cell_data, lang)
+    cells_html += _render_launch_evidence(product, section)
     cells_html += _render_score_breakdown(product)
 
     # Radar trend tag + expandable rationale (Section 04 only)

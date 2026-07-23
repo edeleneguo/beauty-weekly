@@ -177,6 +177,24 @@ class TestStrictValidation:
                 quarantine_status="pending_review",
             )
 
+    def test_launch_evidence_accepts_auditable_grade_and_date_basis(self):
+        evidence = LaunchEvidence(
+            launch_date="2026-06-12",
+            quarantine_status="verified",
+            evidence_grade="A",
+            date_basis="official_launch",
+        )
+        assert evidence.evidence_grade == "A"
+        assert evidence.date_basis == "official_launch"
+
+    def test_launch_evidence_rejects_unknown_grade(self):
+        with pytest.raises(ValidationError):
+            LaunchEvidence(
+                launch_date="2026-06-12",
+                quarantine_status="verified",
+                evidence_grade="D",
+            )
+
     def test_legacy_accepts_any_string_for_market(self):
         lp = _legacy_product(market="EU")
         assert lp.market == "EU"

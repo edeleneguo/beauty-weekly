@@ -1,6 +1,6 @@
 {
   "policy": {
-    "main_reference_semantics": "Every source is searched on every weekly run. A search attempt is mandatory, but inclusion is evidence-driven and the list is not a whitelist.",
+    "main_reference_semantics": "Every source is searched on every monthly run. A search attempt is mandatory, but inclusion is evidence-driven and the list is not a whitelist.",
     "additional_source_semantics": "Other valid public sources may be collected and published when they pass the same product-level evidence checks."
   },
   "main_references": [
@@ -23,10 +23,21 @@
     {"name": "海关数据 化妆品", "market": "CN", "type": "Official trade data"},
     {"name": "鹿镜洞察 美妆", "market": "CN", "type": "E-commerce intelligence"},
     {"name": "澎湃新闻 美妆", "market": "CN", "type": "News media"},
-    {"name": "观夏", "market": "CN", "type": "Brand official"},
-    {"name": "气味图书馆", "market": "CN", "type": "Brand official"},
-    {"name": "冰希黎", "market": "CN", "type": "Brand official"},
-    {"name": "花西子", "market": "CN", "type": "Brand official"},
+    {"name": "观夏", "market": "CN", "type": "Brand official", "category": "fragrance"},
+    {"name": "气味图书馆", "market": "CN", "type": "Brand official", "category": "fragrance"},
+    {"name": "冰希黎", "market": "CN", "type": "Brand official", "category": "fragrance"},
+    {"name": "闻献 DOCUMENTS", "market": "CN", "type": "Brand official", "category": "fragrance"},
+    {"name": "野兽派 香氛", "market": "CN", "type": "Brand official", "category": "fragrance"},
+    {"name": "迪奥中国 香水", "market": "CN", "type": "Brand official", "category": "fragrance"},
+    {"name": "香奈儿中国 香水", "market": "CN", "type": "Brand official", "category": "fragrance"},
+    {"name": "祖玛珑中国", "market": "CN", "type": "Brand official", "category": "fragrance"},
+    {"name": "花西子", "market": "CN", "type": "Brand official", "category": "makeup"},
+    {"name": "完美日记", "market": "CN", "type": "Brand official", "category": "makeup"},
+    {"name": "珂拉琪", "market": "CN", "type": "Brand official", "category": "makeup"},
+    {"name": "橘朵", "market": "CN", "type": "Brand official", "category": "makeup"},
+    {"name": "花知晓", "market": "CN", "type": "Brand official", "category": "makeup"},
+    {"name": "INTO YOU", "market": "CN", "type": "Brand official", "category": "makeup"},
+    {"name": "酵色", "market": "CN", "type": "Brand official", "category": "makeup"},
     {"name": "溪木源", "market": "CN", "type": "Brand official"},
     {"name": "TikTok beauty products", "market": "US", "type": "Social trends"},
     {"name": "Sephora new beauty", "market": "US", "type": "Retailer"},

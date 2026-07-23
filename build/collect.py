@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""collect.py — Auto-collect raw beauty industry data from public sources.
+"""collect.py — Auto-collect monthly beauty industry data from public sources.
 
-Zero-input: auto-calculates current ISO week, fetches real public data,
-and writes raw_collected.json to data/weeks/<iso-week>/.
+Zero-input: resolves the previous calendar month, fetches real public data,
+and writes raw_collected.json to data/months/<YYYY-MM>/.
 
 Data sources (all public, no API key required):
   - Allure RSS feed (beauty news + trends)
@@ -12,24 +12,36 @@ Data sources (all public, no API key required):
   - Fragrantica new arrivals (fragrance launches)
   - CBNData/36Kr RSS (China market news)
 
-Output: data/weeks/<iso-week>/raw_collected.json
+Output: data/months/<YYYY-MM>/raw_collected.json
 """
 from __future__ import annotations
 
 import json
+import os
 import sys
 import urllib.error
 import urllib.parse
 import urllib.request
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
+from html.parser import HTMLParser
 from pathlib import Path
+from urllib.parse import urlparse
 from xml.etree import ElementTree
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
-from beauty_weekly.week import current_iso_week  # noqa: E402
+from beauty_weekly.month import (  # noqa: E402
+    previous_month_range,
+    previous_month_str,
+    resolve_month,
+)
+
+try:
+    from googlenewsdecoder import gnewsdecoder
+except ImportError:  # pragma: no cover - dependency is installed in production CI
+    gnewsdecoder = None
 
 # --- Configuration ---
 TIMEOUT = 15  # seconds per request
@@ -69,6 +81,70 @@ SOURCES = {
 }
 
 REFERENCE_CONFIG = ROOT / "config" / "reference_sources.json"
+CN_DISCOVERY_CONFIG = ROOT / "config" / "cn_new_product_sources.json"
+
+_CN_LAUNCH_CUES = (
+    "新品",
+    "上市",
+    "发布",
+    "首发",
+    "推出",
+    "全新",
+    "上新",
+)
+_CN_CATEGORY_CUES = {
+    "makeup": (
+        "彩妆",
+        "口红",
+        "唇膏",
+        "唇釉",
+        "唇泥",
+        "粉底",
+        "气垫",
+        "遮瑕",
+        "粉饼",
+        "眼影",
+        "腮红",
+        "高光",
+        "修容",
+        "睫毛膏",
+        "眼线",
+    ),
+    "fragrance": (
+        "香水",
+        "香氛",
+        "淡香精",
+        "浓香水",
+        "古龙水",
+        "香精",
+    ),
+}
+_CN_FRAGRANCE_FALSE_POSITIVES = (
+    "香水椰",
+    "香水柠檬",
+    "奶茶",
+    "饮料",
+    "果茶",
+    "家居清洁",
+    "衣物清洁",
+)
+_CN_MAKEUP_STRONG_CUES = tuple(
+    cue for cue in _CN_CATEGORY_CUES["makeup"] if cue not in {"高光", "修容"}
+)
+
+
+class _MetadataParser(HTMLParser):
+    def __init__(self) -> None:
+        super().__init__()
+        self.description = ""
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        if tag.casefold() != "meta" or self.description:
+            return
+        values = {str(key).casefold(): value or "" for key, value in attrs}
+        marker = (values.get("name") or values.get("property")).casefold()
+        if marker in {"description", "og:description", "twitter:description"}:
+            self.description = values.get("content", "").strip()
 
 
 def fetch_url(url: str) -> str:
@@ -76,6 +152,65 @@ def fetch_url(url: str) -> str:
     req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
     with urllib.request.urlopen(req, timeout=TIMEOUT) as resp:
         return resp.read().decode("utf-8", errors="replace")
+
+
+def _decode_google_news_url(url: str) -> str | None:
+    if urlparse(url).netloc.casefold() != "news.google.com":
+        return url
+    if gnewsdecoder is None:
+        return None
+    decoded = gnewsdecoder(url, interval=0)
+    if not isinstance(decoded, dict) or not decoded.get("status"):
+        return None
+    direct_url = str(decoded.get("decoded_url", "")).strip()
+    if not direct_url or urlparse(direct_url).netloc.casefold() == "news.google.com":
+        return None
+    return direct_url
+
+
+def _enrich_article_direct_url(article: dict) -> dict:
+    original_url = str(article.get("url", ""))
+    direct_url = _decode_google_news_url(original_url)
+    if not direct_url:
+        article["direct_url_status"] = "decode_failed"
+        return article
+
+    if direct_url != original_url:
+        article["aggregator_url"] = original_url
+        article["url"] = direct_url
+    article["direct_url_status"] = "direct"
+
+    try:
+        parser = _MetadataParser()
+        parser.feed(fetch_url(direct_url))
+        if parser.description:
+            article["summary"] = parser.description[:1200]
+        article["page_fetch_status"] = "fetched"
+    except Exception as exc:
+        article["page_fetch_status"] = "failed"
+        article["page_fetch_error"] = str(exc)[:200]
+    return article
+
+
+def _enrich_discovery_articles(articles: list[dict]) -> list[dict]:
+    if not articles:
+        return []
+    enriched: list[dict | None] = [None] * len(articles)
+    with ThreadPoolExecutor(max_workers=6) as executor:
+        future_map = {
+            executor.submit(_enrich_article_direct_url, dict(article)): index
+            for index, article in enumerate(articles)
+        }
+        for future in as_completed(future_map):
+            index = future_map[future]
+            try:
+                enriched[index] = future.result()
+            except Exception as exc:
+                fallback = dict(articles[index])
+                fallback["direct_url_status"] = "decode_failed"
+                fallback["direct_url_error"] = str(exc)[:200]
+                enriched[index] = fallback
+    return [article for article in enriched if article is not None]
 
 
 def parse_rss(
@@ -112,19 +247,43 @@ def _load_main_references() -> list[dict]:
     return config["main_references"]
 
 
-def _reference_search_url(reference: dict) -> str:
-    query = f'{reference["name"]} (美妆 OR 护肤 OR 香水 OR 彩妆)'
-    if reference["market"] == "US":
-        query = f'{reference["name"]} (beauty OR makeup OR fragrance OR skincare)'
+def _load_cn_discovery_config() -> dict:
+    with open(CN_DISCOVERY_CONFIG, encoding="utf-8") as f:
+        return json.load(f)
+
+
+def _month_window(month: str) -> tuple[str, str, str]:
+    year, month_number = (int(part) for part in month.split("-"))
+    start, end = previous_month_range(year, month_number)
+    return start.isoformat(), end.isoformat(), (end + timedelta(days=1)).isoformat()
+
+
+def _news_search_url(query: str, market: str, month: str | None = None) -> str:
+    if month:
+        start, _end, exclusive_end = _month_window(month)
+        query = f"{query} after:{start} before:{exclusive_end}"
+    if market == "US":
         params = {"q": query, "hl": "en-US", "gl": "US", "ceid": "US:en"}
     else:
         params = {"q": query, "hl": "zh-CN", "gl": "CN", "ceid": "CN:zh-Hans"}
     return "https://news.google.com/rss/search?" + urllib.parse.urlencode(params)
 
 
-def _fetch_main_reference(reference: dict) -> tuple[dict, list[dict]]:
+def _reference_search_url(reference: dict, month: str | None = None) -> str:
+    query = f'{reference["name"]} (美妆 OR 护肤 OR 香水 OR 彩妆)'
+    if reference["market"] == "US":
+        query = f'{reference["name"]} (beauty OR makeup OR fragrance OR skincare)'
+    return _news_search_url(query, reference["market"], month)
+
+
+def _format_discovery_query(query: dict, month: str) -> str:
+    year, month_number = (int(part) for part in month.split("-"))
+    return query["query"].format(year=year, month_number=month_number)
+
+
+def _fetch_main_reference(reference: dict, month: str | None = None) -> tuple[dict, list[dict]]:
     """Search one mandatory reference and return its audit record plus results."""
-    url = _reference_search_url(reference)
+    url = _reference_search_url(reference, month)
     content = fetch_url(url)
     articles = parse_rss(
         content,
@@ -132,6 +291,10 @@ def _fetch_main_reference(reference: dict) -> tuple[dict, list[dict]]:
         market=reference["market"],
         reference_type=reference["type"],
     )
+    if reference.get("category"):
+        for article in articles:
+            article["category"] = reference["category"]
+            article["discovery_stage"] = "brand_search"
     return (
         {
             "name": reference["name"],
@@ -146,18 +309,115 @@ def _fetch_main_reference(reference: dict) -> tuple[dict, list[dict]]:
     )
 
 
-def collect_all() -> dict:
+def _fetch_cn_discovery_query(query: dict, category: str, month: str) -> tuple[dict, list[dict]]:
+    query_text = _format_discovery_query(query, month)
+    url = _news_search_url(query_text, "CN", month)
+    content = fetch_url(url)
+    articles = parse_rss(
+        content,
+        query["name"],
+        market="CN",
+        reference_type=f"{category}_new_product_discovery",
+    )
+    articles = [
+        article for article in articles if _is_cn_new_product_article(article, category)
+    ]
+    articles = _enrich_discovery_articles(articles)
+    for article in articles:
+        article["category"] = category
+        article["discovery_stage"] = "broad"
+    return (
+        {
+            "name": query["name"],
+            "category": category,
+            "market": "CN",
+            "type": "new_product_discovery",
+            "articles_count": len(articles),
+            "url": url,
+        },
+        articles,
+    )
+
+
+def _is_cn_new_product_article(article: dict, category: str) -> bool:
+    combined = " ".join(
+        str(article.get(field, "")).casefold() for field in ("title", "summary")
+    )
+    if not any(cue in combined for cue in _CN_LAUNCH_CUES):
+        return False
+    if not any(cue in combined for cue in _CN_CATEGORY_CUES[category]):
+        return False
+    if category == "makeup" and not any(cue in combined for cue in _CN_MAKEUP_STRONG_CUES):
+        return False
+    return not (
+        category == "fragrance"
+        and any(cue in combined for cue in _CN_FRAGRANCE_FALSE_POSITIVES)
+    )
+
+
+def search_product_evidence(
+    product_name: str,
+    category: str,
+    month: str,
+) -> tuple[dict, list[dict]]:
+    """Run a candidate-specific CN evidence search for the target month."""
+    category_terms = "彩妆 美妆" if category == "makeup" else "香水 香氛"
+    query = f'"{product_name}" ({category_terms}) (新品 OR 上市 OR 发布 OR 首发)'
+    url = _news_search_url(query, "CN", month)
+    content = fetch_url(url)
+    articles = parse_rss(
+        content,
+        f"candidate:{product_name}",
+        market="CN",
+        reference_type="candidate_verification",
+    )
+    articles = _enrich_discovery_articles(articles)
+    for article in articles:
+        article["category"] = category
+        article["discovery_stage"] = "candidate_verification"
+        article["candidate_name"] = product_name
+    return (
+        {
+            "product_name": product_name,
+            "category": category,
+            "market": "CN",
+            "type": "candidate_verification",
+            "articles_count": len(articles),
+            "url": url,
+        },
+        articles,
+    )
+
+
+def _dedupe_articles(articles: list[dict]) -> list[dict]:
+    unique: list[dict] = []
+    seen_urls: set[str] = set()
+    for article in articles:
+        url = article.get("url", "").strip()
+        if not url or url in seen_urls:
+            continue
+        seen_urls.add(url)
+        unique.append(article)
+    return unique
+
+
+def collect_all(target_month: str | None = None) -> dict:
     """Collect data from all configured sources."""
-    iso_week = current_iso_week()
+    month = resolve_month(target_month or previous_month_str())
+    window_start, window_end, _exclusive_end = _month_window(month)
     today = date.today().isoformat()
 
     result = {
-        "iso_week": iso_week,
+        "month": month,
+        "window_start": window_start,
+        "window_end": window_end,
         "collected_at": datetime.utcnow().isoformat() + "Z",
         "date": today,
         "sources_fetched": [],
         "sources_failed": [],
         "main_reference_audit": [],
+        "cn_new_product_discovery_audit": [],
+        "candidate_evidence_audit": [],
         "articles": [],
         "products": [],
         "trends": [],
@@ -228,7 +488,9 @@ def collect_all() -> dict:
     references = _load_main_references()
     print(f"  Searching {len(references)} mandatory main references...")
     with ThreadPoolExecutor(max_workers=8) as executor:
-        future_map = {executor.submit(_fetch_main_reference, ref): ref for ref in references}
+        future_map = {
+            executor.submit(_fetch_main_reference, ref, month): ref for ref in references
+        }
         for future in as_completed(future_map):
             ref = future_map[future]
             try:
@@ -243,18 +505,67 @@ def collect_all() -> dict:
                         "reference_type": ref["type"],
                         "type": "search_rss",
                         "articles_count": 0,
-                        "url": _reference_search_url(ref),
+                        "url": _reference_search_url(ref, month),
                         "mandatory_search": True,
                         "error": str(exc)[:200],
                     }
                 )
 
+    discovery_config = _load_cn_discovery_config()
+    discovery_jobs = [
+        (category, query)
+        for category, queries in discovery_config["discovery_queries"].items()
+        for query in queries
+    ]
+    print(f"  Searching {len(discovery_jobs)} dedicated CN new-product queries...")
+    with ThreadPoolExecutor(max_workers=8) as executor:
+        future_map = {
+            executor.submit(_fetch_cn_discovery_query, query, category, month): (
+                category,
+                query,
+            )
+            for category, query in discovery_jobs
+        }
+        for future in as_completed(future_map):
+            category, query = future_map[future]
+            try:
+                audit, articles = future.result()
+                result["cn_new_product_discovery_audit"].append(audit)
+                result["articles"].extend(articles)
+            except Exception as exc:
+                result["cn_new_product_discovery_audit"].append(
+                    {
+                        "name": query["name"],
+                        "category": category,
+                        "market": "CN",
+                        "type": "new_product_discovery",
+                        "articles_count": 0,
+                        "url": _news_search_url(_format_discovery_query(query, month), "CN", month),
+                        "error": str(exc)[:200],
+                    }
+                )
+
     result["main_reference_audit"].sort(key=lambda item: (item["market"], item["name"]))
+    brand_indexes = [
+        index
+        for index, article in enumerate(result["articles"])
+        if article.get("discovery_stage") == "brand_search"
+    ][:80]
+    enriched_brands = _enrich_discovery_articles(
+        [result["articles"][index] for index in brand_indexes]
+    )
+    for index, article in zip(brand_indexes, enriched_brands):
+        result["articles"][index] = article
+
+    result["cn_new_product_discovery_audit"].sort(
+        key=lambda item: (item["category"], item["name"])
+    )
     result["main_references_searched"] = len(result["main_reference_audit"])
     result["main_references_with_results"] = sum(
         item["articles_count"] > 0 for item in result["main_reference_audit"]
     )
 
+    result["articles"] = _dedupe_articles(result["articles"])
     result["total_articles"] = len(result["articles"])
     result["total_sources_ok"] = len(result["sources_fetched"])
     result["total_sources_fail"] = len(result["sources_failed"])
@@ -263,16 +574,16 @@ def collect_all() -> dict:
 
 
 def main() -> int:
-    iso_week = current_iso_week()
-    print("=== Beauty Weekly Data Collection ===")
-    print(f"ISO Week: {iso_week}")
+    month = resolve_month(os.environ.get("BEAUTY_MONTHLY_MONTH") or previous_month_str())
+    print("=== Beauty Monthly Data Collection ===")
+    print(f"Month: {month}")
     print(f"Date: {date.today().isoformat()}")
     print()
 
-    data = collect_all()
+    data = collect_all(month)
 
-    # Write to data/weeks/<iso-week>/raw_collected.json
-    output_dir = ROOT / "data" / "weeks" / iso_week
+    # Write to data/months/<YYYY-MM>/raw_collected.json
+    output_dir = ROOT / "data" / "months" / month
     output_dir.mkdir(parents=True, exist_ok=True)
     output_path = output_dir / "raw_collected.json"
 

@@ -1,0 +1,90 @@
+{
+  "version": "1.0.0",
+  "policy": {
+    "coverage_semantics": "Soft floors trigger a second discovery pass; they never authorize fabricated or unsupported products.",
+    "date_semantics": "A product qualifies when an official launch, first listing, or first credible publication falls inside the target calendar month."
+  },
+  "soft_floor": {
+    "makeup": 8,
+    "fragrance": 4
+  },
+  "discovery_queries": {
+    "makeup": [
+      {
+        "name": "CN makeup launches",
+        "query": "(\"彩妆新品\" OR \"口红新品\" OR \"粉底新品\" OR \"气垫新品\") (发布 OR 上市 OR 首发)"
+      },
+      {
+        "name": "CN lip launches",
+        "query": "(口红 OR 唇膏 OR 唇釉 OR 唇泥) (新品 OR 上市 OR 发布)"
+      },
+      {
+        "name": "CN complexion launches",
+        "query": "(粉底 OR 气垫 OR 遮瑕 OR 粉饼) (新品 OR 上市 OR 发布)"
+      },
+      {
+        "name": "CN colour launches",
+        "query": "(眼影 OR 腮红 OR 高光 OR 修容) (新品 OR 上市 OR 发布)"
+      },
+      {
+        "name": "CN makeup brand launches",
+        "query": "(花西子 OR 毛戈平 OR 珂拉琪 OR 橘朵 OR 卡姿兰 OR 完美日记) (彩妆新品 OR 新品上市 OR 新品发布)"
+      },
+      {
+        "name": "CN makeup media launches",
+        "query": "(site:vogue.com.cn OR site:ellechina.com OR site:jiemian.com) (彩妆新品 OR 口红新品 OR 粉底新品)"
+      },
+      {
+        "name": "CN makeup social launches",
+        "query": "site:weibo.com (彩妆新品 OR 口红新品 OR 气垫新品 OR 腮红新品)"
+      },
+      {
+        "name": "CN monthly makeup roundups",
+        "query": "彩妆 新品 {year}年{month_number}月"
+      }
+    ],
+    "fragrance": [
+      {
+        "name": "CN fragrance launches",
+        "query": "(\"香水新品\" OR \"香氛新品\") (发布 OR 上市 OR 首发) -香水椰 -香水柠檬"
+      },
+      {
+        "name": "CN scent launches",
+        "query": "(香水 OR 香氛 OR 淡香精 OR 浓香水) (新品上市 OR 新品发布 OR 全球首发) -饮料 -柠檬 -椰"
+      },
+      {
+        "name": "CN domestic fragrance launches",
+        "query": "(国货香水 OR 中国香水 OR 国产香氛) (新品 OR 上市 OR 发布)"
+      },
+      {
+        "name": "CN fragrance brand launches",
+        "query": "(观夏 OR 气味图书馆 OR 冰希黎 OR 闻献 OR DOCUMENTS OR 野兽派) (香水新品 OR 香氛新品 OR 新品上市)"
+      },
+      {
+        "name": "CN fragrance retail launches",
+        "query": "(天猫 OR 京东 OR 抖音) (香水新品 OR 香氛新品 OR 香水首发) -香水椰 -香水柠檬"
+      },
+      {
+        "name": "CN fragrance media launches",
+        "query": "(site:vogue.com.cn OR site:ellechina.com OR site:hypebeast.cn OR site:jiemian.com) (香水新品 OR 香氛新品)"
+      },
+      {
+        "name": "CN fragrance social launches",
+        "query": "site:weibo.com (香水新品 OR 香氛新品 OR 香水首发) -香水椰 -香水柠檬"
+      },
+      {
+        "name": "CN global fragrance launches",
+        "query": "(Dior OR Chanel OR Guerlain OR YSL OR Jo Malone OR Le Labo) (香水新品 OR 香水首发 OR 香氛新品) 中国"
+      },
+      {
+        "name": "CN monthly fragrance roundups",
+        "query": "香水 新品 {year}年{month_number}月 -香水椰 -香水柠檬"
+      }
+    ]
+  },
+  "evidence_grades": {
+    "A": "Official brand launch or product page with an exact in-window date.",
+    "B": "Retailer listing or reputable editorial source with an exact in-window publication date.",
+    "C": "Credible discovery or social-commerce source with an exact in-window first verified mention."
+  }
+}
