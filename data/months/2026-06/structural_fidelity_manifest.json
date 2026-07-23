@@ -365,11 +365,11 @@
           "exclusion_reason": "All eligible historical radar products were preserved.",
           "included_products": [
             "Tom Ford Taormina Orange EDP",
-            "Bvlgari Eau Parfumée Thé Impérial",
-            "L'Artisan Parfumeur L'Amant EDP",
-            "Rabanne Million Gold For Her Pure Diamonds",
             "Jean Paul Gaultier Le Male In Blue",
-            "Guerlain Aqua Allegoria Perle Rosa Rossa"
+            "Bvlgari Eau Parfumée Thé Impérial",
+            "Guerlain Aqua Allegoria Perle Rosa Rossa",
+            "L'Artisan Parfumeur L'Amant EDP",
+            "Rabanne Million Gold For Her Pure Diamonds"
           ],
           "source_count": 6
         },
@@ -386,10 +386,10 @@
           "excluded_products": [],
           "exclusion_reason": "All eligible historical radar products were preserved.",
           "included_products": [
-            "Huda Beauty Easy Bake Intense EDP",
-            "Phlur Rose Whip EDP",
-            "Glossier You Solid",
             "Sol de Janeiro Cheirosa 91 Perfume Mist",
+            "Glossier You Solid",
+            "Phlur Rose Whip EDP",
+            "Huda Beauty Easy Bake Intense EDP",
             "Lake & Skye 11 11 Moon EDP",
             "DedCool Mochi Milk"
           ],
@@ -467,10 +467,10 @@
             "YSL Skin Affair Soft Glow Cushion Foundation",
             "Dior Rouge Dior Forever Liquid",
             "Armani Luminous Silk Foundation",
-            "Charlotte Tilbury Pillow Talk Collection",
+            "Charlotte Tilbury Pillow Talk Matte Revolution Lipstick",
             "Marc Jacobs Joystick Blush Stick",
             "Tom Ford Shade & Illuminate Foundation",
-            "YSL Pure Shots Foundation",
+            "YSL All Hours Foundation",
             "Dior Forever Glow Maximizer",
             "Pat McGrath Labs Divine Blush",
             "Chanel Le Rouge Duo Ultra Tenue"
@@ -493,7 +493,7 @@
             "Julep Eyeshadow 101 Stick",
             "Fenty Beauty Gloss Bomb",
             "Urban Decay All Nighter Setting Spray",
-            "Rare Beauty Find Comfort Tinted Moisturizer",
+            "Rare Beauty Positive Light Tinted Moisturizer",
             "NARS Natural Radiant Longwear",
             "NYX Professional Fat Oil Lip Oil",
             "Kosas Cloud Set Blurring Powder",

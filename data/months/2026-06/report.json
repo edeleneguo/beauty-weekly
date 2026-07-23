@@ -24,14 +24,14 @@
               "price_link": {
                 "cn": "¥1,800",
                 "en": "¥1,800",
-              "link": "https://www.lelabofragrances.com/the-matcha-26.html"
+                "link": "https://www.bloomingdales.com/shop/product/le-labo-the-matcha-26-eau-de-parfum?ID=5219679"
               }
             },
             "launch_evidence": {
               "absence_markers": [],
               "evidence": {
-                "checked_at": "2026-07-23T11:12:46Z",
-                "fetched_at": "2026-07-23T11:12:46Z",
+                "checked_at": "2026-07-23T14:25:00Z",
+                "fetched_at": "2026-07-23T14:25:00Z",
                 "published_at": "2026-07-21T07:37:18Z",
                 "supported_fields": [
                   "price",
@@ -42,9 +42,9 @@
                   "category",
                   "launch_date"
                 ],
-                "title": "Historical repository snapshot: Le Labo Thé Matcha 26 (archive/week-27/fragrance.html)",
-                "type": "editorial",
-                "url": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-27/fragrance.html"
+                "title": "Le Labo Thé Matcha 26 Eau de Parfum - Bloomingdale's",
+                "type": "product_page",
+                "url": "https://www.bloomingdales.com/shop/product/le-labo-the-matcha-26-eau-de-parfum?ID=5219679"
               },
               "launch_date": "2026-06-30",
               "quarantine_reason": null,
@@ -83,7 +83,7 @@
               "price_link": {
                 "cn": "¥1,080",
                 "en": "¥1,080",
-              "link": "https://www.maisonmargiela-fragrances.us/fragrances/replica/replica-lazy-sunday-morning/MM006.html"
+                "link": "https://www.maisonmargiela-fragrances.us/fragrances/replica/replica-lazy-sunday-morning/MM006.html"
               }
             },
             "launch_evidence": {
@@ -353,7 +353,7 @@
             "name": "Tom Ford Taormina Orange EDP",
             "name_cn": "",
             "new_badge": "NEW",
-            "rank": 2,
+            "rank": 1,
             "score": 80,
             "tier": "LUXURY",
             "trend": null,
@@ -377,7 +377,7 @@
               "price_link": {
                 "cn": "$250",
                 "en": "$250",
-              "link": "https://www.bykilian.com/love-dont-be-shy-iconic-kilian-fragrance"
+                "link": "https://www.bykilian.com/love-dont-be-shy-iconic-kilian-fragrance"
               }
             },
             "launch_evidence": {
@@ -407,7 +407,7 @@
             "name": "Kilian Love Don’t Be Shy",
             "name_cn": "Kilian Love Don’t Be Shy",
             "new_badge": null,
-            "rank": 1,
+            "rank": 2,
             "score": 75,
             "tier": "LUXURY",
             "trend": null,
@@ -772,7 +772,7 @@
               "price_link": {
                 "cn": "$96",
                 "en": "$96",
-              "link": "https://phlur.com/products/missing-person"
+                "link": "https://phlur.com/products/missing-person"
               }
             },
             "launch_evidence": {
@@ -831,7 +831,7 @@
               "price_link": {
                 "cn": "$118",
                 "en": "$118",
-              "link": "https://us.kayali.com/products/freedom-musk-matcha-45"
+                "link": "https://us.kayali.com/products/freedom-musk-matcha-45"
               }
             },
             "launch_evidence": {
@@ -979,7 +979,7 @@
             "name": "Huda Beauty Easy Bake Intense EDP",
             "name_cn": "",
             "new_badge": "NEW",
-            "rank": 6,
+            "rank": 5,
             "score": 75,
             "tier": "MASSTIGE",
             "trend": null,
@@ -1033,7 +1033,7 @@
             "name": "Lake & Skye 11 11 Moon EDP",
             "name_cn": "",
             "new_badge": "NEW",
-            "rank": 7,
+            "rank": 6,
             "score": 72,
             "tier": "MASSTIGE",
             "trend": {
@@ -1092,7 +1092,7 @@
             "name": "DedCool Mochi Milk",
             "name_cn": "",
             "new_badge": "NEW",
-            "rank": 8,
+            "rank": 7,
             "score": 70,
             "tier": "MASSTIGE",
             "trend": {
@@ -1151,7 +1151,7 @@
             "name": "Glossier You",
             "name_cn": "",
             "new_badge": null,
-            "rank": 5,
+            "rank": 8,
             "score": 68,
             "tier": "MASSTIGE",
             "trend": {
@@ -1223,6 +1223,60 @@
             "trend_badge": null
           },
           {
+            "category_badge": "Aromatic Amber Eau de Parfum",
+            "detail": {
+              "brand": {
+                "cn": "June limited-edition launch in the Le Male franchise",
+                "en": "June limited-edition launch in the Le Male franchise"
+              },
+              "buzz": {
+                "cn": "Fragrantica: limited edition new wave · metallic blue translucent black bottle",
+                "en": "Fragrantica: limited edition new wave · metallic blue translucent black bottle"
+              },
+              "key_features": {
+                "cn": "Aromatic lavender · metallic fennel · benzoin · aromatic · longevity 8h · sillage strong",
+                "en": "Aromatic lavender · metallic fennel · benzoin · aromatic · longevity 8h · sillage strong"
+              },
+              "price_link": {
+                "cn": "$145 / 125ml",
+                "en": "$145 / 125ml",
+                "link": "https://www.sephora.com/product/le-male-in-blue-limited-edition-P525202"
+              }
+            },
+            "launch_evidence": {
+              "absence_markers": [],
+              "evidence": {
+                "checked_at": "2026-07-23T11:12:46Z",
+                "fetched_at": "2026-07-23T11:12:46Z",
+                "published_at": "2026-07-21T07:37:18Z",
+                "supported_fields": [
+                  "price",
+                  "features",
+                  "buzz",
+                  "brand",
+                  "link",
+                  "category",
+                  "launch_date"
+                ],
+                "title": "Historical repository snapshot: Le Male In Blue (archive/week-26/fragrance.html)",
+                "type": "editorial",
+                "url": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-26/fragrance.html"
+              },
+              "launch_date": "2026-06-18",
+              "quarantine_reason": null,
+              "quarantine_status": "verified"
+            },
+            "market": "US",
+            "name": "Jean Paul Gaultier Le Male In Blue",
+            "name_cn": "",
+            "new_badge": null,
+            "rank": 2,
+            "score": 75,
+            "tier": "LUXURY",
+            "trend": null,
+            "trend_badge": null
+          },
+          {
             "category_badge": "Tea Citrus Musk Eau de Toilette",
             "detail": {
               "brand": {
@@ -1270,7 +1324,7 @@
             "name": "Bvlgari Eau Parfumée Thé Impérial",
             "name_cn": "Thé Impérial",
             "new_badge": null,
-            "rank": 2,
+            "rank": 3,
             "score": 72,
             "tier": "LUXURY",
             "trend": {
@@ -1278,6 +1332,65 @@
               "rationale": "Matcha-led fragrance positioning persisted across both premium and niche June references.",
               "tag": "Matcha Fragrance",
               "tag_cn": "抹茶香水趋势"
+            },
+            "trend_badge": "Trend"
+          },
+          {
+            "category_badge": "Rose Floral Musk Eau de Parfum",
+            "detail": {
+              "brand": {
+                "cn": "June limited-edition launch in the Aqua Allegoria Perle line",
+                "en": "June limited-edition launch in the Aqua Allegoria Perle line"
+              },
+              "buzz": {
+                "cn": "Fragrantica: sensual freshness of freshly picked roses · ScentAdvice: rose in new light",
+                "en": "Fragrantica: sensual freshness of freshly picked roses · ScentAdvice: rose in new light"
+              },
+              "key_features": {
+                "cn": "Rose water · peony · creamy sandalwood · rose · longevity 6h · sillage moderate",
+                "en": "Rose water · peony · creamy sandalwood · rose · longevity 6h · sillage moderate"
+              },
+              "price_link": {
+                "cn": "S$295 / 125ml",
+                "en": "S$295 / 125ml",
+                "link": "https://www.guerlain.com/sg/en-sg/p/aqua-allegoria-perle-rosa-rossa-perle---eau-de-parfum-P062205.html"
+              }
+            },
+            "launch_evidence": {
+              "absence_markers": [],
+              "evidence": {
+                "checked_at": "2026-07-23T11:12:46Z",
+                "fetched_at": "2026-07-23T11:12:46Z",
+                "published_at": "2026-07-21T07:37:18Z",
+                "supported_fields": [
+                  "price",
+                  "features",
+                  "buzz",
+                  "brand",
+                  "link",
+                  "category",
+                  "launch_date"
+                ],
+                "title": "Historical repository snapshot: Rosa Rossa (archive/week-26/fragrance.html)",
+                "type": "editorial",
+                "url": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-26/fragrance.html"
+              },
+              "launch_date": "2026-06-18",
+              "quarantine_reason": null,
+              "quarantine_status": "verified"
+            },
+            "market": "US",
+            "name": "Guerlain Aqua Allegoria Perle Rosa Rossa",
+            "name_cn": "",
+            "new_badge": null,
+            "rank": 4,
+            "score": 72,
+            "tier": "LUXURY",
+            "trend": {
+              "id": "rose-revival",
+              "rationale": "Rose-led fragrance storytelling reappeared in multiple June hero and radar products.",
+              "tag": "Rose Revival",
+              "tag_cn": "玫瑰复兴趋势"
             },
             "trend_badge": "Trend"
           },
@@ -1329,7 +1442,7 @@
             "name": "L'Artisan Parfumeur L'Amant EDP",
             "name_cn": "",
             "new_badge": null,
-            "rank": 3,
+            "rank": 5,
             "score": 70,
             "tier": "LUXURY",
             "trend": {
@@ -1388,146 +1501,33 @@
             "name": "Rabanne Million Gold For Her Pure Diamonds",
             "name_cn": "",
             "new_badge": null,
-            "rank": 4,
+            "rank": 6,
             "score": 68,
             "tier": "LUXURY",
             "trend": null,
             "trend_badge": null
-          },
-          {
-            "category_badge": "Aromatic Amber Eau de Parfum",
-            "detail": {
-              "brand": {
-                "cn": "June limited-edition launch in the Le Male franchise",
-                "en": "June limited-edition launch in the Le Male franchise"
-              },
-              "buzz": {
-                "cn": "Fragrantica: limited edition new wave · metallic blue translucent black bottle",
-                "en": "Fragrantica: limited edition new wave · metallic blue translucent black bottle"
-              },
-              "key_features": {
-                "cn": "Aromatic lavender · metallic fennel · benzoin · aromatic · longevity 8h · sillage strong",
-                "en": "Aromatic lavender · metallic fennel · benzoin · aromatic · longevity 8h · sillage strong"
-              },
-              "price_link": {
-                "cn": "$145 / 125ml",
-                "en": "$145 / 125ml",
-                "link": "https://www.sephora.com/product/le-male-in-blue-limited-edition-P525202"
-              }
-            },
-            "launch_evidence": {
-              "absence_markers": [],
-              "evidence": {
-                "checked_at": "2026-07-23T11:12:46Z",
-                "fetched_at": "2026-07-23T11:12:46Z",
-                "published_at": "2026-07-21T07:37:18Z",
-                "supported_fields": [
-                  "price",
-                  "features",
-                  "buzz",
-                  "brand",
-                  "link",
-                  "category",
-                  "launch_date"
-                ],
-                "title": "Historical repository snapshot: Le Male In Blue (archive/week-26/fragrance.html)",
-                "type": "editorial",
-                "url": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-26/fragrance.html"
-              },
-              "launch_date": "2026-06-18",
-              "quarantine_reason": null,
-              "quarantine_status": "verified"
-            },
-            "market": "US",
-            "name": "Jean Paul Gaultier Le Male In Blue",
-            "name_cn": "",
-            "new_badge": null,
-            "rank": 5,
-            "score": 75,
-            "tier": "LUXURY",
-            "trend": null,
-            "trend_badge": null
-          },
-          {
-            "category_badge": "Rose Floral Musk Eau de Parfum",
-            "detail": {
-              "brand": {
-                "cn": "June limited-edition launch in the Aqua Allegoria Perle line",
-                "en": "June limited-edition launch in the Aqua Allegoria Perle line"
-              },
-              "buzz": {
-                "cn": "Fragrantica: sensual freshness of freshly picked roses · ScentAdvice: rose in new light",
-                "en": "Fragrantica: sensual freshness of freshly picked roses · ScentAdvice: rose in new light"
-              },
-              "key_features": {
-                "cn": "Rose water · peony · creamy sandalwood · rose · longevity 6h · sillage moderate",
-                "en": "Rose water · peony · creamy sandalwood · rose · longevity 6h · sillage moderate"
-              },
-              "price_link": {
-                "cn": "S$295 / 125ml",
-                "en": "S$295 / 125ml",
-                "link": "https://www.guerlain.com/sg/en-sg/p/aqua-allegoria-perle-rosa-rossa-perle---eau-de-parfum-P062205.html"
-              }
-            },
-            "launch_evidence": {
-              "absence_markers": [],
-              "evidence": {
-                "checked_at": "2026-07-23T11:12:46Z",
-                "fetched_at": "2026-07-23T11:12:46Z",
-                "published_at": "2026-07-21T07:37:18Z",
-                "supported_fields": [
-                  "price",
-                  "features",
-                  "buzz",
-                  "brand",
-                  "link",
-                  "category",
-                  "launch_date"
-                ],
-                "title": "Historical repository snapshot: Rosa Rossa (archive/week-26/fragrance.html)",
-                "type": "editorial",
-                "url": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-26/fragrance.html"
-              },
-              "launch_date": "2026-06-18",
-              "quarantine_reason": null,
-              "quarantine_status": "verified"
-            },
-            "market": "US",
-            "name": "Guerlain Aqua Allegoria Perle Rosa Rossa",
-            "name_cn": "",
-            "new_badge": null,
-            "rank": 6,
-            "score": 72,
-            "tier": "LUXURY",
-            "trend": {
-              "id": "rose-revival",
-              "rationale": "Rose-led fragrance storytelling reappeared in multiple June hero and radar products.",
-              "tag": "Rose Revival",
-              "tag_cn": "玫瑰复兴趋势"
-            },
-            "trend_badge": "Trend"
           }
         ],
         "US MASSTIGE": [
           {
-            "category_badge": "Floral Gourmand Eau de Parfum",
+            "category_badge": "Floral Gourmand Perfume Mist",
             "detail": {
               "brand": {
-                "cn": "June new eau de parfum launch from Huda Beauty",
-                "en": "June new eau de parfum launch from Huda Beauty"
+                "cn": "June perfume-mist launch in the Cheirosa line",
+                "en": "June perfume-mist launch in the Cheirosa line"
               },
               "buzz": {
-                "cn": "Fragrantica 3.79/5 (175 votes) · Parfumo: cherry vanilla, pleasant but not edible",
-                "en": "Fragrantica 3.79/5 (175 votes) · Parfumo: cherry vanilla, pleasant but not edible"
+                "cn": "TikTok #RosePerfume 4.1B · Sephora Body Mist bestseller · $39 entry driver",
+                "en": "TikTok #RosePerfume 4.1B · Sephora Body Mist bestseller · $39 entry driver"
               },
               "key_features": {
-                "cn": "Wild cherry · white flower · caramel milk · bourbon vanilla · floral gourmand · longevity 8-10h · sillage strong",
-                "en": "Wild cherry · white flower · caramel milk · bourbon vanilla · floral gourmand · longevity 8-10h · sillage strong"
+                "cn": "Passionfruit · honey caramel · Rio pink rose · floral fruity gourmand · longevity 4-6h · sillage soft (Body Mist)",
+                "en": "Passionfruit · honey caramel · Rio pink rose · floral fruity gourmand · longevity 4-6h · sillage soft (Body Mist)"
               },
               "price_link": {
-                "cn": "$79 / 50ml",
-                "en": "$79 / 50ml",
-                "link": "https://hudabeauty.com/en-us/products/easy-bake-intense-eau-de-parfum-50ml-hb01351"
+                "cn": "$26 / 90ml",
+                "en": "$26 / 90ml",
+                "link": "https://soldejaneiro.com/products/cheirosa-91-perfume-mist"
               }
             },
             "launch_evidence": {
@@ -1545,7 +1545,7 @@
                   "category",
                   "launch_date"
                 ],
-                "title": "Historical repository snapshot: Easy Bake Intense EDP (archive/week-26/fragrance.html)",
+                "title": "Historical repository snapshot: Cheirosa 91 (archive/week-26/fragrance.html)",
                 "type": "editorial",
                 "url": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-26/fragrance.html"
               },
@@ -1554,65 +1554,11 @@
               "quarantine_status": "verified"
             },
             "market": "US",
-            "name": "Huda Beauty Easy Bake Intense EDP",
+            "name": "Sol de Janeiro Cheirosa 91 Perfume Mist",
             "name_cn": "",
             "new_badge": null,
             "rank": 1,
-            "score": 75,
-            "tier": "MASSTIGE",
-            "trend": null,
-            "trend_badge": null
-          },
-          {
-            "category_badge": "Rose Floral Eau de Parfum",
-            "detail": {
-              "brand": {
-                "cn": "June new rose-fragrance launch in Phlur's perfume line",
-                "en": "June new rose-fragrance launch in Phlur's perfume line"
-              },
-              "buzz": {
-                "cn": "PureWow: TikTok/IG daily presence · Phlur site: \"sophisticated modern rose\"",
-                "en": "PureWow: TikTok/IG daily presence · Phlur site: \"sophisticated modern rose\""
-              },
-              "key_features": {
-                "cn": "Velvety rose · black currant · musk · rose · longevity 6-8h · sillage moderate",
-                "en": "Velvety rose · black currant · musk · rose · longevity 6-8h · sillage moderate"
-              },
-              "price_link": {
-                "cn": "$99 / 50ml",
-                "en": "$99 / 50ml",
-                "link": "https://phlur.com/pages/rose-whip"
-              }
-            },
-            "launch_evidence": {
-              "absence_markers": [],
-              "evidence": {
-                "checked_at": "2026-07-23T11:12:46Z",
-                "fetched_at": "2026-07-23T11:12:46Z",
-                "published_at": "2026-07-21T07:37:18Z",
-                "supported_fields": [
-                  "price",
-                  "features",
-                  "buzz",
-                  "brand",
-                  "link",
-                  "category",
-                  "launch_date"
-                ],
-                "title": "Historical repository snapshot: Rose Whip (archive/week-26/fragrance.html)",
-                "type": "editorial",
-                "url": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-26/fragrance.html"
-              },
-              "launch_date": "2026-06-18",
-              "quarantine_reason": null,
-              "quarantine_status": "verified"
-            },
-            "market": "US",
-            "name": "Phlur Rose Whip EDP",
-            "name_cn": "",
-            "new_badge": null,
-            "rank": 2,
-            "score": 78,
+            "score": 95,
             "tier": "MASSTIGE",
             "trend": {
               "id": "rose-revival",
@@ -1670,7 +1616,7 @@
             "name": "Glossier You Solid",
             "name_cn": "",
             "new_badge": null,
-            "rank": 3,
+            "rank": 2,
             "score": 84,
             "tier": "MASSTIGE",
             "trend": {
@@ -1682,24 +1628,24 @@
             "trend_badge": "Trend"
           },
           {
-            "category_badge": "Floral Gourmand Perfume Mist",
+            "category_badge": "Rose Floral Eau de Parfum",
             "detail": {
               "brand": {
-                "cn": "June perfume-mist launch in the Cheirosa line",
-                "en": "June perfume-mist launch in the Cheirosa line"
+                "cn": "June new rose-fragrance launch in Phlur's perfume line",
+                "en": "June new rose-fragrance launch in Phlur's perfume line"
               },
               "buzz": {
-                "cn": "TikTok #RosePerfume 4.1B · Sephora Body Mist bestseller · $39 entry driver",
-                "en": "TikTok #RosePerfume 4.1B · Sephora Body Mist bestseller · $39 entry driver"
+                "cn": "PureWow: TikTok/IG daily presence · Phlur site: \"sophisticated modern rose\"",
+                "en": "PureWow: TikTok/IG daily presence · Phlur site: \"sophisticated modern rose\""
               },
               "key_features": {
-                "cn": "Passionfruit · honey caramel · Rio pink rose · floral fruity gourmand · longevity 4-6h · sillage soft (Body Mist)",
-                "en": "Passionfruit · honey caramel · Rio pink rose · floral fruity gourmand · longevity 4-6h · sillage soft (Body Mist)"
+                "cn": "Velvety rose · black currant · musk · rose · longevity 6-8h · sillage moderate",
+                "en": "Velvety rose · black currant · musk · rose · longevity 6-8h · sillage moderate"
               },
               "price_link": {
-                "cn": "$26 / 90ml",
-                "en": "$26 / 90ml",
-                "link": "https://soldejaneiro.com/products/cheirosa-91-perfume-mist"
+                "cn": "$99 / 50ml",
+                "en": "$99 / 50ml",
+                "link": "https://phlur.com/pages/rose-whip"
               }
             },
             "launch_evidence": {
@@ -1717,7 +1663,7 @@
                   "category",
                   "launch_date"
                 ],
-                "title": "Historical repository snapshot: Cheirosa 91 (archive/week-26/fragrance.html)",
+                "title": "Historical repository snapshot: Rose Whip (archive/week-26/fragrance.html)",
                 "type": "editorial",
                 "url": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-26/fragrance.html"
               },
@@ -1726,11 +1672,11 @@
               "quarantine_status": "verified"
             },
             "market": "US",
-            "name": "Sol de Janeiro Cheirosa 91 Perfume Mist",
+            "name": "Phlur Rose Whip EDP",
             "name_cn": "",
             "new_badge": null,
-            "rank": 4,
-            "score": 95,
+            "rank": 3,
+            "score": 78,
             "tier": "MASSTIGE",
             "trend": {
               "id": "rose-revival",
@@ -1739,6 +1685,60 @@
               "tag_cn": "玫瑰复兴趋势"
             },
             "trend_badge": "Trend"
+          },
+          {
+            "category_badge": "Floral Gourmand Eau de Parfum",
+            "detail": {
+              "brand": {
+                "cn": "June new eau de parfum launch from Huda Beauty",
+                "en": "June new eau de parfum launch from Huda Beauty"
+              },
+              "buzz": {
+                "cn": "Fragrantica 3.79/5 (175 votes) · Parfumo: cherry vanilla, pleasant but not edible",
+                "en": "Fragrantica 3.79/5 (175 votes) · Parfumo: cherry vanilla, pleasant but not edible"
+              },
+              "key_features": {
+                "cn": "Wild cherry · white flower · caramel milk · bourbon vanilla · floral gourmand · longevity 8-10h · sillage strong",
+                "en": "Wild cherry · white flower · caramel milk · bourbon vanilla · floral gourmand · longevity 8-10h · sillage strong"
+              },
+              "price_link": {
+                "cn": "$79 / 50ml",
+                "en": "$79 / 50ml",
+                "link": "https://hudabeauty.com/en-us/products/easy-bake-intense-eau-de-parfum-50ml-hb01351"
+              }
+            },
+            "launch_evidence": {
+              "absence_markers": [],
+              "evidence": {
+                "checked_at": "2026-07-23T11:12:46Z",
+                "fetched_at": "2026-07-23T11:12:46Z",
+                "published_at": "2026-07-21T07:37:18Z",
+                "supported_fields": [
+                  "price",
+                  "features",
+                  "buzz",
+                  "brand",
+                  "link",
+                  "category",
+                  "launch_date"
+                ],
+                "title": "Historical repository snapshot: Easy Bake Intense EDP (archive/week-26/fragrance.html)",
+                "type": "editorial",
+                "url": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-26/fragrance.html"
+              },
+              "launch_date": "2026-06-18",
+              "quarantine_reason": null,
+              "quarantine_status": "verified"
+            },
+            "market": "US",
+            "name": "Huda Beauty Easy Bake Intense EDP",
+            "name_cn": "",
+            "new_badge": null,
+            "rank": 4,
+            "score": 75,
+            "tier": "MASSTIGE",
+            "trend": null,
+            "trend_badge": null
           },
           {
             "category_badge": "Skin-Scent Eau de Parfum",
@@ -1882,7 +1882,7 @@
               "price_link": {
                 "cn": "¥890~1,200",
                 "en": "¥890~1,200",
-              "link": "https://www.lamer.eu/at/en/product/5817/40984/skincolor/the-soft-fluid-long-wear-foundation-spf20/weightless-touch-for-luxurious-long-wear"
+                "link": "https://www.lamer.eu/at/en/product/5817/40984/skincolor/the-soft-fluid-long-wear-foundation-spf20/weightless-touch-for-luxurious-long-wear"
               }
             },
             "launch_evidence": {
@@ -1939,9 +1939,9 @@
                 "en": "Skincare foundation · premium efficacy · foreign-brand return benchmark"
               },
               "price_link": {
-                "cn": "¥680~980",
-                "en": "¥680~980",
-              "link": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-27/index.html"
+                "cn": "Archived source observed June range: ¥680~980",
+                "en": "Archived source observed June range: ¥680~980",
+                "link": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-27/index.html"
               }
             },
             "launch_evidence": {
@@ -1971,7 +1971,7 @@
             "name": "Helena Black Bandage Foundation",
             "name_cn": "",
             "new_badge": null,
-            "rank": 3,
+            "rank": 2,
             "score": 97,
             "tier": "LUXURY",
             "trend": {
@@ -2030,7 +2030,7 @@
             "name": "Givenchy Rose Perfecto Lip Oil",
             "name_cn": "",
             "new_badge": null,
-            "rank": 4,
+            "rank": 3,
             "score": 74,
             "tier": "LUXURY",
             "trend": {
@@ -2089,7 +2089,7 @@
             "name": "YSL Black Lacquer Lip Gloss",
             "name_cn": "",
             "new_badge": null,
-            "rank": 2,
+            "rank": 4,
             "score": 70,
             "tier": "LUXURY",
             "trend": {
@@ -2118,7 +2118,7 @@
               "price_link": {
                 "cn": "¥580~680",
                 "en": "¥580~680",
-              "link": "https://www.dior.com/en_hk/beauty/products/dior-forever-skin-glow-E000001358.html"
+                "link": "https://www.dior.com/en_hk/beauty/products/dior-forever-skin-glow-E000001358.html"
               }
             },
             "launch_evidence": {
@@ -2148,7 +2148,7 @@
             "name": "Dior Forever Skin Glow Foundation",
             "name_cn": "",
             "new_badge": null,
-            "rank": 6,
+            "rank": 5,
             "score": 66,
             "tier": "LUXURY",
             "trend": {
@@ -2177,7 +2177,7 @@
               "price_link": {
                 "cn": "¥420~520",
                 "en": "¥420~520",
-              "link": "https://www.lancome-usa.com/makeup/face-makeup/foundation/teint-idole-ultra-wear-foundation/00716-LAC.html"
+                "link": "https://www.lancome-usa.com/makeup/face-makeup/foundation/teint-idole-ultra-wear-foundation/00716-LAC.html"
               }
             },
             "launch_evidence": {
@@ -2207,7 +2207,7 @@
             "name": "Lancôme Longwear Foundation",
             "name_cn": "Lancôme Longwear Foundation",
             "new_badge": null,
-            "rank": 5,
+            "rank": 6,
             "score": 65,
             "tier": "LUXURY",
             "trend": null,
@@ -2288,9 +2288,9 @@
                 "en": "Oily-skin favorite · 24H wear · 55+ shades"
               },
               "price_link": {
-                "cn": "¥390~480",
-                "en": "¥390~480",
-              "link": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-27/index.html"
+                "cn": "Archived source observed June range: ¥390~480",
+                "en": "Archived source observed June range: ¥390~480",
+                "link": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-27/index.html"
               }
             },
             "launch_evidence": {
@@ -2342,9 +2342,9 @@
                 "en": "Retro gold tube · satin finish · celebrity co-sign"
               },
               "price_link": {
-                "cn": "¥350~420",
-                "en": "¥350~420",
-              "link": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-27/index.html"
+                "cn": "Archived source observed June range: ¥350~420",
+                "en": "Archived source observed June range: ¥350~420",
+                "link": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-27/index.html"
               }
             },
             "launch_evidence": {
@@ -2403,7 +2403,7 @@
               "price_link": {
                 "cn": "¥480~680",
                 "en": "¥480~680",
-              "link": "https://www.maogepingbeauty.com/makeup/face/powder/179.html"
+                "link": "https://www.maogepingbeauty.com/makeup/face/powder/179.html"
               }
             },
             "launch_evidence": {
@@ -2462,9 +2462,9 @@
                 "en": "Shell glow · low-saturation new shades · matte lip mud"
               },
               "price_link": {
-                "cn": "¥79~99",
-                "en": "¥79~99",
-              "link": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-27/index.html"
+                "cn": "Archived source observed June range: ¥79~99",
+                "en": "Archived source observed June range: ¥79~99",
+                "link": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-27/index.html"
               }
             },
             "launch_evidence": {
@@ -2521,9 +2521,9 @@
                 "en": "Matte finish · high payoff · lip powder new shades"
               },
               "price_link": {
-                "cn": "¥39~49",
-                "en": "¥39~49",
-              "link": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-27/index.html"
+                "cn": "Archived source observed June range: ¥39~49",
+                "en": "Archived source observed June range: ¥39~49",
+                "link": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-27/index.html"
               }
             },
             "launch_evidence": {
@@ -2575,9 +2575,9 @@
                 "en": "EM08 terracotta · velvet texture · Gen-Z viral"
               },
               "price_link": {
-                "cn": "¥49~69",
-                "en": "¥49~69",
-              "link": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-27/index.html"
+                "cn": "Archived source observed June range: ¥49~69",
+                "en": "Archived source observed June range: ¥49~69",
+                "link": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-27/index.html"
               }
             },
             "launch_evidence": {
@@ -2629,9 +2629,9 @@
                 "en": "Micron-grade powder · oil control · Eastern aesthetics"
               },
               "price_link": {
-                "cn": "¥149~199",
-                "en": "¥149~199",
-              "link": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-27/index.html"
+                "cn": "Archived source observed June range: ¥149~199",
+                "en": "Archived source observed June range: ¥149~199",
+                "link": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-27/index.html"
               }
             },
             "launch_evidence": {
@@ -2683,9 +2683,9 @@
                 "en": "Air-feel · matte soft-mist · 30+ shades"
               },
               "price_link": {
-                "cn": "¥59~79",
-                "en": "¥59~79",
-              "link": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-27/index.html"
+                "cn": "Archived source observed June range: ¥59~79",
+                "en": "Archived source observed June range: ¥59~79",
+                "link": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-27/index.html"
               }
             },
             "launch_evidence": {
@@ -2737,9 +2737,9 @@
                 "en": "Dunhuang Red · Apsara · Flying Apsaras · Guofeng collab benchmark"
               },
               "price_link": {
-                "cn": "¥129~199",
-                "en": "¥129~199",
-              "link": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-27/index.html"
+                "cn": "Archived source observed June range: ¥129~199",
+                "en": "Archived source observed June range: ¥129~199",
+                "link": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-27/index.html"
               }
             },
             "launch_evidence": {
@@ -2791,9 +2791,9 @@
                 "en": "Nine-grid summer palette · low-saturation pink-brown"
               },
               "price_link": {
-                "cn": "¥139~179",
-                "en": "¥139~179",
-              "link": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-27/index.html"
+                "cn": "Archived source observed June range: ¥139~179",
+                "en": "Archived source observed June range: ¥139~179",
+                "link": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-27/index.html"
               }
             },
             "launch_evidence": {
@@ -2850,9 +2850,9 @@
                 "en": "Slim tube · matte velvet · domestic benchmark"
               },
               "price_link": {
-                "cn": "¥89~119",
-                "en": "¥89~119",
-              "link": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-27/index.html"
+                "cn": "Archived source observed June range: ¥89~119",
+                "en": "Archived source observed June range: ¥89~119",
+                "link": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-27/index.html"
               }
             },
             "launch_evidence": {
@@ -2909,9 +2909,9 @@
                 "en": "Girly packaging · low-saturation · Proya ¥800M controlling stake"
               },
               "price_link": {
-                "cn": "¥89~139",
-                "en": "¥89~139",
-              "link": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-27/index.html"
+                "cn": "Archived source observed June range: ¥89~139",
+                "en": "Archived source observed June range: ¥89~139",
+                "link": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-27/index.html"
               }
             },
             "launch_evidence": {
@@ -2968,9 +2968,9 @@
                 "en": "Low-saturation cream · everyday commute · value"
               },
               "price_link": {
-                "cn": "¥39~69",
-                "en": "¥39~69",
-              "link": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-27/index.html"
+                "cn": "Archived source observed June range: ¥39~69",
+                "en": "Archived source observed June range: ¥39~69",
+                "link": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-27/index.html"
               }
             },
             "launch_evidence": {
@@ -3031,14 +3031,14 @@
               "price_link": {
                 "cn": "$49",
                 "en": "$49",
-              "link": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-27/index.html"
+                "link": "https://www.sephora.com/product/skin-affair-soft-glow-cushion-foundation-P524839"
               }
             },
             "launch_evidence": {
               "absence_markers": [],
               "evidence": {
-                "checked_at": "2026-07-23T11:12:46Z",
-                "fetched_at": "2026-07-23T11:12:46Z",
+                "checked_at": "2026-07-23T14:25:00Z",
+                "fetched_at": "2026-07-23T14:25:00Z",
                 "published_at": "2026-07-21T07:37:18Z",
                 "supported_fields": [
                   "price",
@@ -3049,9 +3049,9 @@
                   "category",
                   "launch_date"
                 ],
-                "title": "Historical repository snapshot: YSL Skin Affair Soft Glow Cushion Foundation (archive/week-27/index.html)",
-                "type": "editorial",
-                "url": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-27/index.html"
+                "title": "YSL Skin Affair Soft Glow Cushion Foundation - Sephora",
+                "type": "product_page",
+                "url": "https://www.sephora.com/product/skin-affair-soft-glow-cushion-foundation-P524839"
               },
               "launch_date": "2026-06-30",
               "quarantine_reason": null,
@@ -3181,31 +3181,31 @@
             "trend_badge": "Trend"
           },
           {
-            "category_badge": "Multi-Category",
+            "category_badge": "Matte Lipstick",
             "detail": {
               "brand": {
-                "cn": "UK luxury makeup (Puig) · Pillow Talk nude IP",
-                "en": "UK luxury makeup (Puig) · Pillow Talk nude IP"
+                "cn": "UK luxury makeup (Puig) · Pillow Talk nude-lip IP · hero lipstick SKU",
+                "en": "UK luxury makeup (Puig) · Pillow Talk nude-lip IP · hero lipstick SKU"
               },
               "buzz": {
-                "cn": "Sephora: Pillow Talk nude global bestseller / Femfounded: one shade built a brand, 4-shade extension / KayaGlam: 4-shade everyday test",
-                "en": "Sephora: Pillow Talk nude global bestseller / Femfounded: one shade built a brand, 4-shade extension / KayaGlam: 4-shade everyday test"
+                "cn": "Sephora: Pillow Talk nude bestseller / Temptalia: permanent lipstick shade / beauty media: enduring nude-lip IP",
+                "en": "Sephora: Pillow Talk nude bestseller / Temptalia: permanent lipstick shade / beauty media: enduring nude-lip IP"
               },
               "key_features": {
-                "cn": "Pillow Talk lip system · Nude Pink evergreen shades",
-                "en": "Pillow Talk lip system · Nude Pink evergreen shades"
+                "cn": "Pillow Talk nude-pink shade · matte lipstick · Lipstick Tree extract · everyday neutral positioning",
+                "en": "Pillow Talk nude-pink shade · matte lipstick · Lipstick Tree extract · everyday neutral positioning"
               },
               "price_link": {
-                "cn": "$32~75",
-                "en": "$32~75",
-              "link": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-27/index.html"
+                "cn": "$35 / 3.5g",
+                "en": "$35 / 3.5g",
+                "link": "https://www.beautylish.com/s/charlotte-tilbury-matte-revolution-hydrating-lipstick-pillow-talk"
               }
             },
             "launch_evidence": {
               "absence_markers": [],
               "evidence": {
-                "checked_at": "2026-07-23T11:12:46Z",
-                "fetched_at": "2026-07-23T11:12:46Z",
+                "checked_at": "2026-07-23T14:25:00Z",
+                "fetched_at": "2026-07-23T14:25:00Z",
                 "published_at": "2026-07-21T07:37:18Z",
                 "supported_fields": [
                   "price",
@@ -3216,16 +3216,16 @@
                   "category",
                   "launch_date"
                 ],
-                "title": "Historical repository snapshot: Charlotte Tilbury Pillow Talk Collection (archive/week-27/index.html)",
-                "type": "editorial",
-                "url": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-27/index.html"
+                "title": "Charlotte Tilbury Matte Revolution Hydrating Lipstick Pillow Talk - Beautylish",
+                "type": "product_page",
+                "url": "https://www.beautylish.com/s/charlotte-tilbury-matte-revolution-hydrating-lipstick-pillow-talk"
               },
               "launch_date": "2026-06-25",
               "quarantine_reason": null,
               "quarantine_status": "verified"
             },
             "market": "US",
-            "name": "Charlotte Tilbury Pillow Talk Collection",
+            "name": "Charlotte Tilbury Pillow Talk Matte Revolution Lipstick",
             "name_cn": "",
             "new_badge": null,
             "rank": 4,
@@ -3348,31 +3348,31 @@
             "trend_badge": "Trend"
           },
           {
-            "category_badge": "Skincare Foundation",
+            "category_badge": "Longwear Foundation",
             "detail": {
               "brand": {
-                "cn": "French luxury makeup (L’Oréal) · skincare foundation new line",
-                "en": "French luxury makeup (L’Oréal) · skincare foundation new line"
+                "cn": "French luxury makeup (L’Oréal) · All Hours complexion pillar · longwear foundation staple",
+                "en": "French luxury makeup (L’Oréal) · All Hours complexion pillar · longwear foundation staple"
               },
               "buzz": {
-                "cn": "YSL official: Pure Shots skincare line / BuyCosmetics: effective ingredients but new foundation limited attention",
-                "en": "YSL official: Pure Shots skincare line / BuyCosmetics: effective ingredients but new foundation limited attention"
+                "cn": "YSL official: 24h full coverage with weightless feel / Sephora: longwear matte foundation review base",
+                "en": "YSL official: 24h full coverage with weightless feel / Sephora: longwear matte foundation review base"
               },
               "key_features": {
-                "cn": "Skincare foundation · hyaluronic acid + niacinamide · 22 shades",
-                "en": "Skincare foundation · hyaluronic acid + niacinamide · 22 shades"
+                "cn": "24h longwear · buildable coverage · luminous matte finish · humidity and transfer resistance",
+                "en": "24h longwear · buildable coverage · luminous matte finish · humidity and transfer resistance"
               },
               "price_link": {
-                "cn": "$58",
-                "en": "$58",
-                "link": "https://www.yslbeauty.com/int/pure-shot-collection.html"
+                "cn": "$58 / 25ml",
+                "en": "$58 / 25ml",
+                "link": "https://www.yslbeauty.com/int/makeup/face/liquid-foundation/all-hours-foundation/WW-50960YSL.html"
               }
             },
             "launch_evidence": {
               "absence_markers": [],
               "evidence": {
-                "checked_at": "2026-07-23T11:12:46Z",
-                "fetched_at": "2026-07-23T11:12:46Z",
+                "checked_at": "2026-07-23T14:38:00Z",
+                "fetched_at": "2026-07-23T14:38:00Z",
                 "published_at": "2026-07-21T07:37:18Z",
                 "supported_fields": [
                   "price",
@@ -3383,16 +3383,16 @@
                   "category",
                   "launch_date"
                 ],
-                "title": "Historical repository snapshot: YSL Pure Shots Foundation (archive/week-27/index.html)",
-                "type": "editorial",
-                "url": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-27/index.html"
+                "title": "YSL All Hours Foundation - YSL Beauty",
+                "type": "product_page",
+                "url": "https://www.yslbeauty.com/int/makeup/face/liquid-foundation/all-hours-foundation/WW-50960YSL.html"
               },
               "launch_date": "2026-06-25",
               "quarantine_reason": null,
               "quarantine_status": "verified"
             },
             "market": "US",
-            "name": "YSL Pure Shots Foundation",
+            "name": "YSL All Hours Foundation",
             "name_cn": "",
             "new_badge": null,
             "rank": 7,
@@ -3738,31 +3738,31 @@
             "trend_badge": null
           },
           {
-            "category_badge": "Skincare BB",
+            "category_badge": "Tinted Moisturizer SPF",
             "detail": {
               "brand": {
-                "cn": "US celebrity DTC (Selena Gomez) · skincare foundation new line",
-                "en": "US celebrity DTC (Selena Gomez) · skincare foundation new line"
+                "cn": "US celebrity DTC (Selena Gomez) · SPF tinted moisturizer · no-makeup base staple",
+                "en": "US celebrity DTC (Selena Gomez) · SPF tinted moisturizer · no-makeup base staple"
               },
               "buzz": {
-                "cn": "Byrdie: 2026 best tinted moisturizer / InStyle: 27-product 4-week test / LayersOfBeauty: lightweight glow",
-                "en": "Byrdie: 2026 best tinted moisturizer / InStyle: 27-product 4-week test / LayersOfBeauty: lightweight glow"
+                "cn": "Rare Beauty official: 94% said it evens tone with a natural-looking finish / Sephora: 24-shade complexion staple",
+                "en": "Rare Beauty official: 94% said it evens tone with a natural-looking finish / Sephora: 24-shade complexion staple"
               },
               "key_features": {
-                "cn": "Tinted moisturizer · skincare foundation · Selena Gomez co-sign",
-                "en": "Tinted moisturizer · skincare foundation · Selena Gomez co-sign"
+                "cn": "Light-to-medium coverage · SPF 20 · 24 flexible shades · natural glow finish",
+                "en": "Light-to-medium coverage · SPF 20 · 24 flexible shades · natural glow finish"
               },
               "price_link": {
-                "cn": "$34",
-                "en": "$34",
-              "link": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-27/index.html"
+                "cn": "$34 / 30ml",
+                "en": "$34 / 30ml",
+                "link": "https://www.rarebeauty.com/products/positive-light-tinted-moisturizer-broad-spectrum-spf-20-sunscreen"
               }
             },
             "launch_evidence": {
               "absence_markers": [],
               "evidence": {
-                "checked_at": "2026-07-23T11:12:46Z",
-                "fetched_at": "2026-07-23T11:12:46Z",
+                "checked_at": "2026-07-23T14:25:00Z",
+                "fetched_at": "2026-07-23T14:25:00Z",
                 "published_at": "2026-07-21T07:37:18Z",
                 "supported_fields": [
                   "price",
@@ -3773,16 +3773,16 @@
                   "category",
                   "launch_date"
                 ],
-                "title": "Historical repository snapshot: Rare Beauty Find Comfort Tinted Moisturizer (archive/week-27/index.html)",
-                "type": "editorial",
-                "url": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-27/index.html"
+                "title": "Positive Light Tinted Moisturizer Broad Spectrum SPF 20 Sunscreen - Rare Beauty",
+                "type": "product_page",
+                "url": "https://www.rarebeauty.com/products/positive-light-tinted-moisturizer-broad-spectrum-spf-20-sunscreen"
               },
               "launch_date": "2026-06-25",
               "quarantine_reason": null,
               "quarantine_status": "verified"
             },
             "market": "US",
-            "name": "Rare Beauty Find Comfort Tinted Moisturizer",
+            "name": "Rare Beauty Positive Light Tinted Moisturizer",
             "name_cn": "",
             "new_badge": null,
             "rank": 4,
@@ -4197,25 +4197,25 @@
                 "en": "Dunhuang red, celestial dancer, and nine-colored deer packaging across six hero SKUs"
               },
               "price_link": {
-                "cn": "From ¥69",
-                "en": "From ¥69",
-                "link": "https://www.carslan.com.cn/xilie"
+                "cn": "Evidence-backed observed range: ¥129-199",
+                "en": "Evidence-backed observed range: ¥129-199",
+                "link": "https://www.vogue.com.cn/beauty/new-in-store/news_111g3fa47d40aa74.html"
               }
             },
             "launch_evidence": {
               "absence_markers": [],
               "evidence": {
-                "checked_at": "2026-07-23T11:12:46Z",
-                "fetched_at": "2026-07-23T11:12:46Z",
+                "checked_at": "2026-07-23T14:38:00Z",
+                "fetched_at": "2026-07-23T14:38:00Z",
                 "published_at": "2026-07-21T07:37:18Z",
                 "supported_fields": [
                   "features",
                   "brand",
                   "launch_date"
                 ],
-                "title": "Historical repository snapshot: 卡姿兰 敦煌联名系列 (archive/week-26/index.html)",
+                "title": "Vogue China: Carslan x Dunhuang Museum collection",
                 "type": "editorial",
-                "url": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-26/index.html"
+                "url": "https://www.vogue.com.cn/beauty/new-in-store/news_111g3fa47d40aa74.html"
               },
               "launch_date": "2026-06-25",
               "quarantine_reason": null,
@@ -4336,7 +4336,7 @@
             "name": "Marc Jacobs Drawn This Way Gel Eyeliner",
             "name_cn": "",
             "new_badge": null,
-            "rank": 2,
+            "rank": 1,
             "score": 88,
             "tier": "LUXURY",
             "trend": null,
@@ -4390,7 +4390,7 @@
             "name": "Marc Jacobs Heart On Lipstick",
             "name_cn": "",
             "new_badge": null,
-            "rank": 3,
+            "rank": 2,
             "score": 85,
             "tier": "LUXURY",
             "trend": {
@@ -4449,7 +4449,7 @@
             "name": "Gucci Flora Eye Palette Sunset Orchid",
             "name_cn": "",
             "new_badge": null,
-            "rank": 5,
+            "rank": 3,
             "score": 80,
             "tier": "LUXURY",
             "trend": null,
@@ -4503,7 +4503,7 @@
             "name": "Marc Jacobs Joystick Blush Stick",
             "name_cn": "",
             "new_badge": null,
-            "rank": 6,
+            "rank": 4,
             "score": 76,
             "tier": "LUXURY",
             "trend": null,
@@ -4557,7 +4557,7 @@
             "name": "CHANEL Rouge Coco Hydra Gloss",
             "name_cn": "",
             "new_badge": null,
-            "rank": 7,
+            "rank": 5,
             "score": 75,
             "tier": "LUXURY",
             "trend": {
@@ -4618,7 +4618,7 @@
             "name": "MAC x Chappell Roan VIVA GLAM",
             "name_cn": "",
             "new_badge": null,
-            "rank": 2,
+            "rank": 1,
             "score": 82,
             "tier": "MASSTIGE",
             "trend": {
@@ -4677,7 +4677,7 @@
             "name": "e.l.f. Thirst Burst Lip Treatment",
             "name_cn": "",
             "new_badge": null,
-            "rank": 3,
+            "rank": 2,
             "score": 80,
             "tier": "MASSTIGE",
             "trend": {
@@ -4706,14 +4706,14 @@
               "price_link": {
                 "cn": "$10",
                 "en": "$10",
-              "link": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-27/index.html"
+                "link": "https://www.ulta.com/p/jelly-much-gel-eyeshadow-stick-pimprod2059170"
               }
             },
             "launch_evidence": {
               "absence_markers": [],
               "evidence": {
-                "checked_at": "2026-07-23T11:12:46Z",
-                "fetched_at": "2026-07-23T11:12:46Z",
+                "checked_at": "2026-07-23T14:25:00Z",
+                "fetched_at": "2026-07-23T14:25:00Z",
                 "published_at": "2026-07-21T07:37:18Z",
                 "supported_fields": [
                   "price",
@@ -4724,9 +4724,9 @@
                   "category",
                   "launch_date"
                 ],
-                "title": "Historical repository snapshot: ColourPop Jelly Much Eyeshadow Stick (archive/week-27/index.html)",
-                "type": "editorial",
-                "url": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-27/index.html"
+                "title": "ColourPop Jelly Much Gel Eyeshadow Stick - Ulta Beauty",
+                "type": "product_page",
+                "url": "https://www.ulta.com/p/jelly-much-gel-eyeshadow-stick-pimprod2059170"
               },
               "launch_date": "2026-06-01",
               "quarantine_reason": null,
@@ -4736,7 +4736,7 @@
             "name": "ColourPop Jelly Much Eyeshadow Stick",
             "name_cn": "",
             "new_badge": null,
-            "rank": 5,
+            "rank": 3,
             "score": 75,
             "tier": "MASSTIGE",
             "trend": null,
