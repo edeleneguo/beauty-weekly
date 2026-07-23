@@ -66,15 +66,10 @@ def _iter_products(report: dict):
             for panel, items in products.get(topic, {}).get(section, {}).items():
                 for idx, product in enumerate(items, start=1):
                     launch_evidence = product.get("launch_evidence") or {}
-                    qs = (
-                        product.get("quarantine_status")
-                        or launch_evidence.get("quarantine_status")
+                    qs = product.get("quarantine_status") or launch_evidence.get(
+                        "quarantine_status"
                     )
-                    if (
-                        section == "new_product_radar"
-                        and qs
-                        and qs != "verified"
-                    ):
+                    if section == "new_product_radar" and qs and qs != "verified":
                         continue
                     yield topic, section, panel, idx, product
 
@@ -87,6 +82,32 @@ def _normalize_name(value: str) -> str:
     return re.sub(r"[^a-z0-9]+", "", value.casefold())
 
 
+_TMALL_STORE_RE = re.compile(r"\.tmall\.com\s*/?\s*$", re.I)
+_SEPHORA_HOME_RE = re.compile(r"^https?://(?:www\.)?sephora\.com\s*/?\s*$", re.I)
+_GENERIC_PATHS = {
+    "beauty",
+    "bestsellers",
+    "capsule",
+    "collection",
+    "collections",
+    "fragrance",
+    "makeup",
+    "new-arrival",
+    "new-arrivals",
+    "perfume",
+    "product",
+    "products",
+    "sale",
+    "shop-all",
+    "skincare",
+}
+_LOCALE_HOME_RE = re.compile(
+    r"^https?://(?:www\.)?[a-z0-9-]+\.(?:cn|com\.cn|co\.cn)(?:/zh(?:_cn)?/beauty/?|/?\s*)$",
+    re.I,
+)
+_EVIDENCE_URL_RE = re.compile(r"github\.com/.+/blob/.+/archive/", re.I)
+
+
 def _is_generic_url(url: str) -> bool:
     parsed = urlparse(url)
     if parsed.scheme not in {"http", "https"} or not parsed.netloc:
@@ -94,7 +115,26 @@ def _is_generic_url(url: str) -> bool:
     path = (parsed.path or "/").strip("/")
     if not path:
         return True
-    return path in {"collections", "products", "fragrance", "perfume", "new-arrivals"}
+    if _TMALL_STORE_RE.search(url):
+        return True
+    if _SEPHORA_HOME_RE.match(url):
+        return True
+    if _LOCALE_HOME_RE.match(url):
+        return True
+    normalized_path = path.casefold().rstrip("/")
+    if normalized_path in _GENERIC_PATHS:
+        return True
+    if normalized_path.endswith(("product-list", "/xilie")):
+        return True
+    if "/collections/" in f"/{normalized_path}/" or "/capsule/" in f"/{normalized_path}/":
+        return True
+    return normalized_path.startswith("pages/") and normalized_path.endswith(
+        ("-collection", "-collections")
+    )
+
+
+def _is_evidence_url(url: str) -> bool:
+    return bool(_EVIDENCE_URL_RE.search(url))
 
 
 def _visible_fields(product: dict, section: str) -> dict[str, str]:
@@ -181,10 +221,10 @@ def audit_duplicate_or_generic_buzz(report: dict) -> list[str]:
 def audit_urls(report: dict) -> list[str]:
     errors: list[str] = []
     for topic, section, panel, idx, product in _iter_products(report):
-        if section != "new_product_radar" and not product.get("new_badge"):
-            continue
         link = product.get("detail", {}).get("price_link", {}).get("link", "").strip()
         if not link:
+            continue
+        if _is_evidence_url(link):
             continue
         if _is_generic_url(link):
             errors.append(
@@ -301,6 +341,19 @@ def audit_fragrance_price_and_launch(report: dict) -> list[str]:
     return errors
 
 
+def audit_english_page_shells(month: str) -> list[str]:
+    errors: list[str] = []
+    shell_dir = Path(month_report_path(month)).parent / "page_shells"
+    for name in ("index.html", "fragrance.html"):
+        path = shell_dir / name
+        if not path.exists():
+            continue
+        matches = sorted(set(CJK_PATTERN.findall(path.read_text(encoding="utf-8"))))
+        if matches:
+            errors.append(f"{name}: visible shell contains CJK: {', '.join(matches)}")
+    return errors
+
+
 def run(month: str) -> list[tuple[str, list[str]]]:
     report = _load_report(month)
     checks = [
@@ -314,6 +367,7 @@ def run(month: str) -> list[tuple[str, list[str]]]:
         ("heat_new_parity", audit_heat_new_parity(report)),
         ("radar_name_alignment", audit_radar_name_alignment(report)),
         ("fragrance_price_and_launch", audit_fragrance_price_and_launch(report)),
+        ("english_page_shells", audit_english_page_shells(month)),
     ]
     return [(name, errors) for name, errors in checks if errors]
 
