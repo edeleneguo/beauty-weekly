@@ -53,6 +53,14 @@ class TestMonthlySchedule:
                 f"{wf.name}: weekly cron pattern still present"
             )
 
+    def test_workflows_auto_resolve_previous_month(self):
+        """Scheduled monthly runs must target the just-finished calendar month."""
+        for wf in (DEPLOY_WORKFLOW, CI_WORKFLOW):
+            raw = wf.read_text(encoding="utf-8")
+            assert "previous_month_str" in raw, (
+                f"{wf.name}: scheduled monthly workflow must auto-resolve previous month"
+            )
+
 
 # ═══════════════════════════════════════════════════════════════════════
 # 2. Previous-month date range calculations

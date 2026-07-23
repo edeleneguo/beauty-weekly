@@ -124,6 +124,65 @@ def _render_detail_cell(label: str, cell_data: Dict[str, Any], lang: str) -> str
     ).format(label=_esc(label), trend=trend_html, value=_esc(value_clean), link=link_html)
 
 
+def _render_score_breakdown(product: Dict[str, Any]) -> str:
+    """Render weighted score explainability and data coverage."""
+    breakdown = product.get("score_breakdown") or {}
+    components = breakdown.get("components") or []
+    if not components:
+        return ""
+
+    component_html = ""
+    for component in components:
+        label = str(component.get("label") or "")
+        points = int(component.get("points") or 0)
+        max_points = int(component.get("max_points") or 0)
+        weight_pct = round(float(component.get("weight") or 0) * 100)
+        component_html += (
+            '<span style="display:inline-flex;align-items:center;gap:4px;'
+            'padding:3px 8px;border:1px solid #e5e7eb;border-radius:4px;'
+            'background:#fff;margin:0 6px 6px 0;font-size:11px;color:#374151;">'
+            '<span>{label}</span>'
+            '<strong style="color:#111827;">{points}/{max_points}</strong>'
+            '<span style="color:#6b7280;">{weight_pct}%</span>'
+            "</span>"
+        ).format(
+            label=_esc(label),
+            points=points,
+            max_points=max_points,
+            weight_pct=weight_pct,
+        )
+
+    data_quality = product.get("data_quality") or {}
+    coverage_score = data_quality.get("coverage_score")
+    link_type = str(data_quality.get("link_type") or "unknown").replace("_", " ")
+    source_type = str(data_quality.get("source_type") or "unknown").replace("_", " ")
+    missing = data_quality.get("missing_fields") or []
+    missing_text = ", ".join(str(field).replace("_", " ") for field in missing) or "none"
+    quality_line = (
+        "Data coverage {coverage}/100 · Link: {link_type} · Source: {source_type} · "
+        "Missing: {missing}"
+    ).format(
+        coverage=coverage_score if coverage_score is not None else "n/a",
+        link_type=link_type,
+        source_type=source_type,
+        missing=missing_text,
+    )
+
+    status = "Display allocation only; raw recompute awaits normalized sales/social/review/trend series."
+    return (
+        '<div class="heat-detail-cell full-width">'
+        '<div class="heat-detail-label">Score Breakdown</div>'
+        '<div class="heat-detail-value">{components}</div>'
+        '<div style="font-size:11px;color:#6b7280;line-height:1.45;margin-top:2px;">{quality}</div>'
+        '<div style="font-size:11px;color:#9ca3af;line-height:1.45;margin-top:2px;">{status}</div>'
+        "</div>"
+    ).format(
+        components=component_html,
+        quality=_esc(quality_line),
+        status=_esc(status),
+    )
+
+
 def _render_product(product: Dict[str, Any], lang: str, section: str) -> str:
     """Render a single heat-item li element."""
     rank = product["rank"]
@@ -164,15 +223,17 @@ def _render_product(product: Dict[str, Any], lang: str, section: str) -> str:
         cell_data = detail.get(dkey, {})
         label = labels[i] if i < len(labels) else dkey
         cells_html += _render_detail_cell(label, cell_data, lang)
+    cells_html += _render_score_breakdown(product)
 
     # Radar trend tag + expandable rationale (Section 04 only)
     radar_trend_html = ""
     if section == "radar" and trend_badge:
-        trend_tag_val = product.get("trend_tag") or ""
-        trend_rationale_val = product.get("trend_rationale") or ""
+        trend = product.get("trend") or {}
+        trend_tag_val = product.get("trend_tag") or trend.get("tag") or ""
+        trend_rationale_val = product.get("trend_rationale") or trend.get("rationale") or ""
         if trend_tag_val:
             radar_trend_html = (
-                '<div class="heat-detail" style="padding:8px 16px 4px;">'
+                '<div class="radar-trend-detail" style="padding:0 0 8px;">'
                 '<span class="heat-trend-tag" style="margin-right:8px;">{tag}</span>'
                 '<details style="display:inline;font-size:12px;color:#666;">'
                 '<summary style="cursor:pointer;color:#888;">Rationale</summary>'
@@ -211,10 +272,11 @@ def _render_product(product: Dict[str, Any], lang: str, section: str) -> str:
         "</div>"
         '<span class="heat-chevron">&#9662;</span>'
         "</div>"
-        '<div class="heat-detail"><div class="heat-detail-grid">'
+        '<div class="heat-detail">'
+        "{radar_trend}"
+        '<div class="heat-detail-grid">'
         "{cells}"
         "</div>"
-        "{radar_trend}"
         "</div>"
         "</li>"
     ).format(

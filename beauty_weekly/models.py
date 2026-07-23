@@ -249,6 +249,64 @@ class ProductDetail(BaseModel):
     model_config = {"strict": True, "extra": "forbid"}
 
 
+# ── Score explainability ─────────────────────────────────────────────────────
+
+
+class ScoreComponent(BaseModel):
+    """One weighted component in the product score explanation."""
+
+    id: str = Field(min_length=1)
+    label: str = Field(min_length=1)
+    weight: float = Field(gt=0, le=1)
+    max_points: int = Field(ge=1, le=100)
+    points: int = Field(ge=0, le=100)
+    evidence: str = Field(min_length=1)
+
+    model_config = {"strict": True, "extra": "forbid"}
+
+
+class ScoreBreakdown(BaseModel):
+    """Weighted explanation for a displayed score.
+
+    Current historical monthly scores remain non-recomputable from raw platform
+    data. This block explains the displayed score using the agreed dashboard
+    weights, while preserving the original ``score`` as the source of truth.
+    """
+
+    methodology: str = Field(min_length=1)
+    recomputable: bool
+    total: int = Field(ge=0, le=100)
+    components: list[ScoreComponent] = Field(min_length=4, max_length=4)
+
+    model_config = {"strict": True, "extra": "forbid"}
+
+    @model_validator(mode="after")
+    def _validate_component_totals(self) -> ScoreBreakdown:
+        if sum(component.points for component in self.components) != self.total:
+            raise ValueError("ScoreBreakdown component points must sum to total")
+        if round(sum(component.weight for component in self.components), 10) != 1.0:
+            raise ValueError("ScoreBreakdown component weights must sum to 1.0")
+        for component in self.components:
+            if component.points > component.max_points:
+                raise ValueError(
+                    f"ScoreBreakdown component {component.id} exceeds max_points"
+                )
+        return self
+
+
+class DataQuality(BaseModel):
+    """Dashboard field/source coverage metadata for one product."""
+
+    source_type: str = Field(min_length=1)
+    link_type: str = Field(min_length=1)
+    coverage_score: int = Field(ge=0, le=100)
+    coverage: dict[str, bool] = Field(default_factory=dict)
+    missing_fields: list[str] = Field(default_factory=list)
+    note: str = Field(min_length=1)
+
+    model_config = {"strict": True, "extra": "forbid"}
+
+
 # ── Product (target) ─────────────────────────────────────────────────────────
 
 
@@ -274,6 +332,8 @@ class Product(BaseModel):
     # Target sub-objects (populated by adapter when legacy data provides them)
     launch_evidence: LaunchEvidence | None = None
     trend: Trend | None = None
+    score_breakdown: ScoreBreakdown | None = None
+    data_quality: DataQuality | None = None
 
     model_config = {"strict": True, "extra": "forbid"}
 

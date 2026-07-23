@@ -39,6 +39,7 @@ from beauty_weekly.models import (
     ProductDetail,
     Products,
     QuarantineStatus,
+    ScoreBreakdown,
     Tier,
     Trend,
     TrendTag,
@@ -237,6 +238,111 @@ class TestStrictValidation:
     def test_negative_score_rejected(self):
         with pytest.raises(ValidationError, match="greater than or equal to 0"):
             _target_product(score=-1)
+
+    def test_score_breakdown_matches_product_score(self):
+        product = _target_product(
+            score=80,
+            score_breakdown={
+                "methodology": "Weighted display explanation",
+                "recomputable": False,
+                "total": 80,
+                "components": [
+                    {
+                        "id": "sales_momentum",
+                        "label": "Sales Momentum",
+                        "weight": 0.40,
+                        "max_points": 40,
+                        "points": 32,
+                        "evidence": "Sales proxy",
+                    },
+                    {
+                        "id": "buzz_momentum",
+                        "label": "Buzz Momentum",
+                        "weight": 0.30,
+                        "max_points": 30,
+                        "points": 24,
+                        "evidence": "Buzz proxy",
+                    },
+                    {
+                        "id": "review_rating",
+                        "label": "Review / Rating",
+                        "weight": 0.20,
+                        "max_points": 20,
+                        "points": 16,
+                        "evidence": "Review proxy",
+                    },
+                    {
+                        "id": "trend_fit",
+                        "label": "Trend Fit",
+                        "weight": 0.10,
+                        "max_points": 10,
+                        "points": 8,
+                        "evidence": "Trend fit",
+                    },
+                ],
+            },
+            data_quality={
+                "source_type": "editorial",
+                "link_type": "editorial_evidence",
+                "coverage_score": 83,
+                "coverage": {
+                    "price": True,
+                    "link": True,
+                    "features": True,
+                    "buzz": True,
+                    "positioning": True,
+                    "launch_evidence": False,
+                },
+                "missing_fields": ["launch_evidence"],
+                "note": "Editorial fallback",
+            },
+        )
+        assert product.score_breakdown is not None
+        assert product.score_breakdown.total == 80
+        assert product.data_quality is not None
+        assert product.data_quality.coverage_score == 83
+
+    def test_score_breakdown_rejects_invalid_total(self):
+        with pytest.raises(ValidationError, match="component points must sum"):
+            ScoreBreakdown(
+                methodology="Weighted display explanation",
+                recomputable=False,
+                total=80,
+                components=[
+                    {
+                        "id": "sales_momentum",
+                        "label": "Sales Momentum",
+                        "weight": 0.40,
+                        "max_points": 40,
+                        "points": 40,
+                        "evidence": "Sales proxy",
+                    },
+                    {
+                        "id": "buzz_momentum",
+                        "label": "Buzz Momentum",
+                        "weight": 0.30,
+                        "max_points": 30,
+                        "points": 30,
+                        "evidence": "Buzz proxy",
+                    },
+                    {
+                        "id": "review_rating",
+                        "label": "Review / Rating",
+                        "weight": 0.20,
+                        "max_points": 20,
+                        "points": 20,
+                        "evidence": "Review proxy",
+                    },
+                    {
+                        "id": "trend_fit",
+                        "label": "Trend Fit",
+                        "weight": 0.10,
+                        "max_points": 10,
+                        "points": 10,
+                        "evidence": "Trend fit",
+                    },
+                ],
+            )
 
     def test_legacy_preserves_raw_score(self, legacy_report):
         p = None

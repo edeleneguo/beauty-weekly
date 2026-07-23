@@ -1,5 +1,40 @@
 {
   "components": null,
+  "display_breakdown_policy": {
+    "components": [
+      {
+        "evidence": "Sales, bestseller, ranking, sell-out, restock, and platform proxy signals.",
+        "id": "sales_momentum",
+        "label": "Sales Momentum",
+        "max_points": 40,
+        "weight": 0.4
+      },
+      {
+        "evidence": "Social discussion, creator/editor coverage, and media visibility.",
+        "id": "buzz_momentum",
+        "label": "Buzz Momentum",
+        "max_points": 30,
+        "weight": 0.3
+      },
+      {
+        "evidence": "Ratings, review volume, expert tests, vote counts, and user feedback.",
+        "id": "review_rating",
+        "label": "Review / Rating",
+        "max_points": 20,
+        "weight": 0.2
+      },
+      {
+        "evidence": "Fit with the month's active trend taxonomy and new-product context.",
+        "id": "trend_fit",
+        "label": "Trend Fit",
+        "max_points": 10,
+        "weight": 0.1
+      }
+    ],
+    "methodology": "Weighted dashboard explanation: Sales Momentum 40% + Buzz Momentum 30% + Review/Rating 20% + Trend Fit 10%. Historical monthly scores remain non-recomputable until raw platform sales/review/social time-series are collected.",
+    "status": "display_explanation_not_raw_recompute",
+    "version": "dashboard-explainability-v1"
+  },
   "known_constraints": {
     "field": "score",
     "max": 100,
@@ -12,7 +47,9 @@
   },
   "missing_components": [
     "score_breakdown — historical June archive preserves only rendered composite scores",
-    "weights — no weighting factors documented in historical HTML"
+    "weights — no weighting factors documented in historical HTML",
+    "raw component time-series — sales, social, review, and trend inputs not yet collected as normalized numeric series",
+    "raw component time-series - sales, social, review, and trend inputs not yet collected as normalized numeric series"
   ],
   "observed_statistics": {
     "monotonic_by_rank": true,

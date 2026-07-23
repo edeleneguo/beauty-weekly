@@ -4,6 +4,7 @@ from build.audit_product_quality import (
     _is_explicit_evidence_link,
     _is_generic_url,
     audit_rank_order,
+    audit_score_breakdown,
 )
 
 
@@ -93,3 +94,154 @@ def test_rank_order_requires_sequential_descending_scores():
     }
     errors = audit_rank_order(report)
     assert any("ranks" in error for error in errors)
+
+
+def test_score_breakdown_requires_weighted_components_and_data_quality():
+    report = {
+        "products": {
+            "makeup": {
+                "heat_rankings": {
+                    "US LUXURY": [
+                        {
+                            "name": "A",
+                            "rank": 1,
+                            "score": 80,
+                            "score_breakdown": {
+                                "methodology": "Weighted display explanation",
+                                "recomputable": False,
+                                "total": 80,
+                                "components": [
+                                    {
+                                        "id": "sales_momentum",
+                                        "label": "Sales Momentum",
+                                        "weight": 0.40,
+                                        "max_points": 40,
+                                        "points": 32,
+                                        "evidence": "Sales proxy",
+                                    },
+                                    {
+                                        "id": "buzz_momentum",
+                                        "label": "Buzz Momentum",
+                                        "weight": 0.30,
+                                        "max_points": 30,
+                                        "points": 24,
+                                        "evidence": "Buzz proxy",
+                                    },
+                                    {
+                                        "id": "review_rating",
+                                        "label": "Review / Rating",
+                                        "weight": 0.20,
+                                        "max_points": 20,
+                                        "points": 16,
+                                        "evidence": "Reviews proxy",
+                                    },
+                                    {
+                                        "id": "trend_fit",
+                                        "label": "Trend Fit",
+                                        "weight": 0.10,
+                                        "max_points": 10,
+                                        "points": 8,
+                                        "evidence": "Trend fit",
+                                    },
+                                ],
+                            },
+                            "data_quality": {
+                                "source_type": "editorial",
+                                "link_type": "editorial_evidence",
+                                "coverage_score": 83,
+                                "coverage": {
+                                    "price": True,
+                                    "link": True,
+                                    "features": True,
+                                    "buzz": True,
+                                    "positioning": True,
+                                    "launch_evidence": False,
+                                },
+                                "missing_fields": ["launch_evidence"],
+                                "note": "Editorial fallback",
+                            },
+                        }
+                    ]
+                },
+                "new_product_radar": {},
+            },
+            "fragrance": {"heat_rankings": {}, "new_product_radar": {}},
+        }
+    }
+    assert audit_score_breakdown(report) == []
+
+
+def test_score_breakdown_rejects_bad_component_sum():
+    report = {
+        "products": {
+            "makeup": {
+                "heat_rankings": {
+                    "US LUXURY": [
+                        {
+                            "name": "A",
+                            "rank": 1,
+                            "score": 80,
+                            "score_breakdown": {
+                                "methodology": "Weighted display explanation",
+                                "recomputable": False,
+                                "total": 80,
+                                "components": [
+                                    {
+                                        "id": "sales_momentum",
+                                        "label": "Sales Momentum",
+                                        "weight": 0.40,
+                                        "max_points": 40,
+                                        "points": 40,
+                                        "evidence": "Sales proxy",
+                                    },
+                                    {
+                                        "id": "buzz_momentum",
+                                        "label": "Buzz Momentum",
+                                        "weight": 0.30,
+                                        "max_points": 30,
+                                        "points": 30,
+                                        "evidence": "Buzz proxy",
+                                    },
+                                    {
+                                        "id": "review_rating",
+                                        "label": "Review / Rating",
+                                        "weight": 0.20,
+                                        "max_points": 20,
+                                        "points": 20,
+                                        "evidence": "Reviews proxy",
+                                    },
+                                    {
+                                        "id": "trend_fit",
+                                        "label": "Trend Fit",
+                                        "weight": 0.10,
+                                        "max_points": 10,
+                                        "points": 10,
+                                        "evidence": "Trend fit",
+                                    },
+                                ],
+                            },
+                            "data_quality": {
+                                "source_type": "editorial",
+                                "link_type": "editorial_evidence",
+                                "coverage_score": 83,
+                                "coverage": {
+                                    "price": True,
+                                    "link": True,
+                                    "features": True,
+                                    "buzz": True,
+                                    "positioning": True,
+                                    "launch_evidence": False,
+                                },
+                                "missing_fields": ["launch_evidence"],
+                                "note": "Editorial fallback",
+                            },
+                        }
+                    ]
+                },
+                "new_product_radar": {},
+            },
+            "fragrance": {"heat_rankings": {}, "new_product_radar": {}},
+        }
+    }
+    errors = audit_score_breakdown(report)
+    assert any("do not sum" in error for error in errors)

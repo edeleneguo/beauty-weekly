@@ -10,8 +10,8 @@ on:
     - cron: "0 1 1 * *"
   workflow_dispatch:
     inputs:
-      target_week:
-        description: "ISO week to update (e.g. 2026-W29). Leave empty for auto-resolve."
+      target_month:
+        description: "Month to update (e.g. 2026-06). Leave empty for auto-resolve."
         required: false
         type: string
       intentional_failure:
@@ -70,5 +70,10 @@ jobs:
 
       - name: Weekly update (fail-closed)
         env:
-          BEAUTY_MONTHLY_MONTH: ${{ inputs.target_week || '' }}
-        run: ./build/monthly_update.sh
+          TARGET_MONTH: ${{ inputs.target_month || '' }}
+        run: |
+          MONTH="$TARGET_MONTH"
+          if [ -z "$MONTH" ]; then
+            MONTH=$(python3 -c "from beauty_weekly.month import previous_month_str; print(previous_month_str())")
+          fi
+          BEAUTY_MONTHLY_MONTH="$MONTH" ./build/monthly_update.sh

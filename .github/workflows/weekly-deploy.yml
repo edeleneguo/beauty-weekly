@@ -57,7 +57,7 @@ jobs:
         run: |
           MONTH="${TARGET_MONTH}"
           if [ -z "$MONTH" ]; then
-            MONTH=$(python3 -c "from beauty_weekly.month import resolve_month; print(resolve_month())")
+            MONTH=$(python3 -c "from beauty_weekly.month import previous_month_str; print(previous_month_str())")
           fi
           if [[ ! "$MONTH" =~ ^[0-9]{4}-(0[1-9]|1[0-2])$ ]]; then
             echo "FATAL: invalid month: $MONTH" >&2; exit 1

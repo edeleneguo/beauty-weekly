@@ -53,6 +53,13 @@ LAUNCH_TYPE_HINTS = (
     "collaboration",
 )
 
+EXPECTED_SCORE_COMPONENTS = {
+    "sales_momentum": ("Sales Momentum", 0.40, 40),
+    "buzz_momentum": ("Buzz Momentum", 0.30, 30),
+    "review_rating": ("Review / Rating", 0.20, 20),
+    "trend_fit": ("Trend Fit", 0.10, 10),
+}
+
 
 def _load_report(month: str) -> dict:
     report_path = Path(month_report_path(month))
@@ -397,6 +404,68 @@ def audit_fragrance_price_and_launch(report: dict) -> list[str]:
     return errors
 
 
+def audit_score_breakdown(report: dict) -> list[str]:
+    errors: list[str] = []
+    expected_ids = set(EXPECTED_SCORE_COMPONENTS)
+    for topic, section, panel, idx, product in _iter_products(report):
+        loc = _loc(topic, section, panel, idx, product)
+        score = int(product.get("score") or 0)
+        breakdown = product.get("score_breakdown")
+        if not breakdown:
+            errors.append(f"{loc}: missing score_breakdown")
+            continue
+        if breakdown.get("recomputable") is not False:
+            errors.append(f"{loc}: score_breakdown must mark historical scores non-recomputable")
+        if int(breakdown.get("total") or -1) != score:
+            errors.append(f"{loc}: score_breakdown total does not match score {score}")
+
+        components = breakdown.get("components") or []
+        component_ids = {component.get("id") for component in components}
+        if component_ids != expected_ids:
+            errors.append(f"{loc}: unexpected score components {sorted(component_ids)}")
+            continue
+
+        point_total = 0
+        weight_total = 0.0
+        for component in components:
+            component_id = component.get("id")
+            expected_label, expected_weight, expected_max = EXPECTED_SCORE_COMPONENTS[component_id]
+            points = int(component.get("points") or 0)
+            max_points = int(component.get("max_points") or 0)
+            weight = float(component.get("weight") or 0)
+            point_total += points
+            weight_total += weight
+            if component.get("label") != expected_label:
+                errors.append(f"{loc}: {component_id} label mismatch")
+            if abs(weight - expected_weight) > 0.000001:
+                errors.append(f"{loc}: {component_id} weight mismatch")
+            if max_points != expected_max:
+                errors.append(f"{loc}: {component_id} max_points mismatch")
+            if points > max_points:
+                errors.append(f"{loc}: {component_id} points exceed max_points")
+            if not str(component.get("evidence") or "").strip():
+                errors.append(f"{loc}: {component_id} missing evidence description")
+        if point_total != score:
+            errors.append(f"{loc}: score component points {point_total} do not sum to {score}")
+        if abs(weight_total - 1.0) > 0.000001:
+            errors.append(f"{loc}: score component weights {weight_total} do not sum to 1.0")
+
+        data_quality = product.get("data_quality")
+        if not data_quality:
+            errors.append(f"{loc}: missing data_quality")
+            continue
+        coverage_score = data_quality.get("coverage_score")
+        if not isinstance(coverage_score, int) or not 0 <= coverage_score <= 100:
+            errors.append(f"{loc}: invalid data_quality coverage_score")
+        coverage = data_quality.get("coverage") or {}
+        for field in ("price", "link", "features", "buzz", "positioning", "launch_evidence"):
+            if field not in coverage:
+                errors.append(f"{loc}: data_quality coverage missing {field}")
+        if not str(data_quality.get("link_type") or "").strip():
+            errors.append(f"{loc}: missing data_quality link_type")
+    return errors
+
+
 def audit_english_page_shells(month: str) -> list[str]:
     errors: list[str] = []
     shell_dir = Path(month_report_path(month)).parent / "page_shells"
@@ -424,6 +493,7 @@ def run(month: str) -> list[tuple[str, list[str]]]:
         ("heat_new_parity", audit_heat_new_parity(report)),
         ("radar_name_alignment", audit_radar_name_alignment(report)),
         ("fragrance_price_and_launch", audit_fragrance_price_and_launch(report)),
+        ("score_breakdown", audit_score_breakdown(report)),
         ("english_page_shells", audit_english_page_shells(month)),
     ]
     return [(name, errors) for name, errors in checks if errors]

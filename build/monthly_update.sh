@@ -36,6 +36,7 @@ python3 build/validate_evidence.py
 # Pre-publish validation (Req 2): launch evidence, counts, parity, citation
 echo "Running pre-publish validation..."
 python3 build/validate_published.py
+python3 build/audit_product_quality.py
 
 # Render in staging directory
 echo "Rendering HTML..."
