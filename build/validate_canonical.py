@@ -7,20 +7,23 @@ Called from build/check.sh.
 
 import os
 import sys
+from pathlib import Path
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-sys.path.insert(0, ROOT)
+ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT))
 
 from beauty_weekly.canonical import validate_canonical  # noqa: E402
+from beauty_weekly.month import month_data_dir, resolve_month  # noqa: E402
 from beauty_weekly.week import resolve_week, weeks_dir  # noqa: E402
 
-_weeks_dir_name = resolve_week()
-WEEKS_DIR = weeks_dir(_weeks_dir_name)
+MONTH = os.environ.get("BEAUTY_MONTHLY_MONTH")
+TARGET_LABEL = resolve_month() if MONTH else resolve_week()
+TARGET_DIR = month_data_dir(TARGET_LABEL) if MONTH else weeks_dir(TARGET_LABEL)
 
 
 def main() -> int:
-    print(f"Canonical dataset validation ({_weeks_dir_name}) ... ", end="")
-    errors = validate_canonical(WEEKS_DIR)
+    print(f"Canonical dataset validation ({TARGET_LABEL}) ... ", end="")
+    errors = validate_canonical(TARGET_DIR)
 
     if errors:
         print("FAIL")

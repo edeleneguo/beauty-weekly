@@ -100,14 +100,19 @@ def test_monthly_radar_trend_inference_restores_clear_historical_signals_only():
         raise AssertionError(f"Missing radar product: {topic}/{panel}/{name}")
 
     assert (
-        radar_lookup("fragrance", "US MASSTIGE", "Rose Whip")["trend"]["tag"] == "Rose Revival"
+        radar_lookup("fragrance", "US MASSTIGE", "Phlur Rose Whip EDP")["trend"]["tag"]
+        == "Rose Revival"
     )
     assert (
-        radar_lookup("fragrance", "US LUXURY", "Thé Impérial")["trend"]["tag"]
+        radar_lookup("fragrance", "US LUXURY", "Bvlgari Eau Parfumée Thé Impérial")["trend"][
+            "tag"
+        ]
         == "Matcha Fragrance"
     )
     assert (
-        radar_lookup("makeup", "CN LUXURY", "毛戈平 光韵奢华粉底霜")["trend"]["tag"]
+        radar_lookup("makeup", "CN LUXURY", "MAOGEPING Luxurious Radiant Foundation Cream")[
+            "trend"
+        ]["tag"]
         == "Skincare Foundation"
     )
     assert (
@@ -117,7 +122,9 @@ def test_monthly_radar_trend_inference_restores_clear_historical_signals_only():
         == "Functional Lip"
     )
 
-    assert not radar_lookup("fragrance", "US LUXURY", "Taormina Orange EDP").get("trend_badge")
+    assert not radar_lookup("fragrance", "US LUXURY", "Tom Ford Taormina Orange EDP").get(
+        "trend_badge"
+    )
     assert not radar_lookup("makeup", "US LUXURY", "Marc Jacobs Drawn This Way Gel Eyeliner").get(
         "trend_badge"
     )

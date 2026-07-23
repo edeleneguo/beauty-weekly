@@ -101,8 +101,8 @@
       "radar_panel_counts": {
         "CN LUXURY": 1,
         "CN MASSTIGE": 2,
-        "US LUXURY": 8,
-        "US MASSTIGE": 6
+        "US LUXURY": 5,
+        "US MASSTIGE": 3
       },
       "trend_cards": 7
     }
@@ -260,15 +260,15 @@
             "brand": 3,
             "buzz": 3,
             "key_features": 3,
-            "price_link": 1
+            "price_link": 3
           },
           "dom_count": 3,
           "excluded_products": [],
           "exclusion_reason": "Week-27 month-end heat panel preserved as authoritative June baseline.",
           "included_products": [
-            "Documents 昆仑煮雪 (Kunlun Boiled Snow)",
-            "Scent Library 凉白开 (Cool Boiled Water)",
-            "Boitown 幻境流沙金 (Mirage Quicksand Gold)"
+            "To Summer Kunlun Boiled Snow",
+            "Scent Library Cool Boiled Water",
+            "Boitown Mirage Quicksand Gold"
           ],
           "source_count": 3
         },
@@ -290,7 +290,7 @@
             "Jean Paul Gaultier Le Male In Blue",
             "Bvlgari Eau Parfumée Thé Impérial",
             "Guerlain Aqua Allegoria Perle Rosa Rossa",
-            "L’Artisan Parfumeur L’Amant EDP",
+            "L'Artisan Parfumeur L'Amant EDP",
             "Rabanne Million Gold For Her Pure Diamonds"
           ],
           "source_count": 7
@@ -308,7 +308,7 @@
           "excluded_products": [],
           "exclusion_reason": "Week-27 month-end heat panel preserved as authoritative June baseline.",
           "included_products": [
-            "Sol de Janeiro Cheirosa 91",
+            "Sol de Janeiro Cheirosa 91 Perfume Mist",
             "Phlur Missing Person",
             "Kayali Freedom Musk Matcha",
             "Phlur Rose Whip EDP",
@@ -364,12 +364,12 @@
           "excluded_products": [],
           "exclusion_reason": "All eligible historical radar products were preserved.",
           "included_products": [
-            "Taormina Orange EDP",
-            "Thé Impérial",
-            "L'Amant",
-            "Million Gold",
-            "Le Male In Blue",
-            "Rosa Rossa"
+            "Tom Ford Taormina Orange EDP",
+            "Bvlgari Eau Parfumée Thé Impérial",
+            "L'Artisan Parfumeur L'Amant EDP",
+            "Rabanne Million Gold For Her Pure Diamonds",
+            "Jean Paul Gaultier Le Male In Blue",
+            "Guerlain Aqua Allegoria Perle Rosa Rossa"
           ],
           "source_count": 6
         },
@@ -386,12 +386,12 @@
           "excluded_products": [],
           "exclusion_reason": "All eligible historical radar products were preserved.",
           "included_products": [
-            "Easy Bake Intense EDP",
-            "Rose Whip",
-            "You Solid",
-            "Cheirosa 91",
-            "11 11 Moon",
-            "Mochi Milk"
+            "Huda Beauty Easy Bake Intense EDP",
+            "Phlur Rose Whip EDP",
+            "Glossier You Solid",
+            "Sol de Janeiro Cheirosa 91 Perfume Mist",
+            "Lake & Skye 11 11 Moon EDP",
+            "DedCool Mochi Milk"
           ],
           "source_count": 6
         }
@@ -510,15 +510,15 @@
           "canonical_count": 1,
           "detail_completeness": {
             "brand": 1,
-            "buzz": 0,
+            "buzz": 1,
             "key_features": 1,
-            "price_link": 0
+            "price_link": 1
           },
           "dom_count": 1,
           "excluded_products": [],
           "exclusion_reason": "All eligible historical radar products were preserved.",
           "included_products": [
-            "毛戈平 光韵奢华粉底霜"
+            "MAOGEPING Luxurious Radiant Foundation Cream"
           ],
           "source_count": 1
         },
@@ -527,16 +527,16 @@
           "canonical_count": 2,
           "detail_completeness": {
             "brand": 2,
-            "buzz": 0,
+            "buzz": 2,
             "key_features": 2,
-            "price_link": 0
+            "price_link": 2
           },
           "dom_count": 2,
           "excluded_products": [],
           "exclusion_reason": "All eligible historical radar products were preserved.",
           "included_products": [
-            "卡姿兰 敦煌联名系列",
-            "酵色 贝壳系列唇泥（新色）"
+            "Carslan x Dunhuang Museum Collection",
+            "JOOCYEE Shell Series Lip Mud New Shades"
           ],
           "source_count": 2
         },
@@ -544,23 +544,20 @@
           "candidate_count": 8,
           "canonical_count": 8,
           "detail_completeness": {
-            "brand": 8,
-            "buzz": 6,
-            "key_features": 8,
-            "price_link": 6
+            "brand": 5,
+            "buzz": 5,
+            "key_features": 5,
+            "price_link": 5
           },
-          "dom_count": 8,
+          "dom_count": 5,
           "excluded_products": [],
           "exclusion_reason": "All eligible historical radar products were preserved.",
           "included_products": [
-            "Marc Jacobs Drawn This Way Eyeliner",
             "Marc Jacobs Drawn This Way Gel Eyeliner",
             "Marc Jacobs Heart On Lipstick",
-            "Tom Ford Shade & Illuminate Foundation",
             "Gucci Flora Eye Palette Sunset Orchid",
             "Marc Jacobs Joystick Blush Stick",
-            "CHANEL Rouge Coco Hydra Gloss",
-            "Marc Jacobs Money Shot Highlighter Gel"
+            "CHANEL Rouge Coco Hydra Gloss"
           ],
           "source_count": 8
         },
@@ -568,21 +565,18 @@
           "candidate_count": 6,
           "canonical_count": 6,
           "detail_completeness": {
-            "brand": 6,
+            "brand": 3,
             "buzz": 3,
-            "key_features": 6,
+            "key_features": 3,
             "price_link": 3
           },
-          "dom_count": 6,
+          "dom_count": 3,
           "excluded_products": [],
           "exclusion_reason": "All eligible historical radar products were preserved.",
           "included_products": [
-            "Marc Jacobs Joystick Blush Stick",
             "MAC x Chappell Roan VIVA GLAM",
             "e.l.f. Thirst Burst Lip Treatment",
-            "Marc Jacobs Money Shot Highlighter Gel",
-            "ColourPop Jelly Much Eyeshadow Stick",
-            "Tower 28 Splashy Cream Blush Hydrating Gel"
+            "ColourPop Jelly Much Eyeshadow Stick"
           ],
           "source_count": 6
         }

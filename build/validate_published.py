@@ -1,29 +1,32 @@
 #!/usr/bin/env python3
-"""Pre-publish validation CLI (Req 2, 5).
+"""Validate monthly target month (BEAUTY_MONTHLY_MONTH / resolve_month), not weekly path.
 
-Runs all pre-publish checks before allowing publication.  Failure
-preserves stable Pages by aborting before any promotion.
-
-Usage:
-  python3 build/validate_published.py [WEEK]
-  # If WEEK is omitted, uses BEAUTY_WEEKLY_WEEK env or resolves dynamically.
+This script validates the monthly report.json using the target month from
+environment variables, not the weekly path from validate_published.py.
 """
 
-import os
 import sys
+from pathlib import Path
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-sys.path.insert(0, ROOT)
+ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT))
 
+from beauty_weekly.month import month_report_path  # noqa: E402
 from beauty_weekly.validate_published import validate_for_publish  # noqa: E402
-from beauty_weekly.week import resolve_week, weeks_dir  # noqa: E402
 
 
 def main() -> int:
-    week = resolve_week()
-    week_dir = weeks_dir(week)
-    print(f"Pre-publish validation ({week}) ... ", end="")
-    errors = validate_for_publish(week_dir, is_historical=False)
+    # Get monthly report path directly
+    report_path = Path(month_report_path())
+    if not report_path.exists():
+        print(f"ERROR: Monthly report not found: {report_path}")
+        return 1
+
+    # Extract month from path and validate
+    month = report_path.parent.name
+    month_dir = report_path.parent
+    print(f"Pre-publish validation for month ({month}) ... ", end="")
+    errors = validate_for_publish(month_dir, is_historical=False)
     if errors:
         print("FAIL")
         for e in errors:

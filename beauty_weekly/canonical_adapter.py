@@ -95,8 +95,6 @@ def _flatten_product(
                 val = ev.get(canon_key)
                 if val is not None:
                     result[legacy_key] = val
-        # Handle absence_markers — legacy data doesn't have them flattened
-        # so we ignore them here (they are validation-only metadata)
 
     # --- Flatten trend → flat legacy fields (radar only) ---
     trend_obj = result.pop("trend", None)

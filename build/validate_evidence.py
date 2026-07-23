@@ -8,22 +8,25 @@ Called from build/check.sh.
 import json
 import os
 import sys
+from pathlib import Path
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-sys.path.insert(0, ROOT)
+ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT))
 
 from beauty_weekly.evidence import validate_evidence_integrity  # noqa: E402
+from beauty_weekly.month import month_data_dir, resolve_month  # noqa: E402
 from beauty_weekly.week import resolve_week, weeks_dir  # noqa: E402
 
-_weeks_dir_name = resolve_week()
-WEEKS_DIR = weeks_dir(_weeks_dir_name)
+MONTH = os.environ.get("BEAUTY_MONTHLY_MONTH")
+TARGET_LABEL = resolve_month() if MONTH else resolve_week()
+TARGET_DIR = month_data_dir(TARGET_LABEL) if MONTH else weeks_dir(TARGET_LABEL)
 
 
 def main() -> int:
-    print(f"Evidence & qualification integrity ({_weeks_dir_name}) ... ", end="")
+    print(f"Evidence & qualification integrity ({TARGET_LABEL}) ... ", end="")
 
-    report_path = WEEKS_DIR / "report.json"
-    sources_path = WEEKS_DIR / "sources.json"
+    report_path = TARGET_DIR / "report.json"
+    sources_path = TARGET_DIR / "sources.json"
 
     if not report_path.exists():
         print("FAIL")
@@ -37,7 +40,7 @@ def main() -> int:
     report = json.loads(report_path.read_text(encoding="utf-8"))
     sources = json.loads(sources_path.read_text(encoding="utf-8"))
 
-    errors = validate_evidence_integrity(report, sources, is_historical=True)
+    errors = validate_evidence_integrity(report, sources, is_historical=not bool(MONTH))
 
     if errors:
         print("FAIL")

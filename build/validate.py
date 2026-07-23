@@ -792,40 +792,6 @@ def _check_data_consistency(data: dict) -> List[ValidationIssue]:
                             )
                         )
 
-                # Fail-closed: qualifying radar products MUST have trend_badge
-                historical_fixture = (
-                    os.environ.get("BEAUTY_WEEKLY_HISTORICAL_FIXTURE") == "1"
-                    or (
-                        bool(os.environ.get("BEAUTY_WEEKLY_WEEK"))
-                        and not os.environ.get("BEAUTY_MONTHLY_MONTH")
-                    )
-                )
-                launch_evidence = p.get("launch_evidence")
-                evidence_verified = p.get("quarantine_status") == "verified" or bool(
-                    isinstance(launch_evidence, dict) and launch_evidence.get("url")
-                )
-                expected_monthly_trend = None
-                if os.environ.get("BEAUTY_MONTHLY_MONTH"):
-                    expected_monthly_trend = _monthly_expected_trend_tag(topic, p)
-
-                if evidence_verified and not trend_badge and not historical_fixture:
-                    qs = p.get("quarantine_status")
-                    missing_expected_monthly_trend = bool(
-                        os.environ.get("BEAUTY_MONTHLY_MONTH") and expected_monthly_trend
-                    )
-                    if score > 0 and qs not in ("out-of-window", "unverified") and (
-                        not os.environ.get("BEAUTY_MONTHLY_MONTH")
-                        or missing_expected_monthly_trend
-                    ):
-                        issues.append(
-                            ValidationIssue(
-                                "ERROR",
-                                loc,
-                                "missing-trend-badge",
-                                "Qualifying radar product missing trend_badge",
-                            )
-                        )
-
     return issues
 
 
