@@ -27,7 +27,7 @@ from beauty_weekly.week import resolve_week  # noqa: E402
 TOKEN = os.environ.get("GITHUB_TOKEN", "")
 REPO = "edeleneguo/beauty-weekly"
 BRANCH = "main"
-PAGES = ["index.html", "index-cn.html", "fragrance.html", "fragrance-cn.html"]
+PAGES = ["index.html", "fragrance.html"]
 
 
 def api_request(method: str, path: str, body: dict | None = None) -> tuple[int, dict]:
@@ -127,7 +127,7 @@ def main() -> int:
     print(f"Repo: {REPO}")
     print()
 
-    # Step 1: Upload 4 root HTML files
+    # Step 1: Upload 2 root HTML files
     print("--- Step 1: Upload HTML files ---")
     all_ok = True
     for fname in PAGES:
@@ -202,9 +202,7 @@ def main() -> int:
         print("=== DEPLOY VERIFIED: All 3 layers consistent ===")
         print("\nLive URLs:")
         print("  EN Makeup:    https://edeleneguo.github.io/beauty-weekly/")
-        print("  CN Makeup:    https://edeleneguo.github.io/beauty-weekly/index-cn.html")
         print("  EN Fragrance: https://edeleneguo.github.io/beauty-weekly/fragrance.html")
-        print("  CN Fragrance: https://edeleneguo.github.io/beauty-weekly/fragrance-cn.html")
         return 0
     else:
         print("=== VERIFICATION FAILED: CDN may still be propagating ===")

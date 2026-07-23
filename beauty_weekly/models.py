@@ -318,6 +318,21 @@ class WeeklyReport(BaseModel):
     model_config = {"strict": True, "extra": "forbid"}
 
 
+class MonthlyReport(BaseModel):
+    """Target canonical monthly report model.
+
+    Mirrors WeeklyReport structure but uses month identifier instead of week.
+    """
+
+    month: str = Field(description="YYYY-MM month identifier")
+    date_range: str
+    date_range_cn: str
+    version: str
+    products: Products
+
+    model_config = {"strict": True, "extra": "forbid"}
+
+
 # ══════════════════════════════════════════════════════════════════════════════
 # Legacy models — exact shape of current data/week28.json
 # ══════════════════════════════════════════════════════════════════════════════

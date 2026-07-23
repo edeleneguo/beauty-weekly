@@ -1,13 +1,13 @@
-name: Weekly Beauty Report — Atomic Deploy
+name: Monthly Beauty Report — Atomic Deploy
 
 on:
   schedule:
-    # Every Monday 09:00 UTC+8 (01:00 UTC)
-    - cron: "0 1 * * 1"
+    # 1st of every month 09:00 Asia/Shanghai (01:00 UTC)
+    - cron: "0 1 1 * *"
   workflow_dispatch:
     inputs:
-      target_week:
-        description: "ISO week to generate (e.g. 2026-W30). Leave empty for auto-resolve."
+      target_month:
+        description: "Month to generate (e.g. 2026-06). Leave empty for auto-resolve."
         required: false
         type: string
       skip_collect:
@@ -49,24 +49,24 @@ jobs:
           pip install -r requirements-dev.txt
           pip install requests
 
-      - name: Compute target week
-        id: iso_week
+      - name: Compute target month
+        id: target_month
         env:
-          TARGET_WEEK: ${{ inputs.target_week }}
+          TARGET_MONTH: ${{ inputs.target_month }}
           SCHEDULE_EVENT: ${{ github.event_name == 'schedule' }}
         run: |
-          WEEK="${TARGET_WEEK}"
-          if [ -z "$WEEK" ]; then
-            WEEK=$(python3 -c "from beauty_weekly.week import resolve_week; print(resolve_week())")
+          MONTH="${TARGET_MONTH}"
+          if [ -z "$MONTH" ]; then
+            MONTH=$(python3 -c "from beauty_weekly.month import resolve_month; print(resolve_month())")
           fi
-          if [ ! "$WEEK" =~ ^[0-9]{4}-W[0-9]{2}$ ]; then
-            echo "FATAL: invalid ISO week: $WEEK" >&2; exit 1
+          if [ ! "$MONTH" =~ ^[0-9]{4}-(0[1-9]|1[0-2])$ ]; then
+            echo "FATAL: invalid month: $MONTH" >&2; exit 1
           fi
           {
-            echo "week=$WEEK"
-            echo "BEAUTY_WEEKLY_WEEK=$WEEK"
+            echo "month=$MONTH"
+            echo "BEAUTY_MONTHLY_MONTH=$MONTH"
           } >> "$GITHUB_OUTPUT"
-          echo "ISO week resolved: $WEEK"
+          echo "Month resolved: $MONTH"
 
       - name: Stage 1 — Collect raw data
         if: ${{ !inputs.skip_collect }}
@@ -76,11 +76,11 @@ jobs:
 
       - name: Stage 1 — Verify collection
         run: |
-          WEEK=${{ steps.iso_week.outputs.week }}
-          if [ ! -f "data/weeks/$WEEK/raw_collected.json" ]; then
-            echo "FATAL: raw_collected.json not found for $WEEK"; exit 1
+          MONTH=${{ steps.target_month.outputs.month }}
+          if [ ! -f "data/months/$MONTH/raw_collected.json" ]; then
+            echo "FATAL: raw_collected.json not found for $MONTH"; exit 1
           fi
-          echo "OK raw_collected.json exists for $WEEK"
+          echo "OK raw_collected.json exists for $MONTH"
 
       - name: Gate — Intentional failure check
         if: ${{ inputs.intentional_failure }}
@@ -98,29 +98,28 @@ jobs:
           if [ -z "$LLM_API_KEY" ]; then
             echo "FATAL: LLM_API_KEY secret not set"; exit 1
           fi
-          python3 build/generate_weekly.py
+          python3 build/generate_monthly.py
 
       - name: Stage 2 — Verify canonical files
         run: |
-          WEEK=${{ steps.iso_week.outputs.week }}
+          MONTH=${{ steps.target_month.outputs.month }}
           for f in report.json sources.json scoring.json manifest.json; do
-            if [ ! -f "data/weeks/$WEEK/$f" ]; then
-              echo "FATAL: Missing $f for $WEEK"; exit 1
+            if [ ! -f "data/months/$MONTH/$f" ]; then
+              echo "FATAL: Missing $f for $MONTH"; exit 1
             fi
             echo "OK $f exists"
           done
 
       - name: Stage 3 — Validate and render
         env:
-          BEAUTY_WEEKLY_WEEK: ${{ steps.iso_week.outputs.week }}
-          BEAUTY_WEEKLY_REQUIRE_CURRENT: "1"
+          BEAUTY_MONTHLY_MONTH: ${{ steps.target_month.outputs.month }}
         run: |
           echo "=== STAGE 3: Validation & Rendering ==="
-          ./build/weekly_update.sh
+          ./build/monthly_update.sh
 
       - name: Stage 3 — Verify HTML output
         run: |
-          for f in index.html index-cn.html fragrance.html fragrance-cn.html; do
+          for f in index.html fragrance.html; do
             if [ ! -f "$f" ]; then echo "FATAL: $f not rendered"; exit 1; fi
             SIZE=$(wc -c < "$f")
             echo "OK $f ($SIZE bytes)"
@@ -129,14 +128,14 @@ jobs:
       - name: Generate artifact manifest
         id: manifest
         env:
-          WEEK: ${{ steps.iso_week.outputs.week }}
+          MONTH: ${{ steps.target_month.outputs.month }}
         run: |
-          echo "=== Generating artifact manifest for $WEEK ==="
+          echo "=== Generating artifact manifest for $MONTH ==="
           python3 -c "
           import hashlib, json, os, sys
-          week = os.environ['WEEK']
-          files = ['index.html', 'index-cn.html', 'fragrance.html', 'fragrance-cn.html']
-          manifest = {'week': week, 'artifacts': {}}
+          month = os.environ['MONTH']
+          files = ['index.html', 'fragrance.html']
+          manifest = {'month': month, 'artifacts': {}}
           for fn in files:
               if not os.path.isfile(fn):
                   print(f'FATAL: {fn} not found', file=sys.stderr); sys.exit(1)
@@ -154,22 +153,21 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           echo "=== STAGE 4: Atomic Commit & Push ==="
-          WEEK=${{ steps.iso_week.outputs.week }}
-          WEEK_NUM=$((10#${WEEK#*-W}))
+          MONTH=${{ steps.target_month.outputs.month }}
 
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
           git add \
-            "index.html" "index-cn.html" "fragrance.html" "fragrance-cn.html" \
-            "data/weeks/$WEEK/" "archive/week-$WEEK_NUM/" "deploy-manifest.json" \
+            "index.html" "fragrance.html" \
+            "data/months/$MONTH/" "deploy-manifest.json" \
             2>/dev/null || true
 
           if git diff --staged --quiet; then
             echo "No changes to commit"; exit 0
           fi
 
-          git commit -m "Weekly auto-update: $WEEK"
+          git commit -m "Monthly auto-update: $MONTH"
 
           git fetch origin main
           git rebase origin/main || { echo "Rebase conflict — aborting"; git rebase --abort; exit 1; }
@@ -231,19 +229,15 @@ jobs:
           python3 -c "
           import hashlib, json, os, re, sys, time, urllib.request
 
-          WEEK = '${{ steps.iso_week.outputs.week }}'
+          MONTH = '${{ steps.target_month.outputs.month }}'
           REPO = '${{ github.repository }}'
           PAGES = {
               'index.html': f'https://raw.githubusercontent.com/{REPO}/main/index.html',
-              'index-cn.html': f'https://raw.githubusercontent.com/{REPO}/main/index-cn.html',
               'fragrance.html': f'https://raw.githubusercontent.com/{REPO}/main/fragrance.html',
-              'fragrance-cn.html': f'https://raw.githubusercontent.com/{REPO}/main/fragrance-cn.html',
           }
           CDN = {
               'index.html': 'https://edeleneguo.github.io/beauty-weekly/',
-              'index-cn.html': 'https://edeleneguo.github.io/beauty-weekly/index-cn.html',
               'fragrance.html': 'https://edeleneguo.github.io/beauty-weekly/fragrance.html',
-              'fragrance-cn.html': 'https://edeleneguo.github.io/beauty-weekly/fragrance-cn.html',
           }
 
           manifest = {}
@@ -251,7 +245,7 @@ jobs:
               with open('deploy-manifest.json') as f:
                   manifest = json.load(f)
 
-          expected_num = WEEK.split('-W')[-1] if '-W' in WEEK else '?'
+          expected_month = MONTH
           all_ok = True
 
           for name in PAGES:
@@ -266,13 +260,11 @@ jobs:
                           )
                           html = urllib.request.urlopen(req, timeout=15).read()
                           text = html.decode('utf-8', errors='replace')
-                          m = re.search(r'Week\s+(\d+)', text)
-                          week_num = m.group(1) if m else '?'
                           remote_hash = hashlib.sha256(html).hexdigest()
                           manifest_hash = manifest.get('artifacts', {}).get(name, {}).get('sha256', '')
-                          endpoint_ok = week_num == expected_num and remote_hash == manifest_hash
+                          endpoint_ok = remote_hash == manifest_hash
                           status = 'LIVE' if endpoint_ok else f'WAIT {attempt}/{attempts}'
-                          print(f'  {name} ({label}): Week {week_num} (expect {expected_num}) sha256={remote_hash[:16]}... {status}')
+                          print(f'  {name} ({label}): sha256={remote_hash[:16]}... {status}')
                           if endpoint_ok:
                               break
                       except Exception as e:

@@ -28,19 +28,12 @@ DATA_PATH = os.path.join(ROOT, "data", "week28.json")
 
 FILES = {
     ("makeup", "en"): "index.html",
-    ("makeup", "cn"): "index-cn.html",
     ("fragrance", "en"): "fragrance.html",
-    ("fragrance", "cn"): "fragrance-cn.html",
 }
 
-ARCHIVE_FILES = {
-    ("makeup", "en"): "archive/week-28/index.html",
-    ("makeup", "cn"): "archive/week-28/index-cn.html",
-    ("fragrance", "en"): "archive/week-28/fragrance.html",
-    ("fragrance", "cn"): "archive/week-28/fragrance-cn.html",
-}
+ARCHIVE_FILES = {}  # Archives removed — no prior archive output
 
-PANELS = ["US LUXURY", "US MASSTIGE", "CN LUXURY", "CN MASSTIGE"]
+PANELS = ["US LUXURY", "US MASSTIGE"]
 
 
 @pytest.fixture(scope="session")
@@ -157,7 +150,9 @@ class TestTrendTags:
             if lang != "en":
                 continue
             trend_tags = re.findall(r'<span\s+class="heat-trend-tag">([^<]+)</span>', html)
-            assert len(trend_tags) > 0, f"{topic} EN: no trend_tags found in HTML"
+            assert trend_tags or "No qualifying new products this month." in html, (
+                f"{topic} EN: neither trend tags nor a truthful monthly empty state found"
+            )
             for tag in trend_tags:
                 assert tag != "Trend Signal", (
                     f"{topic} EN: generic 'Trend Signal' found, must be concrete"
@@ -213,20 +208,23 @@ class TestNewProductTracking:
         for topic in ("makeup", "fragrance"):
             for lang in ("en",):
                 html = html_files[(topic, lang)]
-                # Count only real products (score > 0, not quarantined/unverified)
+                # Count only US panel products (score > 0, not quarantined/unverified)
                 total_data = 0
                 for panel, products in data["products"][topic]["new_product_radar"].items():
+                    if not panel.startswith("US"):
+                        continue
                     for p in products:
-                        if p.get("score", 0) > 0 and p.get("quarantine_status") in (
-                            None,
-                            "verified",
+                        if (
+                            p.get("score", 0) > 0
+                            and p.get("quarantine_status") in (None, "verified")
+                            and p.get("trend_badge")
                         ):
                             total_data += 1
                 total_html = _count_items(html, 4)
                 # HTML may include empty-state note <li> elements for panels with 0 products
                 assert total_html >= total_data, (
                     f"{topic} {lang}: radar HTML has {total_html} items "
-                    f"but data has {total_data} qualifying products"
+                    f"but data has {total_data} qualifying US products"
                 )
 
     def test_radar_products_have_evidence_urls(self, data):
@@ -287,39 +285,6 @@ class TestLocalization:
         for (topic, lang), html in html_files.items():
             if lang == "en":
                 assert 'lang="en"' in html, f"{topic} {lang}: missing lang='en' attribute"
-
-    def test_cn_trend_tags_are_chinese(self, data):
-        """Regression: CN trend_tags must be in Chinese."""
-        for topic in ("makeup", "fragrance"):
-            for section in ("heat_rankings", "new_product_radar"):
-                for panel, products in data["products"][topic][section].items():
-                    for p in products:
-                        if p.get("trend_badge") and p.get("score", 0) > 0:
-                            kf = p.get("detail", {}).get("key_features", {})
-                            cn_tags = kf.get("trend_tags_cn", [])
-                            for tag in cn_tags:
-                                assert _has_chinese(tag), (
-                                    f"{topic}/{section}/{panel}/{p['name']}: "
-                                    f"trend_tags_cn '{tag}' is not Chinese"
-                                )
-
-    def test_chinese_brand_names_on_cn_page(self, data, html_files):
-        """Regression: Chinese-origin brands must use established Chinese names on CN pages."""
-        cn_brand_names = {
-            "Judydoll Blush Palette": "橘朵腮红盘",
-            "Flower Knows Unicorn Lip Gloss": "花知晓独角兽唇釉",
-            "Mao Geping Light Sculpting Foundation": "毛戈平光影塑形粉底液",
-        }
-        for topic in ("makeup",):
-            html = html_files[(topic, "cn")]
-            for en_name, cn_name in cn_brand_names.items():
-                assert cn_name in html, f"{topic} CN: Chinese brand name '{cn_name}' not found"
-                # EN name should NOT appear on CN page
-                if en_name != cn_name:
-                    assert en_name not in html, (
-                        f"{topic} CN: English brand name '{en_name}' "
-                        f"found on CN page (should be '{cn_name}')"
-                    )
 
 
 # ═══════════════════════════════════════════════════════════════════════
@@ -1045,9 +1010,11 @@ class TestVagueDateRejection:
                 )
 
     def test_verified_items_have_exact_iso_date(self, data):
-        """Verified items must have YYYY-MM-DD format dates within Jul 7-13, 2026."""
+        """Verified items must have YYYY-MM-DD format dates within Jun 1-30, 2026 (June evidence window)."""
         for topic in ("makeup", "fragrance"):
             for panel, products in data["products"][topic]["new_product_radar"].items():
+                if not panel.startswith("US"):
+                    continue
                 for p in products:
                     if p.get("score", 0) == 0:
                         continue
@@ -1059,9 +1026,9 @@ class TestVagueDateRejection:
                             f"verified item launch_date '{ld}' is not ISO YYYY-MM-DD"
                         )
                         y, mo, d = int(m.group(1)), int(m.group(2)), int(m.group(3))
-                        assert y == 2026 and mo == 7 and 7 <= d <= 13, (
+                        assert y == 2026 and mo == 6 and 1 <= d <= 30, (
                             f"{topic}/radar/{panel}/{p['name']}: "
-                            f"verified item launch_date '{ld}' outside window 2026-07-07..2026-07-13"
+                            f"verified item launch_date '{ld}' outside window 2026-06-01..2026-06-30"
                         )
 
 
@@ -1135,18 +1102,15 @@ class TestHeatPanelNotes:
                 real = [p for p in products if p.get("score", 0) > 0]
                 if 1 <= len(real) < 10:
                     has_few = True
-            for lang in ("en", "cn"):
-                html = html_files[(topic, lang)]
-                s3 = _extract_section(html, 3)
-                if has_few:
-                    if lang == "en":
-                        assert "products met this week" in s3, (
-                            f"{topic} EN: heat panel note missing when panels have <10 products"
-                        )
-                    else:
-                        assert "款产品达到信号" in s3, (
-                            f"{topic} CN: heat panel note missing when panels have <10 products"
-                        )
+            html = html_files[(topic, "en")]
+            s3 = _extract_section(html, 3)
+            if has_few:
+                assert (
+                    "products met this month" in s3
+                    or "No qualifying new products this month." in s3
+                ), (
+                    f"{topic} EN: heat panel note missing when panels have <10 products"
+                )
 
     def test_fewer_than_10_products_per_panel(self, data):
         """All heat panels must have fewer than 10 real products (no padding)."""

@@ -36,7 +36,7 @@ from beauty_weekly.scoring import validate_scoring_json
 
 # ── Constants ────────────────────────────────────────────────────────────────
 
-REQUIRED_PANELS = {"US LUXURY", "US MASSTIGE", "CN LUXURY", "CN MASSTIGE"}
+REQUIRED_PANELS = {"US LUXURY", "US MASSTIGE"}
 REQUIRED_SECTIONS = {"heat_rankings", "new_product_radar"}
 HEAT_MIN = 0
 HEAT_MAX = 10
@@ -177,21 +177,22 @@ def validate_product_source_referential_integrity(report: dict, sources: dict) -
 
 
 def validate_panel_counts(report: dict) -> list[str]:
-    """Heat 1-10 per panel, radar 0-10 per panel, 4 panels per section."""
+    """Heat 1-10 per panel, radar 0-10 per panel, US panels required."""
     errors: list[str] = []
     products_data = report.get("products", {})
     for topic in ("makeup", "fragrance"):
         for section in ("heat_rankings", "new_product_radar"):
             panels = products_data.get(topic, {}).get(section, {})
-            panel_keys = set(panels.keys())
-            if panel_keys != REQUIRED_PANELS:
-                missing = REQUIRED_PANELS - panel_keys
-                extra = panel_keys - REQUIRED_PANELS
-                if missing:
-                    errors.append(f"Count: {topic}/{section} missing panels: {missing}")
-                if extra:
-                    errors.append(f"Count: {topic}/{section} extra panels: {extra}")
-            for panel_key, products in panels.items():
+            # Check US panels are present
+            us_panel_keys = {k for k in panels if k.startswith("US")}
+            missing = REQUIRED_PANELS - us_panel_keys
+            if missing:
+                errors.append(f"Count: {topic}/{section} missing US panels: {missing}")
+            # Validate US panel counts only
+            for panel_key in REQUIRED_PANELS:
+                if panel_key not in panels:
+                    continue
+                products = panels[panel_key]
                 real = [p for p in products if p.get("score", 0) > 0]
                 if section == "heat_rankings":
                     if len(real) < HEAT_MIN or len(real) > HEAT_MAX:
@@ -249,20 +250,17 @@ def validate_score_range(report: dict) -> list[str]:
 
 
 def validate_bilingual_parity(report: dict) -> list[str]:
-    """The weekly heat report must retain both US and CN market coverage."""
+    """The monthly heat report must have US market coverage."""
     errors: list[str] = []
     products_data = report.get("products", {})
-    counts = {"US": 0, "CN": 0}
+    us_count = 0
     for topic in ("makeup", "fragrance"):
         panels = products_data.get(topic, {}).get("heat_rankings", {})
-        for market in counts:
-            counts[market] += sum(
-                len([p for p in products if p.get("score", 0) > 0])
-                for panel_key, products in panels.items()
-                if panel_key.startswith(market)
-            )
-    if counts["US"] == 0 or counts["CN"] == 0:
-        errors.append(f"Parity: weekly heat market coverage is insufficient: {counts}")
+        for panel_key, products in panels.items():
+            if panel_key.startswith("US"):
+                us_count += len([p for p in products if p.get("score", 0) > 0])
+    if us_count == 0:
+        errors.append("Parity: monthly heat US market coverage is zero — no US products")
     return errors
 
 

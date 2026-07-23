@@ -6,8 +6,8 @@ on:
   pull_request:
     branches: [main]
   schedule:
-    # Monday 09:00 Asia/Shanghai — fail if current-week canonical input is absent.
-    - cron: "0 1 * * 1"
+    # Day 1 of every month 09:00 Asia/Shanghai
+    - cron: "0 1 1 * *"
   workflow_dispatch:
     inputs:
       target_week:
@@ -70,6 +70,5 @@ jobs:
 
       - name: Weekly update (fail-closed)
         env:
-          BEAUTY_WEEKLY_WEEK: ${{ inputs.target_week || '' }}
-          BEAUTY_WEEKLY_REQUIRE_CURRENT: ${{ github.event_name == 'schedule' && '1' || '0' }}
-        run: ./build/weekly_update.sh
+          BEAUTY_MONTHLY_MONTH: ${{ inputs.target_week || '' }}
+        run: ./build/monthly_update.sh

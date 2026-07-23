@@ -1,21 +1,16 @@
 {
-  "week": "2026-W30",
+  "month": "2026-06",
+  "reporting_issue": "2026-07",
+  "source_window_start": "2026-06-01",
+  "source_window_end": "2026-06-30",
   "artifacts": {
     "index.html": {
       "sha256": "255a5e4622df1f057bec9146b98ac11699aa6a80fb432cfc3a4229d262521768",
       "size": 64770
     },
-    "index-cn.html": {
-      "sha256": "236f230f5d0192e463078907b38e620d05a03e936e9e58b3d0dcb85a2ab3d150",
-      "size": 64833
-    },
     "fragrance.html": {
       "sha256": "7feb3419ac1bf338cf152d1e456de5a27e4090eafcc37546d60e3f942dd19ce5",
       "size": 61713
-    },
-    "fragrance-cn.html": {
-      "sha256": "df9bbb70cd7e318def978aab74a7d28c2e29b12e1c0f26a83540f17803c34475",
-      "size": 61688
     }
   }
 }

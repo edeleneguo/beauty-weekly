@@ -30,7 +30,7 @@ from beauty_weekly.models import WeeklyReport
 ROOT = Path(__file__).resolve().parent.parent
 WEEKS_DIR = ROOT / "data" / "weeks" / "2026-W28"
 LEGACY_PATH = ROOT / "data" / "week28.json"
-HTML_FILES = ("index.html", "index-cn.html", "fragrance.html", "fragrance-cn.html")
+HTML_FILES = ("index.html", "fragrance.html")
 
 
 # ── Fixtures ──────────────────────────────────────────────────────────────────

@@ -1,0 +1,36 @@
+{
+  "date_range": "Jun 1 – Jun 30, 2026",
+  "date_range_cn": "6月1日 – 6月30日",
+  "products": {
+    "fragrance": {
+      "heat_rankings": {
+        "CN LUXURY": [],
+        "CN MASSTIGE": [],
+        "US LUXURY": [],
+        "US MASSTIGE": []
+      },
+      "new_product_radar": {
+        "CN LUXURY": [],
+        "CN MASSTIGE": [],
+        "US LUXURY": [],
+        "US MASSTIGE": []
+      }
+    },
+    "makeup": {
+      "heat_rankings": {
+        "CN LUXURY": [],
+        "CN MASSTIGE": [],
+        "US LUXURY": [],
+        "US MASSTIGE": []
+      },
+      "new_product_radar": {
+        "CN LUXURY": [],
+        "CN MASSTIGE": [],
+        "US LUXURY": [],
+        "US MASSTIGE": []
+      }
+    }
+  },
+  "version": "month2026-06-20260601-v1",
+  "month": "2026-06"
+}

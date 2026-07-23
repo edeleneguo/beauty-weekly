@@ -34,9 +34,7 @@ PRISTINE_DIR = os.path.join(DATA_DIR, "html_pristine")
 # Canonical file keys – order matters for deterministic output
 FILE_KEYS = [
     ("index.html", "makeup"),
-    ("index-cn.html", "makeup"),
     ("fragrance.html", "fragrance"),
-    ("fragrance-cn.html", "fragrance"),
 ]
 
 # Detail-cell labels we expect per section type
@@ -124,12 +122,8 @@ def _parse_detail_cells(detail_html: str) -> List[Dict[str, Any]]:
         return cells
     parts = re.split(r'<div\s+class="heat-detail-cell(?:\s+full-width)?"[^>]*>', grid)
     for part in parts[1:]:
-        label_m = re.search(
-            r'<div\s+class="heat-detail-label"[^>]*>(.*?)</div>', part, re.DOTALL
-        )
-        value_m = re.search(
-            r'<div\s+class="heat-detail-value"[^>]*>(.*?)</div>', part, re.DOTALL
-        )
+        label_m = re.search(r'<div\s+class="heat-detail-label"[^>]*>(.*?)</div>', part, re.DOTALL)
+        value_m = re.search(r'<div\s+class="heat-detail-value"[^>]*>(.*?)</div>', part, re.DOTALL)
         label_html = label_m.group(1) if label_m else ""
         value_html = value_m.group(1) if value_m else ""
         trend_tags = _find_trend_tags(label_html)
@@ -147,9 +141,7 @@ def _parse_detail_cells(detail_html: str) -> List[Dict[str, Any]]:
 
 def _parse_heat_item(item_html: str) -> Dict[str, Any]:
     product: Dict[str, Any] = {}
-    rank_m = re.search(
-        r'<span\s+class="heat-rank\s+(us|cn)"[^>]*>(\d+)</span>', item_html
-    )
+    rank_m = re.search(r'<span\s+class="heat-rank\s+(us|cn)"[^>]*>(\d+)</span>', item_html)
     if rank_m:
         product["rank"] = int(rank_m.group(2))
         product["market"] = rank_m.group(1).upper()
@@ -214,9 +206,7 @@ def _extract_panels(section_html: str) -> Dict[str, List[Dict[str, Any]]]:
     return panels
 
 
-def _extract_section(
-    content: str, section_name: str
-) -> Dict[str, List[Dict[str, Any]]]:
+def _extract_section(content: str, section_name: str) -> Dict[str, List[Dict[str, Any]]]:
     if section_name == "heat":
         m = re.search(
             r'Section 03</span>\s*</h2>\s*<div\s+class="heat-section"[^>]*>(.*?)'
@@ -262,9 +252,7 @@ def _cell_label_to_key(label: str, section: str) -> str:
     return mapping.get(label, label.lower().replace(" ", "_").replace("/", "_"))
 
 
-def _normalise_detail_cells(
-    cells: List[Dict[str, Any]], section: str
-) -> Dict[str, Dict[str, Any]]:
+def _normalise_detail_cells(cells: List[Dict[str, Any]], section: str) -> Dict[str, Dict[str, Any]]:
     """Convert a flat list of detail cells into {key: {value, link?, trend_tags?}}."""
     result: Dict[str, Dict[str, Any]] = {}
     for cell in cells:
@@ -443,11 +431,7 @@ def main() -> None:
         prods = canonical["products"][topic]
         for section in ("heat_rankings", "new_product_radar"):
             for panel, items in prods[section].items():
-                print(
-                    "{0}/{1}/{2}: {3} products".format(
-                        topic, section, panel, len(items)
-                    )
-                )
+                print("{0}/{1}/{2}: {3} products".format(topic, section, panel, len(items)))
 
 
 if __name__ == "__main__":

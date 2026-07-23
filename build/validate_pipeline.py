@@ -4,7 +4,7 @@
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-OUTPUTS = ("index.html", "index-cn.html", "fragrance.html", "fragrance-cn.html")
+OUTPUTS = ("index.html", "fragrance.html")
 
 
 def validate_pipeline() -> list[str]:
@@ -15,7 +15,7 @@ def validate_pipeline() -> list[str]:
             errors.append(f"missing authoritative page shell: templates/pages/{name}")
     if "PAGE_SHELL_DIR" not in renderer:
         errors.append("renderer does not declare the authoritative page-shell directory")
-    if 'os.path.join(ROOT, template_name)' in renderer:
+    if "os.path.join(ROOT, template_name)" in renderer:
         errors.append("renderer still reads production outputs as templates")
     if "data/week28.json" in renderer and "legacy compatibility baseline only" not in renderer:
         errors.append("renderer appears to use legacy data as an authoritative input")

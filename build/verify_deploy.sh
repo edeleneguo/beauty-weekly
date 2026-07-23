@@ -9,7 +9,7 @@ set -euo pipefail
 BASE_URL=""
 MANIFEST=""
 EXPECTED_WEEK=""
-FILES=("index.html" "index-cn.html" "fragrance.html" "fragrance-cn.html")
+FILES=("index.html" "fragrance.html")
 PASS=0
 FAIL=0
 MAX_RETRIES=3

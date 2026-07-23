@@ -291,12 +291,12 @@ class TestIntentionalFailure:
     """Workflow must support intentional_failure input (Req 6)."""
 
     def test_deploy_workflow_has_intentional_failure_input(self):
-        """weekly-deploy.yml must have intentional_failure boolean input."""
-        workflow_path = os.path.join(ROOT, ".github", "workflows", "weekly-deploy.yml")
+        """monthly-deploy.yml must have intentional_failure boolean input."""
+        workflow_path = os.path.join(ROOT, ".github", "workflows", "monthly-deploy.yml")
         with open(workflow_path, encoding="utf-8") as f:
             content = f.read()
         assert "intentional_failure" in content, (
-            "weekly-deploy.yml missing intentional_failure input"
+            "monthly-deploy.yml missing intentional_failure input"
         )
         assert "type: boolean" in content, "intentional_failure must be type: boolean"
 
@@ -309,7 +309,7 @@ class TestIntentionalFailure:
 
     def test_deploy_workflow_has_failure_gate_step(self):
         """deploy workflow must have a gate step that fails when intentional_failure is set."""
-        workflow_path = os.path.join(ROOT, ".github", "workflows", "weekly-deploy.yml")
+        workflow_path = os.path.join(ROOT, ".github", "workflows", "monthly-deploy.yml")
         with open(workflow_path, encoding="utf-8") as f:
             content = f.read()
         assert "inputs.intentional_failure" in content, (
@@ -319,13 +319,13 @@ class TestIntentionalFailure:
 
     def test_gate_precedes_stage2_generation(self):
         """Gate must appear before Stage 2 LLM generation in the workflow."""
-        workflow_path = os.path.join(ROOT, ".github", "workflows", "weekly-deploy.yml")
+        workflow_path = os.path.join(ROOT, ".github", "workflows", "monthly-deploy.yml")
         with open(workflow_path, encoding="utf-8") as f:
             content = f.read()
         gate_pos = content.find("Intentional failure")
         assert gate_pos > 0, "Gate step not found in workflow"
-        gen_pos = content.find("generate_weekly")
-        assert gen_pos > 0, "Stage 2 generation (generate_weekly) not found"
+        gen_pos = content.find("generate_monthly")
+        assert gen_pos > 0, "Stage 2 generation (generate_monthly) not found"
         assert gate_pos < gen_pos, (
             f"Gate (pos {gate_pos}) must precede Stage 2 generation (pos {gen_pos})"
         )
@@ -369,27 +369,27 @@ class TestManifestHashProof:
 
 
 class TestOnlineVerification:
-    """Online verification must check actual week AND content hash (Req 6)."""
+    """Online verification must check actual month AND content hash (Req 6)."""
 
     def test_deploy_workflow_has_hash_verification(self):
         """Deploy workflow must verify SHA256 hash of live content."""
-        workflow_path = os.path.join(ROOT, ".github", "workflows", "weekly-deploy.yml")
+        workflow_path = os.path.join(ROOT, ".github", "workflows", "monthly-deploy.yml")
         with open(workflow_path, encoding="utf-8") as f:
             content = f.read()
         assert "sha256" in content.lower() or "hash" in content.lower(), (
             "deploy workflow must verify content hash"
         )
-        assert "Week" in content and "expected" in content.lower(), (
-            "deploy workflow must verify week number matches expected"
+        assert ("Month" in content or "month" in content) and "expected" in content.lower(), (
+            "deploy workflow must verify month identifier matches expected"
         )
 
-    def test_deploy_workflow_checks_week_number(self):
-        """Verification must compare actual week number vs expected."""
-        workflow_path = os.path.join(ROOT, ".github", "workflows", "weekly-deploy.yml")
+    def test_deploy_workflow_checks_month_identifier(self):
+        """Verification must compare actual month vs expected."""
+        workflow_path = os.path.join(ROOT, ".github", "workflows", "monthly-deploy.yml")
         with open(workflow_path, encoding="utf-8") as f:
             content = f.read()
-        assert "week_ok" in content or "week_num" in content, (
-            "deploy workflow must compute week_ok from week comparison"
+        assert "expected_num" in content or "endpoint_ok" in content, (
+            "deploy workflow must compute expected_num from month comparison"
         )
 
 
@@ -411,14 +411,14 @@ class TestChineseMarketCoverage:
             "manifest.json migration_gaps must document Chinese-market coverage gap"
         )
 
-    def test_cn_panels_exist_in_report(self, w28_report):
-        """Report must have CN LUXURY and CN MASSTIGE panels (even if empty)."""
+    def test_us_panels_exist_in_report(self, w28_report):
+        """Report must have US LUXURY and US MASSTIGE panels."""
         products_data = w28_report.get("products", {})
         for topic in ("makeup", "fragrance"):
             for section in ("heat_rankings", "new_product_radar"):
                 panels = products_data.get(topic, {}).get(section, {})
-                assert "CN LUXURY" in panels, f"{topic}/{section}: missing CN LUXURY panel"
-                assert "CN MASSTIGE" in panels, f"{topic}/{section}: missing CN MASSTIGE panel"
+                assert "US LUXURY" in panels, f"{topic}/{section}: missing US LUXURY panel"
+                assert "US MASSTIGE" in panels, f"{topic}/{section}: missing US MASSTIGE panel"
 
 
 # ═══════════════════════════════════════════════════════════════════════

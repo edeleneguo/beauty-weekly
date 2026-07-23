@@ -1,14 +1,18 @@
 #!/usr/bin/env bash
 # Single, fail-closed local and CI quality gate.
 #
-# Validates a freshly rendered W28 fixture in isolation — never reads
-# stale committed HTML.  The weekly-deploy production path (which writes
+# Supports both historical weekly fixture mode (CI pinned to a frozen
+# W28 snapshot) and monthly reporting mode (BEAUTY_MONTHLY_MONTH set).
+# Validates freshly rendered output in isolation — never reads
+# stale committed HTML.  The monthly-deploy production path (which writes
 # to ROOT and promotes to archive/) is preserved unchanged.
 set -euo pipefail
 
 cd "$(dirname "$0")/.."
 
-FILES=(index.html index-cn.html fragrance.html fragrance-cn.html)
+export BEAUTY_MONTHLY_MONTH="${BEAUTY_MONTHLY_MONTH:-}"
+
+FILES=(index.html fragrance.html)
 
 # hash_files_in DIR — hash the four output files under DIR.
 hash_files_in() {
@@ -62,7 +66,7 @@ hash_files_in "$STAGE_DIR" >"$SECOND"
 diff -u "$FIRST" "$SECOND"
 
 if [ "${BEAUTY_WEEKLY_HISTORICAL_FIXTURE:-0}" = "1" ]; then
-    echo "PASS: secrets, lint, tests, validation, scoring, evidence, and deterministic render (historical fixture mode)"
+    echo "PASS: secrets, lint, tests, validation, scoring, evidence, and deterministic render (historical fixture / monthly mode)"
 else
     echo "PASS: secrets, lint, tests, validation, scoring, evidence, pipeline, parity, and deterministic render"
 fi

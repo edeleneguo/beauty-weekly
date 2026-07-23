@@ -16,7 +16,7 @@ import threading
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 VERIFY_SCRIPT = os.path.join(ROOT, "build", "verify_deploy.sh")
 
-FILES = ("index.html", "index-cn.html", "fragrance.html", "fragrance-cn.html")
+FILES = ("index.html", "fragrance.html")
 
 
 def _sha256(data: bytes) -> str:
@@ -55,7 +55,7 @@ class TestVerifyDeployMatch:
             )
             assert result.returncode == 0, result.stdout + result.stderr
             assert "RESULT: PASS" in result.stdout
-            assert "PASS: 4" in result.stdout
+            assert "PASS: 2" in result.stdout
         finally:
             srv.shutdown()
 
@@ -94,8 +94,7 @@ class TestVerifyDeployMissingLocal:
     def test_missing_local_file(self, tmp_path):
         # Only create some files
         (tmp_path / "index.html").write_bytes(b"<html>only one</html>")
-        (tmp_path / "index-cn.html").write_bytes(b"<html>only two</html>")
-        # fragrance.html and fragrance-cn.html are missing
+        # fragrance.html is missing
 
         srv = _start_server(str(tmp_path), 18922)
         try:

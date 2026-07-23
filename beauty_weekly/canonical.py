@@ -50,7 +50,7 @@ from beauty_weekly.scoring import (
 _ROOT = Path(__file__).resolve().parent.parent
 WEEKS_DIR = _ROOT / "data" / "weeks"
 LEGACY_PATH = _ROOT / "data" / "week28.json"
-HTML_FILES = ("index.html", "index-cn.html", "fragrance.html", "fragrance-cn.html")
+HTML_FILES = ("index.html", "fragrance.html")
 
 
 # ── Render / business projection (Phase 5) ────────────────────────────────

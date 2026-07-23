@@ -1,0 +1,52 @@
+{
+  "canonical_hash": "df65278ee4fee258c8402af8bae9e9cf09d00596663318269555a3bbd0c4bb97",
+  "data_sha256": null,
+  "date_range": "Jun 1 – Jun 30, 2026",
+  "date_range_cn": "6月1日 – 6月30日",
+  "domain_separation": [
+    "stable trend entities (TrendTag, Trend)",
+    "bilingual product fields (LocalizedText, PriceLink, Category)",
+    "source / evidence records (Evidence, EvidenceAbsence)",
+    "new-product qualification evidence (LaunchEvidence)",
+    "shared scoring data (rank, score, market, tier in Product)"
+  ],
+  "legacy_fields_isolated": [
+    "raw_score",
+    "version_en_makeup",
+    "version_cn_makeup",
+    "version_en_fragrance",
+    "version_cn_fragrance",
+    "category_badge_cn"
+  ],
+  "migration_deprecation": {
+    "build_render_py": {
+      "change": "reads from canonical report.json via canonical_to_legacy() adapter",
+      "legacy_data_pointer": "replaced CANONICAL_PATH"
+    },
+    "build_validate_py": {
+      "change": "reads from canonical report.json via canonical_to_legacy() adapter",
+      "legacy_data_pointer": "replaced CANONICAL_PATH"
+    },
+    "build_validate_schema_py": {
+      "change": "adds _check_canonical_report_schema() — validates report.json against WeeklyReport model"
+    }
+  },
+  "migration_gaps": [
+    "makeup radar products have no launch_evidence (quarantine_status, launch_date, evidence_url, evidence_type, evidence_checked_at)",
+    "2 CN MASSTIGE fragrance heat products have empty links (To Summer Kunlun Snow, Scent Library Boiled Water)"
+  ],
+  "month": "2026-06",
+  "note": "July 2026 issue blocked: no verified June source articles; canonical products intentionally empty.",
+  "phase": "7",
+  "remaining_warnings": 1,
+  "reporting_issue": "2026-07",
+  "resolved_warnings": [
+    "18 trend-badge heat products now have Trend extracted from key_features.trend_tags (was: trend_id missing)",
+    "adapter derives trend id deterministically from canonical tag name"
+  ],
+  "schema_version": 3,
+  "scoring_hash": "ce00f954e429a116990ba183636e646de2afe1eb3926baca1e442ca3135b6aa1",
+  "source_window_end": "2026-06-30",
+  "source_window_start": "2026-06-01",
+  "sources_hash": "9487e320807107ebe48844a34732a1a8cbfa1d3f9978c7a870b6a26c2a6a1787"
+}

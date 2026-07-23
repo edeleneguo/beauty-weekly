@@ -4,7 +4,7 @@ import importlib.util
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-OUTPUTS = ("index.html", "index-cn.html", "fragrance.html", "fragrance-cn.html")
+OUTPUTS = ("index.html", "fragrance.html")
 
 
 def _load_pipeline_validator():
@@ -26,7 +26,7 @@ def test_renderer_uses_canonical_and_independent_shells():
     text = (ROOT / "build" / "render.py").read_text(encoding="utf-8")
     assert "CANONICAL_PATH" in text
     assert "PAGE_SHELL_DIR" in text
-    assert 'os.path.join(ROOT, template_name)' not in text
+    assert "os.path.join(ROOT, template_name)" not in text
 
 
 def test_pipeline_validator_passes():

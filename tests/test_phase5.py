@@ -26,7 +26,7 @@ ROOT = Path(__file__).resolve().parent.parent
 WEEKS_DIR = ROOT / "data" / "weeks" / "2026-W28"
 LEGACY_PATH = ROOT / "data" / "week28.json"
 CANONICAL_PATH = WEEKS_DIR / "report.json"
-HTML_FILES = ("index.html", "index-cn.html", "fragrance.html", "fragrance-cn.html")
+HTML_FILES = ("index.html", "fragrance.html")
 
 
 @pytest.fixture(scope="session")

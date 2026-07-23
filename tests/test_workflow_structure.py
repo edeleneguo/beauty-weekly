@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Static structural tests for weekly-deploy.yml workflow.
+"""Static structural tests for monthly-deploy.yml workflow.
 
 Ensures the deploy workflow meets atomicity, ordering, and safety invariants:
   - No deploy_pages.py (non-atomic API-per-file approach removed)
@@ -20,7 +20,7 @@ import pytest
 import yaml
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-WORKFLOW_PATH = os.path.join(ROOT, ".github", "workflows", "weekly-deploy.yml")
+WORKFLOW_PATH = os.path.join(ROOT, ".github", "workflows", "monthly-deploy.yml")
 
 
 @pytest.fixture(scope="module")
@@ -66,7 +66,7 @@ class TestNoDeployPagesScript:
 
     def test_no_deploy_pages_reference(self, workflow_raw: str):
         assert "deploy_pages.py" not in workflow_raw, (
-            "weekly-deploy.yml still references deploy_pages.py — "
+            "monthly-deploy.yml still references deploy_pages.py — "
             "the non-atomic per-file upload approach must be removed"
         )
 
@@ -271,8 +271,8 @@ class TestNoMutationBeforeGate:
         gate_pos = workflow_raw.find("Intentional failure")
         assert gate_pos > 0, "Gate step not found"
         before_gate = workflow_raw[:gate_pos]
-        assert "generate_weekly" not in before_gate, (
-            "LLM generation (generate_weekly) must not appear before the intentional-failure gate"
+        assert "generate_monthly" not in before_gate, (
+            "LLM generation (generate_monthly) must not appear before the intentional-failure gate"
         )
 
     def test_no_manifest_before_gate(self, workflow_raw: str):
@@ -284,10 +284,10 @@ class TestNoMutationBeforeGate:
 
 
 class TestWeekPropagation:
-    """Week resolution must not depend on inputs.* being non-null on schedule."""
+    """Month resolution must not depend on inputs.* being non-null on schedule."""
 
     def test_does_not_use_inputs_directly_in_bash(self, workflow_raw: str):
-        """inputs.target_week should be passed via env, not inline in bash."""
+        """inputs.target_month should be passed via env, not inline in bash."""
         gate_block = re.search(
             r"Gate.*?(?=\n      - name:|\Z)",
             workflow_raw,
@@ -295,22 +295,22 @@ class TestWeekPropagation:
         )
         if gate_block:
             block = gate_block.group()
-            assert "${{ inputs.target_week }}" not in block, (
-                "Gate step must not reference inputs.target_week directly in bash "
+            assert "${{ inputs.target_month }}" not in block, (
+                "Gate step must not reference inputs.target_month directly in bash "
                 "(it is null on schedule). Use GITHUB_OUTPUT env var instead."
             )
 
-    def test_iso_week_validates_format(self, workflow_raw: str):
-        """Week format must be validated (YYYY-WNN)."""
-        assert re.search(r"\[0-9\]\{4\}-W\[0-9\]\{2\}", workflow_raw) or re.search(
-            r"^\[0-9\]{4}-W[0-9]{2}", workflow_raw, re.MULTILINE
-        ), "Week format validation regex not found in workflow"
+    def test_month_validates_format(self, workflow_raw: str):
+        """Month format must be validated (YYYY-MM)."""
+        assert re.search(r"\[0-9\]\{4\}", workflow_raw), (
+            "Month format validation regex not found in workflow"
+        )
 
 
 class TestManifestWeekEnv:
-    """Generate artifact manifest step must receive WEEK via step env, not rely on shell var."""
+    """Generate artifact manifest step must receive MONTH via step env, not rely on shell var."""
 
-    def test_manifest_step_has_week_env(self, workflow_dict: dict):
+    def test_manifest_step_has_month_env(self, workflow_dict: dict):
         steps = workflow_dict["jobs"]["generate-and-deploy"]["steps"]
         manifest_step = None
         for s in steps:
@@ -321,11 +321,11 @@ class TestManifestWeekEnv:
                 break
         assert manifest_step is not None, "Generate artifact manifest step not found"
         env = manifest_step.get("env", {})
-        assert "WEEK" in env, (
-            "Manifest step must declare env.WEEK so Python can access os.environ['WEEK']"
+        assert "MONTH" in env, (
+            "Manifest step must declare env.MONTH so Python can access os.environ['MONTH']"
         )
-        assert env["WEEK"] == "${{ steps.iso_week.outputs.week }}", (
-            "env.WEEK must be sourced from steps.iso_week.outputs.week"
+        assert env["MONTH"] == "${{ steps.target_month.outputs.month }}", (
+            "env.MONTH must be sourced from steps.target_month.outputs.month"
         )
 
 
@@ -369,7 +369,7 @@ class TestPagesBuildWait:
 
 
 CI_WORKFLOW_PATH = os.path.join(ROOT, ".github", "workflows", "ci.yml")
-DEPLOY_WORKFLOW_PATH = os.path.join(ROOT, ".github", "workflows", "weekly-deploy.yml")
+DEPLOY_WORKFLOW_PATH = os.path.join(ROOT, ".github", "workflows", "monthly-deploy.yml")
 
 
 class TestCIBaselineWeek:
@@ -390,18 +390,18 @@ class TestCIBaselineWeek:
             "ci job must set BEAUTY_WEEKLY_HISTORICAL_FIXTURE=1 for the quality gate"
         )
 
-    def test_weekly_deploy_no_historical_fixture_flag(self):
+    def test_monthly_deploy_no_historical_fixture_flag(self):
         with open(DEPLOY_WORKFLOW_PATH, encoding="utf-8") as f:
             deploy_raw = f.read()
         assert "BEAUTY_WEEKLY_HISTORICAL_FIXTURE" not in deploy_raw, (
-            "weekly-deploy must not set BEAUTY_WEEKLY_HISTORICAL_FIXTURE"
+            "monthly-deploy must not set BEAUTY_WEEKLY_HISTORICAL_FIXTURE"
         )
 
-    def test_weekly_deploy_no_hardcoded_w28(self):
+    def test_monthly_deploy_no_hardcoded_w28(self):
         with open(DEPLOY_WORKFLOW_PATH, encoding="utf-8") as f:
             deploy_raw = f.read()
         assert "2026-W28" not in deploy_raw, (
-            "weekly-deploy must not hardcode 2026-W28; it must validate the target week"
+            "monthly-deploy must not hardcode 2026-W28; it must validate the target week"
         )
 
 
@@ -409,8 +409,8 @@ class TestVerification:
     """Verification must check both ISO week and SHA256 hash."""
 
     def test_verifies_week_number(self, workflow_raw: str):
-        assert re.search(r"week_ok|week_num", workflow_raw), (
-            "Verification must compare actual vs expected week number"
+        assert re.search(r"month_ok|month_num|target_month", workflow_raw), (
+            "Verification must compare actual vs expected month number"
         )
 
     def test_verifies_sha256(self, workflow_raw: str):

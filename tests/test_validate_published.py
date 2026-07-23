@@ -513,15 +513,22 @@ class TestPanelCounts:
         errors = validate_panel_counts(report)
         assert not any("0 products" in e for e in errors)
 
-    def test_missing_panel_detected(self):
+    def test_missing_us_panel_detected(self):
         heat = {
             "US LUXURY": [_make_product()],
-            "US MASSTIGE": [_make_product(name="P2")],
-            "CN LUXURY": [_make_product(name="P3", link="https://tmall.com/x")],
+            "US MASSTIGE": [],
         }
         report = _report_with_fragrance(heat=heat)
         errors = validate_panel_counts(report)
-        assert any("missing panels" in e for e in errors)
+        assert not any("missing US panels" in e for e in errors)
+
+    def test_missing_us_masstige_panel_detected(self):
+        heat = {
+            "US LUXURY": [_make_product()],
+        }
+        report = _report_with_fragrance(heat=heat)
+        errors = validate_panel_counts(report)
+        assert any("missing US panels" in e for e in errors)
 
     def test_radar_panel_over_limit_detected(self):
         radar_products = [_make_product(name=f"R{i}", score=85) for i in range(11)]
@@ -602,43 +609,68 @@ class TestScoreRange:
 
 
 class TestBilingualParity:
-    def test_both_panels_populated_passes(self):
+    def test_us_products_populated_passes(self):
         report = _make_report()
         errors = validate_bilingual_parity(report)
         assert errors == []
 
-    def test_topic_without_cn_allowed_when_report_has_global_cn_coverage(self):
+    def test_us_only_with_empty_cn_allowed(self):
         heat = {
             "US LUXURY": [_make_product()],
             "US MASSTIGE": [_make_product(name="P2")],
-            "CN LUXURY": [],
-            "CN MASSTIGE": [],
         }
         report = _report_with_fragrance(heat=heat)
         errors = validate_bilingual_parity(report)
         assert not errors
 
-    def test_cn_only_not_flagged(self):
+    def test_cn_only_with_no_us_flagged(self):
         heat = {
             "US LUXURY": [],
             "US MASSTIGE": [],
-            "CN LUXURY": [_make_product(name="CN1", link="https://tmall.com/x")],
-            "CN MASSTIGE": [],
         }
-        report = _report_with_fragrance(heat=heat)
+        report = {
+            "week": 30,
+            "date_range": "Jul 20 - Jul 26, 2026",
+            "date_range_cn": "7月20日 - 7月26日",
+            "version": "week30-2026202607-v1",
+            "products": {
+                "makeup": {"heat_rankings": heat, "new_product_radar": {}},
+                "fragrance": {
+                    "heat_rankings": {
+                        "US LUXURY": [],
+                        "US MASSTIGE": [],
+                    },
+                    "new_product_radar": {},
+                },
+            },
+        }
         errors = validate_bilingual_parity(report)
-        assert errors == []
+        assert errors
+        assert "zero" in errors[0].lower() or "no US" in errors[0]
 
-    def test_empty_both_not_flagged(self):
+    def test_empty_both_flagged(self):
         heat = {
             "US LUXURY": [],
             "US MASSTIGE": [],
-            "CN LUXURY": [],
-            "CN MASSTIGE": [],
         }
-        report = _report_with_fragrance(heat=heat)
+        report = {
+            "week": 30,
+            "date_range": "Jul 20 - Jul 26, 2026",
+            "date_range_cn": "7月20日 - 7月26日",
+            "version": "week30-2026202607-v1",
+            "products": {
+                "makeup": {"heat_rankings": heat, "new_product_radar": {}},
+                "fragrance": {
+                    "heat_rankings": {
+                        "US LUXURY": [],
+                        "US MASSTIGE": [],
+                    },
+                    "new_product_radar": {},
+                },
+            },
+        }
         errors = validate_bilingual_parity(report)
-        assert errors == []
+        assert errors
 
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -885,11 +917,10 @@ class TestGenerateWeeklyHelpers:
             report_json,
             sources_json,
             scoring_json,
-            "2026-W30",
-            30,
-            "Jul 20 - Jul 26, 2026",
-            "7月20日 - 7月26日",
-            "2026-07-22T00:00:00Z",
+            "2026-06",
+            "Jun 1 – Jun 30, 2026",
+            "6月1日 – 6月30日",
+            "2026-07-01T00:00:00Z",
         )
         for field in (
             "canonical_hash",
@@ -959,9 +990,7 @@ class TestGenerateProductsBatch:
 
         result = {
             "heat_rankings": {"US LUXURY": [{"name": "La Favorite", "score": 90}]},
-            "new_product_radar": {
-                "US LUXURY": [{"name": "la favorite", "score": 75}]
-            },
+            "new_product_radar": {"US LUXURY": [{"name": "la favorite", "score": 75}]},
         }
 
         _align_cross_section_scores(result)

@@ -1,25 +1,21 @@
 #!/usr/bin/env bash
-# Fail-closed, resumable weekly publication workflow.
+# Fail-closed, resumable monthly publication workflow.
 # Always runs strict validation — no exceptions for auto-generated data.
 # Pre-publish validation ensures stable Pages (Req 5).
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
-TARGET_WEEK="${BEAUTY_WEEKLY_WEEK:-}"
-if [[ -z "$TARGET_WEEK" ]]; then
-  if [[ "${BEAUTY_WEEKLY_REQUIRE_CURRENT:-0}" == "1" ]]; then
-    TARGET_WEEK=$(python3 -c 'from beauty_weekly.week import current_iso_week; print(current_iso_week())')
-  else
-    TARGET_WEEK=$(python3 -c 'from beauty_weekly.week import resolve_week; print(resolve_week())')
-  fi
+TARGET_MONTH="${BEAUTY_MONTHLY_MONTH:-}"
+if [[ -z "$TARGET_MONTH" ]]; then
+  TARGET_MONTH=$(python3 -c 'from beauty_weekly.month import resolve_month; print(resolve_month())')
 fi
-if [[ ! "$TARGET_WEEK" =~ ^[0-9]{4}-W[0-9]{2}$ ]]; then
-  echo "FAIL: invalid ISO week: $TARGET_WEEK" >&2
+if [[ ! "$TARGET_MONTH" =~ ^[0-9]{4}-[0-9]{2}$ ]]; then
+  echo "FAIL: invalid month: $TARGET_MONTH" >&2
   exit 2
 fi
-export BEAUTY_WEEKLY_WEEK="$TARGET_WEEK"
+export BEAUTY_MONTHLY_MONTH="$TARGET_MONTH"
 
-SOURCE_DIR="data/weeks/$TARGET_WEEK"
+SOURCE_DIR=$(python3 -c "from beauty_weekly.month import month_data_dir; print(month_data_dir('$TARGET_MONTH'))")
 REQUIRED=(report.json sources.json scoring.json manifest.json)
 for artifact in "${REQUIRED[@]}"; do
   if [[ ! -f "$SOURCE_DIR/$artifact" ]]; then
@@ -28,10 +24,9 @@ for artifact in "${REQUIRED[@]}"; do
   fi
 done
 
-echo "Target week: $TARGET_WEEK"
+echo "Target month: $TARGET_MONTH"
 echo "Canonical files: OK"
 
-# Always run strict validation (no BEAUTY_WEEKLY_REQUIRE_CURRENT skip)
 echo "Running strict validation..."
 python3 build/validate_canonical.py
 python3 build/validate_schema.py
@@ -44,13 +39,13 @@ python3 build/validate_published.py
 
 # Render in staging directory
 echo "Rendering HTML..."
-STAGE_DIR=$(mktemp -d "${TMPDIR:-/tmp}/beauty-weekly-stage.XXXXXX")
+STAGE_DIR=$(mktemp -d "${TMPDIR:-/tmp}/beauty-monthly-stage.XXXXXX")
 trap 'rm -rf "$STAGE_DIR"' EXIT
 tar --exclude=.beauty-weekly-state -cf - . | tar -xf - -C "$STAGE_DIR"
 
 (
   cd "$STAGE_DIR"
-  export BEAUTY_WEEKLY_WEEK="$TARGET_WEEK"
+  export BEAUTY_MONTHLY_MONTH="$TARGET_MONTH"
   python3 build/render.py
 
   # Staged validation: always runs (no skip)
@@ -64,12 +59,8 @@ tar --exclude=.beauty-weekly-state -cf - . | tar -xf - -C "$STAGE_DIR"
 echo "Staged render: OK"
 
 # Promote to production
-WEEK_NUMBER=$((10#${TARGET_WEEK#*-W}))
-ARCHIVE_DIR="archive/week-$WEEK_NUMBER"
-mkdir -p "$ARCHIVE_DIR"
 for page in index.html fragrance.html; do
   cp "$STAGE_DIR/$page" "$page"
-  cp "$STAGE_DIR/$page" "$ARCHIVE_DIR/$page"
 done
 
 # Save manifest hash proof for online verification (Req 6)
@@ -82,4 +73,4 @@ print(m.get('canonical_hash', ''))
 echo "Manifest hash: $MANIFEST_HASH"
 echo "$MANIFEST_HASH" > ".deploy-manifest-hash"
 
-echo "PASS: $TARGET_WEEK rendered and promoted locally."
+echo "PASS: $TARGET_MONTH rendered and promoted locally."
