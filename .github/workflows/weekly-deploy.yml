@@ -59,7 +59,7 @@ jobs:
           if [ -z "$MONTH" ]; then
             MONTH=$(python3 -c "from beauty_weekly.month import resolve_month; print(resolve_month())")
           fi
-          if [ ! "$MONTH" =~ ^[0-9]{4}-(0[1-9]|1[0-2])$ ]; then
+          if [[ ! "$MONTH" =~ ^[0-9]{4}-(0[1-9]|1[0-2])$ ]]; then
             echo "FATAL: invalid month: $MONTH" >&2; exit 1
           fi
           {
