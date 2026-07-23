@@ -107,14 +107,8 @@
       "market": "CN",
       "new_badge": null,
       "panel": "CN LEGACY",
-      "product_name": "TREND",
+      "product_name": "Warm Nude Tinted Lip Balm",
       "provenance": [
-        {
-          "commit": "709c63b",
-          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
-          "path": "archive/week-25/index.html",
-          "week": "week-25"
-        },
         {
           "commit": "709c63b",
           "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
@@ -281,6 +275,347 @@
       "score": 60,
       "section": "heat_rankings",
       "tier": "LEGACY",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "Cushion/Foundation",
+      "detail": {
+        "brand": "",
+        "buzz": "",
+        "key_features": "",
+        "price_link": "",
+        "price_text": ""
+      },
+      "explicit_dates": [],
+      "launch_text": "",
+      "market": "CN",
+      "new_badge": null,
+      "panel": "CN LEGACY",
+      "product_name": "DEELUOVI Glow Cushion SPF50+",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-25/index.html",
+          "week": "week-25"
+        }
+      ],
+      "rank": 10,
+      "score": 57,
+      "section": "heat_rankings",
+      "tier": "LEGACY",
+      "topic": "makeup",
+      "trend_badge": "Trend",
+      "trend_tag": null
+    },
+    {
+      "category_badge": "",
+      "detail": {
+        "brand": "终结连冠",
+        "buzz": "抖音5月5.7亿",
+        "key_features": "养肤底妆 · 高端功效 · 外资强势回归标杆",
+        "price_link": "",
+        "price_text": "¥680~980"
+      },
+      "explicit_dates": [],
+      "launch_text": "终结连冠",
+      "market": "CN",
+      "new_badge": null,
+      "panel": "CN LUXURY",
+      "product_name": "赫莲娜 黑绷带粉底液",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-26/index.html",
+          "week": "week-26"
+        }
+      ],
+      "rank": 1,
+      "score": 95,
+      "section": "heat_rankings",
+      "tier": "LUXURY",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "",
+      "detail": {
+        "brand": "高端底妆首选",
+        "buzz": "抖音618首日断层",
+        "key_features": "养肤底妆 · 618首日1.02亿GMV",
+        "price_link": "",
+        "price_text": "¥890~1,200"
+      },
+      "explicit_dates": [],
+      "launch_text": "高端底妆首选",
+      "market": "CN",
+      "new_badge": null,
+      "panel": "CN LUXURY",
+      "product_name": "海蓝之谜 粉底液",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-26/index.html",
+          "week": "week-26"
+        }
+      ],
+      "rank": 2,
+      "score": 92,
+      "section": "heat_rankings",
+      "tier": "LUXURY",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "",
+      "detail": {
+        "brand": "国货之光",
+        "buzz": "小红书 高端底妆讨论",
+        "key_features": "国货高端底妆代表 · 光泽肌 · 618入榜TOP20",
+        "price_link": "",
+        "price_text": "¥480~680"
+      },
+      "explicit_dates": [],
+      "launch_text": "国货之光",
+      "market": "CN",
+      "new_badge": null,
+      "panel": "CN LUXURY",
+      "product_name": "毛戈平 光韵奢华粉底霜",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-26/index.html",
+          "week": "week-26"
+        }
+      ],
+      "rank": 3,
+      "score": 85,
+      "section": "heat_rankings",
+      "tier": "LUXURY",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "",
+      "detail": {
+        "brand": "上市爆发",
+        "buzz": "抖音热推",
+        "key_features": "功效唇油 · 首周1,000+件 · 水润不沾杯",
+        "price_link": "",
+        "price_text": "¥320~380"
+      },
+      "explicit_dates": [],
+      "launch_text": "上市爆发",
+      "market": "CN",
+      "new_badge": null,
+      "panel": "CN LUXURY",
+      "product_name": "纪梵希 Rose Perfecto 唇油",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-26/index.html",
+          "week": "week-26"
+        }
+      ],
+      "rank": 4,
+      "score": 80,
+      "section": "heat_rankings",
+      "tier": "LUXURY",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "",
+      "detail": {
+        "brand": "好评率 94%",
+        "buzz": "抖音618热销",
+        "key_features": "水光唇釉 · 粉彩色系 · 长期畅销",
+        "price_link": "",
+        "price_text": "¥320~380"
+      },
+      "explicit_dates": [],
+      "launch_text": "好评率 94%",
+      "market": "CN",
+      "new_badge": null,
+      "panel": "CN LUXURY",
+      "product_name": "YSL 唇釉（热色系）",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-26/index.html",
+          "week": "week-26"
+        }
+      ],
+      "rank": 5,
+      "score": 72,
+      "section": "heat_rankings",
+      "tier": "LUXURY",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "",
+      "detail": {
+        "brand": "并购后观察",
+        "buzz": "抖音618关注",
+        "key_features": "少女心包装 · 低饱和色 · 珀莱雅8亿控股",
+        "price_link": "",
+        "price_text": "¥89~139"
+      },
+      "explicit_dates": [],
+      "launch_text": "并购后观察",
+      "market": "CN",
+      "new_badge": null,
+      "panel": "CN MASSTIGE",
+      "product_name": "花知晓 唇釉（珀莱雅控股后）",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-26/index.html",
+          "week": "week-26"
+        }
+      ],
+      "rank": 6,
+      "score": 90,
+      "section": "heat_rankings",
+      "tier": "MASSTIGE",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "",
+      "detail": {
+        "brand": "联名出圈",
+        "buzz": "小红书国风话题",
+        "key_features": "敦煌红·伎乐天·飞天 · 国风彩妆联名标杆",
+        "price_link": "",
+        "price_text": "¥129~199"
+      },
+      "explicit_dates": [],
+      "launch_text": "联名出圈",
+      "market": "CN",
+      "new_badge": null,
+      "panel": "CN MASSTIGE",
+      "product_name": "卡姿兰 敦煌联名系列",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-26/index.html",
+          "week": "week-26"
+        }
+      ],
+      "rank": 7,
+      "score": 85,
+      "section": "heat_rankings",
+      "tier": "MASSTIGE",
+      "topic": "makeup",
+      "trend_badge": "趋势产品",
+      "trend_tag": null
+    },
+    {
+      "category_badge": "",
+      "detail": {
+        "brand": "新品观察",
+        "buzz": "小红书新品笔记",
+        "key_features": "贝壳光泽 · 低饱和新色 · 哑光唇泥",
+        "price_link": "",
+        "price_text": "¥79~99"
+      },
+      "explicit_dates": [],
+      "launch_text": "新品观察",
+      "market": "CN",
+      "new_badge": null,
+      "panel": "CN MASSTIGE",
+      "product_name": "酵色 贝壳系列唇泥（新色）",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-26/index.html",
+          "week": "week-26"
+        }
+      ],
+      "rank": 8,
+      "score": 75,
+      "section": "heat_rankings",
+      "tier": "MASSTIGE",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "",
+      "detail": {
+        "brand": "新品观察",
+        "buzz": "小红书 日常眼影",
+        "key_features": "九宫格夏日配色 · 低饱和粉棕系",
+        "price_link": "",
+        "price_text": "¥139~179"
+      },
+      "explicit_dates": [],
+      "launch_text": "新品观察",
+      "market": "CN",
+      "new_badge": null,
+      "panel": "CN MASSTIGE",
+      "product_name": "3CE 九宫格眼影盘（夏日限定）",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-26/index.html",
+          "week": "week-26"
+        }
+      ],
+      "rank": 9,
+      "score": 65,
+      "section": "heat_rankings",
+      "tier": "MASSTIGE",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "",
+      "detail": {
+        "brand": "性价比首选",
+        "buzz": "抖音推荐",
+        "key_features": "低饱和奶油色系 · 日常通勤 · 性价比",
+        "price_link": "",
+        "price_text": "¥39~69"
+      },
+      "explicit_dates": [],
+      "launch_text": "性价比首选",
+      "market": "CN",
+      "new_badge": null,
+      "panel": "CN MASSTIGE",
+      "product_name": "橘朵 腮红盘（新色系）",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-26/index.html",
+          "week": "week-26"
+        }
+      ],
+      "rank": 10,
+      "score": 55,
+      "section": "heat_rankings",
+      "tier": "MASSTIGE",
       "topic": "makeup",
       "trend_badge": null,
       "trend_tag": null
@@ -594,9 +929,765 @@
       "topic": "makeup",
       "trend_badge": null,
       "trend_tag": null
+    },
+    {
+      "category_badge": "",
+      "detail": {
+        "brand": "上线即热销",
+        "buzz": "Sephora 新品TOP TikTok 热推",
+        "key_features": "15色 · 爱心造型子弹头 · 极繁主义唇妆 · Bold self-expression",
+        "price_link": "",
+        "price_text": "$34"
+      },
+      "explicit_dates": [
+        "2026-06-01"
+      ],
+      "launch_text": "上线即热销",
+      "market": "US",
+      "new_badge": null,
+      "panel": "US LUXURY",
+      "product_name": "Marc Jacobs Heart On Lipstick",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-26/index.html",
+          "week": "week-26"
+        }
+      ],
+      "rank": 1,
+      "score": 95,
+      "section": "heat_rankings",
+      "tier": "LUXURY",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "",
+      "detail": {
+        "brand": "高期待",
+        "buzz": "Sephora 热销",
+        "key_features": "光泽肌底妆+修容一体 · 12色号 · 养肤成分",
+        "price_link": "",
+        "price_text": "$135~150"
+      },
+      "explicit_dates": [],
+      "launch_text": "高期待",
+      "market": "US",
+      "new_badge": null,
+      "panel": "US LUXURY",
+      "product_name": "Tom Ford Shade & Illuminate Foundation",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-26/index.html",
+          "week": "week-26"
+        }
+      ],
+      "rank": 2,
+      "score": 88,
+      "section": "heat_rankings",
+      "tier": "LUXURY",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "",
+      "detail": {
+        "brand": "好评率 93%",
+        "buzz": "Sephora Bestseller",
+        "key_features": "持妆16H · 高饱和浓郁色 · 30+色号",
+        "price_link": "",
+        "price_text": "$40"
+      },
+      "explicit_dates": [],
+      "launch_text": "好评率 93%",
+      "market": "US",
+      "new_badge": null,
+      "panel": "US LUXURY",
+      "product_name": "Dior Rouge Dior Forever Liquid",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-26/index.html",
+          "week": "week-26"
+        }
+      ],
+      "rank": 3,
+      "score": 82,
+      "section": "heat_rankings",
+      "tier": "LUXURY",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "",
+      "detail": {
+        "brand": "好评率 95%",
+        "buzz": "Sephora Top 5",
+        "key_features": "Pillow Talk唇色系 · Nude Pink常青色号",
+        "price_link": "",
+        "price_text": "$32~75"
+      },
+      "explicit_dates": [],
+      "launch_text": "好评率 95%",
+      "market": "US",
+      "new_badge": null,
+      "panel": "US LUXURY",
+      "product_name": "Charlotte Tilbury Pillow Talk Collection",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-26/index.html",
+          "week": "week-26"
+        }
+      ],
+      "rank": 4,
+      "score": 78,
+      "section": "heat_rankings",
+      "tier": "LUXURY",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "",
+      "detail": {
+        "brand": "好评率 91%",
+        "buzz": "Sephora 热销",
+        "key_features": "养肤粉底 · 透明质酸+烟酰胺 · 22色号",
+        "price_link": "",
+        "price_text": "$58"
+      },
+      "explicit_dates": [],
+      "launch_text": "好评率 91%",
+      "market": "US",
+      "new_badge": null,
+      "panel": "US LUXURY",
+      "product_name": "YSL Pure Shots Foundation",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-26/index.html",
+          "week": "week-26"
+        }
+      ],
+      "rank": 5,
+      "score": 72,
+      "section": "heat_rankings",
+      "tier": "LUXURY",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "",
+      "detail": {
+        "brand": "好评率 92%",
+        "buzz": "Sephora Bestseller",
+        "key_features": "丝缎光泽肌 · Micro-fil技术 · 30+色号",
+        "price_link": "",
+        "price_text": "$44~64"
+      },
+      "explicit_dates": [],
+      "launch_text": "好评率 92%",
+      "market": "US",
+      "new_badge": null,
+      "panel": "US LUXURY",
+      "product_name": "Armani Luminous Silk Foundation",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-26/index.html",
+          "week": "week-26"
+        }
+      ],
+      "rank": 6,
+      "score": 68,
+      "section": "heat_rankings",
+      "tier": "LUXURY",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "",
+      "detail": {
+        "brand": "好评率 89%",
+        "buzz": "Sephora 畅销",
+        "key_features": "16H持妆 · 40色号全肤色覆盖",
+        "price_link": "",
+        "price_text": "$42~52"
+      },
+      "explicit_dates": [],
+      "launch_text": "好评率 89%",
+      "market": "US",
+      "new_badge": null,
+      "panel": "US LUXURY",
+      "product_name": "NARS Natural Radiant Longwear",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-26/index.html",
+          "week": "week-26"
+        }
+      ],
+      "rank": 7,
+      "score": 65,
+      "section": "heat_rankings",
+      "tier": "LUXURY",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "",
+      "detail": {
+        "brand": "专业线推荐",
+        "buzz": "TikTok 热推",
+        "key_features": "蜜桃裸色系 · 微光缎面质地",
+        "price_link": "",
+        "price_text": "$58~68"
+      },
+      "explicit_dates": [],
+      "launch_text": "专业线推荐",
+      "market": "US",
+      "new_badge": null,
+      "panel": "US LUXURY",
+      "product_name": "Pat McGrath Labs Divine Blush",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-26/index.html",
+          "week": "week-26"
+        }
+      ],
+      "rank": 8,
+      "score": 60,
+      "section": "heat_rankings",
+      "tier": "LUXURY",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "",
+      "detail": {
+        "brand": "品牌信赖",
+        "buzz": "TikTok 经典推荐",
+        "key_features": "双头唇釉 · 哑光+光泽叠涂",
+        "price_link": "",
+        "price_text": "$38~42"
+      },
+      "explicit_dates": [],
+      "launch_text": "品牌信赖",
+      "market": "US",
+      "new_badge": null,
+      "panel": "US LUXURY",
+      "product_name": "Chanel Le Rouge Duo Ultra Tenue",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-26/index.html",
+          "week": "week-26"
+        }
+      ],
+      "rank": 9,
+      "score": 55,
+      "section": "heat_rankings",
+      "tier": "LUXURY",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "",
+      "detail": {
+        "brand": "好评率 91%",
+        "buzz": "Sephora Bestseller",
+        "key_features": "16H定妆 · Temperature-Control技术",
+        "price_link": "",
+        "price_text": "$33~36"
+      },
+      "explicit_dates": [],
+      "launch_text": "好评率 91%",
+      "market": "US",
+      "new_badge": null,
+      "panel": "US LUXURY",
+      "product_name": "Urban Decay All Nighter Setting Spray",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-26/index.html",
+          "week": "week-26"
+        }
+      ],
+      "rank": 10,
+      "score": 50,
+      "section": "heat_rankings",
+      "tier": "LUXURY",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "",
+      "detail": {
+        "brand": "Amazon 月销12万+",
+        "buzz": "TikTok 480万+ YouTube +165%",
+        "key_features": "冰蓝/银白/香槟金 · 一抹化霜 · 冷调多功能彩妆棒",
+        "price_link": "",
+        "price_text": "$17.16"
+      },
+      "explicit_dates": [],
+      "launch_text": "Amazon 月销12万+",
+      "market": "US",
+      "new_badge": null,
+      "panel": "US MASSTIGE",
+      "product_name": "Julep Eyeshadow 101 Cream-to-Powder Stick",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-26/index.html",
+          "week": "week-26"
+        }
+      ],
+      "rank": 1,
+      "score": 95,
+      "section": "heat_rankings",
+      "tier": "MASSTIGE",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "",
+      "detail": {
+        "brand": "上线即热销",
+        "buzz": "Sephora 预售TOP10",
+        "key_features": "润色保湿 · 养肤底妆 · Selena Gomez同款",
+        "price_link": "",
+        "price_text": "$34"
+      },
+      "explicit_dates": [],
+      "launch_text": "上线即热销",
+      "market": "US",
+      "new_badge": null,
+      "panel": "US MASSTIGE",
+      "product_name": "Rare Beauty Find Comfort Tinted Moisturizer",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-26/index.html",
+          "week": "week-26"
+        }
+      ],
+      "rank": 2,
+      "score": 92,
+      "section": "heat_rankings",
+      "tier": "MASSTIGE",
+      "topic": "makeup",
+      "trend_badge": "趋势产品",
+      "trend_tag": null
+    },
+    {
+      "category_badge": "",
+      "detail": {
+        "brand": "新品观察",
+        "buzz": "Sephora 新品 TikTok 讨论",
+        "key_features": "10色 · 雏菊图案包装 · 品牌全新品类",
+        "price_link": "",
+        "price_text": "$32"
+      },
+      "explicit_dates": [
+        "2026-06-01"
+      ],
+      "launch_text": "新品观察",
+      "market": "US",
+      "new_badge": null,
+      "panel": "US MASSTIGE",
+      "product_name": "Marc Jacobs Joystick Blush Stick",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-26/index.html",
+          "week": "week-26"
+        }
+      ],
+      "rank": 3,
+      "score": 88,
+      "section": "heat_rankings",
+      "tier": "MASSTIGE",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "",
+      "detail": {
+        "brand": "Reddit热评",
+        "buzz": "Sephora 热销",
+        "key_features": "柔焦定妆粉 · Cloud Skin必备",
+        "price_link": "",
+        "price_text": "$33"
+      },
+      "explicit_dates": [],
+      "launch_text": "Reddit热评",
+      "market": "US",
+      "new_badge": null,
+      "panel": "US MASSTIGE",
+      "product_name": "Kosas Cloud Set Blurring Powder",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-26/index.html",
+          "week": "week-26"
+        }
+      ],
+      "rank": 4,
+      "score": 78,
+      "section": "heat_rankings",
+      "tier": "MASSTIGE",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "",
+      "detail": {
+        "brand": "上线好评",
+        "buzz": "Sephora 新品TOP 5",
+        "key_features": "水感腮红凝胶 · 低饱和粉彩色系",
+        "price_link": "",
+        "price_text": "$24"
+      },
+      "explicit_dates": [],
+      "launch_text": "上线好评",
+      "market": "US",
+      "new_badge": null,
+      "panel": "US MASSTIGE",
+      "product_name": "Tower 28 Splashy Cream Blush Hydrating Gel",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-26/index.html",
+          "week": "week-26"
+        }
+      ],
+      "rank": 5,
+      "score": 72,
+      "section": "heat_rankings",
+      "tier": "MASSTIGE",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "",
+      "detail": {
+        "brand": "季节新品（夏季）",
+        "buzz": "",
+        "key_features": "小红书 高端底妆讨论",
+        "price_link": "",
+        "price_text": ""
+      },
+      "explicit_dates": [],
+      "launch_text": "季节新品（夏季）",
+      "market": "CN",
+      "new_badge": null,
+      "panel": "CN LUXURY",
+      "product_name": "毛戈平 光韵奢华粉底霜",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-26/index.html",
+          "week": "week-26"
+        }
+      ],
+      "rank": 7,
+      "score": 88,
+      "section": "new_product_radar",
+      "tier": "LUXURY",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "",
+      "detail": {
+        "brand": "IP联名新品",
+        "buzz": "",
+        "key_features": "敦煌红·伎乐天·飞天",
+        "price_link": "",
+        "price_text": ""
+      },
+      "explicit_dates": [],
+      "launch_text": "IP联名新品",
+      "market": "CN",
+      "new_badge": null,
+      "panel": "CN MASSTIGE",
+      "product_name": "卡姿兰 敦煌联名系列",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-26/index.html",
+          "week": "week-26"
+        }
+      ],
+      "rank": 8,
+      "score": 85,
+      "section": "new_product_radar",
+      "tier": "MASSTIGE",
+      "topic": "makeup",
+      "trend_badge": "趋势产品",
+      "trend_tag": null
+    },
+    {
+      "category_badge": "",
+      "detail": {
+        "brand": "已有系列新色",
+        "buzz": "",
+        "key_features": "贝壳光泽 · 低饱和新色",
+        "price_link": "",
+        "price_text": ""
+      },
+      "explicit_dates": [],
+      "launch_text": "已有系列新色",
+      "market": "CN",
+      "new_badge": null,
+      "panel": "CN MASSTIGE",
+      "product_name": "酵色 贝壳系列唇泥（新色）",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-26/index.html",
+          "week": "week-26"
+        }
+      ],
+      "rank": 9,
+      "score": 78,
+      "section": "new_product_radar",
+      "tier": "MASSTIGE",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "",
+      "detail": {
+        "brand": "品牌回归全新产品线",
+        "buzz": "",
+        "key_features": "$34 · 15色 · 爱心造型",
+        "price_link": "",
+        "price_text": ""
+      },
+      "explicit_dates": [
+        "2026-06-01"
+      ],
+      "launch_text": "品牌回归全新产品线",
+      "market": "US",
+      "new_badge": null,
+      "panel": "US LUXURY",
+      "product_name": "Marc Jacobs Heart On Lipstick",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-26/index.html",
+          "week": "week-26"
+        }
+      ],
+      "rank": 1,
+      "score": 95,
+      "section": "new_product_radar",
+      "tier": "LUXURY",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "",
+      "detail": {
+        "brand": "品牌回归全新产品线",
+        "buzz": "",
+        "key_features": "$26 · 21色 · 凝胶铅笔",
+        "price_link": "",
+        "price_text": ""
+      },
+      "explicit_dates": [
+        "2026-06-01"
+      ],
+      "launch_text": "品牌回归全新产品线",
+      "market": "US",
+      "new_badge": null,
+      "panel": "US LUXURY",
+      "product_name": "Marc Jacobs Drawn This Way Eyeliner",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-26/index.html",
+          "week": "week-26"
+        }
+      ],
+      "rank": 2,
+      "score": 90,
+      "section": "new_product_radar",
+      "tier": "LUXURY",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "",
+      "detail": {
+        "brand": "季节新品（夏季）",
+        "buzz": "",
+        "key_features": "$135~150 · 12色号",
+        "price_link": "",
+        "price_text": ""
+      },
+      "explicit_dates": [],
+      "launch_text": "季节新品（夏季）",
+      "market": "US",
+      "new_badge": null,
+      "panel": "US LUXURY",
+      "product_name": "Tom Ford Shade & Illuminate Foundation",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-26/index.html",
+          "week": "week-26"
+        }
+      ],
+      "rank": 3,
+      "score": 85,
+      "section": "new_product_radar",
+      "tier": "LUXURY",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "",
+      "detail": {
+        "brand": "品牌全新品类",
+        "buzz": "",
+        "key_features": "$32 · 10色 · 膏状腮红棒",
+        "price_link": "",
+        "price_text": ""
+      },
+      "explicit_dates": [
+        "2026-06-01"
+      ],
+      "launch_text": "品牌全新品类",
+      "market": "US",
+      "new_badge": null,
+      "panel": "US MASSTIGE",
+      "product_name": "Marc Jacobs Joystick Blush Stick",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-26/index.html",
+          "week": "week-26"
+        }
+      ],
+      "rank": 4,
+      "score": 88,
+      "section": "new_product_radar",
+      "tier": "MASSTIGE",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "",
+      "detail": {
+        "brand": "品牌全新品类",
+        "buzz": "",
+        "key_features": "$38 · 凝胶高光 · 湿润肌光泽",
+        "price_link": "",
+        "price_text": ""
+      },
+      "explicit_dates": [
+        "2026-06-01"
+      ],
+      "launch_text": "品牌全新品类",
+      "market": "US",
+      "new_badge": null,
+      "panel": "US MASSTIGE",
+      "product_name": "Marc Jacobs Money Shot Highlighter Gel",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-26/index.html",
+          "week": "week-26"
+        }
+      ],
+      "rank": 5,
+      "score": 80,
+      "section": "new_product_radar",
+      "tier": "MASSTIGE",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "",
+      "detail": {
+        "brand": "全新产品线",
+        "buzz": "",
+        "key_features": "$24 · 水感腮红凝胶",
+        "price_link": "",
+        "price_text": ""
+      },
+      "explicit_dates": [],
+      "launch_text": "全新产品线",
+      "market": "US",
+      "new_badge": null,
+      "panel": "US MASSTIGE",
+      "product_name": "Tower 28 Splashy Cream Blush Hydrating Gel",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-26/index.html",
+          "week": "week-26"
+        }
+      ],
+      "rank": 6,
+      "score": 72,
+      "section": "new_product_radar",
+      "tier": "MASSTIGE",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
     }
   ],
-  "generated_at": "2026-07-23T06:38:50+00:00",
+  "generated_at": "2026-07-23T08:06:10+00:00",
   "historical_snapshot": "709c63b",
   "historical_snapshot_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
   "included_weeks": [
@@ -607,23 +1698,25 @@
   ],
   "month": "2026-06",
   "summary": {
-    "deduped_unique": 19,
-    "duplicates_removed": 1,
-    "parse_failures": 34,
+    "deduped_unique": 54,
+    "duplicates_removed": 0,
+    "parse_failures": 0,
     "per_week": {
       "week-25": {
         "included": 20,
         "makeup_heat_rankings": 20
       },
       "week-26": {
-        "parse_failures": 34
+        "included": 34,
+        "makeup_heat_rankings": 25,
+        "makeup_new_product_radar": 9
       },
       "week-27": {
         "excluded": 82
       }
     },
     "raw_excluded_w27": 82,
-    "raw_included": 20
+    "raw_included": 54
   },
   "w27_rule": "Only keep W27 items with explicit item-level June 29 or June 30 dates.",
   "window_end": "2026-06-30",

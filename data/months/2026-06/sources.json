@@ -1,7 +1,156 @@
 {
-  "generated_from": "data/months/2026-06/report.json",
-  "provenance": "No verified sources collected for 2026-06-01 through 2026-06-30; publication blocked pending evidence.",
-  "sources": [],
-  "total_sources": 0,
+  "articles": [
+    {
+      "date": "2026-07-21T07:37:18Z",
+      "market": "US",
+      "reference_type": "historical_snapshot",
+      "source": "repo_snapshot",
+      "summary": "Week-25 archive recovered June makeup heat signals.",
+      "title": "Historical repository snapshot: June makeup heat archive",
+      "url": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-25/index.html"
+    },
+    {
+      "date": "2026-07-21T07:37:18Z",
+      "market": "US",
+      "reference_type": "historical_snapshot",
+      "source": "repo_snapshot",
+      "summary": "Week-26 archive preserved exact item-level June 1 launch dates for qualifying makeup radar products.",
+      "title": "Historical repository snapshot: June makeup radar archive",
+      "url": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-26/index.html"
+    },
+    {
+      "date": "2026-07-21T07:37:18Z",
+      "market": "US",
+      "reference_type": "historical_snapshot",
+      "source": "repo_snapshot",
+      "summary": "Week-25 fragrance archive preserved June heat context.",
+      "title": "Historical repository snapshot: June fragrance archive",
+      "url": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-25/fragrance.html"
+    },
+    {
+      "source": "Julep",
+      "title": "Best Cream-to-Powder Eyeshadow Stick | Eyeshadow 101 | Julep",
+      "url": "https://www.julep.com/products/eyeshadow-10-creme-to-powder-eyeshadow-stick",
+      "date": "2026-07-23T08:27:03Z",
+      "summary": "Official Julep product page confirming Eyeshadow 101 positioning, format, and current price.",
+      "market": "US",
+      "reference_type": "Brand official"
+    },
+    {
+      "source": "Sol de Janeiro",
+      "title": "Cheirosa 91 Perfume Mist | Sol de Janeiro",
+      "url": "https://soldejaneiro.com/products/cheirosa-91-perfume-mist",
+      "date": "2026-07-23T08:27:03Z",
+      "summary": "Official Sol de Janeiro product page confirming Cheirosa 91 product name, format, and notes.",
+      "market": "US",
+      "reference_type": "Brand official"
+    },
+    {
+      "source": "Glossier",
+      "title": "Glossier You",
+      "url": "https://www.glossier.com/products/glossier-you",
+      "date": "2026-07-23T08:27:03Z",
+      "summary": "Official Glossier product page confirming Glossier You positioning and product name.",
+      "market": "US",
+      "reference_type": "Brand official"
+    }
+  ],
+  "provenance": {
+    "evidence_absences": [
+      {
+        "gap_type": "no_url",
+        "panel": "CN MASSTIGE",
+        "product_name": "To Summer Kunlun Snow",
+        "reason": "No official e-commerce or product page URL exists in repository data for To Summer Kunlun Snow. Chinese niche fragrance with no verified public URL.",
+        "section": "heat_rankings",
+        "topic": "fragrance"
+      },
+      {
+        "gap_type": "no_url",
+        "panel": "CN MASSTIGE",
+        "product_name": "Scent Library Boiled Water",
+        "reason": "No official e-commerce or product page URL exists in repository data for Scent Library Boiled Water. Chinese niche fragrance with no verified public URL.",
+        "section": "heat_rankings",
+        "topic": "fragrance"
+      }
+    ],
+    "migration_recorded_at": "2026-07-23T08:17:59Z",
+    "phase": 7,
+    "direct_access_blockers": [
+      {
+        "source": "Sephora",
+        "checked_at": "2026-07-23T08:27:03Z",
+        "status": "http_403",
+        "urls": [
+          "https://www.sephora.com/brand/marc-jacobs-beauty",
+          "https://www.sephora.com/brand/marc-jacobs-beauty/makeup-cosmetics"
+        ],
+        "impact": "Marc Jacobs June launch evidence remains tied to repository snapshot fallback provenance."
+      },
+      {
+        "source": "Fragrantica",
+        "checked_at": "2026-07-23T08:27:03Z",
+        "status": "partial_http_403",
+        "urls": [
+          "https://www.fragrantica.com/perfume/Kayali-Fragrances/Freedom-Musk-Matcha-45-Eau-de-Parfum-118623.html"
+        ],
+        "impact": "Kayali product-level evidence remains tied to repository snapshot fallback provenance."
+      }
+    ]
+  },
+  "schema_version": "2.0.0",
+  "sources": [
+    {
+      "checked_at": "2026-07-23T08:17:59Z",
+      "id": "src_0001",
+      "provenance": {
+        "reason": "Historical repository snapshot 709c63b used because automated external historical product evidence was incomplete.",
+        "verification_status": "verified"
+      },
+      "type": "editorial",
+      "url": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-26/index.html"
+    },
+    {
+      "checked_at": "2026-07-23T08:17:59Z",
+      "id": "src_0002",
+      "provenance": {
+        "reason": "Historical repository snapshot 709c63b used because automated external historical product evidence was incomplete.",
+        "verification_status": "verified"
+      },
+      "type": "editorial",
+      "url": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-25/fragrance.html"
+    },
+    {
+      "id": "src_0003",
+      "checked_at": "2026-07-23T08:27:03Z",
+      "type": "product_page",
+      "url": "https://www.julep.com/products/eyeshadow-10-creme-to-powder-eyeshadow-stick",
+      "provenance": {
+        "reason": "Direct-access official product page used to supplement repository recovery for exact product metadata.",
+        "verification_status": "verified"
+      }
+    },
+    {
+      "id": "src_0004",
+      "checked_at": "2026-07-23T08:27:03Z",
+      "type": "product_page",
+      "url": "https://soldejaneiro.com/products/cheirosa-91-perfume-mist",
+      "provenance": {
+        "reason": "Direct-access official product page used to supplement repository recovery for exact product metadata.",
+        "verification_status": "verified"
+      }
+    },
+    {
+      "id": "src_0005",
+      "checked_at": "2026-07-23T08:27:03Z",
+      "type": "product_page",
+      "url": "https://www.glossier.com/products/glossier-you",
+      "provenance": {
+        "reason": "Direct-access official product page used to supplement repository recovery for exact product metadata.",
+        "verification_status": "verified"
+      }
+    }
+  ],
+  "total_sources": 5,
   "version": "2.0.0"
 }

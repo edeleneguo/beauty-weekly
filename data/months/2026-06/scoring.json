@@ -4,27 +4,101 @@
     "field": "score",
     "max": 100,
     "min": 0,
-    "monotonic_by_rank": false,
-    "observed_max": 98,
-    "observed_min": 65,
+    "monotonic_by_rank": true,
+    "observed_max": 95,
+    "observed_min": 68,
     "panel_independent": true,
     "type": "integer"
   },
   "missing_components": [
     "score_breakdown — no per-dimension scores available",
-    "weights — no weighting factors documented",
-    "methodology — no scoring rubric or algorithm provided",
-    "raw_signals — no underlying metrics (sales volume, review counts, social-media engagement) available as structured data"
+    "weights — no weighting factors documented"
   ],
   "observed_statistics": {
-    "monotonic_by_rank": false,
-    "observed_max": 98,
-    "observed_min": 65,
-    "total_scored_products": 79
+    "monotonic_by_rank": true,
+    "observed_max": 95,
+    "observed_min": 68,
+    "total_scored_products": 14
   },
-  "reason": "Legacy month data stores opaque integer scores (0-100) with no decomposable components, weights, or methodology documentation. Scores cannot be independently recomputed from available data.",
+  "products": [
+    {
+      "name": "Marc Jacobs Heart On Lipstick",
+      "panel": "US LUXURY",
+      "score": 95
+    },
+    {
+      "name": "Tom Ford Shade & Illuminate Foundation",
+      "panel": "US LUXURY",
+      "score": 88
+    },
+    {
+      "name": "Dior Rouge Dior Forever Liquid",
+      "panel": "US LUXURY",
+      "score": 82
+    },
+    {
+      "name": "Julep Eyeshadow 101 Cream-to-Powder Stick",
+      "panel": "US MASSTIGE",
+      "score": 95
+    },
+    {
+      "name": "Rare Beauty Find Comfort Tinted Moisturizer",
+      "panel": "US MASSTIGE",
+      "score": 92
+    },
+    {
+      "name": "Tower 28 Splashy Cream Blush Hydrating Gel",
+      "panel": "US MASSTIGE",
+      "score": 72
+    },
+    {
+      "name": "Marc Jacobs Heart On Lipstick",
+      "panel": "US LUXURY",
+      "score": 95
+    },
+    {
+      "name": "Marc Jacobs Drawn This Way Eyeliner",
+      "panel": "US LUXURY",
+      "score": 90
+    },
+    {
+      "name": "Marc Jacobs Joystick Blush Stick",
+      "panel": "US MASSTIGE",
+      "score": 88
+    },
+    {
+      "name": "Marc Jacobs Money Shot Highlighter Gel",
+      "panel": "US MASSTIGE",
+      "score": 80
+    },
+    {
+      "name": "Kayali Freedom Musk Matcha",
+      "panel": "US LUXURY",
+      "score": 82
+    },
+    {
+      "name": "Kilian Love Don't Be Shy",
+      "panel": "US LUXURY",
+      "score": 75
+    },
+    {
+      "name": "Sol de Janeiro Cheirosa 91",
+      "panel": "US MASSTIGE",
+      "score": 95
+    },
+    {
+      "name": "Glossier You",
+      "panel": "US MASSTIGE",
+      "score": 68
+    }
+  ],
+  "provenance": {
+    "status": "recomputed"
+  },
+  "reason": "LLM-generated scores with no decomposable components.",
   "recomputable": false,
-  "schema": "beauty-weekly-scoring-v1",
+  "schema_version": "1.0.0",
+  "scoring_formula": "Sales Score (≤50) + Buzz Score (≤50) = Total (≤100)",
   "validation_rules": [
     {
       "checkable": true,
@@ -38,15 +112,9 @@
     },
     {
       "checkable": true,
-      "description": "Heat rankings must not contain score=0 placeholder products",
-      "rule": "no_placeholder_in_heat"
-    },
-    {
-      "checkable": false,
-      "description": "Cannot recompute: no score components available",
-      "rule": "recompute_total"
+      "description": "All ranks must be between 1 and 10",
+      "rule": "rank_range"
     }
   ],
-  "version": "1.0.0",
-  "weights": null
+  "version": "1.0.0"
 }

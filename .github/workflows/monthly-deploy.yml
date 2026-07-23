@@ -68,8 +68,29 @@ jobs:
           } >> "$GITHUB_OUTPUT"
           echo "Month resolved: $MONTH"
 
+      - name: Detect existing canonical bundle
+        id: canonical_bundle
+        run: |
+          MONTH=${{ steps.target_month.outputs.month }}
+          REQUIRED=1
+          for f in raw_collected.json report.json sources.json scoring.json manifest.json; do
+            if [ ! -f "data/months/$MONTH/$f" ]; then
+              REQUIRED=0
+              echo "Missing data/months/$MONTH/$f"
+            fi
+          done
+          if [ "$REQUIRED" -eq 1 ]; then
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+            echo "Canonical month bundle already exists for $MONTH"
+          else
+            echo "exists=false" >> "$GITHUB_OUTPUT"
+            echo "Canonical month bundle is incomplete for $MONTH"
+          fi
+
       - name: Stage 1 — Collect raw data
-        if: ${{ !inputs.skip_collect }}
+        if: ${{ !inputs.skip_collect && steps.canonical_bundle.outputs.exists != 'true' }}
+        env:
+          BEAUTY_MONTHLY_MONTH: ${{ steps.target_month.outputs.month }}
         run: |
           echo "=== STAGE 1: Data Collection ==="
           python3 build/collect.py
@@ -89,16 +110,25 @@ jobs:
           exit 1
 
       - name: Stage 2 — Generate canonical content
+        if: ${{ steps.canonical_bundle.outputs.exists != 'true' }}
         env:
           LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
           LLM_BASE_URL: ${{ secrets.LLM_BASE_URL }}
           LLM_MODEL: ${{ secrets.LLM_MODEL }}
+          BEAUTY_MONTHLY_MONTH: ${{ steps.target_month.outputs.month }}
         run: |
           echo "=== STAGE 2: Content Generation ==="
           if [ -z "$LLM_API_KEY" ]; then
             echo "FATAL: LLM_API_KEY secret not set"; exit 1
           fi
           python3 build/generate_monthly.py
+
+      - name: Stage 2 — Reuse canonical content
+        if: ${{ steps.canonical_bundle.outputs.exists == 'true' }}
+        run: |
+          MONTH=${{ steps.target_month.outputs.month }}
+          echo "=== STAGE 2: Reusing canonical month bundle ==="
+          echo "Using prebuilt canonical files from data/months/$MONTH/"
 
       - name: Stage 2 — Verify canonical files
         run: |

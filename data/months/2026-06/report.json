@@ -1,13 +1,222 @@
 {
   "date_range": "Jun 1 – Jun 30, 2026",
   "date_range_cn": "6月1日 – 6月30日",
+  "month": "2026-06",
   "products": {
     "fragrance": {
       "heat_rankings": {
         "CN LUXURY": [],
         "CN MASSTIGE": [],
-        "US LUXURY": [],
-        "US MASSTIGE": []
+        "US LUXURY": [
+          {
+            "category_badge": "Tea",
+            "detail": {
+              "brand": {
+                "cn": "Historical top-5 ranking signal",
+                "en": "Historical top-5 ranking signal"
+              },
+              "buzz": {
+                "cn": "Matcha-trend crossover hit",
+                "en": "Matcha-trend crossover hit"
+              },
+              "key_features": {
+                "cn": "Matcha, musk, vanilla",
+                "en": "Matcha, musk, vanilla"
+              },
+              "price_link": {
+                "cn": "$118",
+                "en": "$118",
+                "link": ""
+              }
+            },
+            "launch_evidence": {
+              "absence_markers": [],
+              "evidence": {
+                "checked_at": "2026-07-23T08:17:59Z",
+                "fetched_at": "2026-07-23T08:17:59Z",
+                "published_at": "2026-07-21T07:37:18Z",
+                "supported_fields": [
+                  "price",
+                  "features",
+                  "buzz",
+                  "brand",
+                  "category"
+                ],
+                "title": "Historical repository snapshot: Kayali Freedom Musk Matcha (archive/week-25/fragrance.html)",
+                "type": "editorial",
+                "url": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-25/fragrance.html"
+              },
+              "launch_date": "2026-H1",
+              "quarantine_reason": null,
+              "quarantine_status": "verified"
+            },
+            "market": "US",
+            "name": "Kayali Freedom Musk Matcha",
+            "name_cn": "",
+            "new_badge": null,
+            "rank": 1,
+            "score": 82,
+            "tier": "LUXURY",
+            "trend": null,
+            "trend_badge": null
+          },
+          {
+            "category_badge": "Gourmand",
+            "detail": {
+              "brand": {
+                "cn": "Historical top-5 ranking signal",
+                "en": "Historical top-5 ranking signal"
+              },
+              "buzz": {
+                "cn": "TikTok Shop hit",
+                "en": "TikTok Shop hit"
+              },
+              "key_features": {
+                "cn": "Toasted marshmallow, dark vanilla, smoky woods",
+                "en": "Toasted marshmallow, dark vanilla, smoky woods"
+              },
+              "price_link": {
+                "cn": "$250",
+                "en": "$250",
+                "link": ""
+              }
+            },
+            "launch_evidence": {
+              "absence_markers": [],
+              "evidence": {
+                "checked_at": "2026-07-23T08:17:59Z",
+                "fetched_at": "2026-07-23T08:17:59Z",
+                "published_at": "2026-07-21T07:37:18Z",
+                "supported_fields": [
+                  "price",
+                  "features",
+                  "buzz",
+                  "brand",
+                  "category"
+                ],
+                "title": "Historical repository snapshot: Kilian Love Don't Be Shy (archive/week-25/fragrance.html)",
+                "type": "editorial",
+                "url": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-25/fragrance.html"
+              },
+              "launch_date": "2026-H1",
+              "quarantine_reason": null,
+              "quarantine_status": "verified"
+            },
+            "market": "US",
+            "name": "Kilian Love Don't Be Shy",
+            "name_cn": "",
+            "new_badge": null,
+            "rank": 2,
+            "score": 75,
+            "tier": "LUXURY",
+            "trend": null,
+            "trend_badge": null
+          }
+        ],
+        "US MASSTIGE": [
+          {
+            "category_badge": "Floral",
+            "detail": {
+              "brand": {
+                "cn": "Historical top-5 ranking signal",
+                "en": "Historical top-5 ranking signal"
+              },
+              "buzz": {
+                "cn": "Rose-renaissance body mist hero",
+                "en": "Rose-renaissance body mist hero"
+              },
+              "key_features": {
+                "cn": "Green rose, dewy rose, garden rose",
+                "en": "Green rose, dewy rose, garden rose"
+              },
+              "price_link": {
+                "cn": "$39",
+                "en": "$39",
+                "link": "https://soldejaneiro.com/products/cheirosa-91-perfume-mist"
+              }
+            },
+            "launch_evidence": {
+              "absence_markers": [],
+              "evidence": {
+                "checked_at": "2026-07-23T08:27:03Z",
+                "fetched_at": "2026-07-23T08:27:03Z",
+                "published_at": "2026-07-23T08:27:03Z",
+                "supported_fields": [
+                  "price",
+                  "features",
+                  "category",
+                  "link"
+                ],
+                "title": "Cheirosa 91 Perfume Mist | Sol de Janeiro",
+                "type": "product_page",
+                "url": "https://soldejaneiro.com/products/cheirosa-91-perfume-mist"
+              },
+              "launch_date": "2026-H1",
+              "quarantine_reason": null,
+              "quarantine_status": "verified"
+            },
+            "market": "US",
+            "name": "Sol de Janeiro Cheirosa 91",
+            "name_cn": "",
+            "new_badge": null,
+            "rank": 1,
+            "score": 95,
+            "tier": "MASSTIGE",
+            "trend": null,
+            "trend_badge": null
+          },
+          {
+            "category_badge": "Musk",
+            "detail": {
+              "brand": {
+                "cn": "Historical top-5 ranking signal",
+                "en": "Historical top-5 ranking signal"
+              },
+              "buzz": {
+                "cn": "Skin-scent icon with new solid-format halo",
+                "en": "Skin-scent icon with new solid-format halo"
+              },
+              "key_features": {
+                "cn": "White musk, ambrette, iris",
+                "en": "White musk, ambrette, iris"
+              },
+              "price_link": {
+                "cn": "$68",
+                "en": "$68",
+                "link": "https://www.glossier.com/products/glossier-you"
+              }
+            },
+            "launch_evidence": {
+              "absence_markers": [],
+              "evidence": {
+                "checked_at": "2026-07-23T08:27:03Z",
+                "fetched_at": "2026-07-23T08:27:03Z",
+                "published_at": "2026-07-23T08:27:03Z",
+                "supported_fields": [
+                  "price",
+                  "features",
+                  "category",
+                  "link"
+                ],
+                "title": "Glossier You",
+                "type": "product_page",
+                "url": "https://www.glossier.com/products/glossier-you"
+              },
+              "launch_date": "2026-H1",
+              "quarantine_reason": null,
+              "quarantine_status": "verified"
+            },
+            "market": "US",
+            "name": "Glossier You",
+            "name_cn": "",
+            "new_badge": null,
+            "rank": 2,
+            "score": 68,
+            "tier": "MASSTIGE",
+            "trend": null,
+            "trend_badge": null
+          }
+        ]
       },
       "new_product_radar": {
         "CN LUXURY": [],
@@ -20,17 +229,568 @@
       "heat_rankings": {
         "CN LUXURY": [],
         "CN MASSTIGE": [],
-        "US LUXURY": [],
-        "US MASSTIGE": []
+        "US LUXURY": [
+          {
+            "category_badge": "Lipstick",
+            "detail": {
+              "brand": {
+                "cn": "Immediate sell-through at launch",
+                "en": "Immediate sell-through at launch"
+              },
+              "buzz": {
+                "cn": "Sephora new launch topper; TikTok traction",
+                "en": "Sephora new launch topper; TikTok traction"
+              },
+              "key_features": {
+                "cn": "15 shades; heart-shaped bullet; maximalist lip statement",
+                "en": "15 shades; heart-shaped bullet; maximalist lip statement"
+              },
+              "price_link": {
+                "cn": "$34",
+                "en": "$34",
+                "link": ""
+              }
+            },
+            "launch_evidence": {
+              "absence_markers": [],
+              "evidence": {
+                "checked_at": "2026-07-23T08:17:59Z",
+                "fetched_at": "2026-07-23T08:17:59Z",
+                "published_at": "2026-07-21T07:37:18Z",
+                "supported_fields": [
+                  "price",
+                  "features",
+                  "buzz",
+                  "brand",
+                  "category",
+                  "link"
+                ],
+                "title": "Historical repository snapshot: Marc Jacobs Heart On Lipstick (archive/week-26/index.html)",
+                "type": "editorial",
+                "url": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-26/index.html"
+              },
+              "launch_date": "2026-06-01",
+              "quarantine_reason": null,
+              "quarantine_status": "verified"
+            },
+            "market": "US",
+            "name": "Marc Jacobs Heart On Lipstick",
+            "name_cn": "",
+            "new_badge": null,
+            "rank": 1,
+            "score": 95,
+            "tier": "LUXURY",
+            "trend": null,
+            "trend_badge": null
+          },
+          {
+            "category_badge": "Foundation",
+            "detail": {
+              "brand": {
+                "cn": "High-expectation ranking signal",
+                "en": "High-expectation ranking signal"
+              },
+              "buzz": {
+                "cn": "Sephora bestseller momentum",
+                "en": "Sephora bestseller momentum"
+              },
+              "key_features": {
+                "cn": "Radiant complexion plus contour concept; 12 shades; skincare-infused base",
+                "en": "Radiant complexion plus contour concept; 12 shades; skincare-infused base"
+              },
+              "price_link": {
+                "cn": "$135~150",
+                "en": "$135~150",
+                "link": ""
+              }
+            },
+            "launch_evidence": {
+              "absence_markers": [],
+              "evidence": {
+                "checked_at": "2026-07-23T08:17:59Z",
+                "fetched_at": "2026-07-23T08:17:59Z",
+                "published_at": "2026-07-21T07:37:18Z",
+                "supported_fields": [
+                  "price",
+                  "features",
+                  "buzz",
+                  "brand",
+                  "category",
+                  "link"
+                ],
+                "title": "Historical repository snapshot: Tom Ford Shade & Illuminate Foundation (archive/week-26/index.html)",
+                "type": "editorial",
+                "url": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-26/index.html"
+              },
+              "launch_date": "2026-07-21",
+              "quarantine_reason": null,
+              "quarantine_status": "verified"
+            },
+            "market": "US",
+            "name": "Tom Ford Shade & Illuminate Foundation",
+            "name_cn": "",
+            "new_badge": null,
+            "rank": 2,
+            "score": 88,
+            "tier": "LUXURY",
+            "trend": null,
+            "trend_badge": null
+          },
+          {
+            "category_badge": "Liquid Lipstick",
+            "detail": {
+              "brand": {
+                "cn": "93% positive ranking read-through",
+                "en": "93% positive ranking read-through"
+              },
+              "buzz": {
+                "cn": "Sephora bestseller",
+                "en": "Sephora bestseller"
+              },
+              "key_features": {
+                "cn": "16-hour wear; high-pigment liquid lip; 30+ shades",
+                "en": "16-hour wear; high-pigment liquid lip; 30+ shades"
+              },
+              "price_link": {
+                "cn": "$40",
+                "en": "$40",
+                "link": ""
+              }
+            },
+            "launch_evidence": {
+              "absence_markers": [],
+              "evidence": {
+                "checked_at": "2026-07-23T08:17:59Z",
+                "fetched_at": "2026-07-23T08:17:59Z",
+                "published_at": "2026-07-21T07:37:18Z",
+                "supported_fields": [
+                  "price",
+                  "features",
+                  "buzz",
+                  "brand",
+                  "category",
+                  "link"
+                ],
+                "title": "Historical repository snapshot: Dior Rouge Dior Forever Liquid (archive/week-26/index.html)",
+                "type": "editorial",
+                "url": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-26/index.html"
+              },
+              "launch_date": "2026-07-21",
+              "quarantine_reason": null,
+              "quarantine_status": "verified"
+            },
+            "market": "US",
+            "name": "Dior Rouge Dior Forever Liquid",
+            "name_cn": "",
+            "new_badge": null,
+            "rank": 3,
+            "score": 82,
+            "tier": "LUXURY",
+            "trend": null,
+            "trend_badge": null
+          }
+        ],
+        "US MASSTIGE": [
+          {
+            "category_badge": "Eye Stick",
+            "detail": {
+              "brand": {
+                "cn": "Amazon monthly sales 120K+",
+                "en": "Amazon monthly sales 120K+"
+              },
+              "buzz": {
+                "cn": "TikTok 4.8M+; YouTube +165%",
+                "en": "TikTok 4.8M+; YouTube +165%"
+              },
+              "key_features": {
+                "cn": "Ice blue, silver, and champagne tones; cream-to-powder payoff",
+                "en": "Ice blue, silver, and champagne tones; cream-to-powder payoff"
+              },
+              "price_link": {
+                "cn": "$17.16",
+                "en": "$17.16",
+                "link": "https://www.julep.com/products/eyeshadow-10-creme-to-powder-eyeshadow-stick"
+              }
+            },
+            "launch_evidence": {
+              "absence_markers": [],
+              "evidence": {
+                "checked_at": "2026-07-23T08:27:03Z",
+                "fetched_at": "2026-07-23T08:27:03Z",
+                "published_at": "2026-07-23T08:27:03Z",
+                "supported_fields": [
+                  "price",
+                  "features",
+                  "category",
+                  "link"
+                ],
+                "title": "Best Cream-to-Powder Eyeshadow Stick | Eyeshadow 101 | Julep",
+                "type": "product_page",
+                "url": "https://www.julep.com/products/eyeshadow-10-creme-to-powder-eyeshadow-stick"
+              },
+              "launch_date": "2026-07-21",
+              "quarantine_reason": null,
+              "quarantine_status": "verified"
+            },
+            "market": "US",
+            "name": "Julep Eyeshadow 101 Cream-to-Powder Stick",
+            "name_cn": "",
+            "new_badge": null,
+            "rank": 1,
+            "score": 95,
+            "tier": "MASSTIGE",
+            "trend": null,
+            "trend_badge": null
+          },
+          {
+            "category_badge": "Tinted Moisturizer",
+            "detail": {
+              "brand": {
+                "cn": "Immediate launch sell-through",
+                "en": "Immediate launch sell-through"
+              },
+              "buzz": {
+                "cn": "Sephora presale Top 10",
+                "en": "Sephora presale Top 10"
+              },
+              "key_features": {
+                "cn": "Tinted hydration; skincare-base complexion finish",
+                "en": "Tinted hydration; skincare-base complexion finish"
+              },
+              "price_link": {
+                "cn": "$34",
+                "en": "$34",
+                "link": ""
+              }
+            },
+            "launch_evidence": {
+              "absence_markers": [],
+              "evidence": {
+                "checked_at": "2026-07-23T08:17:59Z",
+                "fetched_at": "2026-07-23T08:17:59Z",
+                "published_at": "2026-07-21T07:37:18Z",
+                "supported_fields": [
+                  "price",
+                  "features",
+                  "buzz",
+                  "brand",
+                  "category",
+                  "link"
+                ],
+                "title": "Historical repository snapshot: Rare Beauty Find Comfort Tinted Moisturizer (archive/week-26/index.html)",
+                "type": "editorial",
+                "url": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-26/index.html"
+              },
+              "launch_date": "2026-07-21",
+              "quarantine_reason": null,
+              "quarantine_status": "verified"
+            },
+            "market": "US",
+            "name": "Rare Beauty Find Comfort Tinted Moisturizer",
+            "name_cn": "",
+            "new_badge": null,
+            "rank": 2,
+            "score": 92,
+            "tier": "MASSTIGE",
+            "trend": null,
+            "trend_badge": null
+          },
+          {
+            "category_badge": "Gel Blush",
+            "detail": {
+              "brand": {
+                "cn": "Positive launch read-through",
+                "en": "Positive launch read-through"
+              },
+              "buzz": {
+                "cn": "Sephora newness Top 5",
+                "en": "Sephora newness Top 5"
+              },
+              "key_features": {
+                "cn": "Hydrating gel blush with low-saturation pastel shades",
+                "en": "Hydrating gel blush with low-saturation pastel shades"
+              },
+              "price_link": {
+                "cn": "$24",
+                "en": "$24",
+                "link": ""
+              }
+            },
+            "launch_evidence": {
+              "absence_markers": [],
+              "evidence": {
+                "checked_at": "2026-07-23T08:17:59Z",
+                "fetched_at": "2026-07-23T08:17:59Z",
+                "published_at": "2026-07-21T07:37:18Z",
+                "supported_fields": [
+                  "price",
+                  "features",
+                  "buzz",
+                  "brand",
+                  "category",
+                  "link"
+                ],
+                "title": "Historical repository snapshot: Tower 28 Splashy Cream Blush Hydrating Gel (archive/week-26/index.html)",
+                "type": "editorial",
+                "url": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-26/index.html"
+              },
+              "launch_date": "2026-07-21",
+              "quarantine_reason": null,
+              "quarantine_status": "verified"
+            },
+            "market": "US",
+            "name": "Tower 28 Splashy Cream Blush Hydrating Gel",
+            "name_cn": "",
+            "new_badge": null,
+            "rank": 3,
+            "score": 72,
+            "tier": "MASSTIGE",
+            "trend": null,
+            "trend_badge": null
+          }
+        ]
       },
       "new_product_radar": {
         "CN LUXURY": [],
         "CN MASSTIGE": [],
-        "US LUXURY": [],
-        "US MASSTIGE": []
+        "US LUXURY": [
+          {
+            "category_badge": "Lipstick",
+            "detail": {
+              "brand": {
+                "cn": "June 1 retailer listing confirms day-one launch visibility",
+                "en": "June 1 retailer listing confirms day-one launch visibility"
+              },
+              "buzz": {
+                "cn": "Sephora launch topper; TikTok traction",
+                "en": "Sephora launch topper; TikTok traction"
+              },
+              "key_features": {
+                "cn": "15 shades; heart-bullet silhouette; bold color payoff",
+                "en": "15 shades; heart-bullet silhouette; bold color payoff"
+              },
+              "price_link": {
+                "cn": "N/A",
+                "en": "N/A",
+                "link": ""
+              }
+            },
+            "launch_evidence": {
+              "absence_markers": [],
+              "evidence": {
+                "checked_at": "2026-07-23T08:17:59Z",
+                "fetched_at": "2026-07-23T08:17:59Z",
+                "published_at": "2026-07-21T07:37:18Z",
+                "supported_fields": [
+                  "price",
+                  "features",
+                  "buzz",
+                  "brand",
+                  "category",
+                  "launch_date"
+                ],
+                "title": "Historical repository snapshot: Marc Jacobs Heart On Lipstick (archive/week-26/index.html)",
+                "type": "editorial",
+                "url": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-26/index.html"
+              },
+              "launch_date": "2026-06-01",
+              "quarantine_reason": null,
+              "quarantine_status": "verified"
+            },
+            "market": "US",
+            "name": "Marc Jacobs Heart On Lipstick",
+            "name_cn": "",
+            "new_badge": "New",
+            "rank": 1,
+            "score": 95,
+            "tier": "LUXURY",
+            "trend": {
+              "id": "trend_functional_lip",
+              "rationale": "June 1 launch paired statement color with feature-led proposition, matching June’s functional-lip crossover.",
+              "tag": "Functional Lip",
+              "tag_cn": "唇部功效化趋势"
+            },
+            "trend_badge": "Trend"
+          },
+          {
+            "category_badge": "Eyeliner",
+            "detail": {
+              "brand": {
+                "cn": "June 1 retailer listing confirms launch-day listing",
+                "en": "June 1 retailer listing confirms launch-day listing"
+              },
+              "buzz": {
+                "cn": "Sephora launch traction",
+                "en": "Sephora launch traction"
+              },
+              "key_features": {
+                "cn": "21 shades; gel-pencil glide; expressive color wardrobe",
+                "en": "21 shades; gel-pencil glide; expressive color wardrobe"
+              },
+              "price_link": {
+                "cn": "N/A",
+                "en": "N/A",
+                "link": ""
+              }
+            },
+            "launch_evidence": {
+              "absence_markers": [],
+              "evidence": {
+                "checked_at": "2026-07-23T08:17:59Z",
+                "fetched_at": "2026-07-23T08:17:59Z",
+                "published_at": "2026-07-21T07:37:18Z",
+                "supported_fields": [
+                  "price",
+                  "features",
+                  "buzz",
+                  "brand",
+                  "category",
+                  "launch_date"
+                ],
+                "title": "Historical repository snapshot: Marc Jacobs Drawn This Way Eyeliner (archive/week-26/index.html)",
+                "type": "editorial",
+                "url": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-26/index.html"
+              },
+              "launch_date": "2026-06-01",
+              "quarantine_reason": null,
+              "quarantine_status": "verified"
+            },
+            "market": "US",
+            "name": "Marc Jacobs Drawn This Way Eyeliner",
+            "name_cn": "",
+            "new_badge": "New",
+            "rank": 2,
+            "score": 90,
+            "tier": "LUXURY",
+            "trend": {
+              "id": "trend_low-saturation_pastel",
+              "rationale": "The June 1 launch broadened soft yet expressive eye-color options, reinforcing the month’s pastel-led color direction.",
+              "tag": "Low-Saturation Pastel",
+              "tag_cn": "低饱和粉彩趋势"
+            },
+            "trend_badge": "Trend"
+          }
+        ],
+        "US MASSTIGE": [
+          {
+            "category_badge": "Blush Stick",
+            "detail": {
+              "brand": {
+                "cn": "June 1 retailer listing confirms launch-day availability",
+                "en": "June 1 retailer listing confirms launch-day availability"
+              },
+              "buzz": {
+                "cn": "Sephora newness plus TikTok discussion",
+                "en": "Sephora newness plus TikTok discussion"
+              },
+              "key_features": {
+                "cn": "10 shades; daisy packaging; new stick-blush format",
+                "en": "10 shades; daisy packaging; new stick-blush format"
+              },
+              "price_link": {
+                "cn": "N/A",
+                "en": "N/A",
+                "link": ""
+              }
+            },
+            "launch_evidence": {
+              "absence_markers": [],
+              "evidence": {
+                "checked_at": "2026-07-23T08:17:59Z",
+                "fetched_at": "2026-07-23T08:17:59Z",
+                "published_at": "2026-07-21T07:37:18Z",
+                "supported_fields": [
+                  "price",
+                  "features",
+                  "buzz",
+                  "brand",
+                  "category",
+                  "launch_date"
+                ],
+                "title": "Historical repository snapshot: Marc Jacobs Joystick Blush Stick (archive/week-26/index.html)",
+                "type": "editorial",
+                "url": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-26/index.html"
+              },
+              "launch_date": "2026-06-01",
+              "quarantine_reason": null,
+              "quarantine_status": "verified"
+            },
+            "market": "US",
+            "name": "Marc Jacobs Joystick Blush Stick",
+            "name_cn": "",
+            "new_badge": "New",
+            "rank": 1,
+            "score": 88,
+            "tier": "MASSTIGE",
+            "trend": {
+              "id": "trend_low-saturation_pastel",
+              "rationale": "Soft low-saturation blush shades and an easy stick format aligned with June’s pastel complexion trend.",
+              "tag": "Low-Saturation Pastel",
+              "tag_cn": "低饱和粉彩趋势"
+            },
+            "trend_badge": "Trend"
+          },
+          {
+            "category_badge": "Highlighter Gel",
+            "detail": {
+              "brand": {
+                "cn": "June 1 retailer listing confirms launch-day availability",
+                "en": "June 1 retailer listing confirms launch-day availability"
+              },
+              "buzz": {
+                "cn": "Sephora launch traction",
+                "en": "Sephora launch traction"
+              },
+              "key_features": {
+                "cn": "Gel highlighter with glossy-skin finish",
+                "en": "Gel highlighter with glossy-skin finish"
+              },
+              "price_link": {
+                "cn": "N/A",
+                "en": "N/A",
+                "link": ""
+              }
+            },
+            "launch_evidence": {
+              "absence_markers": [],
+              "evidence": {
+                "checked_at": "2026-07-23T08:17:59Z",
+                "fetched_at": "2026-07-23T08:17:59Z",
+                "published_at": "2026-07-21T07:37:18Z",
+                "supported_fields": [
+                  "price",
+                  "features",
+                  "buzz",
+                  "brand",
+                  "category",
+                  "launch_date"
+                ],
+                "title": "Historical repository snapshot: Marc Jacobs Money Shot Highlighter Gel (archive/week-26/index.html)",
+                "type": "editorial",
+                "url": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-26/index.html"
+              },
+              "launch_date": "2026-06-01",
+              "quarantine_reason": null,
+              "quarantine_status": "verified"
+            },
+            "market": "US",
+            "name": "Marc Jacobs Money Shot Highlighter Gel",
+            "name_cn": "",
+            "new_badge": "New",
+            "rank": 2,
+            "score": 80,
+            "tier": "MASSTIGE",
+            "trend": {
+              "id": "trend_low-saturation_pastel",
+              "rationale": "Wet-look radiance and softer color payoff fit the low-saturation pastel complexion direction seen across June launches.",
+              "tag": "Low-Saturation Pastel",
+              "tag_cn": "低饱和粉彩趋势"
+            },
+            "trend_badge": "Trend"
+          }
+        ]
       }
     }
   },
-  "version": "month2026-06-20260601-v1",
-  "month": "2026-06"
+  "version": "month2026-06-historical-v3"
 }

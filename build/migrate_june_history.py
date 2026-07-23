@@ -70,13 +70,19 @@ PANEL_LABEL_TO_KEY = {
 
 DETAIL_KEY_MAP = {
     "price/link": "price_link",
+    "价格": "price_link",
     "key features": "key_features",
+    "核心卖点": "key_features",
     "notes & longevity": "key_features",
     "notes & positioning": "key_features",
     "buzz/reviews/sales": "buzz",
+    "社媒热度": "buzz",
     "brand/positioning": "brand",
+    "口碑": "brand",
     "brand/gender/occasion": "brand",
     "launch/category": "brand",
+    "新品类型": "brand",
+    "上市日期": "key_features",
 }
 
 W27_ALLOWED_DATES = {"2026-06-29", "2026-06-30"}
@@ -107,20 +113,30 @@ def _slug(text: str) -> str:
 
 
 def _extract_section(content: str, section_key: str) -> str:
-    section_label = SECTION_LABELS[section_key]
     section_class = SECTION_HTML_CLASS[section_key]
-    label_index = content.find(section_label)
-    if label_index != -1:
-        heading_start = content.rfind('<h2 class="section-title"', 0, label_index)
-        heading_end = content.find("</h2>", label_index)
-        section_start = content.find(f'<div class="{section_class}"', heading_end)
-        if heading_start != -1 and heading_end != -1 and section_start != -1:
-            body_start = content.find(">", section_start)
-            next_heading = content.find('<h2 class="section-title"', body_start)
-            appendix = content.find("<!-- APPENDIX", body_start)
-            candidates = [idx for idx in (next_heading, appendix) if idx != -1]
-            body_end = min(candidates) if candidates else len(content)
-            return content[body_start + 1 : body_end]
+    heading_markers = (
+        ("Heat Rankings", SECTION_LABELS[section_key])
+        if section_key == "heat_rankings"
+        else ("New Product Radar", SECTION_LABELS[section_key])
+    )
+    for heading_match in re.finditer(
+        r'<h2\s+class="section-title"[^>]*>(.*?)</h2>',
+        content,
+        re.DOTALL,
+    ):
+        heading_text = _strip_tags(heading_match.group(1))
+        if not any(marker in heading_text for marker in heading_markers):
+            continue
+        section_start = content.find(f'<div class="{section_class}"', heading_match.end())
+        if section_start == -1:
+            continue
+        body_start = content.find(">", section_start)
+        next_heading = content.find('<h2 class="section-title"', body_start)
+        appendix = content.find("<!-- APPENDIX", body_start)
+        generic_section = content.find('<div class="section">', body_start)
+        candidates = [idx for idx in (next_heading, appendix, generic_section) if idx != -1]
+        body_end = min(candidates) if candidates else len(content)
+        return content[body_start + 1 : body_end]
 
     if section_key == "heat_rankings":
         fallback = re.search(
@@ -146,6 +162,7 @@ def _extract_panels(section_html: str) -> list[tuple[str, str]]:
         tier_match = re.search(r"<span[^>]*>(LUXURY|MASSTIGE)</span>", heading_html)
         start = heading.end()
         end = h4_matches[idx + 1].start() if idx + 1 < len(h4_matches) else len(section_html)
+        body_html = section_html[start:end]
         if market_match and tier_match:
             panel_key = PANEL_LABEL_TO_KEY[(market_match.group(1), tier_match.group(1))]
         else:
@@ -158,7 +175,26 @@ def _extract_panels(section_html: str) -> list[tuple[str, str]]:
             else:
                 tier = "LEGACY"
             panel_key = f"{market} {tier}"
-        panels.append((panel_key, section_html[start:end]))
+        if panel_key.endswith("LEGACY"):
+            h5_matches = list(re.finditer(r"<h5[^>]*>(.*?)</h5>", body_html, re.DOTALL))
+            if h5_matches:
+                for sub_idx, sub_heading in enumerate(h5_matches):
+                    sub_text = _strip_tags(sub_heading.group(1)).upper()
+                    if "MASSTIGE" in sub_text or "精品彩妆" in sub_text:
+                        tier = "MASSTIGE"
+                    elif "LUXURY" in sub_text or "PRESTIGE" in sub_text or "奢品" in sub_text:
+                        tier = "LUXURY"
+                    else:
+                        continue
+                    sub_start = sub_heading.end()
+                    sub_end = (
+                        h5_matches[sub_idx + 1].start()
+                        if sub_idx + 1 < len(h5_matches)
+                        else len(body_html)
+                    )
+                    panels.append((f"{market} {tier}", body_html[sub_start:sub_end]))
+                continue
+        panels.append((panel_key, body_html))
     return panels
 
 
@@ -220,7 +256,46 @@ def _extract_iso_dates(text: str) -> list[str]:
         month = month_names[month_name.casefold()]
         dates.add(f"2026-{month:02d}-{int(day):02d}")
 
+    for month, day in re.findall(r"(0?6)\s*月\s*(\d{1,2})\s*日", text):
+        dates.add(f"2026-{int(month):02d}-{int(day):02d}")
+
     return sorted(dates)
+
+
+def _extract_span_contents(item_html: str, class_name: str) -> str | None:
+    match = re.search(
+        rf'<span\s+class="[^"]*\b{re.escape(class_name)}\b[^"]*"[^>]*>',
+        item_html,
+    )
+    if match is None:
+        return None
+
+    tag_iter = re.finditer(r"</?span\b[^>]*>", item_html[match.end() :], re.DOTALL)
+    depth = 1
+    for tag in tag_iter:
+        if tag.group(0).startswith("</span"):
+            depth -= 1
+        else:
+            depth += 1
+        if depth == 0:
+            start = match.end()
+            end = start + tag.start()
+            return item_html[start:end]
+    return None
+
+
+def _extract_numeric_score(item_html: str) -> int | None:
+    score_match = re.search(r'<span\s+class="heat-score">(\d+)</span>', item_html)
+    legacy_score_match = re.search(r'<span\s+class="heat-score-val">(\d+)%?</span>', item_html)
+    if score_match:
+        return int(score_match.group(1))
+    if legacy_score_match:
+        return int(legacy_score_match.group(1))
+
+    fill_match = re.search(r'heat-fill[^"]*"[^>]*style="[^"]*width:\s*(\d+)%', item_html)
+    if fill_match:
+        return int(fill_match.group(1))
+    return None
 
 
 def _parse_item(
@@ -254,25 +329,29 @@ def _parse_item(
         item_html,
     )
     new_badge_match = re.search(r'<span\s+class="heat-new-badge">([^<]+)</span>', item_html)
-    score_match = re.search(r'<span\s+class="heat-score">(\d+)</span>', item_html)
-    legacy_score_match = re.search(r'<span\s+class="heat-score-val">(\d+)%?</span>', item_html)
-    product_name_match = re.search(r'<span\s+class="heat-name">(.*?)</span>', item_html, re.DOTALL)
+    score = _extract_numeric_score(item_html)
+    product_name_html = _extract_span_contents(item_html, "heat-name")
     category_match = re.search(r'<span\s+class="heat-cat-badge">([^<]+)</span>', item_html)
     if category_match is None:
         category_match = re.search(r'<span\s+class="prod-cat-tag[^"]*">([^<]+)</span>', item_html)
 
-    if (
-        not product_name_match
-        or not category_match
-        or (score_match is None and legacy_score_match is None)
-    ):
+    if not product_name_html or score is None:
         raise ValueError(f"Unable to parse core product fields for {topic} {section} {panel}")
 
     combined_text = _strip_tags(item_html)
     explicit_dates = _extract_iso_dates(combined_text)
+    platform_line_match = re.search(
+        r'<div\s+class="heat-platform-line">(.*?)</div>',
+        item_html,
+        re.DOTALL,
+    )
+    platform_line = _strip_tags(platform_line_match.group(1)) if platform_line_match else ""
     launch_text = detail.get("brand", {}).get("value", "")
     price_text = detail.get("price_link", {}).get("value", "")
     link = detail.get("price_link", {}).get("link", "")
+    key_features = detail.get("key_features", {}).get("value", "")
+    if not launch_text and platform_line:
+        launch_text = platform_line
 
     return {
         "topic": topic,
@@ -281,17 +360,19 @@ def _parse_item(
         "market": market,
         "tier": tier,
         "rank": rank,
-        "score": int(score_match.group(1) if score_match else legacy_score_match.group(1)),
+        "score": score,
         "product_name": _normalize_space(
             _strip_tags(
                 re.sub(
                     r'<span\s+class="trend-product-tag[^"]*">.*?</span>',
                     "",
-                    product_name_match.group(1),
+                    product_name_html,
                 )
             )
         ),
-        "category_badge": _normalize_space(html.unescape(category_match.group(1))),
+        "category_badge": (
+            _normalize_space(html.unescape(category_match.group(1))) if category_match else ""
+        ),
         "trend_badge": (
             _normalize_space(html.unescape(trend_badge_match.group(1)))
             if trend_badge_match
@@ -306,7 +387,7 @@ def _parse_item(
         "detail": {
             "price_text": price_text,
             "price_link": link,
-            "key_features": detail.get("key_features", {}).get("value", ""),
+            "key_features": key_features,
             "buzz": detail.get("buzz", {}).get("value", ""),
             "brand": launch_text,
         },

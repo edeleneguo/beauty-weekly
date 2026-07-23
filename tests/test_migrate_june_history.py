@@ -73,6 +73,20 @@ def test_extract_detail_cells_maps_render_labels(migration_module):
     assert detail["brand"]["value"] == "2026.6.1 launch · 18 shades"
 
 
+def test_extract_panels_splits_legacy_radar_subpanels(migration_module):
+    section_html = """
+    <h4><span>US</span> 新品上架</h4>
+    <h5>LUXURY 奢品线</h5>
+    <ul class="heat-accordion"><li class="heat-item"></li></ul>
+    <h5>MASSTIGE 精品彩妆</h5>
+    <ul class="heat-accordion"><li class="heat-item"></li></ul>
+    """
+
+    panels = migration_module._extract_panels(section_html)
+
+    assert [panel for panel, _html in panels] == ["US LUXURY", "US MASSTIGE"]
+
+
 def test_parse_item_collects_core_fields(migration_module):
     item_html = """
     <li class="heat-item">
@@ -128,6 +142,107 @@ def test_parse_item_collects_core_fields(migration_module):
     assert item["trend_tag"] == "Efficacy Lip Trend"
 
 
+def test_parse_item_handles_week26_cn_radar_schema_drift(migration_module):
+    item_html = """
+    <li class="heat-item">
+      <div class="heat-item-header">
+        <span class="heat-rank us">1</span>
+        <div class="heat-info"><span class="heat-name">Marc Jacobs Heart On Lipstick</span></div>
+        <div class="heat-bar-wrap">
+          <div class="heat-meter">
+            <div class="heat-fill us-fill" style="width:95%"></div>
+          </div>
+        </div>
+        <span class="heat-score">热销</span>
+      </div>
+      <div class="heat-platform-line">Sephora · 6月1日上线</div>
+      <div class="heat-detail">
+        <div class="heat-detail-grid">
+          <div class="heat-detail-cell">
+            <div class="heat-detail-label">价格</div>
+            <div class="heat-detail-value">$34</div>
+          </div>
+          <div class="heat-detail-cell">
+            <div class="heat-detail-label">核心卖点</div>
+            <div class="heat-detail-value">15色 · 爱心造型子弹头</div>
+          </div>
+          <div class="heat-detail-cell">
+            <div class="heat-detail-label">社媒热度</div>
+            <div class="heat-detail-value">Sephora 新品TOP</div>
+          </div>
+          <div class="heat-detail-cell">
+            <div class="heat-detail-label">口碑</div>
+            <div class="heat-detail-value">上线即热销</div>
+          </div>
+        </div>
+      </div>
+    </li>
+    """
+
+    item = migration_module._parse_item(
+        item_html,
+        topic="makeup",
+        section="new_product_radar",
+        panel="US LUXURY",
+        week="week-26",
+        path="archive/week-26/index.html",
+    )
+
+    assert item["score"] == 95
+    assert item["category_badge"] == ""
+    assert item["explicit_dates"] == ["2026-06-01"]
+    assert item["detail"]["price_text"] == "$34"
+    assert item["detail"]["buzz"] == "Sephora 新品TOP"
+    assert item["launch_text"] == "上线即热销"
+
+
+def test_parse_item_handles_week26_legacy_radar_schema_drift(migration_module):
+    item_html = """
+    <li class="heat-item">
+      <div class="heat-item-header">
+        <span class="heat-rank cn">8</span>
+        <div class="heat-info">
+          <span class="heat-name">卡姿兰 敦煌联名系列</span>
+          <span class="heat-trend-badge">趋势产品</span>
+        </div>
+        <div class="heat-bar-wrap">
+          <div class="heat-meter">
+            <div class="heat-fill cn-fill" style="width:85%"></div>
+          </div>
+        </div>
+        <span class="heat-score">新</span>
+      </div>
+      <div class="heat-platform-line">天猫 · 小红书 · 敦煌联名</div>
+      <div class="heat-detail">
+        <div class="heat-detail-grid">
+          <div class="heat-detail-cell">
+            <div class="heat-detail-label">新品类型</div>
+            <div class="heat-detail-value">IP联名新品</div>
+          </div>
+          <div class="heat-detail-cell">
+            <div class="heat-detail-label">上市日期</div>
+            <div class="heat-detail-value">敦煌红·伎乐天·飞天</div>
+          </div>
+        </div>
+      </div>
+    </li>
+    """
+
+    item = migration_module._parse_item(
+        item_html,
+        topic="makeup",
+        section="new_product_radar",
+        panel="CN MASSTIGE",
+        week="week-26",
+        path="archive/week-26/index.html",
+    )
+
+    assert item["score"] == 85
+    assert item["trend_badge"] == "趋势产品"
+    assert item["detail"]["key_features"] == "敦煌红·伎乐天·飞天"
+    assert item["launch_text"] == "IP联名新品"
+
+
 def test_week27_filter_requires_item_level_june_29_or_30(migration_module):
     candidate = {
         "explicit_dates": ["2026-06-30"],
@@ -181,3 +296,9 @@ def test_dedupe_preserves_all_provenance(migration_module):
     assert len(deduped) == 1
     assert deduped[0]["score"] == 83
     assert len(deduped[0]["provenance"]) == 2
+
+
+def test_extract_iso_dates_supports_chinese_month_day(migration_module):
+    dates = migration_module._extract_iso_dates("Sephora · 6月29日上线 · 补货 6月30日")
+
+    assert dates == ["2026-06-29", "2026-06-30"]

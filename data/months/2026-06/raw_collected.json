@@ -1,15 +1,72 @@
 {
-  "iso_week": "2026-W27",
   "month": "2026-06",
-  "collected_at": "2026-07-01T01:00:00Z",
-  "date": "2026-07-01",
-  "sources_fetched": [],
-  "sources_failed": [],
+  "collected_at": "2026-07-23T08:17:59Z",
+  "window_start": "2026-06-01",
+  "window_end": "2026-06-30",
+  "historical_snapshot": "709c63b",
+  "historical_snapshot_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+  "articles": [
+    {
+      "source": "repo_snapshot",
+      "title": "Historical repository snapshot: June makeup heat archive",
+      "url": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-25/index.html",
+      "date": "2026-07-21T07:37:18Z",
+      "summary": "Week-25 archive recovered June makeup heat signals.",
+      "market": "US",
+      "reference_type": "historical_snapshot"
+    },
+    {
+      "source": "repo_snapshot",
+      "title": "Historical repository snapshot: June makeup radar archive",
+      "url": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-26/index.html",
+      "date": "2026-07-21T07:37:18Z",
+      "summary": "Week-26 archive preserved exact item-level June 1 launch dates for qualifying makeup radar products.",
+      "market": "US",
+      "reference_type": "historical_snapshot"
+    },
+    {
+      "source": "repo_snapshot",
+      "title": "Historical repository snapshot: June fragrance archive",
+      "url": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-25/fragrance.html",
+      "date": "2026-07-21T07:37:18Z",
+      "summary": "Week-25 fragrance archive preserved June heat context.",
+      "market": "US",
+      "reference_type": "historical_snapshot"
+    },
+    {
+      "source": "Julep",
+      "title": "Best Cream-to-Powder Eyeshadow Stick | Eyeshadow 101 | Julep",
+      "url": "https://www.julep.com/products/eyeshadow-10-creme-to-powder-eyeshadow-stick",
+      "date": "2026-07-23T08:27:03Z",
+      "summary": "Official Julep product page confirming Eyeshadow 101 positioning, format, and current price.",
+      "market": "US",
+      "reference_type": "Brand official"
+    },
+    {
+      "source": "Sol de Janeiro",
+      "title": "Cheirosa 91 Perfume Mist | Sol de Janeiro",
+      "url": "https://soldejaneiro.com/products/cheirosa-91-perfume-mist",
+      "date": "2026-07-23T08:27:03Z",
+      "summary": "Official Sol de Janeiro product page confirming Cheirosa 91 product name, format, and notes.",
+      "market": "US",
+      "reference_type": "Brand official"
+    },
+    {
+      "source": "Glossier",
+      "title": "Glossier You",
+      "url": "https://www.glossier.com/products/glossier-you",
+      "date": "2026-07-23T08:27:03Z",
+      "summary": "Official Glossier product page confirming Glossier You positioning and product name.",
+      "market": "US",
+      "reference_type": "Brand official"
+    }
+  ],
   "main_reference_audit": [],
-  "articles": [],
-  "products": [],
-  "trends": [],
-  "total_articles": 0,
-  "total_sources_ok": 0,
-  "total_sources_fail": 0
+  "notes": [
+    "June monthly report built deterministically from repository historical snapshots plus explicit item-level June dates where available.",
+    "CN panels remain empty unless verified June evidence could be preserved without fabrication.",
+    "Fragrance radar remains empty because recovered archive launch dates precede the June 1-30 qualification window.",
+    "On 2026-07-23, direct automated fetches to some mandatory/authoritative pages (notably Sephora and select Fragrantica product URLs) returned HTTP 403; repository snapshot 709c63b remains the explicit fallback provenance for affected products."
+  ],
+  "total_articles": 6
 }

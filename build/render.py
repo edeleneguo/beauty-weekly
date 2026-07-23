@@ -285,10 +285,22 @@ _HEAT_PANEL_NOTE_MESSAGES = {
     "en": "{n} products met this month's signal and evidence thresholds; rankings are not padded.",
 }
 
+_HEAT_EMPTY_MESSAGES = {
+    "en": "No verified June heat products were available for this panel.",
+}
 
-def _render_empty_state_note(lang: str, topic: str, count: int) -> str:
-    """Render a single concise empty-state note when a radar panel has few products."""
-    base_msg = _EMPTY_STATE_MESSAGES.get((topic, lang), "No qualifying new products this month.")
+
+def _render_empty_state_note(lang: str, topic: str, count: int, section: str) -> str:
+    """Render a single concise empty-state note when a panel has no qualifying products."""
+    if section == "heat":
+        base_msg = _HEAT_EMPTY_MESSAGES.get(
+            lang,
+            "No verified monthly heat products were available for this panel.",
+        )
+    else:
+        base_msg = _EMPTY_STATE_MESSAGES.get(
+            (topic, lang), "No qualifying new products this month."
+        )
     return (
         '<li class="heat-item" style="list-style:none;border:none;box-shadow:none;background:transparent;padding:12px 16px;">'
         '<div class="heat-info">'
@@ -349,7 +361,7 @@ def _render_section(
             if section == "heat" and len(products) < 10:
                 html += _render_heat_panel_note(lang, len(products))
         else:
-            html += _render_empty_state_note(lang, topic, len(products))
+            html += _render_empty_state_note(lang, topic, len(products), section)
         html += "</ul>\n"
         return html
 
