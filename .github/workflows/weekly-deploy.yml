@@ -208,6 +208,35 @@ jobs:
           git remote set-url origin "$REMOTE_URL"
           echo "Pushed commit $(git rev-parse HEAD)"
 
+      - name: Stage 4.5 — Trigger GitHub Pages build
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "=== STAGE 4.5: Triggering GitHub Pages build ==="
+          python3 - <<'PY'
+          import json
+          import os
+          import sys
+          import urllib.request
+
+          token = os.environ["GITHUB_TOKEN"]
+          repo = os.environ["GITHUB_REPOSITORY"]
+          req = urllib.request.Request(
+              f"https://api.github.com/repos/{repo}/pages/builds",
+              method="POST",
+              headers={
+                  "Authorization": f"token {token}",
+                  "Accept": "application/vnd.github+json",
+                  "User-Agent": "beauty-weekly-deploy",
+                  "Content-Type": "application/json",
+              },
+              data=b"{}",
+          )
+          with urllib.request.urlopen(req, timeout=20) as resp:
+              payload = json.loads(resp.read().decode("utf-8"))
+          print(f"Pages build trigger status: {payload.get('status', 'unknown')}")
+          PY
+
       - name: Stage 5 — Wait for GitHub Pages build
         id: pages_build
         env:
