@@ -1,0 +1,631 @@
+{
+  "candidates": [
+    {
+      "category_badge": "Lipstick",
+      "detail": {
+        "brand": "",
+        "buzz": "",
+        "key_features": "",
+        "price_link": "",
+        "price_text": ""
+      },
+      "explicit_dates": [],
+      "launch_text": "",
+      "market": "CN",
+      "new_badge": null,
+      "panel": "CN LEGACY",
+      "product_name": "Dior Rouge #999 Classic Red",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-25/index.html",
+          "week": "week-25"
+        }
+      ],
+      "rank": 1,
+      "score": 95,
+      "section": "heat_rankings",
+      "tier": "LEGACY",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "Lip Glaze",
+      "detail": {
+        "brand": "",
+        "buzz": "",
+        "key_features": "",
+        "price_link": "",
+        "price_text": ""
+      },
+      "explicit_dates": [],
+      "launch_text": "",
+      "market": "CN",
+      "new_badge": null,
+      "panel": "CN LEGACY",
+      "product_name": "YSL Vinyl Cream Lip Stain #416",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-25/index.html",
+          "week": "week-25"
+        }
+      ],
+      "rank": 2,
+      "score": 90,
+      "section": "heat_rankings",
+      "tier": "LEGACY",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "Lip Glaze",
+      "detail": {
+        "brand": "",
+        "buzz": "",
+        "key_features": "",
+        "price_link": "",
+        "price_text": ""
+      },
+      "explicit_dates": [],
+      "launch_text": "",
+      "market": "CN",
+      "new_badge": null,
+      "panel": "CN LEGACY",
+      "product_name": "Armani Lip Maestro Velvet Matte",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-25/index.html",
+          "week": "week-25"
+        }
+      ],
+      "rank": 3,
+      "score": 85,
+      "section": "heat_rankings",
+      "tier": "LEGACY",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "Lip Balm",
+      "detail": {
+        "brand": "",
+        "buzz": "",
+        "key_features": "",
+        "price_link": "",
+        "price_text": ""
+      },
+      "explicit_dates": [],
+      "launch_text": "",
+      "market": "CN",
+      "new_badge": null,
+      "panel": "CN LEGACY",
+      "product_name": "TREND",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-25/index.html",
+          "week": "week-25"
+        },
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-25/index.html",
+          "week": "week-25"
+        }
+      ],
+      "rank": 4,
+      "score": 80,
+      "section": "heat_rankings",
+      "tier": "LEGACY",
+      "topic": "makeup",
+      "trend_badge": "Trend",
+      "trend_tag": null
+    },
+    {
+      "category_badge": "Lipstick",
+      "detail": {
+        "brand": "",
+        "buzz": "",
+        "key_features": "",
+        "price_link": "",
+        "price_text": ""
+      },
+      "explicit_dates": [],
+      "launch_text": "",
+      "market": "CN",
+      "new_badge": null,
+      "panel": "CN LEGACY",
+      "product_name": "MAC Chili Brick Red",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-25/index.html",
+          "week": "week-25"
+        }
+      ],
+      "rank": 5,
+      "score": 76,
+      "section": "heat_rankings",
+      "tier": "LEGACY",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "Lipstick",
+      "detail": {
+        "brand": "",
+        "buzz": "",
+        "key_features": "",
+        "price_link": "",
+        "price_text": ""
+      },
+      "explicit_dates": [],
+      "launch_text": "",
+      "market": "CN",
+      "new_badge": null,
+      "panel": "CN LEGACY",
+      "product_name": "Florasis Miao Heritage Lipstick",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-25/index.html",
+          "week": "week-25"
+        }
+      ],
+      "rank": 6,
+      "score": 71,
+      "section": "heat_rankings",
+      "tier": "LEGACY",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "Lip Glaze",
+      "detail": {
+        "brand": "",
+        "buzz": "",
+        "key_features": "",
+        "price_link": "",
+        "price_text": ""
+      },
+      "explicit_dates": [],
+      "launch_text": "",
+      "market": "CN",
+      "new_badge": null,
+      "panel": "CN LEGACY",
+      "product_name": "Colorkey Matte Triangle Lip Glaze",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-25/index.html",
+          "week": "week-25"
+        }
+      ],
+      "rank": 7,
+      "score": 67,
+      "section": "heat_rankings",
+      "tier": "LEGACY",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "Lipstick",
+      "detail": {
+        "brand": "",
+        "buzz": "",
+        "key_features": "",
+        "price_link": "",
+        "price_text": ""
+      },
+      "explicit_dates": [],
+      "launch_text": "",
+      "market": "CN",
+      "new_badge": null,
+      "panel": "CN LEGACY",
+      "product_name": "Givenchy Le Rouge Interdit",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-25/index.html",
+          "week": "week-25"
+        }
+      ],
+      "rank": 8,
+      "score": 63,
+      "section": "heat_rankings",
+      "tier": "LEGACY",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "Highlighter",
+      "detail": {
+        "brand": "",
+        "buzz": "",
+        "key_features": "",
+        "price_link": "",
+        "price_text": ""
+      },
+      "explicit_dates": [],
+      "launch_text": "",
+      "market": "CN",
+      "new_badge": null,
+      "panel": "CN LEGACY",
+      "product_name": "MAOGEPING Mirror Glow Highlighter",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-25/index.html",
+          "week": "week-25"
+        }
+      ],
+      "rank": 9,
+      "score": 60,
+      "section": "heat_rankings",
+      "tier": "LEGACY",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "Blush",
+      "detail": {
+        "brand": "",
+        "buzz": "",
+        "key_features": "",
+        "price_link": "",
+        "price_text": ""
+      },
+      "explicit_dates": [],
+      "launch_text": "",
+      "market": "US",
+      "new_badge": null,
+      "panel": "US LEGACY",
+      "product_name": "Rare Beauty Soft Pinch Liquid Blush",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-25/index.html",
+          "week": "week-25"
+        }
+      ],
+      "rank": 1,
+      "score": 95,
+      "section": "heat_rankings",
+      "tier": "LEGACY",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "Foundation",
+      "detail": {
+        "brand": "",
+        "buzz": "",
+        "key_features": "",
+        "price_link": "",
+        "price_text": ""
+      },
+      "explicit_dates": [],
+      "launch_text": "",
+      "market": "US",
+      "new_badge": null,
+      "panel": "US LEGACY",
+      "product_name": "Revlon ColorStay Liquid Foundation SPF 15",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-25/index.html",
+          "week": "week-25"
+        }
+      ],
+      "rank": 2,
+      "score": 90,
+      "section": "heat_rankings",
+      "tier": "LEGACY",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "Concealer",
+      "detail": {
+        "brand": "",
+        "buzz": "",
+        "key_features": "",
+        "price_link": "",
+        "price_text": ""
+      },
+      "explicit_dates": [],
+      "launch_text": "",
+      "market": "US",
+      "new_badge": null,
+      "panel": "US LEGACY",
+      "product_name": "Laura Geller The Ideal Fix Concealer",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-25/index.html",
+          "week": "week-25"
+        }
+      ],
+      "rank": 3,
+      "score": 86,
+      "section": "heat_rankings",
+      "tier": "LEGACY",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "Lipstick",
+      "detail": {
+        "brand": "",
+        "buzz": "",
+        "key_features": "",
+        "price_link": "",
+        "price_text": ""
+      },
+      "explicit_dates": [],
+      "launch_text": "",
+      "market": "US",
+      "new_badge": null,
+      "panel": "US LEGACY",
+      "product_name": "MAC Lipstick Classic",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-25/index.html",
+          "week": "week-25"
+        }
+      ],
+      "rank": 4,
+      "score": 84,
+      "section": "heat_rankings",
+      "tier": "LEGACY",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "Mascara",
+      "detail": {
+        "brand": "",
+        "buzz": "",
+        "key_features": "",
+        "price_link": "",
+        "price_text": ""
+      },
+      "explicit_dates": [],
+      "launch_text": "",
+      "market": "US",
+      "new_badge": null,
+      "panel": "US LEGACY",
+      "product_name": "Maybelline Sky High Mascara",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-25/index.html",
+          "week": "week-25"
+        }
+      ],
+      "rank": 5,
+      "score": 78,
+      "section": "heat_rankings",
+      "tier": "LEGACY",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "Mascara",
+      "detail": {
+        "brand": "",
+        "buzz": "",
+        "key_features": "",
+        "price_link": "",
+        "price_text": ""
+      },
+      "explicit_dates": [],
+      "launch_text": "",
+      "market": "US",
+      "new_badge": null,
+      "panel": "US LEGACY",
+      "product_name": "ILIA Limitless Lash Mascara",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-25/index.html",
+          "week": "week-25"
+        }
+      ],
+      "rank": 6,
+      "score": 72,
+      "section": "heat_rankings",
+      "tier": "LEGACY",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "Eye Palette",
+      "detail": {
+        "brand": "",
+        "buzz": "",
+        "key_features": "",
+        "price_link": "",
+        "price_text": ""
+      },
+      "explicit_dates": [],
+      "launch_text": "",
+      "market": "US",
+      "new_badge": null,
+      "panel": "US LEGACY",
+      "product_name": "Makeup By Mario Ethereal Eyes Palette",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-25/index.html",
+          "week": "week-25"
+        }
+      ],
+      "rank": 7,
+      "score": 70,
+      "section": "heat_rankings",
+      "tier": "LEGACY",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "Highlighter",
+      "detail": {
+        "brand": "",
+        "buzz": "",
+        "key_features": "",
+        "price_link": "",
+        "price_text": ""
+      },
+      "explicit_dates": [],
+      "launch_text": "",
+      "market": "US",
+      "new_badge": null,
+      "panel": "US LEGACY",
+      "product_name": "Saie Glowy Super Gel Illuminator",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-25/index.html",
+          "week": "week-25"
+        }
+      ],
+      "rank": 8,
+      "score": 68,
+      "section": "heat_rankings",
+      "tier": "LEGACY",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "Blush Stick",
+      "detail": {
+        "brand": "",
+        "buzz": "",
+        "key_features": "",
+        "price_link": "",
+        "price_text": ""
+      },
+      "explicit_dates": [],
+      "launch_text": "",
+      "market": "US",
+      "new_badge": null,
+      "panel": "US LEGACY",
+      "product_name": "VIOLETTE_FR Bisou Blush Marbled Cream Stick",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-25/index.html",
+          "week": "week-25"
+        }
+      ],
+      "rank": 9,
+      "score": 64,
+      "section": "heat_rankings",
+      "tier": "LEGACY",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "Foundation",
+      "detail": {
+        "brand": "",
+        "buzz": "",
+        "key_features": "",
+        "price_link": "",
+        "price_text": ""
+      },
+      "explicit_dates": [],
+      "launch_text": "",
+      "market": "US",
+      "new_badge": null,
+      "panel": "US LEGACY",
+      "product_name": "Charlotte Tilbury Airbrush Flawless Foundation",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-25/index.html",
+          "week": "week-25"
+        }
+      ],
+      "rank": 10,
+      "score": 60,
+      "section": "heat_rankings",
+      "tier": "LEGACY",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    }
+  ],
+  "generated_at": "2026-07-23T06:38:50+00:00",
+  "historical_snapshot": "709c63b",
+  "historical_snapshot_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+  "included_weeks": [
+    "week-23",
+    "week-25",
+    "week-26",
+    "week-27"
+  ],
+  "month": "2026-06",
+  "summary": {
+    "deduped_unique": 19,
+    "duplicates_removed": 1,
+    "parse_failures": 34,
+    "per_week": {
+      "week-25": {
+        "included": 20,
+        "makeup_heat_rankings": 20
+      },
+      "week-26": {
+        "parse_failures": 34
+      },
+      "week-27": {
+        "excluded": 82
+      }
+    },
+    "raw_excluded_w27": 82,
+    "raw_included": 20
+  },
+  "w27_rule": "Only keep W27 items with explicit item-level June 29 or June 30 dates.",
+  "window_end": "2026-06-30",
+  "window_start": "2026-06-01"
+}
