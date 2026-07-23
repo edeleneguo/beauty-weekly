@@ -38,6 +38,7 @@ from beauty_weekly.loader import (
 )
 from beauty_weekly.models import (
     LegacyWeeklyReport,
+    MonthlyReport,
     WeeklyReport,
 )
 from beauty_weekly.scoring import (
@@ -61,7 +62,7 @@ HTML_FILES = ("index.html", "fragrance.html")
 # version strings, category_badge_cn).
 
 # Top-level report fields consumed downstream.
-REPORT_PROJECTION_FIELDS = {"week", "date_range", "date_range_cn", "version"}
+REPORT_PROJECTION_FIELDS = {"date_range", "date_range_cn", "products", "version"}
 
 # Product-level fields consumed by the renderer and validators.
 PRODUCT_PROJECTION_FIELDS = {
@@ -344,8 +345,10 @@ def _check_render_projection(report: dict, errors: list[str]) -> None:
     omitted by the canonical model (raw_score, version_*, category_badge_cn)
     are not checked here.
     """
+    report_id_field = "month" if "month" in report else "week"
+
     # Top-level report fields
-    for field in REPORT_PROJECTION_FIELDS:
+    for field in REPORT_PROJECTION_FIELDS | {report_id_field}:
         if field not in report:
             errors.append(f"report.json missing render projection field: {field}")
 
@@ -435,9 +438,11 @@ def validate_canonical(weeks_dir: Path) -> list[str]:
         errors.append(f"manifest.json parse error: {exc}")
         return errors
 
+    model = MonthlyReport if "month" in report else WeeklyReport
+
     # 3. Validate report.json against target schema
     try:
-        WeeklyReport.model_validate(report, strict=False)
+        model.model_validate(report, strict=False)
     except Exception as exc:
         errors.append(f"report.json fails target schema validation: {exc}")
         return errors

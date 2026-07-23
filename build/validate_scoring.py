@@ -10,10 +10,12 @@ Called from build/check.sh.
 import json
 import os
 import sys
+from pathlib import Path
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-sys.path.insert(0, ROOT)
+ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT))
 
+from beauty_weekly.month import month_data_dir, resolve_month  # noqa: E402
 from beauty_weekly.scoring import (  # noqa: E402
     COMPONENT_IDS,
     SCORING_COMPONENTS,
@@ -23,12 +25,13 @@ from beauty_weekly.scoring import (  # noqa: E402
 )
 from beauty_weekly.week import resolve_week, weeks_dir  # noqa: E402
 
-_weeks_dir_name = resolve_week()
-WEEKS_DIR = weeks_dir(_weeks_dir_name)
+MONTH = os.environ.get("BEAUTY_MONTHLY_MONTH")
+TARGET_LABEL = resolve_month() if MONTH else resolve_week()
+TARGET_DIR = month_data_dir(TARGET_LABEL) if MONTH else weeks_dir(TARGET_LABEL)
 
 
 def main() -> int:
-    print(f"Scoring policy validation ({_weeks_dir_name}) ... ", end="")
+    print(f"Scoring policy validation ({TARGET_LABEL}) ... ", end="")
     errors: list[str] = []
 
     # 1. Validate scoring module internal consistency
@@ -46,7 +49,7 @@ def main() -> int:
             errors.append(f"Component {c['id']} weight {c['weight']} out of (0, 1]")
 
     # 2. Validate scoring.json
-    scoring_path = WEEKS_DIR / "scoring.json"
+    scoring_path = TARGET_DIR / "scoring.json"
     if not scoring_path.exists():
         errors.append("scoring.json not found")
     else:
@@ -56,7 +59,7 @@ def main() -> int:
 
         # 3. For recomputable records, cross-validate against report
         if scoring.get("recomputable") is True:
-            report_path = WEEKS_DIR / "report.json"
+            report_path = TARGET_DIR / "report.json"
             if report_path.exists():
                 report = json.loads(report_path.read_text(encoding="utf-8"))
                 recompute_errors = validate_recomputed_scoring(scoring, report)

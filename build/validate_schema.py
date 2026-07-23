@@ -11,9 +11,10 @@ Exit code 0 = all pass, 1 = failures found.
 import json
 import os
 import sys
+from pathlib import Path
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-sys.path.insert(0, ROOT)
+ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT))
 
 from beauty_weekly.loader import (  # noqa: E402
     LEGACY_ISOLATED_FIELDS,
@@ -23,13 +24,17 @@ from beauty_weekly.loader import (  # noqa: E402
 )
 from beauty_weekly.models import (  # noqa: E402
     LegacyWeeklyReport,
+    MonthlyReport,
     WeeklyReport,
 )
+from beauty_weekly.month import month_data_dir, month_report_path, resolve_month  # noqa: E402
 from beauty_weekly.week import report_path, resolve_week, weeks_dir  # noqa: E402
 
-DATA_PATH = os.path.join(ROOT, "data", "week28.json")
-_weeks_dir_name = resolve_week()
-CANONICAL_PATH = str(report_path(_weeks_dir_name))
+DATA_PATH = ROOT / "data" / "week28.json"
+MONTH = os.environ.get("BEAUTY_MONTHLY_MONTH")
+TARGET_LABEL = resolve_month() if MONTH else resolve_week()
+TARGET_DIR = month_data_dir(TARGET_LABEL) if MONTH else weeks_dir(TARGET_LABEL)
+CANONICAL_PATH = str(month_report_path(TARGET_LABEL) if MONTH else report_path(TARGET_LABEL))
 
 
 def _check_legacy_schema(data: dict) -> list[str]:
@@ -93,14 +98,13 @@ def _check_migration_documentation() -> list[str]:
 
 
 def _check_canonical_report_schema() -> list[str]:
-    """Validate canonical report.json against the target WeeklyReport schema."""
+    """Validate canonical report.json against the target report schema."""
     errors = []
     try:
         with open(CANONICAL_PATH, encoding="utf-8") as f:
             data = json.load(f)
-        from beauty_weekly.models import WeeklyReport
-
-        WeeklyReport.model_validate(data, strict=False)
+        model = MonthlyReport if MONTH else WeeklyReport
+        model.model_validate(data, strict=False)
     except Exception as exc:
         errors.append(f"Canonical report.json schema validation failed: {exc}")
     return errors
@@ -109,8 +113,8 @@ def _check_canonical_report_schema() -> list[str]:
 def _check_schema_metadata() -> list[str]:
     """Verify schema_version and migration_gaps exist in manifest."""
     errors = []
-    manifest_path = str(weeks_dir(_weeks_dir_name) / "manifest.json")
-    if not os.path.exists(manifest_path):
+    manifest_path = TARGET_DIR / "manifest.json"
+    if not manifest_path.exists():
         errors.append(f"Manifest not found: {manifest_path}")
         return errors
     with open(manifest_path, encoding="utf-8") as f:
@@ -133,8 +137,29 @@ def _check_schema_metadata() -> list[str]:
 
 
 def main() -> int:
-    data = load_legacy_raw(DATA_PATH)
     all_errors: list[str] = []
+
+    if MONTH:
+        print("Schema validation: canonical report schema ... ", end="")
+        prev_count = len(all_errors)
+        all_errors.extend(_check_canonical_report_schema())
+        print("OK" if len(all_errors) == prev_count else "FAIL")
+
+        print("Schema validation: manifest metadata ... ", end="")
+        prev_count = len(all_errors)
+        all_errors.extend(_check_schema_metadata())
+        print("OK" if len(all_errors) == prev_count else "FAIL")
+
+        if all_errors:
+            print("\n=== Schema Validation Failures ===")
+            for e in all_errors:
+                print(f"  ERROR: {e}")
+            return 1
+
+        print("All schema validation checks passed.")
+        return 0
+
+    data = load_legacy_raw(DATA_PATH)
 
     print("Schema validation: legacy schema ... ", end="")
     prev_count = len(all_errors)

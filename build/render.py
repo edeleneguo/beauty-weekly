@@ -1,14 +1,12 @@
 #!/usr/bin/env python3
 """Deterministic renderer: regenerate the root HTML files from canonical data.
 
-Reads from ``data/months/<target-month>/report.json`` (the canonical monthly
-dataset), transformed through the lossless compatibility adapter so that all
-downstream rendering logic receives legacy-shaped fields.
+Reads from either:
+  * ``data/months/<target-month>/report.json`` when month mode is active, or
+  * ``data/weeks/<target-week>/report.json`` when week mode is active.
 
-The target month is resolved dynamically via ``beauty_weekly.month``:
-  1. ``BEAUTY_MONTHLY_MONTH`` env var, or
-  2. Most recent ``data/months/<YYYY-MM>/`` with report.json, or
-  3. Previous calendar month.
+The canonical dataset is transformed through the lossless compatibility
+adapter so that all downstream rendering logic receives legacy-shaped fields.
 
 Only replaces Sections 03 (heat rankings) and 04 (new product radar).
 All other content (banner, news, trends, appendix, CSS, JS) comes from the
@@ -37,11 +35,14 @@ sys.path.insert(0, ROOT)
 
 from beauty_weekly.canonical_adapter import canonical_to_legacy  # noqa: E402
 from beauty_weekly.month import month_report_path, resolve_month  # noqa: E402
+from beauty_weekly.week import report_path as week_report_path  # noqa: E402
+from beauty_weekly.week import resolve_week  # noqa: E402
 
 PAGE_SHELL_DIR = os.path.join(ROOT, "templates", "pages")
 
 
-CANONICAL_PATH = str(month_report_path())
+MONTH = os.environ.get("BEAUTY_MONTHLY_MONTH")
+CANONICAL_PATH = str(month_report_path()) if MONTH else str(week_report_path(resolve_week()))
 PAGES = {
     ("makeup", "en"): "index.html",
     ("fragrance", "en"): "fragrance.html",
@@ -268,7 +269,8 @@ def _filter_panel_products(products: List[Dict[str, Any]], section: str) -> List
         if score == 0:
             continue
         if section == "radar":
-            qs = p.get("quarantine_status")
+            launch_evidence = p.get("launch_evidence") or {}
+            qs = p.get("quarantine_status") or launch_evidence.get("quarantine_status")
             if qs in ("out-of-window", "unverified"):
                 continue
         filtered.append(p)
