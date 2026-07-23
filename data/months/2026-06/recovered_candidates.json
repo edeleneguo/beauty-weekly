@@ -1,6 +1,1482 @@
 {
   "candidates": [
     {
+      "category_badge": "Oriental",
+      "detail": {
+        "brand": "",
+        "buzz": "",
+        "key_features": "",
+        "price_link": "",
+        "price_text": ""
+      },
+      "explicit_dates": [],
+      "launch_text": "",
+      "market": "CN",
+      "month_markers": [],
+      "new_badge": null,
+      "panel": "CN LEGACY",
+      "product_name": "观夏 昆仑煮雪",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-25/fragrance.html",
+          "week": "week-25"
+        },
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-26/fragrance.html",
+          "week": "week-26"
+        }
+      ],
+      "rank": 1,
+      "score": 95,
+      "section": "heat_rankings",
+      "tier": "LEGACY",
+      "topic": "fragrance",
+      "trend_badge": "Trend",
+      "trend_tag": null
+    },
+    {
+      "category_badge": "Aquatic",
+      "detail": {
+        "brand": "",
+        "buzz": "",
+        "key_features": "",
+        "price_link": "",
+        "price_text": ""
+      },
+      "explicit_dates": [],
+      "launch_text": "",
+      "market": "CN",
+      "month_markers": [],
+      "new_badge": null,
+      "panel": "CN LEGACY",
+      "product_name": "气味图书馆 凉白开",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-25/fragrance.html",
+          "week": "week-25"
+        },
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-26/fragrance.html",
+          "week": "week-26"
+        }
+      ],
+      "rank": 2,
+      "score": 85,
+      "section": "heat_rankings",
+      "tier": "LEGACY",
+      "topic": "fragrance",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "Floral",
+      "detail": {
+        "brand": "",
+        "buzz": "",
+        "key_features": "",
+        "price_link": "",
+        "price_text": ""
+      },
+      "explicit_dates": [],
+      "launch_text": "",
+      "market": "CN",
+      "month_markers": [],
+      "new_badge": null,
+      "panel": "CN LEGACY",
+      "product_name": "冰希黎 流沙金",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-25/fragrance.html",
+          "week": "week-25"
+        },
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-26/fragrance.html",
+          "week": "week-26"
+        }
+      ],
+      "rank": 3,
+      "score": 78,
+      "section": "heat_rankings",
+      "tier": "LEGACY",
+      "topic": "fragrance",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "Tea",
+      "detail": {
+        "brand": "",
+        "buzz": "",
+        "key_features": "",
+        "price_link": "",
+        "price_text": ""
+      },
+      "explicit_dates": [],
+      "launch_text": "",
+      "market": "CN",
+      "month_markers": [],
+      "new_badge": null,
+      "panel": "CN LEGACY",
+      "product_name": "Le Labo Thé Matcha 26",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-25/fragrance.html",
+          "week": "week-25"
+        },
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-26/fragrance.html",
+          "week": "week-26"
+        }
+      ],
+      "rank": 4,
+      "score": 70,
+      "section": "heat_rankings",
+      "tier": "LEGACY",
+      "topic": "fragrance",
+      "trend_badge": "Trend",
+      "trend_tag": null
+    },
+    {
+      "category_badge": "Musk",
+      "detail": {
+        "brand": "",
+        "buzz": "",
+        "key_features": "",
+        "price_link": "",
+        "price_text": ""
+      },
+      "explicit_dates": [],
+      "launch_text": "",
+      "market": "CN",
+      "month_markers": [],
+      "new_badge": null,
+      "panel": "CN LEGACY",
+      "product_name": "Maison Margiela Lazy Weekend",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-25/fragrance.html",
+          "week": "week-25"
+        },
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-26/fragrance.html",
+          "week": "week-26"
+        }
+      ],
+      "rank": 5,
+      "score": 62,
+      "section": "heat_rankings",
+      "tier": "LEGACY",
+      "topic": "fragrance",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "Tea Woody EDP",
+      "detail": {
+        "brand": "US niche fragrance (Estée Lauder) · matcha aspirational anchor · premium daily · unisex",
+        "buzz": "Matcha mania benchmark · cross-market hit · Xiaohongshu tea note popular",
+        "key_features": "Matcha · vetiver · fig · tea woody · longevity 8-10h · sillage moderate",
+        "price_link": "https://www.lelabofragrances.com",
+        "price_text": "¥1,800"
+      },
+      "explicit_dates": [],
+      "launch_text": "US niche fragrance (Estée Lauder) · matcha aspirational anchor · premium daily · unisex",
+      "market": "CN",
+      "month_markers": [],
+      "new_badge": null,
+      "panel": "CN LUXURY",
+      "product_name": "Le Labo Thé Matcha 26",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-27/fragrance.html",
+          "week": "week-27"
+        }
+      ],
+      "rank": 1,
+      "score": 70,
+      "section": "heat_rankings",
+      "tier": "LUXURY",
+      "topic": "fragrance",
+      "trend_badge": "Trend",
+      "trend_tag": "Matcha Mania Trend"
+    },
+    {
+      "category_badge": "Skin Scent EDP",
+      "detail": {
+        "brand": "French concept fragrance · skin scent · weekend/casual · female",
+        "buzz": "Skin scent CN · Lazy Sunday aesthetic · Douyin \"pseudo body scent\" topic",
+        "key_features": "White musk · lily of the valley · iris · white floral · longevity 6h · sillage low (skin)",
+        "price_link": "https://www.maisonmargiela.com",
+        "price_text": "¥1,080"
+      },
+      "explicit_dates": [],
+      "launch_text": "French concept fragrance · skin scent · weekend/casual · female",
+      "market": "CN",
+      "month_markers": [],
+      "new_badge": null,
+      "panel": "CN LUXURY",
+      "product_name": "Maison Margiela Lazy Weekend",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-27/fragrance.html",
+          "week": "week-27"
+        }
+      ],
+      "rank": 2,
+      "score": 62,
+      "section": "heat_rankings",
+      "tier": "LUXURY",
+      "topic": "fragrance",
+      "trend_badge": "Skin Scent Musk",
+      "trend_tag": null
+    },
+    {
+      "category_badge": "Oriental Narrative EDP",
+      "detail": {
+        "brand": "China domestic fragrance · Oriental narrative leader · cultural storytelling · unisex",
+        "buzz": "Xiaohongshu 8.9M+ Oriental notes · Douyin 4.6B domestic fragrance · Oriental narrative benchmark",
+        "key_features": "Tea · sandalwood · osmanthus · oriental woody · longevity 6-8h · sillage moderate · EDP/solid/diffuser multi-format",
+        "price_link": "https://www.documentscn.com",
+        "price_text": ""
+      },
+      "explicit_dates": [],
+      "launch_text": "China domestic fragrance · Oriental narrative leader · cultural storytelling · unisex",
+      "market": "CN",
+      "month_markers": [],
+      "new_badge": null,
+      "panel": "CN MASSTIGE",
+      "product_name": "Documents 昆仑煮雪 (Kunlun Boiled Snow)",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-27/fragrance.html",
+          "week": "week-27"
+        }
+      ],
+      "rank": 1,
+      "score": 95,
+      "section": "heat_rankings",
+      "tier": "MASSTIGE",
+      "topic": "fragrance",
+      "trend_badge": "Trend",
+      "trend_tag": "Oriental Narrative Trend"
+    },
+    {
+      "category_badge": "Aquatic Green EDP",
+      "detail": {
+        "brand": "China domestic fragrance · nostalgia narrative · daily/casual · unisex",
+        "buzz": "Oriental narrative · nostalgia fragrance · daily wear · domestic fragrance topic popular",
+        "key_features": "Aquatic green · white musk · cotton · aquatic green · longevity 4-6h · sillage soft · EDP/home diffuser multi-format",
+        "price_link": "https://www.scentlibrary.cn",
+        "price_text": ""
+      },
+      "explicit_dates": [],
+      "launch_text": "China domestic fragrance · nostalgia narrative · daily/casual · unisex",
+      "market": "CN",
+      "month_markers": [],
+      "new_badge": null,
+      "panel": "CN MASSTIGE",
+      "product_name": "Scent Library 凉白开 (Cool Boiled Water)",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-27/fragrance.html",
+          "week": "week-27"
+        }
+      ],
+      "rank": 2,
+      "score": 85,
+      "section": "heat_rankings",
+      "tier": "MASSTIGE",
+      "topic": "fragrance",
+      "trend_badge": "Oriental Narrative",
+      "trend_tag": null
+    },
+    {
+      "category_badge": "Floral Gourmand EDP",
+      "detail": {
+        "brand": "China domestic fragrance · value benchmark · daily/date · female",
+        "buzz": "Domestic fragrance viral · incense-inspired · Douyin domestic fragrance topic",
+        "key_features": "Osmanthus · amber · sandalwood · floral gourmand · longevity 6h · sillage moderate",
+        "price_link": "https://www.boitown.com",
+        "price_text": ""
+      },
+      "explicit_dates": [],
+      "launch_text": "China domestic fragrance · value benchmark · daily/date · female",
+      "market": "CN",
+      "month_markers": [],
+      "new_badge": null,
+      "panel": "CN MASSTIGE",
+      "product_name": "Boitown 幻境流沙金 (Mirage Quicksand Gold)",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-27/fragrance.html",
+          "week": "week-27"
+        }
+      ],
+      "rank": 3,
+      "score": 78,
+      "section": "heat_rankings",
+      "tier": "MASSTIGE",
+      "topic": "fragrance",
+      "trend_badge": "Oriental Narrative",
+      "trend_tag": null
+    },
+    {
+      "category_badge": "Floral",
+      "detail": {
+        "brand": "",
+        "buzz": "",
+        "key_features": "",
+        "price_link": "",
+        "price_text": ""
+      },
+      "explicit_dates": [],
+      "launch_text": "",
+      "market": "US",
+      "month_markers": [],
+      "new_badge": null,
+      "panel": "US LEGACY",
+      "product_name": "Sol de Janeiro Cheirosa 91",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-25/fragrance.html",
+          "week": "week-25"
+        },
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-26/fragrance.html",
+          "week": "week-26"
+        }
+      ],
+      "rank": 1,
+      "score": 95,
+      "section": "heat_rankings",
+      "tier": "LEGACY",
+      "topic": "fragrance",
+      "trend_badge": "Trend",
+      "trend_tag": null
+    },
+    {
+      "category_badge": "Musk",
+      "detail": {
+        "brand": "",
+        "buzz": "",
+        "key_features": "",
+        "price_link": "",
+        "price_text": ""
+      },
+      "explicit_dates": [],
+      "launch_text": "",
+      "market": "US",
+      "month_markers": [],
+      "new_badge": null,
+      "panel": "US LEGACY",
+      "product_name": "Phlur Missing Person",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-25/fragrance.html",
+          "week": "week-25"
+        },
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-26/fragrance.html",
+          "week": "week-26"
+        }
+      ],
+      "rank": 2,
+      "score": 88,
+      "section": "heat_rankings",
+      "tier": "LEGACY",
+      "topic": "fragrance",
+      "trend_badge": "Trend",
+      "trend_tag": null
+    },
+    {
+      "category_badge": "Tea",
+      "detail": {
+        "brand": "",
+        "buzz": "",
+        "key_features": "",
+        "price_link": "",
+        "price_text": ""
+      },
+      "explicit_dates": [],
+      "launch_text": "",
+      "market": "US",
+      "month_markers": [],
+      "new_badge": null,
+      "panel": "US LEGACY",
+      "product_name": "Kayali Freedom Musk Matcha",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-25/fragrance.html",
+          "week": "week-25"
+        },
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-26/fragrance.html",
+          "week": "week-26"
+        }
+      ],
+      "rank": 3,
+      "score": 82,
+      "section": "heat_rankings",
+      "tier": "LEGACY",
+      "topic": "fragrance",
+      "trend_badge": "Trend",
+      "trend_tag": null
+    },
+    {
+      "category_badge": "Gourmand",
+      "detail": {
+        "brand": "",
+        "buzz": "",
+        "key_features": "",
+        "price_link": "",
+        "price_text": ""
+      },
+      "explicit_dates": [],
+      "launch_text": "",
+      "market": "US",
+      "month_markers": [],
+      "new_badge": null,
+      "panel": "US LEGACY",
+      "product_name": "Kilian Love Don't Be Shy",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-25/fragrance.html",
+          "week": "week-25"
+        },
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-26/fragrance.html",
+          "week": "week-26"
+        }
+      ],
+      "rank": 4,
+      "score": 75,
+      "section": "heat_rankings",
+      "tier": "LEGACY",
+      "topic": "fragrance",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "Musk",
+      "detail": {
+        "brand": "",
+        "buzz": "",
+        "key_features": "",
+        "price_link": "",
+        "price_text": ""
+      },
+      "explicit_dates": [],
+      "launch_text": "",
+      "market": "US",
+      "month_markers": [],
+      "new_badge": null,
+      "panel": "US LEGACY",
+      "product_name": "Glossier You",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-25/fragrance.html",
+          "week": "week-25"
+        },
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-26/fragrance.html",
+          "week": "week-26"
+        }
+      ],
+      "rank": 5,
+      "score": 68,
+      "section": "heat_rankings",
+      "tier": "LEGACY",
+      "topic": "fragrance",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "Citrus Aromatic EDP",
+      "detail": {
+        "brand": "US luxury fragrance (Estée Lauder) · Private Blend · summer seasonal · unisex lean male",
+        "buzz": "Fragrantica 4.04/5 (313 votes) · Parfumo: clean musky orange, leans masculine",
+        "key_features": "Orange flower absolute · Sicilian blood orange · oakmoss · citrus aromatic · longevity 6-8h · sillage moderate",
+        "price_link": "https://www.tomfordbeauty.com",
+        "price_text": "$245~390"
+      },
+      "explicit_dates": [],
+      "launch_text": "US luxury fragrance (Estée Lauder) · Private Blend · summer seasonal · unisex lean male",
+      "market": "US",
+      "month_markers": [],
+      "new_badge": "NEW",
+      "panel": "US LUXURY",
+      "product_name": "Tom Ford Taormina Orange EDP",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-27/fragrance.html",
+          "week": "week-27"
+        }
+      ],
+      "rank": 2,
+      "score": 80,
+      "section": "heat_rankings",
+      "tier": "LUXURY",
+      "topic": "fragrance",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "Gourmand EDP",
+      "detail": {
+        "brand": "French luxury fragrance (LVMH) · dark gourmand · evening/date occasion · unisex lean female",
+        "buzz": "TikTok Shop viral · marshmallow gourmand flagship · dark gourmand trend leader",
+        "key_features": "Toasted marshmallow · dark vanilla · smoky woody · gourmand heart · longevity 8-10h · sillage moderate",
+        "price_link": "https://www.kilian-beauty.com",
+        "price_text": "$250"
+      },
+      "explicit_dates": [],
+      "launch_text": "French luxury fragrance (LVMH) · dark gourmand · evening/date occasion · unisex lean female",
+      "market": "US",
+      "month_markers": [],
+      "new_badge": null,
+      "panel": "US LUXURY",
+      "product_name": "Kilian Love Don’t Be Shy",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-27/fragrance.html",
+          "week": "week-27"
+        }
+      ],
+      "rank": 1,
+      "score": 75,
+      "section": "heat_rankings",
+      "tier": "LUXURY",
+      "topic": "fragrance",
+      "trend_badge": "Marshmallow Gothic",
+      "trend_tag": null
+    },
+    {
+      "category_badge": "Aromatic EDP",
+      "detail": {
+        "brand": "French luxury fragrance · Le Male summer drop · limited edition · male positioning",
+        "buzz": "Fragrantica: limited edition new wave · metallic blue translucent black bottle",
+        "key_features": "Aromatic lavender · metallic fennel · benzoin · aromatic · longevity 8h · sillage strong",
+        "price_link": "https://www.jeanpaulgaultier.com",
+        "price_text": "$139"
+      },
+      "explicit_dates": [],
+      "launch_text": "French luxury fragrance · Le Male summer drop · limited edition · male positioning",
+      "market": "US",
+      "month_markers": [],
+      "new_badge": "NEW",
+      "panel": "US LUXURY",
+      "product_name": "Jean Paul Gaultier Le Male In Blue",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-27/fragrance.html",
+          "week": "week-27"
+        }
+      ],
+      "rank": 3,
+      "score": 75,
+      "section": "heat_rankings",
+      "tier": "LUXURY",
+      "topic": "fragrance",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "Tea Note EDP",
+      "detail": {
+        "brand": "Italian luxury fragrance · tea culture theme · business/daily occasion · unisex",
+        "buzz": "Harper's Bazaar editor praise · Marie Claire editor review · Parfumo: longevity issues",
+        "key_features": "Sri Lankan black tea · Italian citrus · musk · tea · longevity short · sillage soft",
+        "price_link": "https://www.bvlgari.com",
+        "price_text": ""
+      },
+      "explicit_dates": [],
+      "launch_text": "Italian luxury fragrance · tea culture theme · business/daily occasion · unisex",
+      "market": "US",
+      "month_markers": [],
+      "new_badge": "NEW",
+      "panel": "US LUXURY",
+      "product_name": "Bvlgari Eau Parfumée Thé Impérial",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-27/fragrance.html",
+          "week": "week-27"
+        }
+      ],
+      "rank": 4,
+      "score": 72,
+      "section": "heat_rankings",
+      "tier": "LUXURY",
+      "topic": "fragrance",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "Rose Note EDT",
+      "detail": {
+        "brand": "French luxury fragrance · Aqua Allegoria rose renaissance · limited edition · female",
+        "buzz": "Fragrantica: sensual freshness of freshly picked roses · ScentAdvice: rose in new light",
+        "key_features": "Rose water · peony · creamy sandalwood · rose · longevity 6h · sillage moderate",
+        "price_link": "https://www.guerlain.com",
+        "price_text": ""
+      },
+      "explicit_dates": [],
+      "launch_text": "French luxury fragrance · Aqua Allegoria rose renaissance · limited edition · female",
+      "market": "US",
+      "month_markers": [],
+      "new_badge": "NEW",
+      "panel": "US LUXURY",
+      "product_name": "Guerlain Aqua Allegoria Perle Rosa Rossa",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-27/fragrance.html",
+          "week": "week-27"
+        }
+      ],
+      "rank": 5,
+      "score": 72,
+      "section": "heat_rankings",
+      "tier": "LUXURY",
+      "topic": "fragrance",
+      "trend_badge": "Rose Renaissance",
+      "trend_tag": null
+    },
+    {
+      "category_badge": "Woody Spicy EDP",
+      "detail": {
+        "brand": "French artisanal fragrance · woody spicy · oriental narrative · unisex",
+        "buzz": "Now Smell This: rich patchouli seduction story · Fragrantica: Puig-backed 2026 launch",
+        "key_features": "Patchouli · woods · warm spices · woody spicy · longevity 8-10h · sillage moderate · perfumer Nathalie Lorson",
+        "price_link": "https://www.artisanparfumeur.com",
+        "price_text": "$300"
+      },
+      "explicit_dates": [],
+      "launch_text": "French artisanal fragrance · woody spicy · oriental narrative · unisex",
+      "market": "US",
+      "month_markers": [],
+      "new_badge": "NEW",
+      "panel": "US LUXURY",
+      "product_name": "L’Artisan Parfumeur L’Amant EDP",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-27/fragrance.html",
+          "week": "week-27"
+        }
+      ],
+      "rank": 6,
+      "score": 70,
+      "section": "heat_rankings",
+      "tier": "LUXURY",
+      "topic": "fragrance",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "Floral EDP",
+      "detail": {
+        "brand": "Spanish luxury fragrance · 1 Million premium extension · limited edition · female",
+        "buzz": "Parfumo: synthetic fruity limited edition · ScentAdvice: 60-year diamond craftsmanship tribute",
+        "key_features": "Peach · bergamot · jasmine · ylang · floral fruity · longevity 8h · sillage strong",
+        "price_link": "https://www.rabanne.com",
+        "price_text": "$250"
+      },
+      "explicit_dates": [],
+      "launch_text": "Spanish luxury fragrance · 1 Million premium extension · limited edition · female",
+      "market": "US",
+      "month_markers": [],
+      "new_badge": "NEW",
+      "panel": "US LUXURY",
+      "product_name": "Rabanne Million Gold For Her Pure Diamonds",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-27/fragrance.html",
+          "week": "week-27"
+        }
+      ],
+      "rank": 7,
+      "score": 68,
+      "section": "heat_rankings",
+      "tier": "LUXURY",
+      "topic": "fragrance",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "Body Mist",
+      "detail": {
+        "brand": "US Masstige body fragrance · mass-market rose entry · daily/casual · female",
+        "buzz": "TikTok #RosePerfume 4.1B · Sephora Body Mist bestseller · $39 entry driver",
+        "key_features": "Passionfruit · honey caramel · Rio pink rose · floral fruity gourmand · longevity 4-6h · sillage soft (Body Mist)",
+        "price_link": "https://www.sephora.com",
+        "price_text": "$39"
+      },
+      "explicit_dates": [],
+      "launch_text": "US Masstige body fragrance · mass-market rose entry · daily/casual · female",
+      "market": "US",
+      "month_markers": [],
+      "new_badge": null,
+      "panel": "US MASSTIGE",
+      "product_name": "Sol de Janeiro Cheirosa 91",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-27/fragrance.html",
+          "week": "week-27"
+        }
+      ],
+      "rank": 1,
+      "score": 95,
+      "section": "heat_rankings",
+      "tier": "MASSTIGE",
+      "topic": "fragrance",
+      "trend_badge": "Trend",
+      "trend_tag": "Rose Renaissance Trend"
+    },
+    {
+      "category_badge": "Skin Scent EDP",
+      "detail": {
+        "brand": "US Masstige fragrance · skin scent benchmark · daily/intimate · unisex",
+        "buzz": "TikTok #SkinScent 1.2B · Sephora TOP5 · skin scent archetype",
+        "key_features": "Cashmeran · white musk · creamy sandalwood · skin musk · longevity 6-8h · sillage low (skin)",
+        "price_link": "https://www.sephora.com",
+        "price_text": "$96"
+      },
+      "explicit_dates": [],
+      "launch_text": "US Masstige fragrance · skin scent benchmark · daily/intimate · unisex",
+      "market": "US",
+      "month_markers": [],
+      "new_badge": null,
+      "panel": "US MASSTIGE",
+      "product_name": "Phlur Missing Person",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-27/fragrance.html",
+          "week": "week-27"
+        }
+      ],
+      "rank": 2,
+      "score": 88,
+      "section": "heat_rankings",
+      "tier": "MASSTIGE",
+      "topic": "fragrance",
+      "trend_badge": "Trend",
+      "trend_tag": "Skin Scent Musk Trend"
+    },
+    {
+      "category_badge": "Matcha Musk EDP",
+      "detail": {
+        "brand": "US Masstige (Huda Beauty) · matcha trend leader · daily/office · unisex",
+        "buzz": "TikTok #MatchaPerfume 1.8B · Sephora new launch · matcha trend leader · cross-market hit",
+        "key_features": "Matcha · musk · vanilla · musk matcha · longevity 6-8h · sillage moderate",
+        "price_link": "https://www.sephora.com",
+        "price_text": "$118"
+      },
+      "explicit_dates": [],
+      "launch_text": "US Masstige (Huda Beauty) · matcha trend leader · daily/office · unisex",
+      "market": "US",
+      "month_markers": [],
+      "new_badge": null,
+      "panel": "US MASSTIGE",
+      "product_name": "Kayali Freedom Musk Matcha",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-27/fragrance.html",
+          "week": "week-27"
+        }
+      ],
+      "rank": 3,
+      "score": 82,
+      "section": "heat_rankings",
+      "tier": "MASSTIGE",
+      "topic": "fragrance",
+      "trend_badge": "Trend",
+      "trend_tag": "Matcha Mania Trend"
+    },
+    {
+      "category_badge": "Rose Note EDP",
+      "detail": {
+        "brand": "US Masstige fragrance · rose renaissance premium · date/daily · female",
+        "buzz": "PureWow: TikTok/IG daily presence · Phlur site: \"sophisticated modern rose\"",
+        "key_features": "Velvety rose · black currant · musk · rose · longevity 6-8h · sillage moderate",
+        "price_link": "https://www.sephora.com",
+        "price_text": "$99"
+      },
+      "explicit_dates": [],
+      "launch_text": "US Masstige fragrance · rose renaissance premium · date/daily · female",
+      "market": "US",
+      "month_markers": [],
+      "new_badge": "NEW",
+      "panel": "US MASSTIGE",
+      "product_name": "Phlur Rose Whip EDP",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-27/fragrance.html",
+          "week": "week-27"
+        }
+      ],
+      "rank": 4,
+      "score": 78,
+      "section": "heat_rankings",
+      "tier": "MASSTIGE",
+      "topic": "fragrance",
+      "trend_badge": "Rose Renaissance",
+      "trend_tag": null
+    },
+    {
+      "category_badge": "Gourmand EDP",
+      "detail": {
+        "brand": "US Masstige fragrance · Easy Bake first flanker · Sephora exclusive · female",
+        "buzz": "Fragrantica 3.79/5 (175 votes) · Parfumo: cherry vanilla, pleasant but not edible",
+        "key_features": "Wild cherry · white flower · caramel milk · bourbon vanilla · floral gourmand · longevity 8-10h · sillage strong",
+        "price_link": "https://www.sephora.com",
+        "price_text": "$129"
+      },
+      "explicit_dates": [],
+      "launch_text": "US Masstige fragrance · Easy Bake first flanker · Sephora exclusive · female",
+      "market": "US",
+      "month_markers": [],
+      "new_badge": "NEW",
+      "panel": "US MASSTIGE",
+      "product_name": "Huda Beauty Easy Bake Intense EDP",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-27/fragrance.html",
+          "week": "week-27"
+        }
+      ],
+      "rank": 6,
+      "score": 75,
+      "section": "heat_rankings",
+      "tier": "MASSTIGE",
+      "topic": "fragrance",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "Skin Scent EDP",
+      "detail": {
+        "brand": "US Masstige fragrance · celestial skin scent · 11 11 extension · unisex",
+        "buzz": "Parfumo: mood lifter, more enjoyable with wear · ScentAdvice: celestial reimagining of 11 11 signature",
+        "key_features": "Bergamot · lemon · coconut shavings · coumarin · cedar · celestial skin · longevity 6-8h · sillage moderate",
+        "price_link": "https://www.lakeandskye.com",
+        "price_text": "$105"
+      },
+      "explicit_dates": [],
+      "launch_text": "US Masstige fragrance · celestial skin scent · 11 11 extension · unisex",
+      "market": "US",
+      "month_markers": [],
+      "new_badge": "NEW",
+      "panel": "US MASSTIGE",
+      "product_name": "Lake & Skye 11 11 Moon EDP",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-27/fragrance.html",
+          "week": "week-27"
+        }
+      ],
+      "rank": 7,
+      "score": 72,
+      "section": "heat_rankings",
+      "tier": "MASSTIGE",
+      "topic": "fragrance",
+      "trend_badge": "Skin Scent Musk",
+      "trend_tag": null
+    },
+    {
+      "category_badge": "Gourmand Fragrance",
+      "detail": {
+        "brand": "US Masstige fragrance · clean gourmand · layering hero · unisex",
+        "buzz": "WhoWhatWear: 5000+ waitlist · DedCool site: repurchase, peach+vanilla+marshmallow harmony",
+        "key_features": "Marshmallow · peach · incense · floral fruity gourmand · longevity 6h · sillage moderate",
+        "price_link": "https://www.dedcool.com",
+        "price_text": "$90"
+      },
+      "explicit_dates": [],
+      "launch_text": "US Masstige fragrance · clean gourmand · layering hero · unisex",
+      "market": "US",
+      "month_markers": [],
+      "new_badge": "NEW",
+      "panel": "US MASSTIGE",
+      "product_name": "DedCool Mochi Milk",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-27/fragrance.html",
+          "week": "week-27"
+        }
+      ],
+      "rank": 8,
+      "score": 70,
+      "section": "heat_rankings",
+      "tier": "MASSTIGE",
+      "topic": "fragrance",
+      "trend_badge": "Marshmallow Gothic",
+      "trend_tag": null
+    },
+    {
+      "category_badge": "Skin Scent EDP",
+      "detail": {
+        "brand": "US DTC beauty · skin scent classic · daily/intimate · unisex",
+        "buzz": "Skin scent icon · new solid format · Sephora bestseller",
+        "key_features": "White musk · ambrette · iris · skin woody · longevity 6h · sillage low (skin)",
+        "price_link": "https://www.sephora.com",
+        "price_text": "$68"
+      },
+      "explicit_dates": [],
+      "launch_text": "US DTC beauty · skin scent classic · daily/intimate · unisex",
+      "market": "US",
+      "month_markers": [],
+      "new_badge": "NEW",
+      "panel": "US MASSTIGE",
+      "product_name": "Glossier You",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-27/fragrance.html",
+          "week": "week-27"
+        }
+      ],
+      "rank": 5,
+      "score": 68,
+      "section": "heat_rankings",
+      "tier": "MASSTIGE",
+      "topic": "fragrance",
+      "trend_badge": "Skin Scent Musk",
+      "trend_tag": null
+    },
+    {
+      "category_badge": "EDP",
+      "detail": {
+        "brand": "Summer seasonal hero in the Private Blend line",
+        "buzz": "Summer Citrus Hero",
+        "key_features": "Bright orange, Italian citrus, neroli",
+        "price_link": "https://www.tomford.com",
+        "price_text": ""
+      },
+      "explicit_dates": [],
+      "launch_text": "Summer seasonal hero in the Private Blend line",
+      "market": "US",
+      "month_markers": [],
+      "new_badge": null,
+      "panel": "US LUXURY",
+      "product_name": "Taormina Orange EDP",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-25/fragrance.html",
+          "week": "week-25"
+        },
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-26/fragrance.html",
+          "week": "week-26"
+        }
+      ],
+      "rank": 1,
+      "score": 0,
+      "section": "new_product_radar",
+      "tier": "LUXURY",
+      "topic": "fragrance",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "EDP",
+      "detail": {
+        "brand": "Tea-forward luxury fragrance extending the Bvlgari tea franchise",
+        "buzz": "Tea×Luxury · Matcha Adjacent",
+        "key_features": "Imperial tea, bergamot, woods",
+        "price_link": "https://www.bvlgari.com",
+        "price_text": ""
+      },
+      "explicit_dates": [],
+      "launch_text": "Tea-forward luxury fragrance extending the Bvlgari tea franchise",
+      "market": "US",
+      "month_markers": [],
+      "new_badge": null,
+      "panel": "US LUXURY",
+      "product_name": "Thé Impérial",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-25/fragrance.html",
+          "week": "week-25"
+        },
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-26/fragrance.html",
+          "week": "week-26"
+        }
+      ],
+      "rank": 2,
+      "score": 0,
+      "section": "new_product_radar",
+      "tier": "LUXURY",
+      "topic": "fragrance",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "EDP",
+      "detail": {
+        "brand": "Oriental-inspired artisanal fragrance",
+        "buzz": "Oriental Narrative · Artisanal",
+        "key_features": "Spices, oud, vanilla",
+        "price_link": "https://www.artisanparfumeur.com",
+        "price_text": ""
+      },
+      "explicit_dates": [],
+      "launch_text": "Oriental-inspired artisanal fragrance",
+      "market": "US",
+      "month_markers": [],
+      "new_badge": null,
+      "panel": "US LUXURY",
+      "product_name": "L'Amant",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-25/fragrance.html",
+          "week": "week-25"
+        },
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-26/fragrance.html",
+          "week": "week-26"
+        }
+      ],
+      "rank": 3,
+      "score": 0,
+      "section": "new_product_radar",
+      "tier": "LUXURY",
+      "topic": "fragrance",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "EDP",
+      "detail": {
+        "brand": "Luxury extension of the 1 Million franchise",
+        "buzz": "Franchise Premiumization",
+        "key_features": "Gold amber, patchouli, rose",
+        "price_link": "https://www.rabanne.com",
+        "price_text": ""
+      },
+      "explicit_dates": [],
+      "launch_text": "Luxury extension of the 1 Million franchise",
+      "market": "US",
+      "month_markers": [],
+      "new_badge": null,
+      "panel": "US LUXURY",
+      "product_name": "Million Gold",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-25/fragrance.html",
+          "week": "week-25"
+        },
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-26/fragrance.html",
+          "week": "week-26"
+        }
+      ],
+      "rank": 4,
+      "score": 0,
+      "section": "new_product_radar",
+      "tier": "LUXURY",
+      "topic": "fragrance",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "EDP",
+      "detail": {
+        "brand": "Summer extension of the Le Male franchise",
+        "buzz": "Franchise Summer Drop",
+        "key_features": "Mint, vanilla, lavender",
+        "price_link": "https://www.jpgaultier.com",
+        "price_text": ""
+      },
+      "explicit_dates": [],
+      "launch_text": "Summer extension of the Le Male franchise",
+      "market": "US",
+      "month_markers": [],
+      "new_badge": null,
+      "panel": "US LUXURY",
+      "product_name": "Le Male In Blue",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-25/fragrance.html",
+          "week": "week-25"
+        },
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-26/fragrance.html",
+          "week": "week-26"
+        }
+      ],
+      "rank": 5,
+      "score": 0,
+      "section": "new_product_radar",
+      "tier": "LUXURY",
+      "topic": "fragrance",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "EDP",
+      "detail": {
+        "brand": "Rose Renaissance entry in the Aqua Allegoria line",
+        "buzz": "Rose Renaissance · Heritage Rose",
+        "key_features": "Rose, peony, musk",
+        "price_link": "https://www.guerlain.com",
+        "price_text": ""
+      },
+      "explicit_dates": [],
+      "launch_text": "Rose Renaissance entry in the Aqua Allegoria line",
+      "market": "US",
+      "month_markers": [],
+      "new_badge": null,
+      "panel": "US LUXURY",
+      "product_name": "Rosa Rossa",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-25/fragrance.html",
+          "week": "week-25"
+        },
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-26/fragrance.html",
+          "week": "week-26"
+        }
+      ],
+      "rank": 6,
+      "score": 0,
+      "section": "new_product_radar",
+      "tier": "LUXURY",
+      "topic": "fragrance",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "$129",
+      "detail": {
+        "brand": "Gourmand-intense EDP from the Kayali sister brand",
+        "buzz": "Dark Gourmand · Intense Format",
+        "key_features": "Vanilla, marshmallow, caramel",
+        "price_link": "https://www.hudabeauty.com",
+        "price_text": ""
+      },
+      "explicit_dates": [],
+      "launch_text": "Gourmand-intense EDP from the Kayali sister brand",
+      "market": "US",
+      "month_markers": [],
+      "new_badge": null,
+      "panel": "US MASSTIGE",
+      "product_name": "Easy Bake Intense EDP",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-25/fragrance.html",
+          "week": "week-25"
+        },
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-26/fragrance.html",
+          "week": "week-26"
+        }
+      ],
+      "rank": 1,
+      "score": 0,
+      "section": "new_product_radar",
+      "tier": "MASSTIGE",
+      "topic": "fragrance",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "$99",
+      "detail": {
+        "brand": "Rose Renaissance premium masstige entry",
+        "buzz": "Rose Renaissance · 3-Rose Combo",
+        "key_features": "Green rose, dewy rose, garden rose",
+        "price_link": "https://www.phlur.com",
+        "price_text": ""
+      },
+      "explicit_dates": [],
+      "launch_text": "Rose Renaissance premium masstige entry",
+      "market": "US",
+      "month_markers": [],
+      "new_badge": null,
+      "panel": "US MASSTIGE",
+      "product_name": "Rose Whip",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-25/fragrance.html",
+          "week": "week-25"
+        },
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-26/fragrance.html",
+          "week": "week-26"
+        }
+      ],
+      "rank": 2,
+      "score": 0,
+      "section": "new_product_radar",
+      "tier": "MASSTIGE",
+      "topic": "fragrance",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "Solid",
+      "detail": {
+        "brand": "Skin Scent in solid format — portability meets intimacy",
+        "buzz": "Skin Scent · Solid Format Innovation",
+        "key_features": "White musk, ambrette, iris",
+        "price_link": "https://www.glossier.com",
+        "price_text": ""
+      },
+      "explicit_dates": [],
+      "launch_text": "Skin Scent in solid format — portability meets intimacy",
+      "market": "US",
+      "month_markers": [],
+      "new_badge": null,
+      "panel": "US MASSTIGE",
+      "product_name": "You Solid",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-25/fragrance.html",
+          "week": "week-25"
+        },
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-26/fragrance.html",
+          "week": "week-26"
+        }
+      ],
+      "rank": 3,
+      "score": 0,
+      "section": "new_product_radar",
+      "tier": "MASSTIGE",
+      "topic": "fragrance",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "$39",
+      "detail": {
+        "brand": "Rose body mist at accessible price — mass-market rose entry",
+        "buzz": "Rose Renaissance · Body Mist Format",
+        "key_features": "Green rose, dewy rose, garden rose",
+        "price_link": "https://www.soldejaneiro.com",
+        "price_text": ""
+      },
+      "explicit_dates": [],
+      "launch_text": "Rose body mist at accessible price — mass-market rose entry",
+      "market": "US",
+      "month_markers": [],
+      "new_badge": null,
+      "panel": "US MASSTIGE",
+      "product_name": "Cheirosa 91",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-25/fragrance.html",
+          "week": "week-25"
+        },
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-26/fragrance.html",
+          "week": "week-26"
+        }
+      ],
+      "rank": 4,
+      "score": 0,
+      "section": "new_product_radar",
+      "tier": "MASSTIGE",
+      "topic": "fragrance",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "$105",
+      "detail": {
+        "brand": "Celestial-themed skin scent — mood-functional positioning",
+        "buzz": "Mood Fragrance · Skin Scent Adjacent",
+        "key_features": "White floral, musk, amber",
+        "price_link": "https://www.lakeandskye.com",
+        "price_text": ""
+      },
+      "explicit_dates": [],
+      "launch_text": "Celestial-themed skin scent — mood-functional positioning",
+      "market": "US",
+      "month_markers": [],
+      "new_badge": null,
+      "panel": "US MASSTIGE",
+      "product_name": "11 11 Moon",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-25/fragrance.html",
+          "week": "week-25"
+        },
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-26/fragrance.html",
+          "week": "week-26"
+        }
+      ],
+      "rank": 5,
+      "score": 0,
+      "section": "new_product_radar",
+      "tier": "MASSTIGE",
+      "topic": "fragrance",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "$90",
+      "detail": {
+        "brand": "Clean milky gourmand — pistachio-adjacent food note",
+        "buzz": "Clean Gourmand · Layering Hero",
+        "key_features": "Milk, mochi, vanilla, musk",
+        "price_link": "https://www.dedcool.com",
+        "price_text": ""
+      },
+      "explicit_dates": [],
+      "launch_text": "Clean milky gourmand — pistachio-adjacent food note",
+      "market": "US",
+      "month_markers": [],
+      "new_badge": null,
+      "panel": "US MASSTIGE",
+      "product_name": "Mochi Milk",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-25/fragrance.html",
+          "week": "week-25"
+        },
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-26/fragrance.html",
+          "week": "week-26"
+        }
+      ],
+      "rank": 6,
+      "score": 0,
+      "section": "new_product_radar",
+      "tier": "MASSTIGE",
+      "topic": "fragrance",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
       "category_badge": "Lipstick",
       "detail": {
         "brand": "",
@@ -12,6 +1488,7 @@
       "explicit_dates": [],
       "launch_text": "",
       "market": "CN",
+      "month_markers": [],
       "new_badge": null,
       "panel": "CN LEGACY",
       "product_name": "Dior Rouge #999 Classic Red",
@@ -43,6 +1520,7 @@
       "explicit_dates": [],
       "launch_text": "",
       "market": "CN",
+      "month_markers": [],
       "new_badge": null,
       "panel": "CN LEGACY",
       "product_name": "YSL Vinyl Cream Lip Stain #416",
@@ -74,6 +1552,7 @@
       "explicit_dates": [],
       "launch_text": "",
       "market": "CN",
+      "month_markers": [],
       "new_badge": null,
       "panel": "CN LEGACY",
       "product_name": "Armani Lip Maestro Velvet Matte",
@@ -105,6 +1584,7 @@
       "explicit_dates": [],
       "launch_text": "",
       "market": "CN",
+      "month_markers": [],
       "new_badge": null,
       "panel": "CN LEGACY",
       "product_name": "Warm Nude Tinted Lip Balm",
@@ -136,6 +1616,7 @@
       "explicit_dates": [],
       "launch_text": "",
       "market": "CN",
+      "month_markers": [],
       "new_badge": null,
       "panel": "CN LEGACY",
       "product_name": "MAC Chili Brick Red",
@@ -167,6 +1648,7 @@
       "explicit_dates": [],
       "launch_text": "",
       "market": "CN",
+      "month_markers": [],
       "new_badge": null,
       "panel": "CN LEGACY",
       "product_name": "Florasis Miao Heritage Lipstick",
@@ -198,6 +1680,7 @@
       "explicit_dates": [],
       "launch_text": "",
       "market": "CN",
+      "month_markers": [],
       "new_badge": null,
       "panel": "CN LEGACY",
       "product_name": "Colorkey Matte Triangle Lip Glaze",
@@ -229,6 +1712,7 @@
       "explicit_dates": [],
       "launch_text": "",
       "market": "CN",
+      "month_markers": [],
       "new_badge": null,
       "panel": "CN LEGACY",
       "product_name": "Givenchy Le Rouge Interdit",
@@ -260,6 +1744,7 @@
       "explicit_dates": [],
       "launch_text": "",
       "market": "CN",
+      "month_markers": [],
       "new_badge": null,
       "panel": "CN LEGACY",
       "product_name": "MAOGEPING Mirror Glow Highlighter",
@@ -291,6 +1776,7 @@
       "explicit_dates": [],
       "launch_text": "",
       "market": "CN",
+      "month_markers": [],
       "new_badge": null,
       "panel": "CN LEGACY",
       "product_name": "DEELUOVI Glow Cushion SPF50+",
@@ -311,6 +1797,70 @@
       "trend_tag": null
     },
     {
+      "category_badge": "Skincare Foundation",
+      "detail": {
+        "brand": "US top skincare luxury (Estée Lauder) · skincare foundation line",
+        "buzz": "No independent heat data (brand-level signal only)",
+        "key_features": "Skincare foundation · 618 day-1 ¥102M GMV",
+        "price_link": "https://www.lamer.com.cn/product/find-product/product-list",
+        "price_text": "¥890~1,200"
+      },
+      "explicit_dates": [],
+      "launch_text": "US top skincare luxury (Estée Lauder) · skincare foundation line",
+      "market": "CN",
+      "month_markers": [],
+      "new_badge": null,
+      "panel": "CN LUXURY",
+      "product_name": "La Mer The Soft Fluid Foundation",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-27/index.html",
+          "week": "week-27"
+        }
+      ],
+      "rank": 1,
+      "score": 98,
+      "section": "heat_rankings",
+      "tier": "LUXURY",
+      "topic": "makeup",
+      "trend_badge": "Trend",
+      "trend_tag": "Skincare-Makeup Trend"
+    },
+    {
+      "category_badge": "Skincare Foundation",
+      "detail": {
+        "brand": "US luxury skincare (L’Oréal) · skincare foundation benchmark",
+        "buzz": "Douyin: Black Bandage 618 guide video 10.3M+ likes / Jiemian: Helena premium-tier Douyin sales benchmark",
+        "key_features": "Skincare foundation · premium efficacy · foreign-brand return benchmark",
+        "price_link": "https://www.helenarubinstein.cn/",
+        "price_text": "¥680~980"
+      },
+      "explicit_dates": [],
+      "launch_text": "US luxury skincare (L’Oréal) · skincare foundation benchmark",
+      "market": "CN",
+      "month_markers": [],
+      "new_badge": null,
+      "panel": "CN LUXURY",
+      "product_name": "Helena Black Bandage Foundation",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-27/index.html",
+          "week": "week-27"
+        }
+      ],
+      "rank": 3,
+      "score": 97,
+      "section": "heat_rankings",
+      "tier": "LUXURY",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
       "category_badge": "",
       "detail": {
         "brand": "终结连冠",
@@ -322,6 +1872,7 @@
       "explicit_dates": [],
       "launch_text": "终结连冠",
       "market": "CN",
+      "month_markers": [],
       "new_badge": null,
       "panel": "CN LUXURY",
       "product_name": "赫莲娜 黑绷带粉底液",
@@ -353,6 +1904,7 @@
       "explicit_dates": [],
       "launch_text": "高端底妆首选",
       "market": "CN",
+      "month_markers": [],
       "new_badge": null,
       "panel": "CN LUXURY",
       "product_name": "海蓝之谜 粉底液",
@@ -384,6 +1936,7 @@
       "explicit_dates": [],
       "launch_text": "国货之光",
       "market": "CN",
+      "month_markers": [],
       "new_badge": null,
       "panel": "CN LUXURY",
       "product_name": "毛戈平 光韵奢华粉底霜",
@@ -415,6 +1968,7 @@
       "explicit_dates": [],
       "launch_text": "上市爆发",
       "market": "CN",
+      "month_markers": [],
       "new_badge": null,
       "panel": "CN LUXURY",
       "product_name": "纪梵希 Rose Perfecto 唇油",
@@ -435,6 +1989,38 @@
       "trend_tag": null
     },
     {
+      "category_badge": "Lip Oil",
+      "detail": {
+        "brand": "French luxury makeup (LVMH) · functional lip oil line",
+        "buzz": "Sina: 2025 new 12 shades, hyaluronic + VC / Douyin: shade search active",
+        "key_features": "Functional lip oil · 1,000+ units first week · hydrating non-transfer",
+        "price_link": "https://www.givenchybeauty.cn/p/rose-perfecto-liquid-lip-balm-F20100155.html",
+        "price_text": "¥320~380"
+      },
+      "explicit_dates": [],
+      "launch_text": "French luxury makeup (LVMH) · functional lip oil line",
+      "market": "CN",
+      "month_markers": [],
+      "new_badge": null,
+      "panel": "CN LUXURY",
+      "product_name": "Givenchy Rose Perfecto Lip Oil",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-27/index.html",
+          "week": "week-27"
+        }
+      ],
+      "rank": 4,
+      "score": 74,
+      "section": "heat_rankings",
+      "tier": "LUXURY",
+      "topic": "makeup",
+      "trend_badge": "Trend",
+      "trend_tag": "Efficacy Lip Trend"
+    },
+    {
       "category_badge": "",
       "detail": {
         "brand": "好评率 94%",
@@ -446,6 +2032,7 @@
       "explicit_dates": [],
       "launch_text": "好评率 94%",
       "market": "CN",
+      "month_markers": [],
       "new_badge": null,
       "panel": "CN LUXURY",
       "product_name": "YSL 唇釉（热色系）",
@@ -466,6 +2053,230 @@
       "trend_tag": null
     },
     {
+      "category_badge": "Water Lip Gloss",
+      "detail": {
+        "brand": "French luxury makeup (L’Oréal) · water gloss classic",
+        "buzz": "Toutiao: 610 Iced Oolong restock king, milk-tea No.1 / Douyin: 618 mechanism restock single-day spike",
+        "key_features": "Water gloss · pastel shades · long-seller",
+        "price_link": "https://www.yslbeautycn.com/product/index.html?id=Kef2UR5pSGT32h7tnRAtcB",
+        "price_text": "¥320~380"
+      },
+      "explicit_dates": [],
+      "launch_text": "French luxury makeup (L’Oréal) · water gloss classic",
+      "market": "CN",
+      "month_markers": [],
+      "new_badge": null,
+      "panel": "CN LUXURY",
+      "product_name": "YSL Black Lacquer Lip Gloss",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-27/index.html",
+          "week": "week-27"
+        }
+      ],
+      "rank": 2,
+      "score": 70,
+      "section": "heat_rankings",
+      "tier": "LUXURY",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "Longwear Foundation",
+      "detail": {
+        "brand": "French luxury makeup (LVMH) · longwear foundation classic",
+        "buzz": "Toutiao: 2026 longwear foundation guide / Zhihu: top-10 prestige foundation list",
+        "key_features": "24H wear · matte soft-focus · classic bestseller",
+        "price_link": "https://www.dior.cn/zh_cn/beauty/",
+        "price_text": "¥580~680"
+      },
+      "explicit_dates": [],
+      "launch_text": "French luxury makeup (LVMH) · longwear foundation classic",
+      "market": "CN",
+      "month_markers": [],
+      "new_badge": null,
+      "panel": "CN LUXURY",
+      "product_name": "Dior Forever Skin Glow Foundation",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-27/index.html",
+          "week": "week-27"
+        }
+      ],
+      "rank": 6,
+      "score": 66,
+      "section": "heat_rankings",
+      "tier": "LUXURY",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "Longwear Foundation",
+      "detail": {
+        "brand": "French luxury makeup (L’Oréal) · longwear foundation口碑款",
+        "buzz": "Toutiao: longwear ceiling, multi-platform foundation top / NetEase: Feigua 68.2% consumers prioritize longwear",
+        "key_features": "24H wear · fine coverage · 12 shades",
+        "price_link": "https://www.lancome.com.cn/",
+        "price_text": "¥420~520"
+      },
+      "explicit_dates": [],
+      "launch_text": "French luxury makeup (L’Oréal) · longwear foundation口碑款",
+      "market": "CN",
+      "month_markers": [],
+      "new_badge": null,
+      "panel": "CN LUXURY",
+      "product_name": "Lancôme Longwear Foundation",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-27/index.html",
+          "week": "week-27"
+        }
+      ],
+      "rank": 5,
+      "score": 65,
+      "section": "heat_rankings",
+      "tier": "LUXURY",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "Hydrating Lipstick",
+      "detail": {
+        "brand": "French luxury makeup · Rouge Coco Flash line",
+        "buzz": "Smzdm: active cross-platform口碑比价, classic shades 70/106/154",
+        "key_features": "Rouge Coco Flash · high-saturation · hydrating formula",
+        "price_link": "https://www.chanel.cn/cn/makeup/p/174280/rouge-coco-flash-hydrating-vibrant-shine-lip-colour/",
+        "price_text": "¥350~420"
+      },
+      "explicit_dates": [],
+      "launch_text": "French luxury makeup · Rouge Coco Flash line",
+      "market": "CN",
+      "month_markers": [],
+      "new_badge": null,
+      "panel": "CN LUXURY",
+      "product_name": "Chanel Rouge Coco Flash",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-27/index.html",
+          "week": "week-27"
+        }
+      ],
+      "rank": 7,
+      "score": 65,
+      "section": "heat_rankings",
+      "tier": "LUXURY",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "Longwear Foundation",
+      "detail": {
+        "brand": "US luxury makeup · longwear foundation pioneer",
+        "buzz": "Toutiao: oily-skin longwear benchmark, multi-platform data / Smzdm: foundation longwear king test",
+        "key_features": "Oily-skin favorite · 24H wear · 55+ shades",
+        "price_link": "https://www.esteelauder.com.cn/",
+        "price_text": "¥390~480"
+      },
+      "explicit_dates": [],
+      "launch_text": "US luxury makeup · longwear foundation pioneer",
+      "market": "CN",
+      "month_markers": [],
+      "new_badge": null,
+      "panel": "CN LUXURY",
+      "product_name": "Estée Lauder DW Longwear Foundation",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-27/index.html",
+          "week": "week-27"
+        }
+      ],
+      "rank": 8,
+      "score": 65,
+      "section": "heat_rankings",
+      "tier": "LUXURY",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "Hydrating Lipstick",
+      "detail": {
+        "brand": "Italian luxury makeup (Coty) · satin lipstick line",
+        "buzz": "Sohu: 2026 foundation review mentions Gucci base line",
+        "key_features": "Retro gold tube · satin finish · celebrity co-sign",
+        "price_link": "https://www.gucci.cn/zh/st/capsule/beauty-lips-make-up",
+        "price_text": "¥350~420"
+      },
+      "explicit_dates": [],
+      "launch_text": "Italian luxury makeup (Coty) · satin lipstick line",
+      "market": "CN",
+      "month_markers": [],
+      "new_badge": null,
+      "panel": "CN LUXURY",
+      "product_name": "Gucci Rouge à Lèvres Satin",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-27/index.html",
+          "week": "week-27"
+        }
+      ],
+      "rank": 9,
+      "score": 65,
+      "section": "heat_rankings",
+      "tier": "LUXURY",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "Glow Foundation",
+      "detail": {
+        "brand": "China pro makeup benchmark · premium foundation",
+        "buzz": "Smzdm: master IP + light aesthetics, H1 2025 revenue ¥2.588B / Smzdm: domestic foundation longwear anti-darkening test",
+        "key_features": "Domestic premium foundation benchmark · glow skin",
+        "price_link": "https://maogeping.tmall.com/",
+        "price_text": "¥480~680"
+      },
+      "explicit_dates": [],
+      "launch_text": "China pro makeup benchmark · premium foundation",
+      "market": "CN",
+      "month_markers": [],
+      "new_badge": null,
+      "panel": "CN LUXURY",
+      "product_name": "Mao Geping Light Radiance Foundation",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-27/index.html",
+          "week": "week-27"
+        }
+      ],
+      "rank": 10,
+      "score": 65,
+      "section": "heat_rankings",
+      "tier": "LUXURY",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
       "category_badge": "",
       "detail": {
         "brand": "并购后观察",
@@ -477,6 +2288,7 @@
       "explicit_dates": [],
       "launch_text": "并购后观察",
       "market": "CN",
+      "month_markers": [],
       "new_badge": null,
       "panel": "CN MASSTIGE",
       "product_name": "花知晓 唇釉（珀莱雅控股后）",
@@ -508,6 +2320,7 @@
       "explicit_dates": [],
       "launch_text": "联名出圈",
       "market": "CN",
+      "month_markers": [],
       "new_badge": null,
       "panel": "CN MASSTIGE",
       "product_name": "卡姿兰 敦煌联名系列",
@@ -528,6 +2341,134 @@
       "trend_tag": null
     },
     {
+      "category_badge": "Matte Lip Mud",
+      "detail": {
+        "brand": "China emerging makeup (domestic) · Shell series lip mud",
+        "buzz": "Taobao Beauty: amber & shell series awaken soul / Douyin: shell series shade search active",
+        "key_features": "Shell glow · low-saturation new shades · matte lip mud",
+        "price_link": "https://joocyee.tmall.com/",
+        "price_text": "¥79~99"
+      },
+      "explicit_dates": [],
+      "launch_text": "China emerging makeup (domestic) · Shell series lip mud",
+      "market": "CN",
+      "month_markers": [],
+      "new_badge": null,
+      "panel": "CN MASSTIGE",
+      "product_name": "Joocyee Shell Series Lip Mud",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-27/index.html",
+          "week": "week-27"
+        }
+      ],
+      "rank": 1,
+      "score": 83,
+      "section": "heat_rankings",
+      "tier": "MASSTIGE",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "Matte Lip Powder",
+      "detail": {
+        "brand": "China mass makeup (domestic) · lip powder new shades",
+        "buzz": "Taobao Beauty: 26 new N31-N34 matte high-payoff test / Smzdm: 618 treasure lip stunning / Zhihu: 3rd-gen peptide lip powder cumulative high sales",
+        "key_features": "Matte finish · high payoff · lip powder new shades",
+        "price_link": "https://judydoll.tmall.com/",
+        "price_text": "¥39~49"
+      },
+      "explicit_dates": [],
+      "launch_text": "China mass makeup (domestic) · lip powder new shades",
+      "market": "CN",
+      "month_markers": [],
+      "new_badge": "NEW",
+      "panel": "CN MASSTIGE",
+      "product_name": "Judydoll Lip Powder Foundation N31-N34",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-27/index.html",
+          "week": "week-27"
+        }
+      ],
+      "rank": 2,
+      "score": 82,
+      "section": "heat_rankings",
+      "tier": "MASSTIGE",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "Matte Lip Mud",
+      "detail": {
+        "brand": "China emerging makeup (domestic) · lip mud pioneer",
+        "buzz": "Dewu: EM08 lazy full-face lip-cheek dual-use / Smzdm: EM08 terracotta red-brown balanced, flatters warm tones / Baijiahao: 2026 lip brand youth popularity",
+        "key_features": "EM08 terracotta · velvet texture · Gen-Z viral",
+        "price_link": "https://intoyou.tmall.com/",
+        "price_text": "¥49~69"
+      },
+      "explicit_dates": [],
+      "launch_text": "China emerging makeup (domestic) · lip mud pioneer",
+      "market": "CN",
+      "month_markers": [],
+      "new_badge": null,
+      "panel": "CN MASSTIGE",
+      "product_name": "INTO YOU Lip Mud EM08",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-27/index.html",
+          "week": "week-27"
+        }
+      ],
+      "rank": 3,
+      "score": 78,
+      "section": "heat_rankings",
+      "tier": "MASSTIGE",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "Setting Powder",
+      "detail": {
+        "brand": "China Eastern-aesthetics makeup (domestic) · air cushion powder benchmark",
+        "buzz": "Smzdm: Florasis air cushion powder guide / Toutiao: 2026 dry-skin holy-grail powder test",
+        "key_features": "Micron-grade powder · oil control · Eastern aesthetics",
+        "price_link": "https://huaxizi.tmall.com/",
+        "price_text": "¥149~199"
+      },
+      "explicit_dates": [],
+      "launch_text": "China Eastern-aesthetics makeup (domestic) · air cushion powder benchmark",
+      "market": "CN",
+      "month_markers": [],
+      "new_badge": null,
+      "panel": "CN MASSTIGE",
+      "product_name": "Florasis Air Cushion Powder",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-27/index.html",
+          "week": "week-27"
+        }
+      ],
+      "rank": 4,
+      "score": 76,
+      "section": "heat_rankings",
+      "tier": "MASSTIGE",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
       "category_badge": "",
       "detail": {
         "brand": "新品观察",
@@ -539,6 +2480,7 @@
       "explicit_dates": [],
       "launch_text": "新品观察",
       "market": "CN",
+      "month_markers": [],
       "new_badge": null,
       "panel": "CN MASSTIGE",
       "product_name": "酵色 贝壳系列唇泥（新色）",
@@ -559,6 +2501,134 @@
       "trend_tag": null
     },
     {
+      "category_badge": "Matte Lip Lacquer",
+      "detail": {
+        "brand": "China emerging makeup (domestic) · air lip lacquer category",
+        "buzz": "Chanmama: 618 Douyin sales data / Douyin: 618 video 12K+ likes / Baidu: Li Jiaqi collab, air lip lacquer high sales",
+        "key_features": "Air-feel · matte soft-mist · 30+ shades",
+        "price_link": "https://colorkey.tmall.com/",
+        "price_text": "¥59~79"
+      },
+      "explicit_dates": [],
+      "launch_text": "China emerging makeup (domestic) · air lip lacquer category",
+      "market": "CN",
+      "month_markers": [],
+      "new_badge": null,
+      "panel": "CN MASSTIGE",
+      "product_name": "Colorkey Air Lip Lacquer",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-27/index.html",
+          "week": "week-27"
+        }
+      ],
+      "rank": 5,
+      "score": 70,
+      "section": "heat_rankings",
+      "tier": "MASSTIGE",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "Guofeng Palette",
+      "detail": {
+        "brand": "China pro makeup (domestic) · Guofeng collab makeup",
+        "buzz": "Vogue CN: 2026 Carslan × Dunhuang Museum collab / Taobao Beauty: 9-color palette viral test / Douyin: packaging Eastern classical beauty",
+        "key_features": "Dunhuang Red · Apsara · Flying Apsaras · Guofeng collab benchmark",
+        "price_link": "https://carslam.tmall.com/",
+        "price_text": "¥129~199"
+      },
+      "explicit_dates": [],
+      "launch_text": "China pro makeup (domestic) · Guofeng collab makeup",
+      "market": "CN",
+      "month_markers": [],
+      "new_badge": null,
+      "panel": "CN MASSTIGE",
+      "product_name": "Carslan Dunhuang Collab Palette",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-27/index.html",
+          "week": "week-27"
+        }
+      ],
+      "rank": 6,
+      "score": 68,
+      "section": "heat_rankings",
+      "tier": "MASSTIGE",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "Multi-Shade Palette",
+      "detail": {
+        "brand": "Korean makeup (Stylenanda) · nine-grid classic",
+        "buzz": "Smzdm: nine-grid full test, orange-brown beginner-friendly / Smzdm: 2026 new cream palette, value makeup sustained heat",
+        "key_features": "Nine-grid summer palette · low-saturation pink-brown",
+        "price_link": "https://3ce.tmall.com/",
+        "price_text": "¥139~179"
+      },
+      "explicit_dates": [],
+      "launch_text": "Korean makeup (Stylenanda) · nine-grid classic",
+      "market": "CN",
+      "month_markers": [],
+      "new_badge": null,
+      "panel": "CN MASSTIGE",
+      "product_name": "3CE Nine-Grid Eyeshadow Palette",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-27/index.html",
+          "week": "week-27"
+        }
+      ],
+      "rank": 7,
+      "score": 66,
+      "section": "heat_rankings",
+      "tier": "MASSTIGE",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "Slim Tube Lipstick",
+      "detail": {
+        "brand": "China DTC makeup (domestic) · slim tube benchmark",
+        "buzz": "Smzdm: L04 red-brown celebrity ¥95 / Baidu: next-gen pro beauty brand妆养一体",
+        "key_features": "Slim tube · matte velvet · domestic benchmark",
+        "price_link": "https://perfectdiary.tmall.com/",
+        "price_text": "¥89~119"
+      },
+      "explicit_dates": [],
+      "launch_text": "China DTC makeup (domestic) · slim tube benchmark",
+      "market": "CN",
+      "month_markers": [],
+      "new_badge": null,
+      "panel": "CN MASSTIGE",
+      "product_name": "Perfect Diary Slim Lipstick",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-27/index.html",
+          "week": "week-27"
+        }
+      ],
+      "rank": 8,
+      "score": 65,
+      "section": "heat_rankings",
+      "tier": "MASSTIGE",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
       "category_badge": "",
       "detail": {
         "brand": "新品观察",
@@ -570,6 +2640,7 @@
       "explicit_dates": [],
       "launch_text": "新品观察",
       "market": "CN",
+      "month_markers": [],
       "new_badge": null,
       "panel": "CN MASSTIGE",
       "product_name": "3CE 九宫格眼影盘（夏日限定）",
@@ -590,6 +2661,70 @@
       "trend_tag": null
     },
     {
+      "category_badge": "Water Lip Gloss",
+      "detail": {
+        "brand": "China girly makeup (domestic · Proya-controlled) · Unicorn series",
+        "buzz": "Douyin: Unicorn series search active, rich swatch content / Taobao Beauty: ¥89 mirror gloss test / GirlStyle: girly-ceiling dreamy unicorn",
+        "key_features": "Girly packaging · low-saturation · Proya ¥800M controlling stake",
+        "price_link": "https://flowerknows.tmall.com/",
+        "price_text": "¥89~139"
+      },
+      "explicit_dates": [],
+      "launch_text": "China girly makeup (domestic · Proya-controlled) · Unicorn series",
+      "market": "CN",
+      "month_markers": [],
+      "new_badge": null,
+      "panel": "CN MASSTIGE",
+      "product_name": "Flower Knows Unicorn Lip Gloss",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-27/index.html",
+          "week": "week-27"
+        }
+      ],
+      "rank": 9,
+      "score": 65,
+      "section": "heat_rankings",
+      "tier": "MASSTIGE",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "Blush Palette",
+      "detail": {
+        "brand": "China mass makeup (domestic) · value blush palette",
+        "buzz": "Toutiao: Douyin 128K likes, Tmall monthly 57K+ / Sina Finance: Judydoll contour 33M units, dual-platform Top 1 / TopNews: 2025 Douyin makeup #13, going overseas",
+        "key_features": "Low-saturation cream · everyday commute · value",
+        "price_link": "https://judydoll.tmall.com/",
+        "price_text": "¥39~69"
+      },
+      "explicit_dates": [],
+      "launch_text": "China mass makeup (domestic) · value blush palette",
+      "market": "CN",
+      "month_markers": [],
+      "new_badge": null,
+      "panel": "CN MASSTIGE",
+      "product_name": "Judydoll Silky Blush Palette",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-27/index.html",
+          "week": "week-27"
+        }
+      ],
+      "rank": 10,
+      "score": 65,
+      "section": "heat_rankings",
+      "tier": "MASSTIGE",
+      "topic": "makeup",
+      "trend_badge": "Trend",
+      "trend_tag": "Low-Saturation Pastel Trend"
+    },
+    {
       "category_badge": "",
       "detail": {
         "brand": "性价比首选",
@@ -601,6 +2736,7 @@
       "explicit_dates": [],
       "launch_text": "性价比首选",
       "market": "CN",
+      "month_markers": [],
       "new_badge": null,
       "panel": "CN MASSTIGE",
       "product_name": "橘朵 腮红盘（新色系）",
@@ -632,6 +2768,7 @@
       "explicit_dates": [],
       "launch_text": "",
       "market": "US",
+      "month_markers": [],
       "new_badge": null,
       "panel": "US LEGACY",
       "product_name": "Rare Beauty Soft Pinch Liquid Blush",
@@ -663,6 +2800,7 @@
       "explicit_dates": [],
       "launch_text": "",
       "market": "US",
+      "month_markers": [],
       "new_badge": null,
       "panel": "US LEGACY",
       "product_name": "Revlon ColorStay Liquid Foundation SPF 15",
@@ -694,6 +2832,7 @@
       "explicit_dates": [],
       "launch_text": "",
       "market": "US",
+      "month_markers": [],
       "new_badge": null,
       "panel": "US LEGACY",
       "product_name": "Laura Geller The Ideal Fix Concealer",
@@ -725,6 +2864,7 @@
       "explicit_dates": [],
       "launch_text": "",
       "market": "US",
+      "month_markers": [],
       "new_badge": null,
       "panel": "US LEGACY",
       "product_name": "MAC Lipstick Classic",
@@ -756,6 +2896,7 @@
       "explicit_dates": [],
       "launch_text": "",
       "market": "US",
+      "month_markers": [],
       "new_badge": null,
       "panel": "US LEGACY",
       "product_name": "Maybelline Sky High Mascara",
@@ -787,6 +2928,7 @@
       "explicit_dates": [],
       "launch_text": "",
       "market": "US",
+      "month_markers": [],
       "new_badge": null,
       "panel": "US LEGACY",
       "product_name": "ILIA Limitless Lash Mascara",
@@ -818,6 +2960,7 @@
       "explicit_dates": [],
       "launch_text": "",
       "market": "US",
+      "month_markers": [],
       "new_badge": null,
       "panel": "US LEGACY",
       "product_name": "Makeup By Mario Ethereal Eyes Palette",
@@ -849,6 +2992,7 @@
       "explicit_dates": [],
       "launch_text": "",
       "market": "US",
+      "month_markers": [],
       "new_badge": null,
       "panel": "US LEGACY",
       "product_name": "Saie Glowy Super Gel Illuminator",
@@ -880,6 +3024,7 @@
       "explicit_dates": [],
       "launch_text": "",
       "market": "US",
+      "month_markers": [],
       "new_badge": null,
       "panel": "US LEGACY",
       "product_name": "VIOLETTE_FR Bisou Blush Marbled Cream Stick",
@@ -911,6 +3056,7 @@
       "explicit_dates": [],
       "launch_text": "",
       "market": "US",
+      "month_markers": [],
       "new_badge": null,
       "panel": "US LEGACY",
       "product_name": "Charlotte Tilbury Airbrush Flawless Foundation",
@@ -944,6 +3090,9 @@
       ],
       "launch_text": "上线即热销",
       "market": "US",
+      "month_markers": [
+        "2026-06"
+      ],
       "new_badge": null,
       "panel": "US LUXURY",
       "product_name": "Marc Jacobs Heart On Lipstick",
@@ -964,48 +3113,50 @@
       "trend_tag": null
     },
     {
-      "category_badge": "",
+      "category_badge": "Cushion Foundation",
       "detail": {
-        "brand": "高期待",
-        "buzz": "Sephora 热销",
-        "key_features": "光泽肌底妆+修容一体 · 12色号 · 养肤成分",
-        "price_link": "",
-        "price_text": "$135~150"
+        "brand": "French luxury makeup (L'Oréal) · Skin Affair skincare cushion line",
+        "buzz": "Editor choice: skincare-infused glow cushion with polyglutamic acid hydration tech",
+        "key_features": "31 shades · squalane + polyglutamic acid · medium coverage + glow finish + 24H hydration",
+        "price_link": "https://www.yslbeauty.com/",
+        "price_text": "$49"
       },
       "explicit_dates": [],
-      "launch_text": "高期待",
+      "launch_text": "French luxury makeup (L'Oréal) · Skin Affair skincare cushion line",
       "market": "US",
-      "new_badge": null,
+      "month_markers": [],
+      "new_badge": "NEW",
       "panel": "US LUXURY",
-      "product_name": "Tom Ford Shade & Illuminate Foundation",
+      "product_name": "YSL Skin Affair Soft Glow Cushion Foundation",
       "provenance": [
         {
           "commit": "709c63b",
           "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
-          "path": "archive/week-26/index.html",
-          "week": "week-26"
+          "path": "archive/week-27/index.html",
+          "week": "week-27"
         }
       ],
-      "rank": 2,
-      "score": 88,
+      "rank": 1,
+      "score": 85,
       "section": "heat_rankings",
       "tier": "LUXURY",
       "topic": "makeup",
-      "trend_badge": null,
+      "trend_badge": "Trend",
       "trend_tag": null
     },
     {
-      "category_badge": "",
+      "category_badge": "Longwear Lip",
       "detail": {
-        "brand": "好评率 93%",
-        "buzz": "Sephora Bestseller",
-        "key_features": "持妆16H · 高饱和浓郁色 · 30+色号",
-        "price_link": "",
+        "brand": "French luxury makeup (LVMH) · longwear lip classic",
+        "buzz": "Allure: buttery smooth high payoff, truly transfer-proof after 3 min / Cosmo UK: longwear liquid lip test",
+        "key_features": "16H wear · high-saturation · 30+ shades",
+        "price_link": "https://www.sephora.com/product/dior-rouge-dior-forever-liquid-transfer-proof-lipstick-P472977",
         "price_text": "$40"
       },
       "explicit_dates": [],
-      "launch_text": "好评率 93%",
+      "launch_text": "French luxury makeup (LVMH) · longwear lip classic",
       "market": "US",
+      "month_markers": [],
       "new_badge": null,
       "panel": "US LUXURY",
       "product_name": "Dior Rouge Dior Forever Liquid",
@@ -1015,90 +3166,41 @@
           "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
           "path": "archive/week-26/index.html",
           "week": "week-26"
+        },
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-27/index.html",
+          "week": "week-27"
         }
       ],
-      "rank": 3,
+      "rank": 2,
       "score": 82,
       "section": "heat_rankings",
-      "tier": "LUXURY",
-      "topic": "makeup",
-      "trend_badge": null,
-      "trend_tag": null
-    },
-    {
-      "category_badge": "",
-      "detail": {
-        "brand": "好评率 95%",
-        "buzz": "Sephora Top 5",
-        "key_features": "Pillow Talk唇色系 · Nude Pink常青色号",
-        "price_link": "",
-        "price_text": "$32~75"
+      "source_snapshot": {
+        "commit": "709c63b",
+        "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+        "path": "archive/week-27/index.html",
+        "week": "week-27"
       },
-      "explicit_dates": [],
-      "launch_text": "好评率 95%",
-      "market": "US",
-      "new_badge": null,
-      "panel": "US LUXURY",
-      "product_name": "Charlotte Tilbury Pillow Talk Collection",
-      "provenance": [
-        {
-          "commit": "709c63b",
-          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
-          "path": "archive/week-26/index.html",
-          "week": "week-26"
-        }
-      ],
-      "rank": 4,
-      "score": 78,
-      "section": "heat_rankings",
       "tier": "LUXURY",
       "topic": "makeup",
       "trend_badge": null,
       "trend_tag": null
     },
     {
-      "category_badge": "",
+      "category_badge": "Light Foundation",
       "detail": {
-        "brand": "好评率 91%",
-        "buzz": "Sephora 热销",
-        "key_features": "养肤粉底 · 透明质酸+烟酰胺 · 22色号",
-        "price_link": "",
-        "price_text": "$58"
-      },
-      "explicit_dates": [],
-      "launch_text": "好评率 91%",
-      "market": "US",
-      "new_badge": null,
-      "panel": "US LUXURY",
-      "product_name": "YSL Pure Shots Foundation",
-      "provenance": [
-        {
-          "commit": "709c63b",
-          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
-          "path": "archive/week-26/index.html",
-          "week": "week-26"
-        }
-      ],
-      "rank": 5,
-      "score": 72,
-      "section": "heat_rankings",
-      "tier": "LUXURY",
-      "topic": "makeup",
-      "trend_badge": null,
-      "trend_tag": null
-    },
-    {
-      "category_badge": "",
-      "detail": {
-        "brand": "好评率 92%",
-        "buzz": "Sephora Bestseller",
-        "key_features": "丝缎光泽肌 · Micro-fil技术 · 30+色号",
-        "price_link": "",
+        "brand": "Italian luxury makeup (L’Oréal) · silk-glow foundation benchmark",
+        "buzz": "Allure: 6 editors tested 2026 reformulation, more natural & lasting, zero oxidation / Beauty Look Book: new version equals original",
+        "key_features": "Silk glow · Micro-fil tech · 30+ shades",
+        "price_link": "https://www.sephora.com/product/luminous-silk-natural-glow-blurring-liquid-foundation-with-24-hour-wear-P519887",
         "price_text": "$44~64"
       },
       "explicit_dates": [],
-      "launch_text": "好评率 92%",
+      "launch_text": "Italian luxury makeup (L’Oréal) · silk-glow foundation benchmark",
       "market": "US",
+      "month_markers": [],
       "new_badge": null,
       "panel": "US LUXURY",
       "product_name": "Armani Luminous Silk Foundation",
@@ -1108,11 +3210,263 @@
           "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
           "path": "archive/week-26/index.html",
           "week": "week-26"
+        },
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-27/index.html",
+          "week": "week-27"
+        }
+      ],
+      "rank": 3,
+      "score": 80,
+      "section": "heat_rankings",
+      "source_snapshot": {
+        "commit": "709c63b",
+        "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+        "path": "archive/week-27/index.html",
+        "week": "week-27"
+      },
+      "tier": "LUXURY",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "Multi-Category",
+      "detail": {
+        "brand": "UK luxury makeup (Puig) · Pillow Talk nude IP",
+        "buzz": "Sephora: Pillow Talk nude global bestseller / Femfounded: one shade built a brand, 4-shade extension / KayaGlam: 4-shade everyday test",
+        "key_features": "Pillow Talk lip system · Nude Pink evergreen shades",
+        "price_link": "https://www.charlottetilbury.com/us/products/makeup/collections/pillow-talk",
+        "price_text": "$32~75"
+      },
+      "explicit_dates": [],
+      "launch_text": "UK luxury makeup (Puig) · Pillow Talk nude IP",
+      "market": "US",
+      "month_markers": [],
+      "new_badge": null,
+      "panel": "US LUXURY",
+      "product_name": "Charlotte Tilbury Pillow Talk Collection",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-26/index.html",
+          "week": "week-26"
+        },
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-27/index.html",
+          "week": "week-27"
+        }
+      ],
+      "rank": 4,
+      "score": 78,
+      "section": "heat_rankings",
+      "source_snapshot": {
+        "commit": "709c63b",
+        "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+        "path": "archive/week-27/index.html",
+        "week": "week-27"
+      },
+      "tier": "LUXURY",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "Blush Stick",
+      "detail": {
+        "brand": "US designer luxury makeup (LVMH · 2026 Coty relaunch) · Joystick new category",
+        "buzz": "Allure: new cream blush texture, brand return new category / NYMag: formula excellent but packaging bulky",
+        "key_features": "10 shades · daisy packaging · brand new category",
+        "price_link": "https://www.sephora.com/product/joystick-buildable-cream-blush-stick-P524934",
+        "price_text": "$35"
+      },
+      "explicit_dates": [],
+      "launch_text": "US designer luxury makeup (LVMH · 2026 Coty relaunch) · Joystick new category",
+      "market": "US",
+      "month_markers": [],
+      "new_badge": "NEW",
+      "panel": "US LUXURY",
+      "product_name": "Marc Jacobs Joystick Blush Stick",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-27/index.html",
+          "week": "week-27"
+        }
+      ],
+      "rank": 5,
+      "score": 76,
+      "section": "heat_rankings",
+      "tier": "LUXURY",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "Glow Foundation",
+      "detail": {
+        "brand": "US luxury makeup (Estée Lauder) · shade-illuminate tech benchmark",
+        "buzz": "Saks: SPF50 medium-coverage glow foundation / Allure: premium contour tech / Vogue: SS26 runway glow inspiration",
+        "key_features": "Glow foundation + contour一体 · 12 shades · skincare ingredients",
+        "price_link": "https://www.sephora.com/product/shade-illuminate-P422574",
+        "price_text": "$88"
+      },
+      "explicit_dates": [],
+      "launch_text": "US luxury makeup (Estée Lauder) · shade-illuminate tech benchmark",
+      "market": "US",
+      "month_markers": [],
+      "new_badge": null,
+      "panel": "US LUXURY",
+      "product_name": "Tom Ford Shade & Illuminate Foundation",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-26/index.html",
+          "week": "week-26"
+        },
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-27/index.html",
+          "week": "week-27"
         }
       ],
       "rank": 6,
-      "score": 68,
+      "score": 75,
       "section": "heat_rankings",
+      "source_snapshot": {
+        "commit": "709c63b",
+        "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+        "path": "archive/week-27/index.html",
+        "week": "week-27"
+      },
+      "tier": "LUXURY",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "Skincare Foundation",
+      "detail": {
+        "brand": "French luxury makeup (L’Oréal) · skincare foundation new line",
+        "buzz": "YSL official: Pure Shots skincare line / BuyCosmetics: effective ingredients but new foundation limited attention",
+        "key_features": "Skincare foundation · hyaluronic acid + niacinamide · 22 shades",
+        "price_link": "https://www.yslbeauty.com/int/pure-shot-collection.html",
+        "price_text": "$58"
+      },
+      "explicit_dates": [],
+      "launch_text": "French luxury makeup (L’Oréal) · skincare foundation new line",
+      "market": "US",
+      "month_markers": [],
+      "new_badge": null,
+      "panel": "US LUXURY",
+      "product_name": "YSL Pure Shots Foundation",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-26/index.html",
+          "week": "week-26"
+        },
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-27/index.html",
+          "week": "week-27"
+        }
+      ],
+      "rank": 7,
+      "score": 72,
+      "section": "heat_rankings",
+      "source_snapshot": {
+        "commit": "709c63b",
+        "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+        "path": "archive/week-27/index.html",
+        "week": "week-27"
+      },
+      "tier": "LUXURY",
+      "topic": "makeup",
+      "trend_badge": "Trend",
+      "trend_tag": "Skincare-Makeup Trend"
+    },
+    {
+      "category_badge": "Glow Primer",
+      "detail": {
+        "brand": "French luxury makeup (LVMH) · Dior Forever glow primer",
+        "buzz": "Allure: Dior highlighter editor pick / LiveThatGlow: natural glow test but glitter not for all",
+        "key_features": "Glow primer · Dior Forever line · 24H wear",
+        "price_link": "https://www.sephora.com/product/dior-forever-glow-maximizer-longwear-liquid-highlighter-P510547",
+        "price_text": "$42"
+      },
+      "explicit_dates": [],
+      "launch_text": "French luxury makeup (LVMH) · Dior Forever glow primer",
+      "market": "US",
+      "month_markers": [],
+      "new_badge": null,
+      "panel": "US LUXURY",
+      "product_name": "Dior Forever Glow Maximizer",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-27/index.html",
+          "week": "week-27"
+        }
+      ],
+      "rank": 8,
+      "score": 72,
+      "section": "heat_rankings",
+      "tier": "LUXURY",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "Powder Blush",
+      "detail": {
+        "brand": "Top MUA luxury makeup · Divine blush line",
+        "buzz": "Allure: PMG hottest single, editor + MUA pick / Cult Beauty: lightweight satin no fallout",
+        "key_features": "Peach nude · micro-satin finish",
+        "price_link": "https://www.sephora.com/product/pat-mcgrath-labs-skin-fetish-divine-powder-blush-P472489",
+        "price_text": "$58~68"
+      },
+      "explicit_dates": [],
+      "launch_text": "Top MUA luxury makeup · Divine blush line",
+      "market": "US",
+      "month_markers": [],
+      "new_badge": null,
+      "panel": "US LUXURY",
+      "product_name": "Pat McGrath Labs Divine Blush",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-26/index.html",
+          "week": "week-26"
+        },
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-27/index.html",
+          "week": "week-27"
+        }
+      ],
+      "rank": 9,
+      "score": 70,
+      "section": "heat_rankings",
+      "source_snapshot": {
+        "commit": "709c63b",
+        "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+        "path": "archive/week-27/index.html",
+        "week": "week-27"
+      },
       "tier": "LUXURY",
       "topic": "makeup",
       "trend_badge": null,
@@ -1130,6 +3484,7 @@
       "explicit_dates": [],
       "launch_text": "好评率 89%",
       "market": "US",
+      "month_markers": [],
       "new_badge": null,
       "panel": "US LUXURY",
       "product_name": "NARS Natural Radiant Longwear",
@@ -1150,48 +3505,18 @@
       "trend_tag": null
     },
     {
-      "category_badge": "",
+      "category_badge": "Dual-End Lip",
       "detail": {
-        "brand": "专业线推荐",
-        "buzz": "TikTok 热推",
-        "key_features": "蜜桃裸色系 · 微光缎面质地",
-        "price_link": "",
-        "price_text": "$58~68"
-      },
-      "explicit_dates": [],
-      "launch_text": "专业线推荐",
-      "market": "US",
-      "new_badge": null,
-      "panel": "US LUXURY",
-      "product_name": "Pat McGrath Labs Divine Blush",
-      "provenance": [
-        {
-          "commit": "709c63b",
-          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
-          "path": "archive/week-26/index.html",
-          "week": "week-26"
-        }
-      ],
-      "rank": 8,
-      "score": 60,
-      "section": "heat_rankings",
-      "tier": "LUXURY",
-      "topic": "makeup",
-      "trend_badge": null,
-      "trend_tag": null
-    },
-    {
-      "category_badge": "",
-      "detail": {
-        "brand": "品牌信赖",
-        "buzz": "TikTok 经典推荐",
-        "key_features": "双头唇釉 · 哑光+光泽叠涂",
-        "price_link": "",
+        "brand": "French luxury makeup · dual-end longwear classic",
+        "buzz": "Chanel official: dual-end 16H waterproof / Chanel CN: classic shades 176/174/69",
+        "key_features": "Dual-end lip · matte + gloss layering",
+        "price_link": "https://www.chanel.com/us/makeup/p/175182/le-rouge-duo-ultra-tenue-ultrawear-liquid-lip-colour/",
         "price_text": "$38~42"
       },
       "explicit_dates": [],
-      "launch_text": "品牌信赖",
+      "launch_text": "French luxury makeup · dual-end longwear classic",
       "market": "US",
+      "month_markers": [],
       "new_badge": null,
       "panel": "US LUXURY",
       "product_name": "Chanel Le Rouge Duo Ultra Tenue",
@@ -1201,11 +3526,23 @@
           "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
           "path": "archive/week-26/index.html",
           "week": "week-26"
+        },
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-27/index.html",
+          "week": "week-27"
         }
       ],
-      "rank": 9,
-      "score": 55,
+      "rank": 10,
+      "score": 65,
       "section": "heat_rankings",
+      "source_snapshot": {
+        "commit": "709c63b",
+        "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+        "path": "archive/week-27/index.html",
+        "week": "week-27"
+      },
       "tier": "LUXURY",
       "topic": "makeup",
       "trend_badge": null,
@@ -1223,6 +3560,7 @@
       "explicit_dates": [],
       "launch_text": "好评率 91%",
       "market": "US",
+      "month_markers": [],
       "new_badge": null,
       "panel": "US LUXURY",
       "product_name": "Urban Decay All Nighter Setting Spray",
@@ -1243,6 +3581,38 @@
       "trend_tag": null
     },
     {
+      "category_badge": "Multi-Stick",
+      "detail": {
+        "brand": "US DTC makeup · multi-stick category",
+        "buzz": "WellAndFit: 2026 test cream-to-powder no crease / Amazon: Midnight Blue 4.3★ long-seller",
+        "key_features": "Ice blue/silver/champagne · cream-to-powder · cool-tone multi-stick",
+        "price_link": "https://www.julep.com/products/eyeshadow-10-creme-to-powder-eyeshadow-stick",
+        "price_text": "$17.16"
+      },
+      "explicit_dates": [],
+      "launch_text": "US DTC makeup · multi-stick category",
+      "market": "US",
+      "month_markers": [],
+      "new_badge": null,
+      "panel": "US MASSTIGE",
+      "product_name": "Julep Eyeshadow 101 Stick",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-27/index.html",
+          "week": "week-27"
+        }
+      ],
+      "rank": 1,
+      "score": 98,
+      "section": "heat_rankings",
+      "tier": "MASSTIGE",
+      "topic": "makeup",
+      "trend_badge": "Trend",
+      "trend_tag": "Blue Beauty Trend"
+    },
+    {
       "category_badge": "",
       "detail": {
         "brand": "Amazon 月销12万+",
@@ -1254,6 +3624,7 @@
       "explicit_dates": [],
       "launch_text": "Amazon 月销12万+",
       "market": "US",
+      "month_markers": [],
       "new_badge": null,
       "panel": "US MASSTIGE",
       "product_name": "Julep Eyeshadow 101 Cream-to-Powder Stick",
@@ -1276,37 +3647,6 @@
     {
       "category_badge": "",
       "detail": {
-        "brand": "上线即热销",
-        "buzz": "Sephora 预售TOP10",
-        "key_features": "润色保湿 · 养肤底妆 · Selena Gomez同款",
-        "price_link": "",
-        "price_text": "$34"
-      },
-      "explicit_dates": [],
-      "launch_text": "上线即热销",
-      "market": "US",
-      "new_badge": null,
-      "panel": "US MASSTIGE",
-      "product_name": "Rare Beauty Find Comfort Tinted Moisturizer",
-      "provenance": [
-        {
-          "commit": "709c63b",
-          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
-          "path": "archive/week-26/index.html",
-          "week": "week-26"
-        }
-      ],
-      "rank": 2,
-      "score": 92,
-      "section": "heat_rankings",
-      "tier": "MASSTIGE",
-      "topic": "makeup",
-      "trend_badge": "趋势产品",
-      "trend_tag": null
-    },
-    {
-      "category_badge": "",
-      "detail": {
         "brand": "新品观察",
         "buzz": "Sephora 新品 TikTok 讨论",
         "key_features": "10色 · 雏菊图案包装 · 品牌全新品类",
@@ -1318,6 +3658,9 @@
       ],
       "launch_text": "新品观察",
       "market": "US",
+      "month_markers": [
+        "2026-06"
+      ],
       "new_badge": null,
       "panel": "US MASSTIGE",
       "product_name": "Marc Jacobs Joystick Blush Stick",
@@ -1338,30 +3681,139 @@
       "trend_tag": null
     },
     {
-      "category_badge": "",
+      "category_badge": "Lip Gloss",
       "detail": {
-        "brand": "Reddit热评",
-        "buzz": "Sephora 热销",
-        "key_features": "柔焦定妆粉 · Cloud Skin必备",
-        "price_link": "",
-        "price_text": "$33"
+        "brand": "US inclusive makeup (LVMH) · gloss benchmark",
+        "buzz": "Cosmopolitan: 9-year test still gloss benchmark / InStyle: 2026 best Fenty product",
+        "key_features": "Lip gloss · extreme shine · Rihanna co-sign",
+        "price_link": "https://www.sephora.com/product/gloss-bomb-universal-lip-luminizer-P67988453",
+        "price_text": "$21"
       },
       "explicit_dates": [],
-      "launch_text": "Reddit热评",
+      "launch_text": "US inclusive makeup (LVMH) · gloss benchmark",
       "market": "US",
+      "month_markers": [],
       "new_badge": null,
       "panel": "US MASSTIGE",
-      "product_name": "Kosas Cloud Set Blurring Powder",
+      "product_name": "Fenty Beauty Gloss Bomb",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-27/index.html",
+          "week": "week-27"
+        }
+      ],
+      "rank": 2,
+      "score": 80,
+      "section": "heat_rankings",
+      "tier": "MASSTIGE",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "Setting Spray",
+      "detail": {
+        "brand": "US pro makeup (L’Oréal) · setting spray pioneer",
+        "buzz": "Allure: 2025 reformulation test, longevity continues / Maddie: 2026 oily skin 16H test",
+        "key_features": "16H setting · Temperature-Control tech",
+        "price_link": "https://www.sephora.com/product/all-nighter-setting-spray-P518812",
+        "price_text": "$33~36"
+      },
+      "explicit_dates": [],
+      "launch_text": "US pro makeup (L’Oréal) · setting spray pioneer",
+      "market": "US",
+      "month_markers": [],
+      "new_badge": null,
+      "panel": "US MASSTIGE",
+      "product_name": "Urban Decay All Nighter Setting Spray",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-27/index.html",
+          "week": "week-27"
+        }
+      ],
+      "rank": 3,
+      "score": 80,
+      "section": "heat_rankings",
+      "tier": "MASSTIGE",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "Skincare BB",
+      "detail": {
+        "brand": "US celebrity DTC (Selena Gomez) · skincare foundation new line",
+        "buzz": "Byrdie: 2026 best tinted moisturizer / InStyle: 27-product 4-week test / LayersOfBeauty: lightweight glow",
+        "key_features": "Tinted moisturizer · skincare foundation · Selena Gomez co-sign",
+        "price_link": "https://www.rarebeauty.com/pages/find-comfort-collection",
+        "price_text": "$34"
+      },
+      "explicit_dates": [],
+      "launch_text": "US celebrity DTC (Selena Gomez) · skincare foundation new line",
+      "market": "US",
+      "month_markers": [],
+      "new_badge": null,
+      "panel": "US MASSTIGE",
+      "product_name": "Rare Beauty Find Comfort Tinted Moisturizer",
       "provenance": [
         {
           "commit": "709c63b",
           "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
           "path": "archive/week-26/index.html",
           "week": "week-26"
+        },
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-27/index.html",
+          "week": "week-27"
         }
       ],
       "rank": 4,
-      "score": 78,
+      "score": 80,
+      "section": "heat_rankings",
+      "source_snapshot": {
+        "commit": "709c63b",
+        "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+        "path": "archive/week-27/index.html",
+        "week": "week-27"
+      },
+      "tier": "MASSTIGE",
+      "topic": "makeup",
+      "trend_badge": "Trend",
+      "trend_tag": "Skincare-Makeup Trend"
+    },
+    {
+      "category_badge": "Longwear Foundation",
+      "detail": {
+        "brand": "US pro makeup (Shiseido) · longwear foundation classic",
+        "buzz": "BuyCosmetics: 2026 all-skin test no cakey / BeautyMart: glow coverage not heavy",
+        "key_features": "16H wear · 40 shades full-skin-tone",
+        "price_link": "https://www.sephora.com/product/natural-radiant-longwear-foundation-P427301",
+        "price_text": "$42~52"
+      },
+      "explicit_dates": [],
+      "launch_text": "US pro makeup (Shiseido) · longwear foundation classic",
+      "market": "US",
+      "month_markers": [],
+      "new_badge": null,
+      "panel": "US MASSTIGE",
+      "product_name": "NARS Natural Radiant Longwear",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-27/index.html",
+          "week": "week-27"
+        }
+      ],
+      "rank": 5,
+      "score": 74,
       "section": "heat_rankings",
       "tier": "MASSTIGE",
       "topic": "makeup",
@@ -1380,6 +3832,7 @@
       "explicit_dates": [],
       "launch_text": "上线好评",
       "market": "US",
+      "month_markers": [],
       "new_badge": null,
       "panel": "US MASSTIGE",
       "product_name": "Tower 28 Splashy Cream Blush Hydrating Gel",
@@ -1400,6 +3853,178 @@
       "trend_tag": null
     },
     {
+      "category_badge": "Lip Oil",
+      "detail": {
+        "brand": "US drugstore makeup (L’Oréal) · value lip oil",
+        "buzz": "WWD: TikTok viral editor test $9 value / NewBeauty: reader-voted \"perfect\" lip oil",
+        "key_features": "Lip oil · high gloss · 8 shades",
+        "price_link": "https://www.nyxcosmetics.com/lip/lip-gloss/fat-oil-lip-drip/NYX_1054.html",
+        "price_text": "$9"
+      },
+      "explicit_dates": [],
+      "launch_text": "US drugstore makeup (L’Oréal) · value lip oil",
+      "market": "US",
+      "month_markers": [],
+      "new_badge": null,
+      "panel": "US MASSTIGE",
+      "product_name": "NYX Professional Fat Oil Lip Oil",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-27/index.html",
+          "week": "week-27"
+        }
+      ],
+      "rank": 6,
+      "score": 72,
+      "section": "heat_rankings",
+      "tier": "MASSTIGE",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "Blurring Powder",
+      "detail": {
+        "brand": "US Clean Beauty makeup · blurring powder",
+        "buzz": "Kosas official: talc-free skincare-grade / FloatingInDreams: dry-skin friendly no cakey, viral deserved",
+        "key_features": "Blurring powder · Cloud Skin essential",
+        "price_link": "https://www.sephora.com/product/kosas-cloud-set-translucent-loose-setting-blurring-powder-P515091",
+        "price_text": "$33"
+      },
+      "explicit_dates": [],
+      "launch_text": "US Clean Beauty makeup · blurring powder",
+      "market": "US",
+      "month_markers": [],
+      "new_badge": null,
+      "panel": "US MASSTIGE",
+      "product_name": "Kosas Cloud Set Blurring Powder",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-26/index.html",
+          "week": "week-26"
+        },
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-27/index.html",
+          "week": "week-27"
+        }
+      ],
+      "rank": 7,
+      "score": 72,
+      "section": "heat_rankings",
+      "source_snapshot": {
+        "commit": "709c63b",
+        "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+        "path": "archive/week-27/index.html",
+        "week": "week-27"
+      },
+      "tier": "MASSTIGE",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "Liquid Blush",
+      "detail": {
+        "brand": "US DTC beauty · liquid blush pioneer",
+        "buzz": "ELLE: 2025 new Plush Blush longevity upgrade / Cosmopolitan: new version outlasts original",
+        "key_features": "Gel blush · sheer natural · 8 shades",
+        "price_link": "https://www.sephora.com/product/cloud-paint-plush-blush-P518494",
+        "price_text": "$22"
+      },
+      "explicit_dates": [],
+      "launch_text": "US DTC beauty · liquid blush pioneer",
+      "market": "US",
+      "month_markers": [],
+      "new_badge": null,
+      "panel": "US MASSTIGE",
+      "product_name": "Glossier Cloud Paint",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-27/index.html",
+          "week": "week-27"
+        }
+      ],
+      "rank": 8,
+      "score": 66,
+      "section": "heat_rankings",
+      "tier": "MASSTIGE",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "Glow Primer",
+      "detail": {
+        "brand": "US value makeup · glow primer viral",
+        "buzz": "Allure: TikTok Mikayla rec, literally a filter / MiaBeauty: 2026 portable glow test",
+        "key_features": "Highlighter · mix foundation/alone · multi-shade",
+        "price_link": "https://www.elfcosmetics.com/halo-glow-liquid-filter/81513.html",
+        "price_text": "$14"
+      },
+      "explicit_dates": [],
+      "launch_text": "US value makeup · glow primer viral",
+      "market": "US",
+      "month_markers": [],
+      "new_badge": null,
+      "panel": "US MASSTIGE",
+      "product_name": "e.l.f. Halo Glow Liquid Filter",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-27/index.html",
+          "week": "week-27"
+        }
+      ],
+      "rank": 9,
+      "score": 66,
+      "section": "heat_rankings",
+      "tier": "MASSTIGE",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "Liquid Blush",
+      "detail": {
+        "brand": "US Clean Beauty makeup · water liquid blush",
+        "buzz": "Allure: 6-year sensitive-skin benchmark, editor pick / Temptalia: community high score",
+        "key_features": "Water texture · clean formula · natural flush",
+        "price_link": "https://www.sephora.com/product/tower-28-splashy-hydrosilica-lip-gloss-P472607",
+        "price_text": "$20"
+      },
+      "explicit_dates": [],
+      "launch_text": "US Clean Beauty makeup · water liquid blush",
+      "market": "US",
+      "month_markers": [],
+      "new_badge": null,
+      "panel": "US MASSTIGE",
+      "product_name": "Tower 28 Splashy Cream Blush",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-27/index.html",
+          "week": "week-27"
+        }
+      ],
+      "rank": 10,
+      "score": 65,
+      "section": "heat_rankings",
+      "tier": "MASSTIGE",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
       "category_badge": "",
       "detail": {
         "brand": "季节新品（夏季）",
@@ -1411,6 +4036,7 @@
       "explicit_dates": [],
       "launch_text": "季节新品（夏季）",
       "market": "CN",
+      "month_markers": [],
       "new_badge": null,
       "panel": "CN LUXURY",
       "product_name": "毛戈平 光韵奢华粉底霜",
@@ -1442,6 +4068,7 @@
       "explicit_dates": [],
       "launch_text": "IP联名新品",
       "market": "CN",
+      "month_markers": [],
       "new_badge": null,
       "panel": "CN MASSTIGE",
       "product_name": "卡姿兰 敦煌联名系列",
@@ -1473,6 +4100,7 @@
       "explicit_dates": [],
       "launch_text": "已有系列新色",
       "market": "CN",
+      "month_markers": [],
       "new_badge": null,
       "panel": "CN MASSTIGE",
       "product_name": "酵色 贝壳系列唇泥（新色）",
@@ -1497,39 +4125,6 @@
       "detail": {
         "brand": "品牌回归全新产品线",
         "buzz": "",
-        "key_features": "$34 · 15色 · 爱心造型",
-        "price_link": "",
-        "price_text": ""
-      },
-      "explicit_dates": [
-        "2026-06-01"
-      ],
-      "launch_text": "品牌回归全新产品线",
-      "market": "US",
-      "new_badge": null,
-      "panel": "US LUXURY",
-      "product_name": "Marc Jacobs Heart On Lipstick",
-      "provenance": [
-        {
-          "commit": "709c63b",
-          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
-          "path": "archive/week-26/index.html",
-          "week": "week-26"
-        }
-      ],
-      "rank": 1,
-      "score": 95,
-      "section": "new_product_radar",
-      "tier": "LUXURY",
-      "topic": "makeup",
-      "trend_badge": null,
-      "trend_tag": null
-    },
-    {
-      "category_badge": "",
-      "detail": {
-        "brand": "品牌回归全新产品线",
-        "buzz": "",
         "key_features": "$26 · 21色 · 凝胶铅笔",
         "price_link": "",
         "price_text": ""
@@ -1539,6 +4134,9 @@
       ],
       "launch_text": "品牌回归全新产品线",
       "market": "US",
+      "month_markers": [
+        "2026-06"
+      ],
       "new_badge": null,
       "panel": "US LUXURY",
       "product_name": "Marc Jacobs Drawn This Way Eyeliner",
@@ -1559,6 +4157,90 @@
       "trend_tag": null
     },
     {
+      "category_badge": "Gel Eyeliner",
+      "detail": {
+        "brand": "2026.6.1 Sephora launch · new line · 21 shades",
+        "buzz": "Allure 84°F 12h no-crease test",
+        "key_features": "21 shades · 24h waterproof gel pencil · brand return new category",
+        "price_link": "https://www.sephora.com/brand/marc-jacobs-beauty",
+        "price_text": "$26"
+      },
+      "explicit_dates": [
+        "2026-06-01"
+      ],
+      "launch_text": "2026.6.1 Sephora launch · new line · 21 shades",
+      "market": "US",
+      "month_markers": [
+        "2026-06"
+      ],
+      "new_badge": null,
+      "panel": "US LUXURY",
+      "product_name": "Marc Jacobs Drawn This Way Gel Eyeliner",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-27/index.html",
+          "week": "week-27"
+        }
+      ],
+      "rank": 1,
+      "score": 88,
+      "section": "new_product_radar",
+      "tier": "LUXURY",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "Bullet Lipstick",
+      "detail": {
+        "brand": "2026.6.1 Sephora launch · new line · 15 shades",
+        "buzz": "Allure: texture like lip balm high payoff / NYMag: fragrance too strong, skip",
+        "key_features": "15 shades · heart-shaped bullet · maximalist lips",
+        "price_link": "https://www.sephora.com/product/heart-on-long-lasting-soft-shine-lipstick-P524918",
+        "price_text": "$34"
+      },
+      "explicit_dates": [
+        "2026-06-01"
+      ],
+      "launch_text": "2026.6.1 Sephora launch · new line · 15 shades",
+      "market": "US",
+      "month_markers": [
+        "2026-06"
+      ],
+      "new_badge": null,
+      "panel": "US LUXURY",
+      "product_name": "Marc Jacobs Heart On Lipstick",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-26/index.html",
+          "week": "week-26"
+        },
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-27/index.html",
+          "week": "week-27"
+        }
+      ],
+      "rank": 2,
+      "score": 85,
+      "section": "new_product_radar",
+      "source_snapshot": {
+        "commit": "709c63b",
+        "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+        "path": "archive/week-27/index.html",
+        "week": "week-27"
+      },
+      "tier": "LUXURY",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
       "category_badge": "",
       "detail": {
         "brand": "季节新品（夏季）",
@@ -1570,6 +4252,7 @@
       "explicit_dates": [],
       "launch_text": "季节新品（夏季）",
       "market": "US",
+      "month_markers": [],
       "new_badge": null,
       "panel": "US LUXURY",
       "product_name": "Tom Ford Shade & Illuminate Foundation",
@@ -1590,6 +4273,146 @@
       "trend_tag": null
     },
     {
+      "category_badge": "Limited Palette",
+      "detail": {
+        "brand": "2026.6 · Flora limited series · 10-shade palette",
+        "buzz": "No independent social buzz / editorial data",
+        "key_features": "10 warm brown/terracotta/rose copper/gold · matte+satin+shimmer · Flora limited",
+        "price_link": "https://www.gucci.com/us/en/pr/beauty/beauty-makeup/limited-edition-flora-eye-palette-01-sunset-orchid-p-8743389PRD99100",
+        "price_text": "$75"
+      },
+      "explicit_dates": [],
+      "launch_text": "2026.6 · Flora limited series · 10-shade palette",
+      "market": "US",
+      "month_markers": [
+        "2026-06"
+      ],
+      "new_badge": null,
+      "panel": "US LUXURY",
+      "product_name": "Gucci Flora Eye Palette Sunset Orchid",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-27/index.html",
+          "week": "week-27"
+        }
+      ],
+      "rank": 3,
+      "score": 80,
+      "section": "new_product_radar",
+      "tier": "LUXURY",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "Blush Stick",
+      "detail": {
+        "brand": "2026.6.1 Sephora launch · new line · 10 shades",
+        "buzz": "Allure: new cream blush texture / NYMag: formula excellent but packaging bulky",
+        "key_features": "10 shades · daisy packaging · lip-cheek dual-use",
+        "price_link": "https://www.sephora.com/product/joystick-buildable-cream-blush-stick-P524934",
+        "price_text": "$35"
+      },
+      "explicit_dates": [
+        "2026-06-01"
+      ],
+      "launch_text": "2026.6.1 Sephora launch · new line · 10 shades",
+      "market": "US",
+      "month_markers": [
+        "2026-06"
+      ],
+      "new_badge": null,
+      "panel": "US LUXURY",
+      "product_name": "Marc Jacobs Joystick Blush Stick",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-27/index.html",
+          "week": "week-27"
+        }
+      ],
+      "rank": 4,
+      "score": 76,
+      "section": "new_product_radar",
+      "tier": "LUXURY",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "High-Shine Lipgloss",
+      "detail": {
+        "brand": "2026.6 Summer collection · Rouge Coco Gloss upgrade · 18 shades",
+        "buzz": "The Beauty Look Book / Len Allure editorial preview positive",
+        "key_features": "85% moisture base · camellia ceramide · high-shine gloss",
+        "price_link": "https://www.chanel.com/us/makeup/p/158444/rouge-coco-hydra-gloss-hydrating-and-smoothing-high-shine-lipgloss/",
+        "price_text": "$45"
+      },
+      "explicit_dates": [],
+      "launch_text": "2026.6 Summer collection · Rouge Coco Gloss upgrade · 18 shades",
+      "market": "US",
+      "month_markers": [
+        "2026-06"
+      ],
+      "new_badge": null,
+      "panel": "US LUXURY",
+      "product_name": "CHANEL Rouge Coco Hydra Gloss",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-27/index.html",
+          "week": "week-27"
+        }
+      ],
+      "rank": 5,
+      "score": 75,
+      "section": "new_product_radar",
+      "tier": "LUXURY",
+      "topic": "makeup",
+      "trend_badge": "Trend",
+      "trend_tag": "Efficacy Lip Trend"
+    },
+    {
+      "category_badge": "Gel Highlighter",
+      "detail": {
+        "brand": "2026.6.1 Sephora launch · new line · 1 shade",
+        "buzz": "NYMag: shine surpasses Milk competitor, 1 shade only",
+        "key_features": "Lavender duo-chrome · wet glow · brand new category",
+        "price_link": "https://www.sephora.com/brand/marc-jacobs-beauty",
+        "price_text": "$29"
+      },
+      "explicit_dates": [
+        "2026-06-01"
+      ],
+      "launch_text": "2026.6.1 Sephora launch · new line · 1 shade",
+      "market": "US",
+      "month_markers": [
+        "2026-06"
+      ],
+      "new_badge": null,
+      "panel": "US LUXURY",
+      "product_name": "Marc Jacobs Money Shot Highlighter Gel",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-27/index.html",
+          "week": "week-27"
+        }
+      ],
+      "rank": 6,
+      "score": 75,
+      "section": "new_product_radar",
+      "tier": "LUXURY",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
       "category_badge": "",
       "detail": {
         "brand": "品牌全新品类",
@@ -1603,6 +4426,9 @@
       ],
       "launch_text": "品牌全新品类",
       "market": "US",
+      "month_markers": [
+        "2026-06"
+      ],
       "new_badge": null,
       "panel": "US MASSTIGE",
       "product_name": "Marc Jacobs Joystick Blush Stick",
@@ -1623,6 +4449,74 @@
       "trend_tag": null
     },
     {
+      "category_badge": "Charity Collab Lip",
+      "detail": {
+        "brand": "2026.6 · Chappell Roan co-created limited · 3 lip products",
+        "buzz": "Hypebae: launch sold out, restocked · Allure/Cosmopolitan/People 6 outlets",
+        "key_features": "3 limited lip products · 100% sales donated · Pride Month collab",
+        "price_link": "https://www.maccosmetics.com/vivaglam",
+        "price_text": "$25~27"
+      },
+      "explicit_dates": [],
+      "launch_text": "2026.6 · Chappell Roan co-created limited · 3 lip products",
+      "market": "US",
+      "month_markers": [
+        "2026-06"
+      ],
+      "new_badge": null,
+      "panel": "US MASSTIGE",
+      "product_name": "MAC x Chappell Roan VIVA GLAM",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-27/index.html",
+          "week": "week-27"
+        }
+      ],
+      "rank": 1,
+      "score": 82,
+      "section": "new_product_radar",
+      "tier": "MASSTIGE",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
+      "category_badge": "Peptide Lip Treatment",
+      "detail": {
+        "brand": "2026.6 · new line · 3 shades",
+        "buzz": "e.l.f. official 4.3/5 (4 reviews)",
+        "key_features": "1% peptide complex · 12h hydration · lip-cheek sheer tint",
+        "price_link": "https://www.elfcosmetics.com/products/thirst-burst-lip-treatment",
+        "price_text": "$8"
+      },
+      "explicit_dates": [],
+      "launch_text": "2026.6 · new line · 3 shades",
+      "market": "US",
+      "month_markers": [
+        "2026-06"
+      ],
+      "new_badge": null,
+      "panel": "US MASSTIGE",
+      "product_name": "e.l.f. Thirst Burst Lip Treatment",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-27/index.html",
+          "week": "week-27"
+        }
+      ],
+      "rank": 2,
+      "score": 80,
+      "section": "new_product_radar",
+      "tier": "MASSTIGE",
+      "topic": "makeup",
+      "trend_badge": "Trend",
+      "trend_tag": "Efficacy Lip Trend"
+    },
+    {
       "category_badge": "",
       "detail": {
         "brand": "品牌全新品类",
@@ -1636,6 +4530,9 @@
       ],
       "launch_text": "品牌全新品类",
       "market": "US",
+      "month_markers": [
+        "2026-06"
+      ],
       "new_badge": null,
       "panel": "US MASSTIGE",
       "product_name": "Marc Jacobs Money Shot Highlighter Gel",
@@ -1656,6 +4553,40 @@
       "trend_tag": null
     },
     {
+      "category_badge": "Jelly Shadow Stick",
+      "detail": {
+        "brand": "2026.6 · new line · multiple shades",
+        "buzz": "ColourPop official 4.8/5 (191 reviews) · Extra Jelly set sold out",
+        "key_features": "Jelly texture shadow stick · multi-shade · high payoff",
+        "price_link": "https://colourpop.com/collections/new-arrivals",
+        "price_text": "$10"
+      },
+      "explicit_dates": [],
+      "launch_text": "2026.6 · new line · multiple shades",
+      "market": "US",
+      "month_markers": [
+        "2026-06"
+      ],
+      "new_badge": null,
+      "panel": "US MASSTIGE",
+      "product_name": "ColourPop Jelly Much Eyeshadow Stick",
+      "provenance": [
+        {
+          "commit": "709c63b",
+          "commit_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+          "path": "archive/week-27/index.html",
+          "week": "week-27"
+        }
+      ],
+      "rank": 3,
+      "score": 75,
+      "section": "new_product_radar",
+      "tier": "MASSTIGE",
+      "topic": "makeup",
+      "trend_badge": null,
+      "trend_tag": null
+    },
+    {
       "category_badge": "",
       "detail": {
         "brand": "全新产品线",
@@ -1667,6 +4598,7 @@
       "explicit_dates": [],
       "launch_text": "全新产品线",
       "market": "US",
+      "month_markers": [],
       "new_badge": null,
       "panel": "US MASSTIGE",
       "product_name": "Tower 28 Splashy Cream Blush Hydrating Gel",
@@ -1687,7 +4619,7 @@
       "trend_tag": null
     }
   ],
-  "generated_at": "2026-07-23T08:06:10+00:00",
+  "generated_at": "2026-07-23T09:35:18+00:00",
   "historical_snapshot": "709c63b",
   "historical_snapshot_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
   "included_weeks": [
@@ -1698,27 +4630,35 @@
   ],
   "month": "2026-06",
   "summary": {
-    "deduped_unique": 54,
-    "duplicates_removed": 0,
+    "deduped_unique": 135,
+    "duplicates_removed": 32,
     "parse_failures": 0,
     "per_week": {
       "week-25": {
-        "included": 20,
+        "fragrance_heat_rankings": 10,
+        "fragrance_new_product_radar": 12,
+        "included": 42,
         "makeup_heat_rankings": 20
       },
       "week-26": {
-        "included": 34,
+        "fragrance_heat_rankings": 10,
+        "fragrance_new_product_radar": 12,
+        "included": 56,
         "makeup_heat_rankings": 25,
         "makeup_new_product_radar": 9
       },
       "week-27": {
-        "excluded": 82
+        "excluded": 13,
+        "fragrance_heat_rankings": 20,
+        "included": 69,
+        "makeup_heat_rankings": 40,
+        "makeup_new_product_radar": 9
       }
     },
-    "raw_excluded_w27": 82,
-    "raw_included": 54
+    "raw_excluded_w27": 13,
+    "raw_included": 167
   },
-  "w27_rule": "Only keep W27 items with explicit item-level June 29 or June 30 dates.",
+  "w27_rule": "Week-27 heat rankings are preserved as the verified final June month report; week-27 radar rows require explicit June day-level or month-level launch evidence.",
   "window_end": "2026-06-30",
   "window_start": "2026-06-01"
 }

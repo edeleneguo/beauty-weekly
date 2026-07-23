@@ -54,6 +54,7 @@ tar --exclude=.beauty-weekly-state -cf - . | tar -xf - -C "$STAGE_DIR"
   python3 build/validate_scoring.py
   python3 build/validate_evidence.py
   python3 build/validate_pipeline.py
+  python3 build/audit_monthly_completeness.py
 )
 
 echo "Staged render: OK"
