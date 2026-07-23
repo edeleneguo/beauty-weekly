@@ -75,6 +75,13 @@ def test_radar_filter_keeps_verified_products_without_trend_badge():
     assert [product["name"] for product in filtered] == ["Visible Radar Product"]
 
 
+def test_monthly_templates_have_sequential_section_labels():
+    for template_name in ("index.html", "fragrance.html"):
+        html = (ROOT / "templates" / "pages" / template_name).read_text(encoding="utf-8")
+        positions = [html.index(f"Section 0{i}") for i in range(1, 5)]
+        assert positions == sorted(positions), f"{template_name} section labels are out of order"
+
+
 def test_structural_fidelity_manifest_script_writes_required_sections():
     result = subprocess.run(
         [sys.executable, str(ROOT / "build" / "structural_fidelity_manifest.py")],

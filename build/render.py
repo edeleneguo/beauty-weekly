@@ -274,7 +274,14 @@ def _filter_panel_products(products: List[Dict[str, Any]], section: str) -> List
             if qs in ("out-of-window", "unverified"):
                 continue
         filtered.append(p)
-    return filtered
+    return sorted(
+        filtered,
+        key=lambda p: (
+            -float(p.get("score") or 0),
+            int(p.get("rank") or 999),
+            str(p.get("name") or ""),
+        ),
+    )
 
 
 _EMPTY_STATE_MESSAGES = {

@@ -1,5 +1,5 @@
 {
-  "canonical_hash": "10b4bce918a080b764dde0befc72d1fc072d24da55e9505d086d93bc943daa01",
+  "canonical_hash": "55a7c87bc2ca0e1132f3538f8f686e354b60a174cfaedd05474e78eeb3964365",
   "data_pointer": "../../month2026-06.json",
   "data_sha256": null,
   "date_range": "Jun 1 – Jun 30, 2026",
@@ -30,5 +30,5 @@
   "schema_version": 3,
   "scoring_hash": "cfef423ff84049b2918b6ea62d44bcd353c4b493f6ed50e7856c55369d92eb43",
   "source_reference_hash": "e4fdc3512702a469f9443c4e6c85b0210038f2ce0facfa45ef4634ba38681ef4",
-  "sources_hash": "c001e12690c7b906db6c816d58fbde38b11ce08f4dc0426d02605f633fa1b174"
+  "sources_hash": "7ac1054718822dcc0c0c3cdbbd2f27110a181a3a7b23b198846d7d2e4c053178"
 }

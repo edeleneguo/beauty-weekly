@@ -100,12 +100,17 @@ _GENERIC_PATHS = {
     "sale",
     "shop-all",
     "skincare",
+    "xilie",
 }
 _LOCALE_HOME_RE = re.compile(
     r"^https?://(?:www\.)?[a-z0-9-]+\.(?:cn|com\.cn|co\.cn)(?:/zh(?:_cn)?/beauty/?|/?\s*)$",
     re.I,
 )
 _EVIDENCE_URL_RE = re.compile(r"github\.com/.+/blob/.+/archive/", re.I)
+_EVIDENCE_PRICE_RE = re.compile(
+    r"^(?:archived source observed|evidence-backed observed|evidence source)",
+    re.I,
+)
 
 
 def _is_generic_url(url: str) -> bool:
@@ -124,7 +129,7 @@ def _is_generic_url(url: str) -> bool:
     normalized_path = path.casefold().rstrip("/")
     if normalized_path in _GENERIC_PATHS:
         return True
-    if normalized_path.endswith(("product-list", "/xilie")):
+    if normalized_path.endswith(("product-list", "/xilie", "-collection.html")):
         return True
     if "/collections/" in f"/{normalized_path}/" or "/capsule/" in f"/{normalized_path}/":
         return True
@@ -135,6 +140,26 @@ def _is_generic_url(url: str) -> bool:
 
 def _is_evidence_url(url: str) -> bool:
     return bool(_EVIDENCE_URL_RE.search(url))
+
+
+def _is_explicit_evidence_link(product: dict, link: str) -> bool:
+    """Allow article/archive evidence links when the visible copy says so.
+
+    Monthly dashboards sometimes need a credible article, RSS result, or
+    historical archive as the best available evidence, especially for CN
+    platforms where direct product pages are unstable. Those links are allowed
+    only when they are the product's cited evidence URL and the price text makes
+    the fallback explicit instead of presenting it as a product page.
+    """
+    price_text = product.get("detail", {}).get("price_link", {}).get("en", "").strip()
+    evidence = (product.get("launch_evidence") or {}).get("evidence") or {}
+    evidence_type = str(evidence.get("type") or "").casefold()
+    evidence_url = str(evidence.get("url") or "").strip()
+    if link != evidence_url:
+        return False
+    if evidence_type not in {"editorial", "repo_snapshot", "article", "news", "rss_result"}:
+        return False
+    return bool(_EVIDENCE_PRICE_RE.search(price_text))
 
 
 def _visible_fields(product: dict, section: str) -> dict[str, str]:
@@ -224,12 +249,43 @@ def audit_urls(report: dict) -> list[str]:
         link = product.get("detail", {}).get("price_link", {}).get("link", "").strip()
         if not link:
             continue
-        if _is_evidence_url(link):
+        if _is_evidence_url(link) or _is_explicit_evidence_link(product, link):
             continue
         if _is_generic_url(link):
             errors.append(
                 f"{_loc(topic, section, panel, idx, product)}: non-direct or generic URL {link}"
             )
+    return errors
+
+
+def audit_rank_order(report: dict) -> list[str]:
+    errors: list[str] = []
+    products = report.get("products", {})
+    for topic in ("makeup", "fragrance"):
+        for section in ("heat_rankings", "new_product_radar"):
+            for panel, items in products.get(topic, {}).get(section, {}).items():
+                visible = []
+                for product in items:
+                    if product.get("score", 0) == 0:
+                        continue
+                    launch_evidence = product.get("launch_evidence") or {}
+                    qs = product.get("quarantine_status") or launch_evidence.get(
+                        "quarantine_status"
+                    )
+                    if section == "new_product_radar" and qs in ("out-of-window", "unverified"):
+                        continue
+                    visible.append(product)
+                ranks = [product.get("rank") for product in visible]
+                expected = list(range(1, len(visible) + 1))
+                if ranks != expected:
+                    errors.append(
+                        f"{topic}/{section}/{panel}: ranks {ranks} are not sequential {expected}"
+                    )
+                scores = [float(product.get("score") or 0) for product in visible]
+                if scores != sorted(scores, reverse=True):
+                    errors.append(
+                        f"{topic}/{section}/{panel}: scores {scores} are not descending"
+                    )
     return errors
 
 
@@ -361,6 +417,7 @@ def run(month: str) -> list[tuple[str, list[str]]]:
         ("empty_visible_fields", audit_empty_visible_fields(report)),
         ("duplicate_or_generic_buzz", audit_duplicate_or_generic_buzz(report)),
         ("direct_urls", audit_urls(report)),
+        ("rank_order", audit_rank_order(report)),
         ("category_specificity", audit_category_specificity(report)),
         ("market_tier", audit_market_tier(report)),
         ("trend_rationale", audit_trend_rationale(report)),

@@ -341,14 +341,16 @@
       "url": "https://www.sephora.com/product/shade-illuminate-P422574"
     },
     {
-      "checked_at": "2026-07-23T11:12:46Z",
+      "checked_at": "2026-07-23T14:45:00Z",
       "id": "src_0027",
       "provenance": {
         "reason": "Direct product URL referenced inside the verified historical month report.",
         "verification_status": "verified"
       },
       "type": "product_page",
-      "url": "https://www.yslbeauty.com/int/pure-shot-collection.html"
+      "url": "https://www.yslbeauty.com/int/makeup/face/liquid-foundation/all-hours-foundation/WW-50960YSL.html",
+      "fetched_at": "2026-07-23T14:45:00Z",
+      "title": "YSL All Hours Foundation - YSL Beauty"
     },
     {
       "checked_at": "2026-07-23T11:12:46Z",
@@ -501,14 +503,16 @@
       "url": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-26/index.html"
     },
     {
-      "checked_at": "2026-07-23T11:12:46Z",
+      "checked_at": "2026-07-23T14:45:00Z",
       "id": "src_0043",
       "provenance": {
         "reason": "Direct product URL referenced inside the verified historical month report.",
         "verification_status": "verified"
       },
-      "type": "product_page",
-      "url": "https://www.carslan.com.cn/xilie"
+      "type": "editorial",
+      "url": "https://www.vogue.com.cn/beauty/new-in-store/news_111g3fa47d40aa74.html",
+      "fetched_at": "2026-07-23T14:45:00Z",
+      "title": "Vogue China: Carslan x Dunhuang Museum collection"
     },
     {
       "checked_at": "2026-07-23T11:12:46Z",
@@ -591,14 +595,16 @@
       "url": "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-27/index.html"
     },
     {
-      "checked_at": "2026-07-23T11:12:46Z",
+      "checked_at": "2026-07-23T14:45:00Z",
       "id": "src_0052",
       "provenance": {
         "reason": "Direct product URL referenced inside the verified historical month report.",
         "verification_status": "verified"
       },
       "type": "product_page",
-      "url": "https://www.lelabofragrances.com/the-matcha-26.html"
+      "url": "https://www.bloomingdales.com/shop/product/le-labo-the-matcha-26-eau-de-parfum?ID=5219679",
+      "fetched_at": "2026-07-23T14:45:00Z",
+      "title": "Le Labo Thé Matcha 26 Eau de Parfum - Bloomingdale's"
     },
     {
       "checked_at": "2026-07-23T11:12:46Z",
@@ -819,6 +825,54 @@
       },
       "type": "product_page",
       "url": "https://us.kayali.com/products/freedom-musk-matcha-45"
+    },
+    {
+      "id": "src_0075",
+      "title": "YSL Skin Affair Soft Glow Cushion Foundation - Sephora",
+      "url": "https://www.sephora.com/product/skin-affair-soft-glow-cushion-foundation-P524839",
+      "type": "product_page",
+      "checked_at": "2026-07-23T14:52:00Z",
+      "fetched_at": "2026-07-23T14:52:00Z",
+      "provenance": {
+        "reason": "Official Sephora product page confirming Skin Affair cushion identity and price.",
+        "verification_status": "verified"
+      }
+    },
+    {
+      "id": "src_0076",
+      "title": "Charlotte Tilbury Matte Revolution Hydrating Lipstick Pillow Talk - Beautylish",
+      "url": "https://www.beautylish.com/s/charlotte-tilbury-matte-revolution-hydrating-lipstick-pillow-talk",
+      "type": "product_page",
+      "checked_at": "2026-07-23T14:52:00Z",
+      "fetched_at": "2026-07-23T14:52:00Z",
+      "provenance": {
+        "reason": "Product page confirming Pillow Talk Matte Revolution SKU identity.",
+        "verification_status": "verified"
+      }
+    },
+    {
+      "id": "src_0077",
+      "title": "Positive Light Tinted Moisturizer Broad Spectrum SPF 20 Sunscreen - Rare Beauty",
+      "url": "https://www.rarebeauty.com/products/positive-light-tinted-moisturizer-broad-spectrum-spf-20-sunscreen",
+      "type": "product_page",
+      "checked_at": "2026-07-23T14:52:00Z",
+      "fetched_at": "2026-07-23T14:52:00Z",
+      "provenance": {
+        "reason": "Official Rare Beauty product page confirming Positive Light tinted moisturizer identity, size, and features.",
+        "verification_status": "verified"
+      }
+    },
+    {
+      "id": "src_0078",
+      "title": "ColourPop Jelly Much Gel Eyeshadow Stick - Ulta Beauty",
+      "url": "https://www.ulta.com/p/jelly-much-gel-eyeshadow-stick-pimprod2059170",
+      "type": "product_page",
+      "checked_at": "2026-07-23T14:52:00Z",
+      "fetched_at": "2026-07-23T14:52:00Z",
+      "provenance": {
+        "reason": "Ulta product page confirming ColourPop Jelly Much Gel Eyeshadow Stick identity and retail context.",
+        "verification_status": "verified"
+      }
     }
   ],
   "total_sources": 74,
