@@ -1,0 +1,632 @@
+{
+  "candidate_counts": {
+    "fragrance": {
+      "heat_rankings": {
+        "CN LUXURY": 2,
+        "CN MASSTIGE": 3,
+        "US LUXURY": 7,
+        "US MASSTIGE": 8
+      },
+      "new_product_radar": {
+        "CN LUXURY": 0,
+        "CN MASSTIGE": 0,
+        "US LUXURY": 6,
+        "US MASSTIGE": 6
+      }
+    },
+    "makeup": {
+      "heat_rankings": {
+        "CN LUXURY": 10,
+        "CN MASSTIGE": 10,
+        "US LUXURY": 10,
+        "US MASSTIGE": 10
+      },
+      "new_product_radar": {
+        "CN LUXURY": 1,
+        "CN MASSTIGE": 2,
+        "US LUXURY": 8,
+        "US MASSTIGE": 6
+      }
+    }
+  },
+  "canonical_counts": {
+    "fragrance": {
+      "heat_rankings": {
+        "CN LUXURY": 2,
+        "CN MASSTIGE": 3,
+        "US LUXURY": 7,
+        "US MASSTIGE": 8
+      },
+      "new_product_radar": {
+        "CN LUXURY": 0,
+        "CN MASSTIGE": 0,
+        "US LUXURY": 6,
+        "US MASSTIGE": 6
+      }
+    },
+    "makeup": {
+      "heat_rankings": {
+        "CN LUXURY": 10,
+        "CN MASSTIGE": 10,
+        "US LUXURY": 10,
+        "US MASSTIGE": 10
+      },
+      "new_product_radar": {
+        "CN LUXURY": 1,
+        "CN MASSTIGE": 2,
+        "US LUXURY": 8,
+        "US MASSTIGE": 6
+      }
+    }
+  },
+  "current_rendered": {
+    "fragrance": {
+      "feature_flags": {
+        "category_badges": true,
+        "expandable_detail_cells": true,
+        "expandable_rationale": true,
+        "trend_badges": true,
+        "trend_tags": true
+      },
+      "heat_panel_counts": {
+        "CN LUXURY": 2,
+        "CN MASSTIGE": 3,
+        "US LUXURY": 7,
+        "US MASSTIGE": 8
+      },
+      "news_cards": 3,
+      "radar_panel_counts": {
+        "CN LUXURY": 0,
+        "CN MASSTIGE": 0,
+        "US LUXURY": 6,
+        "US MASSTIGE": 6
+      },
+      "trend_cards": 7
+    },
+    "makeup": {
+      "feature_flags": {
+        "category_badges": true,
+        "expandable_detail_cells": true,
+        "expandable_rationale": true,
+        "trend_badges": true,
+        "trend_tags": true
+      },
+      "heat_panel_counts": {
+        "CN LUXURY": 10,
+        "CN MASSTIGE": 10,
+        "US LUXURY": 10,
+        "US MASSTIGE": 10
+      },
+      "news_cards": 5,
+      "radar_panel_counts": {
+        "CN LUXURY": 1,
+        "CN MASSTIGE": 2,
+        "US LUXURY": 8,
+        "US MASSTIGE": 6
+      },
+      "trend_cards": 7
+    }
+  },
+  "historical_snapshot": "709c63b",
+  "historical_snapshot_url": "https://github.com/edeleneguo/beauty-weekly/commit/709c63b",
+  "historical_weeks": {
+    "week-23": {
+      "fragrance": {
+        "heat_rankings": {
+          "CN LUXURY": 0,
+          "CN MASSTIGE": 0,
+          "US LUXURY": 0,
+          "US MASSTIGE": 0
+        },
+        "new_product_radar": {
+          "CN LUXURY": 0,
+          "CN MASSTIGE": 0,
+          "US LUXURY": 0,
+          "US MASSTIGE": 0
+        }
+      },
+      "makeup": {
+        "heat_rankings": {
+          "CN LUXURY": 0,
+          "CN MASSTIGE": 0,
+          "US LUXURY": 0,
+          "US MASSTIGE": 0
+        },
+        "new_product_radar": {
+          "CN LUXURY": 0,
+          "CN MASSTIGE": 0,
+          "US LUXURY": 0,
+          "US MASSTIGE": 0
+        }
+      }
+    },
+    "week-25": {
+      "fragrance": {
+        "heat_rankings": {
+          "CN LUXURY": 0,
+          "CN MASSTIGE": 0,
+          "US LUXURY": 0,
+          "US MASSTIGE": 0
+        },
+        "new_product_radar": {
+          "CN LUXURY": 0,
+          "CN MASSTIGE": 0,
+          "US LUXURY": 6,
+          "US MASSTIGE": 6
+        }
+      },
+      "makeup": {
+        "heat_rankings": {
+          "CN LUXURY": 0,
+          "CN MASSTIGE": 0,
+          "US LUXURY": 0,
+          "US MASSTIGE": 0
+        },
+        "new_product_radar": {
+          "CN LUXURY": 0,
+          "CN MASSTIGE": 0,
+          "US LUXURY": 0,
+          "US MASSTIGE": 0
+        }
+      }
+    },
+    "week-26": {
+      "fragrance": {
+        "heat_rankings": {
+          "CN LUXURY": 0,
+          "CN MASSTIGE": 0,
+          "US LUXURY": 0,
+          "US MASSTIGE": 0
+        },
+        "new_product_radar": {
+          "CN LUXURY": 0,
+          "CN MASSTIGE": 0,
+          "US LUXURY": 6,
+          "US MASSTIGE": 6
+        }
+      },
+      "makeup": {
+        "heat_rankings": {
+          "CN LUXURY": 5,
+          "CN MASSTIGE": 5,
+          "US LUXURY": 10,
+          "US MASSTIGE": 5
+        },
+        "new_product_radar": {
+          "CN LUXURY": 1,
+          "CN MASSTIGE": 2,
+          "US LUXURY": 3,
+          "US MASSTIGE": 3
+        }
+      }
+    },
+    "week-27": {
+      "fragrance": {
+        "heat_rankings": {
+          "CN LUXURY": 2,
+          "CN MASSTIGE": 3,
+          "US LUXURY": 7,
+          "US MASSTIGE": 8
+        },
+        "new_product_radar": {
+          "CN LUXURY": 0,
+          "CN MASSTIGE": 0,
+          "US LUXURY": 6,
+          "US MASSTIGE": 6
+        }
+      },
+      "makeup": {
+        "heat_rankings": {
+          "CN LUXURY": 10,
+          "CN MASSTIGE": 10,
+          "US LUXURY": 10,
+          "US MASSTIGE": 10
+        },
+        "new_product_radar": {
+          "CN LUXURY": 0,
+          "CN MASSTIGE": 1,
+          "US LUXURY": 6,
+          "US MASSTIGE": 3
+        }
+      }
+    }
+  },
+  "month": "2026-06",
+  "parity_audit": {
+    "fragrance": {
+      "heat_rankings": {
+        "CN LUXURY": {
+          "candidate_count": 2,
+          "canonical_count": 2,
+          "detail_completeness": {
+            "brand": 2,
+            "buzz": 2,
+            "key_features": 2,
+            "price_link": 2
+          },
+          "dom_count": 2,
+          "excluded_products": [],
+          "exclusion_reason": "Week-27 month-end heat panel preserved as authoritative June baseline.",
+          "included_products": [
+            "Le Labo Thé Matcha 26",
+            "Maison Margiela Lazy Weekend"
+          ],
+          "source_count": 2
+        },
+        "CN MASSTIGE": {
+          "candidate_count": 3,
+          "canonical_count": 3,
+          "detail_completeness": {
+            "brand": 3,
+            "buzz": 3,
+            "key_features": 3,
+            "price_link": 1
+          },
+          "dom_count": 3,
+          "excluded_products": [],
+          "exclusion_reason": "Week-27 month-end heat panel preserved as authoritative June baseline.",
+          "included_products": [
+            "Documents 昆仑煮雪 (Kunlun Boiled Snow)",
+            "Scent Library 凉白开 (Cool Boiled Water)",
+            "Boitown 幻境流沙金 (Mirage Quicksand Gold)"
+          ],
+          "source_count": 3
+        },
+        "US LUXURY": {
+          "candidate_count": 7,
+          "canonical_count": 7,
+          "detail_completeness": {
+            "brand": 7,
+            "buzz": 7,
+            "key_features": 7,
+            "price_link": 7
+          },
+          "dom_count": 7,
+          "excluded_products": [],
+          "exclusion_reason": "Week-27 month-end heat panel preserved as authoritative June baseline.",
+          "included_products": [
+            "Tom Ford Taormina Orange EDP",
+            "Kilian Love Don’t Be Shy",
+            "Jean Paul Gaultier Le Male In Blue",
+            "Bvlgari Eau Parfumée Thé Impérial",
+            "Guerlain Aqua Allegoria Perle Rosa Rossa",
+            "L’Artisan Parfumeur L’Amant EDP",
+            "Rabanne Million Gold For Her Pure Diamonds"
+          ],
+          "source_count": 7
+        },
+        "US MASSTIGE": {
+          "candidate_count": 8,
+          "canonical_count": 8,
+          "detail_completeness": {
+            "brand": 8,
+            "buzz": 8,
+            "key_features": 8,
+            "price_link": 8
+          },
+          "dom_count": 8,
+          "excluded_products": [],
+          "exclusion_reason": "Week-27 month-end heat panel preserved as authoritative June baseline.",
+          "included_products": [
+            "Sol de Janeiro Cheirosa 91",
+            "Phlur Missing Person",
+            "Kayali Freedom Musk Matcha",
+            "Phlur Rose Whip EDP",
+            "Huda Beauty Easy Bake Intense EDP",
+            "Lake & Skye 11 11 Moon EDP",
+            "DedCool Mochi Milk",
+            "Glossier You"
+          ],
+          "source_count": 8
+        }
+      },
+      "new_product_radar": {
+        "CN LUXURY": {
+          "candidate_count": 0,
+          "canonical_count": 0,
+          "detail_completeness": {
+            "brand": 0,
+            "buzz": 0,
+            "key_features": 0,
+            "price_link": 0
+          },
+          "dom_count": 0,
+          "excluded_products": [],
+          "exclusion_reason": "No eligible historical June radar rows were recovered for this panel.",
+          "included_products": [],
+          "source_count": 0
+        },
+        "CN MASSTIGE": {
+          "candidate_count": 0,
+          "canonical_count": 0,
+          "detail_completeness": {
+            "brand": 0,
+            "buzz": 0,
+            "key_features": 0,
+            "price_link": 0
+          },
+          "dom_count": 0,
+          "excluded_products": [],
+          "exclusion_reason": "No eligible historical June radar rows were recovered for this panel.",
+          "included_products": [],
+          "source_count": 0
+        },
+        "US LUXURY": {
+          "candidate_count": 6,
+          "canonical_count": 6,
+          "detail_completeness": {
+            "brand": 6,
+            "buzz": 6,
+            "key_features": 6,
+            "price_link": 6
+          },
+          "dom_count": 6,
+          "excluded_products": [],
+          "exclusion_reason": "All eligible historical radar products were preserved.",
+          "included_products": [
+            "Taormina Orange EDP",
+            "Thé Impérial",
+            "L'Amant",
+            "Million Gold",
+            "Le Male In Blue",
+            "Rosa Rossa"
+          ],
+          "source_count": 6
+        },
+        "US MASSTIGE": {
+          "candidate_count": 6,
+          "canonical_count": 6,
+          "detail_completeness": {
+            "brand": 6,
+            "buzz": 6,
+            "key_features": 6,
+            "price_link": 6
+          },
+          "dom_count": 6,
+          "excluded_products": [],
+          "exclusion_reason": "All eligible historical radar products were preserved.",
+          "included_products": [
+            "Easy Bake Intense EDP",
+            "Rose Whip",
+            "You Solid",
+            "Cheirosa 91",
+            "11 11 Moon",
+            "Mochi Milk"
+          ],
+          "source_count": 6
+        }
+      }
+    },
+    "makeup": {
+      "heat_rankings": {
+        "CN LUXURY": {
+          "candidate_count": 10,
+          "canonical_count": 10,
+          "detail_completeness": {
+            "brand": 10,
+            "buzz": 10,
+            "key_features": 10,
+            "price_link": 10
+          },
+          "dom_count": 10,
+          "excluded_products": [],
+          "exclusion_reason": "Week-27 month-end heat panel preserved as authoritative June baseline.",
+          "included_products": [
+            "La Mer The Soft Fluid Foundation",
+            "Helena Black Bandage Foundation",
+            "Givenchy Rose Perfecto Lip Oil",
+            "YSL Black Lacquer Lip Gloss",
+            "Dior Forever Skin Glow Foundation",
+            "Lancôme Longwear Foundation",
+            "Chanel Rouge Coco Flash",
+            "Estée Lauder DW Longwear Foundation",
+            "Gucci Rouge à Lèvres Satin",
+            "Mao Geping Light Radiance Foundation"
+          ],
+          "source_count": 10
+        },
+        "CN MASSTIGE": {
+          "candidate_count": 10,
+          "canonical_count": 10,
+          "detail_completeness": {
+            "brand": 10,
+            "buzz": 10,
+            "key_features": 10,
+            "price_link": 10
+          },
+          "dom_count": 10,
+          "excluded_products": [],
+          "exclusion_reason": "Week-27 month-end heat panel preserved as authoritative June baseline.",
+          "included_products": [
+            "Joocyee Shell Series Lip Mud",
+            "Judydoll Lip Powder Foundation N31-N34",
+            "INTO YOU Lip Mud EM08",
+            "Florasis Air Cushion Powder",
+            "Colorkey Air Lip Lacquer",
+            "Carslan Dunhuang Collab Palette",
+            "3CE Nine-Grid Eyeshadow Palette",
+            "Perfect Diary Slim Lipstick",
+            "Flower Knows Unicorn Lip Gloss",
+            "Judydoll Silky Blush Palette"
+          ],
+          "source_count": 10
+        },
+        "US LUXURY": {
+          "candidate_count": 10,
+          "canonical_count": 10,
+          "detail_completeness": {
+            "brand": 10,
+            "buzz": 10,
+            "key_features": 10,
+            "price_link": 10
+          },
+          "dom_count": 10,
+          "excluded_products": [],
+          "exclusion_reason": "Week-27 month-end heat panel preserved as authoritative June baseline.",
+          "included_products": [
+            "YSL Skin Affair Soft Glow Cushion Foundation",
+            "Dior Rouge Dior Forever Liquid",
+            "Armani Luminous Silk Foundation",
+            "Charlotte Tilbury Pillow Talk Collection",
+            "Marc Jacobs Joystick Blush Stick",
+            "Tom Ford Shade & Illuminate Foundation",
+            "YSL Pure Shots Foundation",
+            "Dior Forever Glow Maximizer",
+            "Pat McGrath Labs Divine Blush",
+            "Chanel Le Rouge Duo Ultra Tenue"
+          ],
+          "source_count": 10
+        },
+        "US MASSTIGE": {
+          "candidate_count": 10,
+          "canonical_count": 10,
+          "detail_completeness": {
+            "brand": 10,
+            "buzz": 10,
+            "key_features": 10,
+            "price_link": 10
+          },
+          "dom_count": 10,
+          "excluded_products": [],
+          "exclusion_reason": "Week-27 month-end heat panel preserved as authoritative June baseline.",
+          "included_products": [
+            "Julep Eyeshadow 101 Stick",
+            "Fenty Beauty Gloss Bomb",
+            "Urban Decay All Nighter Setting Spray",
+            "Rare Beauty Find Comfort Tinted Moisturizer",
+            "NARS Natural Radiant Longwear",
+            "NYX Professional Fat Oil Lip Oil",
+            "Kosas Cloud Set Blurring Powder",
+            "Glossier Cloud Paint",
+            "e.l.f. Halo Glow Liquid Filter",
+            "Tower 28 Splashy Cream Blush"
+          ],
+          "source_count": 10
+        }
+      },
+      "new_product_radar": {
+        "CN LUXURY": {
+          "candidate_count": 1,
+          "canonical_count": 1,
+          "detail_completeness": {
+            "brand": 1,
+            "buzz": 0,
+            "key_features": 1,
+            "price_link": 0
+          },
+          "dom_count": 1,
+          "excluded_products": [],
+          "exclusion_reason": "All eligible historical radar products were preserved.",
+          "included_products": [
+            "毛戈平 光韵奢华粉底霜"
+          ],
+          "source_count": 1
+        },
+        "CN MASSTIGE": {
+          "candidate_count": 2,
+          "canonical_count": 2,
+          "detail_completeness": {
+            "brand": 2,
+            "buzz": 0,
+            "key_features": 2,
+            "price_link": 0
+          },
+          "dom_count": 2,
+          "excluded_products": [],
+          "exclusion_reason": "All eligible historical radar products were preserved.",
+          "included_products": [
+            "卡姿兰 敦煌联名系列",
+            "酵色 贝壳系列唇泥（新色）"
+          ],
+          "source_count": 2
+        },
+        "US LUXURY": {
+          "candidate_count": 8,
+          "canonical_count": 8,
+          "detail_completeness": {
+            "brand": 8,
+            "buzz": 6,
+            "key_features": 8,
+            "price_link": 6
+          },
+          "dom_count": 8,
+          "excluded_products": [],
+          "exclusion_reason": "All eligible historical radar products were preserved.",
+          "included_products": [
+            "Marc Jacobs Drawn This Way Eyeliner",
+            "Marc Jacobs Drawn This Way Gel Eyeliner",
+            "Marc Jacobs Heart On Lipstick",
+            "Tom Ford Shade & Illuminate Foundation",
+            "Gucci Flora Eye Palette Sunset Orchid",
+            "Marc Jacobs Joystick Blush Stick",
+            "CHANEL Rouge Coco Hydra Gloss",
+            "Marc Jacobs Money Shot Highlighter Gel"
+          ],
+          "source_count": 8
+        },
+        "US MASSTIGE": {
+          "candidate_count": 6,
+          "canonical_count": 6,
+          "detail_completeness": {
+            "brand": 6,
+            "buzz": 3,
+            "key_features": 6,
+            "price_link": 3
+          },
+          "dom_count": 6,
+          "excluded_products": [],
+          "exclusion_reason": "All eligible historical radar products were preserved.",
+          "included_products": [
+            "Marc Jacobs Joystick Blush Stick",
+            "MAC x Chappell Roan VIVA GLAM",
+            "e.l.f. Thirst Burst Lip Treatment",
+            "Marc Jacobs Money Shot Highlighter Gel",
+            "ColourPop Jelly Much Eyeshadow Stick",
+            "Tower 28 Splashy Cream Blush Hydrating Gel"
+          ],
+          "source_count": 6
+        }
+      }
+    }
+  },
+  "render_shell_counts": {
+    "fragrance": {
+      "news_cards": 3,
+      "trend_cards": 7
+    },
+    "makeup": {
+      "news_cards": 5,
+      "trend_cards": 7
+    }
+  },
+  "source_counts": {
+    "fragrance": {
+      "heat_rankings": {
+        "CN LUXURY": 2,
+        "CN MASSTIGE": 3,
+        "US LUXURY": 7,
+        "US MASSTIGE": 8
+      },
+      "new_product_radar": {
+        "CN LUXURY": 0,
+        "CN MASSTIGE": 0,
+        "US LUXURY": 6,
+        "US MASSTIGE": 6
+      }
+    },
+    "makeup": {
+      "heat_rankings": {
+        "CN LUXURY": 10,
+        "CN MASSTIGE": 10,
+        "US LUXURY": 10,
+        "US MASSTIGE": 10
+      },
+      "new_product_radar": {
+        "CN LUXURY": 1,
+        "CN MASSTIGE": 2,
+        "US LUXURY": 8,
+        "US MASSTIGE": 6
+      }
+    }
+  }
+}

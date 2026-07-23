@@ -258,8 +258,9 @@ def _filter_panel_products(products: List[Dict[str, Any]], section: str) -> List
     """Filter out placeholder and quarantined products from a panel.
 
     - All sections: remove score=0 placeholder rows.
-    - Radar only: remove quarantined items (quarantine_status != 'verified')
-      and items missing trend metadata (fail-closed).
+    - Radar only: remove quarantined items (quarantine_status != 'verified').
+      No longer require trend_badge for radar panel products.
+      Keep existing trend badge/details rendering behavior when the data actually provides it.
     """
     filtered = []
     for p in products:
@@ -269,9 +270,6 @@ def _filter_panel_products(products: List[Dict[str, Any]], section: str) -> List
         if section == "radar":
             qs = p.get("quarantine_status")
             if qs in ("out-of-window", "unverified"):
-                continue
-            # Fail-closed: qualifying radar products must have trend_badge
-            if not p.get("trend_badge"):
                 continue
         filtered.append(p)
     return filtered

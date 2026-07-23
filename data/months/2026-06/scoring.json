@@ -5,31 +5,26 @@
     "max": 100,
     "min": 0,
     "monotonic_by_rank": true,
-    "observed_max": 95,
-    "observed_min": 68,
+    "observed_max": 98,
+    "observed_min": 65,
     "panel_independent": true,
     "type": "integer"
   },
   "missing_components": [
-    "score_breakdown — no per-dimension scores available",
-    "weights — no weighting factors documented"
+    "score_breakdown — historical June archive preserves only rendered composite scores",
+    "weights — no weighting factors documented in historical HTML"
   ],
   "observed_statistics": {
     "monotonic_by_rank": true,
-    "observed_max": 95,
-    "observed_min": 68,
-    "total_scored_products": 14
+    "observed_max": 98,
+    "observed_min": 65,
+    "total_scored_products": 89
   },
   "products": [
     {
-      "name": "Marc Jacobs Heart On Lipstick",
+      "name": "YSL Skin Affair Soft Glow Cushion Foundation",
       "panel": "US LUXURY",
-      "score": 95
-    },
-    {
-      "name": "Tom Ford Shade & Illuminate Foundation",
-      "panel": "US LUXURY",
-      "score": 88
+      "score": 85
     },
     {
       "name": "Dior Rouge Dior Forever Liquid",
@@ -37,24 +32,194 @@
       "score": 82
     },
     {
-      "name": "Julep Eyeshadow 101 Cream-to-Powder Stick",
+      "name": "Armani Luminous Silk Foundation",
+      "panel": "US LUXURY",
+      "score": 80
+    },
+    {
+      "name": "Charlotte Tilbury Pillow Talk Collection",
+      "panel": "US LUXURY",
+      "score": 78
+    },
+    {
+      "name": "Marc Jacobs Joystick Blush Stick",
+      "panel": "US LUXURY",
+      "score": 76
+    },
+    {
+      "name": "Tom Ford Shade & Illuminate Foundation",
+      "panel": "US LUXURY",
+      "score": 75
+    },
+    {
+      "name": "YSL Pure Shots Foundation",
+      "panel": "US LUXURY",
+      "score": 72
+    },
+    {
+      "name": "Dior Forever Glow Maximizer",
+      "panel": "US LUXURY",
+      "score": 72
+    },
+    {
+      "name": "Pat McGrath Labs Divine Blush",
+      "panel": "US LUXURY",
+      "score": 70
+    },
+    {
+      "name": "Chanel Le Rouge Duo Ultra Tenue",
+      "panel": "US LUXURY",
+      "score": 65
+    },
+    {
+      "name": "Julep Eyeshadow 101 Stick",
       "panel": "US MASSTIGE",
-      "score": 95
+      "score": 98
+    },
+    {
+      "name": "Fenty Beauty Gloss Bomb",
+      "panel": "US MASSTIGE",
+      "score": 80
+    },
+    {
+      "name": "Urban Decay All Nighter Setting Spray",
+      "panel": "US MASSTIGE",
+      "score": 80
     },
     {
       "name": "Rare Beauty Find Comfort Tinted Moisturizer",
       "panel": "US MASSTIGE",
-      "score": 92
+      "score": 80
     },
     {
-      "name": "Tower 28 Splashy Cream Blush Hydrating Gel",
+      "name": "NARS Natural Radiant Longwear",
+      "panel": "US MASSTIGE",
+      "score": 74
+    },
+    {
+      "name": "NYX Professional Fat Oil Lip Oil",
       "panel": "US MASSTIGE",
       "score": 72
     },
     {
-      "name": "Marc Jacobs Heart On Lipstick",
-      "panel": "US LUXURY",
-      "score": 95
+      "name": "Kosas Cloud Set Blurring Powder",
+      "panel": "US MASSTIGE",
+      "score": 72
+    },
+    {
+      "name": "Glossier Cloud Paint",
+      "panel": "US MASSTIGE",
+      "score": 66
+    },
+    {
+      "name": "e.l.f. Halo Glow Liquid Filter",
+      "panel": "US MASSTIGE",
+      "score": 66
+    },
+    {
+      "name": "Tower 28 Splashy Cream Blush",
+      "panel": "US MASSTIGE",
+      "score": 65
+    },
+    {
+      "name": "La Mer The Soft Fluid Foundation",
+      "panel": "CN LUXURY",
+      "score": 98
+    },
+    {
+      "name": "Helena Black Bandage Foundation",
+      "panel": "CN LUXURY",
+      "score": 97
+    },
+    {
+      "name": "Givenchy Rose Perfecto Lip Oil",
+      "panel": "CN LUXURY",
+      "score": 74
+    },
+    {
+      "name": "YSL Black Lacquer Lip Gloss",
+      "panel": "CN LUXURY",
+      "score": 70
+    },
+    {
+      "name": "Dior Forever Skin Glow Foundation",
+      "panel": "CN LUXURY",
+      "score": 66
+    },
+    {
+      "name": "Lancôme Longwear Foundation",
+      "panel": "CN LUXURY",
+      "score": 65
+    },
+    {
+      "name": "Chanel Rouge Coco Flash",
+      "panel": "CN LUXURY",
+      "score": 65
+    },
+    {
+      "name": "Estée Lauder DW Longwear Foundation",
+      "panel": "CN LUXURY",
+      "score": 65
+    },
+    {
+      "name": "Gucci Rouge à Lèvres Satin",
+      "panel": "CN LUXURY",
+      "score": 65
+    },
+    {
+      "name": "Mao Geping Light Radiance Foundation",
+      "panel": "CN LUXURY",
+      "score": 65
+    },
+    {
+      "name": "Joocyee Shell Series Lip Mud",
+      "panel": "CN MASSTIGE",
+      "score": 83
+    },
+    {
+      "name": "Judydoll Lip Powder Foundation N31-N34",
+      "panel": "CN MASSTIGE",
+      "score": 82
+    },
+    {
+      "name": "INTO YOU Lip Mud EM08",
+      "panel": "CN MASSTIGE",
+      "score": 78
+    },
+    {
+      "name": "Florasis Air Cushion Powder",
+      "panel": "CN MASSTIGE",
+      "score": 76
+    },
+    {
+      "name": "Colorkey Air Lip Lacquer",
+      "panel": "CN MASSTIGE",
+      "score": 70
+    },
+    {
+      "name": "Carslan Dunhuang Collab Palette",
+      "panel": "CN MASSTIGE",
+      "score": 68
+    },
+    {
+      "name": "3CE Nine-Grid Eyeshadow Palette",
+      "panel": "CN MASSTIGE",
+      "score": 66
+    },
+    {
+      "name": "Perfect Diary Slim Lipstick",
+      "panel": "CN MASSTIGE",
+      "score": 65
+    },
+    {
+      "name": "Flower Knows Unicorn Lip Gloss",
+      "panel": "CN MASSTIGE",
+      "score": 65
+    },
+    {
+      "name": "Judydoll Silky Blush Palette",
+      "panel": "CN MASSTIGE",
+      "score": 65
     },
     {
       "name": "Marc Jacobs Drawn This Way Eyeliner",
@@ -62,9 +227,54 @@
       "score": 90
     },
     {
+      "name": "Marc Jacobs Drawn This Way Gel Eyeliner",
+      "panel": "US LUXURY",
+      "score": 88
+    },
+    {
+      "name": "Marc Jacobs Heart On Lipstick",
+      "panel": "US LUXURY",
+      "score": 85
+    },
+    {
+      "name": "Tom Ford Shade & Illuminate Foundation",
+      "panel": "US LUXURY",
+      "score": 75
+    },
+    {
+      "name": "Gucci Flora Eye Palette Sunset Orchid",
+      "panel": "US LUXURY",
+      "score": 80
+    },
+    {
+      "name": "Marc Jacobs Joystick Blush Stick",
+      "panel": "US LUXURY",
+      "score": 76
+    },
+    {
+      "name": "CHANEL Rouge Coco Hydra Gloss",
+      "panel": "US LUXURY",
+      "score": 75
+    },
+    {
+      "name": "Marc Jacobs Money Shot Highlighter Gel",
+      "panel": "US LUXURY",
+      "score": 75
+    },
+    {
       "name": "Marc Jacobs Joystick Blush Stick",
       "panel": "US MASSTIGE",
       "score": 88
+    },
+    {
+      "name": "MAC x Chappell Roan VIVA GLAM",
+      "panel": "US MASSTIGE",
+      "score": 82
+    },
+    {
+      "name": "e.l.f. Thirst Burst Lip Treatment",
+      "panel": "US MASSTIGE",
+      "score": 80
     },
     {
       "name": "Marc Jacobs Money Shot Highlighter Gel",
@@ -72,14 +282,64 @@
       "score": 80
     },
     {
-      "name": "Kayali Freedom Musk Matcha",
-      "panel": "US LUXURY",
-      "score": 82
+      "name": "ColourPop Jelly Much Eyeshadow Stick",
+      "panel": "US MASSTIGE",
+      "score": 75
     },
     {
-      "name": "Kilian Love Don't Be Shy",
+      "name": "Tower 28 Splashy Cream Blush Hydrating Gel",
+      "panel": "US MASSTIGE",
+      "score": 72
+    },
+    {
+      "name": "毛戈平 光韵奢华粉底霜",
+      "panel": "CN LUXURY",
+      "score": 88
+    },
+    {
+      "name": "卡姿兰 敦煌联名系列",
+      "panel": "CN MASSTIGE",
+      "score": 85
+    },
+    {
+      "name": "酵色 贝壳系列唇泥（新色）",
+      "panel": "CN MASSTIGE",
+      "score": 78
+    },
+    {
+      "name": "Tom Ford Taormina Orange EDP",
+      "panel": "US LUXURY",
+      "score": 80
+    },
+    {
+      "name": "Kilian Love Don’t Be Shy",
       "panel": "US LUXURY",
       "score": 75
+    },
+    {
+      "name": "Jean Paul Gaultier Le Male In Blue",
+      "panel": "US LUXURY",
+      "score": 75
+    },
+    {
+      "name": "Bvlgari Eau Parfumée Thé Impérial",
+      "panel": "US LUXURY",
+      "score": 72
+    },
+    {
+      "name": "Guerlain Aqua Allegoria Perle Rosa Rossa",
+      "panel": "US LUXURY",
+      "score": 72
+    },
+    {
+      "name": "L’Artisan Parfumeur L’Amant EDP",
+      "panel": "US LUXURY",
+      "score": 70
+    },
+    {
+      "name": "Rabanne Million Gold For Her Pure Diamonds",
+      "panel": "US LUXURY",
+      "score": 68
     },
     {
       "name": "Sol de Janeiro Cheirosa 91",
@@ -87,18 +347,134 @@
       "score": 95
     },
     {
+      "name": "Phlur Missing Person",
+      "panel": "US MASSTIGE",
+      "score": 88
+    },
+    {
+      "name": "Kayali Freedom Musk Matcha",
+      "panel": "US MASSTIGE",
+      "score": 82
+    },
+    {
+      "name": "Phlur Rose Whip EDP",
+      "panel": "US MASSTIGE",
+      "score": 78
+    },
+    {
+      "name": "Huda Beauty Easy Bake Intense EDP",
+      "panel": "US MASSTIGE",
+      "score": 75
+    },
+    {
+      "name": "Lake & Skye 11 11 Moon EDP",
+      "panel": "US MASSTIGE",
+      "score": 72
+    },
+    {
+      "name": "DedCool Mochi Milk",
+      "panel": "US MASSTIGE",
+      "score": 70
+    },
+    {
       "name": "Glossier You",
+      "panel": "US MASSTIGE",
+      "score": 68
+    },
+    {
+      "name": "Le Labo Thé Matcha 26",
+      "panel": "CN LUXURY",
+      "score": 70
+    },
+    {
+      "name": "Maison Margiela Lazy Weekend",
+      "panel": "CN LUXURY",
+      "score": 65
+    },
+    {
+      "name": "Documents 昆仑煮雪 (Kunlun Boiled Snow)",
+      "panel": "CN MASSTIGE",
+      "score": 95
+    },
+    {
+      "name": "Scent Library 凉白开 (Cool Boiled Water)",
+      "panel": "CN MASSTIGE",
+      "score": 85
+    },
+    {
+      "name": "Boitown 幻境流沙金 (Mirage Quicksand Gold)",
+      "panel": "CN MASSTIGE",
+      "score": 78
+    },
+    {
+      "name": "Taormina Orange EDP",
+      "panel": "US LUXURY",
+      "score": 95
+    },
+    {
+      "name": "Thé Impérial",
+      "panel": "US LUXURY",
+      "score": 90
+    },
+    {
+      "name": "L'Amant",
+      "panel": "US LUXURY",
+      "score": 84
+    },
+    {
+      "name": "Million Gold",
+      "panel": "US LUXURY",
+      "score": 79
+    },
+    {
+      "name": "Le Male In Blue",
+      "panel": "US LUXURY",
+      "score": 73
+    },
+    {
+      "name": "Rosa Rossa",
+      "panel": "US LUXURY",
+      "score": 68
+    },
+    {
+      "name": "Easy Bake Intense EDP",
+      "panel": "US MASSTIGE",
+      "score": 95
+    },
+    {
+      "name": "Rose Whip",
+      "panel": "US MASSTIGE",
+      "score": 90
+    },
+    {
+      "name": "You Solid",
+      "panel": "US MASSTIGE",
+      "score": 84
+    },
+    {
+      "name": "Cheirosa 91",
+      "panel": "US MASSTIGE",
+      "score": 79
+    },
+    {
+      "name": "11 11 Moon",
+      "panel": "US MASSTIGE",
+      "score": 73
+    },
+    {
+      "name": "Mochi Milk",
       "panel": "US MASSTIGE",
       "score": 68
     }
   ],
   "provenance": {
+    "historical_radar_zero_scores_normalized": true,
     "status": "recomputed"
   },
-  "reason": "LLM-generated scores with no decomposable components.",
+  "reason": "Historical June month restoration uses rendered rank order when legacy radar rows omitted explicit numeric scores.",
   "recomputable": false,
   "schema_version": "1.0.0",
-  "scoring_formula": "Sales Score (≤50) + Buzz Score (≤50) = Total (≤100)",
+  "scoring_formula": "Historical rendered rank order with preserved composite scores when available.",
   "validation_rules": [
     {
       "checkable": true,
