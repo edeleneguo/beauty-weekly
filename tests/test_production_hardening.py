@@ -291,12 +291,12 @@ class TestIntentionalFailure:
     """Workflow must support intentional_failure input (Req 6)."""
 
     def test_deploy_workflow_has_intentional_failure_input(self):
-        """monthly-deploy.yml must have intentional_failure boolean input."""
-        workflow_path = os.path.join(ROOT, ".github", "workflows", "monthly-deploy.yml")
+        """weekly-deploy.yml must have intentional_failure boolean input."""
+        workflow_path = os.path.join(ROOT, ".github", "workflows", "weekly-deploy.yml")
         with open(workflow_path, encoding="utf-8") as f:
             content = f.read()
         assert "intentional_failure" in content, (
-            "monthly-deploy.yml missing intentional_failure input"
+            "weekly-deploy.yml missing intentional_failure input"
         )
         assert "type: boolean" in content, "intentional_failure must be type: boolean"
 
@@ -309,7 +309,7 @@ class TestIntentionalFailure:
 
     def test_deploy_workflow_has_failure_gate_step(self):
         """deploy workflow must have a gate step that fails when intentional_failure is set."""
-        workflow_path = os.path.join(ROOT, ".github", "workflows", "monthly-deploy.yml")
+        workflow_path = os.path.join(ROOT, ".github", "workflows", "weekly-deploy.yml")
         with open(workflow_path, encoding="utf-8") as f:
             content = f.read()
         assert "inputs.intentional_failure" in content, (
@@ -319,7 +319,7 @@ class TestIntentionalFailure:
 
     def test_gate_precedes_stage2_generation(self):
         """Gate must appear before Stage 2 LLM generation in the workflow."""
-        workflow_path = os.path.join(ROOT, ".github", "workflows", "monthly-deploy.yml")
+        workflow_path = os.path.join(ROOT, ".github", "workflows", "weekly-deploy.yml")
         with open(workflow_path, encoding="utf-8") as f:
             content = f.read()
         gate_pos = content.find("Intentional failure")
@@ -373,7 +373,7 @@ class TestOnlineVerification:
 
     def test_deploy_workflow_has_hash_verification(self):
         """Deploy workflow must verify SHA256 hash of live content."""
-        workflow_path = os.path.join(ROOT, ".github", "workflows", "monthly-deploy.yml")
+        workflow_path = os.path.join(ROOT, ".github", "workflows", "weekly-deploy.yml")
         with open(workflow_path, encoding="utf-8") as f:
             content = f.read()
         assert "sha256" in content.lower() or "hash" in content.lower(), (
@@ -385,7 +385,7 @@ class TestOnlineVerification:
 
     def test_deploy_workflow_checks_month_identifier(self):
         """Verification must compare actual month vs expected."""
-        workflow_path = os.path.join(ROOT, ".github", "workflows", "monthly-deploy.yml")
+        workflow_path = os.path.join(ROOT, ".github", "workflows", "weekly-deploy.yml")
         with open(workflow_path, encoding="utf-8") as f:
             content = f.read()
         assert "expected_num" in content or "endpoint_ok" in content, (

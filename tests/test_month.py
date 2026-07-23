@@ -21,7 +21,7 @@ import pytest
 
 ROOT = Path(__file__).resolve().parent.parent
 
-DEPLOY_WORKFLOW = ROOT / ".github" / "workflows" / "monthly-deploy.yml"
+DEPLOY_WORKFLOW = ROOT / ".github" / "workflows" / "weekly-deploy.yml"
 CI_WORKFLOW = ROOT / ".github" / "workflows" / "ci.yml"
 
 

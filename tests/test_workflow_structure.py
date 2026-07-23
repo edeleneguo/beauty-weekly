@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Static structural tests for monthly-deploy.yml workflow.
+"""Static structural tests for weekly-deploy.yml workflow.
 
 Ensures the deploy workflow meets atomicity, ordering, and safety invariants:
   - No deploy_pages.py (non-atomic API-per-file approach removed)
@@ -20,7 +20,7 @@ import pytest
 import yaml
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-WORKFLOW_PATH = os.path.join(ROOT, ".github", "workflows", "monthly-deploy.yml")
+WORKFLOW_PATH = os.path.join(ROOT, ".github", "workflows", "weekly-deploy.yml")
 
 
 @pytest.fixture(scope="module")
@@ -66,7 +66,7 @@ class TestNoDeployPagesScript:
 
     def test_no_deploy_pages_reference(self, workflow_raw: str):
         assert "deploy_pages.py" not in workflow_raw, (
-            "monthly-deploy.yml still references deploy_pages.py — "
+            "weekly-deploy.yml still references deploy_pages.py — "
             "the non-atomic per-file upload approach must be removed"
         )
 
@@ -369,7 +369,7 @@ class TestPagesBuildWait:
 
 
 CI_WORKFLOW_PATH = os.path.join(ROOT, ".github", "workflows", "ci.yml")
-DEPLOY_WORKFLOW_PATH = os.path.join(ROOT, ".github", "workflows", "monthly-deploy.yml")
+DEPLOY_WORKFLOW_PATH = os.path.join(ROOT, ".github", "workflows", "weekly-deploy.yml")
 
 
 class TestCIBaselineWeek:
