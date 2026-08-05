@@ -38,6 +38,8 @@ from build.collect import search_product_evidence  # noqa: E402
 API_KEY = os.environ.get("LLM_API_KEY", "")
 BASE_URL = os.environ.get("LLM_BASE_URL", "https://api.openai.com/v1")
 MODEL = os.environ.get("LLM_MODEL", "gpt-4o-mini")
+LLM_MAX_ATTEMPTS = int(os.environ.get("LLM_MAX_ATTEMPTS", "3"))
+_TRANSIENT_HTTP_CODES = {408, 409, 425, 429, 500, 502, 503, 504}
 
 VALID_EVIDENCE_SUPPORTED_FIELDS = frozenset(
     {"price", "features", "buzz", "brand", "category", "launch_date", "link"}
@@ -86,6 +88,23 @@ def month_date_range(month_str_val: str) -> tuple[str, str, str, str]:
     return en_range, cn_range, start, end
 
 
+def _chat_completions_url(base_url: str) -> str:
+    normalized = base_url.strip().rstrip("/")
+    if not normalized:
+        raise ValueError("LLM_BASE_URL must not be empty")
+    if normalized.endswith("/chat/completions"):
+        return normalized
+    return f"{normalized}/chat/completions"
+
+
+def _http_error_detail(exc: urllib.error.HTTPError) -> str:
+    try:
+        body = exc.read().decode("utf-8", errors="replace").strip()
+    except Exception:
+        body = ""
+    return body[:500] or str(exc.reason) or "no response body"
+
+
 def call_llm(system_prompt: str, user_prompt: str, max_tokens: int = 8000) -> str:
     if not API_KEY:
         raise ValueError("LLM_API_KEY environment variable not set")
@@ -100,28 +119,41 @@ def call_llm(system_prompt: str, user_prompt: str, max_tokens: int = 8000) -> st
             "temperature": 0.3,
         }
     ).encode("utf-8")
-    url = f"{BASE_URL}/chat/completions"
-    req = urllib.request.Request(
-        url,
-        data=payload,
-        headers={
-            "Content-Type": "application/json",
-            "Authorization": f"Bearer {API_KEY}",
-        },
-    )
-    for attempt in range(3):
+
+    url = _chat_completions_url(BASE_URL)
+    for attempt in range(1, LLM_MAX_ATTEMPTS + 1):
+        req = urllib.request.Request(
+            url,
+            data=payload,
+            headers={
+                "Content-Type": "application/json",
+                "Authorization": f"Bearer {API_KEY}",
+            },
+        )
         try:
             with urllib.request.urlopen(req, timeout=120) as resp:
                 result = json.loads(resp.read().decode("utf-8"))
                 return result["choices"][0]["message"]["content"]
         except urllib.error.HTTPError as exc:
-            if exc.code != 429 or attempt == 2:
-                raise
+            detail = _http_error_detail(exc)
+            if exc.code == 410:
+                raise RuntimeError(
+                    f"LLM endpoint is retired (HTTP 410): {url}. Update the "
+                    "GitHub Actions LLM_BASE_URL/LLM_MODEL secrets. "
+                    f"Provider response: {detail}"
+                ) from exc
+            if exc.code not in _TRANSIENT_HTTP_CODES or attempt == LLM_MAX_ATTEMPTS:
+                raise RuntimeError(
+                    f"LLM request failed with HTTP {exc.code} at {url} after "
+                    f"{attempt} attempt(s): {detail}"
+                ) from exc
             retry_after = exc.headers.get("Retry-After")
-            delay = (
-                int(retry_after) if retry_after and retry_after.isdigit() else 30 * (attempt + 1)
+            delay = int(retry_after) if retry_after and retry_after.isdigit() else min(30, 2**attempt)
+            print(
+                f"  Transient LLM HTTP {exc.code}; retrying "
+                f"({attempt}/{LLM_MAX_ATTEMPTS}) in {delay}s",
+                file=sys.stderr,
             )
-            print(f"  LLM rate limited; retrying in {delay}s", file=sys.stderr)
             time.sleep(delay)
     raise RuntimeError("LLM request retry loop exhausted")
 

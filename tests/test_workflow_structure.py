@@ -307,6 +307,18 @@ class TestWeekPropagation:
         )
 
 
+class TestMonthlyFailureRecovery:
+    def test_generation_has_bounded_workflow_retry(self, workflow_raw: str):
+        assert "for attempt in 1 2 3" in workflow_raw
+        assert "monthly generation failed after 3 workflow attempts" in workflow_raw
+
+    def test_failure_opens_or_updates_issue(self, workflow_raw: str):
+        assert "notify-failure:" in workflow_raw
+        assert "gh issue create" in workflow_raw
+        assert "gh issue comment" in workflow_raw
+        assert "issues: write" in workflow_raw
+
+
 class TestManifestWeekEnv:
     """Generate artifact manifest step must receive MONTH via step env, not rely on shell var."""
 

@@ -23,6 +23,7 @@ on:
 
 permissions:
   contents: write
+  issues: write
   pages: write
   id-token: write
 
@@ -121,7 +122,17 @@ jobs:
           if [ -z "$LLM_API_KEY" ]; then
             echo "FATAL: LLM_API_KEY secret not set"; exit 1
           fi
-          python3 build/generate_monthly.py
+          for attempt in 1 2 3; do
+            if python3 build/generate_monthly.py; then
+              exit 0
+            fi
+            if [ "$attempt" -eq 3 ]; then
+              echo "FATAL: monthly generation failed after 3 workflow attempts"
+              exit 1
+            fi
+            echo "Generation attempt $attempt failed; retrying in 30 seconds"
+            sleep 30
+          done
 
       - name: Stage 2 — Reuse canonical content
         if: ${{ steps.canonical_bundle.outputs.exists == 'true' }}
@@ -336,3 +347,28 @@ jobs:
           print()
           sys.exit(0 if all_ok else 1)
           "
+
+  notify-failure:
+    name: Open or update monthly failure issue
+    if: ${{ always() && needs.generate-and-deploy.result == 'failure' }}
+    needs: generate-and-deploy
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+    steps:
+      - name: Create actionable GitHub issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          TITLE="Monthly beauty report automation failed"
+          BODY="The scheduled monthly report failed after automatic retries.\n\nRun: ${RUN_URL}\nEvent: ${{ github.event_name }}\nCommit: ${{ github.sha }}\n\nCheck the failed step and verify LLM_BASE_URL, LLM_MODEL and LLM_API_KEY when generation reports an endpoint/authentication error."
+          EXISTING=$(gh issue list --repo "$REPO" --state open --search "$TITLE in:title" --json number --jq '.[0].number // empty')
+          if [ -n "$EXISTING" ]; then
+            gh issue comment "$EXISTING" --repo "$REPO" --body "$BODY"
+          else
+            gh issue create --repo "$REPO" --title "$TITLE" --body "$BODY" --label bug || \
+              gh issue create --repo "$REPO" --title "$TITLE" --body "$BODY"
+          fi
