@@ -1,9 +1,8 @@
 name: Monthly Beauty Report — Atomic Deploy
 
 on:
-  schedule:
-    # 1st of every month 09:00 Asia/Shanghai (01:00 UTC)
-    - cron: "0 1 1 * *"
+  # Monthly scheduling is owned by the trusted Mac LaunchAgent. This workflow
+  # remains available for explicit API-backed recovery only.
   workflow_dispatch:
     inputs:
       target_month:
@@ -364,7 +363,12 @@ jobs:
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: |
           TITLE="Monthly beauty report automation failed"
-          BODY="The scheduled monthly report failed after automatic retries.\n\nRun: ${RUN_URL}\nEvent: ${{ github.event_name }}\nCommit: ${{ github.sha }}\n\nCheck the failed step and verify LLM_BASE_URL, LLM_MODEL and LLM_API_KEY when generation reports an endpoint/authentication error."
+          BODY=$(printf '%s\n\nRun: %s\nEvent: %s\nCommit: %s\n\n%s' \
+            "The scheduled monthly report failed after automatic retries." \
+            "$RUN_URL" \
+            "${{ github.event_name }}" \
+            "${{ github.sha }}" \
+            "Check the failed step and verify LLM_BASE_URL, LLM_MODEL and LLM_API_KEY when generation reports an endpoint/authentication error.")
           EXISTING=$(gh issue list --repo "$REPO" --state open --search "$TITLE in:title" --json number --jq '.[0].number // empty')
           if [ -n "$EXISTING" ]; then
             gh issue comment "$EXISTING" --repo "$REPO" --body "$BODY"

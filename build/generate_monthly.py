@@ -16,10 +16,14 @@ Evidence policy (strict):
 from __future__ import annotations
 
 import hashlib
+import contextlib
 import json
 import os
 import re
+import shutil
+import subprocess
 import sys
+import tempfile
 import time
 import urllib.error
 import urllib.request
@@ -40,6 +44,53 @@ BASE_URL = os.environ.get("LLM_BASE_URL", "https://api.openai.com/v1")
 MODEL = os.environ.get("LLM_MODEL", "gpt-4o-mini")
 LLM_MAX_ATTEMPTS = int(os.environ.get("LLM_MAX_ATTEMPTS", "3"))
 _TRANSIENT_HTTP_CODES = {408, 409, 425, 429, 500, 502, 503, 504}
+
+# Selectable LLM transport. "api" uses the OpenAI-compatible HTTP endpoint
+# (the legacy GitHub Actions path). "codex" invokes the already-authenticated
+# local Codex CLI (ChatGPT subscription) non-interactively — no standalone
+# model API key is stored or copied anywhere by the runner.
+LLM_TRANSPORT = (
+    os.environ.get("BEAUTY_MONTHLY_TRANSPORT", "").strip().lower()
+    or os.environ.get("LLM_TRANSPORT", "").strip().lower()
+    or "api"
+)
+
+# The trusted local Codex CLI lives in the Homebrew installation and reads its
+# ChatGPT credentials from the user's default $HOME/.codex. It must NEVER be
+# replaced by a CODEX_HOME from another environment (e.g. an agent sandbox)
+# that carries a standalone API key.
+_DEFAULT_CODEX_BIN = "/opt/homebrew/bin/codex"
+CODEX_BIN = os.environ.get("CODEX_BIN", "") or (
+    _DEFAULT_CODEX_BIN if os.path.exists(_DEFAULT_CODEX_BIN) else shutil.which("codex") or "codex"
+)
+CODEX_MODEL = os.environ.get("CODEX_MODEL", "").strip()
+CODEX_EXEC_TIMEOUT = int(os.environ.get("CODEX_EXEC_TIMEOUT", "900"))
+
+# Environment variables that would force the Codex CLI to use a non-ChatGPT
+# (API-key) transport. The runner unsets all of them before every codex
+# invocation so the CLI always resolves to the ChatGPT-authenticated ~/.codex.
+CODEX_ENV_STRIP = (
+    "CODEX_HOME",
+    "OPENAI_API_KEY",
+    "OPENAI_BASE_URL",
+    "OPENAI_ORG_ID",
+    "CODEX_API_KEY",
+    "CODEX_ACCESS_TOKEN",
+)
+
+
+def codex_env() -> dict:
+    """Return a copy of the environment with all API-key/CODEX_HOME overrides stripped.
+
+    This is the ONLY env handed to ``codex`` subprocesses. It guarantees the
+    CLI uses the ChatGPT-authenticated ``~/.codex`` and never inherits a
+    standalone model API key from the ambient environment.
+    """
+    env = os.environ.copy()
+    for var in CODEX_ENV_STRIP:
+        env.pop(var, None)
+    return env
+
 
 VALID_EVIDENCE_SUPPORTED_FIELDS = frozenset(
     {"price", "features", "buzz", "brand", "category", "launch_date", "link"}
@@ -88,15 +139,6 @@ def month_date_range(month_str_val: str) -> tuple[str, str, str, str]:
     return en_range, cn_range, start, end
 
 
-def _chat_completions_url(base_url: str) -> str:
-    normalized = base_url.strip().rstrip("/")
-    if not normalized:
-        raise ValueError("LLM_BASE_URL must not be empty")
-    if normalized.endswith("/chat/completions"):
-        return normalized
-    return f"{normalized}/chat/completions"
-
-
 def _http_error_detail(exc: urllib.error.HTTPError) -> str:
     try:
         body = exc.read().decode("utf-8", errors="replace").strip()
@@ -105,57 +147,224 @@ def _http_error_detail(exc: urllib.error.HTTPError) -> str:
     return body[:500] or str(exc.reason) or "no response body"
 
 
+def _normalize_endpoint_url(base_url: str) -> str:
+    """Normalize OpenAI-compatible endpoints for robustness.
+
+    Handles various endpoint formats:
+    - OpenAI: https://api.openai.com/v1
+    - Compatible: https://provider.example.com/v1
+    - Full path: https://provider.example.com/v1/chat/completions
+    - Trailing slash: https://provider.example.com/v1/
+
+    Preserves OpenAI standard while supporting any OpenAI-compatible provider.
+    """
+    if not base_url:
+        raise ValueError("LLM_BASE_URL must not be empty")
+    normalized = base_url.strip().rstrip("/")
+    if normalized.endswith("/chat/completions"):
+        return normalized
+    return f"{normalized}/chat/completions"
+
+
+def _format_llm_error_message(exc: urllib.error.HTTPError, attempt: int, max_attempts: int) -> str:
+    """Format HTTP error with detailed diagnostics.
+
+    Provides actionable information for debugging endpoint issues.
+    """
+    detail = _http_error_detail(exc)
+
+    if exc.code == 410:
+        return (
+            f"LLM endpoint is retired (HTTP 410): {exc.geturl()}. "
+            f"Update the GitHub Actions LLM_BASE_URL/LLM_MODEL secrets or set "
+            f"LLM_FALLBACK_MODELS to a current model. "
+            f"Provider response: {detail}"
+        )
+
+    if exc.code == 404:
+        return (
+            f"LLM model not found (HTTP 404): {exc.geturl()}. "
+            f"Update the GitHub Actions LLM_BASE_URL/LLM_MODEL secrets or set "
+            f"LLM_FALLBACK_MODELS to a current model. "
+            f"Provider response: {detail}"
+        )
+
+    base_msg = f"LLM request failed with HTTP {exc.code} at {exc.geturl()} after {attempt} attempt(s): {detail}"
+
+    if exc.code in _TRANSIENT_HTTP_CODES:
+        return f"Transient error: {base_msg}"
+
+    if exc.code in {401, 403}:
+        return (
+            f"Authentication or authorization failed (HTTP {exc.code}). "
+            f"Check LLM_API_KEY secret and provider permissions. "
+            f"Provider response: {detail}"
+        )
+
+    return f"Non-retryable error: {base_msg}"
+
+
+def codex_logged_in() -> bool:
+    """Return True when the local Codex CLI is authenticated.
+
+    Only inspects the CLI's own status command; never reads or copies the
+    credentials (auth.json under ~/.codex is never touched). The stripped env
+    guarantees the ChatGPT-authenticated ~/.codex is used, not a CODEX_HOME
+    that carries an API key.
+    """
+    try:
+        result = subprocess.run(
+            [CODEX_BIN, "login", "status"],
+            env=codex_env(),
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+            timeout=60,
+        )
+    except (FileNotFoundError, subprocess.SubprocessError):
+        return False
+    return result.returncode == 0
+
+
+def call_codex(system_prompt: str, user_prompt: str, max_tokens: int = 8000) -> str:
+    """Invoke the locally authenticated Codex CLI non-interactively.
+
+    The system prompt is folded into a single prompt (Codex exec has no
+    separate system role). The model's final message is captured via
+    ``--output-last-message``. No authentication material is stored or
+    copied: codex reads its own ChatGPT credentials from ``~/.codex``.
+    """
+    if not codex_logged_in():
+        raise RuntimeError(
+            "Codex CLI is not logged in (ChatGPT subscription via ~/.codex). "
+            "Run 'codex login' once on this machine and retry. "
+            "No auth is stored by this runner."
+        )
+    prompt = (
+        f"Follow these instructions strictly.\n\n{system_prompt}\n\n--- USER REQUEST ---\n\n"
+        f"{user_prompt}\n\n"
+        "Respond ONLY with the requested JSON payload. Do not run any shell commands "
+        "and do not use any tools or files."
+    )
+    cmd = [
+        CODEX_BIN,
+        "exec",
+        "-C",
+        str(ROOT),
+        "--skip-git-repo-check",
+        "--sandbox",
+        "read-only",
+        "--ephemeral",
+        "--color",
+        "never",
+    ]
+    if CODEX_MODEL:
+        cmd += ["--model", CODEX_MODEL]
+    with tempfile.NamedTemporaryFile(prefix="codex-last-message-", mode="w", delete=False) as tmp:
+        out_path = tmp.name
+    cmd += ["-o", out_path, prompt]
+    try:
+        proc = subprocess.run(
+            cmd,
+            env=codex_env(),
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True,
+            timeout=CODEX_EXEC_TIMEOUT,
+        )
+        if proc.returncode != 0:
+            detail = proc.stderr.strip().splitlines()
+            raise RuntimeError(
+                "codex exec failed (non-zero exit). "
+                + (" ".join(detail[-2:]) if detail else "no stderr")
+            )
+        if not os.path.exists(out_path):
+            raise RuntimeError("codex exec completed but produced no last-message output")
+        with open(out_path, encoding="utf-8") as f:
+            response = f.read().strip()
+        if not response:
+            raise RuntimeError("codex exec returned an empty response")
+        return response
+    except subprocess.TimeoutExpired as exc:
+        raise RuntimeError(
+            f"codex exec timed out after {CODEX_EXEC_TIMEOUT}s. "
+            "Consider raising CODEX_EXEC_TIMEOUT."
+        ) from exc
+    except OSError as exc:
+        raise RuntimeError(f"Failed to run {CODEX_BIN}: {exc}") from exc
+    finally:
+        with contextlib.suppress(OSError):
+            os.unlink(out_path)
+
+
 def call_llm(system_prompt: str, user_prompt: str, max_tokens: int = 8000) -> str:
+    if LLM_TRANSPORT == "codex":
+        return call_codex(system_prompt, user_prompt, max_tokens)
     if not API_KEY:
         raise ValueError("LLM_API_KEY environment variable not set")
-    payload = json.dumps(
-        {
-            "model": MODEL,
-            "messages": [
-                {"role": "system", "content": system_prompt},
-                {"role": "user", "content": user_prompt},
-            ],
-            "max_tokens": max_tokens,
-            "temperature": 0.3,
-        }
-    ).encode("utf-8")
 
-    url = _chat_completions_url(BASE_URL)
-    for attempt in range(1, LLM_MAX_ATTEMPTS + 1):
-        req = urllib.request.Request(
-            url,
-            data=payload,
-            headers={
-                "Content-Type": "application/json",
-                "Authorization": f"Bearer {API_KEY}",
-            },
-        )
-        try:
-            with urllib.request.urlopen(req, timeout=120) as resp:
-                result = json.loads(resp.read().decode("utf-8"))
-                return result["choices"][0]["message"]["content"]
-        except urllib.error.HTTPError as exc:
-            detail = _http_error_detail(exc)
-            if exc.code == 410:
-                raise RuntimeError(
-                    f"LLM endpoint is retired (HTTP 410): {url}. Update the "
-                    "GitHub Actions LLM_BASE_URL/LLM_MODEL secrets. "
-                    f"Provider response: {detail}"
-                ) from exc
-            if exc.code not in _TRANSIENT_HTTP_CODES or attempt == LLM_MAX_ATTEMPTS:
-                raise RuntimeError(
-                    f"LLM request failed with HTTP {exc.code} at {url} after "
-                    f"{attempt} attempt(s): {detail}"
-                ) from exc
-            retry_after = exc.headers.get("Retry-After")
-            delay = int(retry_after) if retry_after and retry_after.isdigit() else min(30, 2**attempt)
-            print(
-                f"  Transient LLM HTTP {exc.code}; retrying "
-                f"({attempt}/{LLM_MAX_ATTEMPTS}) in {delay}s",
-                file=sys.stderr,
+    url = _normalize_endpoint_url(BASE_URL)
+    fallback_models = [
+        m.strip() for m in os.environ.get("LLM_FALLBACK_MODELS", "").split(",") if m.strip()
+    ]
+    candidate_models = [MODEL] + fallback_models
+    messages = [
+        {"role": "system", "content": system_prompt},
+        {"role": "user", "content": user_prompt},
+    ]
+
+    for model_idx, model in enumerate(candidate_models):
+        payload = json.dumps(
+            {
+                "model": model,
+                "messages": messages,
+                "max_tokens": max_tokens,
+                "temperature": 0.3,
+            }
+        ).encode("utf-8")
+        for attempt in range(1, LLM_MAX_ATTEMPTS + 1):
+            req = urllib.request.Request(
+                url,
+                data=payload,
+                headers={
+                    "Content-Type": "application/json",
+                    "Authorization": f"Bearer {API_KEY}",
+                },
             )
-            time.sleep(delay)
-    raise RuntimeError("LLM request retry loop exhausted")
+            try:
+                with urllib.request.urlopen(req, timeout=120) as resp:
+                    result = json.loads(resp.read().decode("utf-8"))
+                    return result["choices"][0]["message"]["content"]
+            except urllib.error.HTTPError as exc:
+                error_msg = _format_llm_error_message(exc, attempt, LLM_MAX_ATTEMPTS)
+
+                if exc.code in (404, 410) and model_idx < len(candidate_models) - 1:
+                    print(
+                        f"  LLM model {model!r} unavailable (HTTP {exc.code}); "
+                        f"trying fallback model {candidate_models[model_idx + 1]!r}",
+                        file=sys.stderr,
+                    )
+                    break
+
+                if exc.code in (404, 410):
+                    raise RuntimeError(error_msg) from exc
+
+                if exc.code not in _TRANSIENT_HTTP_CODES or attempt == LLM_MAX_ATTEMPTS:
+                    raise RuntimeError(error_msg) from exc
+
+                retry_after = exc.headers.get("Retry-After")
+                delay = (
+                    int(retry_after)
+                    if retry_after and retry_after.isdigit()
+                    else min(30, 2**attempt)
+                )
+                print(
+                    f"  Transient LLM HTTP {exc.code}; retrying "
+                    f"({attempt}/{LLM_MAX_ATTEMPTS}) in {delay}s",
+                    file=sys.stderr,
+                )
+                time.sleep(delay)
+
+    raise RuntimeError(f"LLM request failed after {LLM_MAX_ATTEMPTS} attempts")
 
 
 def parse_json_response(response: str) -> dict:
@@ -931,8 +1140,7 @@ Rules:
                 f"\n\n[RETRY {attempt}/{_LLM_MAX_ATTEMPTS}] "
                 + " ".join(retry_reasons)
                 + " Each source_url must be an exact URL below. Do not fabricate "
-                "products or source URLs."
-                + f"\n\nExpanded evidence:\n{expanded_articles_text}"
+                "products or source URLs." + f"\n\nExpanded evidence:\n{expanded_articles_text}"
             )
             current_user_prompt = user_prompt + retry_note
             print(
@@ -1180,6 +1388,7 @@ def main() -> int:
     print("=== Beauty Monthly Content Generation ===")
     print(f"Month: {month}")
     print(f"Date Range: {en_range}")
+    print(f"Transport: {LLM_TRANSPORT}")
     print(f"LLM Model: {MODEL}")
     print()
 

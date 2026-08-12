@@ -16,12 +16,30 @@ def _http_error(code: int, body: bytes = b"provider detail") -> urllib.error.HTT
     )
 
 
-def test_chat_completions_url_accepts_root_and_full_endpoint():
-    assert generator._chat_completions_url("https://provider.example/v1/") == (
+class _FakeResponse:
+    def __init__(self, content: str):
+        self._content = content.encode("utf-8")
+
+    def read(self):
+        return self._content
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *args):
+        return False
+
+
+def _llm_success() -> _FakeResponse:
+    return _FakeResponse('{"choices": [{"message": {"content": "ok"}}]}')
+
+
+def test_normalize_endpoint_url_accepts_root_and_full_endpoint():
+    assert generator._normalize_endpoint_url("https://provider.example/v1/") == (
         "https://provider.example/v1/chat/completions"
     )
     full = "https://provider.example/v1/chat/completions"
-    assert generator._chat_completions_url(full) == full
+    assert generator._normalize_endpoint_url(full) == full
 
 
 def test_http_410_has_actionable_configuration_error(monkeypatch):
@@ -42,3 +60,25 @@ def test_transient_http_error_is_retried(monkeypatch):
         with pytest.raises(RuntimeError, match="after 2 attempt"):
             generator.call_llm("system", "user")
         assert mocked.call_count == 2
+
+
+def test_call_llm_hits_normalized_endpoint(monkeypatch):
+    monkeypatch.setattr(generator, "API_KEY", "test-key")
+    monkeypatch.setattr(generator, "BASE_URL", "https://provider.example/v1/")
+    captured = {}
+
+    def fake_urlopen(req, timeout=None):
+        captured["url"] = req.full_url
+        return _llm_success()
+
+    with patch("urllib.request.urlopen", fake_urlopen):
+        assert generator.call_llm("system", "user") == "ok"
+    assert captured["url"] == "https://provider.example/v1/chat/completions"
+
+
+def test_transient_error_retries_then_succeeds(monkeypatch):
+    monkeypatch.setattr(generator, "API_KEY", "test-key")
+    with patch("urllib.request.urlopen") as mocked, patch("time.sleep"):
+        mocked.side_effect = [_http_error(503), _llm_success()]
+        assert generator.call_llm("system", "user") == "ok"
+    assert mocked.call_count == 2

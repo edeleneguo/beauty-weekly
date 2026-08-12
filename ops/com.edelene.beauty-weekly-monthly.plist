@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key><string>com.edelene.beauty-weekly-monthly</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/usr/bin/env</string><string>-u</string><string>CODEX_HOME</string>
+    <string>-u</string><string>OPENAI_API_KEY</string><string>-u</string><string>CODEX_API_KEY</string>
+    <string>-u</string><string>CODEX_ACCESS_TOKEN</string>
+    <string>/usr/bin/python3</string>
+    <string>/Users/hhw/.openclaw/workspace/projects/beauty-weekly/build/monthly_local_runner.py</string>
+  </array>
+  <key>WorkingDirectory</key><string>/Users/hhw/.openclaw/workspace/projects/beauty-weekly</string>
+  <key>StartCalendarInterval</key>
+  <dict><key>Day</key><integer>1</integer><key>Hour</key><integer>9</integer><key>Minute</key><integer>0</integer></dict>
+  <key>StandardOutPath</key><string>/Users/hhw/.openclaw/workspace/projects/beauty-weekly/.beauty-weekly-state/logs/monthly.out.log</string>
+  <key>StandardErrorPath</key><string>/Users/hhw/.openclaw/workspace/projects/beauty-weekly/.beauty-weekly-state/logs/monthly.err.log</string>
+</dict>
+</plist>

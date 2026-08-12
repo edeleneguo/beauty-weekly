@@ -31,19 +31,15 @@ CI_WORKFLOW = ROOT / ".github" / "workflows" / "ci.yml"
 
 
 class TestMonthlySchedule:
-    """GitHub Actions cron must fire on the 1st of every month at 01:00 UTC."""
+    """The trusted Mac is the only monthly scheduler owner."""
 
-    def test_deploy_cron_is_monthly(self):
+    def test_deploy_has_no_schedule(self):
         raw = DEPLOY_WORKFLOW.read_text(encoding="utf-8")
-        assert re.search(r'cron:\s*"0 1 1 \* \*"', raw), (
-            "monthly-deploy must use cron '0 1 1 * *' (1st of month, 01:00 UTC)"
-        )
+        assert "schedule:" not in raw
 
-    def test_ci_cron_is_monthly(self):
+    def test_ci_has_no_schedule(self):
         raw = CI_WORKFLOW.read_text(encoding="utf-8")
-        assert re.search(r'cron:\s*"0 1 1 \* \*"', raw), (
-            "ci workflow must use cron '0 1 1 * *' (1st of month, 01:00 UTC)"
-        )
+        assert "schedule:" not in raw
 
     def test_no_weekly_cron_remains(self):
         for wf in (DEPLOY_WORKFLOW, CI_WORKFLOW):
@@ -53,13 +49,10 @@ class TestMonthlySchedule:
                 f"{wf.name}: weekly cron pattern still present"
             )
 
-    def test_workflows_auto_resolve_previous_month(self):
-        """Scheduled monthly runs must target the just-finished calendar month."""
-        for wf in (DEPLOY_WORKFLOW, CI_WORKFLOW):
-            raw = wf.read_text(encoding="utf-8")
-            assert "previous_month_str" in raw, (
-                f"{wf.name}: scheduled monthly workflow must auto-resolve previous month"
-            )
+    def test_launchagent_owns_monthly_schedule(self):
+        raw = (ROOT / "ops" / "com.edelene.beauty-weekly-monthly.plist").read_text()
+        assert "<key>Day</key><integer>1</integer>" in raw
+        assert "<key>Hour</key><integer>9</integer>" in raw
 
 
 # ═══════════════════════════════════════════════════════════════════════
