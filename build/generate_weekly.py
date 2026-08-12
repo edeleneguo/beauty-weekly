@@ -31,6 +31,8 @@ _build_manifest = _canonical._build_manifest
 _build_scoring_json = _canonical._build_scoring_json
 _find_supporting_articles = _canonical._find_supporting_articles
 _make_launch_evidence = _canonical._make_launch_evidence
+_supplement_candidate_evidence = _canonical._supplement_candidate_evidence
+_supplement_cn_radar_evidence = _canonical._supplement_cn_radar_evidence
 _select_category_relevant_articles = _canonical._select_category_relevant_articles
 
 if __name__ == "__main__":

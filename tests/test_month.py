@@ -202,9 +202,13 @@ class TestEmptyArchive:
             # No archive dir is fine
             assert True
 
-    def test_month_archive_dir_path(self):
+    def test_month_archive_dir_path(self, monkeypatch):
         from beauty_weekly.month import month_archive_dir
 
+        # Monthly mode sets BEAUTY_MONTHLY_MONTH, which has priority over the
+        # explicit target argument. Clear it so this test verifies the
+        # explicit-arg behaviour deterministically.
+        monkeypatch.delenv("BEAUTY_MONTHLY_MONTH", raising=False)
         d = month_archive_dir("2026-06")
         assert d.name == "2026-06"
         assert "archive" in str(d)

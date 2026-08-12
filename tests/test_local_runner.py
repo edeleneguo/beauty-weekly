@@ -20,3 +20,19 @@ def test_launchagent_never_contains_credentials():
     text = plist.read_text()
     assert "sk-" not in text
     assert "auth.json" not in text
+
+
+def test_restore_keeps_failed_canonical_candidate(monkeypatch, tmp_path):
+    monkeypatch.setattr(runner, "ROOT", tmp_path)
+    month_dir = tmp_path / "data" / "months" / "2026-07"
+    month_dir.mkdir(parents=True)
+    (month_dir / "report.json").write_text("candidate")
+    (tmp_path / "index.html").write_text("failed-public")
+    backup = tmp_path / "backup"
+    backup.mkdir()
+    (backup / "index.html").write_text("published")
+
+    runner.restore("2026-07", backup)
+
+    assert (month_dir / "report.json").read_text() == "candidate"
+    assert (tmp_path / "index.html").read_text() == "published"

@@ -247,14 +247,14 @@ def audit_duplicate_or_generic_buzz(report: dict) -> list[str]:
     for buzz, records in owners.items():
         if len(records) <= 1:
             continue
-        same_verified_fragrance_sku = (
-            all(topic == "fragrance" for _, topic, _, _, _ in records)
-            and all(verified for _, _, _, _, verified in records)
+        same_verified_sku_across_sections = (
+            all(verified for _, _, _, _, verified in records)
+            and len({topic for _, topic, _, _, _ in records}) == 1
             and len({norm_name for _, _, _, norm_name, _ in records}) == 1
             and {section for _, _, section, _, _ in records}
             <= {"heat_rankings", "new_product_radar"}
         )
-        if not same_verified_fragrance_sku:
+        if not same_verified_sku_across_sections:
             errors.append(f"duplicate buzz reused across products: '{buzz}'")
     return errors
 

@@ -178,6 +178,15 @@ def _compare_top_level(legacy: dict, adapted: dict, errors: list[str]) -> None:
 def main() -> int:
     print("Parity guard: canonical → legacy adapter ... ", end="")
 
+    # This guard compares the frozen WEEKLY canonical report against the
+    # legacy data/week28.json fixture.  Monthly mode targets data/months/<m>
+    # and has no corresponding legacy weekly baseline, so the guard does not
+    # apply there — monthly output is validated by validate_published.py and
+    # the full staged monthly_update.sh pipeline.
+    if os.environ.get("BEAUTY_MONTHLY_MONTH"):
+        print("SKIP (monthly mode)")
+        return 0
+
     legacy = load_legacy_raw(LEGACY_PATH)
 
     canonical_path = WEEKS_DIR / "report.json"

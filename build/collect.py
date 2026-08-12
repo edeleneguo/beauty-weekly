@@ -14,6 +14,7 @@ Data sources (all public, no API key required):
 
 Output: data/months/<YYYY-MM>/raw_collected.json
 """
+
 from __future__ import annotations
 
 import json
@@ -82,6 +83,7 @@ SOURCES = {
 
 REFERENCE_CONFIG = ROOT / "config" / "reference_sources.json"
 CN_DISCOVERY_CONFIG = ROOT / "config" / "cn_new_product_sources.json"
+FRAGRANCE_ROUNDUP_CONFIG = ROOT / "config" / "fragrance_roundup_sources.json"
 
 _CN_LAUNCH_CUES = (
     "新品",
@@ -132,6 +134,52 @@ _CN_MAKEUP_STRONG_CUES = tuple(
     cue for cue in _CN_CATEGORY_CUES["makeup"] if cue not in {"高光", "修容"}
 )
 
+# Fragrance roundup discovery cues: a roundup article must mention a fragrance
+# product cue AND a launch/roundup signal so unrelated editorial content from
+# the same outlets (hotel guides, food roundups, general beauty features)
+# does not pollute the fragrance evidence pool.
+_FRAGRANCE_ROUNDUP_CUES = (
+    "fragrance",
+    "perfume",
+    "cologne",
+    "eau de parfum",
+    "eau de toilette",
+    "parfum",
+    "edp",
+    "edt",
+    "scent",
+    "香氛",
+    "香水",
+    "淡香精",
+    "濃香精",
+    "香精",
+    "古龍水",
+)
+_FRAGRANCE_ROUNDUP_SIGNAL_CUES = (
+    "launch",
+    "launches",
+    "launched",
+    "release",
+    "releases",
+    "released",
+    "roundup",
+    "best new",
+    "new fragrance",
+    "new perfume",
+    "debut",
+    "relaunch",
+    "introduces",
+    "introducing",
+    "enters",
+    "collection",
+    "盤點",
+    "新品",
+    "推出",
+    "上市",
+    "首發",
+    "復刻",
+)
+
 
 class _MetadataParser(HTMLParser):
     def __init__(self) -> None:
@@ -142,7 +190,7 @@ class _MetadataParser(HTMLParser):
         if tag.casefold() != "meta" or self.description:
             return
         values = {str(key).casefold(): value or "" for key, value in attrs}
-        marker = (values.get("name") or values.get("property")).casefold()
+        marker = ((values.get("name") or values.get("property")) or "").casefold()
         if marker in {"description", "og:description", "twitter:description"}:
             self.description = values.get("content", "").strip()
 
@@ -227,15 +275,17 @@ def parse_rss(
             pub_date = item.findtext("pubDate", "")
             description = item.findtext("description", "")
             if title and link:
-                articles.append({
-                    "source": source_name,
-                    "title": title.strip(),
-                    "url": link.strip(),
-                    "date": pub_date.strip(),
-                    "summary": description.strip()[:500] if description else "",
-                    "market": market,
-                    "reference_type": reference_type,
-                })
+                articles.append(
+                    {
+                        "source": source_name,
+                        "title": title.strip(),
+                        "url": link.strip(),
+                        "date": pub_date.strip(),
+                        "summary": description.strip()[:500] if description else "",
+                        "market": market,
+                        "reference_type": reference_type,
+                    }
+                )
     except ElementTree.ParseError:
         pass
     return articles[:20]  # Limit to 20 articles per source
@@ -252,6 +302,11 @@ def _load_cn_discovery_config() -> dict:
         return json.load(f)
 
 
+def _load_fragrance_roundup_config() -> dict:
+    with open(FRAGRANCE_ROUNDUP_CONFIG, encoding="utf-8") as f:
+        return json.load(f)
+
+
 def _month_window(month: str) -> tuple[str, str, str]:
     year, month_number = (int(part) for part in month.split("-"))
     start, end = previous_month_range(year, month_number)
@@ -264,21 +319,31 @@ def _news_search_url(query: str, market: str, month: str | None = None) -> str:
         query = f"{query} after:{start} before:{exclusive_end}"
     if market == "US":
         params = {"q": query, "hl": "en-US", "gl": "US", "ceid": "US:en"}
+    elif market == "TW":
+        params = {"q": query, "hl": "zh-TW", "gl": "TW", "ceid": "TW:zh-Hant"}
     else:
         params = {"q": query, "hl": "zh-CN", "gl": "CN", "ceid": "CN:zh-Hans"}
     return "https://news.google.com/rss/search?" + urllib.parse.urlencode(params)
 
 
 def _reference_search_url(reference: dict, month: str | None = None) -> str:
-    query = f'{reference["name"]} (美妆 OR 护肤 OR 香水 OR 彩妆)'
-    if reference["market"] == "US":
-        query = f'{reference["name"]} (beauty OR makeup OR fragrance OR skincare)'
+    if reference["market"] == "TW":
+        query = f"{reference['name']} (香水 OR 香氛 OR 美妝 OR 保養 OR 彩妝)"
+    elif reference["market"] == "US":
+        query = f"{reference['name']} (beauty OR makeup OR fragrance OR skincare)"
+    else:
+        query = f"{reference['name']} (美妆 OR 护肤 OR 香水 OR 彩妆)"
     return _news_search_url(query, reference["market"], month)
 
 
 def _format_discovery_query(query: dict, month: str) -> str:
     year, month_number = (int(part) for part in month.split("-"))
-    return query["query"].format(year=year, month_number=month_number)
+    month_name = date(year, month_number, 1).strftime("%B")
+    return query["query"].format(
+        year=year,
+        month_number=month_number,
+        month_name=month_name,
+    )
 
 
 def _fetch_main_reference(reference: dict, month: str | None = None) -> tuple[dict, list[dict]]:
@@ -319,9 +384,7 @@ def _fetch_cn_discovery_query(query: dict, category: str, month: str) -> tuple[d
         market="CN",
         reference_type=f"{category}_new_product_discovery",
     )
-    articles = [
-        article for article in articles if _is_cn_new_product_article(article, category)
-    ]
+    articles = [article for article in articles if _is_cn_new_product_article(article, category)]
     articles = _enrich_discovery_articles(articles)
     for article in articles:
         article["category"] = category
@@ -340,9 +403,7 @@ def _fetch_cn_discovery_query(query: dict, category: str, month: str) -> tuple[d
 
 
 def _is_cn_new_product_article(article: dict, category: str) -> bool:
-    combined = " ".join(
-        str(article.get(field, "")).casefold() for field in ("title", "summary")
-    )
+    combined = " ".join(str(article.get(field, "")).casefold() for field in ("title", "summary"))
     if not any(cue in combined for cue in _CN_LAUNCH_CUES):
         return False
     if not any(cue in combined for cue in _CN_CATEGORY_CUES[category]):
@@ -350,8 +411,50 @@ def _is_cn_new_product_article(article: dict, category: str) -> bool:
     if category == "makeup" and not any(cue in combined for cue in _CN_MAKEUP_STRONG_CUES):
         return False
     return not (
-        category == "fragrance"
-        and any(cue in combined for cue in _CN_FRAGRANCE_FALSE_POSITIVES)
+        category == "fragrance" and any(cue in combined for cue in _CN_FRAGRANCE_FALSE_POSITIVES)
+    )
+
+
+def _is_fragrance_roundup_article(article: dict) -> bool:
+    """Return True when the article is a fragrance launch/roundup item.
+
+    A fragrance roundup article must carry at least one fragrance product cue
+    (fragrance/perfume/cologne/EDP/香氛/香水/…) AND at least one launch or
+    roundup signal (launches/releases/best new/盤點/新品/…).  This keeps the
+    dedicated roundup discovery pass focused on product-relevant evidence.
+    """
+    combined = " ".join(str(article.get(field, "")).casefold() for field in ("title", "summary"))
+    return any(cue in combined for cue in _FRAGRANCE_ROUNDUP_CUES) and any(
+        cue in combined for cue in _FRAGRANCE_ROUNDUP_SIGNAL_CUES
+    )
+
+
+def _fetch_fragrance_roundup_query(query: dict, month: str) -> tuple[dict, list[dict]]:
+    """Search one dedicated fragrance roundup source and return audit + articles."""
+    query_text = _format_discovery_query(query, month)
+    url = _news_search_url(query_text, query["market"], month)
+    content = fetch_url(url)
+    articles = parse_rss(
+        content,
+        query["name"],
+        market=query["market"],
+        reference_type="fragrance_roundup",
+    )
+    articles = [article for article in articles if _is_fragrance_roundup_article(article)]
+    articles = _enrich_discovery_articles(articles)
+    for article in articles:
+        article["category"] = "fragrance"
+        article["discovery_stage"] = "fragrance_roundup"
+    return (
+        {
+            "name": query["name"],
+            "market": query["market"],
+            "outlet": query.get("outlet", ""),
+            "type": "fragrance_roundup",
+            "articles_count": len(articles),
+            "url": url,
+        },
+        articles,
     )
 
 
@@ -359,16 +462,31 @@ def search_product_evidence(
     product_name: str,
     category: str,
     month: str,
+    market: str = "CN",
 ) -> tuple[dict, list[dict]]:
-    """Run a candidate-specific CN evidence search for the target month."""
-    category_terms = "彩妆 美妆" if category == "makeup" else "香水 香氛"
-    query = f'"{product_name}" ({category_terms}) (新品 OR 上市 OR 发布 OR 首发)'
-    url = _news_search_url(query, "CN", month)
+    """Run a candidate-specific evidence search for the target month.
+
+    ``market`` selects the Google News locale and the query language:
+    ``CN`` (default) uses Simplified-Chinese launch terms while ``US``
+    uses English fragrance/makeup launch terms.  Result articles are
+    decoded to direct publisher URLs and tagged with ``candidate_name``
+    so downstream evidence matching can tie them to the exact product.
+    """
+    if market == "US":
+        category_terms = (
+            "makeup OR beauty" if category == "makeup" else "fragrance OR perfume OR cologne"
+        )
+        launch_terms = "launch OR launches OR launched OR release OR released OR debut OR new"
+        query = f'"{product_name}" ({category_terms}) ({launch_terms})'
+    else:
+        category_terms = "彩妆 美妆" if category == "makeup" else "香水 香氛"
+        query = f'"{product_name}" ({category_terms}) (新品 OR 上市 OR 发布 OR 首发)'
+    url = _news_search_url(query, market, month)
     content = fetch_url(url)
     articles = parse_rss(
         content,
         f"candidate:{product_name}",
-        market="CN",
+        market=market,
         reference_type="candidate_verification",
     )
     articles = _enrich_discovery_articles(articles)
@@ -380,7 +498,7 @@ def search_product_evidence(
         {
             "product_name": product_name,
             "category": category,
-            "market": "CN",
+            "market": market,
             "type": "candidate_verification",
             "articles_count": len(articles),
             "url": url,
@@ -417,6 +535,7 @@ def collect_all(target_month: str | None = None) -> dict:
         "sources_failed": [],
         "main_reference_audit": [],
         "cn_new_product_discovery_audit": [],
+        "fragrance_roundup_audit": [],
         "candidate_evidence_audit": [],
         "articles": [],
         "products": [],
@@ -436,51 +555,63 @@ def collect_all(target_month: str | None = None) -> dict:
                     reference_type=config["category"],
                 )
                 result["articles"].extend(articles)
-                result["sources_fetched"].append({
-                    "name": name,
-                    "type": "rss",
-                    "articles_count": len(articles),
-                    "url": config["url"],
-                })
+                result["sources_fetched"].append(
+                    {
+                        "name": name,
+                        "type": "rss",
+                        "articles_count": len(articles),
+                        "url": config["url"],
+                    }
+                )
                 print(f"    ✓ {len(articles)} articles")
             elif config["type"] == "scrape":
                 # For scrape sources, store raw HTML for LLM processing
-                result["sources_fetched"].append({
-                    "name": name,
-                    "type": "scrape",
-                    "content_length": len(content),
-                    "url": config["url"],
-                })
-                result["articles"].append({
-                    "source": name,
-                    "title": f"{name} page content",
-                    "url": config["url"],
-                    "date": today,
-                    "summary": content[:2000],  # First 2000 chars for LLM
-                })
+                result["sources_fetched"].append(
+                    {
+                        "name": name,
+                        "type": "scrape",
+                        "content_length": len(content),
+                        "url": config["url"],
+                    }
+                )
+                result["articles"].append(
+                    {
+                        "source": name,
+                        "title": f"{name} page content",
+                        "url": config["url"],
+                        "date": today,
+                        "summary": content[:2000],  # First 2000 chars for LLM
+                    }
+                )
                 print(f"    ✓ {len(content)} chars scraped")
             elif config["type"] == "api":
-                result["sources_fetched"].append({
-                    "name": name,
-                    "type": "api",
-                    "content_length": len(content),
-                    "url": config["url"],
-                })
-                result["articles"].append({
-                    "source": name,
-                    "title": f"{name} API response",
-                    "url": config["url"],
-                    "date": today,
-                    "summary": content[:2000],
-                })
+                result["sources_fetched"].append(
+                    {
+                        "name": name,
+                        "type": "api",
+                        "content_length": len(content),
+                        "url": config["url"],
+                    }
+                )
+                result["articles"].append(
+                    {
+                        "source": name,
+                        "title": f"{name} API response",
+                        "url": config["url"],
+                        "date": today,
+                        "summary": content[:2000],
+                    }
+                )
                 print(f"    ✓ {len(content)} chars from API")
 
         except Exception as e:
-            result["sources_failed"].append({
-                "name": name,
-                "error": str(e)[:200],
-                "url": config["url"],
-            })
+            result["sources_failed"].append(
+                {
+                    "name": name,
+                    "error": str(e)[:200],
+                    "url": config["url"],
+                }
+            )
             print(f"    ✗ FAILED: {e}")
 
     # Main references are mandatory searches, not a publication whitelist.
@@ -488,9 +619,7 @@ def collect_all(target_month: str | None = None) -> dict:
     references = _load_main_references()
     print(f"  Searching {len(references)} mandatory main references...")
     with ThreadPoolExecutor(max_workers=8) as executor:
-        future_map = {
-            executor.submit(_fetch_main_reference, ref, month): ref for ref in references
-        }
+        future_map = {executor.submit(_fetch_main_reference, ref, month): ref for ref in references}
         for future in as_completed(future_map):
             ref = future_map[future]
             try:
@@ -545,6 +674,34 @@ def collect_all(target_month: str | None = None) -> dict:
                     }
                 )
 
+    roundup_config = _load_fragrance_roundup_config()
+    roundup_jobs = roundup_config["roundup_sources"]
+    print(f"  Searching {len(roundup_jobs)} dedicated fragrance roundup queries...")
+    with ThreadPoolExecutor(max_workers=8) as executor:
+        future_map = {
+            executor.submit(_fetch_fragrance_roundup_query, job, month): job for job in roundup_jobs
+        }
+        for future in as_completed(future_map):
+            job = future_map[future]
+            try:
+                audit, articles = future.result()
+                result["fragrance_roundup_audit"].append(audit)
+                result["articles"].extend(articles)
+            except Exception as exc:
+                result["fragrance_roundup_audit"].append(
+                    {
+                        "name": job["name"],
+                        "market": job["market"],
+                        "outlet": job.get("outlet", ""),
+                        "type": "fragrance_roundup",
+                        "articles_count": 0,
+                        "url": _news_search_url(
+                            _format_discovery_query(job, month), job["market"], month
+                        ),
+                        "error": str(exc)[:200],
+                    }
+                )
+
     result["main_reference_audit"].sort(key=lambda item: (item["market"], item["name"]))
     brand_indexes = [
         index
@@ -557,12 +714,17 @@ def collect_all(target_month: str | None = None) -> dict:
     for index, article in zip(brand_indexes, enriched_brands):
         result["articles"][index] = article
 
-    result["cn_new_product_discovery_audit"].sort(
-        key=lambda item: (item["category"], item["name"])
+    result["cn_new_product_discovery_audit"].sort(key=lambda item: (item["category"], item["name"]))
+    result["fragrance_roundup_audit"].sort(
+        key=lambda item: (item.get("market", ""), item.get("name", ""))
     )
     result["main_references_searched"] = len(result["main_reference_audit"])
     result["main_references_with_results"] = sum(
         item["articles_count"] > 0 for item in result["main_reference_audit"]
+    )
+    result["fragrance_roundups_searched"] = len(result["fragrance_roundup_audit"])
+    result["fragrance_roundups_with_results"] = sum(
+        item["articles_count"] > 0 for item in result["fragrance_roundup_audit"]
     )
 
     result["articles"] = _dedupe_articles(result["articles"])

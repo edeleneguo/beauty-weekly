@@ -30,7 +30,7 @@ import urllib.request
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import date, datetime, timedelta
 from pathlib import Path
-from urllib.parse import urlparse
+from urllib.parse import quote, urlparse
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
@@ -571,11 +571,13 @@ def _find_supporting_articles(
     It is NOT independent evidence — it only restricts/prefers a candidate
     among articles that satisfy name-based evidence requirements.
 
-    Matching rules (applied in order):
-      1. Product URL is a substring of article URL
-      2. Full normalized product name appears in title, summary, or
+    matching rules (applied in order):
+      1. Direct (non-Google) candidate-specific verification article whose
+         ``candidate_name`` exactly matches the product name
+      2. Product URL is a substring of article URL
+      3. Full normalized product name appears in title, summary, or
          URL slug
-      3. At least two meaningful product-name tokens (len > 3) appear
+      4. At least two meaningful product-name tokens (len > 3) appear
          in title, summary, or URL slug
 
     URL slugs are normalized (hyphens/underscores/punctuation → spaces,
@@ -598,7 +600,19 @@ def _find_supporting_articles(
         if urlparse(url).netloc.casefold() == "news.google.com":
             continue
 
-        # 1. Product URL match (strongest signal)
+        # 1. Candidate-specific verification article for this exact product.
+        # Produced by build.collect.search_product_evidence and enriched to a
+        # direct publisher URL.  The Google-aggregator check above guarantees
+        # an RSS aggregator link is never accepted as evidence.
+        if (
+            str(article.get("reference_type", "")).casefold() == "candidate_verification"
+            and str(article.get("candidate_name", "")).strip().casefold()
+            == product_name.strip().casefold()
+        ):
+            supporting.append(article)
+            continue
+
+        # 2. Product URL match (strongest signal)
         if product_link and url and product_link in url:
             supporting.append(article)
             continue
@@ -608,18 +622,18 @@ def _find_supporting_articles(
         url_slug = _normalize_slug(url)
         combined = f"{title} {summary} {url_slug}"
 
-        # 2. Full normalized product name in combined text
+        # 3. Full normalized product name in combined text
         if name_lower in combined:
             supporting.append(article)
             continue
 
-        # 3. At least two meaningful tokens (>3 chars) must match
+        # 4. At least two meaningful tokens (>3 chars) must match
         matched_tokens = [t for t in name_tokens if t in combined]
         if len(matched_tokens) >= 2:
             supporting.append(article)
             continue
 
-        # 4. Chinese product names are not whitespace-tokenized. Require
+        # 5. Chinese product names are not whitespace-tokenized. Require
         # high CJK character coverage and, for mixed names, a matching Latin
         # brand token. This recognizes e.g. "PRADA 0度紫润唇膏" in a title
         # containing "PRADA…0度紫…润唇膏" without accepting a brand-only page.
@@ -660,6 +674,7 @@ def _classify_evidence(article: dict, product_link: str) -> tuple[str, str, str]
             "e-commerce",
             "product page",
             "editorial",
+            "fragrance_roundup",
             "candidate_verification",
             "new_product_discovery",
         )
@@ -683,44 +698,63 @@ def _merge_unique_articles(target: list[dict], additions: list[dict]) -> int:
     return added
 
 
-def _supplement_cn_radar_evidence(
+def _supplement_candidate_evidence(
     data: dict,
     raw_data: dict,
     category: str,
     month_label: str,
 ) -> None:
-    """Search candidate names that the broad CN discovery pass did not support."""
+    """Search candidate names that the discovery passes did not support.
+
+    Legacy scope (unchanged): CN new-product-radar products across all
+    categories.  Extended scope: fragrance candidates in BOTH the US and
+    CN markets across ``heat_rankings`` AND ``new_product_radar``.  Month-
+    level fragrance roundups name many products at once, so a candidate
+    whose only lead is a roundup title cannot be name-matched; this pass
+    runs a candidate-specific search and enriches the articles to direct
+    publisher URLs tagged with the exact product name.
+    """
     if not re.fullmatch(r"\d{4}-\d{2}", month_label):
         return
 
     articles = raw_data.setdefault("articles", [])
-    unsupported_names: list[str] = []
-    for panel, products in data.get("new_product_radar", {}).items():
-        if not panel.startswith("CN ") or not isinstance(products, list):
-            continue
-        for product in products:
-            if not isinstance(product, dict):
+    unsupported: list[tuple[str, str]] = []
+    for section in ("new_product_radar", "heat_rankings"):
+        for panel, products in data.get(section, {}).items():
+            if not isinstance(products, list):
                 continue
-            name = str(product.get("name", "")).strip()
-            if not name:
+            market = panel.split()[0] if panel.split() else ""
+            if category == "fragrance":
+                if market not in {"US", "CN"}:
+                    continue
+            elif market != "CN" or section != "new_product_radar":
                 continue
-            link = str(product.get("link", "")).strip()
-            source_url = str(product.get("source_url", "")).strip() or None
-            if not _find_supporting_articles(name, link, articles, source_url):
-                unsupported_names.append(name)
+            for product in products:
+                if not isinstance(product, dict):
+                    continue
+                name = str(product.get("name", "")).strip()
+                if not name:
+                    continue
+                link = str(product.get("link", "")).strip()
+                source_url = str(product.get("source_url", "")).strip() or None
+                if not _find_supporting_articles(name, link, articles, source_url):
+                    unsupported.append((market, name))
 
-    names = list(dict.fromkeys(unsupported_names))[:12]
+    names = list(dict.fromkeys(unsupported))[:12]
     if not names:
         return
 
     audit = raw_data.setdefault("candidate_evidence_audit", [])
     with ThreadPoolExecutor(max_workers=6) as executor:
         future_map = {
-            executor.submit(search_product_evidence, name, category, month_label): name
-            for name in names
+            executor.submit(search_product_evidence, name, category, month_label, market=market): (
+                market,
+                name,
+            )
+            for market, name in names
         }
         for future in as_completed(future_map):
-            name = future_map[future]
+            market, name = future_map[future]
             try:
                 record, discovered = future.result()
                 record["articles_added"] = _merge_unique_articles(articles, discovered)
@@ -730,7 +764,7 @@ def _supplement_cn_radar_evidence(
                     {
                         "product_name": name,
                         "category": category,
-                        "market": "CN",
+                        "market": market,
                         "type": "candidate_verification",
                         "articles_count": 0,
                         "articles_added": 0,
@@ -739,6 +773,10 @@ def _supplement_cn_radar_evidence(
                 )
     audit.sort(key=lambda item: (item.get("category", ""), item.get("product_name", "")))
     raw_data["total_articles"] = len(articles)
+
+
+# Backwards-compatible alias for the legacy CN radar-only name.
+_supplement_cn_radar_evidence = _supplement_candidate_evidence
 
 
 def _make_launch_evidence(
@@ -841,10 +879,83 @@ def make_product(
     def s(v):
         return v if v and len(v.strip()) > 0 else "N/A"
 
+    def english_only(v: str) -> str:
+        """Remove accidental CJK fragments from English-only public fields."""
+        cleaned = re.sub(r"[\u3400-\u9fff]+", " ", v or "")
+        return re.sub(r"\s+", " ", cleaned).strip()
+
+    # The public site is English-only. Preserve the supplied localized name
+    # separately while ensuring the visible name never leaks CJK characters.
+    visible_name = re.sub(r"[\u3400-\u9fff]+", " ", name)
+    visible_name = re.sub(r"\s+", " ", visible_name).strip() or name
+    if buzz_en and visible_name.casefold() not in buzz_en.casefold():
+        buzz_en = f"{visible_name}: {buzz_en}"
+
     if launch_evidence is None:
         launch_evidence = _make_launch_evidence(
             name, link, topic, iso_week, fetched_at, articles or [], source_url
         )
+
+    # Product discovery may return a brand homepage or collection landing
+    # page. For every category, replace that generic destination with the
+    # direct verified evidence article rather than publishing a weak link.
+    parsed_link = urlparse(link or "")
+    if (
+        parsed_link.path in {"", "/"}
+        or "/collections/" in parsed_link.path
+        or "/category" in parsed_link.path
+    ):
+        link = launch_evidence.get("evidence", {}).get("url", link)
+
+    # Browsers accept Unicode URLs, but the English-only public surface and
+    # quality audit require ASCII-safe links. Percent-encode non-ASCII path or
+    # query characters while preserving URL delimiters and existing escapes.
+    if link:
+        link = quote(link, safe=":/?#[]@!$&'()*+,;=%")
+
+    if topic == "fragrance":
+        generic_category = category_badge.strip().casefold() in {
+            "",
+            "edp",
+            "edt",
+            "perfume",
+            "fragrance",
+            "solid",
+        }
+        name_lower = visible_name.casefold()
+        if generic_category:
+            if "eau de parfum" in name_lower:
+                category_badge = "Eau de Parfum"
+            elif "eau de toilette" in name_lower:
+                category_badge = "Eau de Toilette"
+            elif "cologne" in name_lower:
+                category_badge = "Eau de Cologne"
+            else:
+                category_badge = "Fragrance Collection"
+
+        # Product discovery sometimes returns a brand homepage instead of a
+        # SKU URL. Point users to the verified launch article in that case.
+        price_text = price_en or ""
+        if not re.search(r"(?:[$€£¥]|USD|CAD|HKD|SGD|AED|RMB|CNY)", price_text, re.I):
+            price_text = f"{price_text}; price not publicly disclosed".strip("; ")
+        if not re.search(r"\b\d+(?:\.\d+)?\s?(?:ml|fl oz|oz|g|grams?)\b", price_text, re.I):
+            price_text = f"{price_text}; bottle size not publicly disclosed".strip("; ")
+        price_en = price_text
+
+        # Radar cards use this field as launch/category copy; keep the brand
+        # while adding a specific, factual launch type derived from the name.
+        launch_type = category_badge
+        if not any(
+            cue in (brand_en or "").casefold()
+            for cue in ("launch", "new", "limited", "edition", "collection", "line")
+        ):
+            brand_en = f"{brand_en} — New {launch_type} launch".strip(" —")
+
+    category_badge = english_only(category_badge)
+    brand_en = english_only(brand_en)
+    buzz_en = english_only(buzz_en)
+    features_en = english_only(features_en)
+    price_en = english_only(price_en)
 
     return {
         "category_badge": s(category_badge),
@@ -856,7 +967,7 @@ def make_product(
         },
         "launch_evidence": launch_evidence,
         "market": market,
-        "name": s(name),
+        "name": s(visible_name),
         "name_cn": name_cn,
         "new_badge": new_badge,
         "rank": rank,
@@ -1002,6 +1113,8 @@ Rules:
     _LLM_MAX_ATTEMPTS = 3
     current_user_prompt = user_prompt
     empty_panels: list[str] = []
+    best_result: dict | None = None
+    best_quality: tuple[int, int, int] | None = None
     accumulated_cn_radar: dict[str, list[dict]] = {}
     cn_radar_floor = (
         _cn_radar_soft_floor(category) if re.fullmatch(r"\d{4}-\d{2}", month_label) else 0
@@ -1010,14 +1123,28 @@ Rules:
     for attempt in range(1, _LLM_MAX_ATTEMPTS + 1):
         print(f"  Calling LLM for {category} products (attempt {attempt}/{_LLM_MAX_ATTEMPTS})...")
         response = call_llm(system_prompt, current_user_prompt)
-        data = parse_json_response(response)
+        try:
+            data = parse_json_response(response)
+        except (json.JSONDecodeError, ValueError) as exc:
+            print(
+                f"  WARNING: malformed {category} JSON on attempt {attempt}: {exc}",
+                file=sys.stderr,
+            )
+            if attempt < _LLM_MAX_ATTEMPTS:
+                current_user_prompt = (
+                    user_prompt
+                    + "\n\nThe previous response was malformed JSON. Return one complete, "
+                    "strictly valid JSON object only; do not truncate it or use Markdown."
+                )
+                continue
+            break
         _accumulate_cn_radar_candidates(accumulated_cn_radar, data)
         if accumulated_cn_radar:
             radar_data = data.setdefault("new_product_radar", {})
             for panel, products in accumulated_cn_radar.items():
                 radar_data[panel] = products
 
-        _supplement_cn_radar_evidence(data, raw_data, category, month_label)
+        _supplement_candidate_evidence(data, raw_data, category, month_label)
         articles = raw_data.get("articles", [])
         article_urls = {a.get("url", "") for a in articles if a.get("url")}
 
@@ -1028,6 +1155,9 @@ Rules:
             if section in data:
                 for panel, products in data[section].items():
                     canonical_products: list[dict] = []
+                    panel_parts = panel.split()
+                    panel_market = panel_parts[0]
+                    panel_tier = panel_parts[1] if len(panel_parts) > 1 else "LUXURY"
                     if isinstance(products, list):
                         for p in products:
                             if not isinstance(p, dict):
@@ -1043,11 +1173,11 @@ Rules:
                                     name_cn=p.get("name_cn") or "",
                                     rank=p.get("rank", 1),
                                     score=p.get("score", 75),
-                                    market=p.get("market", panel.split()[0]),
-                                    tier=p.get(
-                                        "tier",
-                                        panel.split()[1] if len(panel.split()) > 1 else "LUXURY",
-                                    ),
+                                    # Panel membership is authoritative. LLMs
+                                    # occasionally emit a conflicting tier,
+                                    # which must not corrupt the canonical card.
+                                    market=panel_market,
+                                    tier=panel_tier,
                                     category_badge=p.get("category_badge", ""),
                                     brand_cn=p.get("brand_cn", ""),
                                     brand_en=p.get("brand_en", ""),
@@ -1086,6 +1216,7 @@ Rules:
         # Renumber ranks sequentially per panel after filtering
         for section in ["heat_rankings", "new_product_radar"]:
             for panel_products in result[section].values():
+                panel_products.sort(key=lambda product: float(product.get("score", 0)), reverse=True)
                 for i, p in enumerate(panel_products, start=1):
                     p["rank"] = i
 
@@ -1105,6 +1236,15 @@ Rules:
             for panel, products in result["new_product_radar"].items()
             if panel.startswith("CN ")
         )
+
+        # Retries may improve one weak section while regressing panels that
+        # were already evidence-complete. Keep the best fully canonicalized
+        # attempt; unsupported candidates have already been quarantined.
+        heat_coverage = sum(len(products) for products in result["heat_rankings"].values())
+        quality = (-len(empty_panels), min(cn_radar_count, cn_radar_floor), heat_coverage)
+        if best_quality is None or quality > best_quality:
+            best_quality = quality
+            best_result = result
 
         if not empty_panels and (not cn_radar_floor or cn_radar_count >= cn_radar_floor):
             _record_cn_radar_coverage(raw_data, category, result, cn_radar_floor)
@@ -1148,6 +1288,19 @@ Rules:
                 f"CN radar={cn_radar_count}/{cn_radar_floor or 'n/a'}",
                 file=sys.stderr,
             )
+
+    if best_result is not None:
+        result = best_result
+        empty_panels = sorted(
+            panel for panel in required_heat_panels if not result["heat_rankings"].get(panel, [])
+        )
+        cn_radar_count = sum(
+            len(products)
+            for panel, products in result["new_product_radar"].items()
+            if panel.startswith("CN ")
+        )
+    else:
+        raise RuntimeError(f"{category} generation produced no valid JSON attempt")
 
     market_coverage = {
         market: sum(

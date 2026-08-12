@@ -1,0 +1,63 @@
+{
+  "version": "1.0.0",
+  "policy": {
+    "coverage_semantics": "Fragrance roundup discovery targets authoritative month-level fragrance/beauty roundups from media, retailers, and official press-release outlets. Every query is searched on every monthly run; a search attempt is mandatory, but inclusion is evidence-driven and the list is not a whitelist.",
+    "date_semantics": "A product qualifies when an official launch, first listing, or first credible publication falls inside the target calendar month."
+  },
+  "roundup_sources": [
+    {
+      "name": "NewBeauty monthly fragrance roundup",
+      "market": "US",
+      "outlet": "NewBeauty",
+      "category": "fragrance",
+      "query": "(NewBeauty) (best new fragrances OR new fragrance OR fragrance launches) {month_name}"
+    },
+    {
+      "name": "Vogue Taiwan monthly fragrance roundup",
+      "market": "TW",
+      "outlet": "Vogue Taiwan",
+      "category": "fragrance",
+      "query": "(Vogue Taiwan) (香氛新品盤點 OR 香水新品 OR 香氛新品) {year}年{month_number}月"
+    },
+    {
+      "name": "Scentbird monthly releases",
+      "market": "US",
+      "outlet": "Scentbird",
+      "category": "fragrance",
+      "query": "(Scentbird) (new perfume OR new fragrance OR releases OR subscription box) {month_name}"
+    },
+    {
+      "name": "T3 men's fragrance launches",
+      "market": "US",
+      "outlet": "T3",
+      "category": "fragrance",
+      "query": "(\"T3\") (men's fragrance OR men's perfume OR fragrance launches) {month_name}"
+    },
+    {
+      "name": "Marie Claire monthly beauty products",
+      "market": "US",
+      "outlet": "Marie Claire",
+      "category": "fragrance",
+      "query": "(\"Marie Claire\") (best new beauty products OR beauty launches OR new beauty products) {month_name}"
+    },
+    {
+      "name": "Gap Beauty relaunch",
+      "market": "US",
+      "outlet": "Gap",
+      "category": "fragrance",
+      "query": "(Gap Beauty) (fragrance relaunch OR iconic scents OR fragrance collection OR fragrance launch)"
+    },
+    {
+      "name": "PRNewswire fragrance press releases",
+      "market": "US",
+      "outlet": "PRNewswire",
+      "category": "fragrance",
+      "query": "(PRNewswire OR \"PR Newswire\") (fragrance OR \"eau de parfum\" OR perfume) (launch OR debut OR enters)"
+    }
+  ],
+  "evidence_grades": {
+    "A": "Official brand launch or product page with an exact in-window date.",
+    "B": "Retailer listing or reputable editorial roundup with an exact in-window publication date.",
+    "C": "Credible discovery or social-commerce source with an exact in-window first verified mention."
+  }
+}

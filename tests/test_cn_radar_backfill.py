@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import importlib.util
 import json
+import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -124,5 +125,5 @@ def test_backfill_evidence_grades_render_in_published_pages():
     makeup_html = (ROOT / "index.html").read_text(encoding="utf-8")
     fragrance_html = (ROOT / "fragrance.html").read_text(encoding="utf-8")
 
-    assert "Grade C · 2026-06-24 · first verified mention" in makeup_html
-    assert "Grade B · 2026-06-16 · first listing" in fragrance_html
+    assert re.search(r"Grade [A-C] · 2026-07-\d{2} ·", makeup_html)
+    assert re.search(r"Grade [A-C] · 2026-07-\d{2} ·", fragrance_html)

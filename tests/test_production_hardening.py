@@ -636,6 +636,88 @@ class TestFindSupportingArticles:
         )
         assert result == []
 
+    def test_candidate_verification_article_matching_name_accepted(self):
+        """A direct candidate_verification article for the exact product name
+        must qualify even when the roundup title does not name the product."""
+        from build.generate_weekly import _find_supporting_articles
+
+        articles = [
+            {
+                "title": "Megan Thee Stallion's Hot Girl Summer Eau de Parfum is here",
+                "url": "https://prnewswire.example/hot-girl-summer",
+                "date": "2026-07-12",
+                "summary": "Official press release",
+                "reference_type": "candidate_verification",
+                "candidate_name": "Hot Girl Summer Eau de Parfum",
+            }
+        ]
+        result = _find_supporting_articles(
+            "Hot Girl Summer Eau de Parfum",
+            "https://sephora.com/test",
+            articles,
+        )
+        assert len(result) == 1
+        assert result[0]["url"] == "https://prnewswire.example/hot-girl-summer"
+
+    def test_candidate_verification_google_aggregator_url_rejected(self):
+        """A candidate_verification article behind a Google News aggregator URL
+        is still NOT evidence — RSS aggregator links never qualify."""
+        from build.generate_weekly import _find_supporting_articles
+
+        articles = [
+            {
+                "title": "Megan Thee Stallion's Hot Girl Summer Eau de Parfum is here",
+                "url": "https://news.google.com/rss/articles/encoded",
+                "date": "2026-07-12",
+                "reference_type": "candidate_verification",
+                "candidate_name": "Hot Girl Summer Eau de Parfum",
+            }
+        ]
+        result = _find_supporting_articles(
+            "Hot Girl Summer Eau de Parfum",
+            "https://sephora.com/test",
+            articles,
+        )
+        assert result == []
+
+    def test_candidate_verification_name_mismatch_rejected(self):
+        """candidate_name must exactly match the product name."""
+        from build.generate_weekly import _find_supporting_articles
+
+        articles = [
+            {
+                "title": "Unrelated fragrance article",
+                "url": "https://publisher.example/fragrance",
+                "date": "2026-07-12",
+                "reference_type": "candidate_verification",
+                "candidate_name": "A Completely Different Product",
+            }
+        ]
+        result = _find_supporting_articles(
+            "Hot Girl Summer Eau de Parfum",
+            "https://sephora.com/test",
+            articles,
+        )
+        assert result == []
+
+    def test_candidate_verification_untagged_article_rejected(self):
+        """A plain article is not accepted just because it lacks the tag."""
+        from build.generate_weekly import _find_supporting_articles
+
+        articles = [
+            {
+                "title": "Roundup of the best new fragrances",
+                "url": "https://roundup.example/best-new",
+                "date": "2026-07-12",
+            }
+        ]
+        result = _find_supporting_articles(
+            "Hot Girl Summer Eau de Parfum",
+            "https://sephora.com/test",
+            articles,
+        )
+        assert result == []
+
     def test_url_slug_match(self):
         """Product name must match via normalized URL slug."""
         from build.generate_weekly import _find_supporting_articles
@@ -652,3 +734,49 @@ class TestFindSupportingArticles:
         )
         assert len(result) == 1
         assert result[0]["url"] == "https://elle.com/guerlain-rouge-lipstick-editor-review"
+
+    def test_visible_product_link_percent_encodes_cjk(self):
+        from build.generate_monthly import make_product
+
+        evidence = {
+            "topic": "fragrance",
+            "product_name": "Dior J'adore Eau de Parfum",
+            "iso_week": "2026-W30",
+            "evidence": {
+                "url": "https://example.com/dior",
+                "title": "Dior J'adore Eau de Parfum",
+                "published_at": "2026-07-12",
+                "fetched_at": "2026-07-12T00:00:00Z",
+                "checked_at": "2026-07-12T00:00:00Z",
+                "supported_fields": ["launch_date", "link"],
+            },
+        }
+        product = make_product(
+            "Dior J'adore Eau de Parfum", "迪奥真我香水", 1, 90,
+            "CN", "LUXURY", "Eau de Parfum", "迪奥", "Dior",
+            "热度上升", "Trending", "花香调", "Floral notes", "¥1,250",
+            "CNY 1,250; 50 ml", "https://example.com/香水/真我", topic="fragrance",
+            launch_evidence=evidence,
+        )
+        link = product["detail"]["price_link"]["link"]
+        assert "香水" not in link
+        assert "%E9%A6%99%E6%B0%B4" in link
+
+    def test_visible_english_fields_strip_accidental_cjk(self):
+        from build.generate_monthly import make_product
+
+        evidence = {
+            "topic": "makeup", "product_name": "Test Lipstick", "iso_week": "2026-W30",
+            "evidence": {"url": "https://example.com/test", "title": "Test Lipstick",
+                         "published_at": "2026-07-12", "fetched_at": "2026-07-12T00:00:00Z",
+                         "checked_at": "2026-07-12T00:00:00Z", "supported_fields": ["link"]},
+        }
+        product = make_product(
+            "Test Lipstick", "测试口红", 1, 80, "CN", "LUXURY", "Lipstick",
+            "品牌", "Brand", "热度", "连续 Chinese media coverage", "特点",
+            "Soft finish", "¥100", "CNY 100", "https://example.com/test",
+            launch_evidence=evidence,
+        )
+        assert product["detail"]["buzz"]["en"] == (
+            "Test Lipstick: Chinese media coverage"
+        )

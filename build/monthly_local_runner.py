@@ -87,11 +87,9 @@ def snapshot(month: str) -> Path:
 
 
 def restore(month: str, backup: Path) -> None:
-    month_dir = ROOT / "data" / "months" / month
-    if month_dir.exists():
-        shutil.rmtree(month_dir)
-    if (backup / "month").exists():
-        shutil.copytree(backup / "month", month_dir)
+    # Restore only public artifacts. Keep the locally generated canonical
+    # candidate for diagnosis and deterministic re-validation; it is not
+    # published until a later successful commit/push.
     for name in PUBLISHED:
         dst, src = ROOT / name, backup / name
         if src.exists():

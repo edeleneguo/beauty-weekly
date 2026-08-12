@@ -1,0 +1,27 @@
+{
+  "canonical_hash": "9cf1a58fa111d590ff9f65419637cfb08e67bff60a48f989bec73ece38afc8f8",
+  "data_pointer": "../../month2026-07.json",
+  "data_sha256": null,
+  "date_range": "Jul 1 – Jul 31, 2026",
+  "date_range_cn": "7月1日 – 7月31日",
+  "domain_separation": [
+    "stable trend entities (TrendTag, Trend)",
+    "bilingual product fields (LocalizedText, PriceLink, Category)",
+    "source / evidence records (Evidence, EvidenceAbsence)",
+    "new-product qualification evidence (LaunchEvidence)",
+    "shared scoring data (rank, score, market, tier in Product)"
+  ],
+  "legacy_fields_isolated": [],
+  "migration_deprecation": {},
+  "migration_gaps": [
+    "CN new-product soft floors trigger a second discovery pass but panels may remain below target when evidence is insufficient."
+  ],
+  "month": "2026-07",
+  "note": "Auto-generated from public RSS data with dedicated CN discovery, candidate verification, and evidence-graded LLM synthesis.",
+  "phase": "auto",
+  "remaining_warnings": 1,
+  "resolved_warnings": [],
+  "schema_version": 3,
+  "scoring_hash": "cd469522b48a84c3d709ad03ad65177a7e952905985b2a1280002fc48a55bfb6",
+  "sources_hash": "47ceeca0647618bb9514ba82d36ac59b0602a64aab2013b6f514d43c5417ede2"
+}

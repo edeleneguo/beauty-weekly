@@ -1,0 +1,268 @@
+{
+  "components": null,
+  "display_breakdown_policy": {
+    "components": [
+      {
+        "evidence": "Sales, bestseller, ranking, sell-out, restock, and platform proxy signals.",
+        "id": "sales_momentum",
+        "label": "Sales Momentum",
+        "max_points": 40,
+        "weight": 0.4
+      },
+      {
+        "evidence": "Social discussion, creator/editor coverage, and media visibility.",
+        "id": "buzz_momentum",
+        "label": "Buzz Momentum",
+        "max_points": 30,
+        "weight": 0.3
+      },
+      {
+        "evidence": "Ratings, review volume, expert tests, vote counts, and user feedback.",
+        "id": "review_rating",
+        "label": "Review / Rating",
+        "max_points": 20,
+        "weight": 0.2
+      },
+      {
+        "evidence": "Fit with the month's active trend taxonomy and new-product context.",
+        "id": "trend_fit",
+        "label": "Trend Fit",
+        "max_points": 10,
+        "weight": 0.1
+      }
+    ],
+    "methodology": "Weighted dashboard explanation: Sales Momentum 40% + Buzz Momentum 30% + Review/Rating 20% + Trend Fit 10%. Historical monthly scores remain non-recomputable until raw platform sales/review/social time-series are collected.",
+    "status": "display_explanation_not_raw_recompute",
+    "version": "dashboard-explainability-v1"
+  },
+  "known_constraints": {
+    "field": "score",
+    "max": 100,
+    "min": 0,
+    "monotonic_by_rank": true,
+    "observed_max": 96,
+    "observed_min": 79,
+    "panel_independent": true,
+    "type": "integer"
+  },
+  "missing_components": [
+    "score_breakdown — no per-dimension scores available",
+    "weights — no weighting factors documented",
+    "raw component time-series - sales, social, review, and trend inputs not yet collected as normalized numeric series"
+  ],
+  "observed_statistics": {
+    "monotonic_by_rank": true,
+    "observed_max": 96,
+    "observed_min": 79,
+    "total_scored_products": 37
+  },
+  "products": [
+    {
+      "name": "HOURGLASS Unlocked Satin Creme Lipstick",
+      "panel": "US LUXURY",
+      "score": 94
+    },
+    {
+      "name": "Fara Homidi Essential Blonzer Compact",
+      "panel": "US LUXURY",
+      "score": 92
+    },
+    {
+      "name": "Hung Vanngo Beauty Foundation",
+      "panel": "US LUXURY",
+      "score": 91
+    },
+    {
+      "name": "Giorgio Armani Luminous Silk Cheek Tint",
+      "panel": "US LUXURY",
+      "score": 88
+    },
+    {
+      "name": "MERIT Clean Lash Lengthening Tubing Mascara",
+      "panel": "US LUXURY",
+      "score": 87
+    },
+    {
+      "name": "NYX Professional Makeup Butter Gloss",
+      "panel": "US MASSTIGE",
+      "score": 87
+    },
+    {
+      "name": "HOURGLASS Unlocked Satin Creme Lipstick",
+      "panel": "CN LUXURY",
+      "score": 95
+    },
+    {
+      "name": "MAKE UP FOR EVER HD SKIN BALANCING & PERFECTING Foundation",
+      "panel": "CN LUXURY",
+      "score": 92
+    },
+    {
+      "name": "Clé de Peau Beauté Radiant Lipstick",
+      "panel": "CN LUXURY",
+      "score": 91
+    },
+    {
+      "name": "Joocyee Summer Limited Makeup Collection",
+      "panel": "CN MASSTIGE",
+      "score": 89
+    },
+    {
+      "name": "Flower Knows Summer Mint Makeup Collection",
+      "panel": "CN MASSTIGE",
+      "score": 88
+    },
+    {
+      "name": "Chando Triple-Actives Balance Factor Gift Set",
+      "panel": "CN MASSTIGE",
+      "score": 82
+    },
+    {
+      "name": "Flower Knows Makeup Collection",
+      "panel": "CN MASSTIGE",
+      "score": 79
+    },
+    {
+      "name": "Hung Vanngo Beauty Foundation",
+      "panel": "US LUXURY",
+      "score": 91
+    },
+    {
+      "name": "MERIT Clean Lash Lengthening Tubing Mascara",
+      "panel": "US LUXURY",
+      "score": 87
+    },
+    {
+      "name": "HOURGLASS Unlocked Satin Creme Lipstick",
+      "panel": "CN LUXURY",
+      "score": 95
+    },
+    {
+      "name": "YSL Love Light Eye Palette / Cushion / Lip Glaze Collection",
+      "panel": "CN LUXURY",
+      "score": 93
+    },
+    {
+      "name": "Clé de Peau Beauté Radiant Lipstick",
+      "panel": "CN LUXURY",
+      "score": 91
+    },
+    {
+      "name": "Maison Francis Kurkdjian Baccarat Rouge 540 Eau de Parfum",
+      "panel": "US LUXURY",
+      "score": 95
+    },
+    {
+      "name": "Chanel Coco Mademoiselle Eau de Parfum",
+      "panel": "US LUXURY",
+      "score": 93
+    },
+    {
+      "name": "Chanel Chance Eau Tendre Eau de Parfum",
+      "panel": "US LUXURY",
+      "score": 91
+    },
+    {
+      "name": "Le Labo Another 13 Eau de Parfum",
+      "panel": "US LUXURY",
+      "score": 89
+    },
+    {
+      "name": "Diptyque Eau Rose Eau de Parfum",
+      "panel": "US LUXURY",
+      "score": 88
+    },
+    {
+      "name": "Byredo Mojave Ghost Eau de Parfum",
+      "panel": "US LUXURY",
+      "score": 87
+    },
+    {
+      "name": "Creed Aventus for Her Eau de Parfum",
+      "panel": "US LUXURY",
+      "score": 85
+    },
+    {
+      "name": "Billie Eilish Eilish Intense Eau de Parfum",
+      "panel": "US MASSTIGE",
+      "score": 96
+    },
+    {
+      "name": "Megan Thee Stallion Hot Girl Summer Eau de Parfum",
+      "panel": "US MASSTIGE",
+      "score": 95
+    },
+    {
+      "name": "Sol de Janeiro Cheirosa 62 Perfume Mist",
+      "panel": "US MASSTIGE",
+      "score": 93
+    },
+    {
+      "name": "Gap Dream Eau de Parfum",
+      "panel": "US MASSTIGE",
+      "score": 92
+    },
+    {
+      "name": "Gap Harmony Eau de Parfum",
+      "panel": "US MASSTIGE",
+      "score": 91
+    },
+    {
+      "name": "Phlur Vanilla Skin Eau de Parfum",
+      "panel": "US MASSTIGE",
+      "score": 90
+    },
+    {
+      "name": "Ariana Grande Cloud Eau de Parfum",
+      "panel": "US MASSTIGE",
+      "score": 88
+    },
+    {
+      "name": "Ralph Lauren Ralph Eau de Toilette",
+      "panel": "US MASSTIGE",
+      "score": 85
+    },
+    {
+      "name": "Billie Eilish Eilish Intense Eau de Parfum",
+      "panel": "US LUXURY",
+      "score": 96
+    },
+    {
+      "name": "Megan Thee Stallion Hot Girl Summer Eau de Parfum",
+      "panel": "US LUXURY",
+      "score": 95
+    },
+    {
+      "name": "Gap Harmony Eau de Parfum",
+      "panel": "US LUXURY",
+      "score": 91
+    },
+    {
+      "name": "Gap Dream Eau de Parfum",
+      "panel": "US LUXURY",
+      "score": 90
+    }
+  ],
+  "reason": "LLM-generated scores with no decomposable components.",
+  "recomputable": false,
+  "schema_version": "1.0.0",
+  "scoring_formula": "Sales Score (≤50) + Buzz Score (≤50) = Total (≤100)",
+  "validation_rules": [
+    {
+      "checkable": true,
+      "description": "All non-zero scores must be between 0 and 100",
+      "rule": "score_range"
+    },
+    {
+      "checkable": true,
+      "description": "Within each panel, scores must be non-increasing by rank",
+      "rule": "monotonic_by_rank"
+    },
+    {
+      "checkable": true,
+      "description": "All ranks must be between 1 and 10",
+      "rule": "rank_range"
+    }
+  ],
+  "version": "1.0.0"
+}

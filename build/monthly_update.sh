@@ -41,6 +41,11 @@ echo "Running pre-publish validation..."
 python3 build/validate_published.py
 python3 build/audit_product_quality.py
 
+# A newly generated month has no historical fidelity baseline yet. Freeze
+# the validated canonical counts before rendering so the staged audit can
+# prove that no cards disappear during render/promotion.
+python3 build/bootstrap_completeness_reference.py
+
 # Render in staging directory
 echo "Rendering HTML..."
 STAGE_DIR=$(mktemp -d "${TMPDIR:-/tmp}/beauty-monthly-stage.XXXXXX")
