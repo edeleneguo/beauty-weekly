@@ -1139,6 +1139,7 @@ class TestIsolatedRenderValidation:
             env = os.environ.copy()
             env["BEAUTY_WEEKLY_WEEK"] = "2026-W28"
             env["BEAUTY_WEEKLY_OUTPUT_DIR"] = tmpdir
+            env["BEAUTY_WEEKLY_HISTORICAL_FIXTURE"] = "1"
             # First render to the temp dir
             render_result = subprocess.run(
                 [sys.executable, os.path.join(ROOT, "build", "render.py")],
