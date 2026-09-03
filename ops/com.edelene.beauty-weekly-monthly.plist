@@ -12,6 +12,11 @@
     <string>/Users/hhw/.openclaw/workspace/projects/beauty-weekly/build/monthly_local_runner.py</string>
   </array>
   <key>WorkingDirectory</key><string>/Users/hhw/.openclaw/workspace/projects/beauty-weekly</string>
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>HOME</key><string>/Users/hhw</string>
+    <key>PATH</key><string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+  </dict>
   <key>StartCalendarInterval</key>
   <dict><key>Day</key><integer>1</integer><key>Hour</key><integer>9</integer><key>Minute</key><integer>0</integer></dict>
   <key>StandardOutPath</key><string>/Users/hhw/.openclaw/workspace/projects/beauty-weekly/.beauty-weekly-state/logs/monthly.out.log</string>
