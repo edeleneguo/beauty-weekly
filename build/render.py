@@ -28,7 +28,7 @@ import os
 import re
 import sys
 from datetime import date
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Optional
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
@@ -449,6 +449,82 @@ def _render_coverage_note(lang: str, section: str, count: int) -> str:
     return _render_radar_panel_note(lang, count)
 
 
+def _coverage_why_text(section: str, entry: Optional[Dict[str, Any]], formal_count: int) -> str:
+    """Explain in words why a panel is below its formal target."""
+    target = 10 if section == "heat" else 5
+    if not entry:
+        return (
+            "Collection metadata unavailable for this issue; "
+            f"{formal_count} formal product(s) verified of {target} target. "
+            "Rankings are not padded."
+        )
+    candidate = int(entry.get("candidate_count", 0))
+    verified = int(entry.get("verified_count", 0))
+    formal = int(entry.get("formal_included_count", formal_count))
+    observation = int(entry.get("observation_count", 0))
+    reasons: list[str] = []
+    if candidate == 0:
+        reasons.append("no candidates were proposed from the collected signal for this panel")
+    else:
+        quarantined = max(candidate - verified, 0)
+        if quarantined:
+            reasons.append(
+                f"{quarantined} candidate(s) lacked supporting A/B evidence "
+                "and were quarantined rather than fabricated"
+            )
+    if observation:
+        reasons.append(
+            f"{observation} C-grade signal(s) listed under Market Observation "
+            "pending official confirmation"
+        )
+    if formal < target:
+        reasons.append("verified A/B supply below target; collection continues next cycle")
+    if not reasons:
+        reasons.append("coverage met target")
+    return (
+        f"Candidates {candidate} · Verified {verified} · Included {formal} "
+        f"(target {target}). Why limited: " + "; ".join(reasons) + "."
+    )
+
+
+def _render_collection_status_card(
+    lang: str,
+    section: str,
+    panel_key: str,
+    formal_count: int,
+    entry: Optional[Dict[str, Any]],
+) -> str:
+    """Render a visible structured collection-status card inside a thin panel.
+
+    Uses a distinct ``coverage-status-card`` class (never ``heat-item``) so
+    formal item validators ignore it.  Counts come only from auditable
+    generation metadata — never fabricated.
+    """
+    del lang
+    target = 10 if section == "heat" else 5
+    if formal_count >= target and entry and entry.get("status") == "met":
+        return ""
+    status = (entry or {}).get("status", "below_target")
+    why = _coverage_why_text(section, entry, formal_count)
+    return (
+        '<li class="coverage-status-card" style="list-style:none;border:1px dashed #d1d5db;border-radius:8px;background:#fafafa;padding:12px 16px;">'
+        '<div class="heat-info">'
+        '<span class="heat-name" style="font-weight:700;">'
+        "Collection status — {panel}: {formal}/{target} formally included ({status})"
+        "</span>"
+        "</div>"
+        '<div class="coverage-why" style="font-size:12px;color:#555;margin-top:4px;">'
+        "{why}</div>"
+        "</li>"
+    ).format(
+        panel=_esc(panel_key),
+        formal=formal_count,
+        target=target,
+        status=_esc(str(status)),
+        why=_esc(why),
+    )
+
+
 def _render_market_observation(topic: str, lang: str, observations_by_panel: dict) -> str:
     """Render the market observation candidate area.
 
@@ -509,6 +585,7 @@ def _render_section(
     lang: str,
     topic: str,
     section: str,
+    coverage_by_panel: Optional[Dict[str, Dict[str, Any]]] = None,
 ) -> str:
     """Render Section 03 or 04 HTML — US-only panels."""
     titles = SECTION_TITLES.get((topic, lang), ("", "Heat", "Rankings", "New Product", "Radar"))
@@ -535,6 +612,7 @@ def _render_section(
         html = _render_panel_heading(market, tier, lang, topic, section) + "\n"
         raw_products = products_by_panel.get(panel_key, [])
         products = _filter_panel_products(raw_products, section)
+        entry = (coverage_by_panel or {}).get(panel_key)
         html += '<ul class="heat-accordion">'
         if products:
             for product in products:
@@ -545,6 +623,11 @@ def _render_section(
                 html += _render_coverage_note(lang, section, len(products))
         else:
             html += _render_empty_state_note(lang, topic, len(products), section)
+        needs_card = (section == "heat" and len(products) < 10) or (
+            section == "radar" and len(products) < 5
+        )
+        if needs_card:
+            html += _render_collection_status_card(lang, section, panel_key, len(products), entry)
         html += "</ul>\n"
         return html
 
@@ -699,12 +782,17 @@ def main() -> None:
             heat_panels = {panel: [] for panel in panel_names}
             radar_panels = {panel: [] for panel in panel_names}
 
+        topic_coverage = (data.get("panel_coverage") or {}).get(topic, {})
         # Render and replace Section 03
-        heat_html = _render_section(heat_panels, lang, topic, "heat")
+        heat_html = _render_section(
+            heat_panels, lang, topic, "heat", topic_coverage.get("heat_rankings")
+        )
         html = _replace_section(html, 3, heat_html)
 
         # Render and replace Section 04 (plus market observation area)
-        radar_html = _render_section(radar_panels, lang, topic, "radar")
+        radar_html = _render_section(
+            radar_panels, lang, topic, "radar", topic_coverage.get("new_product_radar")
+        )
         observations = (data.get("market_observation") or {}).get(topic, {})
         radar_html += _render_market_observation(topic, lang, observations)
         html = _replace_section(html, 4, radar_html)

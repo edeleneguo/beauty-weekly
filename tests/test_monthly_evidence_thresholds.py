@@ -541,3 +541,108 @@ def test_validate_panel_thresholds_hard_failure():
         "new_product_radar": {},
     }
     assert validate_tier_routing(bad) != []
+
+
+def test_collection_status_card_shows_counts_and_why():
+    from build.render import _render_collection_status_card
+
+    entry = {
+        "candidate_count": 8,
+        "verified_count": 6,
+        "formal_included_count": 5,
+        "observation_count": 1,
+        "status": "below_target",
+    }
+    html = _render_collection_status_card("en", "heat", "CN LUXURY", 5, entry)
+    assert "coverage-status-card" in html
+    assert "CN LUXURY" in html
+    assert "5/10" in html
+    assert "Candidates 8" in html
+    assert "Verified 6" in html
+    assert "Included 5" in html
+    assert "Market Observation" in html
+    assert "heat-item" not in html
+
+
+def test_collection_status_card_met_panel_renders_nothing():
+    from build.render import _render_collection_status_card
+
+    entry = {
+        "candidate_count": 10,
+        "verified_count": 10,
+        "formal_included_count": 10,
+        "observation_count": 0,
+        "status": "met",
+    }
+    assert _render_collection_status_card("en", "heat", "US LUXURY", 10, entry) == ""
+
+
+def test_empty_panel_renders_status_card_not_blank():
+    from build.render import _render_section
+
+    coverage = {
+        "CN LUXURY": {
+            "candidate_count": 0,
+            "verified_count": 0,
+            "formal_included_count": 0,
+            "observation_count": 0,
+            "status": "below_minimum",
+        }
+    }
+    html = _render_section({"CN LUXURY": []}, "en", "makeup", "heat", coverage)
+    assert "coverage-status-card" in html
+    assert "0/10" in html
+
+
+def test_report_carries_panel_coverage():
+    import json
+
+    from build import generate_weekly
+
+    panels = ["US LUXURY", "US MASSTIGE", "CN LUXURY", "CN MASSTIGE"]
+
+    def product(panel, suffix):
+        return {
+            "name": f"Verified {panel} {suffix}",
+            "market": panel.split()[0],
+            "tier": panel.split()[1],
+            "link": f"https://brand.example/{panel.replace(' ', '-').lower()}-{suffix}",
+            "source_url": f"https://publisher.example/{panel.replace(' ', '-').lower()}-{suffix}",
+        }
+
+    data = {
+        "heat_rankings": {
+            panel: [product(panel, f"heat-{i}") for i in range(10)] for panel in panels
+        },
+        "new_product_radar": {
+            panel: [product(panel, f"radar-{i}") for i in range(5)] for panel in panels
+        },
+    }
+    responses = iter([data])
+    import unittest.mock as mock
+
+    with mock.patch.object(generate_weekly, "call_llm", return_value="{}"), mock.patch.object(
+        generate_weekly, "parse_json_response", side_effect=lambda *_: next(responses)
+    ), mock.patch.object(generate_weekly, "_cn_radar_soft_floor", return_value=0), mock.patch.object(
+        generate_weekly, "_supplement_candidate_evidence", return_value=None
+    ), mock.patch.object(
+        generate_weekly,
+        "make_product",
+        side_effect=lambda **kwargs: {
+            "name": kwargs["name"],
+            "rank": kwargs["rank"],
+            "score": kwargs["score"],
+            "market": kwargs["market"],
+            "tier": kwargs["tier"],
+            "launch_evidence": {"launch_date": "2026-07-15", "evidence": {"url": "x"}},
+        },
+    ):
+        raw: dict = {"articles": []}
+        result = generate_weekly.generate_products(
+            raw, "makeup", "2026-07", "Jul 1 – Jul 31, 2026", "2026-08-01T00:00:00Z"
+        )
+    assert set(result) >= {"heat_rankings", "new_product_radar", "market_observation"}
+    entry = raw["panel_coverage"]["makeup"]["heat_rankings"]["US LUXURY"]
+    assert entry["formal_included_count"] == 10
+    assert entry["status"] == "met"
+    json.dumps(raw["panel_coverage"])

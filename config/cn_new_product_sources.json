@@ -1,8 +1,9 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "policy": {
     "coverage_semantics": "Soft floors trigger a second discovery pass; they never authorize fabricated or unsupported products.",
-    "date_semantics": "A product qualifies when an official launch, first listing, or first credible publication falls inside the target calendar month."
+    "date_semantics": "A product qualifies when an official launch, first listing, or first credible publication falls inside the target calendar month.",
+    "source_access": "Public pages only: brand official pages, Tmall/JD public listing signals, Weibo public pages, and Chinese beauty/industry media. No login-walled sources."
   },
   "soft_floor": {
     "makeup": 8,
@@ -37,6 +38,26 @@
       {
         "name": "CN makeup social launches",
         "query": "site:weibo.com (彩妆新品 OR 口红新品 OR 气垫新品 OR 腮红新品)"
+      },
+      {
+        "name": "CN makeup brand official launches",
+        "query": "(毛戈平 OR 卡姿兰 OR 方里 OR 彩棠 OR 花知晓 OR 酵色) (新品上市 OR 新品发布 OR 全球首发)"
+      },
+      {
+        "name": "CN makeup retail listings",
+        "query": "(天猫 OR 京东) (口红新品 OR 粉底新品 OR 气垫新品) (首发 OR 上市)"
+      },
+      {
+        "name": "CN makeup weibo brand launches",
+        "query": "site:weibo.com (INTO YOU OR 花西子 OR 毛戈平 OR 珂拉琪) 新品"
+      },
+      {
+        "name": "CN makeup beauty media launches",
+        "query": "(site:cosmopolitan.com.cn OR site:marieclairechina.com OR site:rayli.com.cn OR site:trends.com.cn) (彩妆新品 OR 口红 OR 粉底)"
+      },
+      {
+        "name": "CN makeup trade media launches",
+        "query": "(聚美丽 OR 青眼 OR 化妆品报) (彩妆新品 OR 新品上市)"
       },
       {
         "name": "CN monthly makeup roundups",
@@ -75,6 +96,26 @@
       {
         "name": "CN global fragrance launches",
         "query": "(Dior OR Chanel OR Guerlain OR YSL OR Jo Malone OR Le Labo) (香水新品 OR 香水首发 OR 香氛新品) 中国"
+      },
+      {
+        "name": "CN fragrance brand official launches",
+        "query": "(观夏 OR 闻献 OR 野兽派 OR 冰希黎 OR RE调香室) (香水新品 OR 新品上市 OR 首发) -香水椰 -香水柠檬"
+      },
+      {
+        "name": "CN fragrance retail listings",
+        "query": "(天猫 OR 京东) (淡香精 OR 浓香水 OR 香氛) (新品首发 OR 新品上市) -香水椰 -香水柠檬"
+      },
+      {
+        "name": "CN fragrance weibo brand launches",
+        "query": "site:weibo.com (观夏 OR 闻献 OR 气味图书馆 OR 冰希黎) 新品 -香水椰 -香水柠檬"
+      },
+      {
+        "name": "CN fragrance beauty media launches",
+        "query": "(site:cosmopolitan.com.cn OR site:trends.com.cn OR site:marieclairechina.com) (香水新品 OR 香氛新品) -香水椰 -香水柠檬"
+      },
+      {
+        "name": "CN fragrance trade media launches",
+        "query": "(聚美丽 OR 青眼 OR 化妆品报) (香水新品 OR 香氛新品) -香水椰 -香水柠檬"
       },
       {
         "name": "CN monthly fragrance roundups",

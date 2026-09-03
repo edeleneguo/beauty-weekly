@@ -2107,7 +2107,12 @@ def main() -> int:
     makeup_formal, makeup_obs = _split_formal(makeup)
     fragrance_formal, fragrance_obs = _split_formal(fragrance)
 
-    # Build report.json (exact canonical format + market_observation)
+    # Build report.json (exact canonical format + market_observation).
+    # Per-panel coverage metadata travels with the report so the dashboard
+    # can render a truthful collection-status card inside thin panels
+    # instead of leaving a blank area.  Never fabricate counts: entries
+    # come only from the auditable candidate/verification tallies recorded
+    # during generation.
     report = {
         "date_range": en_range,
         "date_range_cn": cn_range,
@@ -2119,6 +2124,7 @@ def main() -> int:
             "makeup": makeup_obs,
             "fragrance": fragrance_obs,
         },
+        "panel_coverage": raw_data.get("panel_coverage", {}),
         "version": f"month{month}-{start_date.replace('-', '')[:8]}-v1",
         "month": month,
     }
