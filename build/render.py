@@ -28,6 +28,7 @@ import os
 import re
 import sys
 from datetime import date
+from email.utils import parsedate_to_datetime
 from typing import Any, Dict, List, Optional
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -654,7 +655,23 @@ def _render_section(
 
 def _replace_section(html: str, section_num: int, new_content: str) -> str:
     """Replace Section 03 or 04 content in the HTML template."""
-    if section_num == 3:
+    if section_num == 1:
+        pattern = (
+            r'<h2\s+class="section-title">[^<]*<em>[^<]*</em>[^<]*'
+            r'<span\s+class="sec-label">Section 01</span></h2>'
+            r".*?"
+            r'(?=<h2\s+class="section-title">[^<]*<em>[^<]*</em>[^<]*'
+            r'<span\s+class="sec-label">Section 02</span>)'
+        )
+    elif section_num == 2:
+        pattern = (
+            r'<h2\s+class="section-title">[^<]*<em>[^<]*</em>[^<]*'
+            r'<span\s+class="sec-label">Section 02</span></h2>'
+            r".*?"
+            r'(?=<h2\s+class="section-title">[^<]*<em>[^<]*</em>[^<]*'
+            r'<span\s+class="sec-label">Section 03</span>)'
+        )
+    elif section_num == 3:
         pattern = (
             r'<h2\s+class="section-title">[^<]*<em>[^<]*</em>[^<]*'
             r'<span\s+class="sec-label">Section 03</span></h2>'
@@ -674,6 +691,124 @@ def _replace_section(html: str, section_num: int, new_content: str) -> str:
     if not match:
         return html
     return html[: match.start()] + new_content + html[match.end() :]
+
+
+TOPIC_TERMS = {
+    "makeup": (
+        "makeup", "lipstick", "lip gloss", "foundation", "concealer", "blush",
+        "mascara", "eyeshadow", "eyeliner", "brow", "primer", "cosmetic",
+    ),
+    "fragrance": (
+        "fragrance", "perfume", "parfum", "scent", "cologne", "eau de", "musk",
+        "gourmand", "oud", "floral",
+    ),
+}
+
+
+def _in_month(article: Dict[str, Any], month_label: str) -> bool:
+    try:
+        parsed = parsedate_to_datetime(str(article.get("date", "")))
+        return parsed.strftime("%Y-%m") == month_label
+    except (TypeError, ValueError, OverflowError):
+        return False
+
+
+def _plain_text(value: Any) -> str:
+    return re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", str(value or ""))).strip()
+
+
+def _topic_articles(raw: Dict[str, Any], topic: str, month_label: str) -> List[Dict[str, Any]]:
+    terms = TOPIC_TERMS[topic]
+    other_terms = TOPIC_TERMS["fragrance" if topic == "makeup" else "makeup"]
+    selected = []
+    seen = set()
+    for article in raw.get("articles", []):
+        if not _in_month(article, month_label):
+            continue
+        haystack = _plain_text(f"{article.get('title', '')} {article.get('summary', '')}").lower()
+        score = sum(term in haystack for term in terms)
+        other_score = sum(term in haystack for term in other_terms)
+        url = str(article.get("url", "")).strip()
+        title = _plain_text(article.get("title"))
+        if not title or not url or score == 0 or score < other_score or url in seen:
+            continue
+        seen.add(url)
+        selected.append((score, article))
+    selected.sort(key=lambda item: (item[0], str(item[1].get("date", ""))), reverse=True)
+    return [article for _, article in selected[:8]]
+
+
+def _render_news(topic: str, articles: List[Dict[str, Any]], date_range: str) -> str:
+    label = "Makeup Industry" if topic == "makeup" else "Fragrance Industry"
+    cards = []
+    for article in articles:
+        market = str(article.get("market", "GLOBAL")).upper()
+        region = "cn" if market == "CN" else ("us" if market == "US" else "global")
+        summary = _plain_text(article.get("summary")) or "Verified source item for this reporting period."
+        cards.append(
+            '<div class="news-card"><div class="news-card-header">'
+            f'<span class="news-region-tag {region}">{_esc(market)}</span>'
+            f'<span class="news-card-title"><a href="{_esc(str(article.get("url", "")))}" target="_blank">{_esc(_plain_text(article.get("title")))}</a></span>'
+            '<span class="news-card-chevron">&#9662;</span></div>'
+            f'<div class="news-card-brief">{_esc(summary[:240])}</div>'
+            f'<div class="news-card-body"><div class="news-card-body-inner">Source: {_esc(str(article.get("source", "verified source")))} · {_esc(str(article.get("date", "")))}</div></div></div>'
+        )
+    if not cards:
+        cards.append(f'<div class="collection-status-card">No verified {topic} news was found for { _esc(date_range) }. Coverage is flagged for source backfill.</div>')
+    return (
+        f'<h2 class="section-title">{label} <em>News</em> <span class="sec-label">Section 01</span></h2>\n'
+        f'<div class="news-grid">{"".join(cards)}</div>\n'
+    )
+
+
+def _render_trends(topic: str, products: Dict[str, Any], date_range: str) -> str:
+    label = "Makeup" if topic == "makeup" else "Fragrance"
+    taxonomies = {
+        "makeup": {
+            "Skincare Foundation": ("foundation", "cushion", "primer", "complexion", "skin"),
+            "Functional Lip": ("lip", "balm", "gloss", "peptide"),
+            "Low-Saturation Pastel": ("pastel", "blush", "eyeshadow", "palette", "soft color"),
+        },
+        "fragrance": {
+            "Milky Musk": ("milk", "milky", "musk", "cashmere", "vanilla"),
+            "Matcha Fragrance": ("matcha", "tea", "green"),
+            "Rose Revival": ("rose", "floral"),
+            "Oriental Narrative": ("oud", "oriental", "sandalwood", "incense", "amber"),
+        },
+    }[topic]
+    combined = []
+    for section in ("heat_rankings", "new_product_radar"):
+        for panel, rows in products.get(section, {}).items():
+            for row in rows:
+                combined.append((panel, row))
+    groups: Dict[str, List[tuple]] = {name: [] for name in taxonomies}
+    for panel, row in combined:
+        haystack = _plain_text(json.dumps(row, ensure_ascii=False)).lower()
+        for trend_name, keywords in taxonomies.items():
+            if any(keyword in haystack for keyword in keywords):
+                groups[trend_name].append((panel, row))
+    ranked = sorted(
+        ((name, rows) for name, rows in groups.items() if rows),
+        key=lambda item: len(item[1]), reverse=True,
+    )[:4]
+    cards = []
+    for trend_name, rows in ranked:
+        names = [str(row.get("name", "")).strip() for _, row in rows if row.get("name")][:3]
+        markets = sorted({panel.split()[0] for panel, _ in rows})
+        cards.append(
+            '<div class="trend-v-card"><div class="trend-v-header">'
+            f'<h4><span class="heat-trend-tag">{_esc(trend_name)}</span> · {len(rows)} verified product signals</h4><span class="trend-v-arrow">▼</span></div>'
+            '<div class="trend-v-body">'
+            f'<div class="driver-summary">Observed in the verified {date_range} ranking and launch evidence across {", ".join(markets)}: {_esc(", ".join(names))}.</div>'
+            '<div class="action-block"><div class="act-detail-text">Use this as a directional product signal; validate sales velocity and consumer demand before an NPD commitment.</div></div>'
+            '</div></div>'
+        )
+    if not cards:
+        cards.append(f'<div class="collection-status-card">No verified {topic} trend signals were available for {_esc(date_range)}. Coverage is flagged for source backfill.</div>')
+    return (
+        f'<h2 class="section-title">{label} <em>Trend</em> Report <span class="sec-label">Section 02</span></h2>\n'
+        f'<div class="common-trends-section">{"".join(cards)}</div>\n'
+    )
 
 
 def _update_banner_month(html: str, month_label: str, date_range: str) -> str:
@@ -765,9 +900,11 @@ def main() -> None:
     date_range = canonical.get("date_range", "")
     monthly_raw = os.path.join(ROOT, "data", "months", month_label, "raw_collected.json")
     monthly_evidence_available = True
+    raw_collection: Dict[str, Any] = {"articles": [], "trends": []}
     if os.environ.get("BEAUTY_MONTHLY_MONTH") and os.path.exists(monthly_raw):
         with open(monthly_raw, "r", encoding="utf-8") as f:
-            monthly_evidence_available = bool(json.load(f).get("articles"))
+            raw_collection = json.load(f)
+            monthly_evidence_available = bool(raw_collection.get("articles"))
 
     for (topic, lang), output_name in PAGES.items():
         template_path = _resolve_template_path(month_label, output_name)
@@ -783,6 +920,13 @@ def main() -> None:
             radar_panels = {panel: [] for panel in panel_names}
 
         topic_coverage = (data.get("panel_coverage") or {}).get(topic, {})
+        # Render current-month editorial sections. These must never inherit a
+        # prior month's static content from the page shell.
+        news_html = _render_news(topic, _topic_articles(raw_collection, topic, month_label), date_range)
+        html = _replace_section(html, 1, news_html)
+        trends_html = _render_trends(topic, products, date_range)
+        html = _replace_section(html, 2, trends_html)
+
         # Render and replace Section 03
         heat_html = _render_section(
             heat_panels, lang, topic, "heat", topic_coverage.get("heat_rankings")
