@@ -583,7 +583,24 @@ class TestFindSupportingArticles:
         assert len(result) == 0
 
     def test_product_link_url_match(self):
-        """Product URL substring in article URL must qualify."""
+        """Product URL substring qualifies only with product-name evidence."""
+        from build.generate_weekly import _find_supporting_articles
+
+        articles = [
+            {
+                "title": "Sephora Test Item product page roundup Test Item",
+                "url": "https://sephora.com/product/test-item",
+                "date": "2026-07-20",
+                "summary": "Sephora Test Item launch details",
+            },
+        ]
+        result = _find_supporting_articles(
+            "Sephora Test Item", "https://sephora.com/product/test-item", articles
+        )
+        assert len(result) == 1
+
+    def test_product_link_url_without_name_rejected(self):
+        """Product URL alone must NOT qualify without product-name evidence."""
         from build.generate_weekly import _find_supporting_articles
 
         articles = [
@@ -596,7 +613,7 @@ class TestFindSupportingArticles:
         result = _find_supporting_articles(
             "Unknown Product", "https://sephora.com/product/test-item", articles
         )
-        assert len(result) == 1
+        assert len(result) == 0
 
     def test_unrelated_source_url_rejected(self):
         """source_url matching must NOT qualify an unrelated article."""
@@ -752,10 +769,23 @@ class TestFindSupportingArticles:
             },
         }
         product = make_product(
-            "Dior J'adore Eau de Parfum", "迪奥真我香水", 1, 90,
-            "CN", "LUXURY", "Eau de Parfum", "迪奥", "Dior",
-            "热度上升", "Trending", "花香调", "Floral notes", "¥1,250",
-            "CNY 1,250; 50 ml", "https://example.com/香水/真我", topic="fragrance",
+            "Dior J'adore Eau de Parfum",
+            "迪奥真我香水",
+            1,
+            90,
+            "CN",
+            "LUXURY",
+            "Eau de Parfum",
+            "迪奥",
+            "Dior",
+            "热度上升",
+            "Trending",
+            "花香调",
+            "Floral notes",
+            "¥1,250",
+            "CNY 1,250; 50 ml",
+            "https://example.com/香水/真我",
+            topic="fragrance",
             launch_evidence=evidence,
         )
         link = product["detail"]["price_link"]["link"]
@@ -766,17 +796,35 @@ class TestFindSupportingArticles:
         from build.generate_monthly import make_product
 
         evidence = {
-            "topic": "makeup", "product_name": "Test Lipstick", "iso_week": "2026-W30",
-            "evidence": {"url": "https://example.com/test", "title": "Test Lipstick",
-                         "published_at": "2026-07-12", "fetched_at": "2026-07-12T00:00:00Z",
-                         "checked_at": "2026-07-12T00:00:00Z", "supported_fields": ["link"]},
+            "topic": "makeup",
+            "product_name": "Test Lipstick",
+            "iso_week": "2026-W30",
+            "evidence": {
+                "url": "https://example.com/test",
+                "title": "Test Lipstick",
+                "published_at": "2026-07-12",
+                "fetched_at": "2026-07-12T00:00:00Z",
+                "checked_at": "2026-07-12T00:00:00Z",
+                "supported_fields": ["link"],
+            },
         }
         product = make_product(
-            "Test Lipstick", "测试口红", 1, 80, "CN", "LUXURY", "Lipstick",
-            "品牌", "Brand", "热度", "连续 Chinese media coverage", "特点",
-            "Soft finish", "¥100", "CNY 100", "https://example.com/test",
+            "Test Lipstick",
+            "测试口红",
+            1,
+            80,
+            "CN",
+            "LUXURY",
+            "Lipstick",
+            "品牌",
+            "Brand",
+            "热度",
+            "连续 Chinese media coverage",
+            "特点",
+            "Soft finish",
+            "¥100",
+            "CNY 100",
+            "https://example.com/test",
             launch_evidence=evidence,
         )
-        assert product["detail"]["buzz"]["en"] == (
-            "Test Lipstick: Chinese media coverage"
-        )
+        assert product["detail"]["buzz"]["en"] == ("Test Lipstick: Chinese media coverage")

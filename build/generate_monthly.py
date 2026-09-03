@@ -107,6 +107,39 @@ def _cn_radar_soft_floor(category: str) -> int:
     return int(_load_cn_discovery_config()["soft_floor"][category])
 
 
+# Per-panel coverage thresholds (each topic/market/price-band panel).
+# Heat: target exactly/up to 10 real products per panel; 8-9 publishes with
+# a yellow coverage warning; below 8 triggers supplemental collection/search;
+# below 5 in any required heat panel is a hard quality failure (no publish).
+HEAT_PANEL_TARGET = 10
+HEAT_PANEL_WARNING = 8
+HEAT_PANEL_MINIMUM = 5
+# Radar: target 5-10 real products per panel; below 5 is a transparent
+# coverage warning, never fabricate/pad.
+RADAR_PANEL_TARGET_MIN = 5
+RADAR_PANEL_TARGET_MAX = 10
+# Backwards-compatible aggregate aliases (same numeric values).
+HEAT_COVERAGE_TARGET = HEAT_PANEL_TARGET
+HEAT_COVERAGE_WARNING = HEAT_PANEL_WARNING
+HEAT_COVERAGE_MINIMUM = HEAT_PANEL_MINIMUM
+HEAT_TARGET = HEAT_PANEL_TARGET
+HEAT_WARNING = HEAT_PANEL_WARNING
+HEAT_MINIMUM = HEAT_PANEL_MINIMUM
+HEAT_HARD_MINIMUM = HEAT_PANEL_MINIMUM
+RADAR_COVERAGE_TARGET = RADAR_PANEL_TARGET_MIN
+RADAR_TARGET_MINIMUM = RADAR_PANEL_TARGET_MIN
+RADAR_TARGET = RADAR_PANEL_TARGET_MIN
+RADAR_MINIMUM = RADAR_PANEL_TARGET_MIN
+
+REQUIRED_HEAT_PANELS = ("US LUXURY", "US MASSTIGE", "CN LUXURY", "CN MASSTIGE")
+
+# Evidence tier routing: A/B enter the formal ranking/radar; C goes only to
+# the market_observation candidate area labeled pending official confirmation.
+FORMAL_EVIDENCE_GRADES = frozenset({"A", "B"})
+OBSERVATION_EVIDENCE_GRADES = frozenset({"C"})
+OBSERVATION_LABEL = "pending official confirmation"
+
+
 def iso_week_date_range(week_str: str) -> tuple[str, str, str, str]:
     year, week = int(week_str[:4]), int(week_str[-2:])
     monday = date.fromisocalendar(year, week, 1)
@@ -556,11 +589,94 @@ def _select_category_relevant_articles(
     return [a for _, _, a in cn[:max_cn]] + [a for _, _, a in non_cn[:max_non_cn]]
 
 
+def _article_has_category_relevance(article: dict, topic: str | None) -> bool:
+    """Return True when an article is topically relevant to *topic*.
+
+    Rejects cross-category evidence (e.g. a fragrance investigation must
+    not support a makeup product).  Rules:
+      - No topic → always relevant (backwards compatibility).
+      - Explicit ``category`` field must equal the topic.
+      - A ``reference_type`` containing the opposite category
+        (fragrance vs makeup) is rejected; containing the topic is accepted.
+      - Otherwise at least one topic cue must appear (word-boundary for
+        Latin, substring for CJK) in title/summary/URL slug.
+    """
+    if not topic:
+        return True
+    topic_norm = str(topic).strip().casefold()
+    if topic_norm not in ("makeup", "fragrance"):
+        return True
+    cat = str(article.get("category", "") or "").strip().casefold()
+    if cat:
+        return cat == topic_norm
+    ref = str(article.get("reference_type", "") or "").strip().casefold()
+    if topic_norm == "makeup":
+        if "fragrance" in ref:
+            return False
+        if "makeup" in ref:
+            return True
+    else:
+        if "makeup" in ref and "fragrance" not in ref:
+            return False
+        if "fragrance" in ref:
+            return True
+    cues = _CATEGORY_CUES.get(topic_norm, frozenset())
+    if not cues:
+        return True
+    title = str(article.get("title", "") or "")
+    summary = str(article.get("summary", "") or "")
+    slug = _normalize_slug(str(article.get("url", "") or ""))
+    combined = f"{title} {summary} {slug}"
+    combined_lower = combined.lower()
+    for cue in cues:
+        cue_lower = cue.lower()
+        if re.search(r"[\u3400-\u9fff]", cue):
+            if cue_lower in combined_lower:
+                return True
+        elif re.search(r"\b" + re.escape(cue_lower) + r"\b", combined_lower):
+            return True
+    return False
+
+
+def _has_product_name_evidence(product_name: str, article: dict) -> bool:
+    """Return True when title/summary/URL slug names the product.
+
+    Word-boundary matching prevents substring false positives such as
+    ``matte`` in ``matter``.  Requires the full normalized name, at least
+    two meaningful tokens (>3 chars) as whole words, or high CJK coverage.
+    """
+    name_lower = product_name.lower()
+    name_tokens = [w for w in name_lower.split() if len(w) > 3]
+    latin_tokens = re.findall(r"[a-z][a-z0-9'-]{2,}", name_lower)
+    cjk_chars = set(re.findall(r"[\u3400-\u9fff]", product_name))
+    title = str(article.get("title", "") or "").lower()
+    summary = str(article.get("summary", "") or "").lower()
+    url_slug = _normalize_slug(str(article.get("url", "") or ""))
+    combined = f"{title} {summary} {url_slug}"
+    if name_lower and name_lower in combined:
+        return True
+    matched_tokens = [t for t in name_tokens if re.search(r"\b" + re.escape(t) + r"\b", combined)]
+    if len(matched_tokens) >= 2:
+        return True
+    if len(cjk_chars) >= 4:
+        matched_cjk = sum(char in combined for char in cjk_chars)
+        cjk_coverage = matched_cjk / len(cjk_chars)
+        latin_ok = not latin_tokens or any(
+            re.search(r"\b" + re.escape(token) + r"\b", combined) or token in combined
+            for token in latin_tokens
+        )
+        if cjk_coverage >= 0.7 and latin_ok:
+            return True
+    return False
+
+
 def _find_supporting_articles(
     product_name: str,
     product_link: str,
     articles: list[dict],
     source_url: str | None = None,
+    topic: str | None = None,
+    category: str | None = None,
 ) -> list[dict]:
     """Find source articles that could support a product claim.
 
@@ -571,29 +687,31 @@ def _find_supporting_articles(
     It is NOT independent evidence — it only restricts/prefers a candidate
     among articles that satisfy name-based evidence requirements.
 
+    ``topic``/``category`` (aliases) enforces category relevance: articles
+    without relevance to the requested beauty category are rejected.
+
     matching rules (applied in order):
       1. Direct (non-Google) candidate-specific verification article whose
          ``candidate_name`` exactly matches the product name
-      2. Product URL is a substring of article URL
+      2. Product URL is a substring of article URL AND product-name
+         evidence also matches (URL alone never qualifies)
       3. Full normalized product name appears in title, summary, or
          URL slug
       4. At least two meaningful product-name tokens (len > 3) appear
-         in title, summary, or URL slug
+         as whole words in title, summary, or URL slug
 
     URL slugs are normalized (hyphens/underscores/punctuation → spaces,
     casefolded) so that e.g. ``guerlain-rouge-lipstick-editor-review``
     matches product name "Guerlain Rouge Lipstick".
 
-    Avoids overly broad single-token matches.
+    Avoids overly broad single-token matches and substring false
+    positives (e.g. ``matte`` in ``matter``).
     Articles matching ``source_url`` are preferred in sort order.
 
     Returns a list of matching articles sorted by date (newest first),
     with ``source_url`` matches ranked first.
     """
-    name_lower = product_name.lower()
-    name_tokens = [w for w in name_lower.split() if len(w) > 3]
-    latin_tokens = re.findall(r"[a-z][a-z0-9'-]{2,}", name_lower)
-    cjk_chars = set(re.findall(r"[\u3400-\u9fff]", product_name))
+    effective_topic = topic if topic is not None else category
     supporting = []
     for article in articles:
         url = article.get("url", "")
@@ -604,46 +722,49 @@ def _find_supporting_articles(
         # Produced by build.collect.search_product_evidence and enriched to a
         # direct publisher URL.  The Google-aggregator check above guarantees
         # an RSS aggregator link is never accepted as evidence.
-        if (
+        is_candidate_match = (
             str(article.get("reference_type", "")).casefold() == "candidate_verification"
             and str(article.get("candidate_name", "")).strip().casefold()
             == product_name.strip().casefold()
+        )
+        if is_candidate_match:
+            if effective_topic and not _article_has_category_relevance(article, effective_topic):
+                # Explicit category mismatch still rejects; otherwise a
+                # category-targeted verification search is relevant by
+                # construction when it names the exact product.
+                explicit_cat = str(article.get("category", "") or "").strip().casefold()
+                if explicit_cat and explicit_cat != str(effective_topic).strip().casefold():
+                    continue
+            supporting.append(article)
+            continue
+
+        # Full product-name mention is itself category-relevant (e.g. a
+        # launch headline naming the SKU) even when the surrounding copy
+        # carries no generic category cue. Weaker token matches must still
+        # pass the category-relevance gate below.
+        title_l = str(article.get("title", "") or "").lower()
+        summary_l = str(article.get("summary", "") or "").lower()
+        slug_l = _normalize_slug(str(article.get("url", "") or ""))
+        combined_l = f"{title_l} {summary_l} {slug_l}"
+        has_full_name = bool(product_name) and product_name.lower() in combined_l
+        if (
+            effective_topic
+            and not has_full_name
+            and not _article_has_category_relevance(article, effective_topic)
         ):
-            supporting.append(article)
             continue
 
-        # 2. Product URL match (strongest signal)
+        has_name = _has_product_name_evidence(product_name, article)
+
+        # 2. Product URL match only qualifies with product-name evidence.
         if product_link and url and product_link in url:
-            supporting.append(article)
-            continue
-
-        title = article.get("title", "").lower()
-        summary = article.get("summary", "").lower()
-        url_slug = _normalize_slug(url)
-        combined = f"{title} {summary} {url_slug}"
-
-        # 3. Full normalized product name in combined text
-        if name_lower in combined:
-            supporting.append(article)
-            continue
-
-        # 4. At least two meaningful tokens (>3 chars) must match
-        matched_tokens = [t for t in name_tokens if t in combined]
-        if len(matched_tokens) >= 2:
-            supporting.append(article)
-            continue
-
-        # 5. Chinese product names are not whitespace-tokenized. Require
-        # high CJK character coverage and, for mixed names, a matching Latin
-        # brand token. This recognizes e.g. "PRADA 0度紫润唇膏" in a title
-        # containing "PRADA…0度紫…润唇膏" without accepting a brand-only page.
-        if len(cjk_chars) >= 4:
-            matched_cjk = sum(char in combined for char in cjk_chars)
-            cjk_coverage = matched_cjk / len(cjk_chars)
-            latin_ok = not latin_tokens or any(token in combined for token in latin_tokens)
-            if cjk_coverage >= 0.7 and latin_ok:
+            if has_name:
                 supporting.append(article)
-                continue
+            continue
+
+        if has_name:
+            supporting.append(article)
+            continue
 
     # Sort by date descending, preferring source_url matches
     supporting.sort(
@@ -683,6 +804,124 @@ def _classify_evidence(article: dict, product_link: str) -> tuple[str, str, str]
     if any(cue in combined for cue in ("social", "douyin", "xiaohongshu", "小红书", "抖音")):
         return "C", "first_verified_mention", "social_media"
     return "B", "source_publication", "editorial"
+
+
+def _route_by_evidence_grade(evidence_grade: str | None) -> str:
+    """Route a verified candidate by evidence tier.
+
+    A (official/official shop/authoritative retailer) and B
+    (authoritative/industry media) with explicit product-name evidence may
+    enter the formal ranking/radar.  C (social/KOL/retail launch signal)
+    goes only to the market_observation candidate area labeled pending
+    official confirmation, never mixed into the formal list.
+    """
+    grade = (evidence_grade or "").strip().upper()
+    if not grade:
+        return "formal"
+    if grade in FORMAL_EVIDENCE_GRADES:
+        return "formal"
+    return "observation"
+
+
+def _panel_status(section: str, formal_count: int) -> str:
+    """Return a per-panel coverage status string."""
+    if section == "heat_rankings":
+        if formal_count >= HEAT_PANEL_TARGET:
+            return "met"
+        if formal_count >= HEAT_PANEL_WARNING:
+            return "warning"
+        if formal_count >= HEAT_PANEL_MINIMUM:
+            return "below_target"
+        return "below_minimum"
+    if formal_count >= RADAR_PANEL_TARGET_MIN:
+        return "met" if formal_count <= RADAR_PANEL_TARGET_MAX else "over_target"
+    return "below_target"
+
+
+def _panel_coverage_entry(
+    candidate_count: int,
+    verified_count: int,
+    formal_included_count: int,
+    observation_count: int,
+    status: str,
+) -> dict:
+    """Build one per-panel coverage metadata entry."""
+    return {
+        "candidate_count": candidate_count,
+        "verified_count": verified_count,
+        "formal_included_count": formal_included_count,
+        "observation_count": observation_count,
+        "status": status,
+    }
+
+
+def _record_panel_coverage(
+    raw_data: dict,
+    category: str,
+    section: str,
+    panel: str,
+    candidate_count: int,
+    verified_count: int,
+    formal_included_count: int,
+    observation_count: int,
+) -> dict:
+    """Record per-panel coverage metadata; return the entry."""
+    status = _panel_status(section, formal_included_count)
+    entry = _panel_coverage_entry(
+        candidate_count,
+        verified_count,
+        formal_included_count,
+        observation_count,
+        status,
+    )
+    raw_data.setdefault("panel_coverage", {}).setdefault(category, {}).setdefault(section, {})[
+        panel
+    ] = entry
+    return entry
+
+
+def validate_tier_routing(result: dict) -> list[str]:
+    """Ensure no C-grade product is mixed into a formal list."""
+    errors: list[str] = []
+    for section in ("heat_rankings", "new_product_radar"):
+        for panel, products in (result.get(section) or {}).items():
+            for p in products or []:
+                grade = ((p.get("launch_evidence") or {}).get("evidence_grade") or "").upper()
+                if grade in OBSERVATION_EVIDENCE_GRADES:
+                    errors.append(
+                        f"tier-routing: {section}/{panel}/{p.get('name', '?')} "
+                        f"grade {grade} must live in market_observation, not formal"
+                    )
+    return errors
+
+
+def validate_panel_thresholds(
+    result: dict,
+    *,
+    require_heat_panels: tuple[str, ...] = REQUIRED_HEAT_PANELS,
+) -> list[str]:
+    """Validate per-panel heat/radar counts (hard fail below heat minimum)."""
+    errors: list[str] = []
+    for panel in require_heat_panels:
+        count = len((result.get("heat_rankings") or {}).get(panel, []) or [])
+        if count < HEAT_PANEL_MINIMUM:
+            errors.append(
+                f"panel-coverage: heat {panel} has {count} formal products "
+                f"(hard minimum {HEAT_PANEL_MINIMUM})"
+            )
+        if count > HEAT_PANEL_TARGET:
+            errors.append(
+                f"panel-coverage: heat {panel} has {count} formal products "
+                f"(target max {HEAT_PANEL_TARGET})"
+            )
+    for panel, products in (result.get("new_product_radar") or {}).items():
+        count = len(products or [])
+        if count > RADAR_PANEL_TARGET_MAX:
+            errors.append(
+                f"panel-coverage: radar {panel} has {count} formal products "
+                f"(target max {RADAR_PANEL_TARGET_MAX})"
+            )
+    return errors
 
 
 def _merge_unique_articles(target: list[dict], additions: list[dict]) -> int:
@@ -737,7 +976,7 @@ def _supplement_candidate_evidence(
                     continue
                 link = str(product.get("link", "")).strip()
                 source_url = str(product.get("source_url", "")).strip() or None
-                if not _find_supporting_articles(name, link, articles, source_url):
+                if not _find_supporting_articles(name, link, articles, source_url, topic=category):
                     unsupported.append((market, name))
 
     names = list(dict.fromkeys(unsupported))[:12]
@@ -796,7 +1035,9 @@ def _make_launch_evidence(
     Raises ValueError if no supporting articles are found, causing
     generation to fail rather than emit fabricated evidence.
     """
-    supporting = _find_supporting_articles(product_name, product_link, articles, source_url)
+    supporting = _find_supporting_articles(
+        product_name, product_link, articles, source_url, topic=topic
+    )
 
     if supporting:
         # Use the best matching article as evidence source
@@ -998,6 +1239,45 @@ def _accumulate_cn_radar_candidates(
                 existing.add(key)
 
 
+def _record_heat_radar_coverage(
+    raw_data: dict,
+    category: str,
+    result: dict,
+) -> None:
+    """Record heat/radar coverage warning metadata (never pads rankings).
+
+    Heat (total verified heat products per category):
+      target=10, warning=8, hard minimum=5.
+    Radar (total verified radar products per category):
+      target minimum=5.
+    """
+    heat_total = sum(len(products) for products in result.get("heat_rankings", {}).values())
+    radar_total = sum(len(products) for products in result.get("new_product_radar", {}).values())
+    if heat_total >= HEAT_COVERAGE_TARGET:
+        heat_status = "met"
+    elif heat_total >= HEAT_COVERAGE_WARNING:
+        heat_status = "below_target"
+    elif heat_total >= HEAT_COVERAGE_MINIMUM:
+        heat_status = "warning"
+    else:
+        heat_status = "below_minimum"
+    radar_status = "met" if radar_total >= RADAR_COVERAGE_TARGET else "below_target"
+    entry = raw_data.setdefault("coverage_health", {}).setdefault(category, {})
+    entry.update(
+        {
+            "heat_total": heat_total,
+            "heat_target": HEAT_COVERAGE_TARGET,
+            "heat_warning": HEAT_COVERAGE_WARNING,
+            "heat_minimum": HEAT_COVERAGE_MINIMUM,
+            "heat_status": heat_status,
+            "radar_total": radar_total,
+            "radar_target": RADAR_COVERAGE_TARGET,
+            "radar_status": radar_status,
+            "policy": "Soft floor triggers discovery; rankings are never padded.",
+        }
+    )
+
+
 def _record_cn_radar_coverage(
     raw_data: dict,
     category: str,
@@ -1005,20 +1285,25 @@ def _record_cn_radar_coverage(
     soft_floor: int,
 ) -> None:
     if not soft_floor:
+        _record_heat_radar_coverage(raw_data, category, result)
         return
     verified_count = sum(
         len(products)
         for panel, products in result["new_product_radar"].items()
         if panel.startswith("CN ")
     )
-    raw_data.setdefault("coverage_health", {})[category] = {
-        "market": "CN",
-        "section": "new_product_radar",
-        "soft_floor": soft_floor,
-        "verified_count": verified_count,
-        "status": "met" if verified_count >= soft_floor else "below_soft_floor",
-        "policy": "Soft floor triggers discovery; rankings are never padded.",
-    }
+    entry = raw_data.setdefault("coverage_health", {}).setdefault(category, {})
+    entry.update(
+        {
+            "market": "CN",
+            "section": "new_product_radar",
+            "soft_floor": soft_floor,
+            "verified_count": verified_count,
+            "status": "met" if verified_count >= soft_floor else "below_soft_floor",
+            "policy": "Soft floor triggers discovery; rankings are never padded.",
+        }
+    )
+    _record_heat_radar_coverage(raw_data, category, result)
 
 
 def generate_products(
@@ -1029,8 +1314,21 @@ def generate_products(
     Every product receives non-null launch_evidence backed by real source
     articles.  Unsupported products are quarantined (dropped) with a stderr
     warning; the remaining products are renumbered sequentially per panel.
-    Every heat_rankings panel must retain at least 1 evidence-backed product
-    or generation fails.  Radar panels may be empty.
+
+    Per-panel coverage (each topic/market/price-band panel):
+      Heat: target exactly/up to 10 real products per panel; 8-9 publishes
+      with a yellow coverage warning; below 8 triggers supplemental
+      collection/search; below 5 in any required heat panel is a hard
+      quality failure and must not publish.
+      Radar: target 5-10 real products per panel; below 5 is a transparent
+      coverage warning, never fabricate/pad.
+
+    Evidence tier routing: A (official/official shop/authoritative
+    retailer) and B (authoritative/industry media) with explicit
+    product-name evidence plus launch month may enter the formal
+    ranking/radar; C (social/KOL/retail launch signal) goes only to the
+    market_observation candidate area labeled pending official
+    confirmation, never mixed into the formal list.
     """
     articles = raw_data.get("articles", [])
     # Category-aware selection: pick articles whose titles/summaries
@@ -1083,9 +1381,14 @@ Output ONLY valid JSON with this exact structure:
 }}
 
 Rules:
-- Generate 5-10 products per heat_rankings panel
-- Generate 2-5 new products per radar panel whose first official launch,
+- Generate exactly 10 real products per heat_rankings panel (8-9 acceptable
+  with a coverage warning; never below 5; never fabricate/pad).
+- Generate 5-10 real new products per radar panel whose first official launch,
   first retail listing, or first credible publication falls inside {month_label}
+  (below 5 is a transparent coverage warning; never fabricate/pad).
+- Evidence tiers: A/B with explicit product-name evidence enter the formal
+  ranking/radar; C social/KOL signals are observation-only and must still be
+  listed with a real source_url so they route to market observation.
 - All products must be REAL, publicly available {category} products
 - Scores: 65-98 range (85=Trending, 90=Viral)
 - CN fields in Chinese, EN in English
@@ -1112,13 +1415,11 @@ Rules:
 
     _LLM_MAX_ATTEMPTS = 3
     current_user_prompt = user_prompt
-    empty_panels: list[str] = []
     best_result: dict | None = None
-    best_quality: tuple[int, int, int] | None = None
+    best_quality: tuple[int, int, int, int, int] | None = None
     accumulated_cn_radar: dict[str, list[dict]] = {}
-    cn_radar_floor = (
-        _cn_radar_soft_floor(category) if re.fullmatch(r"\d{4}-\d{2}", month_label) else 0
-    )
+    is_month_label = bool(re.fullmatch(r"\d{4}-\d{2}", month_label))
+    cn_radar_floor = _cn_radar_soft_floor(category) if is_month_label else 0
 
     for attempt in range(1, _LLM_MAX_ATTEMPTS + 1):
         print(f"  Calling LLM for {category} products (attempt {attempt}/{_LLM_MAX_ATTEMPTS})...")
@@ -1149,12 +1450,23 @@ Rules:
         article_urls = {a.get("url", "") for a in articles if a.get("url")}
 
         # Transform to canonical format — quarantine unsupported products instead of
-        # failing the entire category
-        result: dict = {"heat_rankings": {}, "new_product_radar": {}}
+        # failing the entire category.  A/B grades enter the formal list; C
+        # grades route only to market_observation (pending official
+        # confirmation) and are never mixed into the formal ranking/radar.
+        result: dict = {
+            "heat_rankings": {},
+            "new_product_radar": {},
+            "market_observation": {},
+        }
+        panel_candidates: dict[tuple[str, str], int] = {}
+        panel_verified: dict[tuple[str, str], int] = {}
+        panel_formal: dict[tuple[str, str], int] = {}
+        panel_observation: dict[tuple[str, str], int] = {}
         for section in ["heat_rankings", "new_product_radar"]:
             if section in data:
                 for panel, products in data[section].items():
-                    canonical_products: list[dict] = []
+                    formal_products: list[dict] = []
+                    observation_products: list[dict] = []
                     panel_parts = panel.split()
                     panel_market = panel_parts[0]
                     panel_tier = panel_parts[1] if len(panel_parts) > 1 else "LUXURY"
@@ -1163,6 +1475,9 @@ Rules:
                             if not isinstance(p, dict):
                                 continue
                             name = p.get("name", "?")
+                            panel_candidates[(section, panel)] = (
+                                panel_candidates.get((section, panel), 0) + 1
+                            )
                             # Reject products whose source_url is not a collected article URL
                             source_url = p.get("source_url")
                             if source_url and source_url not in article_urls:
@@ -1205,13 +1520,33 @@ Rules:
                                             f"radar launch date {launch_date} outside "
                                             f"{month_start}..{month_end}"
                                         )
-                                canonical_products.append(candidate)
+                                panel_verified[(section, panel)] = (
+                                    panel_verified.get((section, panel), 0) + 1
+                                )
+                                grade = (
+                                    (candidate.get("launch_evidence") or {}).get("evidence_grade")
+                                    or ""
+                                ).upper()
+                                if _route_by_evidence_grade(grade) == "formal":
+                                    formal_products.append(candidate)
+                                    panel_formal[(section, panel)] = (
+                                        panel_formal.get((section, panel), 0) + 1
+                                    )
+                                else:
+                                    candidate["observation_status"] = OBSERVATION_LABEL
+                                    observation_products.append(candidate)
+                                    panel_observation[(section, panel)] = (
+                                        panel_observation.get((section, panel), 0) + 1
+                                    )
                             except ValueError as e:
                                 print(
                                     f"  WARNING: Quarantining '{name}' in {section}/{panel}: {e}",
                                     file=sys.stderr,
                                 )
-                    result[section][panel] = canonical_products
+                    result[section][panel] = formal_products
+                    if observation_products:
+                        obs_panel = result["market_observation"].setdefault(panel, [])
+                        obs_panel.extend(observation_products)
 
         # A product can legitimately appear in both weekly heat and new-product
         # radar.  Treat the heat score as the canonical weekly score so a
@@ -1223,37 +1558,106 @@ Rules:
         # Sort and renumber afterwards to preserve the publication contract.
         _sort_and_rank_panels(result)
 
-        # Require every heat_rankings panel to exist and contain >= 1 evidence-backed product
-        required_heat_panels = {"US LUXURY", "US MASSTIGE", "CN LUXURY", "CN MASSTIGE"}
-        empty_panels = sorted(
-            panel for panel in required_heat_panels if not result["heat_rankings"].get(panel, [])
+        # Per-panel coverage (each topic/market/price-band panel).
+        # Heat per panel: target 10; 8-9 publishes with yellow warning;
+        # below 8 triggers supplemental collection/search (retry with
+        # expanded evidence + candidate verification); below 5 in any
+        # required heat panel is a hard quality failure (no publish).
+        # Radar per panel: target 5-10; below 5 is a transparent warning,
+        # never fabricate/pad.
+        required_heat_panels = set(REQUIRED_HEAT_PANELS)
+        heat_counts = {
+            panel: len(result["heat_rankings"].get(panel, []) or [])
+            for panel in required_heat_panels
+        }
+        heat_counts.update(
+            {
+                panel: len(products or [])
+                for panel, products in result["heat_rankings"].items()
+                if panel not in heat_counts
+            }
         )
-        cn_radar_count = sum(
-            len(products)
-            for panel, products in result["new_product_radar"].items()
-            if panel.startswith("CN ")
+        radar_counts = {
+            panel: len(products or [])
+            for panel, products in (result.get("new_product_radar") or {}).items()
+        }
+        thin_heat_panels = sorted(p for p, n in heat_counts.items() if n < HEAT_PANEL_WARNING)
+        # The per-panel hard minimum gates monthly publishes (YYYY-MM).
+        # Synthetic week-labeled unit fixtures keep legacy leniency.
+        hard_fail_panels = (
+            sorted(p for p in required_heat_panels if heat_counts.get(p, 0) < HEAT_PANEL_MINIMUM)
+            if is_month_label
+            else []
         )
+        thin_radar_panels = sorted(p for p, n in radar_counts.items() if n < RADAR_PANEL_TARGET_MIN)
+        cn_radar_count = sum(n for panel, n in radar_counts.items() if panel.startswith("CN "))
+        heat_coverage = sum(heat_counts.values())
+        radar_coverage = sum(radar_counts.values())
+
+        for section, panel, formal_n in [
+            ("heat_rankings", p, heat_counts.get(p, 0)) for p in heat_counts
+        ] + [("new_product_radar", p, radar_counts.get(p, 0)) for p in radar_counts]:
+            _record_panel_coverage(
+                raw_data,
+                category,
+                section,
+                panel,
+                candidate_count=panel_candidates.get((section, panel), formal_n),
+                verified_count=panel_verified.get((section, panel), formal_n),
+                formal_included_count=formal_n,
+                observation_count=panel_observation.get((section, panel), 0),
+            )
 
         # Retries may improve one weak section while regressing panels that
         # were already evidence-complete. Keep the best fully canonicalized
         # attempt; unsupported candidates have already been quarantined.
-        heat_coverage = sum(len(products) for products in result["heat_rankings"].values())
-        quality = (-len(empty_panels), min(cn_radar_count, cn_radar_floor), heat_coverage)
+        quality = (
+            -len(hard_fail_panels),
+            -len(thin_heat_panels),
+            min(cn_radar_count, cn_radar_floor),
+            heat_coverage,
+            radar_coverage,
+        )
         if best_quality is None or quality > best_quality:
             best_quality = quality
             best_result = result
 
-        if not empty_panels and (not cn_radar_floor or cn_radar_count >= cn_radar_floor):
+        if (
+            not hard_fail_panels
+            and not thin_heat_panels
+            and not thin_radar_panels
+            and (not cn_radar_floor or cn_radar_count >= cn_radar_floor)
+        ):
             _record_cn_radar_coverage(raw_data, category, result, cn_radar_floor)
             return result
 
         if attempt < _LLM_MAX_ATTEMPTS:
             retry_reasons: list[str] = []
-            if empty_panels:
-                missing = ", ".join(empty_panels)
+            if hard_fail_panels:
+                missing = ", ".join(hard_fail_panels)
                 retry_reasons.append(
-                    f"The following required heat panels are empty: {missing}. "
-                    "For each empty panel, provide 1–5 evidence-backed products."
+                    f"Heat panels below hard minimum {HEAT_PANEL_MINIMUM}: {missing}. "
+                    "Each required heat panel needs at least 5 real evidence-backed "
+                    "products; provide 5-10 per thin panel."
+                )
+            elif thin_heat_panels:
+                thin = ", ".join(
+                    f"{p} ({heat_counts[p]}/{HEAT_PANEL_TARGET})" for p in thin_heat_panels
+                )
+                retry_reasons.append(
+                    f"Heat panels below supplemental threshold {HEAT_PANEL_WARNING}: {thin}. "
+                    "Run supplemental collection/search over the expanded evidence and "
+                    "provide additional real evidence-backed heat products (target 10 "
+                    "per panel; 8-9 publishes with warning)."
+                )
+            if thin_radar_panels:
+                thin_r = ", ".join(
+                    f"{p} ({radar_counts[p]}/{RADAR_PANEL_TARGET_MIN})" for p in thin_radar_panels
+                )
+                retry_reasons.append(
+                    f"Radar panels below target minimum {RADAR_PANEL_TARGET_MIN}: {thin_r}. "
+                    "Search the supplied launch evidence for additional real in-window "
+                    "products (target 5-10 per panel; never fabricate/pad)."
                 )
             if cn_radar_floor and cn_radar_count < cn_radar_floor:
                 retry_reasons.append(
@@ -1262,6 +1666,13 @@ Rules:
                     "CN launch evidence for additional real in-window products across "
                     "CN LUXURY and CN MASSTIGE."
                 )
+            # Supplemental collection/search for thin heat panels: run an
+            # extra candidate-verification pass over the current thin-panel
+            # names so the retry has fresh direct-publisher evidence.
+            if thin_heat_panels:
+                _supplement_candidate_evidence(data, raw_data, category, month_label)
+                articles = raw_data.get("articles", [])
+                article_urls = {a.get("url", "") for a in articles if a.get("url")}
             expanded_articles = _select_category_relevant_articles(
                 articles,
                 category,
@@ -1281,21 +1692,34 @@ Rules:
             )
             current_user_prompt = user_prompt + retry_note
             print(
-                f"  Retrying: heat gaps={empty_panels}, "
+                f"  Retrying: hard_fail={hard_fail_panels}, "
+                f"thin_heat={thin_heat_panels}, thin_radar={thin_radar_panels}, "
                 f"CN radar={cn_radar_count}/{cn_radar_floor or 'n/a'}",
                 file=sys.stderr,
             )
 
+    required_heat_panels = set(REQUIRED_HEAT_PANELS)
     if best_result is not None:
         result = best_result
-        empty_panels = sorted(
-            panel for panel in required_heat_panels if not result["heat_rankings"].get(panel, [])
+        heat_counts = {
+            panel: len(result["heat_rankings"].get(panel, []) or [])
+            for panel in required_heat_panels
+        }
+        radar_counts = {
+            panel: len(products or [])
+            for panel, products in (result.get("new_product_radar") or {}).items()
+        }
+        hard_fail_panels = (
+            sorted(p for p in required_heat_panels if heat_counts.get(p, 0) < HEAT_PANEL_MINIMUM)
+            if is_month_label
+            else []
         )
-        cn_radar_count = sum(
-            len(products)
-            for panel, products in result["new_product_radar"].items()
-            if panel.startswith("CN ")
-        )
+        thin_heat_panels = sorted(p for p, n in heat_counts.items() if n < HEAT_PANEL_WARNING)
+        thin_radar_panels = sorted(p for p, n in radar_counts.items() if n < RADAR_PANEL_TARGET_MIN)
+        cn_radar_count = sum(n for panel, n in radar_counts.items() if panel.startswith("CN "))
+        routing_errors = validate_tier_routing(result)
+        threshold_errors = validate_panel_thresholds(result) if is_month_label else []
+        hard_threshold_errors = [e for e in threshold_errors if "hard minimum" in e]
     else:
         raise RuntimeError(f"{category} generation produced no valid JSON attempt")
 
@@ -1307,21 +1731,50 @@ Rules:
         )
         for market in ("US", "CN")
     }
-    missing = ", ".join(empty_panels)
+    if routing_errors:
+        raise ValueError("; ".join(routing_errors))
+    if hard_fail_panels or hard_threshold_errors:
+        missing = ", ".join(hard_fail_panels)
+        raise ValueError(
+            f"heat panels {{{missing}}} below hard minimum "
+            f"{HEAT_PANEL_MINIMUM} per panel after {_LLM_MAX_ATTEMPTS} attempts; "
+            f"market coverage is {market_coverage}"
+        )
     if market_coverage["US"] > 0:
         _record_cn_radar_coverage(raw_data, category, result, cn_radar_floor)
+        _record_heat_radar_coverage(raw_data, category, result)
         if cn_radar_floor and cn_radar_count < cn_radar_floor:
             print(
                 f"  WARNING: CN {category} radar remained below the discovery soft floor "
                 f"({cn_radar_count}/{cn_radar_floor}); publishing only verified products",
                 file=sys.stderr,
             )
-        print(
-            f"  WARNING: publishing with evidence gap in panels {{{missing}}}; "
-            f"verified market coverage is {market_coverage}",
-            file=sys.stderr,
-        )
+        for panel in sorted(heat_counts):
+            n = heat_counts[panel]
+            if n >= HEAT_PANEL_TARGET:
+                continue
+            level = "yellow coverage warning" if n >= HEAT_PANEL_WARNING else "coverage gap"
+            print(
+                f"  WARNING: {category} heat {panel} has {n}/{HEAT_PANEL_TARGET} "
+                f"formal products ({level}); publishing only verified products",
+                file=sys.stderr,
+            )
+        for panel in sorted(thin_radar_panels):
+            n = radar_counts.get(panel, 0)
+            print(
+                f"  WARNING: {category} radar {panel} has {n}/{RADAR_PANEL_TARGET_MIN} "
+                "formal products (transparent coverage warning); publishing only "
+                "verified products",
+                file=sys.stderr,
+            )
         return result
+    missing = ", ".join(
+        sorted(
+            panel
+            for panel in required_heat_panels
+            if not (result.get("heat_rankings") or {}).get(panel)
+        )
+    )
     raise ValueError(
         f"heat_rankings panels {{{missing}}} are empty after {_LLM_MAX_ATTEMPTS} "
         f"attempts and market coverage is insufficient: {market_coverage}"
@@ -1330,8 +1783,8 @@ Rules:
 
 def _sort_and_rank_panels(result: dict) -> None:
     """Sort every product panel by score and assign sequential ranks."""
-    for section in ("heat_rankings", "new_product_radar"):
-        for panel_products in result[section].values():
+    for section in ("heat_rankings", "new_product_radar", "market_observation"):
+        for panel_products in (result.get(section) or {}).values():
             panel_products.sort(key=lambda product: float(product.get("score", 0)), reverse=True)
             for rank, product in enumerate(panel_products, start=1):
                 product["rank"] = rank
@@ -1407,6 +1860,44 @@ def _build_product_sources(
                                     },
                                 }
                             )
+
+    for topic in ("makeup", "fragrance"):
+        for _panel_key, products in (report.get("market_observation") or {}).get(topic, {}).items():
+            for p in products or []:
+                link = p.get("detail", {}).get("price_link", {}).get("link", "")
+                if link and link not in seen_urls:
+                    seen_urls.add(link)
+                    src_idx += 1
+                    sources_list.append(
+                        {
+                            "id": f"src_{src_idx:04d}",
+                            "url": link,
+                            "type": "product_page",
+                            "checked_at": fetched_at,
+                            "provenance": {
+                                "verification_status": "observation",
+                                "reason": OBSERVATION_LABEL,
+                            },
+                        }
+                    )
+                le = p.get("launch_evidence")
+                if le and le.get("evidence"):
+                    ev_url = le["evidence"].get("url", "")
+                    if ev_url and ev_url not in seen_urls:
+                        seen_urls.add(ev_url)
+                        src_idx += 1
+                        sources_list.append(
+                            {
+                                "id": f"src_{src_idx:04d}",
+                                "url": ev_url,
+                                "type": le["evidence"].get("type", "social_media"),
+                                "checked_at": fetched_at,
+                                "provenance": {
+                                    "verification_status": "observation",
+                                    "reason": OBSERVATION_LABEL,
+                                },
+                            }
+                        )
 
     return sources_list, errors
 
@@ -1601,13 +2092,32 @@ def main() -> int:
         )
         return 1
 
-    # Build report.json (exact canonical format)
+    # Split formal products from market-observation candidates.  The formal
+    # report keeps exactly heat_rankings + new_product_radar so existing
+    # validators/models still apply; C-grade social signals live in a
+    # top-level market_observation area labeled pending official
+    # confirmation and are never mixed into the formal list.
+    def _split_formal(generated: dict) -> tuple[dict, dict]:
+        formal = {
+            "heat_rankings": generated.get("heat_rankings", {}),
+            "new_product_radar": generated.get("new_product_radar", {}),
+        }
+        return formal, generated.get("market_observation", {}) or {}
+
+    makeup_formal, makeup_obs = _split_formal(makeup)
+    fragrance_formal, fragrance_obs = _split_formal(fragrance)
+
+    # Build report.json (exact canonical format + market_observation)
     report = {
         "date_range": en_range,
         "date_range_cn": cn_range,
         "products": {
-            "makeup": makeup,
-            "fragrance": fragrance,
+            "makeup": makeup_formal,
+            "fragrance": fragrance_formal,
+        },
+        "market_observation": {
+            "makeup": makeup_obs,
+            "fragrance": fragrance_obs,
         },
         "version": f"month{month}-{start_date.replace('-', '')[:8]}-v1",
         "month": month,
@@ -1644,6 +2154,28 @@ def main() -> int:
                             if not ev.get(field):
                                 loc = f"{topic}/{section}/{panel}[{idx}] {p.get('name', '?')}"
                                 evidence_errors.append(f"{loc}: evidence.{field} is empty")
+    for topic in ("makeup", "fragrance"):
+        for panel, products in (report.get("market_observation") or {}).get(topic, {}).items():
+            for idx, p in enumerate(products or []):
+                grade = ((p.get("launch_evidence") or {}).get("evidence_grade") or "").upper()
+                if grade not in OBSERVATION_EVIDENCE_GRADES:
+                    loc = f"{topic}/market_observation/{panel}[{idx}] {p.get('name', '?')}"
+                    evidence_errors.append(
+                        f"{loc}: expected observation grade C, got {grade or 'none'}"
+                    )
+                if p.get("observation_status") != OBSERVATION_LABEL:
+                    loc = f"{topic}/market_observation/{panel}[{idx}] {p.get('name', '?')}"
+                    evidence_errors.append(f"{loc}: missing '{OBSERVATION_LABEL}' label")
+    for topic in ("makeup", "fragrance"):
+        for section in ("heat_rankings", "new_product_radar"):
+            for panel, products in report["products"][topic][section].items():
+                for idx, p in enumerate(products):
+                    grade = ((p.get("launch_evidence") or {}).get("evidence_grade") or "").upper()
+                    if grade in OBSERVATION_EVIDENCE_GRADES:
+                        loc = f"{topic}/{section}/{panel}[{idx}] {p.get('name', '?')}"
+                        evidence_errors.append(
+                            f"{loc}: grade {grade} must not appear in formal list"
+                        )
     if evidence_errors:
         print("FATAL: Evidence completeness validation failed:", file=sys.stderr)
         for e in evidence_errors:

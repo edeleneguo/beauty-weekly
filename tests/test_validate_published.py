@@ -740,6 +740,22 @@ class TestGenerateWeeklyHelpers:
 
         articles = [
             {
+                "title": "Sephora Test Product launch details",
+                "summary": "Sephora Test Product official launch",
+                "url": "https://sephora.com/product/test",
+                "date": "2026-07-20",
+            },
+        ]
+        result = _find_supporting_articles(
+            "Sephora Test Product", "https://sephora.com/product/test", articles
+        )
+        assert len(result) == 1
+
+    def test_find_supporting_articles_url_without_name_rejected(self):
+        from build.generate_weekly import _find_supporting_articles
+
+        articles = [
+            {
                 "title": "Sephora product page roundup",
                 "url": "https://sephora.com/product/test",
                 "date": "2026-07-20",
@@ -748,7 +764,7 @@ class TestGenerateWeeklyHelpers:
         result = _find_supporting_articles(
             "Unknown Product", "https://sephora.com/product/test", articles
         )
-        assert len(result) == 1
+        assert len(result) == 0
 
     def test_find_supporting_articles_none_found(self):
         from build.generate_weekly import _find_supporting_articles

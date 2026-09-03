@@ -139,9 +139,9 @@ def _render_score_breakdown(product: Dict[str, Any]) -> str:
         weight_pct = round(float(component.get("weight") or 0) * 100)
         component_html += (
             '<span style="display:inline-flex;align-items:center;gap:4px;'
-            'padding:3px 8px;border:1px solid #e5e7eb;border-radius:4px;'
+            "padding:3px 8px;border:1px solid #e5e7eb;border-radius:4px;"
             'background:#fff;margin:0 6px 6px 0;font-size:11px;color:#374151;">'
-            '<span>{label}</span>'
+            "<span>{label}</span>"
             '<strong style="color:#111827;">{points}/{max_points}</strong>'
             '<span style="color:#6b7280;">{weight_pct}%</span>'
             "</span>"
@@ -168,7 +168,9 @@ def _render_score_breakdown(product: Dict[str, Any]) -> str:
         missing=missing_text,
     )
 
-    status = "Display allocation only; raw recompute awaits normalized sales/social/review/trend series."
+    status = (
+        "Display allocation only; raw recompute awaits normalized sales/social/review/trend series."
+    )
     return (
         '<div class="heat-detail-cell full-width">'
         '<div class="heat-detail-label">Score Breakdown</div>'
@@ -188,9 +190,9 @@ def _render_launch_evidence(product: Dict[str, Any], section: str) -> str:
         return ""
     launch_evidence = product.get("launch_evidence") or {}
     grade = launch_evidence.get("evidence_grade") or product.get("evidence_grade")
-    date_basis = str(
-        launch_evidence.get("date_basis") or product.get("date_basis") or ""
-    ).replace("_", " ")
+    date_basis = str(launch_evidence.get("date_basis") or product.get("date_basis") or "").replace(
+        "_", " "
+    )
     launch_date = launch_evidence.get("launch_date") or product.get("launch_date")
     if not grade and not launch_date:
         return ""
@@ -404,16 +406,102 @@ def _render_empty_state_note(lang: str, topic: str, count: int, section: str) ->
 
 
 def _render_heat_panel_note(lang: str, count: int) -> str:
-    """Render a concise note when a heat panel has fewer than 10 products."""
+    """Render a concise note when a heat panel has fewer than 10 products.
+
+    8-9 carries a yellow coverage warning; fewer is a transparent gap note.
+    Rankings are never padded.
+    """
     msg_template = _HEAT_PANEL_NOTE_MESSAGES.get(lang, _HEAT_PANEL_NOTE_MESSAGES["en"])
     msg = msg_template.format(n=count)
+    if 8 <= count < 10:
+        msg = "Coverage warning (yellow): " + msg
+        css = "coverage-note coverage-warning"
+    else:
+        css = "coverage-note coverage-gap"
     return (
-        '<li class="heat-item" style="list-style:none;border:none;box-shadow:none;background:transparent;padding:12px 16px;">'
+        '<li class="heat-item {css}" style="list-style:none;border:none;box-shadow:none;background:transparent;padding:12px 16px;">'
+        '<div class="heat-info">'
+        '<span class="heat-name" style="color:#888;font-style:italic;font-weight:400;">'
+        "{note}</span>"
+        "</div></li>"
+    ).format(css=css, note=_esc(msg))
+
+
+def _render_radar_panel_note(lang: str, count: int) -> str:
+    """Render a compact transparent coverage note for thin radar panels."""
+    msg = (
+        "{n} products met this month's signal and evidence thresholds; "
+        "transparent coverage warning — rankings are not padded."
+    ).format(n=count)
+    return (
+        '<li class="heat-item coverage-note coverage-gap" style="list-style:none;border:none;box-shadow:none;background:transparent;padding:12px 16px;">'
         '<div class="heat-info">'
         '<span class="heat-name" style="color:#888;font-style:italic;font-weight:400;">'
         "{note}</span>"
         "</div></li>"
     ).format(note=_esc(msg))
+
+
+def _render_coverage_note(lang: str, section: str, count: int) -> str:
+    """Compact per-panel coverage note dispatcher (heat or radar)."""
+    if section == "heat":
+        return _render_heat_panel_note(lang, count)
+    return _render_radar_panel_note(lang, count)
+
+
+def _render_market_observation(topic: str, lang: str, observations_by_panel: dict) -> str:
+    """Render the market observation candidate area.
+
+    C-grade social/KOL signals only, labeled pending official confirmation
+    and never mixed into the formal ranking/radar lists.  Uses a distinct
+    ``observation-item`` class so formal panel/item validators ignore it.
+    """
+    panels = [(panel, items) for panel, items in (observations_by_panel or {}).items() if items]
+    if not panels:
+        return ""
+    items_html = ""
+    for panel, items in sorted(panels):
+        for product in items:
+            name = product.get("name_en") or product.get("name", "")
+            launch_ev = product.get("launch_evidence") or {}
+            grade = launch_ev.get("evidence_grade") or product.get("evidence_grade") or "C"
+            launch_date = launch_ev.get("launch_date") or product.get("launch_date") or ""
+            ev = launch_ev.get("evidence") or {}
+            ev_url = ev.get("url") or product.get("evidence_url") or ""
+            ev_type = ev.get("type") or product.get("evidence_type") or "social_media"
+            label = product.get("observation_status") or "pending official confirmation"
+            date_text = launch_date or "date unavailable"
+            source_html = ""
+            if ev_url:
+                source_html = (
+                    ' <a href="{0}" target="_blank" class="heat-link-icon" '
+                    'title="View source">🔗</a>'
+                ).format(_esc(str(ev_url)))
+            items_html += (
+                '<li class="observation-item">'
+                '<div class="heat-info">'
+                '<span class="heat-name">{name}</span>'
+                '<span class="heat-cat-badge">Grade {grade} · {date}</span>'
+                '<span class="observation-label">{label}</span>'
+                "</div>"
+                '<div class="observation-meta">Source: {evtype}{source}</div>'
+                "</li>"
+            ).format(
+                name=_esc(str(name)),
+                grade=_esc(str(grade)),
+                date=_esc(str(date_text)),
+                label=_esc(str(label)),
+                evtype=_esc(str(ev_type)),
+                source=source_html,
+            )
+    return (
+        '<div class="market-observation">'
+        '<h3 class="observation-heading">Market Observation — Pending Official Confirmation</h3>'
+        '<p class="observation-sub">Social/KOL signals awaiting official confirmation; '
+        "not part of the formal ranking.</p>"
+        '<ul class="observation-list">{items}</ul>'
+        "</div>"
+    ).format(items=items_html)
 
 
 def _render_section(
@@ -452,7 +540,9 @@ def _render_section(
             for product in products:
                 html += _render_product(product, lang, section)
             if section == "heat" and len(products) < 10:
-                html += _render_heat_panel_note(lang, len(products))
+                html += _render_coverage_note(lang, section, len(products))
+            if section == "radar" and 1 <= len(products) < 5:
+                html += _render_coverage_note(lang, section, len(products))
         else:
             html += _render_empty_state_note(lang, topic, len(products), section)
         html += "</ul>\n"
@@ -613,8 +703,10 @@ def main() -> None:
         heat_html = _render_section(heat_panels, lang, topic, "heat")
         html = _replace_section(html, 3, heat_html)
 
-        # Render and replace Section 04
+        # Render and replace Section 04 (plus market observation area)
         radar_html = _render_section(radar_panels, lang, topic, "radar")
+        observations = (data.get("market_observation") or {}).get(topic, {})
+        radar_html += _render_market_observation(topic, lang, observations)
         html = _replace_section(html, 4, radar_html)
 
         # Update banner to reflect current month (Req 3)

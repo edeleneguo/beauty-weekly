@@ -107,23 +107,62 @@ def test_backfill_merge_preserves_generated_product_fields():
     existing = module._canonical_product(candidate, "earlier")
     existing["data_quality"] = {"coverage_score": 100}
     existing["score_breakdown"] = {"status": "generated"}
-    report["products"][candidate["topic"]]["new_product_radar"][
-        candidate["panel"]
-    ].append(existing)
+    report["products"][candidate["topic"]]["new_product_radar"][candidate["panel"]].append(existing)
 
     module._merge_report(report, [candidate], "reviewed")
 
-    product = report["products"][candidate["topic"]]["new_product_radar"][
-        candidate["panel"]
-    ][0]
+    product = report["products"][candidate["topic"]]["new_product_radar"][candidate["panel"]][0]
     assert product["data_quality"] == {"coverage_score": 100}
     assert product["score_breakdown"] == {"status": "generated"}
     assert product["launch_evidence"]["evidence"]["checked_at"] == "reviewed"
 
 
 def test_backfill_evidence_grades_render_in_published_pages():
-    makeup_html = (ROOT / "index.html").read_text(encoding="utf-8")
-    fragrance_html = (ROOT / "fragrance.html").read_text(encoding="utf-8")
+    """Tier contract: A/B render in formal radar; C renders only in
+    Market Observation with pending official confirmation, retaining
+    grade, launch date, and source visibility."""
+    render = _load_script("render")
 
-    assert re.search(r"Grade [A-C] · 2026-07-\d{2} ·", makeup_html)
-    assert re.search(r"Grade [A-C] · 2026-07-\d{2} ·", fragrance_html)
+    def _formal_product(grade: str) -> dict:
+        return {
+            "rank": 1,
+            "market": "CN",
+            "name": "Reviewed Radar Launch",
+            "category_badge": "Eau de Parfum",
+            "score": 80,
+            "detail": {},
+            "launch_evidence": {
+                "evidence_grade": grade,
+                "launch_date": "2026-07-15",
+                "date_basis": "source_publication",
+            },
+        }
+
+    for grade in ("A", "B"):
+        html = render._render_product(_formal_product(grade), "en", "radar")
+        assert re.search(rf"Grade {grade} · 2026-07-15", html)
+        assert "observation-label" not in html
+        assert "observation-item" not in html
+
+    observation = {
+        "CN LUXURY": [
+            {
+                "name": "KOL Signal Serum",
+                "observation_status": "pending official confirmation",
+                "launch_evidence": {
+                    "evidence_grade": "C",
+                    "launch_date": "2026-07-15",
+                    "evidence": {
+                        "url": "https://social.example/kol-signal-serum",
+                        "type": "social_media",
+                    },
+                },
+            }
+        ]
+    }
+    obs_html = render._render_market_observation("fragrance", "en", observation)
+    assert re.search(r"Grade C · 2026-07-15", obs_html)
+    assert "pending official confirmation" in obs_html
+    assert "https://social.example/kol-signal-serum" in obs_html
+    assert "observation-item" in obs_html
+    assert "heat-item" not in obs_html

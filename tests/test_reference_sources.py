@@ -448,7 +448,9 @@ def test_generation_retries_keep_best_verified_attempt(monkeypatch):
         }
 
     first = {
-        "heat_rankings": {panel: [product(panel, "heat")] for panel in panels},
+        "heat_rankings": {
+            panel: [product(panel, f"heat-{i}") for i in range(8)] for panel in panels
+        },
         "new_product_radar": {panel: [] for panel in panels},
     }
     worse = {
@@ -458,7 +460,7 @@ def test_generation_retries_keep_best_verified_attempt(monkeypatch):
     responses = iter([first, worse, worse])
     monkeypatch.setattr(generate_weekly, "call_llm", lambda *_: "{}")
     monkeypatch.setattr(generate_weekly, "parse_json_response", lambda *_: next(responses))
-    monkeypatch.setattr(generate_weekly, "_cn_radar_soft_floor", lambda *_: 1)
+    monkeypatch.setattr(generate_weekly, "_cn_radar_soft_floor", lambda *_: 0)
     monkeypatch.setattr(generate_weekly, "_supplement_candidate_evidence", lambda *_: None)
     monkeypatch.setattr(
         generate_weekly,
@@ -474,8 +476,9 @@ def test_generation_retries_keep_best_verified_attempt(monkeypatch):
     )
     raw = {
         "articles": [
-            {"url": product(panel, "heat")["source_url"], "title": panel, "date": "2026-07-15"}
+            {"url": product(panel, suffix)["source_url"], "title": panel, "date": "2026-07-15"}
             for panel in panels
+            for suffix in (f"heat-{i}" for i in range(8))
         ]
     }
 
