@@ -1213,18 +1213,15 @@ Rules:
                                 )
                     result[section][panel] = canonical_products
 
-        # Renumber ranks sequentially per panel after filtering
-        for section in ["heat_rankings", "new_product_radar"]:
-            for panel_products in result[section].values():
-                panel_products.sort(key=lambda product: float(product.get("score", 0)), reverse=True)
-                for i, p in enumerate(panel_products, start=1):
-                    p["rank"] = i
-
         # A product can legitimately appear in both weekly heat and new-product
         # radar.  Treat the heat score as the canonical weekly score so a
         # stochastic LLM response cannot assign two scores to the same product
         # in the same market/tier panel.
         _align_cross_section_scores(result)
+
+        # Alignment can change radar scores after the LLM has ordered a panel.
+        # Sort and renumber afterwards to preserve the publication contract.
+        _sort_and_rank_panels(result)
 
         # Require every heat_rankings panel to exist and contain >= 1 evidence-backed product
         required_heat_panels = {"US LUXURY", "US MASSTIGE", "CN LUXURY", "CN MASSTIGE"}
@@ -1329,6 +1326,15 @@ Rules:
         f"heat_rankings panels {{{missing}}} are empty after {_LLM_MAX_ATTEMPTS} "
         f"attempts and market coverage is insufficient: {market_coverage}"
     )
+
+
+def _sort_and_rank_panels(result: dict) -> None:
+    """Sort every product panel by score and assign sequential ranks."""
+    for section in ("heat_rankings", "new_product_radar"):
+        for panel_products in result[section].values():
+            panel_products.sort(key=lambda product: float(product.get("score", 0)), reverse=True)
+            for rank, product in enumerate(panel_products, start=1):
+                product["rank"] = rank
 
 
 def _align_cross_section_scores(result: dict) -> None:

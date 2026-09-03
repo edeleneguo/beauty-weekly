@@ -997,6 +997,31 @@ class TestGenerateProductsBatch:
 
         assert result["new_product_radar"]["US LUXURY"][0]["score"] == 90
 
+    def test_panels_are_resorted_after_cross_section_score_alignment(self):
+        from build.generate_monthly import _align_cross_section_scores, _sort_and_rank_panels
+
+        result = {
+            "heat_rankings": {
+                "CN LUXURY": [
+                    {"name": "Shared", "score": 93},
+                    {"name": "Other", "score": 90},
+                ]
+            },
+            "new_product_radar": {
+                "CN LUXURY": [
+                    {"name": "Other", "score": 90, "rank": 1},
+                    {"name": "Shared", "score": 80, "rank": 2},
+                ]
+            },
+        }
+
+        _align_cross_section_scores(result)
+        _sort_and_rank_panels(result)
+
+        radar = result["new_product_radar"]["CN LUXURY"]
+        assert [product["score"] for product in radar] == [93, 90]
+        assert [product["rank"] for product in radar] == [1, 2]
+
     def test_mixed_supported_unsupported_retains_supported(self):
         """Supported products retained; unsupported products quarantined."""
         from build.generate_weekly import generate_products
