@@ -1,0 +1,44 @@
+{
+  "baseline_type": "generated_month_pre_publish",
+  "canonical_counts": {
+    "fragrance": {
+      "heat_rankings": {
+        "CN LUXURY": 3,
+        "CN MASSTIGE": 2,
+        "US LUXURY": 5,
+        "US MASSTIGE": 5
+      },
+      "new_product_radar": {
+        "CN LUXURY": 3,
+        "CN MASSTIGE": 1,
+        "US LUXURY": 4,
+        "US MASSTIGE": 4
+      }
+    },
+    "makeup": {
+      "heat_rankings": {
+        "CN LUXURY": 0,
+        "CN MASSTIGE": 2,
+        "US LUXURY": 4,
+        "US MASSTIGE": 3
+      },
+      "new_product_radar": {
+        "CN LUXURY": 0,
+        "CN MASSTIGE": 2,
+        "US LUXURY": 2,
+        "US MASSTIGE": 1
+      }
+    }
+  },
+  "month": "2026-08",
+  "render_shell_counts": {
+    "fragrance": {
+      "news_cards": 0,
+      "trend_cards": 0
+    },
+    "makeup": {
+      "news_cards": 0,
+      "trend_cards": 0
+    }
+  }
+}

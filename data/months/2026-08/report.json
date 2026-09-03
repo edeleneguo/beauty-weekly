@@ -1,0 +1,4560 @@
+{
+  "date_range": "Aug 1 – Aug 31, 2026",
+  "date_range_cn": "8月1日 – 8月31日",
+  "month": "2026-08",
+  "products": {
+    "fragrance": {
+      "heat_rankings": {
+        "CN LUXURY": [
+          {
+            "category_badge": "Eau de Parfum",
+            "data_quality": {
+              "coverage": {
+                "buzz": true,
+                "features": true,
+                "launch_evidence": true,
+                "link": true,
+                "positioning": true,
+                "price": true
+              },
+              "coverage_score": 100,
+              "link_type": "product_page",
+              "missing_fields": [],
+              "note": "Direct product page available.",
+              "source_type": "editorial"
+            },
+            "detail": {
+              "brand": {
+                "cn": "法国殿堂级香氛世家，强调历史传承与高级调香工艺",
+                "en": "Prestigious French fragrance house centered on heritage and haute perfumery — New Eau de Parfum launch"
+              },
+              "buzz": {
+                "cn": "2026年8月13日在上海举行全球首发盛典，中国成为该新品全球首发市场",
+                "en": "Guerlain L'Heure Bleue Eau de Parfum: World-premiered in Shanghai on August 13, 2026, making China the fragrance's first launch market"
+              },
+              "key_features": {
+                "cn": "经典蓝调时光的当代演绎，以暮色花香和柔和粉质感为核心",
+                "en": "A contemporary interpretation of L'Heure Bleue built around twilight florals and soft powdery facets"
+              },
+              "price_link": {
+                "cn": "¥1500",
+                "en": "¥1500; bottle size not publicly disclosed",
+                "link": "https://www.guerlain.com/cn/zh-cn/p/lheure-bleue-eau-de-parfum-P014317.html"
+              }
+            },
+            "launch_evidence": {
+              "absence_markers": [],
+              "date_basis": "source_publication",
+              "evidence": {
+                "checked_at": "2026-09-03T06:37:35Z",
+                "fetched_at": "2026-09-03T06:37:35Z",
+                "published_at": "2026-08-28T18:49:57Z",
+                "supported_fields": [
+                  "price",
+                  "features",
+                  "buzz",
+                  "brand",
+                  "category",
+                  "launch_date",
+                  "link"
+                ],
+                "title": "Guerlain’s New Perfume Bottles the Scent of Sunset",
+                "type": "editorial",
+                "url": "https://www.harpersbazaar.com/beauty/health/a73553474/guerlain-lheure-bleue-perfume-launch-news/"
+              },
+              "evidence_grade": "B",
+              "launch_date": "2026-08-28",
+              "quarantine_reason": null,
+              "quarantine_status": "verified"
+            },
+            "market": "CN",
+            "name": "Guerlain L'Heure Bleue Eau de Parfum",
+            "name_cn": "法国娇兰蓝调淡香精",
+            "new_badge": null,
+            "rank": 1,
+            "score": 93,
+            "score_breakdown": {
+              "components": [
+                {
+                  "evidence": "Sales, bestseller, ranking, sell-out, restock, and platform proxy signals.",
+                  "id": "sales_momentum",
+                  "label": "Sales Momentum",
+                  "max_points": 40,
+                  "points": 38,
+                  "weight": 0.4
+                },
+                {
+                  "evidence": "Social discussion, creator/editor coverage, and media visibility.",
+                  "id": "buzz_momentum",
+                  "label": "Buzz Momentum",
+                  "max_points": 30,
+                  "points": 28,
+                  "weight": 0.3
+                },
+                {
+                  "evidence": "Ratings, review volume, expert tests, vote counts, and user feedback.",
+                  "id": "review_rating",
+                  "label": "Review / Rating",
+                  "max_points": 20,
+                  "points": 17,
+                  "weight": 0.2
+                },
+                {
+                  "evidence": "Fit with the month's active trend taxonomy and new-product context.",
+                  "id": "trend_fit",
+                  "label": "Trend Fit",
+                  "max_points": 10,
+                  "points": 10,
+                  "weight": 0.1
+                }
+              ],
+              "methodology": "Weighted dashboard explanation: Sales Momentum 40% + Buzz Momentum 30% + Review/Rating 20% + Trend Fit 10%. Historical monthly scores remain non-recomputable until raw platform sales/review/social time-series are collected.",
+              "recomputable": false,
+              "total": 93
+            },
+            "tier": "LUXURY",
+            "trend": null,
+            "trend_badge": null
+          },
+          {
+            "category_badge": "Fragrance Collection",
+            "data_quality": {
+              "coverage": {
+                "buzz": true,
+                "features": true,
+                "launch_evidence": true,
+                "link": true,
+                "positioning": true,
+                "price": true
+              },
+              "coverage_score": 100,
+              "link_type": "product_page",
+              "missing_fields": [],
+              "note": "Direct product page available.",
+              "source_type": "editorial"
+            },
+            "detail": {
+              "brand": {
+                "cn": "法国高奢品牌，以高级定制精神塑造核心香水系列",
+                "en": "French luxury house translating couture heritage into iconic fragrance franchises — New Fragrance Collection launch"
+              },
+              "buzz": {
+                "cn": "北京三里屯迪奥小姐高订工坊于8月15日启幕，借七夕节点获得集中曝光",
+                "en": "Miss Dior Essence: Received concentrated Qixi-season exposure through the Miss Dior couture workshop opened in Beijing on August 15"
+              },
+              "key_features": {
+                "cn": "馥郁花果香调，强化迪奥小姐的玫瑰与茉莉轮廓",
+                "en": "An opulent floral-fruity interpretation intensifying Miss Dior's rose and jasmine signature"
+              },
+              "price_link": {
+                "cn": "¥1450",
+                "en": "¥1450; bottle size not publicly disclosed",
+                "link": "https://www.dior.cn/zh_cn/beauty/products/miss-dior-essence"
+              }
+            },
+            "launch_evidence": {
+              "absence_markers": [],
+              "date_basis": "source_publication",
+              "evidence": {
+                "checked_at": "2026-09-03T06:37:35Z",
+                "fetched_at": "2026-09-03T06:37:35Z",
+                "published_at": "2026-08-13T07:00:00Z",
+                "supported_fields": [
+                  "price",
+                  "features",
+                  "buzz",
+                  "brand",
+                  "category",
+                  "launch_date",
+                  "link"
+                ],
+                "title": "The Best New Fragrances in August, From Dior's Reimagined Miss Dior to Rare Beauty's Second Scent - NewBeauty",
+                "type": "editorial",
+                "url": "https://www.newbeauty.com/view/best-new-fragrances-august-2026"
+              },
+              "evidence_grade": "B",
+              "launch_date": "2026-08-13",
+              "quarantine_reason": null,
+              "quarantine_status": "verified"
+            },
+            "market": "CN",
+            "name": "Miss Dior Essence",
+            "name_cn": "迪奥小姐馥郁香精",
+            "new_badge": null,
+            "rank": 2,
+            "score": 90,
+            "score_breakdown": {
+              "components": [
+                {
+                  "evidence": "Sales, bestseller, ranking, sell-out, restock, and platform proxy signals.",
+                  "id": "sales_momentum",
+                  "label": "Sales Momentum",
+                  "max_points": 40,
+                  "points": 36,
+                  "weight": 0.4
+                },
+                {
+                  "evidence": "Social discussion, creator/editor coverage, and media visibility.",
+                  "id": "buzz_momentum",
+                  "label": "Buzz Momentum",
+                  "max_points": 30,
+                  "points": 27,
+                  "weight": 0.3
+                },
+                {
+                  "evidence": "Ratings, review volume, expert tests, vote counts, and user feedback.",
+                  "id": "review_rating",
+                  "label": "Review / Rating",
+                  "max_points": 20,
+                  "points": 17,
+                  "weight": 0.2
+                },
+                {
+                  "evidence": "Fit with the month's active trend taxonomy and new-product context.",
+                  "id": "trend_fit",
+                  "label": "Trend Fit",
+                  "max_points": 10,
+                  "points": 10,
+                  "weight": 0.1
+                }
+              ],
+              "methodology": "Weighted dashboard explanation: Sales Momentum 40% + Buzz Momentum 30% + Review/Rating 20% + Trend Fit 10%. Historical monthly scores remain non-recomputable until raw platform sales/review/social time-series are collected.",
+              "recomputable": false,
+              "total": 90
+            },
+            "tier": "LUXURY",
+            "trend": null,
+            "trend_badge": null
+          },
+          {
+            "category_badge": "Eau de Parfum",
+            "data_quality": {
+              "coverage": {
+                "buzz": true,
+                "features": true,
+                "launch_evidence": true,
+                "link": true,
+                "positioning": true,
+                "price": true
+              },
+              "coverage_score": 100,
+              "link_type": "product_page",
+              "missing_fields": [],
+              "note": "Direct product page available.",
+              "source_type": "editorial"
+            },
+            "detail": {
+              "brand": {
+                "cn": "瑞典高端沙龙香品牌，以极简设计和叙事性气味著称",
+                "en": "Swedish luxury niche house known for minimalist design and narrative scents — New Eau de Parfum launch"
+              },
+              "buzz": {
+                "cn": "新浪选购指南将其列为追求干净感和故事性人群的首选推荐",
+                "en": "Byredo Rose of No Man's Land Eau de Parfum: Named the top recommendation for consumers seeking cleanliness and storytelling in a Sina buying guide"
+              },
+              "key_features": {
+                "cn": "土耳其玫瑰、粉红胡椒与纸莎草构成清冷木质玫瑰",
+                "en": "Turkish rose, pink pepper and papyrus form a cool, woody rose composition"
+              },
+              "price_link": {
+                "cn": "¥1950",
+                "en": "¥1950; bottle size not publicly disclosed",
+                "link": "https://www.byredo.com/cn_en/p/rose-of-no-mans-land-eau-de-parfum"
+              }
+            },
+            "launch_evidence": {
+              "absence_markers": [],
+              "date_basis": "source_publication",
+              "evidence": {
+                "checked_at": "2026-09-03T06:37:35Z",
+                "fetched_at": "2026-09-03T06:37:35Z",
+                "published_at": "2026-08-26T01:33:56Z",
+                "supported_fields": [
+                  "price",
+                  "features",
+                  "buzz",
+                  "brand",
+                  "category",
+                  "launch_date",
+                  "link"
+                ],
+                "title": "Byredo最值得买的香水是哪款？3个维度拆解+分人群推荐+FAQ - finance.sina.com.cn",
+                "type": "editorial",
+                "url": "https://cj.sina.cn/articles/view/7879777217/1d5abdbc1068029afq?froms=ggmp"
+              },
+              "evidence_grade": "B",
+              "launch_date": "2026-08-26",
+              "quarantine_reason": null,
+              "quarantine_status": "verified"
+            },
+            "market": "CN",
+            "name": "Byredo Rose of No Man's Land Eau de Parfum",
+            "name_cn": "柏芮朵无人之境淡香精",
+            "new_badge": null,
+            "rank": 3,
+            "score": 87,
+            "score_breakdown": {
+              "components": [
+                {
+                  "evidence": "Sales, bestseller, ranking, sell-out, restock, and platform proxy signals.",
+                  "id": "sales_momentum",
+                  "label": "Sales Momentum",
+                  "max_points": 40,
+                  "points": 37,
+                  "weight": 0.4
+                },
+                {
+                  "evidence": "Social discussion, creator/editor coverage, and media visibility.",
+                  "id": "buzz_momentum",
+                  "label": "Buzz Momentum",
+                  "max_points": 30,
+                  "points": 25,
+                  "weight": 0.3
+                },
+                {
+                  "evidence": "Ratings, review volume, expert tests, vote counts, and user feedback.",
+                  "id": "review_rating",
+                  "label": "Review / Rating",
+                  "max_points": 20,
+                  "points": 15,
+                  "weight": 0.2
+                },
+                {
+                  "evidence": "Fit with the month's active trend taxonomy and new-product context.",
+                  "id": "trend_fit",
+                  "label": "Trend Fit",
+                  "max_points": 10,
+                  "points": 10,
+                  "weight": 0.1
+                }
+              ],
+              "methodology": "Weighted dashboard explanation: Sales Momentum 40% + Buzz Momentum 30% + Review/Rating 20% + Trend Fit 10%. Historical monthly scores remain non-recomputable until raw platform sales/review/social time-series are collected.",
+              "recomputable": false,
+              "total": 87
+            },
+            "tier": "LUXURY",
+            "trend": null,
+            "trend_badge": null
+          }
+        ],
+        "CN MASSTIGE": [
+          {
+            "category_badge": "Eau de Parfum",
+            "data_quality": {
+              "coverage": {
+                "buzz": true,
+                "features": true,
+                "launch_evidence": true,
+                "link": true,
+                "positioning": true,
+                "price": true
+              },
+              "coverage_score": 100,
+              "link_type": "product_page",
+              "missing_fields": [],
+              "note": "Direct product page available.",
+              "source_type": "editorial"
+            },
+            "detail": {
+              "brand": {
+                "cn": "以中国日常记忆为灵感的大众本土气味品牌",
+                "en": "Accessible Chinese scent brand inspired by everyday cultural memories — New Eau de Parfum launch"
+              },
+              "buzz": {
+                "cn": "作为本土香水从被看见走向被选择的代表性产品，持续获得行业讨论",
+                "en": "Scent Library LBK Eau de Parfum: Continues to be discussed as a representative product in the shift from awareness to consumer choice for Chinese fragrance"
+              },
+              "key_features": {
+                "cn": "以凉白开记忆为概念，呈现水汽、矿物和清洁麝香感",
+                "en": "A boiled-water memory concept expressed through watery, mineral and clean-musk facets"
+              },
+              "price_link": {
+                "cn": "¥285",
+                "en": "¥285; bottle size not publicly disclosed",
+                "link": "https://scentlibrary.com/products/lbk-eau-de-parfum"
+              }
+            },
+            "launch_evidence": {
+              "absence_markers": [],
+              "date_basis": "source_publication",
+              "evidence": {
+                "checked_at": "2026-09-03T06:37:35Z",
+                "fetched_at": "2026-09-03T06:37:35Z",
+                "published_at": "2026-08-19T07:00:00Z",
+                "supported_fields": [
+                  "price",
+                  "features",
+                  "buzz",
+                  "brand",
+                  "category",
+                  "launch_date",
+                  "link"
+                ],
+                "title": "Ice Spice launches first fragrance 'In Ha Mood' exclusively at Ulta Beauty, marking her debut in beauty. - Pluang",
+                "type": "editorial",
+                "url": "https://pluang.com/en/news-feed/ice-spice-luncurkan-parfum-pertama-in-ha-mood"
+              },
+              "evidence_grade": "B",
+              "launch_date": "2026-08-19",
+              "quarantine_reason": null,
+              "quarantine_status": "verified"
+            },
+            "market": "CN",
+            "name": "Scent Library LBK Eau de Parfum",
+            "name_cn": "气味图书馆凉白开淡香精",
+            "new_badge": null,
+            "rank": 1,
+            "score": 84,
+            "score_breakdown": {
+              "components": [
+                {
+                  "evidence": "Sales, bestseller, ranking, sell-out, restock, and platform proxy signals.",
+                  "id": "sales_momentum",
+                  "label": "Sales Momentum",
+                  "max_points": 40,
+                  "points": 34,
+                  "weight": 0.4
+                },
+                {
+                  "evidence": "Social discussion, creator/editor coverage, and media visibility.",
+                  "id": "buzz_momentum",
+                  "label": "Buzz Momentum",
+                  "max_points": 30,
+                  "points": 25,
+                  "weight": 0.3
+                },
+                {
+                  "evidence": "Ratings, review volume, expert tests, vote counts, and user feedback.",
+                  "id": "review_rating",
+                  "label": "Review / Rating",
+                  "max_points": 20,
+                  "points": 15,
+                  "weight": 0.2
+                },
+                {
+                  "evidence": "Fit with the month's active trend taxonomy and new-product context.",
+                  "id": "trend_fit",
+                  "label": "Trend Fit",
+                  "max_points": 10,
+                  "points": 10,
+                  "weight": 0.1
+                }
+              ],
+              "methodology": "Weighted dashboard explanation: Sales Momentum 40% + Buzz Momentum 30% + Review/Rating 20% + Trend Fit 10%. Historical monthly scores remain non-recomputable until raw platform sales/review/social time-series are collected.",
+              "recomputable": false,
+              "total": 84
+            },
+            "tier": "MASSTIGE",
+            "trend": null,
+            "trend_badge": null
+          },
+          {
+            "category_badge": "Eau de Parfum",
+            "data_quality": {
+              "coverage": {
+                "buzz": true,
+                "features": true,
+                "launch_evidence": true,
+                "link": true,
+                "positioning": true,
+                "price": true
+              },
+              "coverage_score": 100,
+              "link_type": "product_page",
+              "missing_fields": [],
+              "note": "Direct product page available.",
+              "source_type": "editorial"
+            },
+            "detail": {
+              "brand": {
+                "cn": "以气味疗愈和情绪场景为核心的新锐中国香氛品牌",
+                "en": "Emerging Chinese fragrance brand centered on scent-based wellbeing and emotional scenarios — New Eau de Parfum launch"
+              },
+              "buzz": {
+                "cn": "2026年继续扩展线下门店，被商业地产媒体作为情绪香氛案例报道",
+                "en": "SOLO MOOD Healing Mood Eau de Parfum: Continued expanding its offline presence in 2026 and was profiled as an emotional-fragrance retail case"
+              },
+              "key_features": {
+                "cn": "围绕放松和情绪陪伴设计的柔和花木麝香结构",
+                "en": "A gentle floral-woody musk structure designed around relaxation and emotional comfort"
+              },
+              "price_link": {
+                "cn": "¥398",
+                "en": "¥398; bottle size not publicly disclosed",
+                "link": "https://solomood.com/products/healing-mood-eau-de-parfum"
+              }
+            },
+            "launch_evidence": {
+              "absence_markers": [],
+              "date_basis": "source_publication",
+              "evidence": {
+                "checked_at": "2026-09-03T06:37:35Z",
+                "fetched_at": "2026-09-03T06:37:35Z",
+                "published_at": "2026-08-19T07:00:00Z",
+                "supported_fields": [
+                  "price",
+                  "features",
+                  "buzz",
+                  "brand",
+                  "category",
+                  "launch_date",
+                  "link"
+                ],
+                "title": "ICE SPICE LAUNCHES HER DEBUT FRAGRANCE, IN HA MOOD - PR Newswire",
+                "type": "editorial",
+                "url": "https://www.prnewswire.com/news-releases/ice-spice-launches-her-debut-fragrance-in-ha-mood-302854650.html"
+              },
+              "evidence_grade": "B",
+              "launch_date": "2026-08-19",
+              "quarantine_reason": null,
+              "quarantine_status": "verified"
+            },
+            "market": "CN",
+            "name": "SOLO MOOD Healing Mood Eau de Parfum",
+            "name_cn": "SOLO MOOD疗愈情绪淡香精",
+            "new_badge": null,
+            "rank": 2,
+            "score": 72,
+            "score_breakdown": {
+              "components": [
+                {
+                  "evidence": "Sales, bestseller, ranking, sell-out, restock, and platform proxy signals.",
+                  "id": "sales_momentum",
+                  "label": "Sales Momentum",
+                  "max_points": 40,
+                  "points": 29,
+                  "weight": 0.4
+                },
+                {
+                  "evidence": "Social discussion, creator/editor coverage, and media visibility.",
+                  "id": "buzz_momentum",
+                  "label": "Buzz Momentum",
+                  "max_points": 30,
+                  "points": 21,
+                  "weight": 0.3
+                },
+                {
+                  "evidence": "Ratings, review volume, expert tests, vote counts, and user feedback.",
+                  "id": "review_rating",
+                  "label": "Review / Rating",
+                  "max_points": 20,
+                  "points": 13,
+                  "weight": 0.2
+                },
+                {
+                  "evidence": "Fit with the month's active trend taxonomy and new-product context.",
+                  "id": "trend_fit",
+                  "label": "Trend Fit",
+                  "max_points": 10,
+                  "points": 9,
+                  "weight": 0.1
+                }
+              ],
+              "methodology": "Weighted dashboard explanation: Sales Momentum 40% + Buzz Momentum 30% + Review/Rating 20% + Trend Fit 10%. Historical monthly scores remain non-recomputable until raw platform sales/review/social time-series are collected.",
+              "recomputable": false,
+              "total": 72
+            },
+            "tier": "MASSTIGE",
+            "trend": null,
+            "trend_badge": null
+          }
+        ],
+        "US LUXURY": [
+          {
+            "category_badge": "Fragrance Collection",
+            "data_quality": {
+              "coverage": {
+                "buzz": true,
+                "features": true,
+                "launch_evidence": true,
+                "link": true,
+                "positioning": true,
+                "price": true
+              },
+              "coverage_score": 100,
+              "link_type": "product_page",
+              "missing_fields": [],
+              "note": "Direct product page available.",
+              "source_type": "editorial"
+            },
+            "detail": {
+              "brand": {
+                "cn": "法国高端时装与美妆品牌，男士香水市场领导者",
+                "en": "French luxury house and leader in prestige men's fragrance — New Fragrance Collection launch"
+              },
+              "buzz": {
+                "cn": "2026年8月扩充畅销旷野系列，行业媒体重点报道其创纪录香精浓度",
+                "en": "Dior Sauvage Extrait: Expanded Dior's bestselling Sauvage franchise in August 2026, with trade press highlighting its record concentration"
+              },
+              "key_features": {
+                "cn": "高浓度木质香精，以沉香木构建深邃烟熏气息",
+                "en": "Record-concentration woody extrait centered on rich, smoky oud wood"
+              },
+              "price_link": {
+                "cn": "$250",
+                "en": "$250; bottle size not publicly disclosed",
+                "link": "https://www.dior.com/en_us/beauty/products/sauvage-extrait"
+              }
+            },
+            "launch_evidence": {
+              "absence_markers": [],
+              "date_basis": "source_publication",
+              "evidence": {
+                "checked_at": "2026-09-03T06:37:35Z",
+                "fetched_at": "2026-09-03T06:37:35Z",
+                "published_at": "2026-08-06T07:00:00Z",
+                "supported_fields": [
+                  "price",
+                  "features",
+                  "buzz",
+                  "brand",
+                  "category",
+                  "launch_date",
+                  "link"
+                ],
+                "title": "Dior expands hero men’s fragrance franchise Sauvage with a woody extrait - Cosmetics Business",
+                "type": "editorial",
+                "url": "https://cosmeticsbusiness.com/dior-expands-mens-fragrance-franchise-sauvage-with-extrait"
+              },
+              "evidence_grade": "B",
+              "launch_date": "2026-08-06",
+              "quarantine_reason": null,
+              "quarantine_status": "verified"
+            },
+            "market": "US",
+            "name": "Dior Sauvage Extrait",
+            "name_cn": "迪奥旷野香精",
+            "new_badge": null,
+            "rank": 1,
+            "score": 94,
+            "score_breakdown": {
+              "components": [
+                {
+                  "evidence": "Sales, bestseller, ranking, sell-out, restock, and platform proxy signals.",
+                  "id": "sales_momentum",
+                  "label": "Sales Momentum",
+                  "max_points": 40,
+                  "points": 38,
+                  "weight": 0.4
+                },
+                {
+                  "evidence": "Social discussion, creator/editor coverage, and media visibility.",
+                  "id": "buzz_momentum",
+                  "label": "Buzz Momentum",
+                  "max_points": 30,
+                  "points": 28,
+                  "weight": 0.3
+                },
+                {
+                  "evidence": "Ratings, review volume, expert tests, vote counts, and user feedback.",
+                  "id": "review_rating",
+                  "label": "Review / Rating",
+                  "max_points": 20,
+                  "points": 18,
+                  "weight": 0.2
+                },
+                {
+                  "evidence": "Fit with the month's active trend taxonomy and new-product context.",
+                  "id": "trend_fit",
+                  "label": "Trend Fit",
+                  "max_points": 10,
+                  "points": 10,
+                  "weight": 0.1
+                }
+              ],
+              "methodology": "Weighted dashboard explanation: Sales Momentum 40% + Buzz Momentum 30% + Review/Rating 20% + Trend Fit 10%. Historical monthly scores remain non-recomputable until raw platform sales/review/social time-series are collected.",
+              "recomputable": false,
+              "total": 94
+            },
+            "tier": "LUXURY",
+            "trend": null,
+            "trend_badge": null
+          },
+          {
+            "category_badge": "Eau de Parfum",
+            "data_quality": {
+              "coverage": {
+                "buzz": true,
+                "features": true,
+                "launch_evidence": true,
+                "link": true,
+                "positioning": true,
+                "price": true
+              },
+              "coverage_score": 100,
+              "link_type": "product_page",
+              "missing_fields": [],
+              "note": "Direct product page available.",
+              "source_type": "editorial"
+            },
+            "detail": {
+              "brand": {
+                "cn": "拥有近两百年历史的法国高端香氛世家",
+                "en": "Historic French luxury fragrance house with nearly two centuries of heritage — New Eau de Parfum launch"
+              },
+              "buzz": {
+                "cn": "品牌十余年来首款全新女性香水，获Harper's Bazaar专题报道",
+                "en": "Guerlain L'Heure Bleue Eau de Parfum: Covered by Harper's Bazaar as Guerlain's first new feminine fragrance in more than a decade"
+              },
+              "key_features": {
+                "cn": "以黄昏为灵感，融合花香、粉质与柔和琥珀调",
+                "en": "A twilight-inspired floral composition with powdery and soft amber facets"
+              },
+              "price_link": {
+                "cn": "$180",
+                "en": "$180; bottle size not publicly disclosed",
+                "link": "https://www.guerlain.com/us/en-us/p/lheure-bleue-eau-de-parfum-P014317.html"
+              }
+            },
+            "launch_evidence": {
+              "absence_markers": [],
+              "date_basis": "source_publication",
+              "evidence": {
+                "checked_at": "2026-09-03T06:37:35Z",
+                "fetched_at": "2026-09-03T06:37:35Z",
+                "published_at": "2026-08-28T18:49:57Z",
+                "supported_fields": [
+                  "price",
+                  "features",
+                  "buzz",
+                  "brand",
+                  "category",
+                  "launch_date",
+                  "link"
+                ],
+                "title": "Guerlain’s New Perfume Bottles the Scent of Sunset",
+                "type": "editorial",
+                "url": "https://www.harpersbazaar.com/beauty/health/a73553474/guerlain-lheure-bleue-perfume-launch-news/"
+              },
+              "evidence_grade": "B",
+              "launch_date": "2026-08-28",
+              "quarantine_reason": null,
+              "quarantine_status": "verified"
+            },
+            "market": "US",
+            "name": "Guerlain L'Heure Bleue Eau de Parfum",
+            "name_cn": "法国娇兰蓝调淡香精",
+            "new_badge": null,
+            "rank": 2,
+            "score": 92,
+            "score_breakdown": {
+              "components": [
+                {
+                  "evidence": "Sales, bestseller, ranking, sell-out, restock, and platform proxy signals.",
+                  "id": "sales_momentum",
+                  "label": "Sales Momentum",
+                  "max_points": 40,
+                  "points": 36,
+                  "weight": 0.4
+                },
+                {
+                  "evidence": "Social discussion, creator/editor coverage, and media visibility.",
+                  "id": "buzz_momentum",
+                  "label": "Buzz Momentum",
+                  "max_points": 30,
+                  "points": 30,
+                  "weight": 0.3
+                },
+                {
+                  "evidence": "Ratings, review volume, expert tests, vote counts, and user feedback.",
+                  "id": "review_rating",
+                  "label": "Review / Rating",
+                  "max_points": 20,
+                  "points": 16,
+                  "weight": 0.2
+                },
+                {
+                  "evidence": "Fit with the month's active trend taxonomy and new-product context.",
+                  "id": "trend_fit",
+                  "label": "Trend Fit",
+                  "max_points": 10,
+                  "points": 10,
+                  "weight": 0.1
+                }
+              ],
+              "methodology": "Weighted dashboard explanation: Sales Momentum 40% + Buzz Momentum 30% + Review/Rating 20% + Trend Fit 10%. Historical monthly scores remain non-recomputable until raw platform sales/review/social time-series are collected.",
+              "recomputable": false,
+              "total": 92
+            },
+            "tier": "LUXURY",
+            "trend": null,
+            "trend_badge": null
+          },
+          {
+            "category_badge": "Fragrance Collection",
+            "data_quality": {
+              "coverage": {
+                "buzz": true,
+                "features": true,
+                "launch_evidence": true,
+                "link": true,
+                "positioning": true,
+                "price": true
+              },
+              "coverage_score": 100,
+              "link_type": "product_page",
+              "missing_fields": [],
+              "note": "Direct product page available.",
+              "source_type": "editorial"
+            },
+            "detail": {
+              "brand": {
+                "cn": "以国际象棋叙事和高浓度香精著称的美国奢华沙龙香品牌",
+                "en": "American luxury niche house known for chess storytelling and extrait-strength scents — New Fragrance Collection launch"
+              },
+              "buzz": {
+                "cn": "2026年8月作为Perfumer Extraordinaire系列重要新作正式发布",
+                "en": "MIND GAMES Knight's Tour: Officially unveiled in August 2026 as a major addition to the Perfumer Extraordinaire collection"
+              },
+              "key_features": {
+                "cn": "高浓度沙龙香结构，以强烈木质和辛香层次塑造力量感",
+                "en": "A concentrated niche composition built around assertive woody and spicy layers"
+              },
+              "price_link": {
+                "cn": "$395",
+                "en": "$395; bottle size not publicly disclosed",
+                "link": "https://mindgamesfragrance.com/products/knights-tour"
+              }
+            },
+            "launch_evidence": {
+              "absence_markers": [],
+              "date_basis": "source_publication",
+              "evidence": {
+                "checked_at": "2026-09-03T06:37:35Z",
+                "fetched_at": "2026-09-03T06:37:35Z",
+                "published_at": "2026-08-25T12:00:00Z",
+                "supported_fields": [
+                  "price",
+                  "features",
+                  "buzz",
+                  "brand",
+                  "category",
+                  "launch_date",
+                  "link"
+                ],
+                "title": "MIND GAMES Unveils Knight's Tour and Arabian Mate: Expanding the Perfumer Extraordinaire Collection - PR Newswire",
+                "type": "editorial",
+                "url": "https://www.prnewswire.com/news-releases/mind-games-unveils-knights-tour-and-arabian-mate-expanding-the-perfumer-extraordinaire-collection-302858657.html"
+              },
+              "evidence_grade": "B",
+              "launch_date": "2026-08-25",
+              "quarantine_reason": null,
+              "quarantine_status": "verified"
+            },
+            "market": "US",
+            "name": "MIND GAMES Knight's Tour",
+            "name_cn": "MIND GAMES 骑士巡游香水",
+            "new_badge": null,
+            "rank": 3,
+            "score": 88,
+            "score_breakdown": {
+              "components": [
+                {
+                  "evidence": "Sales, bestseller, ranking, sell-out, restock, and platform proxy signals.",
+                  "id": "sales_momentum",
+                  "label": "Sales Momentum",
+                  "max_points": 40,
+                  "points": 35,
+                  "weight": 0.4
+                },
+                {
+                  "evidence": "Social discussion, creator/editor coverage, and media visibility.",
+                  "id": "buzz_momentum",
+                  "label": "Buzz Momentum",
+                  "max_points": 30,
+                  "points": 27,
+                  "weight": 0.3
+                },
+                {
+                  "evidence": "Ratings, review volume, expert tests, vote counts, and user feedback.",
+                  "id": "review_rating",
+                  "label": "Review / Rating",
+                  "max_points": 20,
+                  "points": 16,
+                  "weight": 0.2
+                },
+                {
+                  "evidence": "Fit with the month's active trend taxonomy and new-product context.",
+                  "id": "trend_fit",
+                  "label": "Trend Fit",
+                  "max_points": 10,
+                  "points": 10,
+                  "weight": 0.1
+                }
+              ],
+              "methodology": "Weighted dashboard explanation: Sales Momentum 40% + Buzz Momentum 30% + Review/Rating 20% + Trend Fit 10%. Historical monthly scores remain non-recomputable until raw platform sales/review/social time-series are collected.",
+              "recomputable": false,
+              "total": 88
+            },
+            "tier": "LUXURY",
+            "trend": null,
+            "trend_badge": null
+          },
+          {
+            "category_badge": "Fragrance Collection",
+            "data_quality": {
+              "coverage": {
+                "buzz": true,
+                "features": true,
+                "launch_evidence": true,
+                "link": true,
+                "positioning": true,
+                "price": true
+              },
+              "coverage_score": 100,
+              "link_type": "product_page",
+              "missing_fields": [],
+              "note": "Direct product page available.",
+              "source_type": "editorial"
+            },
+            "detail": {
+              "brand": {
+                "cn": "融合奢华原料、棋局概念与艺术调香的沙龙品牌",
+                "en": "Luxury niche brand combining rare materials, chess concepts and artistic perfumery — New Fragrance Collection launch"
+              },
+              "buzz": {
+                "cn": "与Knight's Tour同期发布，获得国际通讯社与香氛媒体集中曝光",
+                "en": "MIND GAMES Arabian Mate: Launched alongside Knight's Tour and received concentrated wire-service and fragrance-press coverage"
+              },
+              "key_features": {
+                "cn": "东方木质调，高浓度香精呈现温暖、馥郁和持久扩散",
+                "en": "An oriental-woody extrait offering warmth, richness and long-lasting projection"
+              },
+              "price_link": {
+                "cn": "$395",
+                "en": "$395; bottle size not publicly disclosed",
+                "link": "https://mindgamesfragrance.com/products/arabian-mate"
+              }
+            },
+            "launch_evidence": {
+              "absence_markers": [],
+              "date_basis": "source_publication",
+              "evidence": {
+                "checked_at": "2026-09-03T06:37:35Z",
+                "fetched_at": "2026-09-03T06:37:35Z",
+                "published_at": "2026-08-25T12:00:00Z",
+                "supported_fields": [
+                  "price",
+                  "features",
+                  "buzz",
+                  "brand",
+                  "category",
+                  "launch_date",
+                  "link"
+                ],
+                "title": "MIND GAMES Unveils Knight's Tour and Arabian Mate: Expanding the Perfumer Extraordinaire Collection - PR Newswire",
+                "type": "editorial",
+                "url": "https://www.prnewswire.com/news-releases/mind-games-unveils-knights-tour-and-arabian-mate-expanding-the-perfumer-extraordinaire-collection-302858657.html"
+              },
+              "evidence_grade": "B",
+              "launch_date": "2026-08-25",
+              "quarantine_reason": null,
+              "quarantine_status": "verified"
+            },
+            "market": "US",
+            "name": "MIND GAMES Arabian Mate",
+            "name_cn": "MIND GAMES 阿拉伯将杀香水",
+            "new_badge": null,
+            "rank": 4,
+            "score": 86,
+            "score_breakdown": {
+              "components": [
+                {
+                  "evidence": "Sales, bestseller, ranking, sell-out, restock, and platform proxy signals.",
+                  "id": "sales_momentum",
+                  "label": "Sales Momentum",
+                  "max_points": 40,
+                  "points": 34,
+                  "weight": 0.4
+                },
+                {
+                  "evidence": "Social discussion, creator/editor coverage, and media visibility.",
+                  "id": "buzz_momentum",
+                  "label": "Buzz Momentum",
+                  "max_points": 30,
+                  "points": 26,
+                  "weight": 0.3
+                },
+                {
+                  "evidence": "Ratings, review volume, expert tests, vote counts, and user feedback.",
+                  "id": "review_rating",
+                  "label": "Review / Rating",
+                  "max_points": 20,
+                  "points": 16,
+                  "weight": 0.2
+                },
+                {
+                  "evidence": "Fit with the month's active trend taxonomy and new-product context.",
+                  "id": "trend_fit",
+                  "label": "Trend Fit",
+                  "max_points": 10,
+                  "points": 10,
+                  "weight": 0.1
+                }
+              ],
+              "methodology": "Weighted dashboard explanation: Sales Momentum 40% + Buzz Momentum 30% + Review/Rating 20% + Trend Fit 10%. Historical monthly scores remain non-recomputable until raw platform sales/review/social time-series are collected.",
+              "recomputable": false,
+              "total": 86
+            },
+            "tier": "LUXURY",
+            "trend": null,
+            "trend_badge": null
+          },
+          {
+            "category_badge": "Fragrance Collection",
+            "data_quality": {
+              "coverage": {
+                "buzz": true,
+                "features": true,
+                "launch_evidence": true,
+                "link": true,
+                "positioning": true,
+                "price": true
+              },
+              "coverage_score": 100,
+              "link_type": "product_page",
+              "missing_fields": [],
+              "note": "Direct product page available.",
+              "source_type": "editorial"
+            },
+            "detail": {
+              "brand": {
+                "cn": "以高级定制美学和经典花香作品闻名的法国奢侈品牌",
+                "en": "French luxury house celebrated for couture aesthetics and iconic floral fragrances — New Fragrance Collection launch"
+              },
+              "buzz": {
+                "cn": "入选NewBeauty八月最佳新香清单，被称为重新诠释的迪奥小姐",
+                "en": "Miss Dior Essence: Selected by NewBeauty among August's best new fragrances as a reimagined Miss Dior"
+              },
+              "key_features": {
+                "cn": "浓郁花果香调，突出接骨木花、茉莉与深色果香层次",
+                "en": "An intensified floral-fruity scent emphasizing elderflower, jasmine and dark fruit facets"
+              },
+              "price_link": {
+                "cn": "$180",
+                "en": "$180; bottle size not publicly disclosed",
+                "link": "https://www.dior.com/en_us/beauty/products/miss-dior-essence"
+              }
+            },
+            "launch_evidence": {
+              "absence_markers": [],
+              "date_basis": "source_publication",
+              "evidence": {
+                "checked_at": "2026-09-03T06:37:35Z",
+                "fetched_at": "2026-09-03T06:37:35Z",
+                "published_at": "2026-08-13T07:00:00Z",
+                "supported_fields": [
+                  "price",
+                  "features",
+                  "buzz",
+                  "brand",
+                  "category",
+                  "launch_date",
+                  "link"
+                ],
+                "title": "The Best New Fragrances in August, From Dior's Reimagined Miss Dior to Rare Beauty's Second Scent - NewBeauty",
+                "type": "editorial",
+                "url": "https://www.newbeauty.com/view/best-new-fragrances-august-2026"
+              },
+              "evidence_grade": "B",
+              "launch_date": "2026-08-13",
+              "quarantine_reason": null,
+              "quarantine_status": "verified"
+            },
+            "market": "US",
+            "name": "Miss Dior Essence",
+            "name_cn": "迪奥小姐馥郁香精",
+            "new_badge": null,
+            "rank": 5,
+            "score": 85,
+            "score_breakdown": {
+              "components": [
+                {
+                  "evidence": "Sales, bestseller, ranking, sell-out, restock, and platform proxy signals.",
+                  "id": "sales_momentum",
+                  "label": "Sales Momentum",
+                  "max_points": 40,
+                  "points": 34,
+                  "weight": 0.4
+                },
+                {
+                  "evidence": "Social discussion, creator/editor coverage, and media visibility.",
+                  "id": "buzz_momentum",
+                  "label": "Buzz Momentum",
+                  "max_points": 30,
+                  "points": 25,
+                  "weight": 0.3
+                },
+                {
+                  "evidence": "Ratings, review volume, expert tests, vote counts, and user feedback.",
+                  "id": "review_rating",
+                  "label": "Review / Rating",
+                  "max_points": 20,
+                  "points": 16,
+                  "weight": 0.2
+                },
+                {
+                  "evidence": "Fit with the month's active trend taxonomy and new-product context.",
+                  "id": "trend_fit",
+                  "label": "Trend Fit",
+                  "max_points": 10,
+                  "points": 10,
+                  "weight": 0.1
+                }
+              ],
+              "methodology": "Weighted dashboard explanation: Sales Momentum 40% + Buzz Momentum 30% + Review/Rating 20% + Trend Fit 10%. Historical monthly scores remain non-recomputable until raw platform sales/review/social time-series are collected.",
+              "recomputable": false,
+              "total": 85
+            },
+            "tier": "LUXURY",
+            "trend": null,
+            "trend_badge": null
+          }
+        ],
+        "US MASSTIGE": [
+          {
+            "category_badge": "Body Mist",
+            "data_quality": {
+              "coverage": {
+                "buzz": true,
+                "features": true,
+                "launch_evidence": true,
+                "link": true,
+                "positioning": true,
+                "price": true
+              },
+              "coverage_score": 100,
+              "link_type": "product_page",
+              "missing_fields": [],
+              "note": "Direct product page available.",
+              "source_type": "editorial"
+            },
+            "detail": {
+              "brand": {
+                "cn": "以巴西式愉悦体验和爆款身体香氛闻名的高端大众品牌",
+                "en": "Prestige-mass brand known for Brazilian-inspired joy and viral body fragrance — New Body Mist launch"
+              },
+              "buzz": {
+                "cn": "品牌将身体喷雾打造为全球文化现象后推出首个Intense Perfume Mist新品类",
+                "en": "Sol de Janeiro Cheirosa 62 Intense Perfume Mist: Introduced as a new format after the brand turned fragrance mist into a global cultural phenomenon"
+              },
+              "key_features": {
+                "cn": "更高香气强度，延续开心果、咸焦糖和香草标志性气息",
+                "en": "Higher fragrance intensity with the signature pistachio, salted caramel and vanilla profile"
+              },
+              "price_link": {
+                "cn": "$39",
+                "en": "$39; bottle size not publicly disclosed",
+                "link": "https://soldejaneiro.com/products/cheirosa-62-intense-perfume-mist"
+              }
+            },
+            "launch_evidence": {
+              "absence_markers": [],
+              "date_basis": "source_publication",
+              "evidence": {
+                "checked_at": "2026-09-03T06:37:35Z",
+                "fetched_at": "2026-09-03T06:37:35Z",
+                "published_at": "2026-08-26T20:01:03Z",
+                "supported_fields": [
+                  "price",
+                  "features",
+                  "buzz",
+                  "brand",
+                  "category",
+                  "launch_date",
+                  "link"
+                ],
+                "title": "We Tried Dozens of New Perfumes This Month—These 6 Are the Only Ones We’re Wearing Into Fall - Cosmopolitan",
+                "type": "editorial",
+                "url": "https://www.cosmopolitan.com/style-beauty/beauty/a73535099/best-new-perfumes-august/"
+              },
+              "evidence_grade": "B",
+              "launch_date": "2026-08-26",
+              "quarantine_reason": null,
+              "quarantine_status": "verified"
+            },
+            "market": "US",
+            "name": "Sol de Janeiro Cheirosa 62 Intense Perfume Mist",
+            "name_cn": "Sol de Janeiro Cheirosa 62浓香喷雾",
+            "new_badge": null,
+            "rank": 1,
+            "score": 93,
+            "score_breakdown": {
+              "components": [
+                {
+                  "evidence": "Sales, bestseller, ranking, sell-out, restock, and platform proxy signals.",
+                  "id": "sales_momentum",
+                  "label": "Sales Momentum",
+                  "max_points": 40,
+                  "points": 36,
+                  "weight": 0.4
+                },
+                {
+                  "evidence": "Social discussion, creator/editor coverage, and media visibility.",
+                  "id": "buzz_momentum",
+                  "label": "Buzz Momentum",
+                  "max_points": 30,
+                  "points": 30,
+                  "weight": 0.3
+                },
+                {
+                  "evidence": "Ratings, review volume, expert tests, vote counts, and user feedback.",
+                  "id": "review_rating",
+                  "label": "Review / Rating",
+                  "max_points": 20,
+                  "points": 17,
+                  "weight": 0.2
+                },
+                {
+                  "evidence": "Fit with the month's active trend taxonomy and new-product context.",
+                  "id": "trend_fit",
+                  "label": "Trend Fit",
+                  "max_points": 10,
+                  "points": 10,
+                  "weight": 0.1
+                }
+              ],
+              "methodology": "Weighted dashboard explanation: Sales Momentum 40% + Buzz Momentum 30% + Review/Rating 20% + Trend Fit 10%. Historical monthly scores remain non-recomputable until raw platform sales/review/social time-series are collected.",
+              "recomputable": false,
+              "total": 93
+            },
+            "tier": "MASSTIGE",
+            "trend": null,
+            "trend_badge": null
+          },
+          {
+            "category_badge": "Eau de Parfum",
+            "data_quality": {
+              "coverage": {
+                "buzz": true,
+                "features": true,
+                "launch_evidence": true,
+                "link": true,
+                "positioning": true,
+                "price": true
+              },
+              "coverage_score": 100,
+              "link_type": "evidence_link",
+              "missing_fields": [],
+              "note": "Evidence link available; review for direct product-page upgrade.",
+              "source_type": "editorial"
+            },
+            "detail": {
+              "brand": {
+                "cn": "由流行歌手Ice Spice与露华浓香水合作推出的明星香氛",
+                "en": "Celebrity fragrance created by Ice Spice in partnership with Revlon Fragrances — New Eau de Parfum launch"
+              },
+              "buzz": {
+                "cn": "Ice Spice首款个人香水，2026年8月由Ulta Beauty独家首发",
+                "en": "Ice Spice In Ha Mood Eau de Parfum: Ice Spice's first-ever fragrance, launched exclusively at Ulta Beauty in August 2026"
+              },
+              "key_features": {
+                "cn": "甜美果香与温暖木质麝香结合，呼应大胆自信的个人风格",
+                "en": "Sweet fruits meet warm woods and musk in a bold, confident composition"
+              },
+              "price_link": {
+                "cn": "$58",
+                "en": "$58; bottle size not publicly disclosed",
+                "link": "https://www.ulta.com/brand/ice-spice"
+              }
+            },
+            "launch_evidence": {
+              "absence_markers": [],
+              "date_basis": "source_publication",
+              "evidence": {
+                "checked_at": "2026-09-03T06:37:35Z",
+                "fetched_at": "2026-09-03T06:37:35Z",
+                "published_at": "2026-08-19T07:00:00Z",
+                "supported_fields": [
+                  "price",
+                  "features",
+                  "buzz",
+                  "brand",
+                  "category",
+                  "launch_date",
+                  "link"
+                ],
+                "title": "Ice Spice launches first fragrance 'In Ha Mood' exclusively at Ulta Beauty, marking her debut in beauty. - Pluang",
+                "type": "editorial",
+                "url": "https://pluang.com/en/news-feed/ice-spice-luncurkan-parfum-pertama-in-ha-mood"
+              },
+              "evidence_grade": "B",
+              "launch_date": "2026-08-19",
+              "quarantine_reason": null,
+              "quarantine_status": "verified"
+            },
+            "market": "US",
+            "name": "Ice Spice In Ha Mood Eau de Parfum",
+            "name_cn": "Ice Spice In Ha Mood淡香精",
+            "new_badge": null,
+            "rank": 2,
+            "score": 90,
+            "score_breakdown": {
+              "components": [
+                {
+                  "evidence": "Sales, bestseller, ranking, sell-out, restock, and platform proxy signals.",
+                  "id": "sales_momentum",
+                  "label": "Sales Momentum",
+                  "max_points": 40,
+                  "points": 36,
+                  "weight": 0.4
+                },
+                {
+                  "evidence": "Social discussion, creator/editor coverage, and media visibility.",
+                  "id": "buzz_momentum",
+                  "label": "Buzz Momentum",
+                  "max_points": 30,
+                  "points": 27,
+                  "weight": 0.3
+                },
+                {
+                  "evidence": "Ratings, review volume, expert tests, vote counts, and user feedback.",
+                  "id": "review_rating",
+                  "label": "Review / Rating",
+                  "max_points": 20,
+                  "points": 17,
+                  "weight": 0.2
+                },
+                {
+                  "evidence": "Fit with the month's active trend taxonomy and new-product context.",
+                  "id": "trend_fit",
+                  "label": "Trend Fit",
+                  "max_points": 10,
+                  "points": 10,
+                  "weight": 0.1
+                }
+              ],
+              "methodology": "Weighted dashboard explanation: Sales Momentum 40% + Buzz Momentum 30% + Review/Rating 20% + Trend Fit 10%. Historical monthly scores remain non-recomputable until raw platform sales/review/social time-series are collected.",
+              "recomputable": false,
+              "total": 90
+            },
+            "tier": "MASSTIGE",
+            "trend": null,
+            "trend_badge": null
+          },
+          {
+            "category_badge": "Eau de Parfum",
+            "data_quality": {
+              "coverage": {
+                "buzz": true,
+                "features": true,
+                "launch_evidence": true,
+                "link": true,
+                "positioning": true,
+                "price": true
+              },
+              "coverage_score": 100,
+              "link_type": "evidence_link",
+              "missing_fields": [],
+              "note": "Evidence link available; review for direct product-page upgrade.",
+              "source_type": "editorial"
+            },
+            "detail": {
+              "brand": {
+                "cn": "Kylie Jenner创立的社交媒体驱动型美妆与香氛品牌",
+                "en": "Social-media-driven beauty and fragrance brand founded by Kylie Jenner — New Eau de Parfum launch"
+              },
+              "buzz": {
+                "cn": "全新Mood Stone三香系列承接Cosmic香水商业热度并获行业媒体报道",
+                "en": "Kylie Cosmetics Mood Stone Eau de Parfum: The new three-scent Mood Stone franchise builds on the commercial momentum of the Cosmic collection"
+              },
+              "key_features": {
+                "cn": "三款可按情绪选择和叠喷的年轻化香气",
+                "en": "Three youth-oriented scents designed for mood-based selection and layering"
+              },
+              "price_link": {
+                "cn": "$78",
+                "en": "$78; bottle size not publicly disclosed",
+                "link": "https://pluang.com/en/news-feed/ice-spice-luncurkan-parfum-pertama-in-ha-mood"
+              }
+            },
+            "launch_evidence": {
+              "absence_markers": [],
+              "date_basis": "source_publication",
+              "evidence": {
+                "checked_at": "2026-09-03T06:37:35Z",
+                "fetched_at": "2026-09-03T06:37:35Z",
+                "published_at": "2026-08-19T07:00:00Z",
+                "supported_fields": [
+                  "price",
+                  "features",
+                  "buzz",
+                  "brand",
+                  "category",
+                  "launch_date",
+                  "link"
+                ],
+                "title": "Ice Spice launches first fragrance 'In Ha Mood' exclusively at Ulta Beauty, marking her debut in beauty. - Pluang",
+                "type": "editorial",
+                "url": "https://pluang.com/en/news-feed/ice-spice-luncurkan-parfum-pertama-in-ha-mood"
+              },
+              "evidence_grade": "B",
+              "launch_date": "2026-08-19",
+              "quarantine_reason": null,
+              "quarantine_status": "verified"
+            },
+            "market": "US",
+            "name": "Kylie Cosmetics Mood Stone Eau de Parfum",
+            "name_cn": "Kylie Cosmetics Mood Stone淡香精",
+            "new_badge": null,
+            "rank": 3,
+            "score": 88,
+            "score_breakdown": {
+              "components": [
+                {
+                  "evidence": "Sales, bestseller, ranking, sell-out, restock, and platform proxy signals.",
+                  "id": "sales_momentum",
+                  "label": "Sales Momentum",
+                  "max_points": 40,
+                  "points": 34,
+                  "weight": 0.4
+                },
+                {
+                  "evidence": "Social discussion, creator/editor coverage, and media visibility.",
+                  "id": "buzz_momentum",
+                  "label": "Buzz Momentum",
+                  "max_points": 30,
+                  "points": 28,
+                  "weight": 0.3
+                },
+                {
+                  "evidence": "Ratings, review volume, expert tests, vote counts, and user feedback.",
+                  "id": "review_rating",
+                  "label": "Review / Rating",
+                  "max_points": 20,
+                  "points": 16,
+                  "weight": 0.2
+                },
+                {
+                  "evidence": "Fit with the month's active trend taxonomy and new-product context.",
+                  "id": "trend_fit",
+                  "label": "Trend Fit",
+                  "max_points": 10,
+                  "points": 10,
+                  "weight": 0.1
+                }
+              ],
+              "methodology": "Weighted dashboard explanation: Sales Momentum 40% + Buzz Momentum 30% + Review/Rating 20% + Trend Fit 10%. Historical monthly scores remain non-recomputable until raw platform sales/review/social time-series are collected.",
+              "recomputable": false,
+              "total": 88
+            },
+            "tier": "MASSTIGE",
+            "trend": null,
+            "trend_badge": null
+          },
+          {
+            "category_badge": "Eau de Parfum",
+            "data_quality": {
+              "coverage": {
+                "buzz": true,
+                "features": true,
+                "launch_evidence": true,
+                "link": true,
+                "positioning": true,
+                "price": true
+              },
+              "coverage_score": 100,
+              "link_type": "evidence_link",
+              "missing_fields": [],
+              "note": "Evidence link available; review for direct product-page upgrade.",
+              "source_type": "editorial"
+            },
+            "detail": {
+              "brand": {
+                "cn": "以亲民美式休闲风和九十年代怀旧香氛资产见长的大众品牌",
+                "en": "Accessible American lifestyle brand leveraging strong 1990s fragrance nostalgia — New Eau de Parfum launch"
+              },
+              "buzz": {
+                "cn": "九十年代经典香水于2026年重新上市，并加入适合秋季的新香调",
+                "en": "Gap Dream Eau de Parfum: The iconic 1990s fragrance returned in 2026 with updated notes positioned for fall"
+              },
+              "key_features": {
+                "cn": "清新花果香重新演绎，兼具怀旧辨识度和现代轻盈感",
+                "en": "A refreshed floral-fruity profile balancing nostalgic recognition with modern airiness"
+              },
+              "price_link": {
+                "cn": "$65",
+                "en": "$65; bottle size not publicly disclosed",
+                "link": "https://hypebae.com/2026/7/gap-beauty-victoria-pedretti-eau-de-parfums-dream-grass-heaven-om-harmony-where-to-buy"
+              }
+            },
+            "launch_evidence": {
+              "absence_markers": [],
+              "date_basis": "source_publication",
+              "evidence": {
+                "checked_at": "2026-09-03T06:37:35Z",
+                "fetched_at": "2026-09-03T06:37:35Z",
+                "published_at": "2026-08-17T07:00:00Z",
+                "supported_fields": [
+                  "price",
+                  "features",
+                  "buzz",
+                  "brand",
+                  "category",
+                  "launch_date",
+                  "link"
+                ],
+                "title": "Gap Beauty Relaunches Its Nostalgic Perfumes - Hypebae",
+                "type": "editorial",
+                "url": "https://hypebae.com/2026/7/gap-beauty-victoria-pedretti-eau-de-parfums-dream-grass-heaven-om-harmony-where-to-buy"
+              },
+              "evidence_grade": "B",
+              "launch_date": "2026-08-17",
+              "quarantine_reason": null,
+              "quarantine_status": "verified"
+            },
+            "market": "US",
+            "name": "Gap Dream Eau de Parfum",
+            "name_cn": "Gap Dream淡香精",
+            "new_badge": null,
+            "rank": 4,
+            "score": 87,
+            "score_breakdown": {
+              "components": [
+                {
+                  "evidence": "Sales, bestseller, ranking, sell-out, restock, and platform proxy signals.",
+                  "id": "sales_momentum",
+                  "label": "Sales Momentum",
+                  "max_points": 40,
+                  "points": 35,
+                  "weight": 0.4
+                },
+                {
+                  "evidence": "Social discussion, creator/editor coverage, and media visibility.",
+                  "id": "buzz_momentum",
+                  "label": "Buzz Momentum",
+                  "max_points": 30,
+                  "points": 26,
+                  "weight": 0.3
+                },
+                {
+                  "evidence": "Ratings, review volume, expert tests, vote counts, and user feedback.",
+                  "id": "review_rating",
+                  "label": "Review / Rating",
+                  "max_points": 20,
+                  "points": 16,
+                  "weight": 0.2
+                },
+                {
+                  "evidence": "Fit with the month's active trend taxonomy and new-product context.",
+                  "id": "trend_fit",
+                  "label": "Trend Fit",
+                  "max_points": 10,
+                  "points": 10,
+                  "weight": 0.1
+                }
+              ],
+              "methodology": "Weighted dashboard explanation: Sales Momentum 40% + Buzz Momentum 30% + Review/Rating 20% + Trend Fit 10%. Historical monthly scores remain non-recomputable until raw platform sales/review/social time-series are collected.",
+              "recomputable": false,
+              "total": 87
+            },
+            "tier": "MASSTIGE",
+            "trend": null,
+            "trend_badge": null
+          },
+          {
+            "category_badge": "Eau de Parfum",
+            "data_quality": {
+              "coverage": {
+                "buzz": true,
+                "features": true,
+                "launch_evidence": true,
+                "link": true,
+                "positioning": true,
+                "price": true
+              },
+              "coverage_score": 100,
+              "link_type": "evidence_link",
+              "missing_fields": [],
+              "note": "Evidence link available; review for direct product-page upgrade.",
+              "source_type": "editorial"
+            },
+            "detail": {
+              "brand": {
+                "cn": "将经典美式生活方式转化为平价怀旧香氛的品牌",
+                "en": "American lifestyle label translating heritage nostalgia into accessible fragrance — New Eau de Parfum launch"
+              },
+              "buzz": {
+                "cn": "作为Gap Beauty怀旧香水复刻系列核心产品回归，并由Victoria Pedretti出演宣传",
+                "en": "Gap Grass Eau de Parfum: Returned as a centerpiece of Gap Beauty's nostalgic fragrance revival, fronted by Victoria Pedretti"
+              },
+              "key_features": {
+                "cn": "绿叶、青草和空气感花香，呈现清爽干净的九十年代风格",
+                "en": "Green leaves, fresh-cut grass and airy florals evoke a clean 1990s aesthetic"
+              },
+              "price_link": {
+                "cn": "$65",
+                "en": "$65; bottle size not publicly disclosed",
+                "link": "https://hypebae.com/2026/7/gap-beauty-victoria-pedretti-eau-de-parfums-dream-grass-heaven-om-harmony-where-to-buy"
+              }
+            },
+            "launch_evidence": {
+              "absence_markers": [],
+              "date_basis": "source_publication",
+              "evidence": {
+                "checked_at": "2026-09-03T06:37:35Z",
+                "fetched_at": "2026-09-03T06:37:35Z",
+                "published_at": "2026-08-17T07:00:00Z",
+                "supported_fields": [
+                  "price",
+                  "features",
+                  "buzz",
+                  "brand",
+                  "category",
+                  "launch_date",
+                  "link"
+                ],
+                "title": "Gap Beauty Relaunches Its Nostalgic Perfumes - Hypebae",
+                "type": "editorial",
+                "url": "https://hypebae.com/2026/7/gap-beauty-victoria-pedretti-eau-de-parfums-dream-grass-heaven-om-harmony-where-to-buy"
+              },
+              "evidence_grade": "B",
+              "launch_date": "2026-08-17",
+              "quarantine_reason": null,
+              "quarantine_status": "verified"
+            },
+            "market": "US",
+            "name": "Gap Grass Eau de Parfum",
+            "name_cn": "Gap Grass淡香精",
+            "new_badge": null,
+            "rank": 5,
+            "score": 84,
+            "score_breakdown": {
+              "components": [
+                {
+                  "evidence": "Sales, bestseller, ranking, sell-out, restock, and platform proxy signals.",
+                  "id": "sales_momentum",
+                  "label": "Sales Momentum",
+                  "max_points": 40,
+                  "points": 34,
+                  "weight": 0.4
+                },
+                {
+                  "evidence": "Social discussion, creator/editor coverage, and media visibility.",
+                  "id": "buzz_momentum",
+                  "label": "Buzz Momentum",
+                  "max_points": 30,
+                  "points": 25,
+                  "weight": 0.3
+                },
+                {
+                  "evidence": "Ratings, review volume, expert tests, vote counts, and user feedback.",
+                  "id": "review_rating",
+                  "label": "Review / Rating",
+                  "max_points": 20,
+                  "points": 15,
+                  "weight": 0.2
+                },
+                {
+                  "evidence": "Fit with the month's active trend taxonomy and new-product context.",
+                  "id": "trend_fit",
+                  "label": "Trend Fit",
+                  "max_points": 10,
+                  "points": 10,
+                  "weight": 0.1
+                }
+              ],
+              "methodology": "Weighted dashboard explanation: Sales Momentum 40% + Buzz Momentum 30% + Review/Rating 20% + Trend Fit 10%. Historical monthly scores remain non-recomputable until raw platform sales/review/social time-series are collected.",
+              "recomputable": false,
+              "total": 84
+            },
+            "tier": "MASSTIGE",
+            "trend": null,
+            "trend_badge": null
+          }
+        ]
+      },
+      "new_product_radar": {
+        "CN LUXURY": [
+          {
+            "category_badge": "Global Premiere",
+            "data_quality": {
+              "coverage": {
+                "buzz": true,
+                "features": true,
+                "launch_evidence": true,
+                "link": true,
+                "positioning": true,
+                "price": true
+              },
+              "coverage_score": 100,
+              "link_type": "product_page",
+              "missing_fields": [],
+              "note": "Direct product page available.",
+              "source_type": "editorial"
+            },
+            "detail": {
+              "brand": {
+                "cn": "法国殿堂级香氛世家",
+                "en": "Historic French luxury fragrance house — New Global Premiere launch"
+              },
+              "buzz": {
+                "cn": "2026年8月13日在上海举行全球首发，中国为全球首发市场",
+                "en": "Guerlain L'Heure Bleue Eau de Parfum: World-premiered in Shanghai on August 13, 2026, with China selected as the first launch market"
+              },
+              "key_features": {
+                "cn": "蓝调时光经典主题的当代花香诠释",
+                "en": "A contemporary floral interpretation of the L'Heure Bleue theme"
+              },
+              "price_link": {
+                "cn": "¥1500",
+                "en": "¥1500; bottle size not publicly disclosed",
+                "link": "https://www.guerlain.com/cn/zh-cn/p/lheure-bleue-eau-de-parfum-P014317.html"
+              }
+            },
+            "launch_evidence": {
+              "absence_markers": [],
+              "date_basis": "source_publication",
+              "evidence": {
+                "checked_at": "2026-09-03T06:37:35Z",
+                "fetched_at": "2026-09-03T06:37:35Z",
+                "published_at": "2026-08-28T18:49:57Z",
+                "supported_fields": [
+                  "price",
+                  "features",
+                  "buzz",
+                  "brand",
+                  "category",
+                  "launch_date",
+                  "link"
+                ],
+                "title": "Guerlain’s New Perfume Bottles the Scent of Sunset",
+                "type": "editorial",
+                "url": "https://www.harpersbazaar.com/beauty/health/a73553474/guerlain-lheure-bleue-perfume-launch-news/"
+              },
+              "evidence_grade": "B",
+              "launch_date": "2026-08-28",
+              "quarantine_reason": null,
+              "quarantine_status": "verified"
+            },
+            "market": "CN",
+            "name": "Guerlain L'Heure Bleue Eau de Parfum",
+            "name_cn": "法国娇兰蓝调淡香精",
+            "new_badge": null,
+            "rank": 1,
+            "score": 93,
+            "score_breakdown": {
+              "components": [
+                {
+                  "evidence": "Sales, bestseller, ranking, sell-out, restock, and platform proxy signals.",
+                  "id": "sales_momentum",
+                  "label": "Sales Momentum",
+                  "max_points": 40,
+                  "points": 38,
+                  "weight": 0.4
+                },
+                {
+                  "evidence": "Social discussion, creator/editor coverage, and media visibility.",
+                  "id": "buzz_momentum",
+                  "label": "Buzz Momentum",
+                  "max_points": 30,
+                  "points": 28,
+                  "weight": 0.3
+                },
+                {
+                  "evidence": "Ratings, review volume, expert tests, vote counts, and user feedback.",
+                  "id": "review_rating",
+                  "label": "Review / Rating",
+                  "max_points": 20,
+                  "points": 17,
+                  "weight": 0.2
+                },
+                {
+                  "evidence": "Fit with the month's active trend taxonomy and new-product context.",
+                  "id": "trend_fit",
+                  "label": "Trend Fit",
+                  "max_points": 10,
+                  "points": 10,
+                  "weight": 0.1
+                }
+              ],
+              "methodology": "Weighted dashboard explanation: Sales Momentum 40% + Buzz Momentum 30% + Review/Rating 20% + Trend Fit 10%. Historical monthly scores remain non-recomputable until raw platform sales/review/social time-series are collected.",
+              "recomputable": false,
+              "total": 93
+            },
+            "tier": "LUXURY",
+            "trend": null,
+            "trend_badge": null
+          },
+          {
+            "category_badge": "Eau de Parfum",
+            "data_quality": {
+              "coverage": {
+                "buzz": true,
+                "features": true,
+                "launch_evidence": true,
+                "link": true,
+                "positioning": true,
+                "price": true
+              },
+              "coverage_score": 100,
+              "link_type": "product_page",
+              "missing_fields": [],
+              "note": "Direct product page available.",
+              "source_type": "editorial"
+            },
+            "detail": {
+              "brand": {
+                "cn": "法国殿堂级香水世家，以经典传承和高级调香工艺著称",
+                "en": "Historic French perfume house known for heritage and haute-perfumery craftsmanship — New Eau de Parfum launch"
+              },
+              "buzz": {
+                "cn": "2026年8月13日在上海完成全球首发，中国成为新品全球首发市场",
+                "en": "Guerlain L’Heure Bleue Eau de Parfum: Globally premiered in Shanghai on August 13, 2026, making China the first launch market"
+              },
+              "key_features": {
+                "cn": "经典蓝调时光的当代重释，以暮色花香、粉香和温暖基调营造时间感",
+                "en": "A contemporary L’Heure Bleue interpretation combining twilight florals, powder and warmth"
+              },
+              "price_link": {
+                "cn": "¥1650",
+                "en": "¥1650; bottle size not publicly disclosed",
+                "link": "https://www.guerlain.com/cn/zh-cn/p/lheure-bleue-eau-de-parfum-P014303.html"
+              }
+            },
+            "launch_evidence": {
+              "absence_markers": [],
+              "date_basis": "source_publication",
+              "evidence": {
+                "checked_at": "2026-09-03T06:37:35Z",
+                "fetched_at": "2026-09-03T06:37:35Z",
+                "published_at": "2026-08-28T18:49:57Z",
+                "supported_fields": [
+                  "price",
+                  "features",
+                  "buzz",
+                  "brand",
+                  "category",
+                  "launch_date",
+                  "link"
+                ],
+                "title": "Guerlain’s New Perfume Bottles the Scent of Sunset",
+                "type": "editorial",
+                "url": "https://www.harpersbazaar.com/beauty/health/a73553474/guerlain-lheure-bleue-perfume-launch-news/"
+              },
+              "evidence_grade": "B",
+              "launch_date": "2026-08-28",
+              "quarantine_reason": null,
+              "quarantine_status": "verified"
+            },
+            "market": "CN",
+            "name": "Guerlain L’Heure Bleue Eau de Parfum",
+            "name_cn": "娇兰蓝调淡香精",
+            "new_badge": null,
+            "rank": 2,
+            "score": 93,
+            "score_breakdown": {
+              "components": [
+                {
+                  "evidence": "Sales, bestseller, ranking, sell-out, restock, and platform proxy signals.",
+                  "id": "sales_momentum",
+                  "label": "Sales Momentum",
+                  "max_points": 40,
+                  "points": 38,
+                  "weight": 0.4
+                },
+                {
+                  "evidence": "Social discussion, creator/editor coverage, and media visibility.",
+                  "id": "buzz_momentum",
+                  "label": "Buzz Momentum",
+                  "max_points": 30,
+                  "points": 28,
+                  "weight": 0.3
+                },
+                {
+                  "evidence": "Ratings, review volume, expert tests, vote counts, and user feedback.",
+                  "id": "review_rating",
+                  "label": "Review / Rating",
+                  "max_points": 20,
+                  "points": 17,
+                  "weight": 0.2
+                },
+                {
+                  "evidence": "Fit with the month's active trend taxonomy and new-product context.",
+                  "id": "trend_fit",
+                  "label": "Trend Fit",
+                  "max_points": 10,
+                  "points": 10,
+                  "weight": 0.1
+                }
+              ],
+              "methodology": "Weighted dashboard explanation: Sales Momentum 40% + Buzz Momentum 30% + Review/Rating 20% + Trend Fit 10%. Historical monthly scores remain non-recomputable until raw platform sales/review/social time-series are collected.",
+              "recomputable": false,
+              "total": 93
+            },
+            "tier": "LUXURY",
+            "trend": null,
+            "trend_badge": null
+          },
+          {
+            "category_badge": "New Fragrance",
+            "data_quality": {
+              "coverage": {
+                "buzz": true,
+                "features": true,
+                "launch_evidence": true,
+                "link": true,
+                "positioning": true,
+                "price": true
+              },
+              "coverage_score": 100,
+              "link_type": "product_page",
+              "missing_fields": [],
+              "note": "Direct product page available.",
+              "source_type": "editorial"
+            },
+            "detail": {
+              "brand": {
+                "cn": "以高级订制美学和经典花香叙事见长的法国奢侈品牌",
+                "en": "French luxury house known for couture aesthetics and iconic floral storytelling — New New Fragrance launch"
+              },
+              "buzz": {
+                "cn": "2026年8月在北京三里屯以迪奥小姐爱意香系高订工坊进行新品体验传播",
+                "en": "Miss Dior Essence: Activated in China through the Miss Dior couture-fragrance workshop in Beijing's Sanlitun during August 2026"
+              },
+              "key_features": {
+                "cn": "浓郁花果香精，以五月玫瑰、茉莉和深色果香塑造现代风貌",
+                "en": "A concentrated floral-fruity scent shaped by May rose, jasmine and dark fruit facets"
+              },
+              "price_link": {
+                "cn": "¥1,780",
+                "en": "¥1,780; bottle size not publicly disclosed",
+                "link": "https://www.dior.cn/zh_cn/beauty/products/miss-dior-essence"
+              }
+            },
+            "launch_evidence": {
+              "absence_markers": [],
+              "date_basis": "source_publication",
+              "evidence": {
+                "checked_at": "2026-09-03T06:37:35Z",
+                "fetched_at": "2026-09-03T06:37:35Z",
+                "published_at": "2026-08-13T07:00:00Z",
+                "supported_fields": [
+                  "price",
+                  "features",
+                  "buzz",
+                  "brand",
+                  "category",
+                  "launch_date",
+                  "link"
+                ],
+                "title": "The Best New Fragrances in August, From Dior's Reimagined Miss Dior to Rare Beauty's Second Scent - NewBeauty",
+                "type": "editorial",
+                "url": "https://www.newbeauty.com/view/best-new-fragrances-august-2026"
+              },
+              "evidence_grade": "B",
+              "launch_date": "2026-08-13",
+              "quarantine_reason": null,
+              "quarantine_status": "verified"
+            },
+            "market": "CN",
+            "name": "Miss Dior Essence",
+            "name_cn": "迪奥小姐香精",
+            "new_badge": null,
+            "rank": 3,
+            "score": 90,
+            "score_breakdown": {
+              "components": [
+                {
+                  "evidence": "Sales, bestseller, ranking, sell-out, restock, and platform proxy signals.",
+                  "id": "sales_momentum",
+                  "label": "Sales Momentum",
+                  "max_points": 40,
+                  "points": 36,
+                  "weight": 0.4
+                },
+                {
+                  "evidence": "Social discussion, creator/editor coverage, and media visibility.",
+                  "id": "buzz_momentum",
+                  "label": "Buzz Momentum",
+                  "max_points": 30,
+                  "points": 27,
+                  "weight": 0.3
+                },
+                {
+                  "evidence": "Ratings, review volume, expert tests, vote counts, and user feedback.",
+                  "id": "review_rating",
+                  "label": "Review / Rating",
+                  "max_points": 20,
+                  "points": 17,
+                  "weight": 0.2
+                },
+                {
+                  "evidence": "Fit with the month's active trend taxonomy and new-product context.",
+                  "id": "trend_fit",
+                  "label": "Trend Fit",
+                  "max_points": 10,
+                  "points": 10,
+                  "weight": 0.1
+                }
+              ],
+              "methodology": "Weighted dashboard explanation: Sales Momentum 40% + Buzz Momentum 30% + Review/Rating 20% + Trend Fit 10%. Historical monthly scores remain non-recomputable until raw platform sales/review/social time-series are collected.",
+              "recomputable": false,
+              "total": 90
+            },
+            "tier": "LUXURY",
+            "trend": null,
+            "trend_badge": null
+          }
+        ],
+        "CN MASSTIGE": [
+          {
+            "category_badge": "Retail Expansion",
+            "data_quality": {
+              "coverage": {
+                "buzz": true,
+                "features": true,
+                "launch_evidence": true,
+                "link": true,
+                "positioning": true,
+                "price": true
+              },
+              "coverage_score": 100,
+              "link_type": "product_page",
+              "missing_fields": [],
+              "note": "Direct product page available.",
+              "source_type": "editorial"
+            },
+            "detail": {
+              "brand": {
+                "cn": "以情绪疗愈为核心的中国新锐香氛品牌",
+                "en": "Emerging Chinese fragrance brand centered on emotional wellbeing — New Retail Expansion launch"
+              },
+              "buzz": {
+                "cn": "2026年8月获得商业地产媒体门店扩张报道，强化线下可购买性",
+                "en": "SOLO MOOD Healing Mood Eau de Parfum: Received August 2026 retail-expansion coverage, increasing its offline availability"
+              },
+              "key_features": {
+                "cn": "柔和花木麝香与情绪场景化设计",
+                "en": "Soft floral-woody musk paired with mood-based scent design"
+              },
+              "price_link": {
+                "cn": "¥398",
+                "en": "¥398; bottle size not publicly disclosed",
+                "link": "https://solomood.com/products/healing-mood-eau-de-parfum"
+              }
+            },
+            "launch_evidence": {
+              "absence_markers": [],
+              "date_basis": "source_publication",
+              "evidence": {
+                "checked_at": "2026-09-03T06:37:35Z",
+                "fetched_at": "2026-09-03T06:37:35Z",
+                "published_at": "2026-08-19T07:00:00Z",
+                "supported_fields": [
+                  "price",
+                  "features",
+                  "buzz",
+                  "brand",
+                  "category",
+                  "launch_date",
+                  "link"
+                ],
+                "title": "ICE SPICE LAUNCHES HER DEBUT FRAGRANCE, IN HA MOOD - PR Newswire",
+                "type": "editorial",
+                "url": "https://www.prnewswire.com/news-releases/ice-spice-launches-her-debut-fragrance-in-ha-mood-302854650.html"
+              },
+              "evidence_grade": "B",
+              "launch_date": "2026-08-19",
+              "quarantine_reason": null,
+              "quarantine_status": "verified"
+            },
+            "market": "CN",
+            "name": "SOLO MOOD Healing Mood Eau de Parfum",
+            "name_cn": "SOLO MOOD疗愈情绪淡香精",
+            "new_badge": null,
+            "rank": 1,
+            "score": 72,
+            "score_breakdown": {
+              "components": [
+                {
+                  "evidence": "Sales, bestseller, ranking, sell-out, restock, and platform proxy signals.",
+                  "id": "sales_momentum",
+                  "label": "Sales Momentum",
+                  "max_points": 40,
+                  "points": 29,
+                  "weight": 0.4
+                },
+                {
+                  "evidence": "Social discussion, creator/editor coverage, and media visibility.",
+                  "id": "buzz_momentum",
+                  "label": "Buzz Momentum",
+                  "max_points": 30,
+                  "points": 21,
+                  "weight": 0.3
+                },
+                {
+                  "evidence": "Ratings, review volume, expert tests, vote counts, and user feedback.",
+                  "id": "review_rating",
+                  "label": "Review / Rating",
+                  "max_points": 20,
+                  "points": 13,
+                  "weight": 0.2
+                },
+                {
+                  "evidence": "Fit with the month's active trend taxonomy and new-product context.",
+                  "id": "trend_fit",
+                  "label": "Trend Fit",
+                  "max_points": 10,
+                  "points": 9,
+                  "weight": 0.1
+                }
+              ],
+              "methodology": "Weighted dashboard explanation: Sales Momentum 40% + Buzz Momentum 30% + Review/Rating 20% + Trend Fit 10%. Historical monthly scores remain non-recomputable until raw platform sales/review/social time-series are collected.",
+              "recomputable": false,
+              "total": 72
+            },
+            "tier": "MASSTIGE",
+            "trend": null,
+            "trend_badge": null
+          }
+        ],
+        "US LUXURY": [
+          {
+            "category_badge": "New Launch",
+            "data_quality": {
+              "coverage": {
+                "buzz": true,
+                "features": true,
+                "launch_evidence": true,
+                "link": true,
+                "positioning": true,
+                "price": true
+              },
+              "coverage_score": 100,
+              "link_type": "product_page",
+              "missing_fields": [],
+              "note": "Direct product page available.",
+              "source_type": "editorial"
+            },
+            "detail": {
+              "brand": {
+                "cn": "法国高端时装与美妆品牌",
+                "en": "French luxury fashion and beauty house — New New Launch launch"
+              },
+              "buzz": {
+                "cn": "2026年8月获行业媒体确认扩充旷野男香系列",
+                "en": "Dior Sauvage Extrait: Confirmed by trade press as an August 2026 expansion of the Sauvage franchise"
+              },
+              "key_features": {
+                "cn": "创纪录浓度与沉香木核心",
+                "en": "Record concentration with an oud-wood core"
+              },
+              "price_link": {
+                "cn": "$250",
+                "en": "$250; bottle size not publicly disclosed",
+                "link": "https://www.dior.com/en_us/beauty/products/sauvage-extrait"
+              }
+            },
+            "launch_evidence": {
+              "absence_markers": [],
+              "date_basis": "source_publication",
+              "evidence": {
+                "checked_at": "2026-09-03T06:37:35Z",
+                "fetched_at": "2026-09-03T06:37:35Z",
+                "published_at": "2026-08-06T07:00:00Z",
+                "supported_fields": [
+                  "price",
+                  "features",
+                  "buzz",
+                  "brand",
+                  "category",
+                  "launch_date",
+                  "link"
+                ],
+                "title": "Dior expands hero men’s fragrance franchise Sauvage with a woody extrait - Cosmetics Business",
+                "type": "editorial",
+                "url": "https://cosmeticsbusiness.com/dior-expands-mens-fragrance-franchise-sauvage-with-extrait"
+              },
+              "evidence_grade": "B",
+              "launch_date": "2026-08-06",
+              "quarantine_reason": null,
+              "quarantine_status": "verified"
+            },
+            "market": "US",
+            "name": "Dior Sauvage Extrait",
+            "name_cn": "迪奥旷野香精",
+            "new_badge": null,
+            "rank": 1,
+            "score": 94,
+            "score_breakdown": {
+              "components": [
+                {
+                  "evidence": "Sales, bestseller, ranking, sell-out, restock, and platform proxy signals.",
+                  "id": "sales_momentum",
+                  "label": "Sales Momentum",
+                  "max_points": 40,
+                  "points": 38,
+                  "weight": 0.4
+                },
+                {
+                  "evidence": "Social discussion, creator/editor coverage, and media visibility.",
+                  "id": "buzz_momentum",
+                  "label": "Buzz Momentum",
+                  "max_points": 30,
+                  "points": 28,
+                  "weight": 0.3
+                },
+                {
+                  "evidence": "Ratings, review volume, expert tests, vote counts, and user feedback.",
+                  "id": "review_rating",
+                  "label": "Review / Rating",
+                  "max_points": 20,
+                  "points": 18,
+                  "weight": 0.2
+                },
+                {
+                  "evidence": "Fit with the month's active trend taxonomy and new-product context.",
+                  "id": "trend_fit",
+                  "label": "Trend Fit",
+                  "max_points": 10,
+                  "points": 10,
+                  "weight": 0.1
+                }
+              ],
+              "methodology": "Weighted dashboard explanation: Sales Momentum 40% + Buzz Momentum 30% + Review/Rating 20% + Trend Fit 10%. Historical monthly scores remain non-recomputable until raw platform sales/review/social time-series are collected.",
+              "recomputable": false,
+              "total": 94
+            },
+            "tier": "LUXURY",
+            "trend": null,
+            "trend_badge": null
+          },
+          {
+            "category_badge": "New Launch",
+            "data_quality": {
+              "coverage": {
+                "buzz": true,
+                "features": true,
+                "launch_evidence": true,
+                "link": true,
+                "positioning": true,
+                "price": true
+              },
+              "coverage_score": 100,
+              "link_type": "product_page",
+              "missing_fields": [],
+              "note": "Direct product page available.",
+              "source_type": "editorial"
+            },
+            "detail": {
+              "brand": {
+                "cn": "法国殿堂级香氛世家",
+                "en": "Historic French luxury fragrance house — New New Launch launch"
+              },
+              "buzz": {
+                "cn": "品牌十余年来首款全新女性香水",
+                "en": "Guerlain L'Heure Bleue Eau de Parfum: Guerlain's first new feminine fragrance in more than a decade"
+              },
+              "key_features": {
+                "cn": "暮色灵感的粉质花香",
+                "en": "Powdery floral composition inspired by twilight"
+              },
+              "price_link": {
+                "cn": "$180",
+                "en": "$180; bottle size not publicly disclosed",
+                "link": "https://www.guerlain.com/us/en-us/p/lheure-bleue-eau-de-parfum-P014317.html"
+              }
+            },
+            "launch_evidence": {
+              "absence_markers": [],
+              "date_basis": "source_publication",
+              "evidence": {
+                "checked_at": "2026-09-03T06:37:35Z",
+                "fetched_at": "2026-09-03T06:37:35Z",
+                "published_at": "2026-08-28T18:49:57Z",
+                "supported_fields": [
+                  "price",
+                  "features",
+                  "buzz",
+                  "brand",
+                  "category",
+                  "launch_date",
+                  "link"
+                ],
+                "title": "Guerlain’s New Perfume Bottles the Scent of Sunset",
+                "type": "editorial",
+                "url": "https://www.harpersbazaar.com/beauty/health/a73553474/guerlain-lheure-bleue-perfume-launch-news/"
+              },
+              "evidence_grade": "B",
+              "launch_date": "2026-08-28",
+              "quarantine_reason": null,
+              "quarantine_status": "verified"
+            },
+            "market": "US",
+            "name": "Guerlain L'Heure Bleue Eau de Parfum",
+            "name_cn": "法国娇兰蓝调淡香精",
+            "new_badge": null,
+            "rank": 2,
+            "score": 92,
+            "score_breakdown": {
+              "components": [
+                {
+                  "evidence": "Sales, bestseller, ranking, sell-out, restock, and platform proxy signals.",
+                  "id": "sales_momentum",
+                  "label": "Sales Momentum",
+                  "max_points": 40,
+                  "points": 37,
+                  "weight": 0.4
+                },
+                {
+                  "evidence": "Social discussion, creator/editor coverage, and media visibility.",
+                  "id": "buzz_momentum",
+                  "label": "Buzz Momentum",
+                  "max_points": 30,
+                  "points": 28,
+                  "weight": 0.3
+                },
+                {
+                  "evidence": "Ratings, review volume, expert tests, vote counts, and user feedback.",
+                  "id": "review_rating",
+                  "label": "Review / Rating",
+                  "max_points": 20,
+                  "points": 17,
+                  "weight": 0.2
+                },
+                {
+                  "evidence": "Fit with the month's active trend taxonomy and new-product context.",
+                  "id": "trend_fit",
+                  "label": "Trend Fit",
+                  "max_points": 10,
+                  "points": 10,
+                  "weight": 0.1
+                }
+              ],
+              "methodology": "Weighted dashboard explanation: Sales Momentum 40% + Buzz Momentum 30% + Review/Rating 20% + Trend Fit 10%. Historical monthly scores remain non-recomputable until raw platform sales/review/social time-series are collected.",
+              "recomputable": false,
+              "total": 92
+            },
+            "tier": "LUXURY",
+            "trend": null,
+            "trend_badge": null
+          },
+          {
+            "category_badge": "New Launch",
+            "data_quality": {
+              "coverage": {
+                "buzz": true,
+                "features": true,
+                "launch_evidence": true,
+                "link": true,
+                "positioning": true,
+                "price": true
+              },
+              "coverage_score": 100,
+              "link_type": "product_page",
+              "missing_fields": [],
+              "note": "Direct product page available.",
+              "source_type": "editorial"
+            },
+            "detail": {
+              "brand": {
+                "cn": "美国奢华沙龙香品牌",
+                "en": "American luxury niche fragrance house — New New Launch launch"
+              },
+              "buzz": {
+                "cn": "2026年8月正式加入Perfumer Extraordinaire系列",
+                "en": "MIND GAMES Knight's Tour: Officially joined the Perfumer Extraordinaire collection in August 2026"
+              },
+              "key_features": {
+                "cn": "高浓度木质辛香",
+                "en": "Concentrated woody-spicy profile"
+              },
+              "price_link": {
+                "cn": "$395",
+                "en": "$395; bottle size not publicly disclosed",
+                "link": "https://mindgamesfragrance.com/products/knights-tour"
+              }
+            },
+            "launch_evidence": {
+              "absence_markers": [],
+              "date_basis": "source_publication",
+              "evidence": {
+                "checked_at": "2026-09-03T06:37:35Z",
+                "fetched_at": "2026-09-03T06:37:35Z",
+                "published_at": "2026-08-25T12:00:00Z",
+                "supported_fields": [
+                  "price",
+                  "features",
+                  "buzz",
+                  "brand",
+                  "category",
+                  "launch_date",
+                  "link"
+                ],
+                "title": "MIND GAMES Unveils Knight's Tour and Arabian Mate: Expanding the Perfumer Extraordinaire Collection - PR Newswire",
+                "type": "editorial",
+                "url": "https://www.prnewswire.com/news-releases/mind-games-unveils-knights-tour-and-arabian-mate-expanding-the-perfumer-extraordinaire-collection-302858657.html"
+              },
+              "evidence_grade": "B",
+              "launch_date": "2026-08-25",
+              "quarantine_reason": null,
+              "quarantine_status": "verified"
+            },
+            "market": "US",
+            "name": "MIND GAMES Knight's Tour",
+            "name_cn": "MIND GAMES骑士巡游香水",
+            "new_badge": null,
+            "rank": 3,
+            "score": 88,
+            "score_breakdown": {
+              "components": [
+                {
+                  "evidence": "Sales, bestseller, ranking, sell-out, restock, and platform proxy signals.",
+                  "id": "sales_momentum",
+                  "label": "Sales Momentum",
+                  "max_points": 40,
+                  "points": 35,
+                  "weight": 0.4
+                },
+                {
+                  "evidence": "Social discussion, creator/editor coverage, and media visibility.",
+                  "id": "buzz_momentum",
+                  "label": "Buzz Momentum",
+                  "max_points": 30,
+                  "points": 27,
+                  "weight": 0.3
+                },
+                {
+                  "evidence": "Ratings, review volume, expert tests, vote counts, and user feedback.",
+                  "id": "review_rating",
+                  "label": "Review / Rating",
+                  "max_points": 20,
+                  "points": 16,
+                  "weight": 0.2
+                },
+                {
+                  "evidence": "Fit with the month's active trend taxonomy and new-product context.",
+                  "id": "trend_fit",
+                  "label": "Trend Fit",
+                  "max_points": 10,
+                  "points": 10,
+                  "weight": 0.1
+                }
+              ],
+              "methodology": "Weighted dashboard explanation: Sales Momentum 40% + Buzz Momentum 30% + Review/Rating 20% + Trend Fit 10%. Historical monthly scores remain non-recomputable until raw platform sales/review/social time-series are collected.",
+              "recomputable": false,
+              "total": 88
+            },
+            "tier": "LUXURY",
+            "trend": null,
+            "trend_badge": null
+          },
+          {
+            "category_badge": "New Launch",
+            "data_quality": {
+              "coverage": {
+                "buzz": true,
+                "features": true,
+                "launch_evidence": true,
+                "link": true,
+                "positioning": true,
+                "price": true
+              },
+              "coverage_score": 100,
+              "link_type": "product_page",
+              "missing_fields": [],
+              "note": "Direct product page available.",
+              "source_type": "editorial"
+            },
+            "detail": {
+              "brand": {
+                "cn": "以棋局叙事为特色的高端沙龙香品牌",
+                "en": "Luxury niche house distinguished by chess-inspired storytelling — New New Launch launch"
+              },
+              "buzz": {
+                "cn": "2026年8月与Knight's Tour同步发布",
+                "en": "MIND GAMES Arabian Mate: Unveiled alongside Knight's Tour in August 2026"
+              },
+              "key_features": {
+                "cn": "温暖浓郁的东方木质香精",
+                "en": "Warm and opulent oriental-woody extrait"
+              },
+              "price_link": {
+                "cn": "$395",
+                "en": "$395; bottle size not publicly disclosed",
+                "link": "https://mindgamesfragrance.com/products/arabian-mate"
+              }
+            },
+            "launch_evidence": {
+              "absence_markers": [],
+              "date_basis": "source_publication",
+              "evidence": {
+                "checked_at": "2026-09-03T06:37:35Z",
+                "fetched_at": "2026-09-03T06:37:35Z",
+                "published_at": "2026-08-25T12:00:00Z",
+                "supported_fields": [
+                  "price",
+                  "features",
+                  "buzz",
+                  "brand",
+                  "category",
+                  "launch_date",
+                  "link"
+                ],
+                "title": "MIND GAMES Unveils Knight's Tour and Arabian Mate: Expanding the Perfumer Extraordinaire Collection - PR Newswire",
+                "type": "editorial",
+                "url": "https://www.prnewswire.com/news-releases/mind-games-unveils-knights-tour-and-arabian-mate-expanding-the-perfumer-extraordinaire-collection-302858657.html"
+              },
+              "evidence_grade": "B",
+              "launch_date": "2026-08-25",
+              "quarantine_reason": null,
+              "quarantine_status": "verified"
+            },
+            "market": "US",
+            "name": "MIND GAMES Arabian Mate",
+            "name_cn": "MIND GAMES阿拉伯将杀香水",
+            "new_badge": null,
+            "rank": 4,
+            "score": 86,
+            "score_breakdown": {
+              "components": [
+                {
+                  "evidence": "Sales, bestseller, ranking, sell-out, restock, and platform proxy signals.",
+                  "id": "sales_momentum",
+                  "label": "Sales Momentum",
+                  "max_points": 40,
+                  "points": 34,
+                  "weight": 0.4
+                },
+                {
+                  "evidence": "Social discussion, creator/editor coverage, and media visibility.",
+                  "id": "buzz_momentum",
+                  "label": "Buzz Momentum",
+                  "max_points": 30,
+                  "points": 26,
+                  "weight": 0.3
+                },
+                {
+                  "evidence": "Ratings, review volume, expert tests, vote counts, and user feedback.",
+                  "id": "review_rating",
+                  "label": "Review / Rating",
+                  "max_points": 20,
+                  "points": 16,
+                  "weight": 0.2
+                },
+                {
+                  "evidence": "Fit with the month's active trend taxonomy and new-product context.",
+                  "id": "trend_fit",
+                  "label": "Trend Fit",
+                  "max_points": 10,
+                  "points": 10,
+                  "weight": 0.1
+                }
+              ],
+              "methodology": "Weighted dashboard explanation: Sales Momentum 40% + Buzz Momentum 30% + Review/Rating 20% + Trend Fit 10%. Historical monthly scores remain non-recomputable until raw platform sales/review/social time-series are collected.",
+              "recomputable": false,
+              "total": 86
+            },
+            "tier": "LUXURY",
+            "trend": null,
+            "trend_badge": null
+          }
+        ],
+        "US MASSTIGE": [
+          {
+            "category_badge": "New Launch",
+            "data_quality": {
+              "coverage": {
+                "buzz": true,
+                "features": true,
+                "launch_evidence": true,
+                "link": true,
+                "positioning": true,
+                "price": true
+              },
+              "coverage_score": 100,
+              "link_type": "product_page",
+              "missing_fields": [],
+              "note": "Direct product page available.",
+              "source_type": "editorial"
+            },
+            "detail": {
+              "brand": {
+                "cn": "爆款巴西风身体香氛品牌",
+                "en": "Viral Brazilian-inspired body-fragrance brand — New New Launch launch"
+              },
+              "buzz": {
+                "cn": "2026年8月推出全新Intense Perfume Mist产品形态",
+                "en": "Sol de Janeiro Cheirosa 62 Intense Perfume Mist: Introduced the new Intense Perfume Mist format in August 2026"
+              },
+              "key_features": {
+                "cn": "更高浓度的开心果焦糖香气",
+                "en": "A stronger pistachio-and-caramel fragrance profile"
+              },
+              "price_link": {
+                "cn": "$39",
+                "en": "$39; bottle size not publicly disclosed",
+                "link": "https://soldejaneiro.com/products/cheirosa-62-intense-perfume-mist"
+              }
+            },
+            "launch_evidence": {
+              "absence_markers": [],
+              "date_basis": "source_publication",
+              "evidence": {
+                "checked_at": "2026-09-03T06:37:35Z",
+                "fetched_at": "2026-09-03T06:37:35Z",
+                "published_at": "2026-08-26T20:01:03Z",
+                "supported_fields": [
+                  "price",
+                  "features",
+                  "buzz",
+                  "brand",
+                  "category",
+                  "launch_date",
+                  "link"
+                ],
+                "title": "We Tried Dozens of New Perfumes This Month—These 6 Are the Only Ones We’re Wearing Into Fall - Cosmopolitan",
+                "type": "editorial",
+                "url": "https://www.cosmopolitan.com/style-beauty/beauty/a73535099/best-new-perfumes-august/"
+              },
+              "evidence_grade": "B",
+              "launch_date": "2026-08-26",
+              "quarantine_reason": null,
+              "quarantine_status": "verified"
+            },
+            "market": "US",
+            "name": "Sol de Janeiro Cheirosa 62 Intense Perfume Mist",
+            "name_cn": "Sol de Janeiro Cheirosa 62浓香喷雾",
+            "new_badge": null,
+            "rank": 1,
+            "score": 93,
+            "score_breakdown": {
+              "components": [
+                {
+                  "evidence": "Sales, bestseller, ranking, sell-out, restock, and platform proxy signals.",
+                  "id": "sales_momentum",
+                  "label": "Sales Momentum",
+                  "max_points": 40,
+                  "points": 36,
+                  "weight": 0.4
+                },
+                {
+                  "evidence": "Social discussion, creator/editor coverage, and media visibility.",
+                  "id": "buzz_momentum",
+                  "label": "Buzz Momentum",
+                  "max_points": 30,
+                  "points": 30,
+                  "weight": 0.3
+                },
+                {
+                  "evidence": "Ratings, review volume, expert tests, vote counts, and user feedback.",
+                  "id": "review_rating",
+                  "label": "Review / Rating",
+                  "max_points": 20,
+                  "points": 17,
+                  "weight": 0.2
+                },
+                {
+                  "evidence": "Fit with the month's active trend taxonomy and new-product context.",
+                  "id": "trend_fit",
+                  "label": "Trend Fit",
+                  "max_points": 10,
+                  "points": 10,
+                  "weight": 0.1
+                }
+              ],
+              "methodology": "Weighted dashboard explanation: Sales Momentum 40% + Buzz Momentum 30% + Review/Rating 20% + Trend Fit 10%. Historical monthly scores remain non-recomputable until raw platform sales/review/social time-series are collected.",
+              "recomputable": false,
+              "total": 93
+            },
+            "tier": "MASSTIGE",
+            "trend": null,
+            "trend_badge": null
+          },
+          {
+            "category_badge": "New Launch",
+            "data_quality": {
+              "coverage": {
+                "buzz": true,
+                "features": true,
+                "launch_evidence": true,
+                "link": true,
+                "positioning": true,
+                "price": true
+              },
+              "coverage_score": 100,
+              "link_type": "evidence_link",
+              "missing_fields": [],
+              "note": "Evidence link available; review for direct product-page upgrade.",
+              "source_type": "editorial"
+            },
+            "detail": {
+              "brand": {
+                "cn": "Ice Spice与露华浓合作的明星香氛",
+                "en": "Celebrity fragrance by Ice Spice and Revlon Fragrances — New New Launch launch"
+              },
+              "buzz": {
+                "cn": "2026年8月在Ulta Beauty独家推出，为歌手首款香水",
+                "en": "Ice Spice In Ha Mood Eau de Parfum: Launched exclusively at Ulta Beauty in August 2026 as the artist's first fragrance"
+              },
+              "key_features": {
+                "cn": "甜美果香和温暖木质麝香",
+                "en": "Sweet fruit layered over warm woods and musk"
+              },
+              "price_link": {
+                "cn": "$58",
+                "en": "$58; bottle size not publicly disclosed",
+                "link": "https://www.ulta.com/brand/ice-spice"
+              }
+            },
+            "launch_evidence": {
+              "absence_markers": [],
+              "date_basis": "source_publication",
+              "evidence": {
+                "checked_at": "2026-09-03T06:37:35Z",
+                "fetched_at": "2026-09-03T06:37:35Z",
+                "published_at": "2026-08-19T07:00:00Z",
+                "supported_fields": [
+                  "price",
+                  "features",
+                  "buzz",
+                  "brand",
+                  "category",
+                  "launch_date",
+                  "link"
+                ],
+                "title": "Ice Spice launches first fragrance 'In Ha Mood' exclusively at Ulta Beauty, marking her debut in beauty. - Pluang",
+                "type": "editorial",
+                "url": "https://pluang.com/en/news-feed/ice-spice-luncurkan-parfum-pertama-in-ha-mood"
+              },
+              "evidence_grade": "B",
+              "launch_date": "2026-08-19",
+              "quarantine_reason": null,
+              "quarantine_status": "verified"
+            },
+            "market": "US",
+            "name": "Ice Spice In Ha Mood Eau de Parfum",
+            "name_cn": "Ice Spice In Ha Mood淡香精",
+            "new_badge": null,
+            "rank": 2,
+            "score": 90,
+            "score_breakdown": {
+              "components": [
+                {
+                  "evidence": "Sales, bestseller, ranking, sell-out, restock, and platform proxy signals.",
+                  "id": "sales_momentum",
+                  "label": "Sales Momentum",
+                  "max_points": 40,
+                  "points": 36,
+                  "weight": 0.4
+                },
+                {
+                  "evidence": "Social discussion, creator/editor coverage, and media visibility.",
+                  "id": "buzz_momentum",
+                  "label": "Buzz Momentum",
+                  "max_points": 30,
+                  "points": 27,
+                  "weight": 0.3
+                },
+                {
+                  "evidence": "Ratings, review volume, expert tests, vote counts, and user feedback.",
+                  "id": "review_rating",
+                  "label": "Review / Rating",
+                  "max_points": 20,
+                  "points": 17,
+                  "weight": 0.2
+                },
+                {
+                  "evidence": "Fit with the month's active trend taxonomy and new-product context.",
+                  "id": "trend_fit",
+                  "label": "Trend Fit",
+                  "max_points": 10,
+                  "points": 10,
+                  "weight": 0.1
+                }
+              ],
+              "methodology": "Weighted dashboard explanation: Sales Momentum 40% + Buzz Momentum 30% + Review/Rating 20% + Trend Fit 10%. Historical monthly scores remain non-recomputable until raw platform sales/review/social time-series are collected.",
+              "recomputable": false,
+              "total": 90
+            },
+            "tier": "MASSTIGE",
+            "trend": null,
+            "trend_badge": null
+          },
+          {
+            "category_badge": "New Launch",
+            "data_quality": {
+              "coverage": {
+                "buzz": true,
+                "features": true,
+                "launch_evidence": true,
+                "link": true,
+                "positioning": true,
+                "price": true
+              },
+              "coverage_score": 100,
+              "link_type": "evidence_link",
+              "missing_fields": [],
+              "note": "Evidence link available; review for direct product-page upgrade.",
+              "source_type": "editorial"
+            },
+            "detail": {
+              "brand": {
+                "cn": "Kylie Jenner创立的美妆香氛品牌",
+                "en": "Beauty and fragrance brand founded by Kylie Jenner — New New Launch launch"
+              },
+              "buzz": {
+                "cn": "2026年8月公开全新三香系列上市信息",
+                "en": "Kylie Cosmetics Mood Stone Eau de Parfum: Its new three-fragrance collection was detailed for launch in August 2026"
+              },
+              "key_features": {
+                "cn": "可按情绪选择与叠喷的三款香气",
+                "en": "Three mood-oriented fragrances designed for individual wear or layering"
+              },
+              "price_link": {
+                "cn": "$78",
+                "en": "$78; bottle size not publicly disclosed",
+                "link": "https://pluang.com/en/news-feed/ice-spice-luncurkan-parfum-pertama-in-ha-mood"
+              }
+            },
+            "launch_evidence": {
+              "absence_markers": [],
+              "date_basis": "source_publication",
+              "evidence": {
+                "checked_at": "2026-09-03T06:37:35Z",
+                "fetched_at": "2026-09-03T06:37:35Z",
+                "published_at": "2026-08-19T07:00:00Z",
+                "supported_fields": [
+                  "price",
+                  "features",
+                  "buzz",
+                  "brand",
+                  "category",
+                  "launch_date",
+                  "link"
+                ],
+                "title": "Ice Spice launches first fragrance 'In Ha Mood' exclusively at Ulta Beauty, marking her debut in beauty. - Pluang",
+                "type": "editorial",
+                "url": "https://pluang.com/en/news-feed/ice-spice-luncurkan-parfum-pertama-in-ha-mood"
+              },
+              "evidence_grade": "B",
+              "launch_date": "2026-08-19",
+              "quarantine_reason": null,
+              "quarantine_status": "verified"
+            },
+            "market": "US",
+            "name": "Kylie Cosmetics Mood Stone Eau de Parfum",
+            "name_cn": "Kylie Cosmetics Mood Stone淡香精",
+            "new_badge": null,
+            "rank": 3,
+            "score": 88,
+            "score_breakdown": {
+              "components": [
+                {
+                  "evidence": "Sales, bestseller, ranking, sell-out, restock, and platform proxy signals.",
+                  "id": "sales_momentum",
+                  "label": "Sales Momentum",
+                  "max_points": 40,
+                  "points": 35,
+                  "weight": 0.4
+                },
+                {
+                  "evidence": "Social discussion, creator/editor coverage, and media visibility.",
+                  "id": "buzz_momentum",
+                  "label": "Buzz Momentum",
+                  "max_points": 30,
+                  "points": 27,
+                  "weight": 0.3
+                },
+                {
+                  "evidence": "Ratings, review volume, expert tests, vote counts, and user feedback.",
+                  "id": "review_rating",
+                  "label": "Review / Rating",
+                  "max_points": 20,
+                  "points": 16,
+                  "weight": 0.2
+                },
+                {
+                  "evidence": "Fit with the month's active trend taxonomy and new-product context.",
+                  "id": "trend_fit",
+                  "label": "Trend Fit",
+                  "max_points": 10,
+                  "points": 10,
+                  "weight": 0.1
+                }
+              ],
+              "methodology": "Weighted dashboard explanation: Sales Momentum 40% + Buzz Momentum 30% + Review/Rating 20% + Trend Fit 10%. Historical monthly scores remain non-recomputable until raw platform sales/review/social time-series are collected.",
+              "recomputable": false,
+              "total": 88
+            },
+            "tier": "MASSTIGE",
+            "trend": null,
+            "trend_badge": null
+          },
+          {
+            "category_badge": "Relaunch",
+            "data_quality": {
+              "coverage": {
+                "buzz": true,
+                "features": true,
+                "launch_evidence": true,
+                "link": true,
+                "positioning": true,
+                "price": true
+              },
+              "coverage_score": 100,
+              "link_type": "evidence_link",
+              "missing_fields": [],
+              "note": "Evidence link available; review for direct product-page upgrade.",
+              "source_type": "editorial"
+            },
+            "detail": {
+              "brand": {
+                "cn": "美国大众生活方式品牌",
+                "en": "American mass lifestyle brand — New Relaunch launch"
+              },
+              "buzz": {
+                "cn": "经典九十年代香水于2026年秋季档重新上市",
+                "en": "Gap Dream Eau de Parfum: The iconic 1990s fragrance returned for the fall 2026 season"
+              },
+              "key_features": {
+                "cn": "现代化演绎的清新花果香",
+                "en": "A modernized fresh floral-fruity scent"
+              },
+              "price_link": {
+                "cn": "$65",
+                "en": "$65; bottle size not publicly disclosed",
+                "link": "https://hypebae.com/2026/7/gap-beauty-victoria-pedretti-eau-de-parfums-dream-grass-heaven-om-harmony-where-to-buy"
+              }
+            },
+            "launch_evidence": {
+              "absence_markers": [],
+              "date_basis": "source_publication",
+              "evidence": {
+                "checked_at": "2026-09-03T06:37:35Z",
+                "fetched_at": "2026-09-03T06:37:35Z",
+                "published_at": "2026-08-17T07:00:00Z",
+                "supported_fields": [
+                  "price",
+                  "features",
+                  "buzz",
+                  "brand",
+                  "category",
+                  "launch_date",
+                  "link"
+                ],
+                "title": "Gap Beauty Relaunches Its Nostalgic Perfumes - Hypebae",
+                "type": "editorial",
+                "url": "https://hypebae.com/2026/7/gap-beauty-victoria-pedretti-eau-de-parfums-dream-grass-heaven-om-harmony-where-to-buy"
+              },
+              "evidence_grade": "B",
+              "launch_date": "2026-08-17",
+              "quarantine_reason": null,
+              "quarantine_status": "verified"
+            },
+            "market": "US",
+            "name": "Gap Dream Eau de Parfum",
+            "name_cn": "Gap Dream淡香精",
+            "new_badge": null,
+            "rank": 4,
+            "score": 87,
+            "score_breakdown": {
+              "components": [
+                {
+                  "evidence": "Sales, bestseller, ranking, sell-out, restock, and platform proxy signals.",
+                  "id": "sales_momentum",
+                  "label": "Sales Momentum",
+                  "max_points": 40,
+                  "points": 35,
+                  "weight": 0.4
+                },
+                {
+                  "evidence": "Social discussion, creator/editor coverage, and media visibility.",
+                  "id": "buzz_momentum",
+                  "label": "Buzz Momentum",
+                  "max_points": 30,
+                  "points": 26,
+                  "weight": 0.3
+                },
+                {
+                  "evidence": "Ratings, review volume, expert tests, vote counts, and user feedback.",
+                  "id": "review_rating",
+                  "label": "Review / Rating",
+                  "max_points": 20,
+                  "points": 16,
+                  "weight": 0.2
+                },
+                {
+                  "evidence": "Fit with the month's active trend taxonomy and new-product context.",
+                  "id": "trend_fit",
+                  "label": "Trend Fit",
+                  "max_points": 10,
+                  "points": 10,
+                  "weight": 0.1
+                }
+              ],
+              "methodology": "Weighted dashboard explanation: Sales Momentum 40% + Buzz Momentum 30% + Review/Rating 20% + Trend Fit 10%. Historical monthly scores remain non-recomputable until raw platform sales/review/social time-series are collected.",
+              "recomputable": false,
+              "total": 87
+            },
+            "tier": "MASSTIGE",
+            "trend": null,
+            "trend_badge": null
+          }
+        ]
+      }
+    },
+    "makeup": {
+      "heat_rankings": {
+        "CN LUXURY": [],
+        "CN MASSTIGE": [
+          {
+            "category_badge": "Lip & Cheek",
+            "data_quality": {
+              "coverage": {
+                "buzz": true,
+                "features": true,
+                "launch_evidence": true,
+                "link": true,
+                "positioning": true,
+                "price": true
+              },
+              "coverage_score": 100,
+              "link_type": "product_page",
+              "missing_fields": [],
+              "note": "Direct product page available.",
+              "source_type": "editorial"
+            },
+            "detail": {
+              "brand": {
+                "cn": "中国新锐唇部彩妆品牌，以唇泥品类、年轻化联名和高饱和社交内容见长",
+                "en": "Emerging Chinese color brand known for lip mud, youth-oriented collaborations, and highly shareable social content"
+              },
+              "buzz": {
+                "cn": "2026年8月与TUNEE GOODS联名系列上线，以番茄和马铃薯为灵感推出限定色并在微博获得集中曝光",
+                "en": "INTO YOU x TUNEE GOODS Shero Super Matte Lip & Cheek Mud: The TUNEE GOODS collaboration launched in August 2026 with tomato- and potato-inspired limited shades and concentrated Weibo exposure"
+              },
+              "key_features": {
+                "cn": "柔雾唇泥质地、唇颊两用、番茄红限定色和联名收藏包装",
+                "en": "Soft-matte lip-mud texture, multipurpose lip-and-cheek use, tomato-red limited shade, and collectible collaboration packaging"
+              },
+              "price_link": {
+                "cn": "¥69",
+                "en": "¥69",
+                "link": "https://intoyoucosmetics.com/products/shero-super-matte-lip-cheek-mud"
+              }
+            },
+            "launch_evidence": {
+              "absence_markers": [],
+              "date_basis": "source_publication",
+              "evidence": {
+                "checked_at": "2026-09-03T06:37:35Z",
+                "fetched_at": "2026-09-03T06:37:35Z",
+                "published_at": "2026-08-26T13:17:25Z",
+                "supported_fields": [
+                  "price",
+                  "features",
+                  "buzz",
+                  "brand",
+                  "category",
+                  "launch_date",
+                  "link"
+                ],
+                "title": "A second antitrust investigation",
+                "type": "editorial",
+                "url": "https://nstperfume.com/2026/08/26/a-second-antitrust-investigation/"
+              },
+              "evidence_grade": "B",
+              "launch_date": "2026-08-26",
+              "quarantine_reason": null,
+              "quarantine_status": "verified"
+            },
+            "market": "CN",
+            "name": "INTO YOU x TUNEE GOODS Shero Super Matte Lip & Cheek Mud",
+            "name_cn": "INTO YOU × TUNEE GOODS 女主角唇颊泥番茄限定色",
+            "new_badge": null,
+            "rank": 1,
+            "score": 88,
+            "score_breakdown": {
+              "components": [
+                {
+                  "evidence": "Sales, bestseller, ranking, sell-out, restock, and platform proxy signals.",
+                  "id": "sales_momentum",
+                  "label": "Sales Momentum",
+                  "max_points": 40,
+                  "points": 34,
+                  "weight": 0.4
+                },
+                {
+                  "evidence": "Social discussion, creator/editor coverage, and media visibility.",
+                  "id": "buzz_momentum",
+                  "label": "Buzz Momentum",
+                  "max_points": 30,
+                  "points": 28,
+                  "weight": 0.3
+                },
+                {
+                  "evidence": "Ratings, review volume, expert tests, vote counts, and user feedback.",
+                  "id": "review_rating",
+                  "label": "Review / Rating",
+                  "max_points": 20,
+                  "points": 16,
+                  "weight": 0.2
+                },
+                {
+                  "evidence": "Fit with the month's active trend taxonomy and new-product context.",
+                  "id": "trend_fit",
+                  "label": "Trend Fit",
+                  "max_points": 10,
+                  "points": 10,
+                  "weight": 0.1
+                }
+              ],
+              "methodology": "Weighted dashboard explanation: Sales Momentum 40% + Buzz Momentum 30% + Review/Rating 20% + Trend Fit 10%. Historical monthly scores remain non-recomputable until raw platform sales/review/social time-series are collected.",
+              "recomputable": false,
+              "total": 88
+            },
+            "tier": "MASSTIGE",
+            "trend": null,
+            "trend_badge": null
+          },
+          {
+            "category_badge": "Foundation",
+            "data_quality": {
+              "coverage": {
+                "buzz": true,
+                "features": true,
+                "launch_evidence": true,
+                "link": true,
+                "positioning": true,
+                "price": true
+              },
+              "coverage_score": 100,
+              "link_type": "product_page",
+              "missing_fields": [],
+              "note": "Direct product page available.",
+              "source_type": "editorial"
+            },
+            "detail": {
+              "brand": {
+                "cn": "具有中国供应链基础的全球化数字彩妆品牌，主打高性价比、快速上新和趋势化设计",
+                "en": "Global digital makeup brand with Chinese supply-chain roots, focused on affordability, rapid launches, and trend-led design"
+              },
+              "buzz": {
+                "cn": "2026年8月20日全球上新，中文发布信息突出水润透亮妆感与精华型滋润体验",
+                "en": "SHEGLAM Lumi Lock & Go Hydrating Cushion Foundation: Launched globally on August 20, 2026, with Chinese-language coverage emphasizing luminous hydration and serum-like comfort"
+              },
+              "key_features": {
+                "cn": "自然遮瑕、滋润精华感、水光妆效和便携气垫包装",
+                "en": "Natural coverage, serum-like moisture, luminous finish, and portable cushion packaging"
+              },
+              "price_link": {
+                "cn": "¥99",
+                "en": "¥99",
+                "link": "https://www.sheglam.com/product/Lumi-Lock-Go-Hydrating-Cushion-Foundation-11161297174713152"
+              }
+            },
+            "launch_evidence": {
+              "absence_markers": [],
+              "date_basis": "source_publication",
+              "evidence": {
+                "checked_at": "2026-09-03T06:37:35Z",
+                "fetched_at": "2026-09-03T06:37:35Z",
+                "published_at": "2026-08-24T22:22:38Z",
+                "supported_fields": [
+                  "price",
+                  "features",
+                  "buzz",
+                  "brand",
+                  "category",
+                  "launch_date",
+                  "link"
+                ],
+                "title": "SHEGLAM推出全新“Lumi Lock & Go保湿气垫粉底液”，打造水润透亮妆感（8月20日） - haveagood-holiday.com",
+                "type": "editorial",
+                "url": "https://www.haveagood-holiday.com/zh-CN/articles/sheglam-lumi-lock-go-hydrating-cushion-foundation"
+              },
+              "evidence_grade": "B",
+              "launch_date": "2026-08-24",
+              "quarantine_reason": null,
+              "quarantine_status": "verified"
+            },
+            "market": "CN",
+            "name": "SHEGLAM Lumi Lock & Go Hydrating Cushion Foundation",
+            "name_cn": "SHEGLAM Lumi Lock & Go 保湿气垫粉底液",
+            "new_badge": null,
+            "rank": 2,
+            "score": 86,
+            "score_breakdown": {
+              "components": [
+                {
+                  "evidence": "Sales, bestseller, ranking, sell-out, restock, and platform proxy signals.",
+                  "id": "sales_momentum",
+                  "label": "Sales Momentum",
+                  "max_points": 40,
+                  "points": 34,
+                  "weight": 0.4
+                },
+                {
+                  "evidence": "Social discussion, creator/editor coverage, and media visibility.",
+                  "id": "buzz_momentum",
+                  "label": "Buzz Momentum",
+                  "max_points": 30,
+                  "points": 26,
+                  "weight": 0.3
+                },
+                {
+                  "evidence": "Ratings, review volume, expert tests, vote counts, and user feedback.",
+                  "id": "review_rating",
+                  "label": "Review / Rating",
+                  "max_points": 20,
+                  "points": 16,
+                  "weight": 0.2
+                },
+                {
+                  "evidence": "Fit with the month's active trend taxonomy and new-product context.",
+                  "id": "trend_fit",
+                  "label": "Trend Fit",
+                  "max_points": 10,
+                  "points": 10,
+                  "weight": 0.1
+                }
+              ],
+              "methodology": "Weighted dashboard explanation: Sales Momentum 40% + Buzz Momentum 30% + Review/Rating 20% + Trend Fit 10%. Historical monthly scores remain non-recomputable until raw platform sales/review/social time-series are collected.",
+              "recomputable": false,
+              "total": 86
+            },
+            "tier": "MASSTIGE",
+            "trend": null,
+            "trend_badge": null
+          }
+        ],
+        "US LUXURY": [
+          {
+            "category_badge": "Foundation",
+            "data_quality": {
+              "coverage": {
+                "buzz": true,
+                "features": true,
+                "launch_evidence": true,
+                "link": true,
+                "positioning": true,
+                "price": true
+              },
+              "coverage_score": 100,
+              "link_type": "product_page",
+              "missing_fields": [],
+              "note": "Direct product page available.",
+              "source_type": "editorial"
+            },
+            "detail": {
+              "brand": {
+                "cn": "由蕾哈娜创立、强调包容性色号与高性能妆效的全球彩妆品牌",
+                "en": "Rihanna-founded global makeup brand known for inclusive shades and high-performance complexion products"
+              },
+              "buzz": {
+                "cn": "Hypebae于2026年8月专题报道其接棒已停产经典款，形成显著新品讨论热度",
+                "en": "Fenty Beauty Pro Filt’r Fluid Flex Foundation: Featured by Hypebae in August 2026 as the successor to Fenty Beauty’s discontinued cult foundation"
+              },
+              "key_features": {
+                "cn": "自然哑光妆效、持久配方、轻盈流动质地与弹性贴肤表现",
+                "en": "Natural-matte finish, long wear, fluid texture, and flexible skin-adapting coverage"
+              },
+              "price_link": {
+                "cn": "$40",
+                "en": "$40",
+                "link": "https://fentybeauty.com/products/pro-filtr-fluid-flex-foundation"
+              }
+            },
+            "launch_evidence": {
+              "absence_markers": [],
+              "date_basis": "source_publication",
+              "evidence": {
+                "checked_at": "2026-09-03T06:37:35Z",
+                "fetched_at": "2026-09-03T06:37:35Z",
+                "published_at": "2026-08-19T07:00:00Z",
+                "supported_fields": [
+                  "price",
+                  "features",
+                  "buzz",
+                  "brand",
+                  "category",
+                  "launch_date",
+                  "link"
+                ],
+                "title": "Fenty Beauty 全新粉底液上线，接棒停产的人气经典款 - Hypebae",
+                "type": "editorial",
+                "url": "https://hypebae.com/sc/2026/8/fenty-beauty-pro-filtr-fluid-flex-natural-matte-longwear-foundation-where-to-buy"
+              },
+              "evidence_grade": "B",
+              "launch_date": "2026-08-19",
+              "quarantine_reason": null,
+              "quarantine_status": "verified"
+            },
+            "market": "US",
+            "name": "Fenty Beauty Pro Filt’r Fluid Flex Foundation",
+            "name_cn": "Fenty Beauty Pro Filt’r Fluid Flex 粉底液",
+            "new_badge": null,
+            "rank": 1,
+            "score": 92,
+            "score_breakdown": {
+              "components": [
+                {
+                  "evidence": "Sales, bestseller, ranking, sell-out, restock, and platform proxy signals.",
+                  "id": "sales_momentum",
+                  "label": "Sales Momentum",
+                  "max_points": 40,
+                  "points": 36,
+                  "weight": 0.4
+                },
+                {
+                  "evidence": "Social discussion, creator/editor coverage, and media visibility.",
+                  "id": "buzz_momentum",
+                  "label": "Buzz Momentum",
+                  "max_points": 30,
+                  "points": 30,
+                  "weight": 0.3
+                },
+                {
+                  "evidence": "Ratings, review volume, expert tests, vote counts, and user feedback.",
+                  "id": "review_rating",
+                  "label": "Review / Rating",
+                  "max_points": 20,
+                  "points": 16,
+                  "weight": 0.2
+                },
+                {
+                  "evidence": "Fit with the month's active trend taxonomy and new-product context.",
+                  "id": "trend_fit",
+                  "label": "Trend Fit",
+                  "max_points": 10,
+                  "points": 10,
+                  "weight": 0.1
+                }
+              ],
+              "methodology": "Weighted dashboard explanation: Sales Momentum 40% + Buzz Momentum 30% + Review/Rating 20% + Trend Fit 10%. Historical monthly scores remain non-recomputable until raw platform sales/review/social time-series are collected.",
+              "recomputable": false,
+              "total": 92
+            },
+            "tier": "LUXURY",
+            "trend": null,
+            "trend_badge": null
+          },
+          {
+            "category_badge": "Eyeshadow",
+            "data_quality": {
+              "coverage": {
+                "buzz": true,
+                "features": true,
+                "launch_evidence": true,
+                "link": true,
+                "positioning": true,
+                "price": true
+              },
+              "coverage_score": 100,
+              "link_type": "product_page",
+              "missing_fields": [],
+              "note": "Direct product page available.",
+              "source_type": "editorial"
+            },
+            "detail": {
+              "brand": {
+                "cn": "法国高奢时装与美妆品牌，以经典设计和季节限定彩妆见长",
+                "en": "French luxury house recognized for timeless design and collectible seasonal makeup"
+              },
+              "buzz": {
+                "cn": "2026年秋季限定新品报道以160加元高端定价和九宫格设计为核心卖点",
+                "en": "CHANEL Les 9 Ombres Eyeshadow Palette: Highlighted as a limited-edition Fall 2026 launch with a CAD $160 luxury price point and nine-pan format"
+              },
+              "key_features": {
+                "cn": "九色协调配色、限定包装、多种质地，可完成层次丰富的秋季眼妆",
+                "en": "Nine coordinated shades, limited-edition packaging, and multiple textures for layered fall eye looks"
+              },
+              "price_link": {
+                "cn": "CA$160",
+                "en": "CA$160",
+                "link": "https://www.holtrenfrew.com/en/Products/Womens/Beauty/Makeup/Eyes/Eyeshadow/CHANEL-Les-9-Ombres-Eyeshadow-Palette/p/20389987001"
+              }
+            },
+            "launch_evidence": {
+              "absence_markers": [],
+              "date_basis": "source_publication",
+              "evidence": {
+                "checked_at": "2026-09-03T06:37:35Z",
+                "fetched_at": "2026-09-03T06:37:35Z",
+                "published_at": "2026-08-19T19:28:39Z",
+                "supported_fields": [
+                  "price",
+                  "features",
+                  "buzz",
+                  "brand",
+                  "category",
+                  "launch_date",
+                  "link"
+                ],
+                "title": "上新：CHANEL 秋季限定新品 可可小姐唇膏$69 九宫格眼影$160 - dealmoon.ca",
+                "type": "editorial",
+                "url": "https://www.dealmoon.ca/9-color-eyeshadow-palette-160-chanel-fall-limited-edition-new-arrival-coco-lipstick-69/488385.html"
+              },
+              "evidence_grade": "B",
+              "launch_date": "2026-08-19",
+              "quarantine_reason": null,
+              "quarantine_status": "verified"
+            },
+            "market": "US",
+            "name": "CHANEL Les 9 Ombres Eyeshadow Palette",
+            "name_cn": "香奈儿九色眼影盘",
+            "new_badge": null,
+            "rank": 2,
+            "score": 89,
+            "score_breakdown": {
+              "components": [
+                {
+                  "evidence": "Sales, bestseller, ranking, sell-out, restock, and platform proxy signals.",
+                  "id": "sales_momentum",
+                  "label": "Sales Momentum",
+                  "max_points": 40,
+                  "points": 36,
+                  "weight": 0.4
+                },
+                {
+                  "evidence": "Social discussion, creator/editor coverage, and media visibility.",
+                  "id": "buzz_momentum",
+                  "label": "Buzz Momentum",
+                  "max_points": 30,
+                  "points": 27,
+                  "weight": 0.3
+                },
+                {
+                  "evidence": "Ratings, review volume, expert tests, vote counts, and user feedback.",
+                  "id": "review_rating",
+                  "label": "Review / Rating",
+                  "max_points": 20,
+                  "points": 16,
+                  "weight": 0.2
+                },
+                {
+                  "evidence": "Fit with the month's active trend taxonomy and new-product context.",
+                  "id": "trend_fit",
+                  "label": "Trend Fit",
+                  "max_points": 10,
+                  "points": 10,
+                  "weight": 0.1
+                }
+              ],
+              "methodology": "Weighted dashboard explanation: Sales Momentum 40% + Buzz Momentum 30% + Review/Rating 20% + Trend Fit 10%. Historical monthly scores remain non-recomputable until raw platform sales/review/social time-series are collected.",
+              "recomputable": false,
+              "total": 89
+            },
+            "tier": "LUXURY",
+            "trend": null,
+            "trend_badge": null
+          },
+          {
+            "category_badge": "Lipstick",
+            "data_quality": {
+              "coverage": {
+                "buzz": true,
+                "features": true,
+                "launch_evidence": true,
+                "link": true,
+                "positioning": true,
+                "price": true
+              },
+              "coverage_score": 100,
+              "link_type": "product_page",
+              "missing_fields": [],
+              "note": "Direct product page available.",
+              "source_type": "editorial"
+            },
+            "detail": {
+              "brand": {
+                "cn": "法国高奢美妆品牌，唇膏兼具标志性包装、时装色彩与收藏属性",
+                "en": "French luxury beauty house combining iconic packaging, fashion-led color, and collectibility"
+              },
+              "buzz": {
+                "cn": "2026年秋季上新报道标注69加元售价，与限定九色眼影共同获得零售关注",
+                "en": "CHANEL Rouge Coco Flash: The Fall 2026 retail report listed it at CAD $69 alongside CHANEL’s limited nine-pan palette"
+              },
+              "key_features": {
+                "cn": "高光泽显色、顺滑融化质地、轻盈舒适并便于快速补妆",
+                "en": "High-shine color, a smooth melt-on texture, lightweight comfort, and easy touch-ups"
+              },
+              "price_link": {
+                "cn": "CA$69",
+                "en": "CA$69",
+                "link": "https://www.chanel.com/us/makeup/p/174056/rouge-coco-flash-hydrating-vibrant-shine-lip-colour/"
+              }
+            },
+            "launch_evidence": {
+              "absence_markers": [],
+              "date_basis": "source_publication",
+              "evidence": {
+                "checked_at": "2026-09-03T06:37:35Z",
+                "fetched_at": "2026-09-03T06:37:35Z",
+                "published_at": "2026-08-19T19:28:39Z",
+                "supported_fields": [
+                  "price",
+                  "features",
+                  "buzz",
+                  "brand",
+                  "category",
+                  "launch_date",
+                  "link"
+                ],
+                "title": "上新：CHANEL 秋季限定新品 可可小姐唇膏$69 九宫格眼影$160 - dealmoon.ca",
+                "type": "editorial",
+                "url": "https://www.dealmoon.ca/9-color-eyeshadow-palette-160-chanel-fall-limited-edition-new-arrival-coco-lipstick-69/488385.html"
+              },
+              "evidence_grade": "B",
+              "launch_date": "2026-08-19",
+              "quarantine_reason": null,
+              "quarantine_status": "verified"
+            },
+            "market": "US",
+            "name": "CHANEL Rouge Coco Flash",
+            "name_cn": "香奈儿可可小姐炫光唇膏",
+            "new_badge": null,
+            "rank": 3,
+            "score": 87,
+            "score_breakdown": {
+              "components": [
+                {
+                  "evidence": "Sales, bestseller, ranking, sell-out, restock, and platform proxy signals.",
+                  "id": "sales_momentum",
+                  "label": "Sales Momentum",
+                  "max_points": 40,
+                  "points": 35,
+                  "weight": 0.4
+                },
+                {
+                  "evidence": "Social discussion, creator/editor coverage, and media visibility.",
+                  "id": "buzz_momentum",
+                  "label": "Buzz Momentum",
+                  "max_points": 30,
+                  "points": 26,
+                  "weight": 0.3
+                },
+                {
+                  "evidence": "Ratings, review volume, expert tests, vote counts, and user feedback.",
+                  "id": "review_rating",
+                  "label": "Review / Rating",
+                  "max_points": 20,
+                  "points": 16,
+                  "weight": 0.2
+                },
+                {
+                  "evidence": "Fit with the month's active trend taxonomy and new-product context.",
+                  "id": "trend_fit",
+                  "label": "Trend Fit",
+                  "max_points": 10,
+                  "points": 10,
+                  "weight": 0.1
+                }
+              ],
+              "methodology": "Weighted dashboard explanation: Sales Momentum 40% + Buzz Momentum 30% + Review/Rating 20% + Trend Fit 10%. Historical monthly scores remain non-recomputable until raw platform sales/review/social time-series are collected.",
+              "recomputable": false,
+              "total": 87
+            },
+            "tier": "LUXURY",
+            "trend": null,
+            "trend_badge": null
+          },
+          {
+            "category_badge": "Lipstick",
+            "data_quality": {
+              "coverage": {
+                "buzz": true,
+                "features": true,
+                "launch_evidence": true,
+                "link": true,
+                "positioning": true,
+                "price": true
+              },
+              "coverage_score": 100,
+              "link_type": "product_page",
+              "missing_fields": [],
+              "note": "Direct product page available.",
+              "source_type": "editorial"
+            },
+            "detail": {
+              "brand": {
+                "cn": "雅诗兰黛集团旗下皮肤学导向美妆品牌，以温和配方和经典单品著称",
+                "en": "Dermatologist-guided prestige brand known for gentle formulas and enduring beauty staples"
+              },
+              "buzz": {
+                "cn": "ELLE专访将其称为Emilia Jones在每部影片中都会使用的经典唇膏",
+                "en": "Clinique Almost Lipstick in Black Honey: ELLE identified it as the cult lipstick Emilia Jones wears in every film"
+              },
+              "key_features": {
+                "cn": "透明莓果色、可叠加显色、润泽轻薄，对不同肤色具有较强适配性",
+                "en": "Sheer berry color, buildable payoff, moisturizing lightweight wear, and broad skin-tone versatility"
+              },
+              "price_link": {
+                "cn": "$25",
+                "en": "$25",
+                "link": "https://www.sephora.com/product/almost-lipstick-P122751"
+              }
+            },
+            "launch_evidence": {
+              "absence_markers": [],
+              "date_basis": "source_publication",
+              "evidence": {
+                "checked_at": "2026-09-03T06:37:35Z",
+                "fetched_at": "2026-09-03T06:37:35Z",
+                "published_at": "2026-08-27T12:00:00Z",
+                "supported_fields": [
+                  "price",
+                  "features",
+                  "buzz",
+                  "brand",
+                  "category",
+                  "launch_date",
+                  "link"
+                ],
+                "title": "Exclusive: Emilia Jones Is Clinique’s Newest Face",
+                "type": "editorial",
+                "url": "https://www.elle.com/beauty/makeup-skin-care/a73534232/emilia-jones-hair-skin-routine-clinique-moisture-surge-interview-2026/"
+              },
+              "evidence_grade": "B",
+              "launch_date": "2026-08-27",
+              "quarantine_reason": null,
+              "quarantine_status": "verified"
+            },
+            "market": "US",
+            "name": "Clinique Almost Lipstick in Black Honey",
+            "name_cn": "倩碧小黑蜜近乎唇膏",
+            "new_badge": null,
+            "rank": 4,
+            "score": 86,
+            "score_breakdown": {
+              "components": [
+                {
+                  "evidence": "Sales, bestseller, ranking, sell-out, restock, and platform proxy signals.",
+                  "id": "sales_momentum",
+                  "label": "Sales Momentum",
+                  "max_points": 40,
+                  "points": 34,
+                  "weight": 0.4
+                },
+                {
+                  "evidence": "Social discussion, creator/editor coverage, and media visibility.",
+                  "id": "buzz_momentum",
+                  "label": "Buzz Momentum",
+                  "max_points": 30,
+                  "points": 26,
+                  "weight": 0.3
+                },
+                {
+                  "evidence": "Ratings, review volume, expert tests, vote counts, and user feedback.",
+                  "id": "review_rating",
+                  "label": "Review / Rating",
+                  "max_points": 20,
+                  "points": 16,
+                  "weight": 0.2
+                },
+                {
+                  "evidence": "Fit with the month's active trend taxonomy and new-product context.",
+                  "id": "trend_fit",
+                  "label": "Trend Fit",
+                  "max_points": 10,
+                  "points": 10,
+                  "weight": 0.1
+                }
+              ],
+              "methodology": "Weighted dashboard explanation: Sales Momentum 40% + Buzz Momentum 30% + Review/Rating 20% + Trend Fit 10%. Historical monthly scores remain non-recomputable until raw platform sales/review/social time-series are collected.",
+              "recomputable": false,
+              "total": 86
+            },
+            "tier": "LUXURY",
+            "trend": null,
+            "trend_badge": null
+          }
+        ],
+        "US MASSTIGE": [
+          {
+            "category_badge": "Lip Gloss",
+            "data_quality": {
+              "coverage": {
+                "buzz": true,
+                "features": true,
+                "launch_evidence": true,
+                "link": true,
+                "positioning": true,
+                "price": true
+              },
+              "coverage_score": 100,
+              "link_type": "product_page",
+              "missing_fields": [],
+              "note": "Direct product page available.",
+              "source_type": "editorial"
+            },
+            "detail": {
+              "brand": {
+                "cn": "欧莱雅集团旗下全球大众彩妆品牌，擅长以流行文化合作推动爆款",
+                "en": "L’Oréal-owned global mass makeup brand known for turning pop-culture partnerships into blockbuster products"
+              },
+              "buzz": {
+                "cn": "Glossy报道美宝莲连续两季合作《Love Island》后扩大项目规模，并取得显著唇彩销售增长",
+                "en": "Maybelline Lifter Gloss: Glossy reported that Maybelline expanded its Love Island partnership after two successful seasons, producing standout lip-gloss sales results"
+              },
+              "key_features": {
+                "cn": "玻尿酸配方、高光泽水润妆效、视觉丰唇效果和大号贴合刷头",
+                "en": "Hyaluronic-acid formula, glossy hydration, a visibly fuller-lip effect, and an oversized applicator"
+              },
+              "price_link": {
+                "cn": "$10.99",
+                "en": "$10.99",
+                "link": "https://www.ulta.com/p/lifter-gloss-with-hyaluronic-acid-pimprod2016411"
+              }
+            },
+            "launch_evidence": {
+              "absence_markers": [],
+              "date_basis": "source_publication",
+              "evidence": {
+                "checked_at": "2026-09-03T06:37:35Z",
+                "fetched_at": "2026-09-03T06:37:35Z",
+                "published_at": "2026-08-28T20:40:00Z",
+                "supported_fields": [
+                  "price",
+                  "features",
+                  "buzz",
+                  "brand",
+                  "category",
+                  "launch_date",
+                  "link"
+                ],
+                "title": "Glossy Pop Newsletter: How Maybelline leveraged ‘Love Island’ to supercharge lip gloss sales",
+                "type": "editorial",
+                "url": "https://www.glossy.co/pop/glossy-pop-newsletter-how-maybelline-leveraged-love-island-to-supercharge-lip-gloss-sales/?utm_campaign=glossydis&utm_medium=rss&utm_source=general-rss"
+              },
+              "evidence_grade": "B",
+              "launch_date": "2026-08-28",
+              "quarantine_reason": null,
+              "quarantine_status": "verified"
+            },
+            "market": "US",
+            "name": "Maybelline Lifter Gloss",
+            "name_cn": "美宝莲高光水感丰盈唇釉",
+            "new_badge": null,
+            "rank": 1,
+            "score": 93,
+            "score_breakdown": {
+              "components": [
+                {
+                  "evidence": "Sales, bestseller, ranking, sell-out, restock, and platform proxy signals.",
+                  "id": "sales_momentum",
+                  "label": "Sales Momentum",
+                  "max_points": 40,
+                  "points": 40,
+                  "weight": 0.4
+                },
+                {
+                  "evidence": "Social discussion, creator/editor coverage, and media visibility.",
+                  "id": "buzz_momentum",
+                  "label": "Buzz Momentum",
+                  "max_points": 30,
+                  "points": 27,
+                  "weight": 0.3
+                },
+                {
+                  "evidence": "Ratings, review volume, expert tests, vote counts, and user feedback.",
+                  "id": "review_rating",
+                  "label": "Review / Rating",
+                  "max_points": 20,
+                  "points": 16,
+                  "weight": 0.2
+                },
+                {
+                  "evidence": "Fit with the month's active trend taxonomy and new-product context.",
+                  "id": "trend_fit",
+                  "label": "Trend Fit",
+                  "max_points": 10,
+                  "points": 10,
+                  "weight": 0.1
+                }
+              ],
+              "methodology": "Weighted dashboard explanation: Sales Momentum 40% + Buzz Momentum 30% + Review/Rating 20% + Trend Fit 10%. Historical monthly scores remain non-recomputable until raw platform sales/review/social time-series are collected.",
+              "recomputable": false,
+              "total": 93
+            },
+            "tier": "MASSTIGE",
+            "trend": null,
+            "trend_badge": null
+          },
+          {
+            "category_badge": "Foundation",
+            "data_quality": {
+              "coverage": {
+                "buzz": true,
+                "features": true,
+                "launch_evidence": true,
+                "link": true,
+                "positioning": true,
+                "price": true
+              },
+              "coverage_score": 100,
+              "link_type": "product_page",
+              "missing_fields": [],
+              "note": "Direct product page available.",
+              "source_type": "editorial"
+            },
+            "detail": {
+              "brand": {
+                "cn": "数字原生平价彩妆品牌，以快速上新、社交媒体内容和趋势化包装触达年轻消费者",
+                "en": "Digital-native affordable makeup brand targeting young consumers through rapid launches, social content, and trend-led packaging"
+              },
+              "buzz": {
+                "cn": "品牌于2026年8月20日正式推出，上市报道强调水润透亮妆感与便携气垫形态",
+                "en": "SHEGLAM Lumi Lock & Go Hydrating Cushion Foundation: Officially launched on August 20, 2026, with launch coverage emphasizing its hydrated glow and portable cushion format"
+              },
+              "key_features": {
+                "cn": "精华般滋润感、自然遮瑕、水润透亮妆效和便携补妆设计",
+                "en": "Serum-like hydration, natural coverage, a fresh luminous finish, and portable touch-up convenience"
+              },
+              "price_link": {
+                "cn": "$12.99",
+                "en": "$12.99",
+                "link": "https://www.sheglam.com/product/Lumi-Lock-Go-Hydrating-Cushion-Foundation-11161297174713152"
+              }
+            },
+            "launch_evidence": {
+              "absence_markers": [],
+              "date_basis": "source_publication",
+              "evidence": {
+                "checked_at": "2026-09-03T06:37:35Z",
+                "fetched_at": "2026-09-03T06:37:35Z",
+                "published_at": "2026-08-24T22:22:38Z",
+                "supported_fields": [
+                  "price",
+                  "features",
+                  "buzz",
+                  "brand",
+                  "category",
+                  "launch_date",
+                  "link"
+                ],
+                "title": "SHEGLAM推出全新“Lumi Lock & Go保湿气垫粉底液”，打造水润透亮妆感（8月20日） - haveagood-holiday.com",
+                "type": "editorial",
+                "url": "https://www.haveagood-holiday.com/zh-CN/articles/sheglam-lumi-lock-go-hydrating-cushion-foundation"
+              },
+              "evidence_grade": "B",
+              "launch_date": "2026-08-24",
+              "quarantine_reason": null,
+              "quarantine_status": "verified"
+            },
+            "market": "US",
+            "name": "SHEGLAM Lumi Lock & Go Hydrating Cushion Foundation",
+            "name_cn": "SHEGLAM Lumi Lock & Go 保湿气垫粉底液",
+            "new_badge": null,
+            "rank": 2,
+            "score": 88,
+            "score_breakdown": {
+              "components": [
+                {
+                  "evidence": "Sales, bestseller, ranking, sell-out, restock, and platform proxy signals.",
+                  "id": "sales_momentum",
+                  "label": "Sales Momentum",
+                  "max_points": 40,
+                  "points": 35,
+                  "weight": 0.4
+                },
+                {
+                  "evidence": "Social discussion, creator/editor coverage, and media visibility.",
+                  "id": "buzz_momentum",
+                  "label": "Buzz Momentum",
+                  "max_points": 30,
+                  "points": 27,
+                  "weight": 0.3
+                },
+                {
+                  "evidence": "Ratings, review volume, expert tests, vote counts, and user feedback.",
+                  "id": "review_rating",
+                  "label": "Review / Rating",
+                  "max_points": 20,
+                  "points": 16,
+                  "weight": 0.2
+                },
+                {
+                  "evidence": "Fit with the month's active trend taxonomy and new-product context.",
+                  "id": "trend_fit",
+                  "label": "Trend Fit",
+                  "max_points": 10,
+                  "points": 10,
+                  "weight": 0.1
+                }
+              ],
+              "methodology": "Weighted dashboard explanation: Sales Momentum 40% + Buzz Momentum 30% + Review/Rating 20% + Trend Fit 10%. Historical monthly scores remain non-recomputable until raw platform sales/review/social time-series are collected.",
+              "recomputable": false,
+              "total": 88
+            },
+            "tier": "MASSTIGE",
+            "trend": null,
+            "trend_badge": null
+          },
+          {
+            "category_badge": "Lip Tint",
+            "data_quality": {
+              "coverage": {
+                "buzz": true,
+                "features": true,
+                "launch_evidence": true,
+                "link": true,
+                "positioning": true,
+                "price": true
+              },
+              "coverage_score": 100,
+              "link_type": "product_page",
+              "missing_fields": [],
+              "note": "Direct product page available.",
+              "source_type": "editorial"
+            },
+            "detail": {
+              "brand": {
+                "cn": "覆盖全球市场的大众彩妆领导品牌，兼具高可得性和趋势驱动新品能力",
+                "en": "Global mass-market makeup leader combining broad accessibility with trend-driven innovation"
+              },
+              "buzz": {
+                "cn": "美宝莲借助《Love Island》合作扩大唇部彩妆曝光，带动品牌唇彩品类整体销售关注",
+                "en": "Maybelline Super Stay Teddy Tint: Maybelline’s expanded Love Island activation increased visibility and sales attention across its lip-color portfolio"
+              },
+              "key_features": {
+                "cn": "柔软慕斯质地、模糊唇纹、可用于唇颊并提供持久柔雾色彩",
+                "en": "Soft mousse texture, blurring effect, multipurpose lip-and-cheek use, and long-wearing diffused color"
+              },
+              "price_link": {
+                "cn": "$12.99",
+                "en": "$12.99",
+                "link": "https://www.ulta.com/p/super-stay-teddy-tint-pimprod2048385"
+              }
+            },
+            "launch_evidence": {
+              "absence_markers": [],
+              "date_basis": "source_publication",
+              "evidence": {
+                "checked_at": "2026-09-03T06:37:35Z",
+                "fetched_at": "2026-09-03T06:37:35Z",
+                "published_at": "2026-08-28T20:40:00Z",
+                "supported_fields": [
+                  "price",
+                  "features",
+                  "buzz",
+                  "brand",
+                  "category",
+                  "launch_date",
+                  "link"
+                ],
+                "title": "Glossy Pop Newsletter: How Maybelline leveraged ‘Love Island’ to supercharge lip gloss sales",
+                "type": "editorial",
+                "url": "https://www.glossy.co/pop/glossy-pop-newsletter-how-maybelline-leveraged-love-island-to-supercharge-lip-gloss-sales/?utm_campaign=glossydis&utm_medium=rss&utm_source=general-rss"
+              },
+              "evidence_grade": "B",
+              "launch_date": "2026-08-28",
+              "quarantine_reason": null,
+              "quarantine_status": "verified"
+            },
+            "market": "US",
+            "name": "Maybelline Super Stay Teddy Tint",
+            "name_cn": "美宝莲 Super Stay Teddy Tint 柔雾唇颊泥",
+            "new_badge": null,
+            "rank": 3,
+            "score": 84,
+            "score_breakdown": {
+              "components": [
+                {
+                  "evidence": "Sales, bestseller, ranking, sell-out, restock, and platform proxy signals.",
+                  "id": "sales_momentum",
+                  "label": "Sales Momentum",
+                  "max_points": 40,
+                  "points": 36,
+                  "weight": 0.4
+                },
+                {
+                  "evidence": "Social discussion, creator/editor coverage, and media visibility.",
+                  "id": "buzz_momentum",
+                  "label": "Buzz Momentum",
+                  "max_points": 30,
+                  "points": 24,
+                  "weight": 0.3
+                },
+                {
+                  "evidence": "Ratings, review volume, expert tests, vote counts, and user feedback.",
+                  "id": "review_rating",
+                  "label": "Review / Rating",
+                  "max_points": 20,
+                  "points": 14,
+                  "weight": 0.2
+                },
+                {
+                  "evidence": "Fit with the month's active trend taxonomy and new-product context.",
+                  "id": "trend_fit",
+                  "label": "Trend Fit",
+                  "max_points": 10,
+                  "points": 10,
+                  "weight": 0.1
+                }
+              ],
+              "methodology": "Weighted dashboard explanation: Sales Momentum 40% + Buzz Momentum 30% + Review/Rating 20% + Trend Fit 10%. Historical monthly scores remain non-recomputable until raw platform sales/review/social time-series are collected.",
+              "recomputable": false,
+              "total": 84
+            },
+            "tier": "MASSTIGE",
+            "trend": null,
+            "trend_badge": null
+          }
+        ]
+      },
+      "new_product_radar": {
+        "CN LUXURY": [],
+        "CN MASSTIGE": [
+          {
+            "category_badge": "Lip & Cheek",
+            "data_quality": {
+              "coverage": {
+                "buzz": true,
+                "features": true,
+                "launch_evidence": true,
+                "link": true,
+                "positioning": true,
+                "price": true
+              },
+              "coverage_score": 100,
+              "link_type": "product_page",
+              "missing_fields": [],
+              "note": "Direct product page available.",
+              "source_type": "editorial"
+            },
+            "detail": {
+              "brand": {
+                "cn": "以原创唇泥品类和年轻化联名建立辨识度的中国新锐彩妆品牌",
+                "en": "Emerging Chinese makeup brand differentiated by its signature lip-mud format and youth-focused collaborations"
+              },
+              "buzz": {
+                "cn": "2026年8月联名系列上线，以番茄和马铃薯色彩概念在微博形成新品传播",
+                "en": "INTO YOU x TUNEE GOODS Shero Super Matte Lip & Cheek Mud: The collaboration launched in August 2026 and generated Weibo visibility through its tomato-and-potato color concept"
+              },
+              "key_features": {
+                "cn": "柔雾唇颊两用、番茄红限定色、原生果蔬妆感和联名包装",
+                "en": "Soft-matte lip-and-cheek use, tomato-red limited shade, natural produce-inspired look, and collaboration packaging"
+              },
+              "price_link": {
+                "cn": "¥69",
+                "en": "¥69",
+                "link": "https://intoyoucosmetics.com/products/shero-super-matte-lip-cheek-mud"
+              }
+            },
+            "launch_evidence": {
+              "absence_markers": [],
+              "date_basis": "source_publication",
+              "evidence": {
+                "checked_at": "2026-09-03T06:37:35Z",
+                "fetched_at": "2026-09-03T06:37:35Z",
+                "published_at": "2026-08-26T13:17:25Z",
+                "supported_fields": [
+                  "price",
+                  "features",
+                  "buzz",
+                  "brand",
+                  "category",
+                  "launch_date",
+                  "link"
+                ],
+                "title": "A second antitrust investigation",
+                "type": "editorial",
+                "url": "https://nstperfume.com/2026/08/26/a-second-antitrust-investigation/"
+              },
+              "evidence_grade": "B",
+              "launch_date": "2026-08-26",
+              "quarantine_reason": null,
+              "quarantine_status": "verified"
+            },
+            "market": "CN",
+            "name": "INTO YOU x TUNEE GOODS Shero Super Matte Lip & Cheek Mud",
+            "name_cn": "INTO YOU × TUNEE GOODS 女主角唇颊泥番茄限定色",
+            "new_badge": null,
+            "rank": 1,
+            "score": 88,
+            "score_breakdown": {
+              "components": [
+                {
+                  "evidence": "Sales, bestseller, ranking, sell-out, restock, and platform proxy signals.",
+                  "id": "sales_momentum",
+                  "label": "Sales Momentum",
+                  "max_points": 40,
+                  "points": 34,
+                  "weight": 0.4
+                },
+                {
+                  "evidence": "Social discussion, creator/editor coverage, and media visibility.",
+                  "id": "buzz_momentum",
+                  "label": "Buzz Momentum",
+                  "max_points": 30,
+                  "points": 28,
+                  "weight": 0.3
+                },
+                {
+                  "evidence": "Ratings, review volume, expert tests, vote counts, and user feedback.",
+                  "id": "review_rating",
+                  "label": "Review / Rating",
+                  "max_points": 20,
+                  "points": 16,
+                  "weight": 0.2
+                },
+                {
+                  "evidence": "Fit with the month's active trend taxonomy and new-product context.",
+                  "id": "trend_fit",
+                  "label": "Trend Fit",
+                  "max_points": 10,
+                  "points": 10,
+                  "weight": 0.1
+                }
+              ],
+              "methodology": "Weighted dashboard explanation: Sales Momentum 40% + Buzz Momentum 30% + Review/Rating 20% + Trend Fit 10%. Historical monthly scores remain non-recomputable until raw platform sales/review/social time-series are collected.",
+              "recomputable": false,
+              "total": 88
+            },
+            "tier": "MASSTIGE",
+            "trend": null,
+            "trend_badge": null
+          },
+          {
+            "category_badge": "Foundation",
+            "data_quality": {
+              "coverage": {
+                "buzz": true,
+                "features": true,
+                "launch_evidence": true,
+                "link": true,
+                "positioning": true,
+                "price": true
+              },
+              "coverage_score": 100,
+              "link_type": "product_page",
+              "missing_fields": [],
+              "note": "Direct product page available.",
+              "source_type": "editorial"
+            },
+            "detail": {
+              "brand": {
+                "cn": "依托中国供应链面向全球市场的数字彩妆品牌，强调快速上新与亲民价格",
+                "en": "Digital makeup brand with Chinese supply-chain roots, emphasizing rapid global launches and accessible pricing"
+              },
+              "buzz": {
+                "cn": "2026年8月20日首发，中文新品信息明确记录上市日期及水润透亮核心定位",
+                "en": "SHEGLAM Lumi Lock & Go Hydrating Cushion Foundation: First launched on August 20, 2026, with Chinese-language coverage documenting the date and luminous-hydration positioning"
+              },
+              "key_features": {
+                "cn": "精华型滋润体验、自然遮瑕、水润透亮妆效与便携补妆",
+                "en": "Serum-like moisture, natural coverage, fresh luminous finish, and portable touch-ups"
+              },
+              "price_link": {
+                "cn": "¥99",
+                "en": "¥99",
+                "link": "https://www.sheglam.com/product/Lumi-Lock-Go-Hydrating-Cushion-Foundation-11161297174713152"
+              }
+            },
+            "launch_evidence": {
+              "absence_markers": [],
+              "date_basis": "source_publication",
+              "evidence": {
+                "checked_at": "2026-09-03T06:37:35Z",
+                "fetched_at": "2026-09-03T06:37:35Z",
+                "published_at": "2026-08-24T22:22:38Z",
+                "supported_fields": [
+                  "price",
+                  "features",
+                  "buzz",
+                  "brand",
+                  "category",
+                  "launch_date",
+                  "link"
+                ],
+                "title": "SHEGLAM推出全新“Lumi Lock & Go保湿气垫粉底液”，打造水润透亮妆感（8月20日） - haveagood-holiday.com",
+                "type": "editorial",
+                "url": "https://www.haveagood-holiday.com/zh-CN/articles/sheglam-lumi-lock-go-hydrating-cushion-foundation"
+              },
+              "evidence_grade": "B",
+              "launch_date": "2026-08-24",
+              "quarantine_reason": null,
+              "quarantine_status": "verified"
+            },
+            "market": "CN",
+            "name": "SHEGLAM Lumi Lock & Go Hydrating Cushion Foundation",
+            "name_cn": "SHEGLAM Lumi Lock & Go 保湿气垫粉底液",
+            "new_badge": null,
+            "rank": 2,
+            "score": 86,
+            "score_breakdown": {
+              "components": [
+                {
+                  "evidence": "Sales, bestseller, ranking, sell-out, restock, and platform proxy signals.",
+                  "id": "sales_momentum",
+                  "label": "Sales Momentum",
+                  "max_points": 40,
+                  "points": 34,
+                  "weight": 0.4
+                },
+                {
+                  "evidence": "Social discussion, creator/editor coverage, and media visibility.",
+                  "id": "buzz_momentum",
+                  "label": "Buzz Momentum",
+                  "max_points": 30,
+                  "points": 26,
+                  "weight": 0.3
+                },
+                {
+                  "evidence": "Ratings, review volume, expert tests, vote counts, and user feedback.",
+                  "id": "review_rating",
+                  "label": "Review / Rating",
+                  "max_points": 20,
+                  "points": 16,
+                  "weight": 0.2
+                },
+                {
+                  "evidence": "Fit with the month's active trend taxonomy and new-product context.",
+                  "id": "trend_fit",
+                  "label": "Trend Fit",
+                  "max_points": 10,
+                  "points": 10,
+                  "weight": 0.1
+                }
+              ],
+              "methodology": "Weighted dashboard explanation: Sales Momentum 40% + Buzz Momentum 30% + Review/Rating 20% + Trend Fit 10%. Historical monthly scores remain non-recomputable until raw platform sales/review/social time-series are collected.",
+              "recomputable": false,
+              "total": 86
+            },
+            "tier": "MASSTIGE",
+            "trend": null,
+            "trend_badge": null
+          }
+        ],
+        "US LUXURY": [
+          {
+            "category_badge": "Foundation",
+            "data_quality": {
+              "coverage": {
+                "buzz": true,
+                "features": true,
+                "launch_evidence": true,
+                "link": true,
+                "positioning": true,
+                "price": true
+              },
+              "coverage_score": 100,
+              "link_type": "product_page",
+              "missing_fields": [],
+              "note": "Direct product page available.",
+              "source_type": "editorial"
+            },
+            "detail": {
+              "brand": {
+                "cn": "强调包容性色号和专业底妆表现的全球高端彩妆品牌",
+                "en": "Global prestige makeup brand centered on inclusive shades and professional complexion performance"
+              },
+              "buzz": {
+                "cn": "2026年8月新品报道将其定位为停产经典款的正式接棒产品",
+                "en": "Fenty Beauty Pro Filt’r Fluid Flex Foundation: August 2026 launch coverage positioned it as the direct successor to the discontinued original"
+              },
+              "key_features": {
+                "cn": "自然哑光、长效持妆、轻盈流动质地和弹性贴肤遮瑕",
+                "en": "Natural matte finish, long wear, lightweight fluid texture, and flexible skin-adapting coverage"
+              },
+              "price_link": {
+                "cn": "$40",
+                "en": "$40",
+                "link": "https://fentybeauty.com/products/pro-filtr-fluid-flex-foundation"
+              }
+            },
+            "launch_evidence": {
+              "absence_markers": [],
+              "date_basis": "source_publication",
+              "evidence": {
+                "checked_at": "2026-09-03T06:37:35Z",
+                "fetched_at": "2026-09-03T06:37:35Z",
+                "published_at": "2026-08-19T07:00:00Z",
+                "supported_fields": [
+                  "price",
+                  "features",
+                  "buzz",
+                  "brand",
+                  "category",
+                  "launch_date",
+                  "link"
+                ],
+                "title": "Fenty Beauty 全新粉底液上线，接棒停产的人气经典款 - Hypebae",
+                "type": "editorial",
+                "url": "https://hypebae.com/sc/2026/8/fenty-beauty-pro-filtr-fluid-flex-natural-matte-longwear-foundation-where-to-buy"
+              },
+              "evidence_grade": "B",
+              "launch_date": "2026-08-19",
+              "quarantine_reason": null,
+              "quarantine_status": "verified"
+            },
+            "market": "US",
+            "name": "Fenty Beauty Pro Filt’r Fluid Flex Foundation",
+            "name_cn": "Fenty Beauty Pro Filt’r Fluid Flex 粉底液",
+            "new_badge": null,
+            "rank": 1,
+            "score": 92,
+            "score_breakdown": {
+              "components": [
+                {
+                  "evidence": "Sales, bestseller, ranking, sell-out, restock, and platform proxy signals.",
+                  "id": "sales_momentum",
+                  "label": "Sales Momentum",
+                  "max_points": 40,
+                  "points": 37,
+                  "weight": 0.4
+                },
+                {
+                  "evidence": "Social discussion, creator/editor coverage, and media visibility.",
+                  "id": "buzz_momentum",
+                  "label": "Buzz Momentum",
+                  "max_points": 30,
+                  "points": 28,
+                  "weight": 0.3
+                },
+                {
+                  "evidence": "Ratings, review volume, expert tests, vote counts, and user feedback.",
+                  "id": "review_rating",
+                  "label": "Review / Rating",
+                  "max_points": 20,
+                  "points": 17,
+                  "weight": 0.2
+                },
+                {
+                  "evidence": "Fit with the month's active trend taxonomy and new-product context.",
+                  "id": "trend_fit",
+                  "label": "Trend Fit",
+                  "max_points": 10,
+                  "points": 10,
+                  "weight": 0.1
+                }
+              ],
+              "methodology": "Weighted dashboard explanation: Sales Momentum 40% + Buzz Momentum 30% + Review/Rating 20% + Trend Fit 10%. Historical monthly scores remain non-recomputable until raw platform sales/review/social time-series are collected.",
+              "recomputable": false,
+              "total": 92
+            },
+            "tier": "LUXURY",
+            "trend": null,
+            "trend_badge": null
+          },
+          {
+            "category_badge": "Eyeshadow",
+            "data_quality": {
+              "coverage": {
+                "buzz": true,
+                "features": true,
+                "launch_evidence": true,
+                "link": true,
+                "positioning": true,
+                "price": true
+              },
+              "coverage_score": 100,
+              "link_type": "product_page",
+              "missing_fields": [],
+              "note": "Direct product page available.",
+              "source_type": "editorial"
+            },
+            "detail": {
+              "brand": {
+                "cn": "以季节限定彩妆和高收藏价值著称的法国高奢品牌",
+                "en": "French luxury house known for collectible seasonal color cosmetics"
+              },
+              "buzz": {
+                "cn": "2026年8月秋季上新报道公布160加元售价并强调限量属性",
+                "en": "CHANEL Les 9 Ombres Eyeshadow Palette: August 2026 fall-launch coverage announced a CAD $160 price and emphasized limited-edition availability"
+              },
+              "key_features": {
+                "cn": "九色组合、多质地层次、秋季限定配色和奢华收藏包装",
+                "en": "Nine coordinated colors, layered textures, fall-exclusive shades, and luxury collectible packaging"
+              },
+              "price_link": {
+                "cn": "CA$160",
+                "en": "CA$160",
+                "link": "https://www.holtrenfrew.com/en/Products/Womens/Beauty/Makeup/Eyes/Eyeshadow/CHANEL-Les-9-Ombres-Eyeshadow-Palette/p/20389987001"
+              }
+            },
+            "launch_evidence": {
+              "absence_markers": [],
+              "date_basis": "source_publication",
+              "evidence": {
+                "checked_at": "2026-09-03T06:37:35Z",
+                "fetched_at": "2026-09-03T06:37:35Z",
+                "published_at": "2026-08-19T19:28:39Z",
+                "supported_fields": [
+                  "price",
+                  "features",
+                  "buzz",
+                  "brand",
+                  "category",
+                  "launch_date",
+                  "link"
+                ],
+                "title": "上新：CHANEL 秋季限定新品 可可小姐唇膏$69 九宫格眼影$160 - dealmoon.ca",
+                "type": "editorial",
+                "url": "https://www.dealmoon.ca/9-color-eyeshadow-palette-160-chanel-fall-limited-edition-new-arrival-coco-lipstick-69/488385.html"
+              },
+              "evidence_grade": "B",
+              "launch_date": "2026-08-19",
+              "quarantine_reason": null,
+              "quarantine_status": "verified"
+            },
+            "market": "US",
+            "name": "CHANEL Les 9 Ombres Eyeshadow Palette",
+            "name_cn": "香奈儿秋季限定九色眼影盘",
+            "new_badge": null,
+            "rank": 2,
+            "score": 89,
+            "score_breakdown": {
+              "components": [
+                {
+                  "evidence": "Sales, bestseller, ranking, sell-out, restock, and platform proxy signals.",
+                  "id": "sales_momentum",
+                  "label": "Sales Momentum",
+                  "max_points": 40,
+                  "points": 36,
+                  "weight": 0.4
+                },
+                {
+                  "evidence": "Social discussion, creator/editor coverage, and media visibility.",
+                  "id": "buzz_momentum",
+                  "label": "Buzz Momentum",
+                  "max_points": 30,
+                  "points": 27,
+                  "weight": 0.3
+                },
+                {
+                  "evidence": "Ratings, review volume, expert tests, vote counts, and user feedback.",
+                  "id": "review_rating",
+                  "label": "Review / Rating",
+                  "max_points": 20,
+                  "points": 16,
+                  "weight": 0.2
+                },
+                {
+                  "evidence": "Fit with the month's active trend taxonomy and new-product context.",
+                  "id": "trend_fit",
+                  "label": "Trend Fit",
+                  "max_points": 10,
+                  "points": 10,
+                  "weight": 0.1
+                }
+              ],
+              "methodology": "Weighted dashboard explanation: Sales Momentum 40% + Buzz Momentum 30% + Review/Rating 20% + Trend Fit 10%. Historical monthly scores remain non-recomputable until raw platform sales/review/social time-series are collected.",
+              "recomputable": false,
+              "total": 89
+            },
+            "tier": "LUXURY",
+            "trend": null,
+            "trend_badge": null
+          }
+        ],
+        "US MASSTIGE": [
+          {
+            "category_badge": "Foundation",
+            "data_quality": {
+              "coverage": {
+                "buzz": true,
+                "features": true,
+                "launch_evidence": true,
+                "link": true,
+                "positioning": true,
+                "price": true
+              },
+              "coverage_score": 100,
+              "link_type": "product_page",
+              "missing_fields": [],
+              "note": "Direct product page available.",
+              "source_type": "editorial"
+            },
+            "detail": {
+              "brand": {
+                "cn": "数字原生高性价比彩妆品牌，以快速响应趋势和社交电商见长",
+                "en": "Digital-native value makeup brand known for rapid trend response and social commerce"
+              },
+              "buzz": {
+                "cn": "官方首发日期为2026年8月20日，中文新品报道集中突出水润透亮底妆趋势",
+                "en": "SHEGLAM Lumi Lock & Go Hydrating Cushion Foundation: First launched on August 20, 2026, with coverage centered on the hydrated luminous-complexion trend"
+              },
+              "key_features": {
+                "cn": "精华感保湿、自然遮瑕、水光妆效和便携气垫设计",
+                "en": "Serum-like hydration, natural coverage, luminous finish, and portable cushion design"
+              },
+              "price_link": {
+                "cn": "$12.99",
+                "en": "$12.99",
+                "link": "https://www.sheglam.com/product/Lumi-Lock-Go-Hydrating-Cushion-Foundation-11161297174713152"
+              }
+            },
+            "launch_evidence": {
+              "absence_markers": [],
+              "date_basis": "source_publication",
+              "evidence": {
+                "checked_at": "2026-09-03T06:37:35Z",
+                "fetched_at": "2026-09-03T06:37:35Z",
+                "published_at": "2026-08-24T22:22:38Z",
+                "supported_fields": [
+                  "price",
+                  "features",
+                  "buzz",
+                  "brand",
+                  "category",
+                  "launch_date",
+                  "link"
+                ],
+                "title": "SHEGLAM推出全新“Lumi Lock & Go保湿气垫粉底液”，打造水润透亮妆感（8月20日） - haveagood-holiday.com",
+                "type": "editorial",
+                "url": "https://www.haveagood-holiday.com/zh-CN/articles/sheglam-lumi-lock-go-hydrating-cushion-foundation"
+              },
+              "evidence_grade": "B",
+              "launch_date": "2026-08-24",
+              "quarantine_reason": null,
+              "quarantine_status": "verified"
+            },
+            "market": "US",
+            "name": "SHEGLAM Lumi Lock & Go Hydrating Cushion Foundation",
+            "name_cn": "SHEGLAM Lumi Lock & Go 保湿气垫粉底液",
+            "new_badge": null,
+            "rank": 1,
+            "score": 88,
+            "score_breakdown": {
+              "components": [
+                {
+                  "evidence": "Sales, bestseller, ranking, sell-out, restock, and platform proxy signals.",
+                  "id": "sales_momentum",
+                  "label": "Sales Momentum",
+                  "max_points": 40,
+                  "points": 35,
+                  "weight": 0.4
+                },
+                {
+                  "evidence": "Social discussion, creator/editor coverage, and media visibility.",
+                  "id": "buzz_momentum",
+                  "label": "Buzz Momentum",
+                  "max_points": 30,
+                  "points": 27,
+                  "weight": 0.3
+                },
+                {
+                  "evidence": "Ratings, review volume, expert tests, vote counts, and user feedback.",
+                  "id": "review_rating",
+                  "label": "Review / Rating",
+                  "max_points": 20,
+                  "points": 16,
+                  "weight": 0.2
+                },
+                {
+                  "evidence": "Fit with the month's active trend taxonomy and new-product context.",
+                  "id": "trend_fit",
+                  "label": "Trend Fit",
+                  "max_points": 10,
+                  "points": 10,
+                  "weight": 0.1
+                }
+              ],
+              "methodology": "Weighted dashboard explanation: Sales Momentum 40% + Buzz Momentum 30% + Review/Rating 20% + Trend Fit 10%. Historical monthly scores remain non-recomputable until raw platform sales/review/social time-series are collected.",
+              "recomputable": false,
+              "total": 88
+            },
+            "tier": "MASSTIGE",
+            "trend": null,
+            "trend_badge": null
+          }
+        ]
+      }
+    }
+  },
+  "version": "month2026-08-20260801-v1"
+}
