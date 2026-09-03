@@ -13,6 +13,7 @@ import shutil
 import subprocess
 import sys
 import tempfile
+import time
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -138,9 +139,41 @@ def publish(month: str) -> None:
     run(["git", "push", "origin", "HEAD:main"], month)
 
 
+def _codex_login_preflight(max_attempts: int = 3, delay_seconds: float = 5) -> None:
+    """Bounded retry for Codex login preflight to handle transient false negatives.
+
+    The local Codex CLI ``login status`` command can intermittently report
+    ``False`` even when the CLI is actually authenticated (e.g. env race,
+    timing).  This retries a few times before aborting so a transient false
+    negative does not abort the entire monthly job.
+    """
+    for attempt in range(1, max_attempts + 1):
+        logging.info("Codex login preflight attempt %d/%d...", attempt, max_attempts)
+        if codex_logged_in():
+            logging.info("Codex login preflight passed on attempt %d", attempt)
+            return
+        if attempt < max_attempts:
+            logging.warning(
+                "Codex login preflight attempt %d failed; retrying in %s seconds...",
+                attempt,
+                delay_seconds,
+            )
+            time.sleep(delay_seconds)
+        else:
+            logging.error(
+                "Codex login preflight failed after %d attempts. "
+                "Run `env -u CODEX_HOME /opt/homebrew/bin/codex login` on this machine and retry.",
+                max_attempts,
+            )
+            raise RuntimeError(
+                "default ~/.codex is not logged in after "
+                f"{max_attempts} preflight attempt(s); run "
+                "`env -u CODEX_HOME /opt/homebrew/bin/codex login` and retry"
+            )
+
+
 def execute(month: str, *, no_commit: bool, force_collect: bool, skip_collect: bool) -> None:
-    if not codex_logged_in():
-        raise RuntimeError("default ~/.codex is not logged in; run `env -u CODEX_HOME codex login`")
+    _codex_login_preflight()
     month_dir = ROOT / "data" / "months" / month
     raw = month_dir / "raw_collected.json"
     if skip_collect:
