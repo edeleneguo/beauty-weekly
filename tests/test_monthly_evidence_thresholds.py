@@ -646,3 +646,63 @@ def test_report_carries_panel_coverage():
     assert entry["formal_included_count"] == 10
     assert entry["status"] == "met"
     json.dumps(raw["panel_coverage"])
+
+
+def test_canonical_source_urls_include_market_observation_products():
+    from beauty_weekly.canonical import _report_source_urls
+
+    observation_url = "https://publisher.example/observed-launch"
+    report = {
+        "products": {
+            "makeup": {"heat_rankings": {}, "new_product_radar": {}},
+            "fragrance": {"heat_rankings": {}, "new_product_radar": {}},
+        },
+        "market_observation": {
+            "makeup": {
+                "CN MASSTIGE": [
+                    {
+                        "detail": {"price_link": {"link": observation_url}},
+                        "launch_evidence": {"evidence": {"url": observation_url}},
+                    }
+                ]
+            },
+            "fragrance": {},
+        },
+    }
+
+    assert _report_source_urls(report) == {observation_url}
+
+
+def test_evidence_integrity_counts_market_observation_references():
+    from beauty_weekly.evidence import validate_source_product_referential_integrity
+
+    observation_url = "https://publisher.example/observed-launch"
+    report = {
+        "products": {
+            "makeup": {"heat_rankings": {}, "new_product_radar": {}},
+            "fragrance": {"heat_rankings": {}, "new_product_radar": {}},
+        },
+        "market_observation": {
+            "makeup": {
+                "CN MASSTIGE": [
+                    {
+                        "name": "Observed Product",
+                        "detail": {"price_link": {"link": observation_url}},
+                        "launch_evidence": {"evidence": {"url": observation_url}},
+                    }
+                ]
+            },
+            "fragrance": {},
+        },
+    }
+    sources = {"sources": [{"url": observation_url}]}
+
+    assert validate_source_product_referential_integrity(report, sources) == []
+
+    from beauty_weekly.validate_published import (
+        validate_product_source_referential_integrity,
+        validate_source_citation,
+    )
+
+    assert validate_product_source_referential_integrity(report, sources) == []
+    assert validate_source_citation(report, sources) == []

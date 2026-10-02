@@ -50,6 +50,7 @@ def test_pool_rejects_cross_category_noise():
     articles = [
         article(1, title="Brand launches velvet lipstick"),
         article(2, title="Brand launches oud eau de parfum"),
+        article(3, title="The best new perfumes of September"),
     ]
 
     pool = build_evidence_pool(articles, "makeup", "2026-09")
@@ -72,6 +73,30 @@ def test_panel_candidates_partition_market_and_keep_unknown_tier_available():
         "Affordable e.l.f. mascara launch",
         "Independent brand blush launch",
     ]
+
+
+def test_greater_china_sources_feed_cn_panels():
+    pool = build_evidence_pool(
+        [article(1, market="TW", title="9月彩妆新品盘点：Armani腮红")],
+        "makeup",
+        "2026-09",
+    )
+
+    assert panel_candidates(pool, "CN LUXURY")[0].market == "CN"
+    assert panel_candidates(pool, "US LUXURY") == []
+
+
+def test_product_roundups_are_prioritized_and_available_to_both_tiers():
+    generic = article(1, title="Fall makeup trend report")
+    roundup = article(2, title="The Best New Makeup Launches for September")
+    roundup["product_mentions"] = ["Chanel Lipstick", "Kiko Milano Mattifier"]
+    roundup["summary"] = "Products named in article: Chanel Lipstick; Kiko Milano Mattifier"
+
+    pool = build_evidence_pool([generic, roundup], "makeup", "2026-09")
+
+    assert pool[0].title == roundup["title"]
+    assert panel_candidates(pool, "US LUXURY")[0] == pool[0]
+    assert pool[0] in panel_candidates(pool, "US MASSTIGE")
 
 
 def test_official_sources_rank_before_editorial_sources():

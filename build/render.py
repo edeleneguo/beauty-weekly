@@ -23,6 +23,7 @@ Design invariants
 * Idempotent: running twice produces identical output.
 """
 
+import html
 import json
 import os
 import re
@@ -714,7 +715,8 @@ def _in_month(article: Dict[str, Any], month_label: str) -> bool:
 
 
 def _plain_text(value: Any) -> str:
-    return re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", str(value or ""))).strip()
+    decoded = html.unescape(str(value or ""))
+    return re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", decoded)).strip()
 
 
 def _topic_articles(raw: Dict[str, Any], topic: str, month_label: str) -> List[Dict[str, Any]]:

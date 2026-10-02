@@ -42,6 +42,18 @@ HEAT_MIN = 0
 HEAT_MAX = 10
 RADAR_MIN = 0
 RADAR_MAX = 10
+
+
+def _iter_report_products(report: dict):
+    products_data = report.get("products", {})
+    for topic in ("makeup", "fragrance"):
+        for section in ("heat_rankings", "new_product_radar"):
+            for panel, products in products_data.get(topic, {}).get(section, {}).items():
+                for idx, product in enumerate(products):
+                    yield topic, section, panel, idx, product
+        for panel, products in (report.get("market_observation") or {}).get(topic, {}).items():
+            for idx, product in enumerate(products or []):
+                yield topic, "market_observation", panel, idx, product
 SCORE_MIN_DISPLAYED = 65
 SCORE_MAX_DISPLAYED = 98
 
@@ -137,21 +149,14 @@ def validate_product_source_referential_integrity(report: dict, sources: dict) -
     source_urls = {s.get("url", "") for s in sources.get("sources", [])}
     report_urls: dict[str, list[str]] = {}
 
-    products_data = report.get("products", {})
-    for topic in ("makeup", "fragrance"):
-        for section in ("heat_rankings", "new_product_radar"):
-            for panel, products in products_data.get(topic, {}).get(section, {}).items():
-                for idx, p in enumerate(products):
-                    link = p.get("detail", {}).get("price_link", {}).get("link", "")
-                    if link:
-                        loc = f"{topic}/{section}/{panel}[{idx}] {p.get('name', '?')}"
-                        report_urls.setdefault(link, []).append(loc)
-                    # Also check evidence URLs
-                    le = p.get("launch_evidence")
-                    if le and le.get("evidence") and le["evidence"].get("url"):
-                        ev_url = le["evidence"]["url"]
-                        loc = f"{topic}/{section}/{panel}[{idx}] {p.get('name', '?')}"
-                        report_urls.setdefault(ev_url, []).append(loc)
+    for topic, section, panel, idx, product in _iter_report_products(report):
+        loc = f"{topic}/{section}/{panel}[{idx}] {product.get('name', '?')}"
+        link = product.get("detail", {}).get("price_link", {}).get("link", "")
+        if link:
+            report_urls.setdefault(link, []).append(loc)
+        evidence = ((product.get("launch_evidence") or {}).get("evidence") or {})
+        if evidence.get("url"):
+            report_urls.setdefault(evidence["url"], []).append(loc)
 
     # Every report URL must exist in sources
     for url, locations in report_urls.items():
@@ -271,15 +276,11 @@ def validate_source_citation(report: dict, sources: dict) -> list[str]:
     """Every product URL in report must exist in sources.json."""
     errors: list[str] = []
     source_urls = {s.get("url", "") for s in sources.get("sources", [])}
-    products_data = report.get("products", {})
-    for topic in ("makeup", "fragrance"):
-        for section in ("heat_rankings", "new_product_radar"):
-            for panel, products in products_data.get(topic, {}).get(section, {}).items():
-                for idx, p in enumerate(products):
-                    link = p.get("detail", {}).get("price_link", {}).get("link", "")
-                    if link and link not in source_urls:
-                        loc = f"{topic}/{section}/{panel}[{idx}] {p.get('name', '?')}"
-                        errors.append(f"Citation: {loc} URL not in sources.json: {link}")
+    for topic, section, panel, idx, product in _iter_report_products(report):
+        link = product.get("detail", {}).get("price_link", {}).get("link", "")
+        if link and link not in source_urls:
+            loc = f"{topic}/{section}/{panel}[{idx}] {product.get('name', '?')}"
+            errors.append(f"Citation: {loc} URL not in sources.json: {link}")
     return errors
 
 

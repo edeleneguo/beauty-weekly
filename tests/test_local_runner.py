@@ -43,6 +43,26 @@ def test_restore_keeps_failed_canonical_candidate(monkeypatch, tmp_path):
     assert (tmp_path / "index.html").read_text() == "published"
 
 
+def test_snapshot_restore_rolls_back_issue_registry_and_archive(monkeypatch, tmp_path):
+    monkeypatch.setattr(runner, "ROOT", tmp_path)
+    (tmp_path / "data").mkdir()
+    (tmp_path / "data" / "issues.json").write_text("before")
+    archive = tmp_path / "archive" / "months" / "2026-08"
+    archive.mkdir(parents=True)
+    (archive / "index.html").write_text("before archive")
+
+    backup = runner.snapshot("2026-09")
+    (tmp_path / "data" / "issues.json").write_text("after")
+    (archive / "index.html").write_text("after archive")
+    (tmp_path / "archive" / "months" / "2026-09").mkdir(parents=True)
+
+    runner.restore("2026-09", backup)
+
+    assert (tmp_path / "data" / "issues.json").read_text() == "before"
+    assert (archive / "index.html").read_text() == "before archive"
+    assert not (tmp_path / "archive" / "months" / "2026-09").exists()
+
+
 def test_codex_login_preflight_passes_on_first_attempt(monkeypatch):
     monkeypatch.setattr(runner, "codex_logged_in", lambda: True)
     runner._codex_login_preflight()

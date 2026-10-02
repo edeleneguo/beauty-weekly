@@ -617,6 +617,65 @@ class TestFindSupportingArticles:
         )
         assert len(result) == 0
 
+    def test_localized_product_alias_can_back_english_display_name(self):
+        """A cited Chinese roundup may support the public English SKU name."""
+        from build.generate_weekly import _find_supporting_articles
+
+        source_url = "https://www.vogue.com.tw/article/2026-sep-makeup-part3"
+        articles = [
+            {
+                "title": "9月彩妆新品盘点",
+                "url": source_url,
+                "date": "2026-09-22",
+                "summary": (
+                    "Products named in article: "
+                    "蘿拉蜜思完美無痕遮瑕盤; "
+                    "Make Up For Ever粉無痕原生透光氣墊粉餅"
+                ),
+                "category": "makeup",
+            }
+        ]
+
+        result = _find_supporting_articles(
+            "Laura Mercier Seamless Concealer Palette",
+            source_url,
+            articles,
+            source_url=source_url,
+            topic="makeup",
+            name_aliases=["萝拉蜜思完美无痕遮瑕盘"],
+        )
+
+        assert result == articles
+
+    def test_cited_roundup_product_mentions_tolerate_cn_script_variants(self):
+        """Simplified display names may match traditional Chinese headings."""
+        from build.generate_weekly import _find_supporting_articles
+
+        source_url = "https://www.vogue.com.tw/article/2026-sep-makeup-part3"
+        articles = [
+            {
+                "title": "9月彩妆新品盘点",
+                "url": source_url,
+                "date": "2026-09-22",
+                "summary": "Vogue九月新品总览",
+                "category": "makeup",
+                "product_mentions": [
+                    "Make Up For Ever粉無痕原生透光氣墊粉餅",
+                    "Ípsa玻光養膚精華粉底",
+                ],
+            }
+        ]
+
+        result = _find_supporting_articles(
+            "Make Up For Ever粉无痕原生透光气垫粉饼",
+            source_url,
+            articles,
+            source_url=source_url,
+            topic="makeup",
+        )
+
+        assert result == articles
+
     def test_google_news_aggregator_url_is_not_publishable_evidence(self):
         from build.generate_weekly import _find_supporting_articles
 
@@ -810,3 +869,87 @@ class TestFindSupportingArticles:
             launch_evidence=evidence,
         )
         assert product["detail"]["buzz"]["en"] == ("Test Lipstick: Chinese media coverage")
+
+    def test_visible_product_name_preserves_official_mixed_language_name(self):
+        from build.generate_monthly import make_product
+
+        evidence = {
+            "launch_date": "2026-09-12",
+            "quarantine_status": "verified",
+            "evidence_grade": "B",
+            "date_basis": "source_publication",
+            "evidence": {
+                "url": "https://example.com/fragrance",
+                "title": "September fragrance roundup",
+                "published_at": "2026-09-12",
+                "fetched_at": "2026-10-03T00:00:00Z",
+                "checked_at": "2026-10-03T00:00:00Z",
+                "supported_fields": ["launch_date", "link"],
+            },
+            "absence_markers": [],
+        }
+
+        product = make_product(
+            "Prada 唯我莫测魅甜果境淡香精",
+            "Prada 唯我莫测魅甜果境淡香精",
+            1,
+            88,
+            "CN",
+            "LUXURY",
+            "Eau de Parfum",
+            "Prada",
+            "Prada",
+            "九月报道",
+            "September editorial coverage",
+            "果香调",
+            "Fruity notes",
+            "价格容量未公开",
+            "Price and size not publicly disclosed",
+            "https://example.com/fragrance",
+            topic="fragrance",
+            launch_evidence=evidence,
+        )
+
+        assert product["name"] == "Prada 唯我莫测魅甜果境淡香精"
+
+    def test_chinese_only_name_does_not_leave_empty_english_buzz_subject(self):
+        from build.generate_monthly import make_product
+
+        evidence = {
+            "launch_date": "2026-09-22",
+            "quarantine_status": "verified",
+            "evidence_grade": "A",
+            "date_basis": "first_listing",
+            "evidence": {
+                "url": "https://example.com/roundup",
+                "title": "September makeup roundup",
+                "published_at": "2026-09-22",
+                "fetched_at": "2026-10-03T00:00:00Z",
+                "checked_at": "2026-10-03T00:00:00Z",
+                "supported_fields": ["launch_date", "link"],
+            },
+            "absence_markers": [],
+        }
+
+        product = make_product(
+            "萝拉蜜思完美无痕遮瑕盘",
+            "萝拉蜜思完美无痕遮瑕盘",
+            1,
+            80,
+            "CN",
+            "MASSTIGE",
+            "Concealer",
+            "萝拉蜜思",
+            "Laura Mercier",
+            "九月新品报道",
+            "Featured in a September makeup launch roundup",
+            "多色遮瑕",
+            "Multi-shade concealer palette",
+            "价格容量未公开",
+            "Price and size not publicly disclosed",
+            "https://example.com/roundup",
+            launch_evidence=evidence,
+        )
+
+        assert product["name"] == "萝拉蜜思完美无痕遮瑕盘"
+        assert product["detail"]["buzz"]["en"].startswith("This product: Featured")

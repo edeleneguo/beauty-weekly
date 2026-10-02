@@ -193,6 +193,25 @@ def test_google_news_url_is_decoded_to_direct_source(monkeypatch):
     )
 
 
+def test_google_news_collection_urls_are_resolved_in_place(monkeypatch):
+    from build import collect
+
+    monkeypatch.setattr(
+        collect,
+        "_decode_google_news_url",
+        lambda _url: "https://publisher.example/product-launch",
+    )
+    original = "https://news.google.com/rss/articles/encoded?oc=5"
+
+    resolved = collect.resolve_google_news_urls(
+        [{"url": original, "title": "Product launch"}], max_workers=1
+    )
+
+    assert resolved[0]["url"] == "https://publisher.example/product-launch"
+    assert resolved[0]["aggregator_url"] == original
+    assert resolved[0]["direct_url_status"] == "direct"
+
+
 def test_metadata_parser_extracts_structured_description():
     from build.collect import _MetadataParser
 
@@ -202,6 +221,51 @@ def test_metadata_parser_extracts_structured_description():
         'content="Official product launch details"></head></html>'
     )
     assert parser.description == "Official product launch details"
+
+
+def test_product_roundup_heading_extraction_keeps_named_products():
+    from build.collect import _extract_product_headings
+
+    html = """
+    <article>
+      <h2>Shop: The Best Beauty Buys Of The Month</h2>
+      <h2>1. Chanel Rouge Coco Hydra Gloss in Accessoire</h2>
+      <h3>Pros</h3>
+      <h2>2. Huda Beauty Liquid Matte Mousse</h2>
+      <h3>Cons</h3>
+    </article>
+    """
+
+    assert _extract_product_headings(html) == [
+        "Chanel Rouge Coco Hydra Gloss in Accessoire",
+        "Huda Beauty Liquid Matte Mousse",
+    ]
+
+
+def test_product_roundup_enrichment_adds_source_backed_mentions(monkeypatch):
+    from build import collect
+
+    monkeypatch.setattr(
+        collect,
+        "fetch_url",
+        lambda _url: (
+            "<h2>1. Kiko Milano Matte Diaries Timeless Invisible Mattifier</h2>"
+            "<h2>2. Hourglass Phantom Volumizing Glossy Balm</h2>"
+        ),
+    )
+    article = {
+        "title": "The Best New Beauty Buys For September 2026, Tried And Tested",
+        "summary": "These are the buys to keep on your radar.",
+        "url": "https://publisher.example/september-beauty-buys",
+    }
+
+    enriched = collect.enrich_product_roundups([article], max_workers=1)
+
+    assert enriched[0]["product_mentions"] == [
+        "Kiko Milano Matte Diaries Timeless Invisible Mattifier",
+        "Hourglass Phantom Volumizing Glossy Balm",
+    ]
+    assert enriched[0]["summary"].startswith("Products named in article:")
 
 
 def test_cn_fragrance_discovery_rejects_beverage_false_positive():
@@ -546,7 +610,25 @@ def test_brand_category_metadata_boosts_relevance():
     assert _score_article_relevance(generic_brand_event, "makeup") == 0
 
 
+def test_explicit_title_cues_override_stale_category_metadata():
+    from build.generate_monthly import _article_has_category_relevance
+
+    article = {
+        "title": (
+            "9月彩妆新品盘点：Armani天生透嫩马卡龙腮红、"
+            "Tom Ford立体光影底妆系列、Ipsa玻光养肤精华粉底"
+        ),
+        "summary": "本月彩妆新品集中上市",
+        "category": "fragrance",
+        "url": "https://www.vogue.com.tw/article/2026-sep-makeup",
+    }
+
+    assert _article_has_category_relevance(article, "makeup")
+    assert not _article_has_category_relevance(article, "fragrance")
+
+
 def test_generation_prompt_uses_bounded_balanced_evidence(monkeypatch):
+    monkeypatch.setenv("PRODUCT_GENERATION_ATTEMPTS", "1")
     articles = []
     for market in ("CN", "US"):
         for index in range(100):
@@ -561,10 +643,10 @@ def test_generation_prompt_uses_bounded_balanced_evidence(monkeypatch):
                 }
             )
 
-    captured = {}
+    captured = {"user_prompts": []}
 
     def fake_call_llm(system_prompt, user_prompt, max_tokens=8000):
-        captured.setdefault("user_prompt", user_prompt)
+        captured["user_prompts"].append(user_prompt)
         return '{"heat_rankings": {}, "new_product_radar": {}}'
 
     monkeypatch.setattr("build.generate_weekly.call_llm", fake_call_llm)
@@ -577,9 +659,13 @@ def test_generation_prompt_uses_bounded_balanced_evidence(monkeypatch):
             "2026-07-22T00:00:00Z",
         )
 
-    prompt = captured["user_prompt"]
+    prompt = "\n".join(captured["user_prompts"])
     assert prompt.count("(URL:") == 160
-    assert "CN Lipstick Product 79" in prompt
-    assert "US Lipstick Product 79" in prompt
-    assert "CN Lipstick Product 80" not in prompt
+    assert all(
+        f"[PANEL={panel}]" in prompt
+        for panel in ("US LUXURY", "US MASSTIGE", "CN LUXURY", "CN MASSTIGE")
+    )
+    assert "CN Lipstick Product 39" in prompt
+    assert "US Lipstick Product 39" in prompt
+    assert "CN Lipstick Product 40" not in prompt
     assert len(prompt.encode("utf-8")) < 120_000

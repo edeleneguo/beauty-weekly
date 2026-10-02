@@ -25,7 +25,14 @@ from build.generate_monthly import codex_logged_in  # noqa: E402
 
 STATE_DIR = ROOT / ".beauty-weekly-state"
 LOCK_PATH = STATE_DIR / "monthly-runner.lock"
-PUBLISHED = ("index.html", "fragrance.html", ".deploy-manifest-hash", "deploy-manifest.json")
+PUBLISHED = (
+    "index.html",
+    "fragrance.html",
+    ".deploy-manifest-hash",
+    "deploy-manifest.json",
+    "data/issues.json",
+)
+PUBLISHED_DIRS = ("archive",)
 CANONICAL = ("report.json", "sources.json", "scoring.json", "manifest.json")
 STRIP_ENV = (
     "CODEX_HOME",
@@ -132,7 +139,13 @@ def snapshot(month: str) -> Path:
     for name in PUBLISHED:
         src = ROOT / name
         if src.exists():
-            shutil.copy2(src, backup / name)
+            target = backup / name
+            target.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(src, target)
+    for name in PUBLISHED_DIRS:
+        src = ROOT / name
+        if src.exists():
+            shutil.copytree(src, backup / name)
     return backup
 
 
@@ -143,9 +156,16 @@ def restore(month: str, backup: Path) -> None:
     for name in PUBLISHED:
         dst, src = ROOT / name, backup / name
         if src.exists():
+            dst.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(src, dst)
         elif dst.exists():
             dst.unlink()
+    for name in PUBLISHED_DIRS:
+        dst, src = ROOT / name, backup / name
+        if dst.exists():
+            shutil.rmtree(dst)
+        if src.exists():
+            shutil.copytree(src, dst)
 
 
 def write_deploy_manifest(month: str) -> None:
@@ -163,7 +183,7 @@ def write_deploy_manifest(month: str) -> None:
 
 
 def publish(month: str) -> None:
-    paths = [*PUBLISHED, f"data/months/{month}/"]
+    paths = [*PUBLISHED, *PUBLISHED_DIRS, f"data/months/{month}/"]
     run(["git", "add", "--", *paths], month)
     if run(["git", "diff", "--staged", "--quiet"], month, check=False).returncode == 0:
         logging.info("No changes to publish")

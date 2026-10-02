@@ -30,7 +30,9 @@ CATEGORY_CUES = {
     ),
     "fragrance": (
         "fragrance",
+        "fragrances",
         "perfume",
+        "perfumes",
         "cologne",
         "scent",
         "eau de parfum",
@@ -110,10 +112,20 @@ def _relevance(article: dict, category: str) -> int:
     title_opposite = sum(_contains(title, cue) for cue in CATEGORY_CUES[opposite])
     if title_opposite and not title_target:
         return 0
-    return title_target * 4 + sum(_contains(body, cue) for cue in CATEGORY_CUES[category])
+    mention_bonus = min(len(article.get("product_mentions") or []), 10) * 10
+    return (
+        title_target * 4
+        + sum(_contains(body, cue) for cue in CATEGORY_CUES[category])
+        + mention_bonus
+    )
 
 
 def _tiers(article: dict) -> tuple[str, ...]:
+    if article.get("product_mentions"):
+        # Editorial roundups commonly mix prestige and mass-premium brands.
+        # Keep the source visible to both panels and let the panel-specific
+        # synthesis classify each named product.
+        return ("LUXURY", "MASSTIGE")
     text = f"{article.get('title', '')} {article.get('summary', '')}".casefold()
     luxury = any(cue in text for cue in LUXURY_CUES)
     masstige = any(cue in text for cue in MASSTIGE_CUES)
@@ -137,12 +149,17 @@ def build_evidence_pool(
         if not url or relevance <= 0 or urlsplit(url).netloc.casefold() == "news.google.com":
             continue
         authority = str(article.get("source_authority", "editorial") or "editorial")
+        excerpt_limit = 1600 if article.get("product_mentions") else 500
         candidate = EvidenceCandidate(
             candidate_id="src_" + hashlib.sha256(url.encode("utf-8")).hexdigest()[:12],
             title=str(article.get("title", "")).strip(),
-            excerpt=str(article.get("summary", "")).strip()[:500],
+            excerpt=str(article.get("summary", "")).strip()[:excerpt_limit],
             url=url,
-            market="CN" if article.get("market") == "CN" else "US",
+            market=(
+                "CN"
+                if str(article.get("market", "")).upper() in {"CN", "TW", "HK"}
+                else "US"
+            ),
             tiers=_tiers(article),
             date=str(article.get("date", "")),
             authority=authority,
@@ -156,7 +173,7 @@ def build_evidence_pool(
     return sorted(
         by_url.values(),
         key=lambda candidate: (
-            authority_rank.get(candidate.authority.casefold(), 3),
+            authority_rank.get(candidate.authority.casefold(), 2),
             -candidate.relevance,
             candidate.order,
         ),
@@ -172,5 +189,11 @@ def panel_candidates(
         for candidate in pool
         if candidate.market == market and tier in candidate.tiers
     ]
-    selected.sort(key=lambda candidate: (len(candidate.tiers), candidate.order))
+    selected.sort(
+        key=lambda candidate: (
+            len(candidate.tiers),
+            -candidate.relevance,
+            candidate.order,
+        )
+    )
     return selected[:limit] if limit is not None else selected

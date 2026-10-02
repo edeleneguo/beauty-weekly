@@ -134,6 +134,51 @@ class TestPreviousMonthRanges:
         assert _validate_month("2026-06") == "2026-06"
 
 
+def test_monthly_report_accepts_observation_and_coverage_extensions():
+    from beauty_weekly.models import MonthlyReport
+
+    report = MonthlyReport.model_validate(
+        {
+            "month": "2026-09",
+            "date_range": "Sep 1 - Sep 30, 2026",
+            "date_range_cn": "2026年9月1日 - 9月30日",
+            "version": "month2026-09-v1",
+            "products": {"makeup": {}, "fragrance": {}},
+            "market_observation": {"makeup": {}, "fragrance": {}},
+            "panel_coverage": {"makeup": {"heat_rankings": {}}},
+        },
+        strict=False,
+    )
+
+    assert report.market_observation.makeup == {}
+    assert report.panel_coverage["makeup"]["heat_rankings"] == {}
+
+
+def test_product_accepts_explicit_market_observation_status():
+    from beauty_weekly.models import Product
+
+    product = Product.model_validate(
+        {
+            "rank": 1,
+            "market": "CN",
+            "tier": "MASSTIGE",
+            "name": "观察候选产品",
+            "category_badge": "Lipstick",
+            "score": 75,
+            "detail": {
+                "price_link": {"en": "Not disclosed", "cn": "未公开", "link": "https://example.com"},
+                "key_features": {"en": "Observed signal", "cn": "观察信号"},
+                "buzz": {"en": "Social signal", "cn": "社交信号"},
+                "brand": {"en": "Emerging brand", "cn": "新兴品牌"},
+            },
+            "observation_status": "pending official confirmation",
+        },
+        strict=False,
+    )
+
+    assert product.observation_status == "pending official confirmation"
+
+
 # ═══════════════════════════════════════════════════════════════════════
 # 3. English-only page output
 # ═══════════════════════════════════════════════════════════════════════

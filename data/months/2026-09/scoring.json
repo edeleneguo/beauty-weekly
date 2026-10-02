@@ -1,0 +1,618 @@
+{
+  "components": null,
+  "display_breakdown_policy": {
+    "components": [
+      {
+        "evidence": "Sales, bestseller, ranking, sell-out, restock, and platform proxy signals.",
+        "id": "sales_momentum",
+        "label": "Sales Momentum",
+        "max_points": 40,
+        "weight": 0.4
+      },
+      {
+        "evidence": "Social discussion, creator/editor coverage, and media visibility.",
+        "id": "buzz_momentum",
+        "label": "Buzz Momentum",
+        "max_points": 30,
+        "weight": 0.3
+      },
+      {
+        "evidence": "Ratings, review volume, expert tests, vote counts, and user feedback.",
+        "id": "review_rating",
+        "label": "Review / Rating",
+        "max_points": 20,
+        "weight": 0.2
+      },
+      {
+        "evidence": "Fit with the month's active trend taxonomy and new-product context.",
+        "id": "trend_fit",
+        "label": "Trend Fit",
+        "max_points": 10,
+        "weight": 0.1
+      }
+    ],
+    "methodology": "Weighted dashboard explanation: Sales Momentum 40% + Buzz Momentum 30% + Review/Rating 20% + Trend Fit 10%. Historical monthly scores remain non-recomputable until raw platform sales/review/social time-series are collected.",
+    "status": "display_explanation_not_raw_recompute",
+    "version": "dashboard-explainability-v1"
+  },
+  "known_constraints": {
+    "field": "score",
+    "max": 100,
+    "min": 0,
+    "monotonic_by_rank": true,
+    "observed_max": 93,
+    "observed_min": 78,
+    "panel_independent": true,
+    "type": "integer"
+  },
+  "missing_components": [
+    "score_breakdown — no per-dimension scores available",
+    "weights — no weighting factors documented",
+    "raw component time-series - sales, social, review, and trend inputs not yet collected as normalized numeric series"
+  ],
+  "observed_statistics": {
+    "monotonic_by_rank": true,
+    "observed_max": 93,
+    "observed_min": 78,
+    "total_scored_products": 107
+  },
+  "products": [
+    {
+      "name": "Fenty Beauty Pro Filt’r Fluid Flex Foundation",
+      "panel": "US LUXURY",
+      "score": 92
+    },
+    {
+      "name": "Prada Touch Cream-To-Powder Soft Blur Longwear Blush in Dahlia",
+      "panel": "US LUXURY",
+      "score": 90
+    },
+    {
+      "name": "Dior Addict Glass Lipstick",
+      "panel": "US LUXURY",
+      "score": 89
+    },
+    {
+      "name": "Armani Luminous Silk Foundation",
+      "panel": "US LUXURY",
+      "score": 88
+    },
+    {
+      "name": "NARS Insatiable Longwearing Liquid Blush",
+      "panel": "US LUXURY",
+      "score": 87
+    },
+    {
+      "name": "Charlotte Tilbury Airbrush Flawless Blur Loose Powder",
+      "panel": "US LUXURY",
+      "score": 86
+    },
+    {
+      "name": "Chanel Rouge Coco Hydra Gloss in Accessoire",
+      "panel": "US LUXURY",
+      "score": 85
+    },
+    {
+      "name": "Hourglass Phantom Volumizing Glossy Balm",
+      "panel": "US LUXURY",
+      "score": 83
+    },
+    {
+      "name": "Dior Beauty Backstage Glow-Up Skin Tint",
+      "panel": "US LUXURY",
+      "score": 82
+    },
+    {
+      "name": "Marc Jacobs Beauty Concealer",
+      "panel": "US LUXURY",
+      "score": 80
+    },
+    {
+      "name": "Fenty Pro Filt’r Foundation",
+      "panel": "US MASSTIGE",
+      "score": 92
+    },
+    {
+      "name": "e.l.f. Soft Glam Satin Foundation",
+      "panel": "US MASSTIGE",
+      "score": 90
+    },
+    {
+      "name": "MERIT Clean Volume Volumizing Tubing Mascara",
+      "panel": "US MASSTIGE",
+      "score": 87
+    },
+    {
+      "name": "DIBS Beauty The Edit Stick",
+      "panel": "US MASSTIGE",
+      "score": 85
+    },
+    {
+      "name": "Jones Road Minimalist Defining Mascara",
+      "panel": "US MASSTIGE",
+      "score": 84
+    },
+    {
+      "name": "Huda Beauty Liquid Matte Mousse",
+      "panel": "US MASSTIGE",
+      "score": 82
+    },
+    {
+      "name": "Kiko Milano Matte Diaries Timeless Invisible Mattifier",
+      "panel": "US MASSTIGE",
+      "score": 79
+    },
+    {
+      "name": "Outside In Silk Serum Foundation",
+      "panel": "US MASSTIGE",
+      "score": 78
+    },
+    {
+      "name": "Dior Forever Matte Foundation",
+      "panel": "CN LUXURY",
+      "score": 92
+    },
+    {
+      "name": "Fenty Beauty Gloss Bomb Stix High-Shimmer Gloss Stick New Shades",
+      "panel": "CN LUXURY",
+      "score": 90
+    },
+    {
+      "name": "Armani Luminous Silk Cheek Tint",
+      "panel": "CN LUXURY",
+      "score": 89
+    },
+    {
+      "name": "IPSA Serum Foundation",
+      "panel": "CN LUXURY",
+      "score": 86
+    },
+    {
+      "name": "Laura Mercier Seamless Concealer Palette",
+      "panel": "CN LUXURY",
+      "score": 82
+    },
+    {
+      "name": "Make Up For Ever HD Skin Natural Glow Cushion Foundation",
+      "panel": "CN LUXURY",
+      "score": 80
+    },
+    {
+      "name": "FENTY BEAUTY星尘流光唇釉家族三款全新色号",
+      "panel": "CN MASSTIGE",
+      "score": 91
+    },
+    {
+      "name": "Make Up For Ever Artist Colorglow润唇膏",
+      "panel": "CN MASSTIGE",
+      "score": 89
+    },
+    {
+      "name": "Make Up For Ever粉无痕原生透光气垫粉饼",
+      "panel": "CN MASSTIGE",
+      "score": 87
+    },
+    {
+      "name": "Ípsa玻光养肤精华粉底",
+      "panel": "CN MASSTIGE",
+      "score": 85
+    },
+    {
+      "name": "萝拉蜜思完美无痕遮瑕盘",
+      "panel": "CN MASSTIGE",
+      "score": 82
+    },
+    {
+      "name": "Albion Studio超上镜柔焦乳液粉底",
+      "panel": "CN MASSTIGE",
+      "score": 80
+    },
+    {
+      "name": "Fenty Beauty Pro Filt’r Fluid Flex Foundation",
+      "panel": "US LUXURY",
+      "score": 92
+    },
+    {
+      "name": "Dior New Lip Blurs",
+      "panel": "US LUXURY",
+      "score": 90
+    },
+    {
+      "name": "Prada Touch Cream-To-Powder Soft Blur Longwear Blush in Dahlia",
+      "panel": "US LUXURY",
+      "score": 90
+    },
+    {
+      "name": "Chanel Rouge Coco Hydra Gloss in Accessoire",
+      "panel": "US LUXURY",
+      "score": 85
+    },
+    {
+      "name": "Hourglass Phantom Volumizing Glossy Balm",
+      "panel": "US LUXURY",
+      "score": 83
+    },
+    {
+      "name": "Fenty Pro Filt’r Foundation",
+      "panel": "US MASSTIGE",
+      "score": 92
+    },
+    {
+      "name": "e.l.f. Soft Glam Satin Foundation",
+      "panel": "US MASSTIGE",
+      "score": 90
+    },
+    {
+      "name": "Huda Beauty Liquid Matte Mousse",
+      "panel": "US MASSTIGE",
+      "score": 82
+    },
+    {
+      "name": "Kiko Milano Matte Diaries Timeless Invisible Mattifier",
+      "panel": "US MASSTIGE",
+      "score": 79
+    },
+    {
+      "name": "Outside In Silk Serum Foundation",
+      "panel": "US MASSTIGE",
+      "score": 78
+    },
+    {
+      "name": "Fenty Beauty Gloss Bomb Stix High-Shimmer Gloss Stick New Shades",
+      "panel": "CN LUXURY",
+      "score": 90
+    },
+    {
+      "name": "Armani Luminous Silk Cheek Tint",
+      "panel": "CN LUXURY",
+      "score": 89
+    },
+    {
+      "name": "IPSA Serum Foundation",
+      "panel": "CN LUXURY",
+      "score": 86
+    },
+    {
+      "name": "Laura Mercier Seamless Concealer Palette",
+      "panel": "CN LUXURY",
+      "score": 82
+    },
+    {
+      "name": "Make Up For Ever HD Skin Natural Glow Cushion Foundation",
+      "panel": "CN LUXURY",
+      "score": 80
+    },
+    {
+      "name": "FENTY BEAUTY星尘流光唇釉家族三款全新色号",
+      "panel": "CN MASSTIGE",
+      "score": 91
+    },
+    {
+      "name": "Make Up For Ever Artist Colorglow润唇膏",
+      "panel": "CN MASSTIGE",
+      "score": 89
+    },
+    {
+      "name": "Make Up For Ever粉无痕原生透光气垫粉饼",
+      "panel": "CN MASSTIGE",
+      "score": 87
+    },
+    {
+      "name": "Ípsa玻光养肤精华粉底",
+      "panel": "CN MASSTIGE",
+      "score": 85
+    },
+    {
+      "name": "萝拉蜜思完美无痕遮瑕盘",
+      "panel": "CN MASSTIGE",
+      "score": 82
+    },
+    {
+      "name": "Albion Studio超上镜柔焦乳液粉底",
+      "panel": "CN MASSTIGE",
+      "score": 80
+    },
+    {
+      "name": "Byredo Future Memories Eau de Parfum",
+      "panel": "US LUXURY",
+      "score": 92
+    },
+    {
+      "name": "Tom Ford Tobacco Chocolat",
+      "panel": "US LUXURY",
+      "score": 91
+    },
+    {
+      "name": "Victoria Beckham Beauty Hotel Portofino Extrait",
+      "panel": "US LUXURY",
+      "score": 90
+    },
+    {
+      "name": "Chanel Coco Mademoiselle Crush Absolu",
+      "panel": "US LUXURY",
+      "score": 89
+    },
+    {
+      "name": "Dries Van Noten Velvet Violet",
+      "panel": "US LUXURY",
+      "score": 87
+    },
+    {
+      "name": "Estée Lauder Glimmer",
+      "panel": "US LUXURY",
+      "score": 85
+    },
+    {
+      "name": "Miu Miu Miutine Intense",
+      "panel": "US LUXURY",
+      "score": 83
+    },
+    {
+      "name": "Hermès Un Jardin Sous La Mer Eau de Toilette",
+      "panel": "US LUXURY",
+      "score": 81
+    },
+    {
+      "name": "Phlur Vanilla Canyon",
+      "panel": "US MASSTIGE",
+      "score": 91
+    },
+    {
+      "name": "TOMMY HILFIGER Freedom Eau de Parfum",
+      "panel": "US MASSTIGE",
+      "score": 88
+    },
+    {
+      "name": "Victoria's Secret Bombshell Desire",
+      "panel": "US MASSTIGE",
+      "score": 87
+    },
+    {
+      "name": "Cécred Temple Oud Hair Perfume",
+      "panel": "US MASSTIGE",
+      "score": 85
+    },
+    {
+      "name": "Sol de Janeiro Intense Perfume Mist Collection",
+      "panel": "US MASSTIGE",
+      "score": 84
+    },
+    {
+      "name": "OUAI Laurel Canyon Eau de Parfum",
+      "panel": "US MASSTIGE",
+      "score": 82
+    },
+    {
+      "name": "Henry Rose Rhu Berry",
+      "panel": "US MASSTIGE",
+      "score": 80
+    },
+    {
+      "name": "Chanel N°5",
+      "panel": "CN LUXURY",
+      "score": 93
+    },
+    {
+      "name": "Chanel Chance Pink EDP",
+      "panel": "CN LUXURY",
+      "score": 90
+    },
+    {
+      "name": "Hermès Terre d'Hermès",
+      "panel": "CN LUXURY",
+      "score": 88
+    },
+    {
+      "name": "Prada 唯我莫测魅甜果境淡香精",
+      "panel": "CN LUXURY",
+      "score": 87
+    },
+    {
+      "name": "Jo Malone London 海盐与佛手柑香水",
+      "panel": "CN LUXURY",
+      "score": 85
+    },
+    {
+      "name": "L'Artisan Parfumeur 阿蒂仙之香神秘深渊精粹香精",
+      "panel": "CN LUXURY",
+      "score": 83
+    },
+    {
+      "name": "Bvlgari Omnia Amethyste",
+      "panel": "CN LUXURY",
+      "score": 81
+    },
+    {
+      "name": "Narciso all of me 倾我淡香精",
+      "panel": "CN LUXURY",
+      "score": 79
+    },
+    {
+      "name": "Florasis West Lake Scenery Fragrance Series",
+      "panel": "CN MASSTIGE",
+      "score": 89
+    },
+    {
+      "name": "Sabon Journey of Transformation Eau de Parfum Collection",
+      "panel": "CN MASSTIGE",
+      "score": 86
+    },
+    {
+      "name": "SW19 5pm Rose Petal Eau de Parfum",
+      "panel": "CN MASSTIGE",
+      "score": 85
+    },
+    {
+      "name": "Lacoste L.12.12 Bleu Eau de Parfum",
+      "panel": "CN MASSTIGE",
+      "score": 82
+    },
+    {
+      "name": "Kuoca Black Tea Eau de Parfum",
+      "panel": "CN MASSTIGE",
+      "score": 80
+    },
+    {
+      "name": "Jennifer Lopez Miami Glow Eau de Toilette",
+      "panel": "CN MASSTIGE",
+      "score": 78
+    },
+    {
+      "name": "Byredo Future Memories Eau de Parfum",
+      "panel": "US LUXURY",
+      "score": 92
+    },
+    {
+      "name": "Armani Privé Cuir Doré",
+      "panel": "US LUXURY",
+      "score": 91
+    },
+    {
+      "name": "Tom Ford Tobacco Chocolat",
+      "panel": "US LUXURY",
+      "score": 91
+    },
+    {
+      "name": "Armani Privé Cuir Rubis",
+      "panel": "US LUXURY",
+      "score": 90
+    },
+    {
+      "name": "Victoria Beckham Beauty Hotel Portofino Extrait",
+      "panel": "US LUXURY",
+      "score": 90
+    },
+    {
+      "name": "Byredo Havana Tonka",
+      "panel": "US LUXURY",
+      "score": 89
+    },
+    {
+      "name": "Chanel Coco Mademoiselle Crush Absolu",
+      "panel": "US LUXURY",
+      "score": 89
+    },
+    {
+      "name": "Dolce & Gabbana Velvet Amber Sage",
+      "panel": "US LUXURY",
+      "score": 87
+    },
+    {
+      "name": "Dries Van Noten Velvet Violet",
+      "panel": "US LUXURY",
+      "score": 87
+    },
+    {
+      "name": "Imaginary Authors Impassable Wilderness",
+      "panel": "US LUXURY",
+      "score": 78
+    },
+    {
+      "name": "TOMMY HILFIGER Freedom Eau de Parfum",
+      "panel": "US MASSTIGE",
+      "score": 88
+    },
+    {
+      "name": "Victoria's Secret Bombshell Desire",
+      "panel": "US MASSTIGE",
+      "score": 87
+    },
+    {
+      "name": "Cécred Temple Oud Hair Perfume",
+      "panel": "US MASSTIGE",
+      "score": 85
+    },
+    {
+      "name": "Brach's Ode to Candy Corn Fragrance",
+      "panel": "US MASSTIGE",
+      "score": 84
+    },
+    {
+      "name": "Sol de Janeiro Intense Perfume Mist Collection",
+      "panel": "US MASSTIGE",
+      "score": 84
+    },
+    {
+      "name": "Scentbird The Scent of Truth Collection",
+      "panel": "US MASSTIGE",
+      "score": 82
+    },
+    {
+      "name": "Prada 唯我莫测魅甜果境淡香精",
+      "panel": "CN LUXURY",
+      "score": 87
+    },
+    {
+      "name": "Jo Malone London 海盐与佛手柑香水",
+      "panel": "CN LUXURY",
+      "score": 85
+    },
+    {
+      "name": "L'Artisan Parfumeur 阿蒂仙之香神秘深渊精粹香精",
+      "panel": "CN LUXURY",
+      "score": 83
+    },
+    {
+      "name": "Bvlgari Omnia Amethyste",
+      "panel": "CN LUXURY",
+      "score": 81
+    },
+    {
+      "name": "Narciso all of me 倾我淡香精",
+      "panel": "CN LUXURY",
+      "score": 79
+    },
+    {
+      "name": "Florasis West Lake Scenery Fragrance Series",
+      "panel": "CN MASSTIGE",
+      "score": 89
+    },
+    {
+      "name": "Sabon Journey of Transformation Eau de Parfum Collection",
+      "panel": "CN MASSTIGE",
+      "score": 86
+    },
+    {
+      "name": "SW19 5pm Rose Petal Eau de Parfum",
+      "panel": "CN MASSTIGE",
+      "score": 85
+    },
+    {
+      "name": "Lacoste L.12.12 Bleu Eau de Parfum",
+      "panel": "CN MASSTIGE",
+      "score": 82
+    },
+    {
+      "name": "Kuoca Black Tea Eau de Parfum",
+      "panel": "CN MASSTIGE",
+      "score": 80
+    },
+    {
+      "name": "Jennifer Lopez Miami Glow Eau de Toilette",
+      "panel": "CN MASSTIGE",
+      "score": 78
+    }
+  ],
+  "reason": "LLM-generated scores with no decomposable components.",
+  "recomputable": false,
+  "schema_version": "1.0.0",
+  "scoring_formula": "Sales Score (≤50) + Buzz Score (≤50) = Total (≤100)",
+  "validation_rules": [
+    {
+      "checkable": true,
+      "description": "All non-zero scores must be between 0 and 100",
+      "rule": "score_range"
+    },
+    {
+      "checkable": true,
+      "description": "Within each panel, scores must be non-increasing by rank",
+      "rule": "monotonic_by_rank"
+    },
+    {
+      "checkable": true,
+      "description": "All ranks must be between 1 and 10",
+      "rule": "rank_range"
+    }
+  ],
+  "version": "1.0.0"
+}

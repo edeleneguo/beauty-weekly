@@ -11,6 +11,7 @@ def test_registry_is_strictly_ordered_and_public_entries_are_english():
     issues = load_issues(ROOT / "data" / "issues.json")
 
     assert [issue["id"] for issue in issues] == [
+        "month-2026-08",
         "2026-W30",
         "2026-W29",
         "2026-W28",

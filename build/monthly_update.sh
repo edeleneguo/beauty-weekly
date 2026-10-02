@@ -55,6 +55,7 @@ tar --exclude=.beauty-weekly-state -cf - . | tar -xf - -C "$STAGE_DIR"
 (
   cd "$STAGE_DIR"
   export BEAUTY_MONTHLY_MONTH="$TARGET_MONTH"
+  python3 build/archive_current_issue.py --next-month "$TARGET_MONTH"
   python3 build/render.py
   python3 build/update_issue_navigation.py
 
@@ -74,6 +75,10 @@ echo "Staged render: OK"
 for page in index.html fragrance.html; do
   cp "$STAGE_DIR/$page" "$page"
 done
+mkdir -p archive
+rm -rf archive/months
+cp -R "$STAGE_DIR/archive/months" archive/months
+cp "$STAGE_DIR/data/issues.json" "data/issues.json"
 
 # Save manifest hash proof for online verification (Req 6)
 MANIFEST_HASH=$(python3 -c "

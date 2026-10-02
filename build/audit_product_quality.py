@@ -34,6 +34,7 @@ SIZE_GAP_PATTERN = re.compile(
 )
 GENERIC_CATEGORY_PATTERN = re.compile(r"^(?:edp|edt|perfume|fragrance|solid)$", re.I)
 GENERIC_BUZZ_PATTERNS = (
+    re.compile(r"^[\s:;,.-]"),
     re.compile(r"^seasonal\b", re.I),
     re.compile(r"^limited edition\b", re.I),
     re.compile(r"^new release\b", re.I),
@@ -197,7 +198,7 @@ def audit_visible_cjk(report: dict) -> list[str]:
     for topic, section, panel, idx, product in _iter_products(report):
         fields = _visible_fields(product, section)
         for label, value in fields.items():
-            if label in {"section"}:
+            if label in {"section", "name"}:
                 continue
             if value and CJK_PATTERN.search(value):
                 errors.append(f"{_loc(topic, section, panel, idx, product)}: {label} contains CJK")

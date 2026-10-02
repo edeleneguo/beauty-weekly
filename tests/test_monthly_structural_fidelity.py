@@ -82,15 +82,20 @@ def test_monthly_templates_have_sequential_section_labels():
         assert positions == sorted(positions), f"{template_name} section labels are out of order"
 
 
-def test_structural_fidelity_manifest_script_writes_required_sections():
+def test_structural_fidelity_manifest_script_writes_required_sections(tmp_path):
+    manifest_path = tmp_path / "structural_fidelity_manifest.json"
     result = subprocess.run(
-        [sys.executable, str(ROOT / "build" / "structural_fidelity_manifest.py")],
+        [
+            sys.executable,
+            str(ROOT / "build" / "structural_fidelity_manifest.py"),
+            "--output",
+            str(manifest_path),
+        ],
         cwd=str(ROOT),
         capture_output=True,
         text=True,
     )
     assert result.returncode == 0, result.stderr
-    manifest_path = MONTH_DIR / "structural_fidelity_manifest.json"
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     assert "historical_weeks" in manifest
     assert "current_rendered" in manifest
