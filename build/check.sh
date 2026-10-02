@@ -31,6 +31,8 @@ hash_files_in() {
 python3 build/check_secrets.py
 python3 -m ruff check .
 python3 -m pytest -q
+python3 build/update_issue_navigation.py --check
+python3 build/check_site_links.py
 python3 build/validate_schema.py
 python3 build/validate_canonical.py
 python3 build/validate_scoring.py
