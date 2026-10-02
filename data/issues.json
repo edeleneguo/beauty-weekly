@@ -8,59 +8,19 @@
     "fragrance": "archive/months/2026-08/fragrance.html"
   },
   {
-    "id": "2026-W30",
-    "label": "Week 30",
-    "sort_key": "2026-07-26",
+    "id": "month-2026-07",
+    "label": "August 2026",
+    "sort_key": "2026-08-01",
     "language": "en",
-    "makeup": "archive/week-30/index.html",
-    "fragrance": "archive/week-30/fragrance.html"
+    "makeup": "archive/months/2026-07/index.html",
+    "fragrance": "archive/months/2026-07/fragrance.html"
   },
   {
-    "id": "2026-W29",
-    "label": "Week 29",
-    "sort_key": "2026-07-19",
+    "id": "month-2026-06",
+    "label": "July 2026",
+    "sort_key": "2026-07-01",
     "language": "en",
-    "makeup": "archive/week-29/index.html",
-    "fragrance": "archive/week-29/fragrance.html"
-  },
-  {
-    "id": "2026-W28",
-    "label": "Week 28",
-    "sort_key": "2026-07-12",
-    "language": "en",
-    "makeup": "archive/week-28/index.html",
-    "fragrance": "archive/week-28/fragrance.html"
-  },
-  {
-    "id": "2026-W27",
-    "label": "Week 27",
-    "sort_key": "2026-07-05",
-    "language": "en",
-    "makeup": "archive/week-27/index.html",
-    "fragrance": "archive/week-27/fragrance.html"
-  },
-  {
-    "id": "2026-W26",
-    "label": "Week 26",
-    "sort_key": "2026-06-28",
-    "language": "en",
-    "makeup": "archive/week-26/index.html",
-    "fragrance": "archive/week-26/fragrance.html"
-  },
-  {
-    "id": "2026-W25",
-    "label": "Week 25",
-    "sort_key": "2026-06-15",
-    "language": "en",
-    "makeup": "archive/week-25/index.html",
-    "fragrance": "archive/week-25/fragrance.html"
-  },
-  {
-    "id": "2026-W23",
-    "label": "Week 23",
-    "sort_key": "2026-05-25",
-    "language": "en",
-    "makeup": "archive/week-23/index.html",
-    "fragrance": "archive/week-23/fragrance.html"
+    "makeup": "archive/months/2026-06/index.html",
+    "fragrance": "archive/months/2026-06/fragrance.html"
   }
 ]

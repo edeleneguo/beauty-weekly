@@ -28,6 +28,7 @@ import json
 import os
 import re
 import sys
+import unicodedata
 from datetime import date
 from email.utils import parsedate_to_datetime
 from typing import Any, Dict, List, Optional
@@ -763,32 +764,208 @@ def _render_news(topic: str, articles: List[Dict[str, Any]], date_range: str) ->
     )
 
 
-def _render_trends(topic: str, products: Dict[str, Any], date_range: str) -> str:
-    label = "Makeup" if topic == "makeup" else "Fragrance"
-    taxonomies = {
-        "makeup": {
-            "Skincare Foundation": ("foundation", "cushion", "primer", "complexion", "skin"),
-            "Functional Lip": ("lip", "balm", "gloss", "peptide"),
-            "Low-Saturation Pastel": ("pastel", "blush", "eyeshadow", "palette", "soft color"),
-        },
-        "fragrance": {
-            "Milky Musk": ("milk", "milky", "musk", "cashmere", "vanilla"),
-            "Matcha Fragrance": ("matcha", "tea", "green"),
-            "Rose Revival": ("rose", "floral"),
-            "Oriental Narrative": ("oud", "oriental", "sandalwood", "incense", "amber"),
-        },
-    }[topic]
-    combined = []
+TREND_TAXONOMY = {
+    "makeup": ("Skincare Foundation", "Functional Lip", "Low-Saturation Pastel"),
+    "fragrance": (
+        "Milky Musk",
+        "Matcha Fragrance",
+        "Rose Revival",
+        "Oriental Narrative",
+    ),
+}
+
+
+def _normalized_product_aliases(product: Dict[str, Any]) -> set[str]:
+    aliases = set()
+    for field in ("name", "name_cn"):
+        value = str(product.get(field, "")).casefold()
+        normalized = "".join(char for char in value if char.isalnum())
+        if normalized:
+            aliases.add(normalized)
+    return aliases
+
+
+def _trend_identity_keys(product: Dict[str, Any]) -> set[str]:
+    """Return stable keys used only to avoid duplicate trend signals.
+
+    A product can enter the report through more than one source or with an
+    English and localized title.  Name aliases cover the common case; the
+    source/brand/category key covers localized titles that still point to the
+    same evidence page without merging unrelated products from a roundup.
+    """
+    keys = {f"name:{alias}" for alias in _normalized_product_aliases(product)}
+    detail = product.get("detail") or {}
+    source_url = str((detail.get("price_link") or {}).get("link") or "").strip().casefold()
+    name = unicodedata.normalize("NFKD", str(product.get("name") or ""))
+    ascii_name = name.encode("ascii", "ignore").decode("ascii")
+    brand_match = re.match(r"\s*([a-z0-9][a-z0-9'&.-]{2,})", ascii_name.casefold())
+    category = re.sub(
+        r"[^a-z0-9]+",
+        "",
+        unicodedata.normalize("NFKD", str(product.get("category_badge") or ""))
+        .encode("ascii", "ignore")
+        .decode("ascii")
+        .casefold(),
+    )
+    if source_url and brand_match and category:
+        keys.add(f"source:{source_url}|brand:{brand_match.group(1)}|category:{category}")
+    return keys
+
+
+def _explicit_trend_tag(product: Dict[str, Any]) -> str:
+    trend = product.get("trend") or {}
+    return str(product.get("trend_badge") or trend.get("tag") or "").strip()
+
+
+def _matches_trend(topic: str, trend_name: str, product: Dict[str, Any]) -> bool:
+    if _explicit_trend_tag(product) == trend_name:
+        return True
+
+    detail = product.get("detail") or {}
+    name = _plain_text(f"{product.get('name', '')} {product.get('name_cn', '')}").casefold()
+    category = _plain_text(product.get("category_badge", "")).casefold()
+    features = _plain_text(str((detail.get("key_features") or {}).get("en", ""))).casefold()
+    descriptive = _plain_text(
+        " ".join(
+            str((detail.get(field) or {}).get("en", ""))
+            for field in ("key_features", "buzz", "brand")
+        )
+    ).casefold()
+    full_text = f"{name} {category} {descriptive}"
+
+    if topic == "makeup":
+        if trend_name == "Skincare Foundation":
+            complexion = any(
+                cue in category
+                for cue in ("foundation", "cushion", "skin tint", "primer", "complexion")
+            )
+            care = any(
+                cue in full_text
+                for cue in (
+                    "serum",
+                    "skincare",
+                    "skin care",
+                    "hydrating",
+                    "moistur",
+                    "nourish",
+                    "treatment",
+                    "peptide",
+                    "niacinamide",
+                    "ceramide",
+                    "hyaluronic",
+                    "养肤",
+                )
+            )
+            return complexion and care
+        if trend_name == "Functional Lip":
+            lip_product = "lip" in category or any(
+                cue in name for cue in ("lip", "唇膏", "唇釉", "润唇", "唇霜")
+            )
+            benefit = any(
+                cue in full_text
+                for cue in (
+                    "balm",
+                    "treatment",
+                    "hydrating",
+                    "moistur",
+                    "peptide",
+                    "serum",
+                    "repair",
+                    "nourish",
+                    "comfort",
+                    "plump",
+                    "volumiz",
+                    "润唇",
+                    "保湿",
+                    "修护",
+                )
+            )
+            return lip_product and benefit
+        if trend_name == "Low-Saturation Pastel":
+            return any(
+                cue in full_text
+                for cue in (
+                    "low-saturation",
+                    "low saturation",
+                    "pastel",
+                    "muted",
+                    "macaron",
+                    "lilac",
+                    "lavender",
+                    "powder blue",
+                    "pale pink",
+                    "马卡龙",
+                    "馬卡龍",
+                    "低饱和",
+                    "低飽和",
+                )
+            )
+
+    if trend_name == "Milky Musk":
+        return any(
+            cue in full_text
+            for cue in (
+                "milky",
+                "milk accord",
+                "lactonic",
+                "mochi milk",
+                "skin scent",
+                "white musk",
+                "soft musk",
+                "cashmere musk",
+                "乳感",
+                "白麝香",
+            )
+        )
+    if trend_name == "Matcha Fragrance":
+        return "matcha" in full_text or "抹茶" in full_text
+    if trend_name == "Rose Revival":
+        return "rose" in features or any(
+            cue in name for cue in ("rose petal", "rose whip", "rosa rossa", "玫瑰")
+        )
+    if trend_name == "Oriental Narrative":
+        return any(
+            cue in full_text
+            for cue in (
+                "oud",
+                "oriental narrative",
+                "incense",
+                "sandalwood",
+                "resinous",
+                "沉香",
+                "檀香",
+                "焚香",
+            )
+        )
+    return False
+
+
+def _group_trend_products(
+    topic: str, products: Dict[str, Any]
+) -> Dict[str, List[tuple[str, Dict[str, Any]]]]:
+    groups: Dict[str, List[tuple[str, Dict[str, Any]]]] = {
+        name: [] for name in TREND_TAXONOMY[topic]
+    }
+    seen: Dict[str, set[str]] = {name: set() for name in groups}
     for section in ("heat_rankings", "new_product_radar"):
         for panel, rows in products.get(section, {}).items():
             for row in rows:
-                combined.append((panel, row))
-    groups: Dict[str, List[tuple]] = {name: [] for name in taxonomies}
-    for panel, row in combined:
-        haystack = _plain_text(json.dumps(row, ensure_ascii=False)).lower()
-        for trend_name, keywords in taxonomies.items():
-            if any(keyword in haystack for keyword in keywords):
-                groups[trend_name].append((panel, row))
+                identity_keys = _trend_identity_keys(row)
+                if not identity_keys:
+                    continue
+                for trend_name in groups:
+                    if not _matches_trend(topic, trend_name, row):
+                        continue
+                    if identity_keys & seen[trend_name]:
+                        continue
+                    groups[trend_name].append((panel, row))
+                    seen[trend_name].update(identity_keys)
+    return groups
+
+
+def _render_trends(topic: str, products: Dict[str, Any], date_range: str) -> str:
+    label = "Makeup" if topic == "makeup" else "Fragrance"
+    groups = _group_trend_products(topic, products)
     ranked = sorted(
         ((name, rows) for name, rows in groups.items() if rows),
         key=lambda item: len(item[1]), reverse=True,
@@ -797,11 +974,12 @@ def _render_trends(topic: str, products: Dict[str, Any], date_range: str) -> str
     for trend_name, rows in ranked:
         names = [str(row.get("name", "")).strip() for _, row in rows if row.get("name")][:3]
         markets = sorted({panel.split()[0] for panel, _ in rows})
+        signal_word = "signal" if len(rows) == 1 else "signals"
         cards.append(
             '<div class="trend-v-card"><div class="trend-v-header">'
-            f'<h4><span class="heat-trend-tag">{_esc(trend_name)}</span> · {len(rows)} verified product signals</h4><span class="trend-v-arrow">▼</span></div>'
+            f'<h4><span class="heat-trend-tag">{_esc(trend_name)}</span> · {len(rows)} evidence-backed product {signal_word}</h4><span class="trend-v-arrow">▼</span></div>'
             '<div class="trend-v-body">'
-            f'<div class="driver-summary">Observed in the verified {date_range} ranking and launch evidence across {", ".join(markets)}: {_esc(", ".join(names))}.</div>'
+            f'<div class="driver-summary">Observed in the verified {date_range} ranking and launch evidence across {", ".join(markets)}. Examples: {_esc(", ".join(names))}.</div>'
             '<div class="action-block"><div class="act-detail-text">Use this as a directional product signal; validate sales velocity and consumer demand before an NPD commitment.</div></div>'
             '</div></div>'
         )
@@ -880,6 +1058,8 @@ def _update_banner_month(html: str, month_label: str, date_range: str) -> str:
 
 
 def _resolve_template_path(month_label: str, output_name: str) -> str:
+    if os.environ.get("BEAUTY_USE_CURRENT_TEMPLATE") == "1":
+        return os.path.join(PAGE_SHELL_DIR, output_name)
     month_specific = os.path.join(ROOT, "data", "months", month_label, "page_shells", output_name)
     if os.path.exists(month_specific):
         return month_specific

@@ -55,8 +55,8 @@ tar --exclude=.beauty-weekly-state -cf - . | tar -xf - -C "$STAGE_DIR"
 (
   cd "$STAGE_DIR"
   export BEAUTY_MONTHLY_MONTH="$TARGET_MONTH"
-  python3 build/archive_current_issue.py --next-month "$TARGET_MONTH"
   python3 build/render.py
+  python3 build/rebuild_monthly_archives.py --current-month "$TARGET_MONTH"
   python3 build/update_issue_navigation.py
 
   # Staged validation: always runs (no skip)

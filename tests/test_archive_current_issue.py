@@ -54,9 +54,12 @@ def test_does_not_archive_when_root_already_matches_target_month(tmp_path):
     assert not (root / "archive").exists()
 
 
-def test_monthly_update_archives_in_stage_before_render_and_promotes_registry():
+def test_monthly_update_rebuilds_archives_before_navigation_and_promotes_registry():
     script = (Path(__file__).parents[1] / "build" / "monthly_update.sh").read_text()
 
-    assert script.index("build/archive_current_issue.py") < script.index("build/render.py")
+    assert script.index("build/render.py") < script.index("build/rebuild_monthly_archives.py")
+    assert script.index("build/rebuild_monthly_archives.py") < script.index(
+        "build/update_issue_navigation.py"
+    )
     assert 'cp "$STAGE_DIR/data/issues.json" "data/issues.json"' in script
     assert 'archive/months' in script

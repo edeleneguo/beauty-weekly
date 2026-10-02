@@ -12,13 +12,8 @@ def test_registry_is_strictly_ordered_and_public_entries_are_english():
 
     assert [issue["id"] for issue in issues] == [
         "month-2026-08",
-        "2026-W30",
-        "2026-W29",
-        "2026-W28",
-        "2026-W27",
-        "2026-W26",
-        "2026-W25",
-        "2026-W23",
+        "month-2026-07",
+        "month-2026-06",
     ]
     assert all(issue["language"] == "en" for issue in issues)
 
@@ -49,11 +44,14 @@ def test_relative_issue_url_accounts_for_archive_depth():
     )
 
 
-def test_options_are_complete_ordered_and_never_link_chinese_pages():
+def test_options_are_complete_ordered_monthly_and_never_link_chinese_pages():
     page = ROOT / "archive" / "week-30" / "fragrance.html"
 
     options = render_issue_options(page, "fragrance", ROOT / "data" / "issues.json")
 
-    assert options.index("Week 30") < options.index("Week 29") < options.index("Week 23")
-    assert '../week-29/fragrance.html' in options
+    assert options.index("September 2026") < options.index("August 2026") < options.index(
+        "July 2026"
+    )
+    assert '../months/2026-08/fragrance.html' in options
+    assert "Week " not in options
     assert "-cn.html" not in options
