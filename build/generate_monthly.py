@@ -36,6 +36,7 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
 from beauty_weekly.evidence import EXPLICIT_EVIDENCE_ABSENCES  # noqa: E402
+from beauty_weekly.candidates import build_evidence_pool  # noqa: E402
 from beauty_weekly.month import previous_month_str, resolve_month  # noqa: E402
 from build.collect import search_product_evidence  # noqa: E402
 
@@ -63,7 +64,9 @@ _DEFAULT_CODEX_BIN = "/opt/homebrew/bin/codex"
 CODEX_BIN = os.environ.get("CODEX_BIN", "") or (
     _DEFAULT_CODEX_BIN if os.path.exists(_DEFAULT_CODEX_BIN) else shutil.which("codex") or "codex"
 )
+DEFAULT_CODEX_MODEL = "gpt-5.6-sol"
 CODEX_MODEL = os.environ.get("CODEX_MODEL", "").strip()
+CODEX_REASONING_EFFORT = os.environ.get("CODEX_REASONING_EFFORT", "high").strip()
 CODEX_EXEC_TIMEOUT = int(os.environ.get("CODEX_EXEC_TIMEOUT", "900"))
 
 # Environment variables that would force the Codex CLI to use a non-ChatGPT
@@ -258,6 +261,34 @@ def codex_logged_in() -> bool:
     return result.returncode == 0
 
 
+def effective_model_name() -> str:
+    if LLM_TRANSPORT == "codex":
+        return CODEX_MODEL or DEFAULT_CODEX_MODEL
+    return MODEL
+
+
+def _codex_exec_command(out_path: Path, prompt: str) -> list[str]:
+    return [
+        CODEX_BIN,
+        "exec",
+        "-C",
+        str(ROOT),
+        "--skip-git-repo-check",
+        "--sandbox",
+        "read-only",
+        "--ephemeral",
+        "--color",
+        "never",
+        "--model",
+        CODEX_MODEL or DEFAULT_CODEX_MODEL,
+        "--config",
+        f"model_reasoning_effort={CODEX_REASONING_EFFORT}",
+        "-o",
+        str(out_path),
+        prompt,
+    ]
+
+
 def call_codex(system_prompt: str, user_prompt: str, max_tokens: int = 8000) -> str:
     """Invoke the locally authenticated Codex CLI non-interactively.
 
@@ -278,23 +309,9 @@ def call_codex(system_prompt: str, user_prompt: str, max_tokens: int = 8000) -> 
         "Respond ONLY with the requested JSON payload. Do not run any shell commands "
         "and do not use any tools or files."
     )
-    cmd = [
-        CODEX_BIN,
-        "exec",
-        "-C",
-        str(ROOT),
-        "--skip-git-repo-check",
-        "--sandbox",
-        "read-only",
-        "--ephemeral",
-        "--color",
-        "never",
-    ]
-    if CODEX_MODEL:
-        cmd += ["--model", CODEX_MODEL]
     with tempfile.NamedTemporaryFile(prefix="codex-last-message-", mode="w", delete=False) as tmp:
         out_path = tmp.name
-    cmd += ["-o", out_path, prompt]
+    cmd = _codex_exec_command(Path(out_path), prompt)
     try:
         proc = subprocess.run(
             cmd,
@@ -1306,6 +1323,16 @@ def _record_cn_radar_coverage(
     _record_heat_radar_coverage(raw_data, category, result)
 
 
+def _resolve_candidate_source(
+    product: dict, source_map: dict[str, str], article_urls: set[str]
+) -> str | None:
+    source_id = str(product.get("source_id", "") or "").strip()
+    if source_id in source_map:
+        return source_map[source_id]
+    source_url = str(product.get("source_url", "") or "").strip()
+    return source_url if source_url in article_urls else None
+
+
 def generate_products(
     raw_data: dict, category: str, month_label: str, en_range: str, fetched_at: str
 ) -> dict:
@@ -1331,16 +1358,14 @@ def generate_products(
     confirmation, never mixed into the formal list.
     """
     articles = raw_data.get("articles", [])
-    # Category-aware selection: pick articles whose titles/summaries
-    # contain category-relevant cues (makeup vs fragrance keywords) so
-    # that the LLM prompt includes evidence proportional to the topic
-    # rather than simply taking the first 15 per market.  The full
-    # article set is still retained for post-generation evidence matching.
-    prompt_articles = _select_category_relevant_articles(articles, category)
-    articles_text = "\n".join(
-        f"[{i}] {a['title']}: {a.get('summary', '')[:200]} (URL: {a['url']})"
-        for i, a in enumerate(prompt_articles)
-    )
+    evidence_pool = build_evidence_pool(articles, category, month_label)
+    prompt_candidates = [
+        candidate
+        for market in ("CN", "US")
+        for candidate in [c for c in evidence_pool if c.market == market][:80]
+    ]
+    source_map = {candidate.candidate_id: candidate.url for candidate in evidence_pool}
+    articles_text = "\n".join(candidate.prompt_line() for candidate in prompt_candidates)
 
     system_prompt = f"""You are a beauty industry analyst. Generate product \
 data for the {category} category.
@@ -1365,7 +1390,8 @@ Output ONLY valid JSON with this exact structure:
         "price_cn": "$XX",
         "price_en": "$XX",
         "link": "https://www.sephora.com/product/...",
-        "source_url": "https://www.elle.com/beauty/...exact URL from the Raw data list..."
+        "source_id": "src_exact_id_from_the_evidence_list",
+        "source_url": "https://www.elle.com/beauty/...exact matching evidence URL..."
       }}
     ],
     "US MASSTIGE": [...],
@@ -1402,15 +1428,17 @@ Rules:
   whitelist. Other valid public sources are allowed under identical evidence rules.
 - Each product link MUST point to a real, accessible product page URL.
 - Do NOT generate products for which you cannot provide a real URL.
-- IMPORTANT: Each product MUST include a "source_url" field set to the
-  exact URL of one of the articles listed in the Raw data below.  This
-  is the article that supports the product claim.  The source_url value
-  must match the full URL exactly from the supplied list."""
+- IMPORTANT: Each product MUST include a "source_id" copied exactly from
+  one supplied evidence row. The product name must appear in that row's
+  title or excerpt. Also copy its URL into "source_url". Never invent an ID,
+  product, URL, price, size, review count, sales claim, or launch date.
+- If price or size is not present in the evidence, set both price fields to
+  "Price and size not publicly disclosed" rather than dropping the product."""
 
     user_prompt = (
         f"Generate {category} product data"
         f" for month {month_label} ({en_range})."
-        f"\n\nRaw data (article index, title, summary, URL):\n{articles_text}"
+        f"\n\nEvidence pool (source ID, title, excerpt, URL):\n{articles_text}"
     )
 
     _LLM_MAX_ATTEMPTS = 3
@@ -1479,9 +1507,9 @@ Rules:
                                 panel_candidates.get((section, panel), 0) + 1
                             )
                             # Reject products whose source_url is not a collected article URL
-                            source_url = p.get("source_url")
-                            if source_url and source_url not in article_urls:
-                                source_url = None
+                            source_url = _resolve_candidate_source(
+                                p, source_map, article_urls
+                            )
                             try:
                                 candidate = make_product(
                                     name=name,
@@ -1673,22 +1701,24 @@ Rules:
                 _supplement_candidate_evidence(data, raw_data, category, month_label)
                 articles = raw_data.get("articles", [])
                 article_urls = {a.get("url", "") for a in articles if a.get("url")}
-            expanded_articles = _select_category_relevant_articles(
-                articles,
-                category,
-                max_cn=40,
-                max_non_cn=15,
+            expanded_pool = build_evidence_pool(articles, category, month_label)
+            expanded_candidates = [
+                candidate
+                for market in ("CN", "US")
+                for candidate in [c for c in expanded_pool if c.market == market][:120]
+            ]
+            source_map.update(
+                {candidate.candidate_id: candidate.url for candidate in expanded_pool}
             )
             expanded_articles_text = "\n".join(
-                f"[{i}] {article['title']}: {article.get('summary', '')[:200]} "
-                f"(URL: {article['url']})"
-                for i, article in enumerate(expanded_articles)
+                candidate.prompt_line() for candidate in expanded_candidates
             )
             retry_note = (
                 f"\n\n[RETRY {attempt}/{_LLM_MAX_ATTEMPTS}] "
                 + " ".join(retry_reasons)
-                + " Each source_url must be an exact URL below. Do not fabricate "
-                "products or source URLs." + f"\n\nExpanded evidence:\n{expanded_articles_text}"
+                + " Each source_id must be copied from the evidence below and the "
+                "product name must be present in that row. Do not fabricate products "
+                "or URLs." + f"\n\nExpanded evidence:\n{expanded_articles_text}"
             )
             current_user_prompt = user_prompt + retry_note
             print(
@@ -2039,7 +2069,7 @@ def main() -> int:
     print(f"Month: {month}")
     print(f"Date Range: {en_range}")
     print(f"Transport: {LLM_TRANSPORT}")
-    print(f"LLM Model: {MODEL}")
+    print(f"LLM Model: {effective_model_name()}")
     print()
 
     # Load raw data

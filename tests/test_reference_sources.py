@@ -553,7 +553,7 @@ def test_generation_prompt_uses_bounded_balanced_evidence(monkeypatch):
             articles.append(
                 {
                     "source": f"{market}-{index}",
-                    "title": f"{market} Product {index}",
+                    "title": f"{market} Lipstick Product {index}",
                     "url": f"https://example.org/{market.lower()}/{index}",
                     "date": "2026-07-22",
                     "summary": "x" * 500,
@@ -578,8 +578,8 @@ def test_generation_prompt_uses_bounded_balanced_evidence(monkeypatch):
         )
 
     prompt = captured["user_prompt"]
-    assert prompt.count("(URL:") == 30
-    assert "CN Product 14" in prompt
-    assert "US Product 14" in prompt
-    assert "CN Product 15" not in prompt
-    assert len(prompt.encode("utf-8")) < 20_000
+    assert prompt.count("(URL:") == 160
+    assert "CN Lipstick Product 79" in prompt
+    assert "US Lipstick Product 79" in prompt
+    assert "CN Lipstick Product 80" not in prompt
+    assert len(prompt.encode("utf-8")) < 120_000
