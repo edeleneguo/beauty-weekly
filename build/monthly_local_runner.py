@@ -14,6 +14,7 @@ import subprocess
 import sys
 import tempfile
 import time
+from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -34,6 +35,8 @@ STRIP_ENV = (
     "CODEX_API_KEY",
     "CODEX_ACCESS_TOKEN",
 )
+PROJECT_CODEX_MODEL = "gpt-5.6-sol"
+PROJECT_REASONING_EFFORT = "high"
 
 
 def clean_env(extra: dict[str, str] | None = None) -> dict[str, str]:
@@ -57,7 +60,11 @@ def run(
     cmd: list[str], month: str, *, check: bool = True, transport: str | None = None
 ) -> subprocess.CompletedProcess[str]:
     logging.info("RUN %s", " ".join(cmd))
-    extra = {"BEAUTY_MONTHLY_MONTH": month}
+    extra = {
+        "BEAUTY_MONTHLY_MONTH": month,
+        "CODEX_MODEL": PROJECT_CODEX_MODEL,
+        "CODEX_REASONING_EFFORT": PROJECT_REASONING_EFFORT,
+    }
     if transport:
         extra["BEAUTY_MONTHLY_TRANSPORT"] = transport
     proc = subprocess.run(
@@ -73,6 +80,48 @@ def run(
     if check and proc.returncode:
         raise RuntimeError(f"command failed ({proc.returncode}): {' '.join(cmd)}")
     return proc
+
+
+def already_published(month: str) -> bool:
+    path = ROOT / "deploy-manifest.json"
+    if not path.is_file():
+        return False
+    try:
+        return json.loads(path.read_text(encoding="utf-8")).get("month") == month
+    except (OSError, json.JSONDecodeError):
+        return False
+
+
+def ensure_clean_checkout(month: str, *, allow_target_raw: bool = False) -> None:
+    proc = subprocess.run(
+        ["git", "status", "--porcelain", "--untracked-files=all"],
+        cwd=ROOT,
+        text=True,
+        capture_output=True,
+    )
+    if proc.returncode:
+        raise RuntimeError(f"cannot inspect automation checkout: {proc.stderr.strip()}")
+    dirty = [line for line in proc.stdout.splitlines() if line.strip()]
+    allowed = f"?? data/months/{month}/raw_collected.json"
+    if allow_target_raw:
+        dirty = [line for line in dirty if line != allowed]
+    if dirty:
+        sample = "; ".join(dirty[:5])
+        raise RuntimeError(f"dirty automation checkout; refusing publication: {sample}")
+
+
+def write_status(month: str, state: str, *, detail: str = "") -> None:
+    STATE_DIR.mkdir(parents=True, exist_ok=True)
+    payload = {
+        "month": month,
+        "state": state,
+        "detail": detail,
+        "updated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+    }
+    target = STATE_DIR / "monthly-status.json"
+    temp = target.with_suffix(".tmp")
+    temp.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    temp.replace(target)
 
 
 def snapshot(month: str) -> Path:
@@ -215,6 +264,17 @@ def main() -> int:
         except BlockingIOError:
             logging.error("another monthly run is active")
             return 2
+        if already_published(month) and not args.force_collect:
+            logging.info("Month %s is already published; nothing to do", month)
+            write_status(month, "published", detail="already published")
+            return 0
+        try:
+            ensure_clean_checkout(month, allow_target_raw=args.skip_collect)
+        except Exception as exc:
+            logging.exception("automation checkout preflight failed")
+            write_status(month, "failed", detail=str(exc))
+            return 1
+        write_status(month, "running")
         backup = snapshot(month)
         try:
             execute(
@@ -223,12 +283,14 @@ def main() -> int:
                 force_collect=args.force_collect,
                 skip_collect=args.skip_collect,
             )
-        except Exception:
+        except Exception as exc:
             logging.exception("monthly run failed; restoring published state")
             restore(month, backup)
+            write_status(month, "failed", detail=str(exc))
             return 1
         finally:
             shutil.rmtree(backup, ignore_errors=True)
+        write_status(month, "validated" if args.no_commit else "published")
     return 0
 
 
