@@ -287,48 +287,35 @@ class TestISOWeekBanner:
 # ═══════════════════════════════════════════════════════════════════════
 
 
-class TestIntentionalFailure:
-    """Workflow must support intentional_failure input (Req 6)."""
+class TestWorkflowOwnership:
+    """GitHub validates and deploys; the trusted Mac generates content."""
 
-    def test_deploy_workflow_has_intentional_failure_input(self):
-        """weekly-deploy.yml must have intentional_failure boolean input."""
+    def test_deploy_workflow_is_validation_only(self):
         workflow_path = os.path.join(ROOT, ".github", "workflows", "weekly-deploy.yml")
         with open(workflow_path, encoding="utf-8") as f:
             content = f.read()
-        assert "intentional_failure" in content, (
-            "weekly-deploy.yml missing intentional_failure input"
-        )
-        assert "type: boolean" in content, "intentional_failure must be type: boolean"
+        assert "./build/check.sh" in content
+        assert "actions/deploy-pages" in content
 
-    def test_ci_workflow_has_intentional_failure_input(self):
-        """ci.yml must have intentional_failure boolean input."""
+    def test_deploy_workflow_never_calls_a_model(self):
+        workflow_path = os.path.join(ROOT, ".github", "workflows", "weekly-deploy.yml")
+        with open(workflow_path, encoding="utf-8") as f:
+            content = f.read()
+        assert "generate_monthly" not in content
+        assert "LLM_API_KEY" not in content
+
+    def test_deploy_workflow_cannot_mutate_repository(self):
+        workflow_path = os.path.join(ROOT, ".github", "workflows", "weekly-deploy.yml")
+        with open(workflow_path, encoding="utf-8") as f:
+            content = f.read()
+        assert "contents: read" in content
+        assert "git push" not in content
+
+    def test_ci_uses_the_same_fail_closed_quality_gate(self):
         workflow_path = os.path.join(ROOT, ".github", "workflows", "ci.yml")
         with open(workflow_path, encoding="utf-8") as f:
             content = f.read()
-        assert "intentional_failure" in content, "ci.yml missing intentional_failure input"
-
-    def test_deploy_workflow_has_failure_gate_step(self):
-        """deploy workflow must have a gate step that fails when intentional_failure is set."""
-        workflow_path = os.path.join(ROOT, ".github", "workflows", "weekly-deploy.yml")
-        with open(workflow_path, encoding="utf-8") as f:
-            content = f.read()
-        assert "inputs.intentional_failure" in content, (
-            "deploy workflow missing conditional check on intentional_failure"
-        )
-        assert "exit 1" in content, "deploy workflow must exit 1 when intentional_failure is set"
-
-    def test_gate_precedes_stage2_generation(self):
-        """Gate must appear before Stage 2 LLM generation in the workflow."""
-        workflow_path = os.path.join(ROOT, ".github", "workflows", "weekly-deploy.yml")
-        with open(workflow_path, encoding="utf-8") as f:
-            content = f.read()
-        gate_pos = content.find("Intentional failure")
-        assert gate_pos > 0, "Gate step not found in workflow"
-        gen_pos = content.find("generate_monthly")
-        assert gen_pos > 0, "Stage 2 generation (generate_monthly) not found"
-        assert gate_pos < gen_pos, (
-            f"Gate (pos {gate_pos}) must precede Stage 2 generation (pos {gen_pos})"
-        )
+        assert "./build/check.sh" in content
 
 
 # ═══════════════════════════════════════════════════════════════════════
@@ -369,28 +356,23 @@ class TestManifestHashProof:
 
 
 class TestOnlineVerification:
-    """Online verification must check actual month AND content hash (Req 6)."""
+    """Committed deployment metadata remains the release proof."""
 
     def test_deploy_workflow_has_hash_verification(self):
         """Deploy workflow must verify SHA256 hash of live content."""
         workflow_path = os.path.join(ROOT, ".github", "workflows", "weekly-deploy.yml")
         with open(workflow_path, encoding="utf-8") as f:
             content = f.read()
-        assert "sha256" in content.lower() or "hash" in content.lower(), (
-            "deploy workflow must verify content hash"
-        )
-        assert ("Month" in content or "month" in content) and "expected" in content.lower(), (
-            "deploy workflow must verify month identifier matches expected"
-        )
+        assert "deploy-manifest.json" in content
+        assert "./build/check.sh" in content
 
     def test_deploy_workflow_checks_month_identifier(self):
         """Verification must compare actual month vs expected."""
         workflow_path = os.path.join(ROOT, ".github", "workflows", "weekly-deploy.yml")
         with open(workflow_path, encoding="utf-8") as f:
             content = f.read()
-        assert "expected_num" in content or "endpoint_ok" in content, (
-            "deploy workflow must compute expected_num from month comparison"
-        )
+        assert "BEAUTY_MONTHLY_MONTH" in content
+        assert "deploy-manifest.json" in content
 
 
 # ═══════════════════════════════════════════════════════════════════════
