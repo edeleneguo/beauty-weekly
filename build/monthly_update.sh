@@ -79,6 +79,10 @@ mkdir -p archive
 rm -rf archive/months
 cp -R "$STAGE_DIR/archive/months" archive/months
 cp "$STAGE_DIR/data/issues.json" "data/issues.json"
+# The staged navigation repair also covers retained legacy weekly pages and
+# the reusable page shells. Reapply it after promotion so those files cannot
+# drift from the newly promoted issue registry.
+python3 build/update_issue_navigation.py
 
 # Save manifest hash proof for online verification (Req 6)
 MANIFEST_HASH=$(python3 -c "

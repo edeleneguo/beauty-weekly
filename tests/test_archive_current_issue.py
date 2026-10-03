@@ -63,3 +63,5 @@ def test_monthly_update_rebuilds_archives_before_navigation_and_promotes_registr
     )
     assert 'cp "$STAGE_DIR/data/issues.json" "data/issues.json"' in script
     assert 'archive/months' in script
+    promotion = script.index('cp "$STAGE_DIR/data/issues.json" "data/issues.json"')
+    assert script.rindex("build/update_issue_navigation.py") > promotion

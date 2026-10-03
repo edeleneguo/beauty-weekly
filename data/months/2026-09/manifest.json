@@ -1,5 +1,5 @@
 {
-  "canonical_hash": "4b2e9d655e24dc71579591f2b63adbd723a2523ffc69cb577e9d801fb677c08a",
+  "canonical_hash": "49d47584698acca26dc3accde781744161c914e6aff855364341164fe684bd0f",
   "data_pointer": "../../month2026-09.json",
   "data_sha256": null,
   "date_range": "Sep 1 – Sep 30, 2026",
@@ -23,5 +23,5 @@
   "resolved_warnings": [],
   "schema_version": 3,
   "scoring_hash": "a36d8929d1a8b15a2e60693c8d7e9a46c07319a8c823cea0384a529cc469d88c",
-  "sources_hash": "ea236bcbafd0433fe2f6c335884862b623705df1348f464b168007e8c40bd290"
+  "sources_hash": "346798505e9df502dc243d2ae381164d00f6c64e9f9ea7f207076a9668a0ebe4"
 }

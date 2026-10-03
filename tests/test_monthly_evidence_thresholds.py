@@ -117,6 +117,40 @@ def test_substring_false_positive_rejected():
     assert result == []
 
 
+def test_explicit_source_url_wins_over_newer_fuzzy_match():
+    from build.generate_monthly import _make_launch_evidence
+
+    cited = {
+        "title": "September makeup launches include Example Serum Foundation",
+        "summary": "Example Serum Foundation is included in the monthly launch roundup.",
+        "url": "https://publisher.example/september-makeup-launches",
+        "date": "2026-09-10",
+        "category": "makeup",
+        "reference_type": "makeup_new_product_discovery",
+    }
+    newer_fuzzy = {
+        "title": "Example foundation campaign analysis",
+        "summary": "A later story discusses Example Serum Foundation in passing.",
+        "url": "https://other.example/later-foundation-story",
+        "date": "2026-09-29",
+        "category": "makeup",
+        "reference_type": "editorial",
+    }
+
+    evidence = _make_launch_evidence(
+        "Example Serum Foundation",
+        cited["url"],
+        "makeup",
+        "2026-09",
+        "2026-10-01T00:00:00Z",
+        [newer_fuzzy, cited],
+        source_url=cited["url"],
+    )
+
+    assert evidence["evidence"]["url"] == cited["url"]
+    assert evidence["launch_date"] == "2026-09-10"
+
+
 def test_heat_threshold_constants():
     from build import generate_monthly as gm
 

@@ -839,11 +839,12 @@ def _find_supporting_articles(
             supporting.append(article)
             continue
 
-    # Sort by date descending, preferring source_url matches
+    # An explicitly cited source is the strongest identity constraint. Within
+    # each citation bucket, prefer the newest supporting article.
     supporting.sort(
         key=lambda a: (
-            a.get("date", ""),
             1 if source_url and a.get("url", "") == source_url else 0,
+            a.get("date", ""),
         ),
         reverse=True,
     )
@@ -1328,23 +1329,11 @@ def _accumulate_cn_radar_candidates(
 
 def _dedupe_cross_tier_panels(result: dict) -> None:
     """Keep a product in only one price tier per market and section."""
+    from beauty_weekly.product_taxonomy import dedupe_cross_tier_panels
+
     for section in ("heat_rankings", "new_product_radar"):
         panels = result.get(section, {})
-        for market in ("US", "CN"):
-            seen: set[str] = set()
-            for tier in ("LUXURY", "MASSTIGE"):
-                panel = f"{market} {tier}"
-                unique: list[dict] = []
-                for product in panels.get(panel, []):
-                    key = re.sub(
-                        r"\s+", " ", str(product.get("name", "")).strip().casefold()
-                    )
-                    if not key or key in seen:
-                        continue
-                    seen.add(key)
-                    unique.append(product)
-                if panel in panels:
-                    panels[panel] = unique
+        dedupe_cross_tier_panels(panels)
 
 
 def _dedupe_market_observation_panels(result: dict) -> None:

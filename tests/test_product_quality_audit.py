@@ -3,11 +3,47 @@ from build.audit_product_quality import (
     _is_evidence_url,
     _is_explicit_evidence_link,
     _is_generic_url,
+    audit_cross_tier_duplicates,
     audit_duplicate_or_generic_buzz,
     audit_rank_order,
     audit_score_breakdown,
     audit_visible_cjk,
 )
+
+
+def test_cross_tier_duplicate_audit_rejects_same_sku_in_two_tiers():
+    def product(name, tier):
+        return {
+            "name": name,
+            "name_cn": "",
+            "tier": tier,
+            "market": "US",
+            "category_badge": "Foundation",
+            "detail": {
+                "price_link": {"link": "https://example.com/fenty"},
+                "brand": {"en": "Fenty Beauty"},
+            },
+        }
+
+    report = {
+        "products": {
+            "makeup": {
+                "heat_rankings": {
+                    "US LUXURY": [
+                        product("Fenty Beauty Pro Filt'r Fluid Flex Foundation", "LUXURY")
+                    ],
+                    "US MASSTIGE": [product("Fenty Pro Filt'r Foundation", "MASSTIGE")],
+                },
+                "new_product_radar": {},
+            },
+            "fragrance": {"heat_rankings": {}, "new_product_radar": {}},
+        }
+    }
+
+    errors = audit_cross_tier_duplicates(report)
+
+    assert len(errors) == 1
+    assert "cross-tier duplicate" in errors[0]
 
 
 def test_rejects_storefront_and_category_urls():

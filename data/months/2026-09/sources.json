@@ -8777,18 +8777,8 @@
       },
       "type": "product_page",
       "url": "https://finance.yahoo.com/media-advertising/articles/scentbird-invites-fans-twisted-world-131500208.html"
-    },
-    {
-      "checked_at": "2026-10-02T17:09:54Z",
-      "id": "src_0040",
-      "provenance": {
-        "reason": "pending official confirmation",
-        "verification_status": "observation"
-      },
-      "type": "social_media",
-      "url": "https://www.elle.com/uk/beauty/make-up/g73941689/best-innovative-beauty-brands/"
     }
   ],
-  "total_sources": 40,
+  "total_sources": 39,
   "version": "2.0.0"
 }

@@ -21,6 +21,7 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
 from beauty_weekly.month import month_data_dir, resolve_month  # noqa: E402
+from beauty_weekly.product_taxonomy import normalize_report  # noqa: E402
 
 WEIGHTS = [
     {
@@ -248,6 +249,82 @@ def enrich_scoring(scoring: dict) -> None:
         missing.append(raw_gap)
 
 
+def repair_market_observation_evidence(report: dict, articles: list[dict]) -> None:
+    """Rebind observations to their explicit, collected source URL."""
+    from build.generate_monthly import _make_launch_evidence
+
+    month = str(report.get("month") or "")
+    for topic, panels in (report.get("market_observation") or {}).items():
+        for products in panels.values():
+            for product in products:
+                source_url = str(
+                    ((product.get("detail") or {}).get("price_link") or {}).get("link")
+                    or ""
+                ).strip()
+                if not source_url:
+                    raise ValueError(
+                        f"Market observation '{product.get('name', '?')}' has no "
+                        "explicit source URL"
+                    )
+                prior = product.get("launch_evidence") or {}
+                prior_evidence = prior.get("evidence") or {}
+                checked_at = str(
+                    prior_evidence.get("checked_at")
+                    or prior_evidence.get("fetched_at")
+                    or "1970-01-01T00:00:00Z"
+                )
+                repaired = _make_launch_evidence(
+                    str(product.get("name") or ""),
+                    source_url,
+                    topic,
+                    month,
+                    checked_at,
+                    articles,
+                    source_url=source_url,
+                    name_aliases=[str(product.get("name_cn") or "")],
+                )
+                if repaired["evidence"]["url"] != source_url:
+                    raise ValueError(
+                        f"Market observation '{product.get('name', '?')}' did not resolve "
+                        "to its explicit source URL"
+                    )
+                product["launch_evidence"] = repaired
+
+
+def prune_unreferenced_sources(report: dict, sources: dict) -> None:
+    """Remove source-registry rows made orphaned by deterministic dedupe."""
+    referenced: set[str] = set()
+
+    def record(product: dict) -> None:
+        link = str(
+            ((product.get("detail") or {}).get("price_link") or {}).get("link") or ""
+        ).strip()
+        evidence_url = str(
+            (((product.get("launch_evidence") or {}).get("evidence") or {}).get("url"))
+            or ""
+        ).strip()
+        if link:
+            referenced.add(link)
+        if evidence_url:
+            referenced.add(evidence_url)
+
+    for topic_data in (report.get("products") or {}).values():
+        for section in ("heat_rankings", "new_product_radar"):
+            for products in (topic_data.get(section) or {}).values():
+                for product in products:
+                    record(product)
+    for panels in (report.get("market_observation") or {}).values():
+        for products in panels.values():
+            for product in products:
+                record(product)
+
+    sources["sources"] = [
+        source for source in sources.get("sources", []) if source.get("url") in referenced
+    ]
+    if "total_sources" in sources:
+        sources["total_sources"] = len(sources["sources"])
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--month", default=None, help="Target month YYYY-MM")
@@ -256,20 +333,29 @@ def main() -> int:
     month = resolve_month(args.month)
     data_dir = Path(month_data_dir(month))
     report_path = data_dir / "report.json"
+    sources_path = data_dir / "sources.json"
     scoring_path = data_dir / "scoring.json"
     manifest_path = data_dir / "manifest.json"
+    raw_path = data_dir / "raw_collected.json"
 
-    report = _read_json(report_path)
+    report = normalize_report(_read_json(report_path))
+    sources = _read_json(sources_path)
     scoring = _read_json(scoring_path)
     manifest = _read_json(manifest_path)
+
+    if raw_path.exists():
+        repair_market_observation_evidence(report, _read_json(raw_path).get("articles", []))
+    prune_unreferenced_sources(report, sources)
 
     enrich_report(report)
     enrich_scoring(scoring)
 
     _write_json(report_path, report)
+    _write_json(sources_path, sources)
     _write_json(scoring_path, scoring)
 
     manifest["canonical_hash"] = _hash(report_path)
+    manifest["sources_hash"] = _hash(sources_path)
     manifest["scoring_hash"] = _hash(scoring_path)
     _write_json(manifest_path, manifest)
 
