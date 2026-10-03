@@ -6,16 +6,6 @@ on:
   pull_request:
     branches: [main]
   workflow_dispatch:
-    inputs:
-      target_month:
-        description: "Month to update (e.g. 2026-06). Leave empty for auto-resolve."
-        required: false
-        type: string
-      intentional_failure:
-        description: "Force workflow to fail before deploy (Req 6 — deterministic failure test)"
-        required: false
-        type: boolean
-        default: false
 
 permissions:
   contents: read
@@ -30,47 +20,10 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Install dev dependencies
+      - name: Install dependencies
         run: pip install --upgrade pip && pip install -r requirements-dev.txt
 
-      - name: Intentional failure guard (Req 6)
-        if: ${{ inputs.intentional_failure }}
+      - name: Validate committed release
         run: |
-          echo "INTENTIONAL_FAILURE: workflow disabled by intentional_failure input."
-          echo "This proves the guard works: no deploy occurs."
-          exit 1
-
-      - name: Secret scanner
-        run: python build/check_secrets.py
-
-      - name: Ruff lint
-        run: ruff check .
-
-      - name: Historical fixture regression gate
-        env:
-          BEAUTY_WEEKLY_WEEK: 2026-W28
-          BEAUTY_WEEKLY_HISTORICAL_FIXTURE: 1
-        run: ./build/check.sh
-
-  weekly-update:
-    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v6
-
-      - uses: actions/setup-python@v6
-        with:
-          python-version: "3.12"
-
-      - name: Install dev dependencies
-        run: pip install --upgrade pip && pip install -r requirements-dev.txt
-
-      - name: Weekly update (fail-closed)
-        env:
-          TARGET_MONTH: ${{ inputs.target_month || '' }}
-        run: |
-          MONTH="$TARGET_MONTH"
-          if [ -z "$MONTH" ]; then
-            MONTH=$(python3 -c "from beauty_weekly.month import previous_month_str; print(previous_month_str())")
-          fi
-          BEAUTY_MONTHLY_MONTH="$MONTH" ./build/monthly_update.sh
+          MONTH=$(python3 -c "import json; print(json.load(open('deploy-manifest.json'))['month'])")
+          BEAUTY_MONTHLY_MONTH="$MONTH" ./build/check.sh

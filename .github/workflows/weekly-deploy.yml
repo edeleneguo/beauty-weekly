@@ -1,378 +1,44 @@
-name: Monthly Beauty Report — Atomic Deploy
+name: Manual Validate and Deploy
 
 on:
-  # Monthly scheduling is owned by the trusted Mac LaunchAgent. This workflow
-  # remains available for explicit API-backed recovery only.
   workflow_dispatch:
-    inputs:
-      target_month:
-        description: "Month to generate (e.g. 2026-06). Leave empty for auto-resolve."
-        required: false
-        type: string
-      skip_collect:
-        description: "Skip data collection (use existing raw_collected.json)"
-        required: false
-        type: boolean
-        default: false
-      intentional_failure:
-        description: "Force workflow to fail before deploy (Req 6 — deterministic failure test)"
-        required: false
-        type: boolean
-        default: false
 
 permissions:
-  contents: write
-  issues: write
+  contents: read
   pages: write
   id-token: write
 
-env:
-  PYTHON_VERSION: "3.12"
+concurrency:
+  group: beauty-weekly-pages
+  cancel-in-progress: false
 
 jobs:
-  generate-and-deploy:
+  validate-and-deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v6
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-python@v6
         with:
-          fetch-depth: 0
+          python-version: "3.12"
 
-      - name: Setup Python
-        uses: actions/setup-python@v6
+      - name: Install validation dependencies
+        run: pip install --upgrade pip && pip install -r requirements-dev.txt
+
+      - name: Validate committed monthly release
+        run: |
+          MONTH=$(python3 -c "import json; print(json.load(open('deploy-manifest.json'))['month'])")
+          BEAUTY_MONTHLY_MONTH="$MONTH" ./build/check.sh
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v4
         with:
-          python-version: ${{ env.PYTHON_VERSION }}
+          path: .
 
-      - name: Install dependencies
-        run: |
-          pip install --upgrade pip
-          pip install -r requirements-dev.txt
-          pip install requests
-
-      - name: Compute target month
-        id: target_month
-        env:
-          TARGET_MONTH: ${{ inputs.target_month }}
-          SCHEDULE_EVENT: ${{ github.event_name == 'schedule' }}
-        run: |
-          MONTH="${TARGET_MONTH}"
-          if [ -z "$MONTH" ]; then
-            MONTH=$(python3 -c "from beauty_weekly.month import previous_month_str; print(previous_month_str())")
-          fi
-          if [[ ! "$MONTH" =~ ^[0-9]{4}-(0[1-9]|1[0-2])$ ]]; then
-            echo "FATAL: invalid month: $MONTH" >&2; exit 1
-          fi
-          {
-            echo "month=$MONTH"
-            echo "BEAUTY_MONTHLY_MONTH=$MONTH"
-          } >> "$GITHUB_OUTPUT"
-          echo "Month resolved: $MONTH"
-
-      - name: Detect existing canonical bundle
-        id: canonical_bundle
-        run: |
-          MONTH=${{ steps.target_month.outputs.month }}
-          REQUIRED=1
-          for f in raw_collected.json report.json sources.json scoring.json manifest.json; do
-            if [ ! -f "data/months/$MONTH/$f" ]; then
-              REQUIRED=0
-              echo "Missing data/months/$MONTH/$f"
-            fi
-          done
-          if [ "$REQUIRED" -eq 1 ]; then
-            echo "exists=true" >> "$GITHUB_OUTPUT"
-            echo "Canonical month bundle already exists for $MONTH"
-          else
-            echo "exists=false" >> "$GITHUB_OUTPUT"
-            echo "Canonical month bundle is incomplete for $MONTH"
-          fi
-
-      - name: Stage 1 — Collect raw data
-        if: ${{ !inputs.skip_collect && steps.canonical_bundle.outputs.exists != 'true' }}
-        env:
-          BEAUTY_MONTHLY_MONTH: ${{ steps.target_month.outputs.month }}
-        run: |
-          echo "=== STAGE 1: Data Collection ==="
-          python3 build/collect.py
-
-      - name: Stage 1 — Verify collection
-        run: |
-          MONTH=${{ steps.target_month.outputs.month }}
-          if [ ! -f "data/months/$MONTH/raw_collected.json" ]; then
-            echo "FATAL: raw_collected.json not found for $MONTH"; exit 1
-          fi
-          echo "OK raw_collected.json exists for $MONTH"
-
-      - name: Gate — Intentional failure check
-        if: ${{ inputs.intentional_failure }}
-        run: |
-          echo "FATAL: intentional_failure is set — aborting before deploy"
-          exit 1
-
-      - name: Stage 2 — Generate canonical content
-        if: ${{ steps.canonical_bundle.outputs.exists != 'true' }}
-        env:
-          LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
-          LLM_BASE_URL: ${{ secrets.LLM_BASE_URL }}
-          LLM_MODEL: ${{ secrets.LLM_MODEL }}
-          BEAUTY_MONTHLY_MONTH: ${{ steps.target_month.outputs.month }}
-        run: |
-          echo "=== STAGE 2: Content Generation ==="
-          if [ -z "$LLM_API_KEY" ]; then
-            echo "FATAL: LLM_API_KEY secret not set"; exit 1
-          fi
-          for attempt in 1 2 3; do
-            if python3 build/generate_monthly.py; then
-              exit 0
-            fi
-            if [ "$attempt" -eq 3 ]; then
-              echo "FATAL: monthly generation failed after 3 workflow attempts"
-              exit 1
-            fi
-            echo "Generation attempt $attempt failed; retrying in 30 seconds"
-            sleep 30
-          done
-
-      - name: Stage 2 — Reuse canonical content
-        if: ${{ steps.canonical_bundle.outputs.exists == 'true' }}
-        run: |
-          MONTH=${{ steps.target_month.outputs.month }}
-          echo "=== STAGE 2: Reusing canonical month bundle ==="
-          echo "Using prebuilt canonical files from data/months/$MONTH/"
-
-      - name: Stage 2 — Verify canonical files
-        run: |
-          MONTH=${{ steps.target_month.outputs.month }}
-          for f in report.json sources.json scoring.json manifest.json; do
-            if [ ! -f "data/months/$MONTH/$f" ]; then
-              echo "FATAL: Missing $f for $MONTH"; exit 1
-            fi
-            echo "OK $f exists"
-          done
-
-      - name: Stage 3 — Validate and render
-        env:
-          BEAUTY_MONTHLY_MONTH: ${{ steps.target_month.outputs.month }}
-        run: |
-          echo "=== STAGE 3: Validation & Rendering ==="
-          ./build/monthly_update.sh
-
-      - name: Stage 3 — Verify HTML output
-        run: |
-          for f in index.html fragrance.html; do
-            if [ ! -f "$f" ]; then echo "FATAL: $f not rendered"; exit 1; fi
-            SIZE=$(wc -c < "$f")
-            echo "OK $f ($SIZE bytes)"
-          done
-
-      - name: Generate artifact manifest
-        id: manifest
-        env:
-          MONTH: ${{ steps.target_month.outputs.month }}
-        run: |
-          echo "=== Generating artifact manifest for $MONTH ==="
-          python3 -c "
-          import hashlib, json, os, sys
-          month = os.environ['MONTH']
-          files = ['index.html', 'fragrance.html']
-          manifest = {'month': month, 'artifacts': {}}
-          for fn in files:
-              if not os.path.isfile(fn):
-                  print(f'FATAL: {fn} not found', file=sys.stderr); sys.exit(1)
-              with open(fn, 'rb') as f:
-                  h = hashlib.sha256(f.read()).hexdigest()
-              manifest['artifacts'][fn] = {'sha256': h, 'size': os.path.getsize(fn)}
-              print(f'  {fn}: sha256={h}')
-          with open('deploy-manifest.json', 'w') as f:
-              json.dump(manifest, f, indent=2)
-          print('Manifest written to deploy-manifest.json')
-          "
-
-      - name: Stage 4 — Atomic commit and push
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          echo "=== STAGE 4: Atomic Commit & Push ==="
-          MONTH=${{ steps.target_month.outputs.month }}
-
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-
-          git add \
-            "index.html" "fragrance.html" \
-            "data/months/$MONTH/" "deploy-manifest.json" \
-            2>/dev/null || true
-
-          if git diff --staged --quiet; then
-            echo "No changes to commit"; exit 0
-          fi
-
-          git commit -m "Monthly auto-update: $MONTH"
-
-          git fetch origin main
-          git rebase origin/main || { echo "Rebase conflict — aborting"; git rebase --abort; exit 1; }
-
-          REMOTE_URL=$(git remote get-url origin)
-          git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-          git push origin HEAD:main
-          git remote set-url origin "$REMOTE_URL"
-          echo "Pushed commit $(git rev-parse HEAD)"
-
-      - name: Stage 4.5 — Trigger GitHub Pages build
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          echo "=== STAGE 4.5: Triggering GitHub Pages build ==="
-          python3 - <<'PY'
-          import json
-          import os
-          import sys
-          import urllib.request
-
-          token = os.environ["GITHUB_TOKEN"]
-          repo = os.environ["GITHUB_REPOSITORY"]
-          req = urllib.request.Request(
-              f"https://api.github.com/repos/{repo}/pages/builds",
-              method="POST",
-              headers={
-                  "Authorization": f"token {token}",
-                  "Accept": "application/vnd.github+json",
-                  "User-Agent": "beauty-weekly-deploy",
-                  "Content-Type": "application/json",
-              },
-              data=b"{}",
-          )
-          with urllib.request.urlopen(req, timeout=20) as resp:
-              payload = json.loads(resp.read().decode("utf-8"))
-          print(f"Pages build trigger status: {payload.get('status', 'unknown')}")
-          PY
-
-      - name: Stage 5 — Wait for GitHub Pages build
-        id: pages_build
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          echo "=== STAGE 5: Waiting for GitHub Pages build ==="
-          python3 -c "
-          import json, sys, time, urllib.request, urllib.error
-
-          token = __import__('os').environ['GITHUB_TOKEN']
-          repo = '${{ github.repository }}'
-          headers = {
-              'Authorization': f'token {token}',
-              'Accept': 'application/vnd.github+json',
-              'User-Agent': 'beauty-weekly-deploy',
-          }
-          TIMEOUT = 600
-          POLL = 15
-          start = time.time()
-
-          while time.time() - start < TIMEOUT:
-              url = f'https://api.github.com/repos/{repo}/pages/builds/latest'
-              req = urllib.request.Request(url, headers=headers)
-              try:
-                  resp = urllib.request.urlopen(req, timeout=15)
-                  data = json.loads(resp.read())
-                  status = data.get('status', '')
-                  print(f'  Build status: {status}')
-                  if status in ('built', 'ready'):
-                      print(f'  Pages build complete ({int(time.time()-start)}s)')
-                      sys.exit(0)
-                  if status == 'failed':
-                      print(f'  Pages build FAILED'); sys.exit(1)
-              except urllib.error.HTTPError as e:
-                  if e.code == 404:
-                      print(f'  No build yet (404), waiting...')
-                  else:
-                      print(f'  HTTP {e.code}, retrying...')
-              except Exception as e:
-                  print(f'  Error: {e}, retrying...')
-              time.sleep(POLL)
-
-          print(f'  Timed out after {TIMEOUT}s'); sys.exit(1)
-          "
-
-      - name: Stage 6 — Verify live deployment
-        run: |
-          echo "=== STAGE 6: Live Verification ==="
-          python3 -c "
-          import hashlib, json, os, re, sys, time, urllib.request
-
-          MONTH = '${{ steps.target_month.outputs.month }}'
-          REPO = '${{ github.repository }}'
-          PAGES = {
-              'index.html': f'https://raw.githubusercontent.com/{REPO}/main/index.html',
-              'fragrance.html': f'https://raw.githubusercontent.com/{REPO}/main/fragrance.html',
-          }
-          CDN = {
-              'index.html': 'https://edeleneguo.github.io/beauty-weekly/',
-              'fragrance.html': 'https://edeleneguo.github.io/beauty-weekly/fragrance.html',
-          }
-
-          manifest = {}
-          if os.path.isfile('deploy-manifest.json'):
-              with open('deploy-manifest.json') as f:
-                  manifest = json.load(f)
-
-          expected_month = MONTH
-          all_ok = True
-
-          for name in PAGES:
-              for label, url in [('raw', PAGES[name]), ('cdn', CDN[name])]:
-                  endpoint_ok = False
-                  attempts = 12 if label == 'cdn' else 1
-                  for attempt in range(1, attempts + 1):
-                      try:
-                          req = urllib.request.Request(
-                              url + '?v=' + str(time.time()),
-                              headers={'User-Agent': 'beauty-weekly-verify'},
-                          )
-                          html = urllib.request.urlopen(req, timeout=15).read()
-                          text = html.decode('utf-8', errors='replace')
-                          remote_hash = hashlib.sha256(html).hexdigest()
-                          manifest_hash = manifest.get('artifacts', {}).get(name, {}).get('sha256', '')
-                          endpoint_ok = remote_hash == manifest_hash
-                          status = 'LIVE' if endpoint_ok else f'WAIT {attempt}/{attempts}'
-                          print(f'  {name} ({label}): sha256={remote_hash[:16]}... {status}')
-                          if endpoint_ok:
-                              break
-                      except Exception as e:
-                          print(f'  {name} ({label}) attempt {attempt}: ERROR: {e}')
-                      if attempt < attempts:
-                          time.sleep(15)
-                  if not endpoint_ok:
-                      all_ok = False
-
-          print()
-          sys.exit(0 if all_ok else 1)
-          "
-
-  notify-failure:
-    name: Open or update monthly failure issue
-    if: ${{ always() && needs.generate-and-deploy.result == 'failure' }}
-    needs: generate-and-deploy
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      issues: write
-    steps:
-      - name: Create actionable GitHub issue
-        env:
-          GH_TOKEN: ${{ github.token }}
-          REPO: ${{ github.repository }}
-          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
-        run: |
-          TITLE="Monthly beauty report automation failed"
-          BODY=$(printf '%s\n\nRun: %s\nEvent: %s\nCommit: %s\n\n%s' \
-            "The scheduled monthly report failed after automatic retries." \
-            "$RUN_URL" \
-            "${{ github.event_name }}" \
-            "${{ github.sha }}" \
-            "Check the failed step and verify LLM_BASE_URL, LLM_MODEL and LLM_API_KEY when generation reports an endpoint/authentication error.")
-          EXISTING=$(gh issue list --repo "$REPO" --state open --search "$TITLE in:title" --json number --jq '.[0].number // empty')
-          if [ -n "$EXISTING" ]; then
-            gh issue comment "$EXISTING" --repo "$REPO" --body "$BODY"
-          else
-            gh issue create --repo "$REPO" --title "$TITLE" --body "$BODY" --label bug || \
-              gh issue create --repo "$REPO" --title "$TITLE" --body "$BODY"
-          fi
+      - name: Deploy committed site
+        id: deployment
+        uses: actions/deploy-pages@v4

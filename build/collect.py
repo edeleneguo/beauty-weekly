@@ -19,6 +19,7 @@ from __future__ import annotations
 
 import json
 import os
+import re
 import sys
 import urllib.error
 import urllib.parse
@@ -29,6 +30,8 @@ from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import urlparse
 from xml.etree import ElementTree
+
+from bs4 import BeautifulSoup
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
@@ -179,6 +182,28 @@ _FRAGRANCE_ROUNDUP_SIGNAL_CUES = (
     "首發",
     "復刻",
 )
+_PRODUCT_ROUNDUP_TITLE_CUES = (
+    "best new",
+    "new beauty buys",
+    "beauty launches",
+    "makeup releases",
+    "editors loved",
+    "editors' picks",
+    "tried and tested",
+    "新品盘点",
+    "新品盤點",
+    "新品合集",
+    "月度新品",
+)
+_PRODUCT_HEADING_SKIP = (
+    "pros",
+    "cons",
+    "beauty",
+    "makeup",
+    "fragrance",
+    "related stories",
+    "read more",
+)
 
 
 class _MetadataParser(HTMLParser):
@@ -259,6 +284,116 @@ def _enrich_discovery_articles(articles: list[dict]) -> list[dict]:
                 fallback["direct_url_error"] = str(exc)[:200]
                 enriched[index] = fallback
     return [article for article in enriched if article is not None]
+
+
+def resolve_google_news_urls(
+    articles: list[dict], *, max_workers: int = 12
+) -> list[dict]:
+    """Resolve aggregator links without fetching every publisher page."""
+    resolved = [dict(article) for article in articles]
+
+    def decode(index: int) -> tuple[int, str | None]:
+        return index, _decode_google_news_url(str(resolved[index].get("url", "")))
+
+    indexes = [
+        index
+        for index, article in enumerate(resolved)
+        if urlparse(str(article.get("url", ""))).netloc.casefold() == "news.google.com"
+    ]
+    with ThreadPoolExecutor(max_workers=max_workers) as executor:
+        futures = [executor.submit(decode, index) for index in indexes]
+        for future in as_completed(futures):
+            try:
+                index, direct_url = future.result()
+            except Exception:
+                continue
+            original_url = str(resolved[index].get("url", ""))
+            if direct_url and direct_url != original_url:
+                resolved[index]["aggregator_url"] = original_url
+                resolved[index]["url"] = direct_url
+                resolved[index]["direct_url_status"] = "direct"
+            else:
+                resolved[index]["direct_url_status"] = "decode_failed"
+    return resolved
+
+
+def _extract_product_headings(html_text: str, *, limit: int = 30) -> list[str]:
+    """Extract compact product-like headings from an editorial roundup."""
+    soup = BeautifulSoup(html_text, "html.parser")
+    headings: list[str] = []
+    seen: set[str] = set()
+    for tag in soup.find_all(["h2", "h3"]):
+        text = " ".join(tag.get_text(" ", strip=True).split())
+        text = re.sub(r"^\s*#?\d+\s*[.):\-]\s*", "", text).strip()
+        normalized = text.casefold().rstrip(".:")
+        if not text or normalized in _PRODUCT_HEADING_SKIP:
+            continue
+        if normalized.startswith(("shop:", "these are ", "how to ", "why ")):
+            continue
+        if len(text) < 5 or len(text) > 160:
+            continue
+        if len(text.split()) < 2 and not re.search(r"[\u3400-\u9fff]{4,}", text):
+            continue
+        if normalized in seen:
+            continue
+        seen.add(normalized)
+        headings.append(text)
+        if len(headings) >= limit:
+            break
+    return headings
+
+
+def _looks_like_product_roundup(article: dict) -> bool:
+    title = str(article.get("title", "") or "").casefold()
+    return any(cue in title for cue in _PRODUCT_ROUNDUP_TITLE_CUES)
+
+
+def _enrich_product_roundup(article: dict) -> dict:
+    enriched = dict(article)
+    try:
+        headings = _extract_product_headings(fetch_url(str(enriched.get("url", ""))))
+    except Exception as exc:
+        enriched["roundup_fetch_status"] = "failed"
+        enriched["roundup_fetch_error"] = str(exc)[:200]
+        return enriched
+    if not headings:
+        enriched["roundup_fetch_status"] = "no_product_headings"
+        return enriched
+    original_summary = str(enriched.get("summary", "") or "").strip()
+    mentions = "; ".join(headings)
+    enriched["product_mentions"] = headings
+    enriched["summary"] = (
+        f"Products named in article: {mentions}. {original_summary}"
+    )[:3000]
+    enriched["roundup_fetch_status"] = "enriched"
+    return enriched
+
+
+def enrich_product_roundups(
+    articles: list[dict], *, max_articles: int = 24, max_workers: int = 6
+) -> list[dict]:
+    """Fetch a bounded set of product-rich roundups and expose named headings."""
+    enriched = [dict(article) for article in articles]
+    indexes = [
+        index
+        for index, article in enumerate(enriched)
+        if _looks_like_product_roundup(article)
+        and not article.get("product_mentions")
+        and urlparse(str(article.get("url", ""))).netloc.casefold() != "news.google.com"
+    ][:max_articles]
+    with ThreadPoolExecutor(max_workers=max_workers) as executor:
+        future_map = {
+            executor.submit(_enrich_product_roundup, enriched[index]): index
+            for index in indexes
+        }
+        for future in as_completed(future_map):
+            index = future_map[future]
+            try:
+                enriched[index] = future.result()
+            except Exception as exc:
+                enriched[index]["roundup_fetch_status"] = "failed"
+                enriched[index]["roundup_fetch_error"] = str(exc)[:200]
+    return enriched
 
 
 def parse_rss(
@@ -727,6 +862,8 @@ def collect_all(target_month: str | None = None) -> dict:
         item["articles_count"] > 0 for item in result["fragrance_roundup_audit"]
     )
 
+    result["articles"] = resolve_google_news_urls(result["articles"])
+    result["articles"] = enrich_product_roundups(result["articles"])
     result["articles"] = _dedupe_articles(result["articles"])
     result["total_articles"] = len(result["articles"])
     result["total_sources_ok"] = len(result["sources_fetched"])

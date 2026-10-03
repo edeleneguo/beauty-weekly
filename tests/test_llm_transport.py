@@ -82,3 +82,23 @@ def test_transient_error_retries_then_succeeds(monkeypatch):
         mocked.side_effect = [_http_error(503), _llm_success()]
         assert generator.call_llm("system", "user") == "ok"
     assert mocked.call_count == 2
+
+
+def test_codex_command_pins_project_model_and_reasoning(monkeypatch, tmp_path):
+    monkeypatch.setattr(generator, "CODEX_MODEL", "")
+    monkeypatch.setattr(generator, "CODEX_REASONING_EFFORT", "high")
+
+    command = generator._codex_exec_command(tmp_path / "message.txt", "prompt")
+
+    assert command[command.index("--model") + 1] == "gpt-5.6-sol"
+    assert command[command.index("--config") + 1] == "model_reasoning_effort=high"
+
+
+def test_effective_model_name_tracks_selected_transport(monkeypatch):
+    monkeypatch.setattr(generator, "LLM_TRANSPORT", "codex")
+    monkeypatch.setattr(generator, "CODEX_MODEL", "")
+    assert generator.effective_model_name() == "gpt-5.6-sol"
+
+    monkeypatch.setattr(generator, "LLM_TRANSPORT", "api")
+    monkeypatch.setattr(generator, "MODEL", "provider-model")
+    assert generator.effective_model_name() == "provider-model"

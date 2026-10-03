@@ -19,6 +19,7 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
 from beauty_weekly.month import month_report_path, resolve_month  # noqa: E402
+from beauty_weekly.product_taxonomy import same_product  # noqa: E402
 
 CJK_PATTERN = re.compile(r"[\u4e00-\u9fff]")
 SIZE_PATTERN = re.compile(r"\b\d+(?:\.\d+)?\s?(?:ml|mL|ML|fl oz|oz|g|gram|grams)\b", re.I)
@@ -34,6 +35,7 @@ SIZE_GAP_PATTERN = re.compile(
 )
 GENERIC_CATEGORY_PATTERN = re.compile(r"^(?:edp|edt|perfume|fragrance|solid)$", re.I)
 GENERIC_BUZZ_PATTERNS = (
+    re.compile(r"^[\s:;,.-]"),
     re.compile(r"^seasonal\b", re.I),
     re.compile(r"^limited edition\b", re.I),
     re.compile(r"^new release\b", re.I),
@@ -197,7 +199,7 @@ def audit_visible_cjk(report: dict) -> list[str]:
     for topic, section, panel, idx, product in _iter_products(report):
         fields = _visible_fields(product, section)
         for label, value in fields.items():
-            if label in {"section"}:
+            if label in {"section", "name"}:
                 continue
             if value and CJK_PATTERN.search(value):
                 errors.append(f"{_loc(topic, section, panel, idx, product)}: {label} contains CJK")
@@ -327,6 +329,26 @@ def audit_market_tier(report: dict) -> list[str]:
                 f"{_loc(topic, section, panel, idx, product)}: market/tier mismatch "
                 f"{product.get('market')}/{product.get('tier')}"
             )
+    return errors
+
+
+def audit_cross_tier_duplicates(report: dict) -> list[str]:
+    errors: list[str] = []
+    products = report.get("products", {})
+    for topic in ("makeup", "fragrance"):
+        for section in ("heat_rankings", "new_product_radar"):
+            panels = products.get(topic, {}).get(section, {})
+            for market in ("US", "CN"):
+                luxury = panels.get(f"{market} LUXURY", [])
+                masstige = panels.get(f"{market} MASSTIGE", [])
+                for luxury_product in luxury:
+                    for masstige_product in masstige:
+                        if same_product(luxury_product, masstige_product):
+                            errors.append(
+                                f"{topic}/{section}/{market}: cross-tier duplicate "
+                                f"'{luxury_product.get('name')}' / "
+                                f"'{masstige_product.get('name')}'"
+                            )
     return errors
 
 
@@ -504,6 +526,7 @@ def run(month: str) -> list[tuple[str, list[str]]]:
         ("rank_order", audit_rank_order(report)),
         ("category_specificity", audit_category_specificity(report)),
         ("market_tier", audit_market_tier(report)),
+        ("cross_tier_duplicates", audit_cross_tier_duplicates(report)),
         ("trend_rationale", audit_trend_rationale(report)),
         ("heat_new_parity", audit_heat_new_parity(report)),
         ("radar_name_alignment", audit_radar_name_alignment(report)),

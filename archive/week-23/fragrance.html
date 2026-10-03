@@ -824,22 +824,10 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC"
 
 <!-- ==================== Report 2: Fragrance ==================== -->
 <div class="section-banner fragrance-banner">
-  <div class="lang-switch-bar">
-    <a href="fragrance-cn.html" class="lang-switch-btn cn-active"><span class="lang-dot"></span>中文</a>
-    <a href="index.html" class="section-jump-btn">💄 Makeup <span class="jump-arrow">↑</span></a>
-  </div>
+  <div class="lang-switch-bar"><a href="../../index.html" class="section-jump-btn">Makeup</a></div>
   <h2>🌸 Fragrance Industry Weekly</h2>
   <div class="banner-sub">May 27 – Jun 2, 2026 · Week 23 · China × US
-    <div class="week-selector" id="weekSelectorFragrance">
-      <button class="week-selector-btn" onclick="event.stopPropagation();toggleWeekDropdown('weekSelectorFragrance')">
-        Past Issues <span class="week-arrow">▾</span>
-      </button>
-      <div class="week-dropdown">
-        <button class="week-dropdown-item current" disabled>Week 23 (Current)</button>
-        <div class="week-dropdown-divider"></div>
-        <a class="week-dropdown-item" href="../../fragrance.html">Week 24 (Latest)</a>
-      </div>
-    </div>
+    <div class="week-selector"><select class="issue-select" aria-label="Past issues selector" onchange="if(this.value) window.location.href=this.value"><option value="">Past Issues</option><option value="../months/2026-08/fragrance.html">September 2026</option><option value="../months/2026-07/fragrance.html">August 2026</option><option value="../months/2026-06/fragrance.html">July 2026</option></select></div>
   </div>
 <div class="section">
 <div class="section-subnote">No fragrance industry news this week · All trend signals sourced from social media heat & new product activity</div>

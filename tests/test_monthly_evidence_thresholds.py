@@ -117,6 +117,40 @@ def test_substring_false_positive_rejected():
     assert result == []
 
 
+def test_explicit_source_url_wins_over_newer_fuzzy_match():
+    from build.generate_monthly import _make_launch_evidence
+
+    cited = {
+        "title": "September makeup launches include Example Serum Foundation",
+        "summary": "Example Serum Foundation is included in the monthly launch roundup.",
+        "url": "https://publisher.example/september-makeup-launches",
+        "date": "2026-09-10",
+        "category": "makeup",
+        "reference_type": "makeup_new_product_discovery",
+    }
+    newer_fuzzy = {
+        "title": "Example foundation campaign analysis",
+        "summary": "A later story discusses Example Serum Foundation in passing.",
+        "url": "https://other.example/later-foundation-story",
+        "date": "2026-09-29",
+        "category": "makeup",
+        "reference_type": "editorial",
+    }
+
+    evidence = _make_launch_evidence(
+        "Example Serum Foundation",
+        cited["url"],
+        "makeup",
+        "2026-09",
+        "2026-10-01T00:00:00Z",
+        [newer_fuzzy, cited],
+        source_url=cited["url"],
+    )
+
+    assert evidence["evidence"]["url"] == cited["url"]
+    assert evidence["launch_date"] == "2026-09-10"
+
+
 def test_heat_threshold_constants():
     from build import generate_monthly as gm
 
@@ -646,3 +680,63 @@ def test_report_carries_panel_coverage():
     assert entry["formal_included_count"] == 10
     assert entry["status"] == "met"
     json.dumps(raw["panel_coverage"])
+
+
+def test_canonical_source_urls_include_market_observation_products():
+    from beauty_weekly.canonical import _report_source_urls
+
+    observation_url = "https://publisher.example/observed-launch"
+    report = {
+        "products": {
+            "makeup": {"heat_rankings": {}, "new_product_radar": {}},
+            "fragrance": {"heat_rankings": {}, "new_product_radar": {}},
+        },
+        "market_observation": {
+            "makeup": {
+                "CN MASSTIGE": [
+                    {
+                        "detail": {"price_link": {"link": observation_url}},
+                        "launch_evidence": {"evidence": {"url": observation_url}},
+                    }
+                ]
+            },
+            "fragrance": {},
+        },
+    }
+
+    assert _report_source_urls(report) == {observation_url}
+
+
+def test_evidence_integrity_counts_market_observation_references():
+    from beauty_weekly.evidence import validate_source_product_referential_integrity
+
+    observation_url = "https://publisher.example/observed-launch"
+    report = {
+        "products": {
+            "makeup": {"heat_rankings": {}, "new_product_radar": {}},
+            "fragrance": {"heat_rankings": {}, "new_product_radar": {}},
+        },
+        "market_observation": {
+            "makeup": {
+                "CN MASSTIGE": [
+                    {
+                        "name": "Observed Product",
+                        "detail": {"price_link": {"link": observation_url}},
+                        "launch_evidence": {"evidence": {"url": observation_url}},
+                    }
+                ]
+            },
+            "fragrance": {},
+        },
+    }
+    sources = {"sources": [{"url": observation_url}]}
+
+    assert validate_source_product_referential_integrity(report, sources) == []
+
+    from beauty_weekly.validate_published import (
+        validate_product_source_referential_integrity,
+        validate_source_citation,
+    )
+
+    assert validate_product_source_referential_integrity(report, sources) == []
+    assert validate_source_citation(report, sources) == []

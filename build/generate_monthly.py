@@ -17,6 +17,7 @@ from __future__ import annotations
 
 import hashlib
 import contextlib
+from difflib import SequenceMatcher
 import json
 import os
 import re
@@ -28,7 +29,7 @@ import time
 import urllib.error
 import urllib.request
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from datetime import date, datetime, timedelta
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from urllib.parse import quote, urlparse
 
@@ -36,8 +37,13 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
 from beauty_weekly.evidence import EXPLICIT_EVIDENCE_ABSENCES  # noqa: E402
+from beauty_weekly.candidates import build_evidence_pool, panel_candidates  # noqa: E402
 from beauty_weekly.month import previous_month_str, resolve_month  # noqa: E402
-from build.collect import search_product_evidence  # noqa: E402
+from build.collect import (  # noqa: E402
+    enrich_product_roundups,
+    resolve_google_news_urls,
+    search_product_evidence,
+)
 
 API_KEY = os.environ.get("LLM_API_KEY", "")
 BASE_URL = os.environ.get("LLM_BASE_URL", "https://api.openai.com/v1")
@@ -63,7 +69,9 @@ _DEFAULT_CODEX_BIN = "/opt/homebrew/bin/codex"
 CODEX_BIN = os.environ.get("CODEX_BIN", "") or (
     _DEFAULT_CODEX_BIN if os.path.exists(_DEFAULT_CODEX_BIN) else shutil.which("codex") or "codex"
 )
+DEFAULT_CODEX_MODEL = "gpt-5.6-sol"
 CODEX_MODEL = os.environ.get("CODEX_MODEL", "").strip()
+CODEX_REASONING_EFFORT = os.environ.get("CODEX_REASONING_EFFORT", "high").strip()
 CODEX_EXEC_TIMEOUT = int(os.environ.get("CODEX_EXEC_TIMEOUT", "900"))
 
 # Environment variables that would force the Codex CLI to use a non-ChatGPT
@@ -96,6 +104,7 @@ VALID_EVIDENCE_SUPPORTED_FIELDS = frozenset(
     {"price", "features", "buzz", "brand", "category", "launch_date", "link"}
 )
 CN_DISCOVERY_CONFIG = ROOT / "config" / "cn_new_product_sources.json"
+DIAGNOSTIC_DIR = ROOT / ".beauty-weekly-state" / "diagnostics"
 
 
 def _load_cn_discovery_config() -> dict:
@@ -258,6 +267,34 @@ def codex_logged_in() -> bool:
     return result.returncode == 0
 
 
+def effective_model_name() -> str:
+    if LLM_TRANSPORT == "codex":
+        return CODEX_MODEL or DEFAULT_CODEX_MODEL
+    return MODEL
+
+
+def _codex_exec_command(out_path: Path, prompt: str) -> list[str]:
+    return [
+        CODEX_BIN,
+        "exec",
+        "-C",
+        str(ROOT),
+        "--skip-git-repo-check",
+        "--sandbox",
+        "read-only",
+        "--ephemeral",
+        "--color",
+        "never",
+        "--model",
+        CODEX_MODEL or DEFAULT_CODEX_MODEL,
+        "--config",
+        f"model_reasoning_effort={CODEX_REASONING_EFFORT}",
+        "-o",
+        str(out_path),
+        prompt,
+    ]
+
+
 def call_codex(system_prompt: str, user_prompt: str, max_tokens: int = 8000) -> str:
     """Invoke the locally authenticated Codex CLI non-interactively.
 
@@ -278,23 +315,9 @@ def call_codex(system_prompt: str, user_prompt: str, max_tokens: int = 8000) -> 
         "Respond ONLY with the requested JSON payload. Do not run any shell commands "
         "and do not use any tools or files."
     )
-    cmd = [
-        CODEX_BIN,
-        "exec",
-        "-C",
-        str(ROOT),
-        "--skip-git-repo-check",
-        "--sandbox",
-        "read-only",
-        "--ephemeral",
-        "--color",
-        "never",
-    ]
-    if CODEX_MODEL:
-        cmd += ["--model", CODEX_MODEL]
     with tempfile.NamedTemporaryFile(prefix="codex-last-message-", mode="w", delete=False) as tmp:
         out_path = tmp.name
-    cmd += ["-o", out_path, prompt]
+    cmd = _codex_exec_command(Path(out_path), prompt)
     try:
         proc = subprocess.run(
             cmd,
@@ -512,7 +535,9 @@ _CATEGORY_CUES: dict[str, frozenset[str]] = {
     "fragrance": frozenset(
         {
             "fragrance",
+            "fragrances",
             "perfume",
+            "perfumes",
             "cologne",
             "scent",
             "oud",
@@ -595,7 +620,8 @@ def _article_has_category_relevance(article: dict, topic: str | None) -> bool:
     Rejects cross-category evidence (e.g. a fragrance investigation must
     not support a makeup product).  Rules:
       - No topic → always relevant (backwards compatibility).
-      - Explicit ``category`` field must equal the topic.
+      - Unambiguous title/summary cues override stale category metadata.
+      - Otherwise an explicit ``category`` field must equal the topic.
       - A ``reference_type`` containing the opposite category
         (fragrance vs makeup) is rejected; containing the topic is accepted.
       - Otherwise at least one topic cue must appear (word-boundary for
@@ -606,6 +632,28 @@ def _article_has_category_relevance(article: dict, topic: str | None) -> bool:
     topic_norm = str(topic).strip().casefold()
     if topic_norm not in ("makeup", "fragrance"):
         return True
+    title = str(article.get("title", "") or "")
+    summary = str(article.get("summary", "") or "")
+    slug = _normalize_slug(str(article.get("url", "") or ""))
+    combined_lower = f"{title} {summary} {slug}".lower()
+
+    def has_cue(category: str) -> bool:
+        for cue in _CATEGORY_CUES.get(category, frozenset()):
+            cue_lower = cue.lower()
+            if re.search(r"[\u3400-\u9fff]", cue):
+                if cue_lower in combined_lower:
+                    return True
+            elif re.search(r"\b" + re.escape(cue_lower) + r"\b", combined_lower):
+                return True
+        return False
+
+    opposite = "fragrance" if topic_norm == "makeup" else "makeup"
+    target_cue = has_cue(topic_norm)
+    opposite_cue = has_cue(opposite)
+    if target_cue and not opposite_cue:
+        return True
+    if opposite_cue and not target_cue:
+        return False
     cat = str(article.get("category", "") or "").strip().casefold()
     if cat:
         return cat == topic_norm
@@ -620,22 +668,7 @@ def _article_has_category_relevance(article: dict, topic: str | None) -> bool:
             return False
         if "fragrance" in ref:
             return True
-    cues = _CATEGORY_CUES.get(topic_norm, frozenset())
-    if not cues:
-        return True
-    title = str(article.get("title", "") or "")
-    summary = str(article.get("summary", "") or "")
-    slug = _normalize_slug(str(article.get("url", "") or ""))
-    combined = f"{title} {summary} {slug}"
-    combined_lower = combined.lower()
-    for cue in cues:
-        cue_lower = cue.lower()
-        if re.search(r"[\u3400-\u9fff]", cue):
-            if cue_lower in combined_lower:
-                return True
-        elif re.search(r"\b" + re.escape(cue_lower) + r"\b", combined_lower):
-            return True
-    return False
+    return target_cue
 
 
 def _has_product_name_evidence(product_name: str, article: dict) -> bool:
@@ -670,6 +703,40 @@ def _has_product_name_evidence(product_name: str, article: dict) -> bool:
     return False
 
 
+def _has_cited_roundup_mention(
+    candidate_names: list[str], article: dict, source_url: str | None
+) -> bool:
+    """Match simplified/traditional name variants inside the cited roundup.
+
+    This fuzzy path is intentionally restricted to the exact source URL the
+    model cited and to product headings extracted from that page.  It cannot
+    turn an unrelated URL or ordinary article prose into product evidence.
+    """
+    if not source_url or article.get("url", "") != source_url:
+        return False
+
+    mentions = article.get("product_mentions") or []
+    for candidate_name in candidate_names:
+        candidate = re.sub(r"[\W_]+", "", candidate_name.casefold())
+        if len(candidate) < 8:
+            continue
+        candidate_latin = set(re.findall(r"[a-z]{3,}", candidate))
+        candidate_cjk = set(re.findall(r"[\u3400-\u9fff]", candidate))
+        for mention_text in mentions:
+            mention = re.sub(r"[\W_]+", "", str(mention_text).casefold())
+            if len(mention) < 8:
+                continue
+            shared_latin = candidate_latin.intersection(re.findall(r"[a-z]{3,}", mention))
+            shared_cjk = candidate_cjk.intersection(
+                re.findall(r"[\u3400-\u9fff]", mention)
+            )
+            if (shared_latin or len(shared_cjk) >= 4) and SequenceMatcher(
+                None, candidate, mention
+            ).ratio() >= 0.7:
+                return True
+    return False
+
+
 def _find_supporting_articles(
     product_name: str,
     product_link: str,
@@ -677,6 +744,7 @@ def _find_supporting_articles(
     source_url: str | None = None,
     topic: str | None = None,
     category: str | None = None,
+    name_aliases: list[str] | None = None,
 ) -> list[dict]:
     """Find source articles that could support a product claim.
 
@@ -712,6 +780,8 @@ def _find_supporting_articles(
     with ``source_url`` matches ranked first.
     """
     effective_topic = topic if topic is not None else category
+    candidate_names = [product_name]
+    candidate_names.extend(alias for alias in (name_aliases or []) if alias)
     supporting = []
     for article in articles:
         url = article.get("url", "")
@@ -746,7 +816,7 @@ def _find_supporting_articles(
         summary_l = str(article.get("summary", "") or "").lower()
         slug_l = _normalize_slug(str(article.get("url", "") or ""))
         combined_l = f"{title_l} {summary_l} {slug_l}"
-        has_full_name = bool(product_name) and product_name.lower() in combined_l
+        has_full_name = any(name.lower() in combined_l for name in candidate_names if name)
         if (
             effective_topic
             and not has_full_name
@@ -754,7 +824,10 @@ def _find_supporting_articles(
         ):
             continue
 
-        has_name = _has_product_name_evidence(product_name, article)
+        has_name = any(
+            _has_product_name_evidence(candidate_name, article)
+            for candidate_name in candidate_names
+        ) or _has_cited_roundup_mention(candidate_names, article, source_url)
 
         # 2. Product URL match only qualifies with product-name evidence.
         if product_link and url and product_link in url:
@@ -766,11 +839,12 @@ def _find_supporting_articles(
             supporting.append(article)
             continue
 
-    # Sort by date descending, preferring source_url matches
+    # An explicitly cited source is the strongest identity constraint. Within
+    # each citation bucket, prefer the newest supporting article.
     supporting.sort(
         key=lambda a: (
-            a.get("date", ""),
             1 if source_url and a.get("url", "") == source_url else 0,
+            a.get("date", ""),
         ),
         reverse=True,
     )
@@ -1026,6 +1100,7 @@ def _make_launch_evidence(
     fetched_at: str,
     articles: list[dict],
     source_url: str | None = None,
+    name_aliases: list[str] | None = None,
 ) -> dict:
     """Create a Phase 7 launch_evidence dict for a product.
 
@@ -1036,7 +1111,12 @@ def _make_launch_evidence(
     generation to fail rather than emit fabricated evidence.
     """
     supporting = _find_supporting_articles(
-        product_name, product_link, articles, source_url, topic=topic
+        product_name,
+        product_link,
+        articles,
+        source_url,
+        topic=topic,
+        name_aliases=name_aliases,
     )
 
     if supporting:
@@ -1125,16 +1205,24 @@ def make_product(
         cleaned = re.sub(r"[\u3400-\u9fff]+", " ", v or "")
         return re.sub(r"\s+", " ", cleaned).strip()
 
-    # The public site is English-only. Preserve the supplied localized name
-    # separately while ensuring the visible name never leaks CJK characters.
-    visible_name = re.sub(r"[\u3400-\u9fff]+", " ", name)
-    visible_name = re.sub(r"\s+", " ", visible_name).strip() or name
+    # Preserve official/local-market product names verbatim. Chinese-origin
+    # brands and products without an official English name must not be given
+    # invented translations merely because the surrounding page chrome is English.
+    visible_name = re.sub(r"\s+", " ", name).strip()
     if buzz_en and visible_name.casefold() not in buzz_en.casefold():
-        buzz_en = f"{visible_name}: {buzz_en}"
+        english_subject = english_only(visible_name) or "This product"
+        buzz_en = f"{english_subject}: {buzz_en.lstrip(' :;,.-')}"
 
     if launch_evidence is None:
         launch_evidence = _make_launch_evidence(
-            name, link, topic, iso_week, fetched_at, articles or [], source_url
+            name,
+            link,
+            topic,
+            iso_week,
+            fetched_at,
+            articles or [],
+            source_url,
+            name_aliases=[name_cn] if name_cn and name_cn != name else None,
         )
 
     # Product discovery may return a brand homepage or collection landing
@@ -1239,6 +1327,36 @@ def _accumulate_cn_radar_candidates(
                 existing.add(key)
 
 
+def _dedupe_cross_tier_panels(result: dict) -> None:
+    """Keep a product in only one price tier per market and section."""
+    from beauty_weekly.product_taxonomy import dedupe_cross_tier_panels
+
+    for section in ("heat_rankings", "new_product_radar"):
+        panels = result.get(section, {})
+        dedupe_cross_tier_panels(panels)
+
+
+def _dedupe_market_observation_panels(result: dict) -> None:
+    """Show each observation candidate once per market/tier panel.
+
+    A low-confidence candidate can be emitted in both heat and radar. Those
+    sections collapse into one observation area, so preserve the first
+    canonical record and remove later repeats before ranking and rendering.
+    """
+    for panel, products in (result.get("market_observation") or {}).items():
+        seen: set[str] = set()
+        unique: list[dict] = []
+        for product in products:
+            key = re.sub(
+                r"\s+", " ", str(product.get("name", "")).strip().casefold()
+            )
+            if not key or key in seen:
+                continue
+            seen.add(key)
+            unique.append(product)
+        result["market_observation"][panel] = unique
+
+
 def _record_heat_radar_coverage(
     raw_data: dict,
     category: str,
@@ -1306,6 +1424,116 @@ def _record_cn_radar_coverage(
     _record_heat_radar_coverage(raw_data, category, result)
 
 
+def _resolve_candidate_source(
+    product: dict, source_map: dict[str, str], article_urls: set[str]
+) -> str | None:
+    source_id = str(product.get("source_id", "") or "").strip()
+    if source_id in source_map:
+        return source_map[source_id]
+    source_url = str(product.get("source_url", "") or "").strip()
+    return source_url if source_url in article_urls else None
+
+
+def _write_generation_diagnostic(
+    month: str, category: str, attempt: int, stage: str, payload: object
+) -> None:
+    DIAGNOSTIC_DIR.mkdir(parents=True, exist_ok=True)
+    path = DIAGNOSTIC_DIR / f"{month}-{category}-attempt-{attempt}-{stage}.json"
+    path.write_text(
+        json.dumps(payload, ensure_ascii=False, indent=2, default=str) + "\n",
+        encoding="utf-8",
+    )
+
+
+def _panel_section_items(payload: dict, section: str, panel: str) -> list[dict]:
+    items = payload.get(section, [])
+    if isinstance(items, dict):
+        items = items.get(panel, [])
+    if not isinstance(items, list):
+        return []
+    return [item for item in items if isinstance(item, dict)]
+
+
+def _generate_panel_drafts(
+    system_prompt: str,
+    panel_evidence: dict[str, str],
+    *,
+    category: str = "beauty",
+    month_label: str = "",
+    en_range: str = "",
+    retry_note: str = "",
+    call=None,
+) -> dict:
+    """Generate heat and radar drafts one market/tier panel at a time."""
+    invoke = call or call_llm
+    result = {"heat_rankings": {}, "new_product_radar": {}}
+    assigned_by_market: dict[str, set[str]] = {}
+    for panel in REQUIRED_HEAT_PANELS:
+        evidence = panel_evidence.get(panel, "").strip()
+        market, tier = panel.split(maxsplit=1)
+        panel_guidance = ""
+        if panel == "CN MASSTIGE":
+            panel_guidance = """
+Tier guidance for CN MASSTIGE:
+- MASSTIGE includes accessible-prestige, lifestyle, indie, celebrity, and mainstream
+  fragrance or makeup brands. It does not require the brand to be headquartered in mainland China.
+- Credible consumer-market coverage from CN, TW, or HK qualifies as Chinese-market evidence.
+- Evaluate every named product in a mixed-tier roundup independently. Do not classify the
+  whole roundup as luxury merely because it also contains one or more luxury brands.
+"""
+        already_assigned = sorted(assigned_by_market.get(market, set()))
+        if tier == "MASSTIGE" and already_assigned:
+            panel_guidance += (
+                f"\nDo not repeat products already assigned to {market} LUXURY: "
+                + "; ".join(already_assigned)
+                + ". Select distinct products supported by the evidence.\n"
+            )
+        user_prompt = f"""[PANEL={panel}]
+Generate {category} product data for only this panel for month {month_label}
+({en_range}). Do not return products for any other panel.
+{panel_guidance}
+
+Return one valid JSON object with exactly these two array fields:
+{{
+  "heat_rankings": [{{"name": "...", "source_id": "...", "source_url": "..."}}],
+  "new_product_radar": [{{"name": "...", "source_id": "...", "source_url": "..."}}]
+}}
+
+Evidence for {panel} (source ID, title, excerpt, URL):
+{evidence or "No qualifying evidence rows were collected for this panel."}
+{retry_note}"""
+        payload = parse_json_response(invoke(system_prompt, user_prompt))
+        heat_payload = payload.get("heat_rankings")
+        radar_payload = payload.get("new_product_radar")
+        if (
+            isinstance(heat_payload, dict)
+            and isinstance(radar_payload, dict)
+            and all(name in heat_payload for name in REQUIRED_HEAT_PANELS)
+            and all(name in radar_payload for name in REQUIRED_HEAT_PANELS)
+        ):
+            return {
+                section: {
+                    name: _panel_section_items(payload, section, name)
+                    for name in REQUIRED_HEAT_PANELS
+                }
+                for section in ("heat_rankings", "new_product_radar")
+            }
+        result["heat_rankings"][panel] = _panel_section_items(
+            payload, "heat_rankings", panel
+        )
+        result["new_product_radar"][panel] = _panel_section_items(
+            payload, "new_product_radar", panel
+        )
+        assigned = assigned_by_market.setdefault(market, set())
+        for section in ("heat_rankings", "new_product_radar"):
+            for product in result[section][panel]:
+                for field in ("name", "name_cn"):
+                    name = str(product.get(field, "")).strip()
+                    if name:
+                        assigned.add(name)
+    return result
+
+
 def generate_products(
     raw_data: dict, category: str, month_label: str, en_range: str, fetched_at: str
 ) -> dict:
@@ -1331,24 +1559,22 @@ def generate_products(
     confirmation, never mixed into the formal list.
     """
     articles = raw_data.get("articles", [])
-    # Category-aware selection: pick articles whose titles/summaries
-    # contain category-relevant cues (makeup vs fragrance keywords) so
-    # that the LLM prompt includes evidence proportional to the topic
-    # rather than simply taking the first 15 per market.  The full
-    # article set is still retained for post-generation evidence matching.
-    prompt_articles = _select_category_relevant_articles(articles, category)
-    articles_text = "\n".join(
-        f"[{i}] {a['title']}: {a.get('summary', '')[:200]} (URL: {a['url']})"
-        for i, a in enumerate(prompt_articles)
-    )
+    evidence_pool = build_evidence_pool(articles, category, month_label)
+    source_map = {candidate.candidate_id: candidate.url for candidate in evidence_pool}
+    panel_evidence = {
+        panel: "\n".join(
+            candidate.prompt_line()
+            for candidate in panel_candidates(evidence_pool, panel, limit=40)
+        )
+        for panel in REQUIRED_HEAT_PANELS
+    }
 
     system_prompt = f"""You are a beauty industry analyst. Generate product \
 data for the {category} category.
-Output ONLY valid JSON with this exact structure:
+For the single requested panel, output ONLY valid JSON with this exact structure:
 {{
-  "heat_rankings": {{
-    "US LUXURY": [
-      {{
+  "heat_rankings": [
+    {{
         "name": "Product Name",
         "name_cn": "产品中文名",
         "rank": 1,
@@ -1365,24 +1591,17 @@ Output ONLY valid JSON with this exact structure:
         "price_cn": "$XX",
         "price_en": "$XX",
         "link": "https://www.sephora.com/product/...",
-        "source_url": "https://www.elle.com/beauty/...exact URL from the Raw data list..."
-      }}
-    ],
-    "US MASSTIGE": [...],
-    "CN LUXURY": [...],
-    "CN MASSTIGE": [...]
-  }},
-  "new_product_radar": {{
-    "US LUXURY": [...],
-    "US MASSTIGE": [],
-    "CN LUXURY": [],
-    "CN MASSTIGE": []
-  }}
+        "source_id": "src_exact_id_from_the_evidence_list",
+        "source_url": "https://www.elle.com/beauty/...exact matching evidence URL..."
+    }}
+  ],
+  "new_product_radar": []
 }}
 
 Rules:
-- Generate exactly 10 real products per heat_rankings panel (8-9 acceptable
-  with a coverage warning; never below 5; never fabricate/pad).
+- Generate 5-10 real products per heat_rankings panel. Heat products may be
+  established products that were credibly discussed, reviewed, ranked, sold,
+  or promoted during the reporting month; they do not need to be new launches.
 - Generate 5-10 real new products per radar panel whose first official launch,
   first retail listing, or first credible publication falls inside {month_label}
   (below 5 is a transparent coverage warning; never fabricate/pad).
@@ -1392,29 +1611,27 @@ Rules:
 - All products must be REAL, publicly available {category} products
 - Scores: 65-98 range (85=Trending, 90=Viral)
 - CN fields in Chinese, EN in English
-- Links must be real official-brand, Sephora, Ulta, Tmall, JD, Douyin-shop,
-  or reputable retailer product URLs
-- Use real buzz data (review counts, sales rankings, social media metrics)
-- CN LUXURY and CN MASSTIGE panels: only provide products if you have
-  real Chinese-market evidence.  Empty arrays [] are acceptable and
-  preferred over fabricated products.
+- Use a real official/retailer product URL when the supplied evidence contains
+  one. Otherwise set "link" to the exact evidence article URL for source_id.
+- Use numerical buzz data only when it appears in the supplied evidence.
+  Otherwise write a qualitative, source-attributed signal such as
+  "Editorial coverage; public sales metric not disclosed".
+- CN LUXURY and CN MASSTIGE panels require real Chinese-market evidence.
+  Infer tier from brand positioning. Do not leave a heat panel empty when at
+  least five supplied rows name suitable products for that market and tier.
 - Treat the configured main references as mandatory research targets, not a
   whitelist. Other valid public sources are allowed under identical evidence rules.
-- Each product link MUST point to a real, accessible product page URL.
-- Do NOT generate products for which you cannot provide a real URL.
-- IMPORTANT: Each product MUST include a "source_url" field set to the
-  exact URL of one of the articles listed in the Raw data below.  This
-  is the article that supports the product claim.  The source_url value
-  must match the full URL exactly from the supplied list."""
+- Each product link MUST be a real supplied evidence URL or a product URL
+  explicitly present in that evidence. Do not invent or guess product URLs.
+- IMPORTANT: Each product MUST include a "source_id" copied exactly from
+  one supplied evidence row. The product name must appear in that row's
+  title or excerpt. Also copy its URL into "source_url". Never invent an ID,
+  product, URL, price, size, review count, sales claim, or launch date.
+- If price or size is not present in the evidence, set both price fields to
+  "Price and size not publicly disclosed" rather than dropping the product."""
 
-    user_prompt = (
-        f"Generate {category} product data"
-        f" for month {month_label} ({en_range})."
-        f"\n\nRaw data (article index, title, summary, URL):\n{articles_text}"
-    )
-
-    _LLM_MAX_ATTEMPTS = 3
-    current_user_prompt = user_prompt
+    _LLM_MAX_ATTEMPTS = int(os.environ.get("PRODUCT_GENERATION_ATTEMPTS", "3"))
+    retry_note = ""
     best_result: dict | None = None
     best_quality: tuple[int, int, int, int, int] | None = None
     accumulated_cn_radar: dict[str, list[dict]] = {}
@@ -1423,22 +1640,28 @@ Rules:
 
     for attempt in range(1, _LLM_MAX_ATTEMPTS + 1):
         print(f"  Calling LLM for {category} products (attempt {attempt}/{_LLM_MAX_ATTEMPTS})...")
-        response = call_llm(system_prompt, current_user_prompt)
         try:
-            data = parse_json_response(response)
+            data = _generate_panel_drafts(
+                system_prompt,
+                panel_evidence,
+                category=category,
+                month_label=month_label,
+                en_range=en_range,
+                retry_note=retry_note,
+            )
         except (json.JSONDecodeError, ValueError) as exc:
             print(
                 f"  WARNING: malformed {category} JSON on attempt {attempt}: {exc}",
                 file=sys.stderr,
             )
             if attempt < _LLM_MAX_ATTEMPTS:
-                current_user_prompt = (
-                    user_prompt
-                    + "\n\nThe previous response was malformed JSON. Return one complete, "
+                retry_note = (
+                    "\n\nThe previous response was malformed JSON. Return one complete, "
                     "strictly valid JSON object only; do not truncate it or use Markdown."
                 )
                 continue
             break
+        _write_generation_diagnostic(month_label, category, attempt, "model", data)
         _accumulate_cn_radar_candidates(accumulated_cn_radar, data)
         if accumulated_cn_radar:
             radar_data = data.setdefault("new_product_radar", {})
@@ -1458,10 +1681,11 @@ Rules:
             "new_product_radar": {},
             "market_observation": {},
         }
-        panel_candidates: dict[tuple[str, str], int] = {}
+        panel_candidate_counts: dict[tuple[str, str], int] = {}
         panel_verified: dict[tuple[str, str], int] = {}
         panel_formal: dict[tuple[str, str], int] = {}
         panel_observation: dict[tuple[str, str], int] = {}
+        quarantined: list[dict] = []
         for section in ["heat_rankings", "new_product_radar"]:
             if section in data:
                 for panel, products in data[section].items():
@@ -1475,13 +1699,13 @@ Rules:
                             if not isinstance(p, dict):
                                 continue
                             name = p.get("name", "?")
-                            panel_candidates[(section, panel)] = (
-                                panel_candidates.get((section, panel), 0) + 1
+                            panel_candidate_counts[(section, panel)] = (
+                                panel_candidate_counts.get((section, panel), 0) + 1
                             )
                             # Reject products whose source_url is not a collected article URL
-                            source_url = p.get("source_url")
-                            if source_url and source_url not in article_urls:
-                                source_url = None
+                            source_url = _resolve_candidate_source(
+                                p, source_map, article_urls
+                            )
                             try:
                                 candidate = make_product(
                                     name=name,
@@ -1539,6 +1763,16 @@ Rules:
                                         panel_observation.get((section, panel), 0) + 1
                                     )
                             except ValueError as e:
+                                quarantined.append(
+                                    {
+                                        "section": section,
+                                        "panel": panel,
+                                        "name": name,
+                                        "source_id": p.get("source_id"),
+                                        "source_url": p.get("source_url"),
+                                        "reason": str(e),
+                                    }
+                                )
                                 print(
                                     f"  WARNING: Quarantining '{name}' in {section}/{panel}: {e}",
                                     file=sys.stderr,
@@ -1547,6 +1781,15 @@ Rules:
                     if observation_products:
                         obs_panel = result["market_observation"].setdefault(panel, [])
                         obs_panel.extend(observation_products)
+        _dedupe_cross_tier_panels(result)
+        _dedupe_market_observation_panels(result)
+        _write_generation_diagnostic(
+            month_label,
+            category,
+            attempt,
+            "canonicalization",
+            {"result": result, "quarantined": quarantined},
+        )
 
         # A product can legitimately appear in both weekly heat and new-product
         # radar.  Treat the heat score as the canonical weekly score so a
@@ -1602,7 +1845,7 @@ Rules:
                 category,
                 section,
                 panel,
-                candidate_count=panel_candidates.get((section, panel), formal_n),
+                candidate_count=panel_candidate_counts.get((section, panel), formal_n),
                 verified_count=panel_verified.get((section, panel), formal_n),
                 formal_included_count=formal_n,
                 observation_count=panel_observation.get((section, panel), 0),
@@ -1673,24 +1916,24 @@ Rules:
                 _supplement_candidate_evidence(data, raw_data, category, month_label)
                 articles = raw_data.get("articles", [])
                 article_urls = {a.get("url", "") for a in articles if a.get("url")}
-            expanded_articles = _select_category_relevant_articles(
-                articles,
-                category,
-                max_cn=40,
-                max_non_cn=15,
+            expanded_pool = build_evidence_pool(articles, category, month_label)
+            source_map.update(
+                {candidate.candidate_id: candidate.url for candidate in expanded_pool}
             )
-            expanded_articles_text = "\n".join(
-                f"[{i}] {article['title']}: {article.get('summary', '')[:200]} "
-                f"(URL: {article['url']})"
-                for i, article in enumerate(expanded_articles)
-            )
+            panel_evidence = {
+                panel: "\n".join(
+                    candidate.prompt_line()
+                    for candidate in panel_candidates(expanded_pool, panel, limit=60)
+                )
+                for panel in REQUIRED_HEAT_PANELS
+            }
             retry_note = (
                 f"\n\n[RETRY {attempt}/{_LLM_MAX_ATTEMPTS}] "
                 + " ".join(retry_reasons)
-                + " Each source_url must be an exact URL below. Do not fabricate "
-                "products or source URLs." + f"\n\nExpanded evidence:\n{expanded_articles_text}"
+                + " Each source_id must be copied from the evidence below and the "
+                "product name must be present in that row. Do not fabricate products "
+                "or URLs."
             )
-            current_user_prompt = user_prompt + retry_note
             print(
                 f"  Retrying: hard_fail={hard_fail_panels}, "
                 f"thin_heat={thin_heat_panels}, thin_radar={thin_radar_panels}, "
@@ -2033,13 +2276,13 @@ def _build_manifest(
 def main() -> int:
     month = resolve_month(previous_month_str())
     en_range, cn_range, start_date, end_date = month_date_range(month)
-    fetched_at = datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
+    fetched_at = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
     print("=== Beauty Monthly Content Generation ===")
     print(f"Month: {month}")
     print(f"Date Range: {en_range}")
     print(f"Transport: {LLM_TRANSPORT}")
-    print(f"LLM Model: {MODEL}")
+    print(f"LLM Model: {effective_model_name()}")
     print()
 
     # Load raw data
@@ -2055,6 +2298,23 @@ def main() -> int:
     if not articles:
         print("FATAL: No source articles available. Cannot generate products without evidence.")
         return 1
+    unresolved = sum(
+        urlparse(str(article.get("url", ""))).netloc.casefold() == "news.google.com"
+        for article in articles
+    )
+    if unresolved:
+        print(f"Resolving {unresolved} Google News source URLs to direct publishers...")
+        articles = resolve_google_news_urls(articles)
+        raw_data["articles"] = articles
+        resolved = unresolved - sum(
+            urlparse(str(article.get("url", ""))).netloc.casefold() == "news.google.com"
+            for article in articles
+        )
+        print(f"Resolved {resolved}/{unresolved} aggregator URLs\n")
+    articles = enrich_product_roundups(articles)
+    raw_data["articles"] = articles
+    roundup_count = sum(bool(article.get("product_mentions")) for article in articles)
+    print(f"Enriched {roundup_count} product roundup articles\n")
 
     # Generate products — FAILS if articles cannot support products
     print("--- Generating Makeup Products ---")

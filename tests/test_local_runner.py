@@ -1,4 +1,6 @@
+import json
 import logging
+import subprocess
 from pathlib import Path
 from unittest.mock import patch
 
@@ -41,6 +43,26 @@ def test_restore_keeps_failed_canonical_candidate(monkeypatch, tmp_path):
     assert (tmp_path / "index.html").read_text() == "published"
 
 
+def test_snapshot_restore_rolls_back_issue_registry_and_archive(monkeypatch, tmp_path):
+    monkeypatch.setattr(runner, "ROOT", tmp_path)
+    (tmp_path / "data").mkdir()
+    (tmp_path / "data" / "issues.json").write_text("before")
+    archive = tmp_path / "archive" / "months" / "2026-08"
+    archive.mkdir(parents=True)
+    (archive / "index.html").write_text("before archive")
+
+    backup = runner.snapshot("2026-09")
+    (tmp_path / "data" / "issues.json").write_text("after")
+    (archive / "index.html").write_text("after archive")
+    (tmp_path / "archive" / "months" / "2026-09").mkdir(parents=True)
+
+    runner.restore("2026-09", backup)
+
+    assert (tmp_path / "data" / "issues.json").read_text() == "before"
+    assert (archive / "index.html").read_text() == "before archive"
+    assert not (tmp_path / "archive" / "months" / "2026-09").exists()
+
+
 def test_codex_login_preflight_passes_on_first_attempt(monkeypatch):
     monkeypatch.setattr(runner, "codex_logged_in", lambda: True)
     runner._codex_login_preflight()
@@ -78,3 +100,46 @@ def test_codex_login_preflight_uses_default_max_attempts(monkeypatch, caplog):
     ):
         runner._codex_login_preflight()
     assert "failed after 3 attempts" in caplog.text
+
+
+def test_already_published_reads_deploy_manifest(monkeypatch, tmp_path):
+    monkeypatch.setattr(runner, "ROOT", tmp_path)
+    (tmp_path / "deploy-manifest.json").write_text(
+        json.dumps({"month": "2026-09"}), encoding="utf-8"
+    )
+
+    assert runner.already_published("2026-09") is True
+    assert runner.already_published("2026-08") is False
+
+
+def test_clean_checkout_allows_only_reused_target_raw(monkeypatch):
+    dirty = subprocess.CompletedProcess(
+        [], 0, stdout="?? data/months/2026-09/raw_collected.json\n", stderr=""
+    )
+    monkeypatch.setattr(runner.subprocess, "run", lambda *args, **kwargs: dirty)
+
+    runner.ensure_clean_checkout("2026-09", allow_target_raw=True)
+    with pytest.raises(RuntimeError, match="dirty automation checkout"):
+        runner.ensure_clean_checkout("2026-09", allow_target_raw=False)
+
+
+def test_write_status_is_machine_readable(monkeypatch, tmp_path):
+    monkeypatch.setattr(runner, "STATE_DIR", tmp_path)
+
+    runner.write_status("2026-09", "failed", detail="generation failed")
+
+    status = json.loads((tmp_path / "monthly-status.json").read_text(encoding="utf-8"))
+    assert status["month"] == "2026-09"
+    assert status["state"] == "failed"
+    assert status["detail"] == "generation failed"
+    assert status["updated_at"].endswith("Z")
+
+
+def test_launchagent_uses_dedicated_venv_and_recovery_schedule():
+    plist = Path(__file__).parents[1] / "ops" / "com.edelene.beauty-weekly-monthly.plist"
+    text = plist.read_text(encoding="utf-8")
+
+    assert "/.openclaw/automation/beauty-weekly/.venv/bin/python" in text
+    assert text.count("<key>Day</key><integer>1</integer>") >= 2
+    assert "<key>Day</key><integer>2</integer>" in text
+    assert "<key>CODEX_MODEL</key><string>gpt-5.6-sol</string>" in text

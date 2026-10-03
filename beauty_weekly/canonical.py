@@ -389,6 +389,28 @@ def _check_render_projection(report: dict, errors: list[str]) -> None:
 # ── Validation ────────────────────────────────────────────────────────────────
 
 
+def _report_source_urls(report: dict) -> set[str]:
+    """Collect URLs referenced by formal and market-observation products."""
+    urls: set[str] = set()
+
+    def add_products(products: list[dict]) -> None:
+        for product in products:
+            link = product.get("detail", {}).get("price_link", {}).get("link", "")
+            if link:
+                urls.add(link)
+            evidence = (product.get("launch_evidence") or {}).get("evidence") or {}
+            if evidence.get("url"):
+                urls.add(evidence["url"])
+
+    for topic in ("makeup", "fragrance"):
+        for section in ("heat_rankings", "new_product_radar"):
+            for products in report.get("products", {}).get(topic, {}).get(section, {}).values():
+                add_products(products)
+        for products in (report.get("market_observation") or {}).get(topic, {}).values():
+            add_products(products or [])
+    return urls
+
+
 def validate_canonical(weeks_dir: Path) -> list[str]:
     """Validate the canonical weekly dataset.  Returns a list of error strings.
 
@@ -501,18 +523,7 @@ def validate_canonical(weeks_dir: Path) -> list[str]:
         errors.append("sources.json missing sources list")
     else:
         # Verify all source URLs exist in the report
-        report_urls: set[str] = set()
-        for topic in ("makeup", "fragrance"):
-            for section in ("heat_rankings", "new_product_radar"):
-                panels = report.get("products", {}).get(topic, {}).get(section, {})
-                for _panel, products in panels.items():
-                    for p in products:
-                        link = p.get("detail", {}).get("price_link", {}).get("link", "")
-                        if link:
-                            report_urls.add(link)
-                        le = p.get("launch_evidence")
-                        if le and le.get("evidence") and le["evidence"].get("url"):
-                            report_urls.add(le["evidence"]["url"])
+        report_urls = _report_source_urls(report)
         source_urls = {s["url"] for s in sources["sources"]}
         orphaned = source_urls - report_urls
         if orphaned:

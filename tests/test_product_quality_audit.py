@@ -3,9 +3,47 @@ from build.audit_product_quality import (
     _is_evidence_url,
     _is_explicit_evidence_link,
     _is_generic_url,
+    audit_cross_tier_duplicates,
+    audit_duplicate_or_generic_buzz,
     audit_rank_order,
     audit_score_breakdown,
+    audit_visible_cjk,
 )
+
+
+def test_cross_tier_duplicate_audit_rejects_same_sku_in_two_tiers():
+    def product(name, tier):
+        return {
+            "name": name,
+            "name_cn": "",
+            "tier": tier,
+            "market": "US",
+            "category_badge": "Foundation",
+            "detail": {
+                "price_link": {"link": "https://example.com/fenty"},
+                "brand": {"en": "Fenty Beauty"},
+            },
+        }
+
+    report = {
+        "products": {
+            "makeup": {
+                "heat_rankings": {
+                    "US LUXURY": [
+                        product("Fenty Beauty Pro Filt'r Fluid Flex Foundation", "LUXURY")
+                    ],
+                    "US MASSTIGE": [product("Fenty Pro Filt'r Foundation", "MASSTIGE")],
+                },
+                "new_product_radar": {},
+            },
+            "fragrance": {"heat_rankings": {}, "new_product_radar": {}},
+        }
+    }
+
+    errors = audit_cross_tier_duplicates(report)
+
+    assert len(errors) == 1
+    assert "cross-tier duplicate" in errors[0]
 
 
 def test_rejects_storefront_and_category_urls():
@@ -75,6 +113,48 @@ def test_rejects_editorial_link_when_visible_copy_is_not_explicit():
 def test_cjk_pattern_catches_mixed_visible_copy():
     assert CJK_PATTERN.search("Launch a palette to 切入 spring trends")
     assert not CJK_PATTERN.search("Launch a palette to target spring trends")
+
+
+def test_buzz_audit_rejects_missing_sentence_subject():
+    product = {
+        "name": "Official Product Name",
+        "detail": {"buzz": {"en": ": Featured in a September roundup"}},
+    }
+    report = {
+        "products": {
+            "makeup": {"heat_rankings": {"CN MASSTIGE": [product]}, "new_product_radar": {}},
+            "fragrance": {"heat_rankings": {}, "new_product_radar": {}},
+        }
+    }
+
+    errors = audit_duplicate_or_generic_buzz(report)
+
+    assert len(errors) == 1
+    assert "generic buzz" in errors[0]
+
+
+def test_visible_cjk_audit_allows_official_product_name_only():
+    product = {
+        "name": "花西子西湖情境香水系列",
+        "category_badge": "Fragrance Collection",
+        "detail": {
+            "price_link": {"en": "Price and size not publicly disclosed", "link": "https://example.com"},
+            "key_features": {"en": "West Lake inspired fragrance collection"},
+            "buzz": {"en": "Editorial coverage"},
+            "brand": {"en": "Chinese beauty brand"},
+        },
+    }
+    report = {
+        "products": {
+            "makeup": {"heat_rankings": {}, "new_product_radar": {}},
+            "fragrance": {
+                "heat_rankings": {"CN MASSTIGE": [product]},
+                "new_product_radar": {},
+            },
+        }
+    }
+
+    assert audit_visible_cjk(report) == []
 
 
 def test_rank_order_requires_sequential_descending_scores():

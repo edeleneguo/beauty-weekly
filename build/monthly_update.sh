@@ -56,6 +56,8 @@ tar --exclude=.beauty-weekly-state -cf - . | tar -xf - -C "$STAGE_DIR"
   cd "$STAGE_DIR"
   export BEAUTY_MONTHLY_MONTH="$TARGET_MONTH"
   python3 build/render.py
+  python3 build/rebuild_monthly_archives.py --current-month "$TARGET_MONTH"
+  python3 build/update_issue_navigation.py
 
   # Staged validation: always runs (no skip)
   python3 build/validate.py
@@ -64,6 +66,7 @@ tar --exclude=.beauty-weekly-state -cf - . | tar -xf - -C "$STAGE_DIR"
   python3 build/validate_evidence.py
   python3 build/validate_pipeline.py
   python3 build/audit_monthly_completeness.py
+  python3 build/check_site_links.py
 )
 
 echo "Staged render: OK"
@@ -72,6 +75,14 @@ echo "Staged render: OK"
 for page in index.html fragrance.html; do
   cp "$STAGE_DIR/$page" "$page"
 done
+mkdir -p archive
+rm -rf archive/months
+cp -R "$STAGE_DIR/archive/months" archive/months
+cp "$STAGE_DIR/data/issues.json" "data/issues.json"
+# The staged navigation repair also covers retained legacy weekly pages and
+# the reusable page shells. Reapply it after promotion so those files cannot
+# drift from the newly promoted issue registry.
+python3 build/update_issue_navigation.py
 
 # Save manifest hash proof for online verification (Req 6)
 MANIFEST_HASH=$(python3 -c "

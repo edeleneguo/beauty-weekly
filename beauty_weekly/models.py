@@ -336,6 +336,7 @@ class Product(BaseModel):
     detail: ProductDetail
     trend_badge: TrendBadgeType | None = None
     new_badge: NewBadgeType | None = None
+    observation_status: Literal["pending official confirmation"] | None = None
     # Target sub-objects (populated by adapter when legacy data provides them)
     launch_evidence: LaunchEvidence | None = None
     trend: Trend | None = None
@@ -368,6 +369,15 @@ class Products(BaseModel):
     model_config = {"extra": "forbid"}
 
 
+class MarketObservation(BaseModel):
+    """Evidence-backed candidates kept outside formal ranking panels."""
+
+    makeup: dict[str, list[Product]] = Field(default_factory=dict)
+    fragrance: dict[str, list[Product]] = Field(default_factory=dict)
+
+    model_config = {"extra": "forbid"}
+
+
 class WeeklyReport(BaseModel):
     """Target canonical report model.
 
@@ -396,6 +406,8 @@ class MonthlyReport(BaseModel):
     date_range_cn: str
     version: str
     products: Products
+    market_observation: MarketObservation = Field(default_factory=MarketObservation)
+    panel_coverage: dict[str, dict] = Field(default_factory=dict)
 
     model_config = {"strict": True, "extra": "forbid"}
 

@@ -4,6 +4,7 @@
 
 from __future__ import annotations
 
+import argparse
 import importlib.util
 import json
 import sys
@@ -77,7 +78,19 @@ def _detail_completeness(products: list[dict[str, Any]]) -> dict[str, int]:
     return counts
 
 
+def _parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--output",
+        type=Path,
+        default=MANIFEST_PATH,
+        help="Manifest destination (defaults to the versioned June baseline).",
+    )
+    return parser.parse_args()
+
+
 def main() -> int:
+    args = _parse_args()
     reference = json.loads(REFERENCE_PATH.read_text(encoding="utf-8"))
     report = json.loads(REPORT_PATH.read_text(encoding="utf-8"))
     recovered_payload = json.loads((MONTH_DIR / "recovered_candidates.json").read_text(encoding="utf-8"))
@@ -126,11 +139,12 @@ def main() -> int:
         "render_shell_counts": reference["render_shell_counts"],
         "parity_audit": parity_audit,
     }
-    MANIFEST_PATH.write_text(
+    args.output.parent.mkdir(parents=True, exist_ok=True)
+    args.output.write_text(
         json.dumps(manifest, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
         encoding="utf-8",
     )
-    print(f"Wrote structural fidelity manifest: {MANIFEST_PATH}")
+    print(f"Wrote structural fidelity manifest: {args.output}")
     return 0
 
 

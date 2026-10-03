@@ -23,6 +23,7 @@ Design invariants
 * Idempotent: running twice produces identical output.
 """
 
+import html
 import json
 import os
 import re
@@ -30,12 +31,17 @@ import sys
 from datetime import date
 from email.utils import parsedate_to_datetime
 from typing import Any, Dict, List, Optional
+from urllib.parse import urlparse
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
 
 from beauty_weekly.canonical_adapter import canonical_to_legacy  # noqa: E402
 from beauty_weekly.month import month_report_path, resolve_month  # noqa: E402
+from beauty_weekly.product_taxonomy import (  # noqa: E402
+    group_trend_products,
+    normalize_report,
+)
 from beauty_weekly.week import report_path as week_report_path  # noqa: E402
 from beauty_weekly.week import resolve_week  # noqa: E402
 
@@ -714,7 +720,8 @@ def _in_month(article: Dict[str, Any], month_label: str) -> bool:
 
 
 def _plain_text(value: Any) -> str:
-    return re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", str(value or ""))).strip()
+    decoded = html.unescape(str(value or ""))
+    return re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", decoded)).strip()
 
 
 def _topic_articles(raw: Dict[str, Any], topic: str, month_label: str) -> List[Dict[str, Any]]:
@@ -738,6 +745,48 @@ def _topic_articles(raw: Dict[str, Any], topic: str, month_label: str) -> List[D
     return [article for _, article in selected[:8]]
 
 
+PUBLISHER_LABELS = {
+    "bustle.com": "Bustle",
+    "cosmopolitan.com": "Cosmopolitan",
+    "finance.yahoo.com": "Yahoo Finance",
+    "glam.com": "Glam",
+    "harpersbazaar.com": "Harper's Bazaar",
+    "hypebae.com": "Hypebae",
+    "instyle.com": "InStyle",
+    "nstperfume.com": "Now Smell This",
+    "prnewswire.com": "PR Newswire",
+    "refinery29.com": "Refinery29",
+    "vogue.com.tw": "Vogue Taiwan",
+    "whowhatwear.com": "Who What Wear",
+}
+
+
+def _publisher_label(article: Dict[str, Any]) -> str:
+    host = urlparse(str(article.get("url") or "")).netloc.casefold().removeprefix("www.")
+    if host in PUBLISHER_LABELS:
+        return PUBLISHER_LABELS[host]
+    root = host.split(".")[0].replace("-", " ").strip()
+    return root.title() if root else "Verified source"
+
+
+def _news_type(article: Dict[str, Any]) -> tuple[str, str]:
+    text = _plain_text(
+        f"{article.get('title', '')} {article.get('reference_type', '')}"
+    ).casefold()
+    if any(cue in text for cue in ("regulation", "regulatory", "compliance", "ban ")):
+        return "reg", "Regulatory"
+    if any(cue in text for cue in ("acquisition", "acquires", "funding", "investment", "merger")):
+        return "ma", "M&A"
+    if any(
+        cue in text
+        for cue in (" launches ", " launched ", "introduces", " debuts ", " unveils ", "releases")
+    ):
+        return "event", "Launch"
+    if any(cue in text for cue in ("report", "sales", "growth", "survey", "data", "market size")):
+        return "data", "Data"
+    return "market", "Market"
+
+
 def _render_news(topic: str, articles: List[Dict[str, Any]], date_range: str) -> str:
     label = "Makeup Industry" if topic == "makeup" else "Fragrance Industry"
     cards = []
@@ -745,13 +794,15 @@ def _render_news(topic: str, articles: List[Dict[str, Any]], date_range: str) ->
         market = str(article.get("market", "GLOBAL")).upper()
         region = "cn" if market == "CN" else ("us" if market == "US" else "global")
         summary = _plain_text(article.get("summary")) or "Verified source item for this reporting period."
+        tag_class, tag_label = _news_type(article)
         cards.append(
             '<div class="news-card"><div class="news-card-header">'
             f'<span class="news-region-tag {region}">{_esc(market)}</span>'
             f'<span class="news-card-title"><a href="{_esc(str(article.get("url", "")))}" target="_blank">{_esc(_plain_text(article.get("title")))}</a></span>'
+            f'<span class="news-card-tag {tag_class}">{tag_label}</span>'
             '<span class="news-card-chevron">&#9662;</span></div>'
             f'<div class="news-card-brief">{_esc(summary[:240])}</div>'
-            f'<div class="news-card-body"><div class="news-card-body-inner">Source: {_esc(str(article.get("source", "verified source")))} · {_esc(str(article.get("date", "")))}</div></div></div>'
+            f'<div class="news-card-body"><div class="news-card-body-inner">Source: {_esc(_publisher_label(article))} · {_esc(str(article.get("date", "")))}</div></div></div>'
         )
     if not cards:
         cards.append(f'<div class="collection-status-card">No verified {topic} news was found for { _esc(date_range) }. Coverage is flagged for source backfill.</div>')
@@ -761,32 +812,15 @@ def _render_news(topic: str, articles: List[Dict[str, Any]], date_range: str) ->
     )
 
 
+def _group_trend_products(
+    topic: str, products: Dict[str, Any]
+) -> Dict[str, List[tuple[str, Dict[str, Any]]]]:
+    return group_trend_products(topic, products)
+
+
 def _render_trends(topic: str, products: Dict[str, Any], date_range: str) -> str:
     label = "Makeup" if topic == "makeup" else "Fragrance"
-    taxonomies = {
-        "makeup": {
-            "Skincare Foundation": ("foundation", "cushion", "primer", "complexion", "skin"),
-            "Functional Lip": ("lip", "balm", "gloss", "peptide"),
-            "Low-Saturation Pastel": ("pastel", "blush", "eyeshadow", "palette", "soft color"),
-        },
-        "fragrance": {
-            "Milky Musk": ("milk", "milky", "musk", "cashmere", "vanilla"),
-            "Matcha Fragrance": ("matcha", "tea", "green"),
-            "Rose Revival": ("rose", "floral"),
-            "Oriental Narrative": ("oud", "oriental", "sandalwood", "incense", "amber"),
-        },
-    }[topic]
-    combined = []
-    for section in ("heat_rankings", "new_product_radar"):
-        for panel, rows in products.get(section, {}).items():
-            for row in rows:
-                combined.append((panel, row))
-    groups: Dict[str, List[tuple]] = {name: [] for name in taxonomies}
-    for panel, row in combined:
-        haystack = _plain_text(json.dumps(row, ensure_ascii=False)).lower()
-        for trend_name, keywords in taxonomies.items():
-            if any(keyword in haystack for keyword in keywords):
-                groups[trend_name].append((panel, row))
+    groups = _group_trend_products(topic, products)
     ranked = sorted(
         ((name, rows) for name, rows in groups.items() if rows),
         key=lambda item: len(item[1]), reverse=True,
@@ -795,11 +829,44 @@ def _render_trends(topic: str, products: Dict[str, Any], date_range: str) -> str
     for trend_name, rows in ranked:
         names = [str(row.get("name", "")).strip() for _, row in rows if row.get("name")][:3]
         markets = sorted({panel.split()[0] for panel, _ in rows})
+        signal_word = "signal" if len(rows) == 1 else "signals"
+        market_tags = "".join(
+            f'<span class="region-tag {market.casefold()}">{market}</span>' for market in markets
+        )
+        strength = (
+            "Cross-market"
+            if len(rows) >= 4 and len(markets) > 1
+            else ("Supported" if len(rows) >= 2 else "Emerging")
+        )
+        strength_class = "strong" if strength == "Cross-market" else "mid"
+        signal_chips = ""
+        for index, (panel, product) in enumerate(rows[:3], 1):
+            market = panel.split()[0]
+            grade = str(
+                product.get("evidence_grade")
+                or (product.get("launch_evidence") or {}).get("evidence_grade")
+                or "n/a"
+            )
+            signal_chips += (
+                f'<div class="signal-chip chip-{market.casefold()} chip-{index}">'
+                f'<div class="chip-desc">{_esc(str(product.get("name") or ""))}</div>'
+                f'<div class="chip-num">{_esc(str(product.get("score") or "n/a"))}</div>'
+                f'<div class="chip-sub">{_esc(panel)}</div>'
+                f'<div class="chip-tag">Evidence { _esc(grade) }</div></div>'
+            )
         cards.append(
             '<div class="trend-v-card"><div class="trend-v-header">'
-            f'<h4><span class="heat-trend-tag">{_esc(trend_name)}</span> · {len(rows)} verified product signals</h4><span class="trend-v-arrow">▼</span></div>'
+            f'<h4><span class="heat-trend-tag">{_esc(trend_name)}</span> · {len(rows)} evidence-backed product {signal_word} {market_tags}</h4>'
+            f'<span class="dec-strength-tag {strength_class}">{strength}</span>'
+            '<span class="trend-v-arrow">▼</span></div>'
             '<div class="trend-v-body">'
-            f'<div class="driver-summary">Observed in the verified {date_range} ranking and launch evidence across {", ".join(markets)}: {_esc(", ".join(names))}.</div>'
+            f'<div class="driver-summary">Observed in the verified {date_range} ranking and launch evidence across {", ".join(markets)}. Examples: {_esc(", ".join(names))}.</div>'
+            f'<div class="signal-strip">{signal_chips}</div>'
+            '<div class="trend-decision-bar">'
+            '<span class="dec-label">Decision rule</span>'
+            f'<span class="dec-signal">{_esc(trend_name)}</span>'
+            '<span class="dec-arrow">→</span>'
+            '<span class="dec-direction">Validate demand before NPD</span></div>'
             '<div class="action-block"><div class="act-detail-text">Use this as a directional product signal; validate sales velocity and consumer demand before an NPD commitment.</div></div>'
             '</div></div>'
         )
@@ -878,6 +945,8 @@ def _update_banner_month(html: str, month_label: str, date_range: str) -> str:
 
 
 def _resolve_template_path(month_label: str, output_name: str) -> str:
+    if os.environ.get("BEAUTY_USE_CURRENT_TEMPLATE") == "1":
+        return os.path.join(PAGE_SHELL_DIR, output_name)
     month_specific = os.path.join(ROOT, "data", "months", month_label, "page_shells", output_name)
     if os.path.exists(month_specific):
         return month_specific
@@ -894,6 +963,7 @@ def main() -> None:
     print(f"Rendering from canonical: {CANONICAL_PATH}")
     with open(CANONICAL_PATH, "r", encoding="utf-8") as f:
         canonical = json.load(f)
+    canonical = normalize_report(canonical)
     data = canonical_to_legacy(canonical)
 
     month_label = resolve_month()

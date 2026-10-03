@@ -171,22 +171,28 @@ def validate_source_product_referential_integrity(
 
     # Collect all URLs from report.json
     report_urls: dict[str, list[str]] = {}  # url → list of product locations
+
+    def add_product_urls(topic: str, section: str, panel_key: str, product_list: list) -> None:
+        for idx, product in enumerate(product_list):
+            loc = f"{topic}/{section}/{panel_key}[{idx}] {product.get('name', '?')}"
+            link = product.get("detail", {}).get("price_link", {}).get("link", "")
+            if link:
+                report_urls.setdefault(link, []).append(loc)
+            evidence = ((product.get("launch_evidence") or {}).get("evidence") or {})
+            evidence_url = evidence.get("url", "")
+            if evidence_url:
+                report_urls.setdefault(evidence_url, []).append(loc)
+
     products_data = report.get("products", {})
     for topic in ("makeup", "fragrance"):
         for section in ("heat_rankings", "new_product_radar"):
             panels = products_data.get(topic, {}).get(section, {})
             for panel_key, product_list in panels.items():
-                for idx, p in enumerate(product_list):
-                    link = p.get("detail", {}).get("price_link", {}).get("link", "")
-                    if link:
-                        loc = f"{topic}/{section}/{panel_key}[{idx}] {p.get('name', '?')}"
-                        report_urls.setdefault(link, []).append(loc)
-                    launch_evidence = p.get("launch_evidence") or {}
-                    evidence = launch_evidence.get("evidence") or {}
-                    evidence_url = evidence.get("url", "")
-                    if evidence_url:
-                        loc = f"{topic}/{section}/{panel_key}[{idx}] {p.get('name', '?')}"
-                        report_urls.setdefault(evidence_url, []).append(loc)
+                add_product_urls(topic, section, panel_key, product_list)
+        for panel_key, product_list in (report.get("market_observation") or {}).get(
+            topic, {}
+        ).items():
+            add_product_urls(topic, "market_observation", panel_key, product_list or [])
 
     # Check: every report URL with a non-empty link has a matching source
     for url, locations in report_urls.items():

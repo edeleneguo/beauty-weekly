@@ -98,9 +98,7 @@ def available_months() -> list[str]:
     if not _DATA_MONTHS.exists():
         return months
     for entry in sorted(_DATA_MONTHS.iterdir()):
-        if entry.is_dir() and (
-            (entry / "report.json").exists() or (entry / "raw_collected.json").exists()
-        ):
+        if entry.is_dir() and (entry / "report.json").exists():
             months.append(entry.name)
     return months
 

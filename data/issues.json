@@ -1,0 +1,26 @@
+[
+  {
+    "id": "month-2026-08",
+    "label": "September 2026",
+    "sort_key": "2026-09-01",
+    "language": "en",
+    "makeup": "archive/months/2026-08/index.html",
+    "fragrance": "archive/months/2026-08/fragrance.html"
+  },
+  {
+    "id": "month-2026-07",
+    "label": "August 2026",
+    "sort_key": "2026-08-01",
+    "language": "en",
+    "makeup": "archive/months/2026-07/index.html",
+    "fragrance": "archive/months/2026-07/fragrance.html"
+  },
+  {
+    "id": "month-2026-06",
+    "label": "July 2026",
+    "sort_key": "2026-07-01",
+    "language": "en",
+    "makeup": "archive/months/2026-06/index.html",
+    "fragrance": "archive/months/2026-06/fragrance.html"
+  }
+]
