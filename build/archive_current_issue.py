@@ -36,7 +36,8 @@ def archive_current_issue(root: Path = ROOT, *, next_month: str) -> bool:
     issue_id = f"month-{current_month}"
     registry_path = root / "data" / "issues.json"
     issues = json.loads(registry_path.read_text(encoding="utf-8"))
-    if any(issue.get("id") == issue_id for issue in issues):
+    existing = next((issue for issue in issues if issue.get("id") == issue_id), None)
+    if existing and not existing.get("current"):
         return False
 
     source_pages = {
@@ -53,8 +54,7 @@ def archive_current_issue(root: Path = ROOT, *, next_month: str) -> bool:
     shutil.copy2(source_pages["fragrance"], archive_dir / "fragrance.html")
 
     label, sort_key = _issue_metadata(current_month)
-    issues.append(
-        {
+    archived_entry = {
             "id": issue_id,
             "label": label,
             "sort_key": sort_key,
@@ -62,7 +62,11 @@ def archive_current_issue(root: Path = ROOT, *, next_month: str) -> bool:
             "makeup": f"archive/months/{current_month}/index.html",
             "fragrance": f"archive/months/{current_month}/fragrance.html",
         }
-    )
+    if existing:
+        existing.clear()
+        existing.update(archived_entry)
+    else:
+        issues.append(archived_entry)
     issues.sort(key=lambda issue: issue.get("sort_key", ""), reverse=True)
     registry_path.write_text(
         json.dumps(issues, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"

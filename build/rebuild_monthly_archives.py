@@ -14,6 +14,9 @@ from datetime import date
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT))
+
+from build.update_issue_navigation import update_navigation_text  # noqa: E402
 
 
 def _issue_metadata(data_month: str) -> tuple[str, str]:
@@ -32,7 +35,7 @@ def build_monthly_issue_registry(root: Path, *, current_month: str) -> list[dict
             path.name
             for path in months_root.iterdir()
             if path.is_dir()
-            and path.name < current_month
+            and path.name <= current_month
             and (path / "report.json").is_file()
         ),
         reverse=True,
@@ -40,14 +43,20 @@ def build_monthly_issue_registry(root: Path, *, current_month: str) -> list[dict
     issues = []
     for month in months:
         label, sort_key = _issue_metadata(month)
+        is_current = month == current_month
         issues.append(
             {
                 "id": f"month-{month}",
                 "label": label,
                 "sort_key": sort_key,
                 "language": "en",
-                "makeup": f"archive/months/{month}/index.html",
-                "fragrance": f"archive/months/{month}/fragrance.html",
+                "makeup": "index.html" if is_current else f"archive/months/{month}/index.html",
+                "fragrance": (
+                    "fragrance.html"
+                    if is_current
+                    else f"archive/months/{month}/fragrance.html"
+                ),
+                **({"current": True} if is_current else {}),
             }
         )
     registry_path = root / "data" / "issues.json"
@@ -66,6 +75,8 @@ def rebuild_monthly_archives(root: Path, *, current_month: str) -> list[dict]:
     archive_root.mkdir(parents=True)
 
     for issue in issues:
+        if issue.get("current"):
+            continue
         month = issue["id"].removeprefix("month-")
         output_dir = archive_root / month
         env = os.environ.copy()
@@ -82,6 +93,19 @@ def rebuild_monthly_archives(root: Path, *, current_month: str) -> list[dict]:
             env=env,
             check=True,
         )
+    for issue in issues:
+        if issue.get("current"):
+            continue
+        month = issue["id"].removeprefix("month-")
+        output_dir = archive_root / month
+        for page_name in ("index.html", "fragrance.html"):
+            page = output_dir / page_name
+            page.write_text(
+                update_navigation_text(
+                    page, page.read_text(encoding="utf-8"), root=root
+                ),
+                encoding="utf-8",
+            )
     return issues
 
 

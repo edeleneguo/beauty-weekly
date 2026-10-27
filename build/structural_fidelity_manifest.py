@@ -43,12 +43,10 @@ def _rendered_features(html: str) -> dict[str, Any]:
     section_01 = AUDIT._extract_section(html, 1)
     section_02 = AUDIT._extract_section(html, 2)
     section_03 = AUDIT._extract_section(html, 3)
-    section_04 = AUDIT._extract_section(html, 4)
     return {
         "news_cards": len(__import__("re").findall(r'class="news-card"', section_01)),
         "trend_cards": len(__import__("re").findall(r'class="trend-v-card', section_02)),
         "heat_panel_counts": AUDIT._extract_panel_counts(section_03),
-        "radar_panel_counts": AUDIT._extract_panel_counts(section_04),
         "feature_flags": {
             "category_badges": "heat-cat-badge" in html,
             "trend_badges": "heat-trend-badge" in html,
@@ -64,8 +62,9 @@ def _panel_products(report: dict[str, Any], topic: str, section: str, panel: str
 
 
 def _panel_dom_count(rendered: dict[str, Any], section: str, panel: str) -> int:
-    key = "heat_panel_counts" if section == "heat_rankings" else "radar_panel_counts"
-    return rendered[key].get(panel, 0)
+    if section != "heat_rankings":
+        return 0
+    return rendered["heat_panel_counts"].get(panel, 0)
 
 
 def _detail_completeness(products: list[dict[str, Any]]) -> dict[str, int]:

@@ -134,7 +134,6 @@ class TestResponsiveBreakpoint:
     @pytest.mark.parametrize("rel_path", HTML_FILES[:4])
     def test_mobile_grids_can_shrink_without_page_overflow(self, rel_path):
         html = _read_html(rel_path)
-        assert ".radar-section { grid-template-columns: minmax(0, 1fr) !important; }" in html
         assert ".news-grid { grid-template-columns: minmax(0, 1fr); }" in html
         assert "overflow-wrap: anywhere" in html
         assert "table-layout: fixed" in html

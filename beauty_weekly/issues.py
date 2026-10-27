@@ -52,11 +52,16 @@ def render_issue_options(
     if category not in CATEGORIES:
         raise ValueError(f"unsupported issue category: {category}")
     site_root = Path(registry_path).resolve().parent.parent
-    options = ['<option value="">Past Issues</option>']
+    options = ['<option value="">Current &amp; Past Issues</option>']
     for issue in load_issues(registry_path, root=site_root):
-        value = relative_issue_url(page, site_root / issue[category])
+        target = site_root / issue[category]
+        value = relative_issue_url(page, target)
+        label = issue["label"]
+        if issue.get("current"):
+            label = f"Current Issue · {label}"
+        selected = " selected" if page.resolve() == target.resolve() else ""
         options.append(
-            f'<option value="{html.escape(value, quote=True)}">'
-            f'{html.escape(issue["label"])}</option>'
+            f'<option value="{html.escape(value, quote=True)}"{selected}>'
+            f'{html.escape(label)}</option>'
         )
     return "".join(options)

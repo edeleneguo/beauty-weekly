@@ -14,6 +14,7 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
 from beauty_weekly.month import resolve_month  # noqa: E402
+from beauty_weekly.product_taxonomy import normalize_report  # noqa: E402
 
 MONTH = resolve_month()
 MONTH_DIR = ROOT / "data" / "months" / MONTH
@@ -64,7 +65,7 @@ def _extract_section(html: str, section_num: int) -> str:
         pattern = (
             r'<h2\s+class="section-title">.*?<span\s+class="sec-label">Section 03</span></h2>'
             r".*?"
-            r'(?=<h2\s+class="section-title">.*?<span\s+class="sec-label">Section 04</span>)'
+            r'(?=<!--\s+APPENDIX|<div\s+class="section">\s*\n?\s*<h3)'
         )
     else:
         pattern = (
@@ -82,12 +83,10 @@ def _rendered_counts(html: str) -> dict[str, Any]:
     section_01 = _extract_section(html, 1)
     section_02 = _extract_section(html, 2)
     section_03 = _extract_section(html, 3)
-    section_04 = _extract_section(html, 4)
     return {
         "news_cards": _count_pattern(section_01, r'class="news-card"'),
         "trend_cards": _count_pattern(section_02, r'class="trend-v-card'),
         "heat_panels": _extract_panel_counts(section_03),
-        "radar_panels": _extract_panel_counts(section_04),
         "placeholders_present": any(
             marker in html
             for marker in (
@@ -104,7 +103,9 @@ def main() -> int:
         return 1
 
     reference = json.loads(REFERENCE_PATH.read_text(encoding="utf-8"))
-    report = json.loads((MONTH_DIR / "report.json").read_text(encoding="utf-8"))
+    report = normalize_report(
+        json.loads((MONTH_DIR / "report.json").read_text(encoding="utf-8"))
+    )
     rendered = {
         topic: _rendered_counts(path.read_text(encoding="utf-8"))
         for topic, path in RENDERED_PAGES.items()
@@ -140,12 +141,6 @@ def main() -> int:
             if expected_heat != rendered_heat:
                 errors.append(
                     f"{topic} Section03 {panel} mismatch: canonical={expected_heat} rendered={rendered_heat}"
-                )
-            expected_radar = canonical_counts[topic]["new_product_radar"][panel]
-            rendered_radar = rendered_shell["radar_panels"].get(panel, 0)
-            if expected_radar != rendered_radar:
-                errors.append(
-                    f"{topic} Section04 {panel} mismatch: canonical={expected_radar} rendered={rendered_radar}"
                 )
         if rendered_shell["placeholders_present"] and source_shell["news_cards"]:
             errors.append(f"{topic} rendered page still contains placeholder empty-state content")

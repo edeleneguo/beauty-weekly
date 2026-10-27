@@ -90,7 +90,7 @@ class TestRadarTrendRendering:
         assert "<summary" in html
         assert "Gourmand milk musk resurgence" in html
 
-    def test_radar_renders_launch_evidence_grade(self):
+    def test_radar_hides_internal_launch_evidence_and_score_breakdown(self):
         product = _make_radar_product()
         product["launch_evidence"] = {
             "launch_date": "2026-06-12",
@@ -98,11 +98,14 @@ class TestRadarTrendRendering:
             "evidence_grade": "A",
             "date_basis": "official_launch",
         }
+        product["score_breakdown"] = {
+            "components": [{"label": "Sales", "points": 30, "max_points": 40}]
+        }
         html = _render_product(product, "en", "radar")
-        assert "Launch Evidence" in html
-        assert "Grade A" in html
-        assert "2026-06-12" in html
-        assert "official launch" in html
+        assert "Launch Evidence" not in html
+        assert "Score Breakdown" not in html
+        assert "Grade A" not in html
+        assert "2026-06-12" not in html
 
 
 class TestRadarTrendValidation:

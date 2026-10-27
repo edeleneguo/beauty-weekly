@@ -44,6 +44,31 @@ def test_archive_is_idempotent_for_same_published_month(tmp_path):
     assert [issue["id"] for issue in issues] == ["month-2026-08"]
 
 
+def test_current_registry_entry_is_converted_to_archive(tmp_path):
+    root = _site(tmp_path)
+    (root / "data" / "issues.json").write_text(
+        json.dumps(
+            [
+                {
+                    "id": "month-2026-08",
+                    "label": "September 2026",
+                    "sort_key": "2026-09-01",
+                    "language": "en",
+                    "makeup": "index.html",
+                    "fragrance": "fragrance.html",
+                    "current": True,
+                }
+            ]
+        ),
+        encoding="utf-8",
+    )
+
+    assert archive_current_issue(root, next_month="2026-09") is True
+    issue = json.loads((root / "data" / "issues.json").read_text())[0]
+    assert "current" not in issue
+    assert issue["makeup"] == "archive/months/2026-08/index.html"
+
+
 def test_does_not_archive_when_root_already_matches_target_month(tmp_path):
     root = _site(tmp_path)
     (root / "deploy-manifest.json").write_text(

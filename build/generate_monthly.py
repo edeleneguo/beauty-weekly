@@ -1475,11 +1475,19 @@ def _generate_panel_drafts(
         if panel == "CN MASSTIGE":
             panel_guidance = """
 Tier guidance for CN MASSTIGE:
-- MASSTIGE includes accessible-prestige, lifestyle, indie, celebrity, and mainstream
-  fragrance or makeup brands. It does not require the brand to be headquartered in mainland China.
+- Include only domestic Chinese brands. Do not place international brands in CN MASSTIGE.
+- MAOGEPING belongs in CN LUXURY, not CN MASSTIGE.
 - Credible consumer-market coverage from CN, TW, or HK qualifies as Chinese-market evidence.
 - Evaluate every named product in a mixed-tier roundup independently. Do not classify the
   whole roundup as luxury merely because it also contains one or more luxury brands.
+"""
+        elif panel == "CN LUXURY":
+            panel_guidance = """
+Tier guidance for CN LUXURY:
+- Include international luxury brands sold or discussed in the Chinese market, including
+  brands such as Tom Ford, Chanel, Dior, Armani, Hermès and Prada when supported by evidence.
+- MAOGEPING is the domestic Chinese luxury exception.
+- Do not exclude a luxury product merely because its brand is headquartered outside China.
 """
         already_assigned = sorted(assigned_by_market.get(market, set()))
         if tier == "MASSTIGE" and already_assigned:
@@ -1575,7 +1583,7 @@ For the single requested panel, output ONLY valid JSON with this exact structure
 {{
   "heat_rankings": [
     {{
-        "name": "Product Name",
+        "name": "Official English Product Name",
         "name_cn": "产品中文名",
         "rank": 1,
         "score": 88,
@@ -1610,14 +1618,17 @@ Rules:
   listed with a real source_url so they route to market observation.
 - All products must be REAL, publicly available {category} products
 - Scores: 65-98 range (85=Trending, 90=Viral)
-- CN fields in Chinese, EN in English
+- The name field and every EN field must be English-only. Never mix Chinese characters
+  into the English product name. CN fields may be generated for internal source parity,
+  but they are not displayed on the public dashboard.
 - Use a real official/retailer product URL when the supplied evidence contains
   one. Otherwise set "link" to the exact evidence article URL for source_id.
 - Use numerical buzz data only when it appears in the supplied evidence.
   Otherwise write a qualitative, source-attributed signal such as
   "Editorial coverage; public sales metric not disclosed".
 - CN LUXURY and CN MASSTIGE panels require real Chinese-market evidence.
-  Infer tier from brand positioning. Do not leave a heat panel empty when at
+  CN LUXURY may contain international luxury brands plus MAOGEPING. CN MASSTIGE
+  may contain domestic Chinese brands only. Do not leave a heat panel empty when at
   least five supplied rows name suitable products for that market and tier.
 - Treat the configured main references as mandatory research targets, not a
   whitelist. Other valid public sources are allowed under identical evidence rules.

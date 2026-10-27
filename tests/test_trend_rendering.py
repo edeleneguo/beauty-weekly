@@ -147,7 +147,7 @@ def test_trend_grouping_deduplicates_localized_names_from_same_source():
     assert len(groups["Skincare Foundation"]) == 1
 
 
-def test_trend_rendering_uses_singular_signal_and_labels_names_as_examples():
+def test_trend_rendering_uses_narrative_summary_instead_of_product_counts():
     products = {
         "heat_rankings": {
             "CN LUXURY": [
@@ -159,6 +159,7 @@ def test_trend_rendering_uses_singular_signal_and_labels_names_as_examples():
 
     rendered = _render_trends("fragrance", products, "September 2026")
 
-    assert "1 evidence-backed product signal" in rendered
-    assert "product signals" not in rendered
-    assert "Examples: SW19 5pm Rose Petal" in rendered
+    assert "Rose is returning through fresher petals" in rendered
+    assert "evidence-backed product" not in rendered
+    assert "SW19 5pm Rose Petal" not in rendered
+    assert "NPD Action" in rendered

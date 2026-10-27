@@ -1,5 +1,14 @@
 [
   {
+    "id": "month-2026-09",
+    "label": "October 2026",
+    "sort_key": "2026-10-01",
+    "language": "en",
+    "makeup": "index.html",
+    "fragrance": "fragrance.html",
+    "current": true
+  },
+  {
     "id": "month-2026-08",
     "label": "September 2026",
     "sort_key": "2026-09-01",

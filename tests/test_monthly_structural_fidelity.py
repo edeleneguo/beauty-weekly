@@ -78,8 +78,10 @@ def test_radar_filter_keeps_verified_products_without_trend_badge():
 def test_monthly_templates_have_sequential_section_labels():
     for template_name in ("index.html", "fragrance.html"):
         html = (ROOT / "templates" / "pages" / template_name).read_text(encoding="utf-8")
-        positions = [html.index(f"Section 0{i}") for i in range(1, 5)]
+        positions = [html.index(f"Section 0{i}") for i in range(1, 4)]
         assert positions == sorted(positions), f"{template_name} section labels are out of order"
+        assert "Section 04" not in html
+        assert "New Product Radar" not in html
 
 
 def test_structural_fidelity_manifest_script_writes_required_sections(tmp_path):

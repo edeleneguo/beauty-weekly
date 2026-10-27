@@ -17,13 +17,17 @@ def test_registry_is_rebuilt_from_canonical_months_and_drops_legacy_weeks(tmp_pa
     issues = build_monthly_issue_registry(tmp_path, current_month="2026-09")
 
     assert [issue["id"] for issue in issues] == [
+        "month-2026-09",
         "month-2026-08",
         "month-2026-07",
         "month-2026-06",
     ]
     assert [issue["label"] for issue in issues] == [
+        "October 2026",
         "September 2026",
         "August 2026",
         "July 2026",
     ]
     assert all("week" not in issue["makeup"] for issue in issues)
+    assert issues[0]["current"] is True
+    assert issues[0]["makeup"] == "index.html"

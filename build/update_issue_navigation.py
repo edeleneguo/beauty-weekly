@@ -73,7 +73,7 @@ def update_navigation_text(page: Path, source: str, *, root: Path = ROOT) -> str
     category = _category(page)
     options = render_issue_options(page, category, root / "data" / "issues.json")
     select = (
-        '<select class="issue-select" aria-label="Past issues selector" '
+        '<select class="issue-select" aria-label="Current and past issues selector" '
         'onchange="if(this.value) window.location.href=this.value">'
         f"{options}</select>"
     )

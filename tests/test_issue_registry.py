@@ -11,6 +11,7 @@ def test_registry_is_strictly_ordered_and_public_entries_are_english():
     issues = load_issues(ROOT / "data" / "issues.json")
 
     assert [issue["id"] for issue in issues] == [
+        "month-2026-09",
         "month-2026-08",
         "month-2026-07",
         "month-2026-06",
@@ -52,6 +53,8 @@ def test_options_are_complete_ordered_monthly_and_never_link_chinese_pages():
     assert options.index("September 2026") < options.index("August 2026") < options.index(
         "July 2026"
     )
+    assert "Current Issue · October 2026" in options
+    assert "../../fragrance.html" in options
     assert '../months/2026-08/fragrance.html' in options
     assert "Week " not in options
     assert "-cn.html" not in options

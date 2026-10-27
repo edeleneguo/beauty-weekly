@@ -81,8 +81,7 @@ def _count_items(html, section_num):
             r'<h2\s+class="section-title">[^<]*<em>[^<]*</em>[^<]*'
             r'<span\s+class="sec-label">Section 03</span></h2>'
             r"(.*?)"
-            r'(?=<h2\s+class="section-title">[^<]*<em>[^<]*</em>[^<]*'
-            r'<span\s+class="sec-label">Section 04</span>)'
+            r'(?=<!--\s+APPENDIX|<div\s+class="section">\s*\n?\s*<h3)'
         )
     else:
         pattern = (
@@ -103,8 +102,7 @@ def _extract_section(html, section_num):
             r'<h2\s+class="section-title">[^<]*<em>[^<]*</em>[^<]*'
             r'<span\s+class="sec-label">Section 03</span></h2>'
             r"(.*?)"
-            r'(?=<h2\s+class="section-title">[^<]*<em>[^<]*</em>[^<]*'
-            r'<span\s+class="sec-label">Section 04</span>)'
+            r'(?=<!--\s+APPENDIX|<div\s+class="section">\s*\n?\s*<h3)'
         )
     else:
         pattern = (

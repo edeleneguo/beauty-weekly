@@ -50,7 +50,7 @@ def test_panel_generation_accepts_legacy_nested_shape():
     assert all(result["heat_rankings"][panel] == [{"name": panel}] for panel in PANELS)
 
 
-def test_cn_masstige_prompt_defines_accessible_tier_for_mixed_roundups():
+def test_cn_masstige_prompt_requires_domestic_chinese_brands():
     prompts = {}
 
     def fake_call(_system_prompt, user_prompt, max_tokens=8000):
@@ -63,9 +63,9 @@ def test_cn_masstige_prompt_defines_accessible_tier_for_mixed_roundups():
     )
 
     cn_prompt = prompts["CN MASSTIGE"]
-    assert "accessible-prestige, lifestyle, indie, celebrity, and mainstream" in cn_prompt
-    assert "does not require the brand to be headquartered in mainland China" in cn_prompt
-    assert "CN, TW, or HK" in cn_prompt
+    assert "Include only domestic Chinese brands" in cn_prompt
+    assert "Do not place international brands in CN MASSTIGE" in cn_prompt
+    assert "MAOGEPING belongs in CN LUXURY" in cn_prompt
 
 
 def test_cross_tier_duplicates_keep_only_the_first_market_panel():

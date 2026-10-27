@@ -140,7 +140,8 @@ def test_backfill_evidence_grades_render_in_published_pages():
 
     for grade in ("A", "B"):
         html = render._render_product(_formal_product(grade), "en", "radar")
-        assert re.search(rf"Grade {grade} · 2026-07-15", html)
+        assert f"Grade {grade}" not in html
+        assert "Launch Evidence" not in html
         assert "observation-label" not in html
         assert "observation-item" not in html
 

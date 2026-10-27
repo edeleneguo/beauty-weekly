@@ -6,8 +6,8 @@ transformed through the lossless compatibility adapter.  Target month is
 resolved dynamically via environment variable or latest available data.
 
 Implements all IT cross-check rules (all hard-fail, no warnings):
-  1. 4 panels per section (US LUXURY, US MASSTIGE, CN LUXURY, CN MASSTIGE)
-  2. 10 rows per panel for heat; dynamic (0+) for radar/new_product_radar
+  1. 4 Heat Ranking panels (US LUXURY, US MASSTIGE, CN LUXURY, CN MASSTIGE)
+  2. Up to 10 evidence-backed rows per heat panel
   3. Scores, ranks, products aligned across EN/CN
   4. Exactly four score labels (Heat) - rank #1 only
   5. Trend/New badge semantics (Trend, New)
@@ -19,15 +19,15 @@ Implements all IT cross-check rules (all hard-fail, no warnings):
  11. href and link policy (all links use target=_blank, heat-link-icon class)
  12. Evidence URLs (no bare example.com, valid https)
  13. Scoring/category/trend consistency (score range 65-98, monotonic rank)
- 14. Radar cards plain text with trend badges and expandable details
+ 14. New Product Radar is absent; verified launches use Heat Ranking badges
  15. Placeholder rows recognized (score=0, no score/detail exemption for real products)
  16. Trend tags: products with trend_badge must have trend_tags on key_features
- 17. Dynamic radar: item count matches actual products (no fixed 40)
 
 Exit code 0 = all pass, 1 = failures found.
 """
 
 import calendar
+import html as html_lib
 import json
 import os
 import re
@@ -132,14 +132,13 @@ def _monthly_expected_trend_tag(topic: str, product: dict[str, Any]) -> Optional
 
 
 def _extract_section_html(html: str, section_num: int) -> str:
-    """Extract Section 03 or 04 HTML content."""
+    """Extract a rendered dashboard section."""
     if section_num == 3:
         pattern = (
             r'<h2\s+class="section-title">[^<]*<em>[^<]*</em>[^<]*'
             r'<span\s+class="sec-label">Section 03</span></h2>'
             r"(.*?)"
-            r'(?=<h2\s+class="section-title">[^<]*<em>[^<]*</em>[^<]*'
-            r'<span\s+class="sec-label">Section 04</span>)'
+            r'(?=<!--\s+APPENDIX|<div\s+class="section">\s*\n?\s*<h3)'
         )
     else:
         pattern = (
@@ -203,6 +202,17 @@ def _check_language_purity(filename: str, lang: str, html: str) -> List[Validati
                     filename,
                     "language-purity",
                     'EN file missing lang="en" attribute',
+                )
+            )
+        visible_text = re.sub(r"<script.*?</script>|<style.*?</style>", "", html, flags=re.DOTALL)
+        visible_text = re.sub(r"<[^>]+>", " ", visible_text)
+        if re.search(r"[\u3400-\u9fff]", html_lib.unescape(visible_text)):
+            issues.append(
+                ValidationIssue(
+                    "ERROR",
+                    filename,
+                    "language-purity",
+                    "English dashboard contains visible Chinese characters",
                 )
             )
     return issues
@@ -801,7 +811,16 @@ def _check_data_consistency(data: dict) -> List[ValidationIssue]:
 
 def _check_html_panels(filename: str, html: str) -> List[ValidationIssue]:
     issues = []
-    for section_num in (3, 4):
+    if "New Product Radar" in html or "Section 04" in html:
+        issues.append(
+            ValidationIssue(
+                "ERROR",
+                filename,
+                "removed-module",
+                "New Product Radar must not be rendered",
+            )
+        )
+    for section_num in (3,):
         section_html = _extract_section_html(html, section_num)
         if not section_html:
             issues.append(
@@ -843,31 +862,18 @@ def _check_html_panels(filename: str, html: str) -> List[ValidationIssue]:
                 )
             )
         item_count = _count_items(section_html)
-        # Section 03 (heat) should have 1-40 items (dynamic, no placeholders); Section 04 (radar) is dynamic
-        if section_num == 3:
-            if item_count < 1 or item_count > 40:
-                issues.append(
-                    ValidationIssue(
-                        "ERROR",
-                        filename,
-                        "item-count",
-                        "Section 0{0}: expected 1-40 items, found {1}".format(
-                            section_num, item_count
-                        ),
-                    )
+        if item_count < 1 or item_count > 40:
+            issues.append(
+                ValidationIssue(
+                    "ERROR",
+                    filename,
+                    "item-count",
+                    "Section 0{0}: expected 1-40 items, found {1}".format(
+                        section_num, item_count
+                    ),
                 )
-        else:
-            # Section 04 (radar): must have 0-40 items (dynamic, no padding)
-            if item_count > 40:
-                issues.append(
-                    ValidationIssue(
-                        "ERROR",
-                        filename,
-                        "item-count",
-                        "Section 0{0}: found {1} items (max 40)".format(section_num, item_count),
-                    )
-                )
-        # Score labels: rank #1 per panel in Section 03; 0 in Section 04
+            )
+        # Score labels: rank #1 per populated panel in Section 03.
         label_count = _count_score_labels(section_html)
         if section_num == 3:
             # Count panels that have products

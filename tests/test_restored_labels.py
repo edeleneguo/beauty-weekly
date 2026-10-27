@@ -4,7 +4,7 @@ from build.enrich_dashboard_metrics import (
     prune_unreferenced_sources,
     repair_market_observation_evidence,
 )
-from build.render import _render_news, _render_trends
+from build.render import _render_news, _render_trends, _update_next_update
 
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -43,15 +43,42 @@ def test_trend_cards_restore_market_evidence_and_decision_labels():
         "new_product_radar": {},
     }
 
-    rendered = _render_trends("makeup", products, "September 2026")
+    articles = [
+        {
+            "title": "The next generation of hybrid lip stains has arrived",
+            "summary": "A forecast for hydrating, long-wear lip color.",
+            "url": "https://cosmeticsbusiness.com/hybrid-lip-stains",
+            "market": "US",
+            "source": "WGSN beauty trends",
+            "reference_type": "Trend forecasting",
+            "date": "Tue, 22 Sep 2026 12:12:45 GMT",
+        },
+        {
+            "title": "Lip care sales rise 42% at Sephora",
+            "summary": "Retail data highlights treatment-led lip formats.",
+            "url": "https://example.com/sephora-lip-care",
+            "market": "US",
+            "source": "Sephora new beauty",
+            "reference_type": "Retailer",
+            "date": "Wed, 23 Sep 2026 12:07:37 GMT",
+        },
+    ]
+
+    rendered = _render_trends(
+        "makeup", products, "Sep 1 – Sep 30, 2026", articles, "2026-09"
+    )
 
     assert 'class="region-tag cn"' in rendered
     assert 'class="region-tag us"' in rendered
     assert rendered.count('class="signal-chip') == 2
-    assert "Evidence A" in rendered
-    assert "Evidence B" in rendered
-    assert 'class="dec-label">Decision rule' in rendered
-    assert 'class="dec-signal">Functional Lip' in rendered
+    assert "WGSN" in rendered
+    assert "Sephora" in rendered
+    assert "42%" in rendered
+    assert "88" not in rendered
+    assert "84" not in rendered
+    assert "evidence-backed product" not in rendered
+    assert "NPD Action" in rendered
+    assert "High-shine treatment gloss + airy matte lip mud" in rendered
 
 
 def test_news_cards_restore_type_label_and_show_actual_publisher():
@@ -72,6 +99,12 @@ def test_news_cards_restore_type_label_and_show_actual_publisher():
     assert "YouTube beauty products" not in rendered
 
 
+def test_next_update_footer_follows_the_current_issue_month():
+    html = "<p>Next update: July 2026 · Auto-generated report</p>"
+
+    assert "Next update: November 2026" in _update_next_update(html, "2026-09")
+
+
 def test_templates_use_current_weighted_methodology_only():
     for page in ("index.html", "fragrance.html"):
         text = (ROOT / "templates" / "pages" / page).read_text(encoding="utf-8")
@@ -81,6 +114,8 @@ def test_templates_use_current_weighted_methodology_only():
         assert "Trend Fit (10%)" in text
         assert "MVP stage uses 50/50" not in text
         assert "Sales Score (&le;50) + Buzz Score (&le;50)" not in text
+        assert "New Product Radar" not in text
+        assert "Section 04" not in text
 
 
 def test_market_observation_evidence_is_rebound_to_its_explicit_source():

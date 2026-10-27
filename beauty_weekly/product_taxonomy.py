@@ -28,6 +28,8 @@ TREND_CN = {
     "Oriental Narrative": "东方叙事香趋势",
 }
 
+OBSERVATION_EVIDENCE_GRADES = frozenset({"C"})
+
 # This map resolves collisions only. It never assigns a tier to a product that
 # appears in a single panel, so the model's original classification is retained
 # unless the same SKU was emitted into both price tiers.
@@ -41,11 +43,286 @@ BRAND_TIER_RULES = {
     "萝拉蜜思": "LUXURY",
 }
 
+# Commercial tier policy confirmed for the dashboard. These overrides apply
+# to the US ranking even when the source model emitted the product as luxury.
+US_MASSTIGE_BRANDS = (
+    "prada",
+    "dior",
+    "nars",
+    "chanel",
+    "hourglass",
+    "marc jacobs beauty",
+)
+
+# CN is a market view, not a brand-origin view. International luxury brands
+# may appear in CN LUXURY. CN MASSTIGE is intentionally reserved for domestic
+# Chinese brands; MAOGEPING is the domestic luxury exception.
+CN_DOMESTIC_LUXURY_BRANDS = ("maogeping", "mao ge ping", "毛戈平")
+CN_DOMESTIC_MASSTIGE_BRANDS = (
+    "florasis",
+    "hua xizi",
+    "花西子",
+    "perfect diary",
+    "完美日记",
+    "joocyee",
+    "酵色",
+    "colorkey",
+    "珂拉琪",
+    "into you",
+    "flower knows",
+    "花知晓",
+    "timage",
+    "彩棠",
+    "carslan",
+    "卡姿兰",
+    "judydoll",
+    "橘朵",
+    "zeesea",
+    "滋色",
+    "girlcult",
+    "格丽松",
+    "venus marble",
+    "花洛莉亚",
+)
+
+CN_INTERNATIONAL_LUXURY_BRANDS = (
+    "tom ford",
+    "chanel",
+    "dior",
+    "armani",
+    "giorgio armani",
+    "ipsa",
+    "茵芙莎",
+    "laura mercier",
+    "萝拉蜜思",
+    "hermes",
+    "hermès",
+    "prada",
+    "jo malone london",
+    "l'artisan parfumeur",
+    "bvlgari",
+    "bulgari",
+    "narciso rodriguez",
+    "narciso all of me",
+    "byredo",
+    "dries van noten",
+    "miu miu",
+    "estée lauder",
+    "estee lauder",
+    "victoria beckham beauty",
+)
+
 BRAND_CANONICAL = {
     "ípsa": "ipsa",
     "茵芙莎": "ipsa",
     "萝拉蜜思": "laura mercier",
 }
+
+
+def _product_text(product: dict[str, Any]) -> str:
+    detail = product.get("detail") or {}
+    values = [
+        product.get("name"),
+        product.get("name_cn"),
+        product.get("category_badge"),
+    ]
+    for field in ("key_features", "buzz", "brand"):
+        cell = detail.get(field) or {}
+        values.extend((cell.get("en"), cell.get("cn")))
+    return _plain(" ".join(str(value or "") for value in values)).casefold()
+
+
+def _matches_brand(product: dict[str, Any], brands: tuple[str, ...]) -> bool:
+    blob = _product_text(product)
+    ascii_blob = _ascii(blob)
+    return any(
+        brand.casefold() in blob
+        or (_ascii(brand) and _ascii(brand) in ascii_blob)
+        for brand in brands
+    )
+
+
+def apply_market_tier_policy(
+    panels: dict[str, list[dict[str, Any]]], *, limit: int | None = None
+) -> None:
+    """Apply the approved US/CN brand-tier policy and restore panel ranks."""
+    routed: dict[str, list[dict[str, Any]]] = {
+        panel: []
+        for panel in ("US LUXURY", "US MASSTIGE", "CN LUXURY", "CN MASSTIGE")
+        if panel in panels
+    }
+
+    for panel, products in panels.items():
+        if panel not in routed:
+            continue
+        market, tier = panel.split()
+        for product in products:
+            target = panel
+            if market == "US" and _matches_brand(product, US_MASSTIGE_BRANDS):
+                target = "US MASSTIGE"
+            elif market == "CN":
+                if _matches_brand(product, CN_DOMESTIC_LUXURY_BRANDS):
+                    target = "CN LUXURY"
+                elif _matches_brand(product, CN_DOMESTIC_MASSTIGE_BRANDS):
+                    target = "CN MASSTIGE"
+                elif _matches_brand(product, CN_INTERNATIONAL_LUXURY_BRANDS):
+                    target = "CN LUXURY"
+                elif tier == "MASSTIGE":
+                    # CN MASSTIGE is domestic-only. Unknown or overseas brands
+                    # are excluded instead of being silently presented as local.
+                    continue
+
+            if target in routed:
+                routed[target].append(product)
+
+    for panel, products in routed.items():
+        market, tier = panel.split()
+        products.sort(key=lambda product: float(product.get("score") or 0), reverse=True)
+        if limit is not None:
+            del products[limit:]
+        for rank, product in enumerate(products, 1):
+            product["rank"] = rank
+            product["market"] = market
+            product["tier"] = tier
+        panels[panel] = products
+
+
+def refined_category_badge(topic: str, product: dict[str, Any]) -> str:
+    """Return a stable second-level display category without inventing a claim."""
+    current = _plain(product.get("category_badge"))
+    if topic != "makeup":
+        return current
+
+    text = _product_text(product)
+    category = current.casefold()
+
+    if any(cue in category for cue in ("lipstick", "lip color", "lip gloss", "lip balm")):
+        if any(cue in text for cue in ("blur", "mousse", "lip mud", "soft matte")):
+            return "Airy Matte Lip Mud"
+        if "shimmer" in text or "sparkle" in text:
+            return "Shimmer High-Shine Lip Gloss"
+        if any(cue in text for cue in ("glass", "gloss", "high-shine", "high shine")):
+            if "balm" in text:
+                return "Volumizing Glossy Lip Balm" if "volum" in text else "Glossy Lip Balm"
+            return "Hydrating Glass Lipstick" if "lipstick" in category else "High-Shine Lip Gloss"
+        if "balm" in category or any(cue in text for cue in ("hydrating", "moistur", "nourish")):
+            return (
+                "Hydrating Tinted Lip Balm"
+                if any(cue in text for cue in ("tint", "color"))
+                else "Hydrating Lip Balm"
+            )
+        return "Satin Lipstick" if "lipstick" in category else current
+
+    if "blush" in category or "cheek tint" in text:
+        if "stick" in text:
+            return "Blush Stick"
+        if "cream-to-powder" in text or "cream to powder" in text:
+            return "Cream-to-Powder Blush"
+        if "liquid" in text:
+            return "Long-Wear Liquid Blush" if "long" in text else "Liquid Blush"
+        if "tint" in text:
+            return "Sheer Cheek Tint"
+
+    if any(cue in category for cue in ("foundation", "skin tint")):
+        if "cushion" in text:
+            return (
+                "Luminous Cushion Foundation"
+                if any(cue in text for cue in ("luminous", "glow"))
+                else "Cushion Foundation"
+            )
+        if "serum" in text:
+            return "Skincare Serum Foundation"
+        if "emulsion" in text or "soft-focus" in text or "soft focus" in text:
+            return "Soft-Focus Emulsion Foundation"
+        if "satin" in text:
+            return "Satin-Finish Foundation"
+        if "matte" in text:
+            return "Soft-Matte Foundation"
+        if "luminous" in text or "glow" in text:
+            return "Luminous Foundation" if "foundation" in category else "Glow Skin Tint"
+        if "skin tint" in category:
+            return "Lightweight Skin Tint"
+        return "Flexible-Wear Foundation"
+
+    if "concealer" in category:
+        if "palette" in text:
+            return "Multi-Shade Concealer Palette"
+        if "stick" in text:
+            return "Portable Concealer Stick"
+        return "Multi-Use Concealer"
+
+    if "mascara" in category:
+        if "tubing" in text:
+            return "Volumizing Tubing Mascara"
+        if "defining" in text or "definition" in text:
+            return "Defining Mascara"
+        if "volum" in text:
+            return "Volumizing Mascara"
+
+    if "setting powder" in category or "loose powder" in text:
+        return "Blurring Loose Setting Powder"
+    if "mattifier" in category:
+        return "Invisible Face Mattifier"
+    return current
+
+
+_UNDISCLOSED_SALES_RE = re.compile(
+    r"(?:[;,.]\s*)?(?:public\s+)?sales\s+metrics?\s+"
+    r"(?:were|was|are|is)?\s*not\s+disclosed\.?",
+    re.IGNORECASE,
+)
+
+
+def clean_optional_disclosure_copy(product: dict[str, Any]) -> None:
+    """Remove repeated absence boilerplate while preserving real evidence."""
+    buzz = ((product.get("detail") or {}).get("buzz") or {})
+    for lang in ("en", "cn"):
+        value = str(buzz.get(lang) or "")
+        if not value:
+            continue
+        cleaned = _UNDISCLOSED_SALES_RE.sub("", value).strip(" ;,.\n\t")
+        buzz[lang] = cleaned
+
+
+def normalize_product_display(topic: str, product: dict[str, Any]) -> None:
+    product["category_badge"] = refined_category_badge(topic, product)
+    clean_optional_disclosure_copy(product)
+
+
+def align_product_categories(topic: str, topic_data: dict[str, Any]) -> None:
+    """Use one second-level category for the same SKU across dashboard sections."""
+    products = [
+        product
+        for section in ("heat_rankings", "new_product_radar")
+        for rows in (topic_data.get(section) or {}).values()
+        for product in rows
+    ]
+    grouped: list[list[dict[str, Any]]] = []
+    for product in products:
+        group = next(
+            (existing for existing in grouped if same_product(existing[0], product)),
+            None,
+        )
+        if group is None:
+            grouped.append([product])
+        else:
+            group.append(product)
+
+    for group in grouped:
+        if len(group) == 1:
+            continue
+        merged = deepcopy(group[0])
+        merged["name"] = " ".join(str(product.get("name") or "") for product in group)
+        merged_detail = merged.setdefault("detail", {})
+        for field in ("key_features", "buzz", "brand"):
+            merged_cell = merged_detail.setdefault(field, {})
+            merged_cell["en"] = " ".join(
+                str(((product.get("detail") or {}).get(field) or {}).get("en") or "")
+                for product in group
+            )
+        category = refined_category_badge(topic, merged)
+        for product in group:
+            product["category_badge"] = category
 
 
 def _plain(value: Any) -> str:
@@ -304,7 +581,7 @@ def group_trend_products(
         name: [] for name in TREND_TAXONOMY[topic]
     }
     seen: dict[str, set[str]] = {name: set() for name in groups}
-    for section in ("heat_rankings", "new_product_radar"):
+    for section in ("heat_rankings",):
         for panel, rows in products.get(section, {}).items():
             for row in rows:
                 identity_keys = product_identity_keys(row)
@@ -381,9 +658,12 @@ def apply_product_labels(report: dict[str, Any]) -> None:
                     radar_new = section == "new_product_radar" and _qualified_new(
                         product, month
                     )
-                    heat_new = section == "heat_rankings" and any(
-                        same_product(product, radar_product)
-                        for radar_product in qualified_radar.get(panel, [])
+                    heat_new = section == "heat_rankings" and (
+                        _qualified_new(product, month)
+                        or any(
+                            same_product(product, radar_product)
+                            for radar_product in qualified_radar.get(panel, [])
+                        )
                     )
                     if radar_new or heat_new:
                         product["new_badge"] = "New"
@@ -407,6 +687,13 @@ def dedupe_market_observations(report: dict[str, Any]) -> None:
         for panel, products in panels.items():
             unique: list[dict[str, Any]] = []
             for product in products:
+                grade = str(
+                    (product.get("launch_evidence") or {}).get("evidence_grade")
+                    or product.get("evidence_grade")
+                    or ""
+                ).upper()
+                if grade not in OBSERVATION_EVIDENCE_GRADES:
+                    continue
                 if any(same_product(product, formal) for formal in formal_by_topic.get(topic, [])):
                     continue
                 if any(same_product(product, prior) for prior in accepted):
@@ -419,13 +706,20 @@ def dedupe_market_observations(report: dict[str, Any]) -> None:
 def normalize_report(report: dict[str, Any]) -> dict[str, Any]:
     """Return a normalized copy suitable for validation, scoring, and rendering."""
     normalized = deepcopy(report)
-    for topic_data in (normalized.get("products") or {}).values():
+    for topic, topic_data in (normalized.get("products") or {}).items():
         if not isinstance(topic_data, dict):
             continue
         for section in ("heat_rankings", "new_product_radar"):
             panels = topic_data.get(section)
             if isinstance(panels, dict):
+                apply_market_tier_policy(
+                    panels, limit=10 if section == "heat_rankings" else None
+                )
                 dedupe_cross_tier_panels(panels)
+                for products in panels.values():
+                    for product in products:
+                        normalize_product_display(topic, product)
+        align_product_categories(topic, topic_data)
     dedupe_market_observations(normalized)
     apply_product_labels(normalized)
     return normalized

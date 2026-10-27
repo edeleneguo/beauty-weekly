@@ -6,7 +6,7 @@ Covers:
   2. Previous-month date range calculations (edge cases)
   3. English-only page output (no CN pages)
   4. Empty archive behaviour
-  5. New Launch trend badge expansion in Section 04
+  5. Legacy New Launch data compatibility
 
 Run: python3 -m pytest tests/test_month.py -v
 """
@@ -267,7 +267,7 @@ class TestEmptyArchive:
 
 
 # ═══════════════════════════════════════════════════════════════════════
-# 5. New Launch trend expansion in Section 04
+# 5. Legacy New Launch data compatibility
 # ═══════════════════════════════════════════════════════════════════════
 
 
@@ -385,11 +385,9 @@ class TestEmptyStateRendering:
             cn_files = [f for f in html_files if "cn" in f]
             assert cn_files == [], f"CN pages must not be rendered: {cn_files}"
 
-    def test_rendered_section_04_has_all_four_market_panels(self):
-        """Rendered Section 04 must contain all four market panels:
-        US LUXURY, US MASSTIGE, CN LUXURY, CN MASSTIGE."""
+    def test_new_product_radar_is_not_rendered(self):
+        """Radar data may remain in the source, but Section 04 is not a page feature."""
         import os
-        import re
         import subprocess
         import sys
         import tempfile
@@ -410,19 +408,5 @@ class TestEmptyStateRendering:
                 fpath = os.path.join(tmpdir, fname)
                 with open(fpath, encoding="utf-8") as f:
                     html = f.read()
-                # Extract Section 04
-                pattern = (
-                    r'<h2\s+class="section-title">[^<]*<em>[^<]*</em>[^<]*'
-                    r'<span\s+class="sec-label">Section 04</span></h2>'
-                    r"(.*?)"
-                    r'(?=<!--\s+APPENDIX|<div\s+class="section">\s*\n?\s*<h3)'
-                )
-                m = re.search(pattern, html, re.DOTALL)
-                assert m, f"{fname}: Section 04 not found"
-                s4 = m.group(1)
-                # Must have US and CN panels
-                assert "US</span>" in s4, f"{fname}: Section 04 missing US panel"
-                assert "CN</span>" in s4, f"{fname}: Section 04 missing CN panel"
-                # Must have LUXURY and MASSTIGE
-                assert "LUXURY</span>" in s4, f"{fname}: Section 04 missing LUXURY panel"
-                assert "MASSTIGE</span>" in s4, f"{fname}: Section 04 missing MASSTIGE panel"
+                assert "Section 04" not in html
+                assert "New Product Radar" not in html

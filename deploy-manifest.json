@@ -1,13 +1,13 @@
 {
-  "month": "2026-08",
+  "month": "2026-09",
   "artifacts": {
     "index.html": {
-      "sha256": "678a737d918556872d53f606eef988fb5ea4278006bc23720622938a84c376b2",
-      "size": 84853
+      "sha256": "c6f7fb8106b66394a10644e881644a2fd1f8b6bae5c8a3d93f5081cac7b97816",
+      "size": 77515
     },
     "fragrance.html": {
-      "sha256": "8747742e5e9503651c38b300f520256a734b1a53857644fc22f3a67210ec365b",
-      "size": 126612
+      "sha256": "03c05308ebc8dec13e3c2b1f28640fa82b25ba8afc82a476fe937f9aec49caff",
+      "size": 87298
     }
   }
 }
