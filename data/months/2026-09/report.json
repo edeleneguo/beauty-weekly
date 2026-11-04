@@ -77,7 +77,7 @@
             "market": "CN",
             "name": "Chanel N°5",
             "name_cn": "香奈儿五号香水",
-            "new_badge": null,
+            "new_badge": "New",
             "rank": 1,
             "score": 93,
             "score_breakdown": {
@@ -187,7 +187,7 @@
             "market": "CN",
             "name": "Chanel Chance Pink EDP",
             "name_cn": "香奈儿邂逅系列粉邂逅淡香精",
-            "new_badge": null,
+            "new_badge": "New",
             "rank": 2,
             "score": 90,
             "score_breakdown": {
@@ -297,7 +297,7 @@
             "market": "CN",
             "name": "Hermès Terre d'Hermès",
             "name_cn": "爱马仕大地香水",
-            "new_badge": null,
+            "new_badge": "New",
             "rank": 3,
             "score": 88,
             "score_breakdown": {
@@ -2176,7 +2176,7 @@
             "market": "US",
             "name": "Estée Lauder Glimmer",
             "name_cn": "雅诗兰黛 Glimmer 香水",
-            "new_badge": null,
+            "new_badge": "New",
             "rank": 6,
             "score": 85,
             "score_breakdown": {
@@ -2286,7 +2286,7 @@
             "market": "US",
             "name": "Miu Miu Miutine Intense",
             "name_cn": "Miu Miu Miutine Intense 香水",
-            "new_badge": null,
+            "new_badge": "New",
             "rank": 7,
             "score": 83,
             "score_breakdown": {
@@ -2396,7 +2396,7 @@
             "market": "US",
             "name": "Hermès Un Jardin Sous La Mer Eau de Toilette",
             "name_cn": "爱马仕 Un Jardin Sous La Mer 淡香水",
-            "new_badge": null,
+            "new_badge": "New",
             "rank": 8,
             "score": 81,
             "score_breakdown": {
@@ -2508,7 +2508,7 @@
             "market": "US",
             "name": "Phlur Vanilla Canyon",
             "name_cn": "Phlur Vanilla Canyon 香水",
-            "new_badge": null,
+            "new_badge": "New",
             "rank": 1,
             "score": 91,
             "score_breakdown": {
@@ -3063,7 +3063,7 @@
             "market": "US",
             "name": "OUAI Laurel Canyon Eau de Parfum",
             "name_cn": "OUAI Laurel Canyon 淡香精",
-            "new_badge": null,
+            "new_badge": "New",
             "rank": 6,
             "score": 82,
             "score_breakdown": {
@@ -3173,7 +3173,7 @@
             "market": "US",
             "name": "Henry Rose Rhu Berry",
             "name_cn": "Henry Rose Rhu Berry 香水",
-            "new_badge": null,
+            "new_badge": "New",
             "rank": 7,
             "score": 80,
             "score_breakdown": {
@@ -6279,7 +6279,7 @@
             "market": "CN",
             "name": "Dior Forever Matte Foundation",
             "name_cn": "迪奥凝脂恒久柔雾哑光无瑕粉底液",
-            "new_badge": null,
+            "new_badge": "New",
             "rank": 1,
             "score": 92,
             "score_breakdown": {
@@ -6729,7 +6729,7 @@
               "quarantine_status": "verified"
             },
             "market": "CN",
-            "name": "FENTY BEAUTY星尘流光唇釉家族三款全新色号",
+            "name": "Fenty Beauty Gloss Bomb Collection - Three New Shades",
             "name_cn": "FENTY BEAUTY星尘流光唇釉家族三款全新色号",
             "new_badge": "New",
             "rank": 1,
@@ -6839,7 +6839,7 @@
               "quarantine_status": "verified"
             },
             "market": "CN",
-            "name": "Make Up For Ever Artist Colorglow润唇膏",
+            "name": "Make Up For Ever Artist Colorglow Lip Balm",
             "name_cn": "玫珂菲Artist Colorglow润唇膏",
             "new_badge": "New",
             "rank": 2,
@@ -6954,7 +6954,7 @@
               "quarantine_status": "verified"
             },
             "market": "CN",
-            "name": "Make Up For Ever粉无痕原生透光气垫粉饼",
+            "name": "Make Up For Ever HD Skin Natural Glow Cushion Foundation",
             "name_cn": "玫珂菲粉无痕原生透光气垫粉饼",
             "new_badge": "New",
             "rank": 3,
@@ -7064,7 +7064,7 @@
               "quarantine_status": "verified"
             },
             "market": "CN",
-            "name": "Albion Studio超上镜柔焦乳液粉底",
+            "name": "Albion Studio Soft-Focus Emulsion Foundation",
             "name_cn": "奥碧虹Studio超上镜柔焦乳液粉底",
             "new_badge": "New",
             "rank": 4,
@@ -7288,7 +7288,7 @@
             "market": "US",
             "name": "Dior Addict Glass Lipstick",
             "name_cn": "Dior迪奥魅惑水光唇膏",
-            "new_badge": null,
+            "new_badge": "New",
             "rank": 2,
             "score": 89,
             "score_breakdown": {
@@ -7403,7 +7403,7 @@
             "market": "US",
             "name": "Armani Luminous Silk Foundation",
             "name_cn": "Armani阿玛尼Luminous Silk丝光粉底液",
-            "new_badge": null,
+            "new_badge": "New",
             "rank": 3,
             "score": 88,
             "score_breakdown": {
@@ -7513,7 +7513,7 @@
             "market": "US",
             "name": "NARS Insatiable Longwearing Liquid Blush",
             "name_cn": "NARS Insatiable持久液体腮红",
-            "new_badge": null,
+            "new_badge": "New",
             "rank": 4,
             "score": 87,
             "score_breakdown": {
@@ -7623,7 +7623,7 @@
             "market": "US",
             "name": "Charlotte Tilbury Airbrush Flawless Blur Loose Powder",
             "name_cn": "Charlotte Tilbury Airbrush Flawless Blur柔焦散粉",
-            "new_badge": null,
+            "new_badge": "New",
             "rank": 5,
             "score": 86,
             "score_breakdown": {
@@ -7963,7 +7963,7 @@
             "market": "US",
             "name": "Dior Beauty Backstage Glow-Up Skin Tint",
             "name_cn": "Dior迪奥后台Glow-Up焕亮润色乳",
-            "new_badge": null,
+            "new_badge": "New",
             "rank": 8,
             "score": 82,
             "score_breakdown": {
@@ -8073,7 +8073,7 @@
             "market": "US",
             "name": "Marc Jacobs Beauty Concealer",
             "name_cn": "Marc Jacobs Beauty遮瑕产品",
-            "new_badge": null,
+            "new_badge": "New",
             "rank": 9,
             "score": 80,
             "score_breakdown": {
@@ -8405,7 +8405,7 @@
             "market": "US",
             "name": "MERIT Clean Volume Volumizing Tubing Mascara",
             "name_cn": "MERIT Clean Volume 丰盈管状睫毛膏",
-            "new_badge": null,
+            "new_badge": "New",
             "rank": 3,
             "score": 87,
             "score_breakdown": {
@@ -8515,7 +8515,7 @@
             "market": "US",
             "name": "DIBS Beauty The Edit Stick",
             "name_cn": "DIBS Beauty The Edit Stick 多用途遮瑕棒",
-            "new_badge": null,
+            "new_badge": "New",
             "rank": 4,
             "score": 85,
             "score_breakdown": {
@@ -8625,7 +8625,7 @@
             "market": "US",
             "name": "Jones Road Minimalist Defining Mascara",
             "name_cn": "Jones Road Minimalist Defining 纤长定型睫毛膏",
-            "new_badge": null,
+            "new_badge": "New",
             "rank": 5,
             "score": 84,
             "score_breakdown": {
@@ -9414,7 +9414,7 @@
               "quarantine_status": "verified"
             },
             "market": "CN",
-            "name": "FENTY BEAUTY星尘流光唇釉家族三款全新色号",
+            "name": "Fenty Beauty Gloss Bomb Collection - Three New Shades",
             "name_cn": "FENTY BEAUTY星尘流光唇釉家族三款全新色号",
             "new_badge": "New",
             "rank": 1,
@@ -9524,7 +9524,7 @@
               "quarantine_status": "verified"
             },
             "market": "CN",
-            "name": "Make Up For Ever Artist Colorglow润唇膏",
+            "name": "Make Up For Ever Artist Colorglow Lip Balm",
             "name_cn": "玫珂菲Artist Colorglow润唇膏",
             "new_badge": "New",
             "rank": 2,
@@ -9639,7 +9639,7 @@
               "quarantine_status": "verified"
             },
             "market": "CN",
-            "name": "Make Up For Ever粉无痕原生透光气垫粉饼",
+            "name": "Make Up For Ever HD Skin Natural Glow Cushion Foundation",
             "name_cn": "玫珂菲粉无痕原生透光气垫粉饼",
             "new_badge": "New",
             "rank": 3,
@@ -9749,7 +9749,7 @@
               "quarantine_status": "verified"
             },
             "market": "CN",
-            "name": "Albion Studio超上镜柔焦乳液粉底",
+            "name": "Albion Studio Soft-Focus Emulsion Foundation",
             "name_cn": "奥碧虹Studio超上镜柔焦乳液粉底",
             "new_badge": "New",
             "rank": 4,

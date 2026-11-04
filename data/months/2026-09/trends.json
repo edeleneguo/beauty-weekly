@@ -1,0 +1,216 @@
+{
+  "makeup": [
+    {
+      "name": "Cocoa-Caramel Warm Browns",
+      "summary": "The monochrome coffee face is becoming a standing color system.",
+      "description": "Cappuccino, caramel, cocoa and espresso tones are moving across lids, cheeks and lips in one family, finished with a wet-look highlight so the warmth reads bright rather than heavy.",
+      "markets": ["CN", "US"],
+      "strength": "Cross-market",
+      "signals": [
+        {"source": "Douyin", "value": "5 sub-looks", "note": "Ten autumn cocoa looks released together", "type": "Platform signal"},
+        {"source": "TikTok", "value": "225M+", "note": "#lattemakeup total views", "type": "Social signal"},
+        {"source": "TikTok", "value": "50M+", "note": "#espressomakeup total views", "type": "Social signal"}
+      ],
+      "action_direction": "One-palette, whole-face coffee wardrobe",
+      "action": "Build a coordinated cream bronzer, liquid blush, eye color and lip gloss drop. Keep a glossy highlight step in the system so the monochrome result remains dimensional and camera-ready."
+    },
+    {
+      "name": "Black Cherry and Deep Berry",
+      "summary": "Cool-toned dark lips are returning in blurred and high-shine finishes.",
+      "description": "Deep wine, black cherry and crushed berry are replacing the summer nude. Soft edges and cool undertones make the depth feel worn-in rather than theatrical.",
+      "markets": ["CN", "US"],
+      "strength": "Supported",
+      "signals": [
+        {"source": "Beauty media", "value": "Top 4", "note": "Berry-purple lips identified among fall-winter directions", "type": "Review / media"},
+        {"source": "Sephora", "value": "14 shades", "note": "ABH Kiss Theory spans cranberry through burgundy", "type": "Retail signal"},
+        {"source": "Fenty Beauty", "value": "2 shades", "note": "Deep-berry Gloss Bomb Burst launch shades", "type": "Launch signal"}
+      ],
+      "action_direction": "Blurred berry stain plus deep-berry gloss",
+      "action": "Develop one soft-matte stain for worn-in depth and one shine-first gloss with the same cool undertone. Use fruit-led shade names to communicate color depth before swatching."
+    },
+    {
+      "name": "Soft-Matte Base and Lived-In Smoke",
+      "summary": "Texture is becoming more important than coverage.",
+      "description": "Complexion is settling between flat matte and glass skin, while cool brown and grey-mauve eye color is washed across the socket with deliberately softened edges.",
+      "markets": ["CN", "US"],
+      "strength": "Cross-market",
+      "signals": [
+        {"source": "Beauty media", "value": "No. 1", "note": "Soft-focus complexion ranked first among fall-winter looks", "type": "Review / media"},
+        {"source": "Rhode", "value": "8 shades", "note": "Pocket Bronze pairs cream texture with eight-hour wear", "type": "Product signal"},
+        {"source": "Sephora / Ulta", "value": "Soft focus", "note": "Chocolate Soleil reinforces matte cocoa sculpting", "type": "Retail signal"}
+      ],
+      "action_direction": "Blur without opacity",
+      "action": "Prioritize cream-to-powder sticks, finger-blendable bronzer and one-swipe cream shadow that diffuse light while preserving natural skin texture."
+    },
+    {
+      "name": "Liquid Blush 2.0",
+      "summary": "Cheek competition is shifting from shade stories to format mechanics.",
+      "description": "Oversized doe-foot liquids, cream-over-powder compacts and portable sticks all promise buildable color without patchiness, making applicator and texture the primary differentiation.",
+      "markets": ["US"],
+      "strength": "Supported",
+      "signals": [
+        {"source": "NARS", "value": "16 shades", "note": "Insatiable Liquid Blush pairs range breadth with 16-hour wear", "type": "Launch signal"},
+        {"source": "Sephora", "value": "2.8M loves", "note": "Patrick Ta cream-and-powder blush duo", "type": "Retail signal"},
+        {"source": "Sephora", "value": "US$36", "note": "Liquid blush price benchmark", "type": "Retail signal"}
+      ],
+      "action_direction": "Deposit-then-tap cheek formats",
+      "action": "Design an applicator that controls the first deposit and a texture that can be tapped out with fingers. Treat a broad, skin-tone-aware shade range as a core shelf signal."
+    },
+    {
+      "name": "Fall Gourmand Crosses Into Makeup",
+      "summary": "Dessert language is moving from fragrance into color cosmetics.",
+      "description": "Caramel, milk, cocoa and warm spice now name lip, cheek and complexion products, using scent-led language to communicate color temperature and comfort.",
+      "markets": ["US"],
+      "strength": "Emerging",
+      "signals": [
+        {"source": "Summer Fridays", "value": "20% oil", "note": "Sunlit Vanilla links gourmand language with long wear", "type": "Product signal"},
+        {"source": "Gisou", "value": "3 flavors", "note": "Honey lip-oil set spans caramel hazelnut and dark cherry", "type": "Launch signal"},
+        {"source": "Sephora / Ulta", "value": "Cocoa scent", "note": "Chocolate Soleil joins shade and sensorial cues", "type": "Retail signal"}
+      ],
+      "action_direction": "Cross-category dessert naming system",
+      "action": "Use caramel, praline, gingerbread and hot-milk language across lip, bronzer, mask and fragrance so one seasonal story can support several categories."
+    },
+    {
+      "name": "One-Stroke Formats",
+      "summary": "New launches compete on how little technique they require.",
+      "description": "Multi-function tools, intuitive shade names and curated sets reduce the number of decisions between opening a product and completing a look.",
+      "markets": ["CN", "US"],
+      "strength": "Supported",
+      "signals": [
+        {"source": "Tom Ford", "value": "2-in-1", "note": "Eye pen combines lining, filling and blending", "type": "Format signal"},
+        {"source": "Maybelline", "value": "6 shades", "note": "Drink-inspired names simplify velvet-matte lip choice", "type": "Launch signal"},
+        {"source": "RMK", "value": "3-piece set", "note": "Eye, cheek and lip products form one autumn look", "type": "Launch signal"}
+      ],
+      "action_direction": "Fewest steps to a finished face",
+      "action": "Focus NPD briefs on multi-use tools, self-explanatory shade systems and curated sets that remove brushes, color-description work and pairing decisions."
+    },
+    {
+      "name": "Eastern Botanical Palette",
+      "summary": "Botanical color language and skincare-infused base are shaping the China autumn look.",
+      "description": "Botanical brown, bright moss green and milk-satin finishes create a soft, low-contrast face, while cushions add skincare claims so glow reads as skin quality rather than surface shine.",
+      "markets": ["CN"],
+      "strength": "Supported",
+      "signals": [
+        {"source": "Tmall", "value": "3 products", "note": "Timage autumn botanical limited collection", "type": "Launch signal"},
+        {"source": "Timage", "value": "24H", "note": "Milk Skin Cushion 2.0 combines wear and dewy comfort", "type": "Product signal"},
+        {"source": "Market monitoring", "value": "Oct. 13", "note": "Botanical color and makeup-skincare hybrid cycle", "type": "Trend signal"}
+      ],
+      "action_direction": "Botanical color plus skincare-infused cushion",
+      "action": "Pair a distinctly local botanical palette with a treatment-led cushion. The combination supports premiumization while keeping the application gesture simple and familiar."
+    },
+    {
+      "name": "Double 11 Early Window",
+      "summary": "Base makeup and refill bundles are carrying the color-cosmetics basket.",
+      "description": "During the opening window, facial makeup took a disproportionate share of category sales, with cushion, foundation and powder bundles lifting repeat purchase and basket size.",
+      "markets": ["CN"],
+      "strength": "Supported",
+      "signals": [
+        {"source": "Feigua Data", "value": "63%", "note": "Facial makeup share in the Douyin opening window", "type": "Sales / retail"},
+        {"source": "Qingyan Intelligence", "value": "RMB 1.307B", "note": "Color cosmetics and fragrance GMV across four days", "type": "Sales / retail"},
+        {"source": "Douyin", "value": "+98% YoY", "note": "Livestreams exceeding RMB 10M GMV", "type": "Platform signal"}
+      ],
+      "action_direction": "Cushion plus refill as the Q4 hero format",
+      "action": "Lead with cushion-and-refill and full-size-plus-refill bundles, supported by livestream-exclusive specifications, clear restock windows and creator content built around repeat purchase."
+    }
+  ],
+  "fragrance": [
+    {
+      "name": "Warm Gourmand 2.0",
+      "summary": "Spice, milk and caramel are moving gourmand beyond simple sugar.",
+      "description": "Toasted nuts, warm milk and spice are wrapping around vanilla and caramel, creating comfort and slow development in cold weather rather than confectionery sweetness.",
+      "markets": ["CN", "US"],
+      "strength": "Cross-market",
+      "signals": [
+        {"source": "Spate", "value": "+85% YoY", "note": "Gourmand popularity index", "type": "Search signal"},
+        {"source": "Sephora", "value": "US$32 / 30ml", "note": "Le Monde Gourmand Pumpkin Creme price point", "type": "Retail signal"},
+        {"source": "Summer Fridays", "value": "20% oil", "note": "Sunlit Vanilla claims eight-hour wear", "type": "Product signal"}
+      ],
+      "action_direction": "Warm gourmand with texture and restraint",
+      "action": "Prototype a toasted-spice route and a warm-milk route, controlling sweetness and proving wear so the concept reads as comfort rather than novelty."
+    },
+    {
+      "name": "Holiday Collectibles",
+      "summary": "Fragrance is becoming a giftable object rather than a refill.",
+      "description": "Limited editions, ornament-packed solids and sculptural bottles with reusable tops turn scent into something to display, collect and hand over.",
+      "markets": ["CN", "US"],
+      "strength": "Supported",
+      "signals": [
+        {"source": "To Summer", "value": "RMB 698", "note": "Cang Qiu EDP with separate gift and diffuser formats", "type": "Retail signal"},
+        {"source": "Sephora", "value": "US$198", "note": "Valentino Ruby limited drop", "type": "Retail signal"},
+        {"source": "OUAI", "value": "US$34", "note": "St. Barts solid fragrance in ornament packaging", "type": "Gift format"}
+      ],
+      "action_direction": "Collectible vessel plus accessible companion format",
+      "action": "Pair a display-worthy hero bottle with a lower-ticket solid, mini or ornament format, keeping the visual code reusable beyond one holiday window."
+    },
+    {
+      "name": "Extrait as a Premium Signal",
+      "summary": "Concentration is replacing EDP shorthand as proof of quality.",
+      "description": "High-oil extraits, vessel ageing and eight-hour-plus wear claims are becoming headline specifications that make premium value easier to understand.",
+      "markets": ["US"],
+      "strength": "Supported",
+      "signals": [
+        {"source": "NewBeauty", "value": "55-62%", "note": "Saint Petal concentration benchmark", "type": "Review / media"},
+        {"source": "Wear test", "value": "8-10H", "note": "Saint Petal longevity range", "type": "Review / media"},
+        {"source": "Bvlgari", "value": "US$385 / 100ml", "note": "Allegra Baciami Ancora premium benchmark", "type": "Retail signal"}
+      ],
+      "action_direction": "Make performance specifications visible",
+      "action": "Use concentration, maturation and verified wear as front-of-pack proof points, then support them with a clear sensorial reason for the richer format."
+    },
+    {
+      "name": "Retailer Exclusives as the Launch Format",
+      "summary": "Exclusive retail windows are becoming the launch event itself.",
+      "description": "Limited runs and early-access drops concentrate discovery into a single channel before broader rollout, simplifying the first media and sampling moment.",
+      "markets": ["US"],
+      "strength": "Supported",
+      "signals": [
+        {"source": "Sephora", "value": "US$34", "note": "OUAI St. Barts Solid exclusive drop", "type": "Retail signal"},
+        {"source": "Valentino", "value": "Oct. 15", "note": "Born in Roma Ruby first-launch window", "type": "Launch signal"},
+        {"source": "Accio", "value": "18%", "note": "Fragrance share of Sephora sales", "type": "Sales / retail"}
+      ],
+      "action_direction": "Stage discovery through a controlled early-access window",
+      "action": "Use one retailer for the initial sampling, review and scarcity cycle, with a defined national-rollout date and channel-specific pack or size."
+    },
+    {
+      "name": "Domestic Beauty Majors Enter Fragrance",
+      "summary": "Chinese beauty groups are using fragrance as a second growth category.",
+      "description": "Established beauty companies are porting familiar ingredients, narratives and customer relationships into eau de parfum instead of starting from an unknown scent identity.",
+      "markets": ["CN"],
+      "strength": "Emerging",
+      "signals": [
+        {"source": "NMPA filings", "value": "9 SKUs", "note": "Roopy Dreamland full sizes and minis", "type": "Regulatory signal"},
+        {"source": "Frost & Sullivan", "value": "14% CAGR", "note": "Fragrance growth versus 8.4% for makeup", "type": "Forecast"},
+        {"source": "iiMedia", "value": "5%", "note": "China fragrance penetration versus 40%+ in Western markets", "type": "Market signal"}
+      ],
+      "action_direction": "Extend an owned beauty code into scent",
+      "action": "Start with a brand ingredient, color or emotional code customers already recognize, then launch coordinated full-size and discovery formats to lower trial friction."
+    },
+    {
+      "name": "Eastern Terroir Notes",
+      "summary": "Place-based Eastern notes are replacing generic pyramids with landscape stories.",
+      "description": "Fermented tea, bamboo, cool sandalwood, moss and camphor wood create narratives that shift on skin and feel rooted in a specific place rather than a generic top-heart-base structure.",
+      "markets": ["CN"],
+      "strength": "Supported",
+      "signals": [
+        {"source": "Weibo", "value": "820M", "note": "Reads for the Each Their Scent topic", "type": "Social signal"},
+        {"source": "Douyin", "value": "4.7B", "note": "Plays for the corresponding challenge", "type": "Social signal"},
+        {"source": "Xiaohongshu", "value": "+317%", "note": "Half-year growth in fragrance-note content", "type": "Social signal"}
+      ],
+      "action_direction": "Build scent around a precise landscape",
+      "action": "Choose one place, material and season, then connect the note architecture, naming, imagery and discovery copy to that same landscape."
+    },
+    {
+      "name": "International Niche Retreats in China",
+      "summary": "Prestige niche distribution is contracting as domestic premium brands gain space.",
+      "description": "Selected international houses are leaving flagship malls while local fragrance brands expand, reflecting a sharper reassessment of imported price premiums and channel productivity.",
+      "markets": ["CN"],
+      "strength": "Supported",
+      "signals": [
+        {"source": "Retail tracking", "value": "<3 years", "note": "Operating period before one Nanjing flagship closure", "type": "Channel signal"},
+        {"source": "Store tracking", "value": "2 cities", "note": "Recent exits across Jinan and Shanghai", "type": "Channel signal"},
+        {"source": "Official pricing", "value": "RMB 851-1,500", "note": "Imported niche 50ml benchmark", "type": "Retail signal"}
+      ],
+      "action_direction": "Prove premium value beyond imported provenance",
+      "action": "Audit store productivity, sampling conversion and repeat purchase by city. Strengthen product proof and local relevance before expanding premium doors."
+    }
+  ]
+}

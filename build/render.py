@@ -940,8 +940,63 @@ def _render_trends(
     date_range: str,
     articles: Optional[List[Dict[str, Any]]] = None,
     month_label: str = "",
+    editorial: Optional[List[Dict[str, Any]]] = None,
 ) -> str:
     label = "Makeup" if topic == "makeup" else "Fragrance"
+    if editorial:
+        cards = []
+        for trend in editorial:
+            strength = str(trend.get("strength") or "Supported")
+            strength_class = "strong" if strength == "Cross-market" else "mid"
+            market_tags = "".join(
+                f'<span class="region-tag {str(market).casefold()}">{_esc(str(market))}</span>'
+                for market in trend.get("markets", [])
+                if str(market) in {"CN", "US"}
+            )
+            signal_chips = ""
+            for index, signal in enumerate(trend.get("signals", [])[:4], 1):
+                source = _esc(str(signal.get("source") or "Verified source"))
+                value = _esc(str(signal.get("value") or "Signal"))
+                note = _esc(str(signal.get("note") or ""))
+                signal_type = _esc(str(signal.get("type") or "Market signal"))
+                url = str(signal.get("url") or "")
+                tag = "a" if url else "div"
+                href = (
+                    f' href="{_esc(url)}" target="_blank" rel="noopener"'
+                    if url
+                    else ""
+                )
+                signal_chips += (
+                    f'<{tag} class="signal-chip chip-global chip-{index}"{href}>'
+                    f'<div class="chip-desc">{source}</div>'
+                    f'<div class="chip-num">{value}</div>'
+                    f'<div class="chip-sub">{note}</div>'
+                    f'<div class="chip-tag">{signal_type}</div></{tag}>'
+                )
+            cards.append(
+                '<div class="trend-v-card"><div class="trend-v-header">'
+                f'<h4><span class="heat-trend-tag">{_esc(str(trend.get("name") or ""))}</span> · '
+                f'{_esc(str(trend.get("summary") or ""))} {market_tags}</h4>'
+                f'<span class="dec-strength-tag {strength_class}">{_esc(strength)}</span>'
+                '<span class="trend-v-arrow">▼</span></div>'
+                '<div class="trend-v-body">'
+                f'<div class="driver-summary">{_esc(str(trend.get("description") or ""))}</div>'
+                '<div style="font-size:10px;font-weight:800;color:#6b7280;text-transform:uppercase;'
+                'letter-spacing:0;margin:14px 0 8px;">Supporting data</div>'
+                f'<div class="signal-strip">{signal_chips}</div>'
+                '<div class="action-block"><div class="act-header">'
+                '<span class="act-label">NPD Action</span>'
+                f'<span class="act-direction">{_esc(str(trend.get("action_direction") or ""))}</span>'
+                f'<span class="dec-strength-tag {strength_class}">{_esc(strength)}</span></div>'
+                f'<div class="act-detail-text">{_esc(str(trend.get("action") or ""))}</div>'
+                '</div></div></div>'
+            )
+        return (
+            f'<h2 class="section-title">{label} <em>Trend</em> Report '
+            '<span class="sec-label">Section 02</span></h2>\n'
+            f'<div class="common-trends-section">{"".join(cards)}</div>\n'
+        )
+
     groups = _group_trend_products(topic, products)
     ranked = sorted(
         ((name, rows) for name, rows in groups.items() if rows),
@@ -1129,12 +1184,17 @@ def main() -> None:
     month_label = resolve_month()
     date_range = canonical.get("date_range", "")
     monthly_raw = os.path.join(ROOT, "data", "months", month_label, "raw_collected.json")
+    monthly_trends = os.path.join(ROOT, "data", "months", month_label, "trends.json")
     monthly_evidence_available = True
     raw_collection: Dict[str, Any] = {"articles": [], "trends": []}
+    trend_editorial: Dict[str, List[Dict[str, Any]]] = {}
     if os.environ.get("BEAUTY_MONTHLY_MONTH") and os.path.exists(monthly_raw):
         with open(monthly_raw, "r", encoding="utf-8") as f:
             raw_collection = json.load(f)
             monthly_evidence_available = bool(raw_collection.get("articles"))
+    if os.environ.get("BEAUTY_MONTHLY_MONTH") and os.path.exists(monthly_trends):
+        with open(monthly_trends, "r", encoding="utf-8") as f:
+            trend_editorial = json.load(f)
 
     for (topic, lang), output_name in PAGES.items():
         template_path = _resolve_template_path(month_label, output_name)
@@ -1158,6 +1218,7 @@ def main() -> None:
             date_range,
             raw_collection.get("articles", []),
             month_label,
+            trend_editorial.get(topic),
         )
         html = _replace_section(html, 2, trends_html)
 

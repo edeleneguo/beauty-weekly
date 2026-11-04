@@ -367,22 +367,22 @@ def audit_trend_rationale(report: dict) -> list[str]:
 
 
 def audit_heat_new_parity(report: dict) -> list[str]:
+    """Require every visible Heat New badge to have direct launch evidence."""
     errors: list[str] = []
-    radar_names: dict[tuple[str, str, str], set[str]] = defaultdict(set)
-    for topic, section, _panel, _idx, product in _iter_products(report):
-        if section != "new_product_radar":
-            continue
-        radar_names[(topic, product.get("market", ""), product.get("tier", ""))].add(
-            _normalize_name(product.get("name", ""))
-        )
+    month = str(report.get("month") or "")
     for topic, section, panel, idx, product in _iter_products(report):
         if section != "heat_rankings" or not product.get("new_badge"):
             continue
-        key = (topic, product.get("market", ""), product.get("tier", ""))
-        if _normalize_name(product.get("name", "")) not in radar_names.get(key, set()):
+        launch = product.get("launch_evidence") or {}
+        evidence = launch.get("evidence") or {}
+        if not (
+            launch.get("quarantine_status") == "verified"
+            and str(launch.get("launch_date") or "").startswith(f"{month}-")
+            and evidence.get("url")
+        ):
             errors.append(
-                f"{_loc(topic, section, panel, idx, product)}: NEW heat item missing "
-                "same-market radar"
+                f"{_loc(topic, section, panel, idx, product)}: NEW heat item lacks "
+                "verified in-month launch evidence"
             )
     return errors
 

@@ -121,6 +121,27 @@ def test_trend_grouping_counts_same_sku_once_across_sections_and_aliases():
     assert len(groups["Functional Lip"]) == 1
 
 
+def test_hidden_radar_products_still_support_trend_report():
+    products = {
+        "heat_rankings": {},
+        "new_product_radar": {
+            "US LUXURY": [
+                _product(
+                    "Treatment Gloss",
+                    "Lip Gloss",
+                    "Hydrating, plumping treatment formula",
+                )
+            ]
+        },
+    }
+
+    groups = _group_trend_products("makeup", products)
+
+    assert [row[1]["name"] for row in groups["Functional Lip"]] == [
+        "Treatment Gloss"
+    ]
+
+
 def test_trend_grouping_deduplicates_localized_names_from_same_source():
     source = "https://example.com/september-launches"
     english = _product(
@@ -163,3 +184,34 @@ def test_trend_rendering_uses_narrative_summary_instead_of_product_counts():
     assert "evidence-backed product" not in rendered
     assert "SW19 5pm Rose Petal" not in rendered
     assert "NPD Action" in rendered
+
+
+def test_month_specific_editorial_trends_render_all_cards_and_signals():
+    editorial = [
+        {
+            "name": "Liquid Blush 2.0",
+            "summary": "Format is becoming the differentiator.",
+            "description": "Applicator and texture now carry the product story.",
+            "markets": ["US"],
+            "strength": "Supported",
+            "signals": [
+                {
+                    "source": "Sephora",
+                    "value": "2.8M loves",
+                    "note": "Cream and powder blush duo",
+                    "type": "Retail signal",
+                }
+            ],
+            "action_direction": "Deposit then tap",
+            "action": "Build a controlled applicator and finger-blendable texture.",
+        }
+    ]
+
+    rendered = _render_trends(
+        "makeup", {}, "September 2026", editorial=editorial
+    )
+
+    assert "Liquid Blush 2.0" in rendered
+    assert "2.8M loves" in rendered
+    assert "Deposit then tap" in rendered
+    assert "US" in rendered

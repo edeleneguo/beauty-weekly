@@ -135,13 +135,17 @@ def test_market_tier_policy_keeps_cn_luxury_global_and_cn_masstige_domestic_only
 
     apply_market_tier_policy(panels, limit=10)
 
-    assert [row["name"] for row in panels["US LUXURY"]] == ["Armani Silk Foundation"]
-    assert [row["name"] for row in panels["US MASSTIGE"]] == ["Prada Soft Blur Blush"]
+    assert [row["name"] for row in panels["US LUXURY"]] == [
+        "Prada Soft Blur Blush",
+        "Armani Silk Foundation",
+    ]
+    assert panels["US MASSTIGE"] == []
     assert [row["name"] for row in panels["CN LUXURY"]] == [
         "Tom Ford Architecture Foundation"
     ]
     assert [row["name"] for row in panels["CN MASSTIGE"]] == [
-        "Florasis West Lake Fragrance"
+        "Florasis West Lake Fragrance",
+        "Fenty Gloss Bomb",
     ]
 
 

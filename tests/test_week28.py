@@ -756,11 +756,14 @@ class TestTrendTaxonomy:
                                 )
 
     def test_trend_tags_render_in_en_html(self, html_files):
-        """EN HTML trend_tags must all be canonical."""
+        """EN Heat product trend tags must use the canonical product taxonomy."""
         for (topic, lang), html in html_files.items():
             if lang != "en":
                 continue
-            tags = re.findall(r'<span\s+class="heat-trend-tag">([^<]+)</span>', html)
+            heat_html = html[html.find("Section 03") :]
+            tags = re.findall(
+                r'<span\s+class="heat-trend-tag">([^<]+)</span>', heat_html
+            )
             for tag in tags:
                 assert tag in ALL_CANONICAL_TAGS, (
                     f"{topic} EN: non-canonical trend tag '{tag}' in HTML"

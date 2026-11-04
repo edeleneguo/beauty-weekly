@@ -5,6 +5,7 @@ from build.audit_product_quality import (
     _is_generic_url,
     audit_cross_tier_duplicates,
     audit_duplicate_or_generic_buzz,
+    audit_heat_new_parity,
     audit_rank_order,
     audit_score_breakdown,
     audit_visible_cjk,
@@ -155,6 +156,30 @@ def test_visible_cjk_audit_allows_official_product_name_only():
     }
 
     assert audit_visible_cjk(report) == []
+
+
+def test_heat_new_badge_uses_direct_launch_evidence_without_radar_duplicate():
+    product = {
+        "name": "Verified September Launch",
+        "new_badge": "New",
+        "launch_evidence": {
+            "quarantine_status": "verified",
+            "launch_date": "2026-09-15",
+            "evidence": {"url": "https://example.com/verified-launch"},
+        },
+    }
+    report = {
+        "month": "2026-09",
+        "products": {
+            "makeup": {
+                "heat_rankings": {"US LUXURY": [product]},
+                "new_product_radar": {},
+            },
+            "fragrance": {"heat_rankings": {}, "new_product_radar": {}},
+        },
+    }
+
+    assert audit_heat_new_parity(report) == []
 
 
 def test_rank_order_requires_sequential_descending_scores():

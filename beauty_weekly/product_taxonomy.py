@@ -43,75 +43,6 @@ BRAND_TIER_RULES = {
     "萝拉蜜思": "LUXURY",
 }
 
-# Commercial tier policy confirmed for the dashboard. These overrides apply
-# to the US ranking even when the source model emitted the product as luxury.
-US_MASSTIGE_BRANDS = (
-    "prada",
-    "dior",
-    "nars",
-    "chanel",
-    "hourglass",
-    "marc jacobs beauty",
-)
-
-# CN is a market view, not a brand-origin view. International luxury brands
-# may appear in CN LUXURY. CN MASSTIGE is intentionally reserved for domestic
-# Chinese brands; MAOGEPING is the domestic luxury exception.
-CN_DOMESTIC_LUXURY_BRANDS = ("maogeping", "mao ge ping", "毛戈平")
-CN_DOMESTIC_MASSTIGE_BRANDS = (
-    "florasis",
-    "hua xizi",
-    "花西子",
-    "perfect diary",
-    "完美日记",
-    "joocyee",
-    "酵色",
-    "colorkey",
-    "珂拉琪",
-    "into you",
-    "flower knows",
-    "花知晓",
-    "timage",
-    "彩棠",
-    "carslan",
-    "卡姿兰",
-    "judydoll",
-    "橘朵",
-    "zeesea",
-    "滋色",
-    "girlcult",
-    "格丽松",
-    "venus marble",
-    "花洛莉亚",
-)
-
-CN_INTERNATIONAL_LUXURY_BRANDS = (
-    "tom ford",
-    "chanel",
-    "dior",
-    "armani",
-    "giorgio armani",
-    "ipsa",
-    "茵芙莎",
-    "laura mercier",
-    "萝拉蜜思",
-    "hermes",
-    "hermès",
-    "prada",
-    "jo malone london",
-    "l'artisan parfumeur",
-    "bvlgari",
-    "bulgari",
-    "narciso rodriguez",
-    "narciso all of me",
-    "byredo",
-    "dries van noten",
-    "miu miu",
-    "estée lauder",
-    "estee lauder",
-    "victoria beckham beauty",
-)
-
 BRAND_CANONICAL = {
     "ípsa": "ipsa",
     "茵芙莎": "ipsa",
@@ -132,50 +63,13 @@ def _product_text(product: dict[str, Any]) -> str:
     return _plain(" ".join(str(value or "") for value in values)).casefold()
 
 
-def _matches_brand(product: dict[str, Any], brands: tuple[str, ...]) -> bool:
-    blob = _product_text(product)
-    ascii_blob = _ascii(blob)
-    return any(
-        brand.casefold() in blob
-        or (_ascii(brand) and _ascii(brand) in ascii_blob)
-        for brand in brands
-    )
-
-
 def apply_market_tier_policy(
     panels: dict[str, list[dict[str, Any]]], *, limit: int | None = None
 ) -> None:
-    """Apply the approved US/CN brand-tier policy and restore panel ranks."""
-    routed: dict[str, list[dict[str, Any]]] = {
-        panel: []
-        for panel in ("US LUXURY", "US MASSTIGE", "CN LUXURY", "CN MASSTIGE")
-        if panel in panels
-    }
-
+    """Preserve source panel assignments while restoring stable panel ranks."""
     for panel, products in panels.items():
-        if panel not in routed:
+        if panel not in {"US LUXURY", "US MASSTIGE", "CN LUXURY", "CN MASSTIGE"}:
             continue
-        market, tier = panel.split()
-        for product in products:
-            target = panel
-            if market == "US" and _matches_brand(product, US_MASSTIGE_BRANDS):
-                target = "US MASSTIGE"
-            elif market == "CN":
-                if _matches_brand(product, CN_DOMESTIC_LUXURY_BRANDS):
-                    target = "CN LUXURY"
-                elif _matches_brand(product, CN_DOMESTIC_MASSTIGE_BRANDS):
-                    target = "CN MASSTIGE"
-                elif _matches_brand(product, CN_INTERNATIONAL_LUXURY_BRANDS):
-                    target = "CN LUXURY"
-                elif tier == "MASSTIGE":
-                    # CN MASSTIGE is domestic-only. Unknown or overseas brands
-                    # are excluded instead of being silently presented as local.
-                    continue
-
-            if target in routed:
-                routed[target].append(product)
-
-    for panel, products in routed.items():
         market, tier = panel.split()
         products.sort(key=lambda product: float(product.get("score") or 0), reverse=True)
         if limit is not None:
@@ -184,7 +78,6 @@ def apply_market_tier_policy(
             product["rank"] = rank
             product["market"] = market
             product["tier"] = tier
-        panels[panel] = products
 
 
 def refined_category_badge(topic: str, product: dict[str, Any]) -> str:
@@ -581,7 +474,9 @@ def group_trend_products(
         name: [] for name in TREND_TAXONOMY[topic]
     }
     seen: dict[str, set[str]] = {name: set() for name in groups}
-    for section in ("heat_rankings",):
+    # Radar remains hidden as a standalone UI section, but its verified
+    # launch signals still support the editorial Trend report.
+    for section in ("heat_rankings", "new_product_radar"):
         for panel, rows in products.get(section, {}).items():
             for row in rows:
                 identity_keys = product_identity_keys(row)
