@@ -880,6 +880,35 @@ def _classify_evidence(article: dict, product_link: str) -> tuple[str, str, str]
     return "B", "source_publication", "editorial"
 
 
+def _supports_launch_date(article: dict) -> bool:
+    """Reject publication dates that do not explicitly support a launch claim."""
+    reference_type = str(article.get("reference_type", "") or "").casefold()
+    source_authority = str(article.get("source_authority", "") or "").casefold()
+    text = " ".join(
+        str(article.get(field, "") or "") for field in ("title", "summary")
+    ).casefold()
+    launch_cues = (
+        "new launch",
+        "new release",
+        "new collection",
+        "new shade",
+        "new product",
+        "launches",
+        "launched",
+        "debut",
+        "新品",
+        "全新",
+        "上市",
+        "首发",
+        "发布",
+    )
+    if source_authority == "official" and any(cue in text for cue in launch_cues):
+        return True
+    if "official launch" in reference_type:
+        return True
+    return any(cue in text for cue in launch_cues)
+
+
 def _route_by_evidence_grade(evidence_grade: str | None) -> str:
     """Route a verified candidate by evidence tier.
 
@@ -1126,6 +1155,9 @@ def _make_launch_evidence(
         evidence_url = best.get("url", product_link)
         evidence_title = best.get("title", f"{product_name} — {topic} product listing")
         evidence_grade, date_basis, evidence_type = _classify_evidence(best, product_link)
+        supported_fields = ["price", "features", "buzz", "brand", "category", "link"]
+        if _supports_launch_date(best):
+            supported_fields.insert(-1, "launch_date")
         return {
             "launch_date": published_at[:10],
             "quarantine_status": "verified",
@@ -1139,15 +1171,7 @@ def _make_launch_evidence(
                 "published_at": published_at,
                 "fetched_at": fetched_at,
                 "checked_at": fetched_at,
-                "supported_fields": [
-                    "price",
-                    "features",
-                    "buzz",
-                    "brand",
-                    "category",
-                    "launch_date",
-                    "link",
-                ],
+                "supported_fields": supported_fields,
             },
             "absence_markers": [],
         }
@@ -1475,7 +1499,11 @@ def _generate_panel_drafts(
         if panel == "CN MASSTIGE":
             panel_guidance = """
 Tier guidance for CN MASSTIGE:
-- Include only domestic Chinese brands. Do not place international brands in CN MASSTIGE.
+- Treat this as the China-market masstige tier. Prioritize Flower Knows, 3CE,
+  Timage, Joocyee, Red Chamber, Judydoll, Colorkey, INTO YOU and Carslan when
+  supported by evidence.
+- Do not place prestige/professional brands such as Fenty Beauty, Make Up For
+  Ever, Albion, Chanel, Dior, Prada, Armani or Tom Ford in CN MASSTIGE.
 - MAOGEPING belongs in CN LUXURY, not CN MASSTIGE.
 - Credible consumer-market coverage from CN, TW, or HK qualifies as Chinese-market evidence.
 - Evaluate every named product in a mixed-tier roundup independently. Do not classify the
@@ -1628,7 +1656,8 @@ Rules:
   "Editorial coverage; public sales metric not disclosed".
 - CN LUXURY and CN MASSTIGE panels require real Chinese-market evidence.
   CN LUXURY may contain international luxury brands plus MAOGEPING. CN MASSTIGE
-  may contain domestic Chinese brands only. Do not leave a heat panel empty when at
+  is the China-market masstige tier and may include 3CE alongside Chinese brands,
+  but must exclude prestige/professional brands. Do not leave a heat panel empty when at
   least five supplied rows name suitable products for that market and tier.
 - Treat the configured main references as mandatory research targets, not a
   whitelist. Other valid public sources are allowed under identical evidence rules.
@@ -1638,6 +1667,11 @@ Rules:
   one supplied evidence row. The product name must appear in that row's
   title or excerpt. Also copy its URL into "source_url". Never invent an ID,
   product, URL, price, size, review count, sales claim, or launch date.
+- For a product that is genuinely new in the reporting month, features_en MUST
+  begin with "What's new:" and name the exact novelty: a new collection/line,
+  a new SKU, new shade(s), an upgraded formula, or new packaging. Never use a
+  generic "new launch" statement. For established Heat products, do not use
+  the "What's new:" prefix.
 - If price or size is not present in the evidence, set both price fields to
   "Price and size not publicly disclosed" rather than dropping the product."""
 
@@ -1748,12 +1782,25 @@ Rules:
                                     source_url=source_url,
                                 )
                                 if section == "new_product_radar":
+                                    from beauty_weekly.product_taxonomy import (
+                                        STRICT_NEWNESS_START_MONTH,
+                                        qualified_new_product,
+                                    )
+
                                     _, _, month_start, month_end = month_date_range(month_label)
                                     launch_date = candidate["launch_evidence"]["launch_date"]
                                     if not month_start <= launch_date <= month_end:
                                         raise ValueError(
                                             f"radar launch date {launch_date} outside "
                                             f"{month_start}..{month_end}"
+                                        )
+                                    if (
+                                        month_label >= STRICT_NEWNESS_START_MONTH
+                                        and not qualified_new_product(candidate, month_label)
+                                    ):
+                                        raise ValueError(
+                                            "radar item lacks explicit launch-date support or "
+                                            "a specific 'What's new:' feature statement"
                                         )
                                 panel_verified[(section, panel)] = (
                                     panel_verified.get((section, panel), 0) + 1

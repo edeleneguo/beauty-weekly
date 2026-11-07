@@ -275,6 +275,17 @@ def validate_new_product_qualification(
                         )
                         continue
 
+                    if not is_historical:
+                        features = str(
+                            (((p.get("detail") or {}).get("key_features") or {}).get("en"))
+                            or ""
+                        )
+                        if not features.casefold().startswith("what's new:"):
+                            errors.append(
+                                f"New-product qualification: {loc} must explain the exact "
+                                "novelty in Key Features using a 'What's new:' prefix"
+                            )
+
                     # Must have launch_date
                     ld = le.get("launch_date", "")
                     if not ld:

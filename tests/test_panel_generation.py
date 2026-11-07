@@ -50,7 +50,7 @@ def test_panel_generation_accepts_legacy_nested_shape():
     assert all(result["heat_rankings"][panel] == [{"name": panel}] for panel in PANELS)
 
 
-def test_cn_masstige_prompt_requires_domestic_chinese_brands():
+def test_cn_masstige_prompt_requires_china_market_brands_and_excludes_prestige():
     prompts = {}
 
     def fake_call(_system_prompt, user_prompt, max_tokens=8000):
@@ -63,8 +63,10 @@ def test_cn_masstige_prompt_requires_domestic_chinese_brands():
     )
 
     cn_prompt = prompts["CN MASSTIGE"]
-    assert "Include only domestic Chinese brands" in cn_prompt
-    assert "Do not place international brands in CN MASSTIGE" in cn_prompt
+    assert "China-market masstige tier" in cn_prompt
+    assert "Flower Knows, 3CE" in cn_prompt
+    assert "Do not place prestige/professional brands" in cn_prompt
+    assert "Fenty Beauty" in cn_prompt
     assert "MAOGEPING belongs in CN LUXURY" in cn_prompt
 
 

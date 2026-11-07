@@ -249,7 +249,12 @@ class TestNewProductQualification:
                             {
                                 "name": "Verified New",
                                 "new_badge": "New",
-                                "detail": {"price_link": {"link": "https://x.com"}},
+                                "detail": {
+                                    "price_link": {"link": "https://x.com"},
+                                    "key_features": {
+                                        "en": "What's new: new product SKU"
+                                    },
+                                },
                                 "launch_evidence": {
                                     "quarantine_status": "verified",
                                     "launch_date": "2026-06-01",

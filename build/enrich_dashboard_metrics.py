@@ -117,7 +117,7 @@ def _text_blob(product: dict) -> str:
 def _strengths(product: dict) -> dict[str, float]:
     blob = _text_blob(product)
     has_trend = bool(product.get("trend_badge") or product.get("trend"))
-    has_new = bool(product.get("new_badge") or product.get("launch_evidence"))
+    has_new = product.get("new_badge") == "New"
     buzz_hits = len(BUZZ_RE.findall(blob))
     sales_hits = len(SALES_RE.findall(blob))
     review_hits = len(REVIEW_RE.findall(blob))
@@ -249,6 +249,45 @@ def enrich_scoring(scoring: dict) -> None:
         missing.append(raw_gap)
 
 
+def sync_scoring_observations(report: dict, scoring: dict) -> None:
+    """Keep score inventory and observed constraints aligned with the report."""
+    rows: list[dict] = []
+    monotonic = True
+    for topic, topic_data in (report.get("products") or {}).items():
+        for section in ("heat_rankings", "new_product_radar"):
+            for panel, products in (topic_data.get(section) or {}).items():
+                ordered = sorted(products, key=lambda product: int(product.get("rank") or 0))
+                scores = [int(product.get("score") or 0) for product in ordered]
+                monotonic = monotonic and all(
+                    left >= right for left, right in zip(scores, scores[1:])
+                )
+                rows.extend(
+                    {
+                        "name": product.get("name", ""),
+                        "panel": panel,
+                        "score": int(product.get("score") or 0),
+                        "section": section,
+                        "topic": topic,
+                    }
+                    for product in ordered
+                )
+
+    scores = [row["score"] for row in rows if row["score"] > 0]
+    observed_min = min(scores, default=0)
+    observed_max = max(scores, default=0)
+    scoring["products"] = rows
+    scoring["observed_statistics"] = {
+        "monotonic_by_rank": monotonic,
+        "observed_max": observed_max,
+        "observed_min": observed_min,
+        "total_scored_products": len(scores),
+    }
+    constraints = scoring.setdefault("known_constraints", {})
+    constraints["monotonic_by_rank"] = monotonic
+    constraints["observed_max"] = observed_max
+    constraints["observed_min"] = observed_min
+
+
 def repair_market_observation_evidence(report: dict, articles: list[dict]) -> None:
     """Rebind observations to their explicit, collected source URL."""
     from build.generate_monthly import _make_launch_evidence
@@ -349,6 +388,7 @@ def main() -> int:
 
     enrich_report(report)
     enrich_scoring(scoring)
+    sync_scoring_observations(report, scoring)
 
     _write_json(report_path, report)
     _write_json(sources_path, sources)

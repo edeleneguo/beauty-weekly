@@ -49,6 +49,36 @@ BRAND_CANONICAL = {
     "萝拉蜜思": "laura mercier",
 }
 
+# CN MASSTIGE is a China-market tier, not a catch-all for every non-luxury
+# product mentioned by Chinese-language media. Korean brands with meaningful
+# China distribution (for example 3CE) remain eligible, while the prestige and
+# professional brands below must be routed to CN LUXURY or omitted.
+CN_MASSTIGE_EXCLUDED_BRANDS = (
+    "albion",
+    "armani",
+    "chanel",
+    "dior",
+    "fenty",
+    "hourglass",
+    "ipsa",
+    "laura mercier",
+    "make up for ever",
+    "nars",
+    "prada",
+    "tom ford",
+    "ysl",
+)
+
+NEWNESS_PREFIX_RE = re.compile(r"^what(?:'|’)s new:\s*", re.IGNORECASE)
+NEWNESS_DETAIL_RE = re.compile(
+    r"\b(?:new\b[^.;:]{0,60}\b(?:collection|line|product|sku|formula|format|shade|"
+    r"shades|colour|colors|packaging)|first\b[^.;:]{0,40}\b(?:launch|release|listing|"
+    r"fragrance)|limited[- ]edition|collaboration|collaborative collection|"
+    r"upgraded\b[^.;:]{0,40}\b(?:formula|format|packaging|line))\b",
+    re.IGNORECASE,
+)
+STRICT_NEWNESS_START_MONTH = "2026-09"
+
 
 def _product_text(product: dict[str, Any]) -> str:
     detail = product.get("detail") or {}
@@ -71,6 +101,15 @@ def apply_market_tier_policy(
         if panel not in {"US LUXURY", "US MASSTIGE", "CN LUXURY", "CN MASSTIGE"}:
             continue
         market, tier = panel.split()
+        if panel == "CN MASSTIGE":
+            products[:] = [
+                product
+                for product in products
+                if not any(
+                    brand in _product_text(product)
+                    for brand in CN_MASSTIGE_EXCLUDED_BRANDS
+                )
+            ]
         products.sort(key=lambda product: float(product.get("score") or 0), reverse=True)
         if limit is not None:
             del products[limit:]
@@ -492,13 +531,32 @@ def group_trend_products(
     return groups
 
 
-def _qualified_new(product: dict[str, Any], month: str) -> bool:
+def qualified_new_product(product: dict[str, Any], month: str) -> bool:
+    """Return True only when launch timing and the exact novelty are explicit."""
     evidence = product.get("launch_evidence") or {}
     launch_date = str(evidence.get("launch_date") or "")
     nested = evidence.get("evidence") or {}
+    supported_fields = set(nested.get("supported_fields") or [])
+    features = str(
+        (((product.get("detail") or {}).get("key_features") or {}).get("en")) or ""
+    ).strip()
     return bool(
         evidence.get("quarantine_status") == "verified"
         and launch_date.startswith(f"{month}-")
+        and nested.get("url")
+        and "launch_date" in supported_fields
+        and NEWNESS_PREFIX_RE.search(features)
+        and NEWNESS_DETAIL_RE.search(features)
+    )
+
+
+def _legacy_qualified_new(product: dict[str, Any], month: str) -> bool:
+    """Preserve frozen pre-September archives that predate novelty detail fields."""
+    evidence = product.get("launch_evidence") or {}
+    nested = evidence.get("evidence") or {}
+    return bool(
+        evidence.get("quarantine_status") == "verified"
+        and str(evidence.get("launch_date") or "").startswith(f"{month}-")
         and nested.get("url")
     )
 
@@ -517,13 +575,15 @@ def _trend_object(trend_name: str) -> dict[str, str]:
 def apply_product_labels(report: dict[str, Any]) -> None:
     """Restore evidence-backed Trend and New badges without fabricating signals."""
     month = str(report.get("month") or "")
+    strict_newness = not month or month >= STRICT_NEWNESS_START_MONTH
+    new_qualifier = qualified_new_product if strict_newness else _legacy_qualified_new
     for topic, topic_data in (report.get("products") or {}).items():
         if topic not in TREND_TAXONOMY or not isinstance(topic_data, dict):
             continue
         radar_by_panel = topic_data.get("new_product_radar") or {}
         qualified_radar: dict[str, list[dict[str, Any]]] = {}
         for panel, rows in radar_by_panel.items():
-            qualified_radar[panel] = [row for row in rows if _qualified_new(row, month)]
+            qualified_radar[panel] = [row for row in rows if new_qualifier(row, month)]
 
         for section in ("heat_rankings", "new_product_radar"):
             for panel, rows in (topic_data.get(section) or {}).items():
@@ -548,20 +608,17 @@ def apply_product_labels(report: dict[str, Any]) -> None:
                             canonical_trend["rationale"] = existing_trend["rationale"]
                         product["trend_badge"] = "Trend"
                         product["trend"] = canonical_trend
-                    if product.get("new_badge"):
+                    if not strict_newness and product.get("new_badge"):
                         continue
-                    radar_new = section == "new_product_radar" and _qualified_new(
-                        product, month
-                    )
+                    radar_new = section == "new_product_radar" and new_qualifier(product, month)
                     heat_new = section == "heat_rankings" and (
-                        _qualified_new(product, month)
+                        new_qualifier(product, month)
                         or any(
                             same_product(product, radar_product)
                             for radar_product in qualified_radar.get(panel, [])
                         )
                     )
-                    if radar_new or heat_new:
-                        product["new_badge"] = "New"
+                    product["new_badge"] = "New" if radar_new or heat_new else None
 
 
 def dedupe_market_observations(report: dict[str, Any]) -> None:

@@ -77,7 +77,7 @@
             "market": "CN",
             "name": "Chanel N°5",
             "name_cn": "香奈儿五号香水",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 1,
             "score": 93,
             "score_breakdown": {
@@ -95,7 +95,7 @@
                   "id": "buzz_momentum",
                   "label": "Buzz Momentum",
                   "max_points": 30,
-                  "points": 28,
+                  "points": 29,
                   "weight": 0.3
                 },
                 {
@@ -103,7 +103,7 @@
                   "id": "review_rating",
                   "label": "Review / Rating",
                   "max_points": 20,
-                  "points": 17,
+                  "points": 18,
                   "weight": 0.2
                 },
                 {
@@ -111,7 +111,7 @@
                   "id": "trend_fit",
                   "label": "Trend Fit",
                   "max_points": 10,
-                  "points": 10,
+                  "points": 8,
                   "weight": 0.1
                 }
               ],
@@ -187,7 +187,7 @@
             "market": "CN",
             "name": "Chanel Chance Pink EDP",
             "name_cn": "香奈儿邂逅系列粉邂逅淡香精",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 2,
             "score": 90,
             "score_breakdown": {
@@ -197,7 +197,7 @@
                   "id": "sales_momentum",
                   "label": "Sales Momentum",
                   "max_points": 40,
-                  "points": 36,
+                  "points": 37,
                   "weight": 0.4
                 },
                 {
@@ -205,7 +205,7 @@
                   "id": "buzz_momentum",
                   "label": "Buzz Momentum",
                   "max_points": 30,
-                  "points": 27,
+                  "points": 28,
                   "weight": 0.3
                 },
                 {
@@ -221,7 +221,7 @@
                   "id": "trend_fit",
                   "label": "Trend Fit",
                   "max_points": 10,
-                  "points": 10,
+                  "points": 8,
                   "weight": 0.1
                 }
               ],
@@ -297,7 +297,7 @@
             "market": "CN",
             "name": "Hermès Terre d'Hermès",
             "name_cn": "爱马仕大地香水",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 3,
             "score": 88,
             "score_breakdown": {
@@ -307,7 +307,7 @@
                   "id": "sales_momentum",
                   "label": "Sales Momentum",
                   "max_points": 40,
-                  "points": 38,
+                  "points": 39,
                   "weight": 0.4
                 },
                 {
@@ -315,7 +315,7 @@
                   "id": "buzz_momentum",
                   "label": "Buzz Momentum",
                   "max_points": 30,
-                  "points": 25,
+                  "points": 26,
                   "weight": 0.3
                 },
                 {
@@ -323,7 +323,7 @@
                   "id": "review_rating",
                   "label": "Review / Rating",
                   "max_points": 20,
-                  "points": 15,
+                  "points": 16,
                   "weight": 0.2
                 },
                 {
@@ -331,7 +331,7 @@
                   "id": "trend_fit",
                   "label": "Trend Fit",
                   "max_points": 10,
-                  "points": 10,
+                  "points": 7,
                   "weight": 0.1
                 }
               ],
@@ -407,7 +407,7 @@
             "market": "CN",
             "name": "Prada Paradoxe Radical Essence Eau de Parfum",
             "name_cn": "普拉达唯我莫测魅甜果境淡香精",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 4,
             "score": 87,
             "score_breakdown": {
@@ -425,7 +425,7 @@
                   "id": "buzz_momentum",
                   "label": "Buzz Momentum",
                   "max_points": 30,
-                  "points": 28,
+                  "points": 29,
                   "weight": 0.3
                 },
                 {
@@ -433,7 +433,7 @@
                   "id": "review_rating",
                   "label": "Review / Rating",
                   "max_points": 20,
-                  "points": 15,
+                  "points": 16,
                   "weight": 0.2
                 },
                 {
@@ -441,7 +441,7 @@
                   "id": "trend_fit",
                   "label": "Trend Fit",
                   "max_points": 10,
-                  "points": 10,
+                  "points": 8,
                   "weight": 0.1
                 }
               ],
@@ -517,7 +517,7 @@
             "market": "CN",
             "name": "Jo Malone London Sea Salt & Bergamot Cologne",
             "name_cn": "祖·玛珑伦敦海盐与佛手柑香水",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 5,
             "score": 85,
             "score_breakdown": {
@@ -527,7 +527,7 @@
                   "id": "sales_momentum",
                   "label": "Sales Momentum",
                   "max_points": 40,
-                  "points": 33,
+                  "points": 34,
                   "weight": 0.4
                 },
                 {
@@ -535,7 +535,7 @@
                   "id": "buzz_momentum",
                   "label": "Buzz Momentum",
                   "max_points": 30,
-                  "points": 27,
+                  "points": 28,
                   "weight": 0.3
                 },
                 {
@@ -543,7 +543,7 @@
                   "id": "review_rating",
                   "label": "Review / Rating",
                   "max_points": 20,
-                  "points": 15,
+                  "points": 16,
                   "weight": 0.2
                 },
                 {
@@ -551,7 +551,7 @@
                   "id": "trend_fit",
                   "label": "Trend Fit",
                   "max_points": 10,
-                  "points": 10,
+                  "points": 7,
                   "weight": 0.1
                 }
               ],
@@ -627,7 +627,7 @@
             "market": "CN",
             "name": "L'Artisan Parfumeur Mysterious Abyss Extrait de Parfum",
             "name_cn": "阿蒂仙之香神秘深渊精粹香精",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 6,
             "score": 83,
             "score_breakdown": {
@@ -637,7 +637,7 @@
                   "id": "sales_momentum",
                   "label": "Sales Momentum",
                   "max_points": 40,
-                  "points": 32,
+                  "points": 33,
                   "weight": 0.4
                 },
                 {
@@ -645,7 +645,7 @@
                   "id": "buzz_momentum",
                   "label": "Buzz Momentum",
                   "max_points": 30,
-                  "points": 27,
+                  "points": 28,
                   "weight": 0.3
                 },
                 {
@@ -653,7 +653,7 @@
                   "id": "review_rating",
                   "label": "Review / Rating",
                   "max_points": 20,
-                  "points": 14,
+                  "points": 15,
                   "weight": 0.2
                 },
                 {
@@ -661,7 +661,7 @@
                   "id": "trend_fit",
                   "label": "Trend Fit",
                   "max_points": 10,
-                  "points": 10,
+                  "points": 7,
                   "weight": 0.1
                 }
               ],
@@ -737,7 +737,7 @@
             "market": "CN",
             "name": "Bvlgari Omnia Amethyste",
             "name_cn": "宝格丽Omnia Amethyste紫水晶女性淡香精",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 7,
             "score": 81,
             "score_breakdown": {
@@ -747,7 +747,7 @@
                   "id": "sales_momentum",
                   "label": "Sales Momentum",
                   "max_points": 40,
-                  "points": 31,
+                  "points": 32,
                   "weight": 0.4
                 },
                 {
@@ -755,7 +755,7 @@
                   "id": "buzz_momentum",
                   "label": "Buzz Momentum",
                   "max_points": 30,
-                  "points": 26,
+                  "points": 27,
                   "weight": 0.3
                 },
                 {
@@ -763,7 +763,7 @@
                   "id": "review_rating",
                   "label": "Review / Rating",
                   "max_points": 20,
-                  "points": 14,
+                  "points": 15,
                   "weight": 0.2
                 },
                 {
@@ -771,7 +771,7 @@
                   "id": "trend_fit",
                   "label": "Trend Fit",
                   "max_points": 10,
-                  "points": 10,
+                  "points": 7,
                   "weight": 0.1
                 }
               ],
@@ -847,7 +847,7 @@
             "market": "CN",
             "name": "Narciso Rodriguez All of Me Eau de Parfum",
             "name_cn": "纳西索·罗德里格斯all of me珍稀花香倾我淡香精",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 8,
             "score": 79,
             "score_breakdown": {
@@ -857,7 +857,7 @@
                   "id": "sales_momentum",
                   "label": "Sales Momentum",
                   "max_points": 40,
-                  "points": 30,
+                  "points": 31,
                   "weight": 0.4
                 },
                 {
@@ -873,7 +873,7 @@
                   "id": "review_rating",
                   "label": "Review / Rating",
                   "max_points": 20,
-                  "points": 14,
+                  "points": 15,
                   "weight": 0.2
                 },
                 {
@@ -881,7 +881,7 @@
                   "id": "trend_fit",
                   "label": "Trend Fit",
                   "max_points": 10,
-                  "points": 9,
+                  "points": 7,
                   "weight": 0.1
                 }
               ],
@@ -959,7 +959,7 @@
             "market": "CN",
             "name": "Florasis West Lake Scenery Fragrance Series",
             "name_cn": "花西子西湖情境系列香水",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 1,
             "score": 89,
             "score_breakdown": {
@@ -969,7 +969,7 @@
                   "id": "sales_momentum",
                   "label": "Sales Momentum",
                   "max_points": 40,
-                  "points": 36,
+                  "points": 37,
                   "weight": 0.4
                 },
                 {
@@ -985,7 +985,7 @@
                   "id": "review_rating",
                   "label": "Review / Rating",
                   "max_points": 20,
-                  "points": 16,
+                  "points": 17,
                   "weight": 0.2
                 },
                 {
@@ -993,7 +993,7 @@
                   "id": "trend_fit",
                   "label": "Trend Fit",
                   "max_points": 10,
-                  "points": 10,
+                  "points": 8,
                   "weight": 0.1
                 }
               ],
@@ -1069,7 +1069,7 @@
             "market": "CN",
             "name": "Sabon Journey of Transformation Eau de Parfum Collection",
             "name_cn": "Sabon蛻變之旅淡香精系列",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 2,
             "score": 86,
             "score_breakdown": {
@@ -1079,7 +1079,7 @@
                   "id": "sales_momentum",
                   "label": "Sales Momentum",
                   "max_points": 40,
-                  "points": 33,
+                  "points": 34,
                   "weight": 0.4
                 },
                 {
@@ -1087,7 +1087,7 @@
                   "id": "buzz_momentum",
                   "label": "Buzz Momentum",
                   "max_points": 30,
-                  "points": 28,
+                  "points": 29,
                   "weight": 0.3
                 },
                 {
@@ -1095,7 +1095,7 @@
                   "id": "review_rating",
                   "label": "Review / Rating",
                   "max_points": 20,
-                  "points": 15,
+                  "points": 16,
                   "weight": 0.2
                 },
                 {
@@ -1103,7 +1103,7 @@
                   "id": "trend_fit",
                   "label": "Trend Fit",
                   "max_points": 10,
-                  "points": 10,
+                  "points": 7,
                   "weight": 0.1
                 }
               ],
@@ -1179,7 +1179,7 @@
             "market": "CN",
             "name": "SW19 5pm Rose Petal Eau de Parfum",
             "name_cn": "SW19 5pm Rose Petal淡香精",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 3,
             "score": 85,
             "score_breakdown": {
@@ -1294,7 +1294,7 @@
             "market": "CN",
             "name": "Lacoste L.12.12 Bleu Eau de Parfum",
             "name_cn": "Lacoste L.12.12 Bleu經典深藍淡香精",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 4,
             "score": 82,
             "score_breakdown": {
@@ -1304,7 +1304,7 @@
                   "id": "sales_momentum",
                   "label": "Sales Momentum",
                   "max_points": 40,
-                  "points": 32,
+                  "points": 33,
                   "weight": 0.4
                 },
                 {
@@ -1312,7 +1312,7 @@
                   "id": "buzz_momentum",
                   "label": "Buzz Momentum",
                   "max_points": 30,
-                  "points": 26,
+                  "points": 27,
                   "weight": 0.3
                 },
                 {
@@ -1320,7 +1320,7 @@
                   "id": "review_rating",
                   "label": "Review / Rating",
                   "max_points": 20,
-                  "points": 14,
+                  "points": 15,
                   "weight": 0.2
                 },
                 {
@@ -1328,7 +1328,7 @@
                   "id": "trend_fit",
                   "label": "Trend Fit",
                   "max_points": 10,
-                  "points": 10,
+                  "points": 7,
                   "weight": 0.1
                 }
               ],
@@ -1404,7 +1404,7 @@
             "market": "CN",
             "name": "Kuoca Black Tea Eau de Parfum",
             "name_cn": "Kuoca黑茶淡香精",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 5,
             "score": 80,
             "score_breakdown": {
@@ -1414,7 +1414,7 @@
                   "id": "sales_momentum",
                   "label": "Sales Momentum",
                   "max_points": 40,
-                  "points": 31,
+                  "points": 32,
                   "weight": 0.4
                 },
                 {
@@ -1422,7 +1422,7 @@
                   "id": "buzz_momentum",
                   "label": "Buzz Momentum",
                   "max_points": 30,
-                  "points": 26,
+                  "points": 27,
                   "weight": 0.3
                 },
                 {
@@ -1438,7 +1438,7 @@
                   "id": "trend_fit",
                   "label": "Trend Fit",
                   "max_points": 10,
-                  "points": 9,
+                  "points": 7,
                   "weight": 0.1
                 }
               ],
@@ -1514,7 +1514,7 @@
             "market": "CN",
             "name": "Jennifer Lopez Miami Glow Eau de Toilette",
             "name_cn": "Jennifer Lopez Miami Glow邁阿密女性淡香水",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 6,
             "score": 78,
             "score_breakdown": {
@@ -1524,7 +1524,7 @@
                   "id": "sales_momentum",
                   "label": "Sales Momentum",
                   "max_points": 40,
-                  "points": 30,
+                  "points": 31,
                   "weight": 0.4
                 },
                 {
@@ -1532,7 +1532,7 @@
                   "id": "buzz_momentum",
                   "label": "Buzz Momentum",
                   "max_points": 30,
-                  "points": 25,
+                  "points": 26,
                   "weight": 0.3
                 },
                 {
@@ -1548,7 +1548,7 @@
                   "id": "trend_fit",
                   "label": "Trend Fit",
                   "max_points": 10,
-                  "points": 9,
+                  "points": 7,
                   "weight": 0.1
                 }
               ],
@@ -1626,7 +1626,7 @@
             "market": "US",
             "name": "Byredo Future Memories Eau de Parfum",
             "name_cn": "Byredo Future Memories 淡香精",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 1,
             "score": 92,
             "score_breakdown": {
@@ -1636,7 +1636,7 @@
                   "id": "sales_momentum",
                   "label": "Sales Momentum",
                   "max_points": 40,
-                  "points": 37,
+                  "points": 38,
                   "weight": 0.4
                 },
                 {
@@ -1644,7 +1644,7 @@
                   "id": "buzz_momentum",
                   "label": "Buzz Momentum",
                   "max_points": 30,
-                  "points": 28,
+                  "points": 29,
                   "weight": 0.3
                 },
                 {
@@ -1660,7 +1660,7 @@
                   "id": "trend_fit",
                   "label": "Trend Fit",
                   "max_points": 10,
-                  "points": 10,
+                  "points": 8,
                   "weight": 0.1
                 }
               ],
@@ -1736,7 +1736,7 @@
             "market": "US",
             "name": "Tom Ford Tobacco Chocolat",
             "name_cn": "Tom Ford Tobacco Chocolat 香水",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 2,
             "score": 91,
             "score_breakdown": {
@@ -1746,7 +1746,7 @@
                   "id": "sales_momentum",
                   "label": "Sales Momentum",
                   "max_points": 40,
-                  "points": 37,
+                  "points": 38,
                   "weight": 0.4
                 },
                 {
@@ -1754,7 +1754,7 @@
                   "id": "buzz_momentum",
                   "label": "Buzz Momentum",
                   "max_points": 30,
-                  "points": 27,
+                  "points": 28,
                   "weight": 0.3
                 },
                 {
@@ -1770,7 +1770,7 @@
                   "id": "trend_fit",
                   "label": "Trend Fit",
                   "max_points": 10,
-                  "points": 10,
+                  "points": 8,
                   "weight": 0.1
                 }
               ],
@@ -1846,7 +1846,7 @@
             "market": "US",
             "name": "Victoria Beckham Beauty Hotel Portofino Extrait",
             "name_cn": "Victoria Beckham Beauty Hotel Portofino 香精",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 3,
             "score": 90,
             "score_breakdown": {
@@ -1856,7 +1856,7 @@
                   "id": "sales_momentum",
                   "label": "Sales Momentum",
                   "max_points": 40,
-                  "points": 36,
+                  "points": 37,
                   "weight": 0.4
                 },
                 {
@@ -1864,7 +1864,7 @@
                   "id": "buzz_momentum",
                   "label": "Buzz Momentum",
                   "max_points": 30,
-                  "points": 27,
+                  "points": 28,
                   "weight": 0.3
                 },
                 {
@@ -1880,7 +1880,7 @@
                   "id": "trend_fit",
                   "label": "Trend Fit",
                   "max_points": 10,
-                  "points": 10,
+                  "points": 8,
                   "weight": 0.1
                 }
               ],
@@ -1956,7 +1956,7 @@
             "market": "US",
             "name": "Chanel Coco Mademoiselle Crush Absolu",
             "name_cn": "香奈儿 Coco Mademoiselle Crush Absolu 香水",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 4,
             "score": 89,
             "score_breakdown": {
@@ -1966,7 +1966,7 @@
                   "id": "sales_momentum",
                   "label": "Sales Momentum",
                   "max_points": 40,
-                  "points": 36,
+                  "points": 37,
                   "weight": 0.4
                 },
                 {
@@ -1982,7 +1982,7 @@
                   "id": "review_rating",
                   "label": "Review / Rating",
                   "max_points": 20,
-                  "points": 16,
+                  "points": 17,
                   "weight": 0.2
                 },
                 {
@@ -1990,7 +1990,7 @@
                   "id": "trend_fit",
                   "label": "Trend Fit",
                   "max_points": 10,
-                  "points": 10,
+                  "points": 8,
                   "weight": 0.1
                 }
               ],
@@ -2066,7 +2066,7 @@
             "market": "US",
             "name": "Dries Van Noten Velvet Violet",
             "name_cn": "Dries Van Noten Velvet Violet 香水",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 5,
             "score": 87,
             "score_breakdown": {
@@ -2076,7 +2076,7 @@
                   "id": "sales_momentum",
                   "label": "Sales Momentum",
                   "max_points": 40,
-                  "points": 35,
+                  "points": 36,
                   "weight": 0.4
                 },
                 {
@@ -2084,7 +2084,7 @@
                   "id": "buzz_momentum",
                   "label": "Buzz Momentum",
                   "max_points": 30,
-                  "points": 26,
+                  "points": 27,
                   "weight": 0.3
                 },
                 {
@@ -2100,7 +2100,7 @@
                   "id": "trend_fit",
                   "label": "Trend Fit",
                   "max_points": 10,
-                  "points": 10,
+                  "points": 8,
                   "weight": 0.1
                 }
               ],
@@ -2176,7 +2176,7 @@
             "market": "US",
             "name": "Estée Lauder Glimmer",
             "name_cn": "雅诗兰黛 Glimmer 香水",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 6,
             "score": 85,
             "score_breakdown": {
@@ -2186,7 +2186,7 @@
                   "id": "sales_momentum",
                   "label": "Sales Momentum",
                   "max_points": 40,
-                  "points": 34,
+                  "points": 35,
                   "weight": 0.4
                 },
                 {
@@ -2194,7 +2194,7 @@
                   "id": "buzz_momentum",
                   "label": "Buzz Momentum",
                   "max_points": 30,
-                  "points": 25,
+                  "points": 26,
                   "weight": 0.3
                 },
                 {
@@ -2210,7 +2210,7 @@
                   "id": "trend_fit",
                   "label": "Trend Fit",
                   "max_points": 10,
-                  "points": 10,
+                  "points": 8,
                   "weight": 0.1
                 }
               ],
@@ -2286,7 +2286,7 @@
             "market": "US",
             "name": "Miu Miu Miutine Intense",
             "name_cn": "Miu Miu Miutine Intense 香水",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 7,
             "score": 83,
             "score_breakdown": {
@@ -2296,7 +2296,7 @@
                   "id": "sales_momentum",
                   "label": "Sales Momentum",
                   "max_points": 40,
-                  "points": 33,
+                  "points": 34,
                   "weight": 0.4
                 },
                 {
@@ -2304,7 +2304,7 @@
                   "id": "buzz_momentum",
                   "label": "Buzz Momentum",
                   "max_points": 30,
-                  "points": 25,
+                  "points": 26,
                   "weight": 0.3
                 },
                 {
@@ -2312,7 +2312,7 @@
                   "id": "review_rating",
                   "label": "Review / Rating",
                   "max_points": 20,
-                  "points": 15,
+                  "points": 16,
                   "weight": 0.2
                 },
                 {
@@ -2320,7 +2320,7 @@
                   "id": "trend_fit",
                   "label": "Trend Fit",
                   "max_points": 10,
-                  "points": 10,
+                  "points": 7,
                   "weight": 0.1
                 }
               ],
@@ -2396,7 +2396,7 @@
             "market": "US",
             "name": "Hermès Un Jardin Sous La Mer Eau de Toilette",
             "name_cn": "爱马仕 Un Jardin Sous La Mer 淡香水",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 8,
             "score": 81,
             "score_breakdown": {
@@ -2406,7 +2406,7 @@
                   "id": "sales_momentum",
                   "label": "Sales Momentum",
                   "max_points": 40,
-                  "points": 32,
+                  "points": 33,
                   "weight": 0.4
                 },
                 {
@@ -2414,7 +2414,7 @@
                   "id": "buzz_momentum",
                   "label": "Buzz Momentum",
                   "max_points": 30,
-                  "points": 24,
+                  "points": 25,
                   "weight": 0.3
                 },
                 {
@@ -2430,7 +2430,7 @@
                   "id": "trend_fit",
                   "label": "Trend Fit",
                   "max_points": 10,
-                  "points": 10,
+                  "points": 8,
                   "weight": 0.1
                 }
               ],
@@ -2508,7 +2508,7 @@
             "market": "US",
             "name": "Phlur Vanilla Canyon",
             "name_cn": "Phlur Vanilla Canyon 香水",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 1,
             "score": 91,
             "score_breakdown": {
@@ -2518,7 +2518,7 @@
                   "id": "sales_momentum",
                   "label": "Sales Momentum",
                   "max_points": 40,
-                  "points": 37,
+                  "points": 38,
                   "weight": 0.4
                 },
                 {
@@ -2526,7 +2526,7 @@
                   "id": "buzz_momentum",
                   "label": "Buzz Momentum",
                   "max_points": 30,
-                  "points": 27,
+                  "points": 28,
                   "weight": 0.3
                 },
                 {
@@ -2542,7 +2542,7 @@
                   "id": "trend_fit",
                   "label": "Trend Fit",
                   "max_points": 10,
-                  "points": 10,
+                  "points": 8,
                   "weight": 0.1
                 }
               ],
@@ -2618,7 +2618,7 @@
             "market": "US",
             "name": "TOMMY HILFIGER Freedom Eau de Parfum",
             "name_cn": "TOMMY HILFIGER Freedom 女士淡香精",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 2,
             "score": 88,
             "score_breakdown": {
@@ -2628,7 +2628,7 @@
                   "id": "sales_momentum",
                   "label": "Sales Momentum",
                   "max_points": 40,
-                  "points": 35,
+                  "points": 36,
                   "weight": 0.4
                 },
                 {
@@ -2644,7 +2644,7 @@
                   "id": "review_rating",
                   "label": "Review / Rating",
                   "max_points": 20,
-                  "points": 16,
+                  "points": 17,
                   "weight": 0.2
                 },
                 {
@@ -2652,7 +2652,7 @@
                   "id": "trend_fit",
                   "label": "Trend Fit",
                   "max_points": 10,
-                  "points": 10,
+                  "points": 8,
                   "weight": 0.1
                 }
               ],
@@ -2728,7 +2728,7 @@
             "market": "US",
             "name": "Victoria's Secret Bombshell Desire",
             "name_cn": "维多利亚的秘密 Bombshell Desire 香水",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 3,
             "score": 87,
             "score_breakdown": {
@@ -2738,7 +2738,7 @@
                   "id": "sales_momentum",
                   "label": "Sales Momentum",
                   "max_points": 40,
-                  "points": 35,
+                  "points": 36,
                   "weight": 0.4
                 },
                 {
@@ -2746,7 +2746,7 @@
                   "id": "buzz_momentum",
                   "label": "Buzz Momentum",
                   "max_points": 30,
-                  "points": 26,
+                  "points": 27,
                   "weight": 0.3
                 },
                 {
@@ -2762,7 +2762,7 @@
                   "id": "trend_fit",
                   "label": "Trend Fit",
                   "max_points": 10,
-                  "points": 10,
+                  "points": 8,
                   "weight": 0.1
                 }
               ],
@@ -2838,7 +2838,7 @@
             "market": "US",
             "name": "Cécred Temple Oud Hair Perfume",
             "name_cn": "Cécred Temple Oud 头发香水",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 4,
             "score": 85,
             "score_breakdown": {
@@ -2953,7 +2953,7 @@
             "market": "US",
             "name": "Sol de Janeiro Intense Perfume Mist Collection",
             "name_cn": "Sol de Janeiro Intense 浓郁香氛喷雾系列",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 5,
             "score": 84,
             "score_breakdown": {
@@ -2963,7 +2963,7 @@
                   "id": "sales_momentum",
                   "label": "Sales Momentum",
                   "max_points": 40,
-                  "points": 32,
+                  "points": 34,
                   "weight": 0.4
                 },
                 {
@@ -2971,7 +2971,7 @@
                   "id": "buzz_momentum",
                   "label": "Buzz Momentum",
                   "max_points": 30,
-                  "points": 27,
+                  "points": 28,
                   "weight": 0.3
                 },
                 {
@@ -2987,7 +2987,7 @@
                   "id": "trend_fit",
                   "label": "Trend Fit",
                   "max_points": 10,
-                  "points": 10,
+                  "points": 7,
                   "weight": 0.1
                 }
               ],
@@ -3063,7 +3063,7 @@
             "market": "US",
             "name": "OUAI Laurel Canyon Eau de Parfum",
             "name_cn": "OUAI Laurel Canyon 淡香精",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 6,
             "score": 82,
             "score_breakdown": {
@@ -3073,7 +3073,7 @@
                   "id": "sales_momentum",
                   "label": "Sales Momentum",
                   "max_points": 40,
-                  "points": 35,
+                  "points": 36,
                   "weight": 0.4
                 },
                 {
@@ -3081,7 +3081,7 @@
                   "id": "buzz_momentum",
                   "label": "Buzz Momentum",
                   "max_points": 30,
-                  "points": 23,
+                  "points": 24,
                   "weight": 0.3
                 },
                 {
@@ -3089,7 +3089,7 @@
                   "id": "review_rating",
                   "label": "Review / Rating",
                   "max_points": 20,
-                  "points": 14,
+                  "points": 15,
                   "weight": 0.2
                 },
                 {
@@ -3097,7 +3097,7 @@
                   "id": "trend_fit",
                   "label": "Trend Fit",
                   "max_points": 10,
-                  "points": 10,
+                  "points": 7,
                   "weight": 0.1
                 }
               ],
@@ -3173,7 +3173,7 @@
             "market": "US",
             "name": "Henry Rose Rhu Berry",
             "name_cn": "Henry Rose Rhu Berry 香水",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 7,
             "score": 80,
             "score_breakdown": {
@@ -3183,7 +3183,7 @@
                   "id": "sales_momentum",
                   "label": "Sales Momentum",
                   "max_points": 40,
-                  "points": 34,
+                  "points": 36,
                   "weight": 0.4
                 },
                 {
@@ -3207,7 +3207,7 @@
                   "id": "trend_fit",
                   "label": "Trend Fit",
                   "max_points": 10,
-                  "points": 9,
+                  "points": 7,
                   "weight": 0.1
                 }
               ],
@@ -3287,7 +3287,7 @@
             "market": "CN",
             "name": "Prada Paradoxe Radical Essence Eau de Parfum",
             "name_cn": "普拉达唯我莫测魅甜果境淡香精",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 1,
             "score": 87,
             "score_breakdown": {
@@ -3305,7 +3305,7 @@
                   "id": "buzz_momentum",
                   "label": "Buzz Momentum",
                   "max_points": 30,
-                  "points": 28,
+                  "points": 29,
                   "weight": 0.3
                 },
                 {
@@ -3313,7 +3313,7 @@
                   "id": "review_rating",
                   "label": "Review / Rating",
                   "max_points": 20,
-                  "points": 15,
+                  "points": 16,
                   "weight": 0.2
                 },
                 {
@@ -3321,7 +3321,7 @@
                   "id": "trend_fit",
                   "label": "Trend Fit",
                   "max_points": 10,
-                  "points": 10,
+                  "points": 8,
                   "weight": 0.1
                 }
               ],
@@ -3397,7 +3397,7 @@
             "market": "CN",
             "name": "Jo Malone London Sea Salt & Bergamot Cologne",
             "name_cn": "祖·玛珑伦敦海盐与佛手柑香水",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 2,
             "score": 85,
             "score_breakdown": {
@@ -3407,7 +3407,7 @@
                   "id": "sales_momentum",
                   "label": "Sales Momentum",
                   "max_points": 40,
-                  "points": 33,
+                  "points": 34,
                   "weight": 0.4
                 },
                 {
@@ -3415,7 +3415,7 @@
                   "id": "buzz_momentum",
                   "label": "Buzz Momentum",
                   "max_points": 30,
-                  "points": 27,
+                  "points": 28,
                   "weight": 0.3
                 },
                 {
@@ -3423,7 +3423,7 @@
                   "id": "review_rating",
                   "label": "Review / Rating",
                   "max_points": 20,
-                  "points": 15,
+                  "points": 16,
                   "weight": 0.2
                 },
                 {
@@ -3431,7 +3431,7 @@
                   "id": "trend_fit",
                   "label": "Trend Fit",
                   "max_points": 10,
-                  "points": 10,
+                  "points": 7,
                   "weight": 0.1
                 }
               ],
@@ -3507,7 +3507,7 @@
             "market": "CN",
             "name": "L'Artisan Parfumeur Mysterious Abyss Extrait de Parfum",
             "name_cn": "阿蒂仙之香神秘深渊精粹香精",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 3,
             "score": 83,
             "score_breakdown": {
@@ -3517,7 +3517,7 @@
                   "id": "sales_momentum",
                   "label": "Sales Momentum",
                   "max_points": 40,
-                  "points": 32,
+                  "points": 33,
                   "weight": 0.4
                 },
                 {
@@ -3525,7 +3525,7 @@
                   "id": "buzz_momentum",
                   "label": "Buzz Momentum",
                   "max_points": 30,
-                  "points": 27,
+                  "points": 28,
                   "weight": 0.3
                 },
                 {
@@ -3533,7 +3533,7 @@
                   "id": "review_rating",
                   "label": "Review / Rating",
                   "max_points": 20,
-                  "points": 14,
+                  "points": 15,
                   "weight": 0.2
                 },
                 {
@@ -3541,7 +3541,7 @@
                   "id": "trend_fit",
                   "label": "Trend Fit",
                   "max_points": 10,
-                  "points": 10,
+                  "points": 7,
                   "weight": 0.1
                 }
               ],
@@ -3617,7 +3617,7 @@
             "market": "CN",
             "name": "Bvlgari Omnia Amethyste",
             "name_cn": "宝格丽Omnia Amethyste紫水晶女性淡香精",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 4,
             "score": 81,
             "score_breakdown": {
@@ -3627,7 +3627,7 @@
                   "id": "sales_momentum",
                   "label": "Sales Momentum",
                   "max_points": 40,
-                  "points": 31,
+                  "points": 32,
                   "weight": 0.4
                 },
                 {
@@ -3635,7 +3635,7 @@
                   "id": "buzz_momentum",
                   "label": "Buzz Momentum",
                   "max_points": 30,
-                  "points": 26,
+                  "points": 27,
                   "weight": 0.3
                 },
                 {
@@ -3643,7 +3643,7 @@
                   "id": "review_rating",
                   "label": "Review / Rating",
                   "max_points": 20,
-                  "points": 14,
+                  "points": 15,
                   "weight": 0.2
                 },
                 {
@@ -3651,7 +3651,7 @@
                   "id": "trend_fit",
                   "label": "Trend Fit",
                   "max_points": 10,
-                  "points": 10,
+                  "points": 7,
                   "weight": 0.1
                 }
               ],
@@ -3727,7 +3727,7 @@
             "market": "CN",
             "name": "Narciso Rodriguez All of Me Eau de Parfum",
             "name_cn": "纳西索·罗德里格斯all of me珍稀花香倾我淡香精",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 5,
             "score": 79,
             "score_breakdown": {
@@ -3737,7 +3737,7 @@
                   "id": "sales_momentum",
                   "label": "Sales Momentum",
                   "max_points": 40,
-                  "points": 30,
+                  "points": 31,
                   "weight": 0.4
                 },
                 {
@@ -3753,7 +3753,7 @@
                   "id": "review_rating",
                   "label": "Review / Rating",
                   "max_points": 20,
-                  "points": 14,
+                  "points": 15,
                   "weight": 0.2
                 },
                 {
@@ -3761,7 +3761,7 @@
                   "id": "trend_fit",
                   "label": "Trend Fit",
                   "max_points": 10,
-                  "points": 9,
+                  "points": 7,
                   "weight": 0.1
                 }
               ],
@@ -3839,7 +3839,7 @@
             "market": "CN",
             "name": "Florasis West Lake Scenery Fragrance Series",
             "name_cn": "花西子西湖情境系列香水",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 1,
             "score": 89,
             "score_breakdown": {
@@ -3849,7 +3849,7 @@
                   "id": "sales_momentum",
                   "label": "Sales Momentum",
                   "max_points": 40,
-                  "points": 36,
+                  "points": 37,
                   "weight": 0.4
                 },
                 {
@@ -3865,7 +3865,7 @@
                   "id": "review_rating",
                   "label": "Review / Rating",
                   "max_points": 20,
-                  "points": 16,
+                  "points": 17,
                   "weight": 0.2
                 },
                 {
@@ -3873,7 +3873,7 @@
                   "id": "trend_fit",
                   "label": "Trend Fit",
                   "max_points": 10,
-                  "points": 10,
+                  "points": 8,
                   "weight": 0.1
                 }
               ],
@@ -3949,7 +3949,7 @@
             "market": "CN",
             "name": "Sabon Journey of Transformation Eau de Parfum Collection",
             "name_cn": "Sabon蛻變之旅淡香精系列",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 2,
             "score": 86,
             "score_breakdown": {
@@ -3959,7 +3959,7 @@
                   "id": "sales_momentum",
                   "label": "Sales Momentum",
                   "max_points": 40,
-                  "points": 33,
+                  "points": 34,
                   "weight": 0.4
                 },
                 {
@@ -3967,7 +3967,7 @@
                   "id": "buzz_momentum",
                   "label": "Buzz Momentum",
                   "max_points": 30,
-                  "points": 28,
+                  "points": 29,
                   "weight": 0.3
                 },
                 {
@@ -3975,7 +3975,7 @@
                   "id": "review_rating",
                   "label": "Review / Rating",
                   "max_points": 20,
-                  "points": 15,
+                  "points": 16,
                   "weight": 0.2
                 },
                 {
@@ -3983,7 +3983,7 @@
                   "id": "trend_fit",
                   "label": "Trend Fit",
                   "max_points": 10,
-                  "points": 10,
+                  "points": 7,
                   "weight": 0.1
                 }
               ],
@@ -4059,7 +4059,7 @@
             "market": "CN",
             "name": "SW19 5pm Rose Petal Eau de Parfum",
             "name_cn": "SW19 5pm Rose Petal淡香精",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 3,
             "score": 85,
             "score_breakdown": {
@@ -4174,7 +4174,7 @@
             "market": "CN",
             "name": "Lacoste L.12.12 Bleu Eau de Parfum",
             "name_cn": "Lacoste L.12.12 Bleu經典深藍淡香精",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 4,
             "score": 82,
             "score_breakdown": {
@@ -4184,7 +4184,7 @@
                   "id": "sales_momentum",
                   "label": "Sales Momentum",
                   "max_points": 40,
-                  "points": 32,
+                  "points": 33,
                   "weight": 0.4
                 },
                 {
@@ -4192,7 +4192,7 @@
                   "id": "buzz_momentum",
                   "label": "Buzz Momentum",
                   "max_points": 30,
-                  "points": 26,
+                  "points": 27,
                   "weight": 0.3
                 },
                 {
@@ -4200,7 +4200,7 @@
                   "id": "review_rating",
                   "label": "Review / Rating",
                   "max_points": 20,
-                  "points": 14,
+                  "points": 15,
                   "weight": 0.2
                 },
                 {
@@ -4208,7 +4208,7 @@
                   "id": "trend_fit",
                   "label": "Trend Fit",
                   "max_points": 10,
-                  "points": 10,
+                  "points": 7,
                   "weight": 0.1
                 }
               ],
@@ -4284,7 +4284,7 @@
             "market": "CN",
             "name": "Kuoca Black Tea Eau de Parfum",
             "name_cn": "Kuoca黑茶淡香精",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 5,
             "score": 80,
             "score_breakdown": {
@@ -4294,7 +4294,7 @@
                   "id": "sales_momentum",
                   "label": "Sales Momentum",
                   "max_points": 40,
-                  "points": 31,
+                  "points": 32,
                   "weight": 0.4
                 },
                 {
@@ -4302,7 +4302,7 @@
                   "id": "buzz_momentum",
                   "label": "Buzz Momentum",
                   "max_points": 30,
-                  "points": 26,
+                  "points": 27,
                   "weight": 0.3
                 },
                 {
@@ -4318,7 +4318,7 @@
                   "id": "trend_fit",
                   "label": "Trend Fit",
                   "max_points": 10,
-                  "points": 9,
+                  "points": 7,
                   "weight": 0.1
                 }
               ],
@@ -4394,7 +4394,7 @@
             "market": "CN",
             "name": "Jennifer Lopez Miami Glow Eau de Toilette",
             "name_cn": "Jennifer Lopez Miami Glow邁阿密女性淡香水",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 6,
             "score": 78,
             "score_breakdown": {
@@ -4404,7 +4404,7 @@
                   "id": "sales_momentum",
                   "label": "Sales Momentum",
                   "max_points": 40,
-                  "points": 30,
+                  "points": 31,
                   "weight": 0.4
                 },
                 {
@@ -4412,7 +4412,7 @@
                   "id": "buzz_momentum",
                   "label": "Buzz Momentum",
                   "max_points": 30,
-                  "points": 25,
+                  "points": 26,
                   "weight": 0.3
                 },
                 {
@@ -4428,7 +4428,7 @@
                   "id": "trend_fit",
                   "label": "Trend Fit",
                   "max_points": 10,
-                  "points": 9,
+                  "points": 7,
                   "weight": 0.1
                 }
               ],
@@ -4506,7 +4506,7 @@
             "market": "US",
             "name": "Byredo Future Memories Eau de Parfum",
             "name_cn": "Byredo Future Memories 淡香精",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 1,
             "score": 92,
             "score_breakdown": {
@@ -4516,7 +4516,7 @@
                   "id": "sales_momentum",
                   "label": "Sales Momentum",
                   "max_points": 40,
-                  "points": 36,
+                  "points": 37,
                   "weight": 0.4
                 },
                 {
@@ -4524,7 +4524,7 @@
                   "id": "buzz_momentum",
                   "label": "Buzz Momentum",
                   "max_points": 30,
-                  "points": 27,
+                  "points": 28,
                   "weight": 0.3
                 },
                 {
@@ -4540,7 +4540,7 @@
                   "id": "trend_fit",
                   "label": "Trend Fit",
                   "max_points": 10,
-                  "points": 10,
+                  "points": 8,
                   "weight": 0.1
                 }
               ],
@@ -4616,7 +4616,7 @@
             "market": "US",
             "name": "Armani Privé Cuir Doré",
             "name_cn": "阿玛尼高定私藏香氛 Cuir Doré",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 2,
             "score": 91,
             "score_breakdown": {
@@ -4626,7 +4626,7 @@
                   "id": "sales_momentum",
                   "label": "Sales Momentum",
                   "max_points": 40,
-                  "points": 37,
+                  "points": 38,
                   "weight": 0.4
                 },
                 {
@@ -4634,7 +4634,7 @@
                   "id": "buzz_momentum",
                   "label": "Buzz Momentum",
                   "max_points": 30,
-                  "points": 27,
+                  "points": 28,
                   "weight": 0.3
                 },
                 {
@@ -4650,7 +4650,7 @@
                   "id": "trend_fit",
                   "label": "Trend Fit",
                   "max_points": 10,
-                  "points": 10,
+                  "points": 8,
                   "weight": 0.1
                 }
               ],
@@ -4726,7 +4726,7 @@
             "market": "US",
             "name": "Tom Ford Tobacco Chocolat",
             "name_cn": "Tom Ford Tobacco Chocolat 香水",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 3,
             "score": 91,
             "score_breakdown": {
@@ -4736,7 +4736,7 @@
                   "id": "sales_momentum",
                   "label": "Sales Momentum",
                   "max_points": 40,
-                  "points": 37,
+                  "points": 38,
                   "weight": 0.4
                 },
                 {
@@ -4744,7 +4744,7 @@
                   "id": "buzz_momentum",
                   "label": "Buzz Momentum",
                   "max_points": 30,
-                  "points": 27,
+                  "points": 28,
                   "weight": 0.3
                 },
                 {
@@ -4760,7 +4760,7 @@
                   "id": "trend_fit",
                   "label": "Trend Fit",
                   "max_points": 10,
-                  "points": 10,
+                  "points": 8,
                   "weight": 0.1
                 }
               ],
@@ -4836,7 +4836,7 @@
             "market": "US",
             "name": "Armani Privé Cuir Rubis",
             "name_cn": "阿玛尼高定私藏香氛 Cuir Rubis",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 4,
             "score": 90,
             "score_breakdown": {
@@ -4846,7 +4846,7 @@
                   "id": "sales_momentum",
                   "label": "Sales Momentum",
                   "max_points": 40,
-                  "points": 36,
+                  "points": 37,
                   "weight": 0.4
                 },
                 {
@@ -4854,7 +4854,7 @@
                   "id": "buzz_momentum",
                   "label": "Buzz Momentum",
                   "max_points": 30,
-                  "points": 27,
+                  "points": 28,
                   "weight": 0.3
                 },
                 {
@@ -4870,7 +4870,7 @@
                   "id": "trend_fit",
                   "label": "Trend Fit",
                   "max_points": 10,
-                  "points": 10,
+                  "points": 8,
                   "weight": 0.1
                 }
               ],
@@ -4946,7 +4946,7 @@
             "market": "US",
             "name": "Victoria Beckham Beauty Hotel Portofino Extrait",
             "name_cn": "Victoria Beckham Beauty Hotel Portofino 香精",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 5,
             "score": 90,
             "score_breakdown": {
@@ -4956,7 +4956,7 @@
                   "id": "sales_momentum",
                   "label": "Sales Momentum",
                   "max_points": 40,
-                  "points": 36,
+                  "points": 37,
                   "weight": 0.4
                 },
                 {
@@ -4964,7 +4964,7 @@
                   "id": "buzz_momentum",
                   "label": "Buzz Momentum",
                   "max_points": 30,
-                  "points": 27,
+                  "points": 28,
                   "weight": 0.3
                 },
                 {
@@ -4980,7 +4980,7 @@
                   "id": "trend_fit",
                   "label": "Trend Fit",
                   "max_points": 10,
-                  "points": 10,
+                  "points": 8,
                   "weight": 0.1
                 }
               ],
@@ -5056,7 +5056,7 @@
             "market": "US",
             "name": "Byredo Havana Tonka",
             "name_cn": "Byredo Havana Tonka 香水",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 6,
             "score": 89,
             "score_breakdown": {
@@ -5066,7 +5066,7 @@
                   "id": "sales_momentum",
                   "label": "Sales Momentum",
                   "max_points": 40,
-                  "points": 36,
+                  "points": 37,
                   "weight": 0.4
                 },
                 {
@@ -5082,7 +5082,7 @@
                   "id": "review_rating",
                   "label": "Review / Rating",
                   "max_points": 20,
-                  "points": 16,
+                  "points": 17,
                   "weight": 0.2
                 },
                 {
@@ -5090,7 +5090,7 @@
                   "id": "trend_fit",
                   "label": "Trend Fit",
                   "max_points": 10,
-                  "points": 10,
+                  "points": 8,
                   "weight": 0.1
                 }
               ],
@@ -5166,7 +5166,7 @@
             "market": "US",
             "name": "Chanel Coco Mademoiselle Crush Absolu",
             "name_cn": "香奈儿 Coco Mademoiselle Crush Absolu 香水",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 7,
             "score": 89,
             "score_breakdown": {
@@ -5176,7 +5176,7 @@
                   "id": "sales_momentum",
                   "label": "Sales Momentum",
                   "max_points": 40,
-                  "points": 36,
+                  "points": 37,
                   "weight": 0.4
                 },
                 {
@@ -5192,7 +5192,7 @@
                   "id": "review_rating",
                   "label": "Review / Rating",
                   "max_points": 20,
-                  "points": 16,
+                  "points": 17,
                   "weight": 0.2
                 },
                 {
@@ -5200,7 +5200,7 @@
                   "id": "trend_fit",
                   "label": "Trend Fit",
                   "max_points": 10,
-                  "points": 10,
+                  "points": 8,
                   "weight": 0.1
                 }
               ],
@@ -5276,7 +5276,7 @@
             "market": "US",
             "name": "Dolce & Gabbana Velvet Amber Sage",
             "name_cn": "杜嘉班纳 Velvet Amber Sage 香水",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 8,
             "score": 87,
             "score_breakdown": {
@@ -5286,7 +5286,7 @@
                   "id": "sales_momentum",
                   "label": "Sales Momentum",
                   "max_points": 40,
-                  "points": 35,
+                  "points": 36,
                   "weight": 0.4
                 },
                 {
@@ -5294,7 +5294,7 @@
                   "id": "buzz_momentum",
                   "label": "Buzz Momentum",
                   "max_points": 30,
-                  "points": 26,
+                  "points": 27,
                   "weight": 0.3
                 },
                 {
@@ -5310,7 +5310,7 @@
                   "id": "trend_fit",
                   "label": "Trend Fit",
                   "max_points": 10,
-                  "points": 10,
+                  "points": 8,
                   "weight": 0.1
                 }
               ],
@@ -5386,7 +5386,7 @@
             "market": "US",
             "name": "Dries Van Noten Velvet Violet",
             "name_cn": "Dries Van Noten Velvet Violet 香水",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 9,
             "score": 87,
             "score_breakdown": {
@@ -5396,7 +5396,7 @@
                   "id": "sales_momentum",
                   "label": "Sales Momentum",
                   "max_points": 40,
-                  "points": 35,
+                  "points": 36,
                   "weight": 0.4
                 },
                 {
@@ -5404,7 +5404,7 @@
                   "id": "buzz_momentum",
                   "label": "Buzz Momentum",
                   "max_points": 30,
-                  "points": 26,
+                  "points": 27,
                   "weight": 0.3
                 },
                 {
@@ -5420,7 +5420,7 @@
                   "id": "trend_fit",
                   "label": "Trend Fit",
                   "max_points": 10,
-                  "points": 10,
+                  "points": 8,
                   "weight": 0.1
                 }
               ],
@@ -5496,7 +5496,7 @@
             "market": "US",
             "name": "Imaginary Authors Impassable Wilderness",
             "name_cn": "Imaginary Authors Impassable Wilderness 香水",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 10,
             "score": 78,
             "score_breakdown": {
@@ -5506,7 +5506,7 @@
                   "id": "sales_momentum",
                   "label": "Sales Momentum",
                   "max_points": 40,
-                  "points": 31,
+                  "points": 32,
                   "weight": 0.4
                 },
                 {
@@ -5514,7 +5514,7 @@
                   "id": "buzz_momentum",
                   "label": "Buzz Momentum",
                   "max_points": 30,
-                  "points": 23,
+                  "points": 24,
                   "weight": 0.3
                 },
                 {
@@ -5522,7 +5522,7 @@
                   "id": "review_rating",
                   "label": "Review / Rating",
                   "max_points": 20,
-                  "points": 14,
+                  "points": 15,
                   "weight": 0.2
                 },
                 {
@@ -5530,7 +5530,7 @@
                   "id": "trend_fit",
                   "label": "Trend Fit",
                   "max_points": 10,
-                  "points": 10,
+                  "points": 7,
                   "weight": 0.1
                 }
               ],
@@ -5608,7 +5608,7 @@
             "market": "US",
             "name": "TOMMY HILFIGER Freedom Eau de Parfum",
             "name_cn": "TOMMY HILFIGER Freedom 女士淡香精",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 1,
             "score": 88,
             "score_breakdown": {
@@ -5618,7 +5618,7 @@
                   "id": "sales_momentum",
                   "label": "Sales Momentum",
                   "max_points": 40,
-                  "points": 35,
+                  "points": 36,
                   "weight": 0.4
                 },
                 {
@@ -5634,7 +5634,7 @@
                   "id": "review_rating",
                   "label": "Review / Rating",
                   "max_points": 20,
-                  "points": 16,
+                  "points": 17,
                   "weight": 0.2
                 },
                 {
@@ -5642,7 +5642,7 @@
                   "id": "trend_fit",
                   "label": "Trend Fit",
                   "max_points": 10,
-                  "points": 10,
+                  "points": 8,
                   "weight": 0.1
                 }
               ],
@@ -5718,7 +5718,7 @@
             "market": "US",
             "name": "Victoria's Secret Bombshell Desire",
             "name_cn": "维多利亚的秘密 Bombshell Desire 香水",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 2,
             "score": 87,
             "score_breakdown": {
@@ -5728,7 +5728,7 @@
                   "id": "sales_momentum",
                   "label": "Sales Momentum",
                   "max_points": 40,
-                  "points": 35,
+                  "points": 36,
                   "weight": 0.4
                 },
                 {
@@ -5736,7 +5736,7 @@
                   "id": "buzz_momentum",
                   "label": "Buzz Momentum",
                   "max_points": 30,
-                  "points": 26,
+                  "points": 27,
                   "weight": 0.3
                 },
                 {
@@ -5752,7 +5752,7 @@
                   "id": "trend_fit",
                   "label": "Trend Fit",
                   "max_points": 10,
-                  "points": 10,
+                  "points": 8,
                   "weight": 0.1
                 }
               ],
@@ -5828,7 +5828,7 @@
             "market": "US",
             "name": "Cécred Temple Oud Hair Perfume",
             "name_cn": "Cécred Temple Oud 头发香水",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 3,
             "score": 85,
             "score_breakdown": {
@@ -5943,7 +5943,7 @@
             "market": "US",
             "name": "Brach's Ode to Candy Corn Fragrance",
             "name_cn": "Brach's Ode to Candy Corn 糖果玉米香水",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 4,
             "score": 84,
             "score_breakdown": {
@@ -5961,7 +5961,7 @@
                   "id": "buzz_momentum",
                   "label": "Buzz Momentum",
                   "max_points": 30,
-                  "points": 25,
+                  "points": 26,
                   "weight": 0.3
                 },
                 {
@@ -5969,7 +5969,7 @@
                   "id": "review_rating",
                   "label": "Review / Rating",
                   "max_points": 20,
-                  "points": 15,
+                  "points": 16,
                   "weight": 0.2
                 },
                 {
@@ -5977,7 +5977,7 @@
                   "id": "trend_fit",
                   "label": "Trend Fit",
                   "max_points": 10,
-                  "points": 10,
+                  "points": 8,
                   "weight": 0.1
                 }
               ],
@@ -6053,7 +6053,7 @@
             "market": "US",
             "name": "Sol de Janeiro Intense Perfume Mist Collection",
             "name_cn": "Sol de Janeiro Intense 浓郁香氛喷雾系列",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 5,
             "score": 84,
             "score_breakdown": {
@@ -6063,7 +6063,7 @@
                   "id": "sales_momentum",
                   "label": "Sales Momentum",
                   "max_points": 40,
-                  "points": 32,
+                  "points": 34,
                   "weight": 0.4
                 },
                 {
@@ -6071,7 +6071,7 @@
                   "id": "buzz_momentum",
                   "label": "Buzz Momentum",
                   "max_points": 30,
-                  "points": 27,
+                  "points": 28,
                   "weight": 0.3
                 },
                 {
@@ -6087,7 +6087,7 @@
                   "id": "trend_fit",
                   "label": "Trend Fit",
                   "max_points": 10,
-                  "points": 10,
+                  "points": 7,
                   "weight": 0.1
                 }
               ],
@@ -6163,7 +6163,7 @@
             "market": "US",
             "name": "Scentbird The Scent of Truth Collection",
             "name_cn": "Scentbird The Scent of Truth 香氛系列",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 6,
             "score": 82,
             "score_breakdown": {
@@ -6173,7 +6173,7 @@
                   "id": "sales_momentum",
                   "label": "Sales Momentum",
                   "max_points": 40,
-                  "points": 33,
+                  "points": 34,
                   "weight": 0.4
                 },
                 {
@@ -6181,7 +6181,7 @@
                   "id": "buzz_momentum",
                   "label": "Buzz Momentum",
                   "max_points": 30,
-                  "points": 24,
+                  "points": 25,
                   "weight": 0.3
                 },
                 {
@@ -6189,7 +6189,7 @@
                   "id": "review_rating",
                   "label": "Review / Rating",
                   "max_points": 20,
-                  "points": 15,
+                  "points": 16,
                   "weight": 0.2
                 },
                 {
@@ -6197,7 +6197,7 @@
                   "id": "trend_fit",
                   "label": "Trend Fit",
                   "max_points": 10,
-                  "points": 10,
+                  "points": 7,
                   "weight": 0.1
                 }
               ],
@@ -6279,7 +6279,7 @@
             "market": "CN",
             "name": "Dior Forever Matte Foundation",
             "name_cn": "迪奥凝脂恒久柔雾哑光无瑕粉底液",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 1,
             "score": 92,
             "score_breakdown": {
@@ -6289,7 +6289,7 @@
                   "id": "sales_momentum",
                   "label": "Sales Momentum",
                   "max_points": 40,
-                  "points": 37,
+                  "points": 38,
                   "weight": 0.4
                 },
                 {
@@ -6297,7 +6297,7 @@
                   "id": "buzz_momentum",
                   "label": "Buzz Momentum",
                   "max_points": 30,
-                  "points": 28,
+                  "points": 29,
                   "weight": 0.3
                 },
                 {
@@ -6313,7 +6313,7 @@
                   "id": "trend_fit",
                   "label": "Trend Fit",
                   "max_points": 10,
-                  "points": 10,
+                  "points": 8,
                   "weight": 0.1
                 }
               ],
@@ -6389,7 +6389,7 @@
             "market": "CN",
             "name": "Armani Luminous Silk Cheek Tint",
             "name_cn": "Armani天生透嫩马卡龙腮红",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 2,
             "score": 89,
             "score_breakdown": {
@@ -6504,7 +6504,7 @@
             "market": "CN",
             "name": "IPSA Serum Foundation",
             "name_cn": "IPSA玻光养肤精华粉底",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 3,
             "score": 86,
             "score_breakdown": {
@@ -6619,7 +6619,7 @@
             "market": "CN",
             "name": "Laura Mercier Seamless Concealer Palette",
             "name_cn": "萝拉蜜思完美无痕遮瑕盘",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 4,
             "score": 82,
             "score_breakdown": {
@@ -6629,7 +6629,7 @@
                   "id": "sales_momentum",
                   "label": "Sales Momentum",
                   "max_points": 40,
-                  "points": 32,
+                  "points": 33,
                   "weight": 0.4
                 },
                 {
@@ -6637,7 +6637,7 @@
                   "id": "buzz_momentum",
                   "label": "Buzz Momentum",
                   "max_points": 30,
-                  "points": 26,
+                  "points": 27,
                   "weight": 0.3
                 },
                 {
@@ -6645,7 +6645,7 @@
                   "id": "review_rating",
                   "label": "Review / Rating",
                   "max_points": 20,
-                  "points": 14,
+                  "points": 15,
                   "weight": 0.2
                 },
                 {
@@ -6653,7 +6653,7 @@
                   "id": "trend_fit",
                   "label": "Trend Fit",
                   "max_points": 10,
-                  "points": 10,
+                  "points": 7,
                   "weight": 0.1
                 }
               ],
@@ -6668,7 +6668,7 @@
         ],
         "CN MASSTIGE": [
           {
-            "category_badge": "Shimmer High-Shine Lip Gloss",
+            "category_badge": "Six-Pan Satin Eyeshadow Palette",
             "data_quality": {
               "coverage": {
                 "buzz": true,
@@ -6682,36 +6682,35 @@
               "link_type": "evidence_link",
               "missing_fields": [],
               "note": "Evidence link available; review for direct product-page upgrade.",
-              "source_type": "product_page"
+              "source_type": "launch_announcement"
             },
             "detail": {
               "brand": {
-                "cn": "国际潮流中高端彩妆品牌",
-                "en": "International trend-led prestige makeup brand"
+                "cn": "以收藏级视觉设计见长的中国彩妆品牌",
+                "en": "Chinese fantasy-led color cosmetics brand with strong collectible design equity"
               },
               "buzz": {
-                "cn": "新浪时尚报道上海主题店及三款全新色号登场；公开销量未披露",
-                "en": "FENTY BEAUTY: Sina Fashion covered the Shanghai pop-up and three new shades"
+                "cn": "新浪财经与亿邦动力报道9月发布，并记录市场对芭蕾设计语言的讨论",
+                "en": "Sina Finance and Ebrun covered the September launch and the discussion around its revived ballet design language"
               },
               "key_features": {
-                "cn": "星尘流光妆效与三款全新唇釉色号",
-                "en": "Shimmering lip finish with three newly introduced shades"
+                "cn": "新品类型：雪花芭蕾全新系列，包含三款六色缎光彩妆盘，9月19日正式发售",
+                "en": "What's new: new Snow Ballet collection with three six-color satin palette colorways; the line went on sale September 19"
               },
               "price_link": {
-                "cn": "Price and size not publicly disclosed",
+                "cn": "价格及容量未公开",
                 "en": "Price and size not publicly disclosed",
-                "link": "https://fashion.sina.cn/b/2026-09-17/detail-iniscksf0365249.d.html?vt=4"
+                "link": "https://finance.sina.com.cn/stock/relnews/cn/2026-09-15/doc-inirxhzs6881857.shtml"
               }
             },
             "launch_evidence": {
               "absence_markers": [],
-              "date_basis": "first_listing",
+              "date_basis": "official_launch",
               "evidence": {
-                "checked_at": "2026-10-03T00:35:00Z",
-                "fetched_at": "2026-10-03T00:35:00Z",
-                "published_at": "2026-09-17T21:51:06Z",
+                "checked_at": "2026-11-07T12:00:00+08:00",
+                "fetched_at": "2026-11-07T12:00:00+08:00",
+                "published_at": "2026-09-15T17:13:00+08:00",
                 "supported_fields": [
-                  "price",
                   "features",
                   "buzz",
                   "brand",
@@ -6719,21 +6718,21 @@
                   "launch_date",
                   "link"
                 ],
-                "title": "「FENTY BEAUTY星尘流光商店」主题店登陆上海 星尘流光唇釉家族三款全新色号闪耀登场 - 新浪时尚",
-                "type": "product_page",
-                "url": "https://fashion.sina.cn/b/2026-09-17/detail-iniscksf0365249.d.html?vt=4"
+                "title": "Flower Knows releases the Snow Ballet collection ahead of September 19 sale",
+                "type": "launch_announcement",
+                "url": "https://finance.sina.com.cn/stock/relnews/cn/2026-09-15/doc-inirxhzs6881857.shtml"
               },
               "evidence_grade": "A",
-              "launch_date": "2026-09-17",
+              "launch_date": "2026-09-19",
               "quarantine_reason": null,
               "quarantine_status": "verified"
             },
             "market": "CN",
-            "name": "Fenty Beauty Gloss Bomb Collection - Three New Shades",
-            "name_cn": "FENTY BEAUTY星尘流光唇釉家族三款全新色号",
+            "name": "Flower Knows Snow Ballet Six-Color Satin Makeup Palette",
+            "name_cn": "花知晓雪花芭蕾六色缎光彩妆盘",
             "new_badge": "New",
             "rank": 1,
-            "score": 91,
+            "score": 94,
             "score_breakdown": {
               "components": [
                 {
@@ -6741,7 +6740,116 @@
                   "id": "sales_momentum",
                   "label": "Sales Momentum",
                   "max_points": 40,
-                  "points": 37,
+                  "points": 38,
+                  "weight": 0.4
+                },
+                {
+                  "evidence": "Social discussion, creator/editor coverage, and media visibility.",
+                  "id": "buzz_momentum",
+                  "label": "Buzz Momentum",
+                  "max_points": 30,
+                  "points": 28,
+                  "weight": 0.3
+                },
+                {
+                  "evidence": "Ratings, review volume, expert tests, vote counts, and user feedback.",
+                  "id": "review_rating",
+                  "label": "Review / Rating",
+                  "max_points": 20,
+                  "points": 18,
+                  "weight": 0.2
+                },
+                {
+                  "evidence": "Fit with the month's active trend taxonomy and new-product context.",
+                  "id": "trend_fit",
+                  "label": "Trend Fit",
+                  "max_points": 10,
+                  "points": 10,
+                  "weight": 0.1
+                }
+              ],
+              "methodology": "Weighted dashboard explanation: Sales Momentum 40% + Buzz Momentum 30% + Review/Rating 20% + Trend Fit 10%. Historical monthly scores remain non-recomputable until raw platform sales/review/social time-series are collected.",
+              "recomputable": false,
+              "total": 94
+            },
+            "tier": "MASSTIGE",
+            "trend": null,
+            "trend_badge": null
+          },
+          {
+            "category_badge": "Grip-Lock Makeup Primer Serum",
+            "data_quality": {
+              "coverage": {
+                "buzz": true,
+                "features": true,
+                "launch_evidence": true,
+                "link": true,
+                "positioning": true,
+                "price": true
+              },
+              "coverage_score": 100,
+              "link_type": "evidence_link",
+              "missing_fields": [],
+              "note": "Evidence link available; review for direct product-page upgrade.",
+              "source_type": "launch_announcement"
+            },
+            "detail": {
+              "brand": {
+                "cn": "专注亚洲骨相与专业底妆技法的中国彩妆品牌",
+                "en": "China-market professional artistry brand focused on Asian facial structure and complexion technique"
+              },
+              "buzz": {
+                "cn": "彩棠官方渠道预告该产品于9月15日上线",
+                "en": "Timage announced the product through its official channel for a September 15 release"
+              },
+              "key_features": {
+                "cn": "新品类型：全新妆前精华单品，以轻微黏附感加强护肤与底妆衔接",
+                "en": "What's new: new primer-serum SKU designed to add light grip between skincare and foundation for closer adherence"
+              },
+              "price_link": {
+                "cn": "价格及容量未公开",
+                "en": "Price and size not publicly disclosed",
+                "link": "https://weibo.com/2/detail/5343098268813071"
+              }
+            },
+            "launch_evidence": {
+              "absence_markers": [],
+              "date_basis": "official_launch",
+              "evidence": {
+                "checked_at": "2026-11-07T12:00:00+08:00",
+                "fetched_at": "2026-11-07T12:00:00+08:00",
+                "published_at": "2026-09-14T17:16:00+08:00",
+                "supported_fields": [
+                  "features",
+                  "buzz",
+                  "brand",
+                  "category",
+                  "launch_date",
+                  "link"
+                ],
+                "title": "Timage Base-Gripping Primer Serum launches September 15",
+                "type": "launch_announcement",
+                "url": "https://weibo.com/2/detail/5343098268813071"
+              },
+              "evidence_grade": "A",
+              "launch_date": "2026-09-15",
+              "quarantine_reason": null,
+              "quarantine_status": "verified"
+            },
+            "market": "CN",
+            "name": "Timage Base-Gripping Primer Serum",
+            "name_cn": "彩棠底妆黏人精妆前精华",
+            "new_badge": "New",
+            "rank": 2,
+            "score": 92,
+            "score_breakdown": {
+              "components": [
+                {
+                  "evidence": "Sales, bestseller, ranking, sell-out, restock, and platform proxy signals.",
+                  "id": "sales_momentum",
+                  "label": "Sales Momentum",
+                  "max_points": 40,
+                  "points": 38,
                   "weight": 0.4
                 },
                 {
@@ -6771,14 +6879,19 @@
               ],
               "methodology": "Weighted dashboard explanation: Sales Momentum 40% + Buzz Momentum 30% + Review/Rating 20% + Trend Fit 10%. Historical monthly scores remain non-recomputable until raw platform sales/review/social time-series are collected.",
               "recomputable": false,
-              "total": 91
+              "total": 92
             },
             "tier": "MASSTIGE",
-            "trend": null,
-            "trend_badge": null
+            "trend": {
+              "id": "skincare-foundation",
+              "rationale": "Evidence-backed category and feature copy match the Skincare Foundation taxonomy.",
+              "tag": "Skincare Foundation",
+              "tag_cn": "养肤底妆趋势"
+            },
+            "trend_badge": "Trend"
           },
           {
-            "category_badge": "Hydrating Tinted Lip Balm",
+            "category_badge": "Airy Satin Lip Cream",
             "data_quality": {
               "coverage": {
                 "buzz": true,
@@ -6792,36 +6905,35 @@
               "link_type": "evidence_link",
               "missing_fields": [],
               "note": "Evidence link available; review for direct product-page upgrade.",
-              "source_type": "product_page"
+              "source_type": "launch_announcement"
             },
             "detail": {
               "brand": {
-                "cn": "专业中高端彩妆品牌",
-                "en": "Professional prestige makeup brand"
+                "cn": "以快速剂型与色彩创新见长的大众中国彩妆品牌",
+                "en": "Accessible Chinese color cosmetics brand known for fast format and shade innovation"
               },
               "buzz": {
-                "cn": "Hypebae报道品牌携手K-pop女团NMIXX推广新品上市；公开销量未披露",
-                "en": "Make Up For Ever Artist Colorglow: Hypebae covered the new-product campaign with K-pop group NMIXX"
+                "cn": "SocialBeta报道9月秋冬新品发布，由四款重点彩妆产品带动",
+                "en": "SocialBeta reported the September autumn-winter launch led by four hero makeup products"
               },
               "key_features": {
-                "cn": "润唇膏品类，结合专业彩妆定位与偶像合作企划",
-                "en": "Lip balm positioned through a professional-makeup identity and idol-led campaign"
+                "cn": "新品类型：唇部产品线升级，主打80%养肤精华、12小时持色与四款秋冬新色",
+                "en": "What's new: upgraded lip line with an 80% skincare-essence claim, 12-hour wear positioning and four new autumn shades"
               },
               "price_link": {
-                "cn": "Price and size not publicly disclosed",
+                "cn": "价格及容量未公开",
                 "en": "Price and size not publicly disclosed",
-                "link": "https://hypebae.com/sc/2026/9/make-up-for-ever-nmixx-artist-colorglow-lip-balm-campaign-where-to-buy"
+                "link": "https://socialbeta.com/campaign/28416"
               }
             },
             "launch_evidence": {
               "absence_markers": [],
-              "date_basis": "first_listing",
+              "date_basis": "source_publication",
               "evidence": {
-                "checked_at": "2026-10-03T00:35:00Z",
-                "fetched_at": "2026-10-03T00:35:00Z",
-                "published_at": "2026-09-02T07:00:00Z",
+                "checked_at": "2026-11-07T12:00:00+08:00",
+                "fetched_at": "2026-11-07T12:00:00+08:00",
+                "published_at": "2026-09-06T00:00:00+08:00",
                 "supported_fields": [
-                  "price",
                   "features",
                   "buzz",
                   "brand",
@@ -6829,21 +6941,130 @@
                   "launch_date",
                   "link"
                 ],
-                "title": "Make Up For Ever携手K-pop女团NMIXX，发布Artist Colorglow润唇膏企划 - Hypebae",
-                "type": "product_page",
-                "url": "https://hypebae.com/sc/2026/9/make-up-for-ever-nmixx-artist-colorglow-lip-balm-campaign-where-to-buy"
+                "title": "Judydoll introduces four autumn-winter makeup launches",
+                "type": "launch_announcement",
+                "url": "https://socialbeta.com/campaign/28416"
               },
-              "evidence_grade": "A",
+              "evidence_grade": "B",
               "launch_date": "2026-09-02",
               "quarantine_reason": null,
               "quarantine_status": "verified"
             },
             "market": "CN",
-            "name": "Make Up For Ever Artist Colorglow Lip Balm",
-            "name_cn": "玫珂菲Artist Colorglow润唇膏",
+            "name": "Judydoll Satin Glow Lip Powder Cream",
+            "name_cn": "橘朵缎光唇粉霜",
             "new_badge": "New",
-            "rank": 2,
-            "score": 89,
+            "rank": 3,
+            "score": 90,
+            "score_breakdown": {
+              "components": [
+                {
+                  "evidence": "Sales, bestseller, ranking, sell-out, restock, and platform proxy signals.",
+                  "id": "sales_momentum",
+                  "label": "Sales Momentum",
+                  "max_points": 40,
+                  "points": 36,
+                  "weight": 0.4
+                },
+                {
+                  "evidence": "Social discussion, creator/editor coverage, and media visibility.",
+                  "id": "buzz_momentum",
+                  "label": "Buzz Momentum",
+                  "max_points": 30,
+                  "points": 27,
+                  "weight": 0.3
+                },
+                {
+                  "evidence": "Ratings, review volume, expert tests, vote counts, and user feedback.",
+                  "id": "review_rating",
+                  "label": "Review / Rating",
+                  "max_points": 20,
+                  "points": 17,
+                  "weight": 0.2
+                },
+                {
+                  "evidence": "Fit with the month's active trend taxonomy and new-product context.",
+                  "id": "trend_fit",
+                  "label": "Trend Fit",
+                  "max_points": 10,
+                  "points": 10,
+                  "weight": 0.1
+                }
+              ],
+              "methodology": "Weighted dashboard explanation: Sales Momentum 40% + Buzz Momentum 30% + Review/Rating 20% + Trend Fit 10%. Historical monthly scores remain non-recomputable until raw platform sales/review/social time-series are collected.",
+              "recomputable": false,
+              "total": 90
+            },
+            "tier": "MASSTIGE",
+            "trend": null,
+            "trend_badge": null
+          },
+          {
+            "category_badge": "Limited-Edition Makeup Collection",
+            "data_quality": {
+              "coverage": {
+                "buzz": true,
+                "features": true,
+                "launch_evidence": true,
+                "link": true,
+                "positioning": true,
+                "price": true
+              },
+              "coverage_score": 100,
+              "link_type": "evidence_link",
+              "missing_fields": [],
+              "note": "Evidence link available; review for direct product-page upgrade.",
+              "source_type": "launch_announcement"
+            },
+            "detail": {
+              "brand": {
+                "cn": "在中国拥有成熟零售与快闪活动曝光的韩国大众彩妆品牌",
+                "en": "Korean masstige color cosmetics brand with established China retail and pop-up visibility"
+              },
+              "buzz": {
+                "cn": "联名系列在国庆前于上海新天地通过主题快闪集中曝光",
+                "en": "The collaboration was featured in a Shanghai Xintiandi pop-up ahead of the National Day holiday"
+              },
+              "key_features": {
+                "cn": "新品类型：3CE与酷洛米限量联名系列，采用主题包装与成套色彩设计",
+                "en": "What's new: limited-edition collaborative collection pairing 3CE color cosmetics with Kuromi-themed packaging and a coordinated color story"
+              },
+              "price_link": {
+                "cn": "价格及容量未公开",
+                "en": "Price and size not publicly disclosed",
+                "link": "https://weibo.com/2/detail/5348854637528747"
+              }
+            },
+            "launch_evidence": {
+              "absence_markers": [],
+              "date_basis": "source_publication",
+              "evidence": {
+                "checked_at": "2026-11-07T12:00:00+08:00",
+                "fetched_at": "2026-11-07T12:00:00+08:00",
+                "published_at": "2026-09-30T14:29:00+08:00",
+                "supported_fields": [
+                  "features",
+                  "buzz",
+                  "brand",
+                  "category",
+                  "launch_date",
+                  "link"
+                ],
+                "title": "3CE x Kuromi Rebel Sweetheart limited collection arrives in Shanghai",
+                "type": "launch_announcement",
+                "url": "https://weibo.com/2/detail/5348854637528747"
+              },
+              "evidence_grade": "B",
+              "launch_date": "2026-09-30",
+              "quarantine_reason": null,
+              "quarantine_status": "verified"
+            },
+            "market": "CN",
+            "name": "3CE x Kuromi Rebel Sweetheart Collection",
+            "name_cn": "3CE×酷洛米反叛甜心系列",
+            "new_badge": "New",
+            "rank": 4,
+            "score": 88,
             "score_breakdown": {
               "components": [
                 {
@@ -6859,7 +7080,7 @@
                   "id": "buzz_momentum",
                   "label": "Buzz Momentum",
                   "max_points": 30,
-                  "points": 28,
+                  "points": 27,
                   "weight": 0.3
                 },
                 {
@@ -6881,19 +7102,236 @@
               ],
               "methodology": "Weighted dashboard explanation: Sales Momentum 40% + Buzz Momentum 30% + Review/Rating 20% + Trend Fit 10%. Historical monthly scores remain non-recomputable until raw platform sales/review/social time-series are collected.",
               "recomputable": false,
-              "total": 89
+              "total": 88
+            },
+            "tier": "MASSTIGE",
+            "trend": null,
+            "trend_badge": null
+          },
+          {
+            "category_badge": "Multi-Use Face Palette",
+            "data_quality": {
+              "coverage": {
+                "buzz": true,
+                "features": true,
+                "launch_evidence": true,
+                "link": true,
+                "positioning": true,
+                "price": true
+              },
+              "coverage_score": 100,
+              "link_type": "evidence_link",
+              "missing_fields": [],
+              "note": "Evidence link available; review for direct product-page upgrade.",
+              "source_type": "launch_announcement"
+            },
+            "detail": {
+              "brand": {
+                "cn": "聚焦唇妆与多用途色彩剂型的中国大众彩妆品牌",
+                "en": "Chinese masstige makeup brand centered on expressive lip and multi-use color formats"
+              },
+              "buzz": {
+                "cn": "ConCall对该9月联名发布的报道阅读量达2.6万",
+                "en": "ConCall logged 26,000 reads on its coverage of the September collaboration launch"
+              },
+              "key_features": {
+                "cn": "新品类型：全新联名产品线，将眼影、腮红与修容分区整合，并提供两套适配肤色的配色",
+                "en": "What's new: new collaborative line combining eyeshadow, blush and contour zones in two skin-tone-oriented palette colorways"
+              },
+              "price_link": {
+                "cn": "价格及容量未公开",
+                "en": "Price and size not publicly disclosed",
+                "link": "https://cn.concall.com/article/detail/article_id/5980"
+              }
+            },
+            "launch_evidence": {
+              "absence_markers": [],
+              "date_basis": "source_publication",
+              "evidence": {
+                "checked_at": "2026-11-07T12:00:00+08:00",
+                "fetched_at": "2026-11-07T12:00:00+08:00",
+                "published_at": "2026-09-03T12:20:00+08:00",
+                "supported_fields": [
+                  "features",
+                  "buzz",
+                  "brand",
+                  "category",
+                  "launch_date",
+                  "link"
+                ],
+                "title": "INTO YOU and TUNEE GOODS launch the Playful Farm collection",
+                "type": "launch_announcement",
+                "url": "https://cn.concall.com/article/detail/article_id/5980"
+              },
+              "evidence_grade": "B",
+              "launch_date": "2026-09-03",
+              "quarantine_reason": null,
+              "quarantine_status": "verified"
+            },
+            "market": "CN",
+            "name": "INTO YOU x TUNEE GOODS Playful Farm Face Palette",
+            "name_cn": "INTO YOU×TUNEE GOODS玩色农场面综盘",
+            "new_badge": "New",
+            "rank": 5,
+            "score": 87,
+            "score_breakdown": {
+              "components": [
+                {
+                  "evidence": "Sales, bestseller, ranking, sell-out, restock, and platform proxy signals.",
+                  "id": "sales_momentum",
+                  "label": "Sales Momentum",
+                  "max_points": 40,
+                  "points": 35,
+                  "weight": 0.4
+                },
+                {
+                  "evidence": "Social discussion, creator/editor coverage, and media visibility.",
+                  "id": "buzz_momentum",
+                  "label": "Buzz Momentum",
+                  "max_points": 30,
+                  "points": 26,
+                  "weight": 0.3
+                },
+                {
+                  "evidence": "Ratings, review volume, expert tests, vote counts, and user feedback.",
+                  "id": "review_rating",
+                  "label": "Review / Rating",
+                  "max_points": 20,
+                  "points": 16,
+                  "weight": 0.2
+                },
+                {
+                  "evidence": "Fit with the month's active trend taxonomy and new-product context.",
+                  "id": "trend_fit",
+                  "label": "Trend Fit",
+                  "max_points": 10,
+                  "points": 10,
+                  "weight": 0.1
+                }
+              ],
+              "methodology": "Weighted dashboard explanation: Sales Momentum 40% + Buzz Momentum 30% + Review/Rating 20% + Trend Fit 10%. Historical monthly scores remain non-recomputable until raw platform sales/review/social time-series are collected.",
+              "recomputable": false,
+              "total": 87
+            },
+            "tier": "MASSTIGE",
+            "trend": null,
+            "trend_badge": null
+          },
+          {
+            "category_badge": "Multi-Use Cream Color",
+            "data_quality": {
+              "coverage": {
+                "buzz": true,
+                "features": true,
+                "launch_evidence": true,
+                "link": true,
+                "positioning": true,
+                "price": true
+              },
+              "coverage_score": 100,
+              "link_type": "product_page",
+              "missing_fields": [],
+              "note": "Direct product page available.",
+              "source_type": "product_page"
+            },
+            "detail": {
+              "brand": {
+                "cn": "以编辑性色彩叙事与大众多用途剂型结合的中国彩妆品牌",
+                "en": "Chinese masstige color brand combining editorial color stories with accessible multi-use formats"
+              },
+              "buzz": {
+                "cn": "Momo官方零售页将该产品纳入9月1日至30日开架彩妆推广",
+                "en": "Momo featured the official listing in its September 1-30 masstige makeup promotion"
+              },
+              "key_features": {
+                "cn": "可用于眼、唇、颊的多用途霜状彩妆，强调易晕染的低饱和色彩",
+                "en": "Cream color designed for coordinated eye, lip and cheek use with blendable low-saturation shades"
+              },
+              "price_link": {
+                "cn": "价格及容量未公开",
+                "en": "Price and size not publicly disclosed",
+                "link": "https://www.momoshop.com.tw/product/14683073"
+              }
+            },
+            "launch_evidence": {
+              "absence_markers": [],
+              "date_basis": "first_verified_mention",
+              "evidence": {
+                "checked_at": "2026-11-07T12:00:00+08:00",
+                "fetched_at": "2026-11-07T12:00:00+08:00",
+                "published_at": "2026-09-01T00:00:00+08:00",
+                "supported_fields": [
+                  "features",
+                  "buzz",
+                  "brand",
+                  "category",
+                  "link"
+                ],
+                "title": "Joocyee Multi-Use Cream official retail listing",
+                "type": "product_page",
+                "url": "https://www.momoshop.com.tw/product/14683073"
+              },
+              "evidence_grade": "B",
+              "launch_date": "2026-09-01",
+              "quarantine_reason": null,
+              "quarantine_status": "verified"
+            },
+            "market": "CN",
+            "name": "Joocyee Multi-Use Cream",
+            "name_cn": "酵色多用霜",
+            "new_badge": null,
+            "rank": 6,
+            "score": 85,
+            "score_breakdown": {
+              "components": [
+                {
+                  "evidence": "Sales, bestseller, ranking, sell-out, restock, and platform proxy signals.",
+                  "id": "sales_momentum",
+                  "label": "Sales Momentum",
+                  "max_points": 40,
+                  "points": 34,
+                  "weight": 0.4
+                },
+                {
+                  "evidence": "Social discussion, creator/editor coverage, and media visibility.",
+                  "id": "buzz_momentum",
+                  "label": "Buzz Momentum",
+                  "max_points": 30,
+                  "points": 25,
+                  "weight": 0.3
+                },
+                {
+                  "evidence": "Ratings, review volume, expert tests, vote counts, and user feedback.",
+                  "id": "review_rating",
+                  "label": "Review / Rating",
+                  "max_points": 20,
+                  "points": 16,
+                  "weight": 0.2
+                },
+                {
+                  "evidence": "Fit with the month's active trend taxonomy and new-product context.",
+                  "id": "trend_fit",
+                  "label": "Trend Fit",
+                  "max_points": 10,
+                  "points": 10,
+                  "weight": 0.1
+                }
+              ],
+              "methodology": "Weighted dashboard explanation: Sales Momentum 40% + Buzz Momentum 30% + Review/Rating 20% + Trend Fit 10%. Historical monthly scores remain non-recomputable until raw platform sales/review/social time-series are collected.",
+              "recomputable": false,
+              "total": 85
             },
             "tier": "MASSTIGE",
             "trend": {
-              "id": "functional-lip",
-              "rationale": "Evidence-backed category and feature copy match the Functional Lip taxonomy.",
-              "tag": "Functional Lip",
-              "tag_cn": "唇部功效化趋势"
+              "id": "low-saturation-pastel",
+              "rationale": "Evidence-backed category and feature copy match the Low-Saturation Pastel taxonomy.",
+              "tag": "Low-Saturation Pastel",
+              "tag_cn": "低饱和粉彩趋势"
             },
             "trend_badge": "Trend"
           },
           {
-            "category_badge": "Luminous Cushion Foundation",
+            "category_badge": "Double-Ended Eyeshadow Stick",
             "data_quality": {
               "coverage": {
                 "buzz": true,
@@ -6911,54 +7349,52 @@
             },
             "detail": {
               "brand": {
-                "cn": "专业中高端彩妆品牌",
-                "en": "Professional prestige makeup brand"
+                "cn": "聚焦天然成分定位与亚洲骨相表达的中国纯净彩妆品牌",
+                "en": "Chinese clean color cosmetics brand focused on natural-origin positioning and Asian facial structure"
               },
               "buzz": {
-                "cn": "入选Vogue Taiwan九月彩妆新品盘点；公开销量未披露",
-                "en": "Make Up For Ever: Featured in Vogue Taiwan's September makeup launch roundup"
+                "cn": "朱栈官方渠道于9月发布以水心色为核心的妆容教程",
+                "en": "Red Chamber used its official channel for a September tutorial centered on the Shuixin shade"
               },
               "key_features": {
-                "cn": "主打原生透光妆效的气垫粉饼",
-                "en": "Cushion foundation focused on a naturally luminous finish"
+                "cn": "双头设计结合低饱和灰粉打底与冷紫水光提亮端",
+                "en": "Double-ended format pairs a low-saturation gray-pink base with a cool violet shimmer tip"
               },
               "price_link": {
-                "cn": "Price and size not publicly disclosed",
+                "cn": "价格及容量未公开",
                 "en": "Price and size not publicly disclosed",
-                "link": "https://www.vogue.com.tw/article/2026-sep-%E7%BE%8E%E5%A6%9D%E6%96%B0%E5%93%81part3"
+                "link": "https://weibo.com/2/detail/5340861782559686"
               }
             },
             "launch_evidence": {
               "absence_markers": [],
-              "date_basis": "first_listing",
+              "date_basis": "first_verified_mention",
               "evidence": {
-                "checked_at": "2026-10-03T00:35:00Z",
-                "fetched_at": "2026-10-03T00:35:00Z",
-                "published_at": "2026-09-22T07:00:00Z",
+                "checked_at": "2026-11-07T12:00:00+08:00",
+                "fetched_at": "2026-11-07T12:00:00+08:00",
+                "published_at": "2026-09-08T13:09:00+08:00",
                 "supported_fields": [
-                  "price",
                   "features",
                   "buzz",
                   "brand",
                   "category",
-                  "launch_date",
                   "link"
                 ],
-                "title": "9月彩妝新品盤點：Armani天生透嫩馬卡龍腮紅、Tom Ford立體光影底妝系列、Ípsa玻光養膚精華粉底 - Vogue Taiwan",
+                "title": "Red Chamber demonstrates the Shuixin Double-Ended Eyeshadow Stick",
                 "type": "product_page",
-                "url": "https://www.vogue.com.tw/article/2026-sep-%E7%BE%8E%E5%A6%9D%E6%96%B0%E5%93%81part3"
+                "url": "https://weibo.com/2/detail/5340861782559686"
               },
               "evidence_grade": "A",
-              "launch_date": "2026-09-22",
+              "launch_date": "2026-09-08",
               "quarantine_reason": null,
               "quarantine_status": "verified"
             },
             "market": "CN",
-            "name": "Make Up For Ever HD Skin Natural Glow Cushion Foundation",
-            "name_cn": "玫珂菲粉无痕原生透光气垫粉饼",
-            "new_badge": "New",
-            "rank": 3,
-            "score": 87,
+            "name": "Red Chamber Double-Ended Eyeshadow Stick in Shuixin",
+            "name_cn": "朱栈双头眼影笔·水心",
+            "new_badge": null,
+            "rank": 7,
+            "score": 83,
             "score_breakdown": {
               "components": [
                 {
@@ -6966,7 +7402,7 @@
                   "id": "sales_momentum",
                   "label": "Sales Momentum",
                   "max_points": 40,
-                  "points": 34,
+                  "points": 33,
                   "weight": 0.4
                 },
                 {
@@ -6974,7 +7410,7 @@
                   "id": "buzz_momentum",
                   "label": "Buzz Momentum",
                   "max_points": 30,
-                  "points": 28,
+                  "points": 25,
                   "weight": 0.3
                 },
                 {
@@ -6996,121 +7432,16 @@
               ],
               "methodology": "Weighted dashboard explanation: Sales Momentum 40% + Buzz Momentum 30% + Review/Rating 20% + Trend Fit 10%. Historical monthly scores remain non-recomputable until raw platform sales/review/social time-series are collected.",
               "recomputable": false,
-              "total": 87
+              "total": 83
             },
             "tier": "MASSTIGE",
-            "trend": null,
-            "trend_badge": null
-          },
-          {
-            "category_badge": "Soft-Focus Emulsion Foundation",
-            "data_quality": {
-              "coverage": {
-                "buzz": true,
-                "features": true,
-                "launch_evidence": true,
-                "link": true,
-                "positioning": true,
-                "price": true
-              },
-              "coverage_score": 100,
-              "link_type": "evidence_link",
-              "missing_fields": [],
-              "note": "Evidence link available; review for direct product-page upgrade.",
-              "source_type": "product_page"
+            "trend": {
+              "id": "low-saturation-pastel",
+              "rationale": "Evidence-backed category and feature copy match the Low-Saturation Pastel taxonomy.",
+              "tag": "Low-Saturation Pastel",
+              "tag_cn": "低饱和粉彩趋势"
             },
-            "detail": {
-              "brand": {
-                "cn": "日系中高端美妆品牌",
-                "en": "Japanese prestige beauty brand"
-              },
-              "buzz": {
-                "cn": "获得Vogue Taiwan九月彩妆新品盘点收录；公开销量未披露",
-                "en": "Albion Studio: Included in Vogue Taiwan's September makeup launch roundup"
-              },
-              "key_features": {
-                "cn": "主打柔焦与上镜妆效的乳液型粉底",
-                "en": "Emulsion foundation focused on a soft-focus, camera-ready finish"
-              },
-              "price_link": {
-                "cn": "Price and size not publicly disclosed",
-                "en": "Price and size not publicly disclosed",
-                "link": "https://www.vogue.com.tw/article/2026-sep-%E7%BE%8E%E5%A6%9D%E6%96%B0%E5%93%81part3"
-              }
-            },
-            "launch_evidence": {
-              "absence_markers": [],
-              "date_basis": "first_listing",
-              "evidence": {
-                "checked_at": "2026-10-03T00:35:00Z",
-                "fetched_at": "2026-10-03T00:35:00Z",
-                "published_at": "2026-09-22T07:00:00Z",
-                "supported_fields": [
-                  "price",
-                  "features",
-                  "buzz",
-                  "brand",
-                  "category",
-                  "launch_date",
-                  "link"
-                ],
-                "title": "9月彩妝新品盤點：Armani天生透嫩馬卡龍腮紅、Tom Ford立體光影底妝系列、Ípsa玻光養膚精華粉底 - Vogue Taiwan",
-                "type": "product_page",
-                "url": "https://www.vogue.com.tw/article/2026-sep-%E7%BE%8E%E5%A6%9D%E6%96%B0%E5%93%81part3"
-              },
-              "evidence_grade": "A",
-              "launch_date": "2026-09-22",
-              "quarantine_reason": null,
-              "quarantine_status": "verified"
-            },
-            "market": "CN",
-            "name": "Albion Studio Soft-Focus Emulsion Foundation",
-            "name_cn": "奥碧虹Studio超上镜柔焦乳液粉底",
-            "new_badge": "New",
-            "rank": 4,
-            "score": 80,
-            "score_breakdown": {
-              "components": [
-                {
-                  "evidence": "Sales, bestseller, ranking, sell-out, restock, and platform proxy signals.",
-                  "id": "sales_momentum",
-                  "label": "Sales Momentum",
-                  "max_points": 40,
-                  "points": 31,
-                  "weight": 0.4
-                },
-                {
-                  "evidence": "Social discussion, creator/editor coverage, and media visibility.",
-                  "id": "buzz_momentum",
-                  "label": "Buzz Momentum",
-                  "max_points": 30,
-                  "points": 26,
-                  "weight": 0.3
-                },
-                {
-                  "evidence": "Ratings, review volume, expert tests, vote counts, and user feedback.",
-                  "id": "review_rating",
-                  "label": "Review / Rating",
-                  "max_points": 20,
-                  "points": 14,
-                  "weight": 0.2
-                },
-                {
-                  "evidence": "Fit with the month's active trend taxonomy and new-product context.",
-                  "id": "trend_fit",
-                  "label": "Trend Fit",
-                  "max_points": 10,
-                  "points": 9,
-                  "weight": 0.1
-                }
-              ],
-              "methodology": "Weighted dashboard explanation: Sales Momentum 40% + Buzz Momentum 30% + Review/Rating 20% + Trend Fit 10%. Historical monthly scores remain non-recomputable until raw platform sales/review/social time-series are collected.",
-              "recomputable": false,
-              "total": 80
-            },
-            "tier": "MASSTIGE",
-            "trend": null,
-            "trend_badge": null
+            "trend_badge": "Trend"
           }
         ],
         "US LUXURY": [
@@ -7178,7 +7509,7 @@
             "market": "US",
             "name": "Prada Touch Cream-To-Powder Soft Blur Longwear Blush in Dahlia",
             "name_cn": "Prada Touch柔焦持妆霜转粉腮红 Dahlia色",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 1,
             "score": 90,
             "score_breakdown": {
@@ -7188,7 +7519,7 @@
                   "id": "sales_momentum",
                   "label": "Sales Momentum",
                   "max_points": 40,
-                  "points": 34,
+                  "points": 36,
                   "weight": 0.4
                 },
                 {
@@ -7212,7 +7543,7 @@
                   "id": "trend_fit",
                   "label": "Trend Fit",
                   "max_points": 10,
-                  "points": 10,
+                  "points": 8,
                   "weight": 0.1
                 }
               ],
@@ -7288,7 +7619,7 @@
             "market": "US",
             "name": "Dior Addict Glass Lipstick",
             "name_cn": "Dior迪奥魅惑水光唇膏",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 2,
             "score": 89,
             "score_breakdown": {
@@ -7403,7 +7734,7 @@
             "market": "US",
             "name": "Armani Luminous Silk Foundation",
             "name_cn": "Armani阿玛尼Luminous Silk丝光粉底液",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 3,
             "score": 88,
             "score_breakdown": {
@@ -7413,7 +7744,7 @@
                   "id": "sales_momentum",
                   "label": "Sales Momentum",
                   "max_points": 40,
-                  "points": 35,
+                  "points": 36,
                   "weight": 0.4
                 },
                 {
@@ -7429,7 +7760,7 @@
                   "id": "review_rating",
                   "label": "Review / Rating",
                   "max_points": 20,
-                  "points": 16,
+                  "points": 17,
                   "weight": 0.2
                 },
                 {
@@ -7437,7 +7768,7 @@
                   "id": "trend_fit",
                   "label": "Trend Fit",
                   "max_points": 10,
-                  "points": 10,
+                  "points": 8,
                   "weight": 0.1
                 }
               ],
@@ -7513,7 +7844,7 @@
             "market": "US",
             "name": "NARS Insatiable Longwearing Liquid Blush",
             "name_cn": "NARS Insatiable持久液体腮红",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 4,
             "score": 87,
             "score_breakdown": {
@@ -7523,7 +7854,7 @@
                   "id": "sales_momentum",
                   "label": "Sales Momentum",
                   "max_points": 40,
-                  "points": 35,
+                  "points": 36,
                   "weight": 0.4
                 },
                 {
@@ -7531,7 +7862,7 @@
                   "id": "buzz_momentum",
                   "label": "Buzz Momentum",
                   "max_points": 30,
-                  "points": 26,
+                  "points": 27,
                   "weight": 0.3
                 },
                 {
@@ -7547,7 +7878,7 @@
                   "id": "trend_fit",
                   "label": "Trend Fit",
                   "max_points": 10,
-                  "points": 10,
+                  "points": 8,
                   "weight": 0.1
                 }
               ],
@@ -7623,7 +7954,7 @@
             "market": "US",
             "name": "Charlotte Tilbury Airbrush Flawless Blur Loose Powder",
             "name_cn": "Charlotte Tilbury Airbrush Flawless Blur柔焦散粉",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 5,
             "score": 86,
             "score_breakdown": {
@@ -7633,7 +7964,7 @@
                   "id": "sales_momentum",
                   "label": "Sales Momentum",
                   "max_points": 40,
-                  "points": 34,
+                  "points": 35,
                   "weight": 0.4
                 },
                 {
@@ -7641,7 +7972,7 @@
                   "id": "buzz_momentum",
                   "label": "Buzz Momentum",
                   "max_points": 30,
-                  "points": 26,
+                  "points": 27,
                   "weight": 0.3
                 },
                 {
@@ -7657,7 +7988,7 @@
                   "id": "trend_fit",
                   "label": "Trend Fit",
                   "max_points": 10,
-                  "points": 10,
+                  "points": 8,
                   "weight": 0.1
                 }
               ],
@@ -7733,7 +8064,7 @@
             "market": "US",
             "name": "Chanel Rouge Coco Hydra Gloss in Accessoire",
             "name_cn": "Chanel香奈儿Rouge Coco水润唇蜜 Accessoire色",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 6,
             "score": 85,
             "score_breakdown": {
@@ -7848,7 +8179,7 @@
             "market": "US",
             "name": "Hourglass Phantom Volumizing Glossy Balm",
             "name_cn": "Hourglass Phantom丰盈亮泽润唇膏",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 7,
             "score": 83,
             "score_breakdown": {
@@ -7963,7 +8294,7 @@
             "market": "US",
             "name": "Dior Beauty Backstage Glow-Up Skin Tint",
             "name_cn": "Dior迪奥后台Glow-Up焕亮润色乳",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 8,
             "score": 82,
             "score_breakdown": {
@@ -7973,7 +8304,7 @@
                   "id": "sales_momentum",
                   "label": "Sales Momentum",
                   "max_points": 40,
-                  "points": 33,
+                  "points": 34,
                   "weight": 0.4
                 },
                 {
@@ -7981,7 +8312,7 @@
                   "id": "buzz_momentum",
                   "label": "Buzz Momentum",
                   "max_points": 30,
-                  "points": 24,
+                  "points": 25,
                   "weight": 0.3
                 },
                 {
@@ -7989,7 +8320,7 @@
                   "id": "review_rating",
                   "label": "Review / Rating",
                   "max_points": 20,
-                  "points": 15,
+                  "points": 16,
                   "weight": 0.2
                 },
                 {
@@ -7997,7 +8328,7 @@
                   "id": "trend_fit",
                   "label": "Trend Fit",
                   "max_points": 10,
-                  "points": 10,
+                  "points": 7,
                   "weight": 0.1
                 }
               ],
@@ -8073,7 +8404,7 @@
             "market": "US",
             "name": "Marc Jacobs Beauty Concealer",
             "name_cn": "Marc Jacobs Beauty遮瑕产品",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 9,
             "score": 80,
             "score_breakdown": {
@@ -8083,7 +8414,7 @@
                   "id": "sales_momentum",
                   "label": "Sales Momentum",
                   "max_points": 40,
-                  "points": 30,
+                  "points": 31,
                   "weight": 0.4
                 },
                 {
@@ -8091,7 +8422,7 @@
                   "id": "buzz_momentum",
                   "label": "Buzz Momentum",
                   "max_points": 30,
-                  "points": 25,
+                  "points": 26,
                   "weight": 0.3
                 },
                 {
@@ -8107,7 +8438,7 @@
                   "id": "trend_fit",
                   "label": "Trend Fit",
                   "max_points": 10,
-                  "points": 9,
+                  "points": 7,
                   "weight": 0.1
                 }
               ],
@@ -8185,7 +8516,7 @@
             "market": "US",
             "name": "Fenty Pro Filt’r Foundation",
             "name_cn": "Fenty Pro Filt’r 粉底液",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 1,
             "score": 92,
             "score_breakdown": {
@@ -8203,7 +8534,7 @@
                   "id": "buzz_momentum",
                   "label": "Buzz Momentum",
                   "max_points": 30,
-                  "points": 29,
+                  "points": 30,
                   "weight": 0.3
                 },
                 {
@@ -8211,7 +8542,7 @@
                   "id": "review_rating",
                   "label": "Review / Rating",
                   "max_points": 20,
-                  "points": 18,
+                  "points": 19,
                   "weight": 0.2
                 },
                 {
@@ -8219,7 +8550,7 @@
                   "id": "trend_fit",
                   "label": "Trend Fit",
                   "max_points": 10,
-                  "points": 10,
+                  "points": 8,
                   "weight": 0.1
                 }
               ],
@@ -8295,7 +8626,7 @@
             "market": "US",
             "name": "e.l.f. Soft Glam Satin Foundation",
             "name_cn": "e.l.f. Soft Glam Satin 柔光缎面粉底液",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 2,
             "score": 90,
             "score_breakdown": {
@@ -8305,7 +8636,7 @@
                   "id": "sales_momentum",
                   "label": "Sales Momentum",
                   "max_points": 40,
-                  "points": 36,
+                  "points": 37,
                   "weight": 0.4
                 },
                 {
@@ -8313,7 +8644,7 @@
                   "id": "buzz_momentum",
                   "label": "Buzz Momentum",
                   "max_points": 30,
-                  "points": 27,
+                  "points": 28,
                   "weight": 0.3
                 },
                 {
@@ -8329,7 +8660,7 @@
                   "id": "trend_fit",
                   "label": "Trend Fit",
                   "max_points": 10,
-                  "points": 10,
+                  "points": 8,
                   "weight": 0.1
                 }
               ],
@@ -8405,7 +8736,7 @@
             "market": "US",
             "name": "MERIT Clean Volume Volumizing Tubing Mascara",
             "name_cn": "MERIT Clean Volume 丰盈管状睫毛膏",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 3,
             "score": 87,
             "score_breakdown": {
@@ -8415,7 +8746,7 @@
                   "id": "sales_momentum",
                   "label": "Sales Momentum",
                   "max_points": 40,
-                  "points": 35,
+                  "points": 36,
                   "weight": 0.4
                 },
                 {
@@ -8423,7 +8754,7 @@
                   "id": "buzz_momentum",
                   "label": "Buzz Momentum",
                   "max_points": 30,
-                  "points": 26,
+                  "points": 27,
                   "weight": 0.3
                 },
                 {
@@ -8439,7 +8770,7 @@
                   "id": "trend_fit",
                   "label": "Trend Fit",
                   "max_points": 10,
-                  "points": 10,
+                  "points": 8,
                   "weight": 0.1
                 }
               ],
@@ -8515,7 +8846,7 @@
             "market": "US",
             "name": "DIBS Beauty The Edit Stick",
             "name_cn": "DIBS Beauty The Edit Stick 多用途遮瑕棒",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 4,
             "score": 85,
             "score_breakdown": {
@@ -8525,7 +8856,7 @@
                   "id": "sales_momentum",
                   "label": "Sales Momentum",
                   "max_points": 40,
-                  "points": 34,
+                  "points": 35,
                   "weight": 0.4
                 },
                 {
@@ -8533,7 +8864,7 @@
                   "id": "buzz_momentum",
                   "label": "Buzz Momentum",
                   "max_points": 30,
-                  "points": 25,
+                  "points": 26,
                   "weight": 0.3
                 },
                 {
@@ -8549,7 +8880,7 @@
                   "id": "trend_fit",
                   "label": "Trend Fit",
                   "max_points": 10,
-                  "points": 10,
+                  "points": 8,
                   "weight": 0.1
                 }
               ],
@@ -8625,7 +8956,7 @@
             "market": "US",
             "name": "Jones Road Minimalist Defining Mascara",
             "name_cn": "Jones Road Minimalist Defining 纤长定型睫毛膏",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 5,
             "score": 84,
             "score_breakdown": {
@@ -8643,7 +8974,7 @@
                   "id": "buzz_momentum",
                   "label": "Buzz Momentum",
                   "max_points": 30,
-                  "points": 25,
+                  "points": 26,
                   "weight": 0.3
                 },
                 {
@@ -8651,7 +8982,7 @@
                   "id": "review_rating",
                   "label": "Review / Rating",
                   "max_points": 20,
-                  "points": 15,
+                  "points": 16,
                   "weight": 0.2
                 },
                 {
@@ -8659,7 +8990,7 @@
                   "id": "trend_fit",
                   "label": "Trend Fit",
                   "max_points": 10,
-                  "points": 10,
+                  "points": 8,
                   "weight": 0.1
                 }
               ],
@@ -8735,7 +9066,7 @@
             "market": "US",
             "name": "Huda Beauty Liquid Matte Mousse",
             "name_cn": "Huda Beauty Liquid Matte Mousse 液体哑光唇釉",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 6,
             "score": 82,
             "score_breakdown": {
@@ -8745,7 +9076,7 @@
                   "id": "sales_momentum",
                   "label": "Sales Momentum",
                   "max_points": 40,
-                  "points": 31,
+                  "points": 33,
                   "weight": 0.4
                 },
                 {
@@ -8753,7 +9084,7 @@
                   "id": "buzz_momentum",
                   "label": "Buzz Momentum",
                   "max_points": 30,
-                  "points": 24,
+                  "points": 25,
                   "weight": 0.3
                 },
                 {
@@ -8769,7 +9100,7 @@
                   "id": "trend_fit",
                   "label": "Trend Fit",
                   "max_points": 10,
-                  "points": 10,
+                  "points": 7,
                   "weight": 0.1
                 }
               ],
@@ -8845,7 +9176,7 @@
             "market": "US",
             "name": "Kiko Milano Matte Diaries Timeless Invisible Mattifier",
             "name_cn": "Kiko Milano Matte Diaries Timeless Invisible 隐形控油产品",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 7,
             "score": 79,
             "score_breakdown": {
@@ -8863,7 +9194,7 @@
                   "id": "buzz_momentum",
                   "label": "Buzz Momentum",
                   "max_points": 30,
-                  "points": 23,
+                  "points": 24,
                   "weight": 0.3
                 },
                 {
@@ -8871,7 +9202,7 @@
                   "id": "review_rating",
                   "label": "Review / Rating",
                   "max_points": 20,
-                  "points": 16,
+                  "points": 17,
                   "weight": 0.2
                 },
                 {
@@ -8879,7 +9210,7 @@
                   "id": "trend_fit",
                   "label": "Trend Fit",
                   "max_points": 10,
-                  "points": 9,
+                  "points": 7,
                   "weight": 0.1
                 }
               ],
@@ -8955,7 +9286,7 @@
             "market": "US",
             "name": "Outside In Silk Serum Foundation",
             "name_cn": "Outside In Silk Serum 丝滑精华粉底液",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 8,
             "score": 78,
             "score_breakdown": {
@@ -9074,7 +9405,7 @@
             "market": "CN",
             "name": "Armani Luminous Silk Cheek Tint",
             "name_cn": "Armani天生透嫩马卡龙腮红",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 1,
             "score": 89,
             "score_breakdown": {
@@ -9189,7 +9520,7 @@
             "market": "CN",
             "name": "IPSA Serum Foundation",
             "name_cn": "IPSA玻光养肤精华粉底",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 2,
             "score": 86,
             "score_breakdown": {
@@ -9304,7 +9635,7 @@
             "market": "CN",
             "name": "Laura Mercier Seamless Concealer Palette",
             "name_cn": "萝拉蜜思完美无痕遮瑕盘",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 3,
             "score": 82,
             "score_breakdown": {
@@ -9314,7 +9645,7 @@
                   "id": "sales_momentum",
                   "label": "Sales Momentum",
                   "max_points": 40,
-                  "points": 32,
+                  "points": 33,
                   "weight": 0.4
                 },
                 {
@@ -9322,7 +9653,7 @@
                   "id": "buzz_momentum",
                   "label": "Buzz Momentum",
                   "max_points": 30,
-                  "points": 26,
+                  "points": 27,
                   "weight": 0.3
                 },
                 {
@@ -9330,7 +9661,7 @@
                   "id": "review_rating",
                   "label": "Review / Rating",
                   "max_points": 20,
-                  "points": 14,
+                  "points": 15,
                   "weight": 0.2
                 },
                 {
@@ -9338,7 +9669,7 @@
                   "id": "trend_fit",
                   "label": "Trend Fit",
                   "max_points": 10,
-                  "points": 10,
+                  "points": 7,
                   "weight": 0.1
                 }
               ],
@@ -9353,7 +9684,7 @@
         ],
         "CN MASSTIGE": [
           {
-            "category_badge": "Shimmer High-Shine Lip Gloss",
+            "category_badge": "Six-Pan Satin Eyeshadow Palette",
             "data_quality": {
               "coverage": {
                 "buzz": true,
@@ -9367,36 +9698,35 @@
               "link_type": "evidence_link",
               "missing_fields": [],
               "note": "Evidence link available; review for direct product-page upgrade.",
-              "source_type": "product_page"
+              "source_type": "launch_announcement"
             },
             "detail": {
               "brand": {
-                "cn": "国际潮流中高端彩妆品牌",
-                "en": "International trend-led prestige makeup brand"
+                "cn": "以收藏级视觉设计见长的中国彩妆品牌",
+                "en": "Chinese fantasy-led color cosmetics brand with strong collectible design equity"
               },
               "buzz": {
-                "cn": "新浪时尚于九月报道上海主题店及三款全新色号登场；公开销量未披露",
-                "en": "FENTY BEAUTY: Sina Fashion reported the Shanghai pop-up and arrival of three new shades in September"
+                "cn": "新浪财经与亿邦动力报道9月发布，并记录市场对芭蕾设计语言的讨论",
+                "en": "Sina Finance and Ebrun covered the September launch and the discussion around its revived ballet design language"
               },
               "key_features": {
-                "cn": "星尘流光妆效与三款全新唇釉色号",
-                "en": "Shimmering lip finish with three newly introduced shades"
+                "cn": "新品类型：雪花芭蕾全新系列，包含三款六色缎光彩妆盘，9月19日正式发售",
+                "en": "What's new: new Snow Ballet collection with three six-color satin palette colorways; the line went on sale September 19"
               },
               "price_link": {
-                "cn": "Price and size not publicly disclosed",
+                "cn": "价格及容量未公开",
                 "en": "Price and size not publicly disclosed",
-                "link": "https://fashion.sina.cn/b/2026-09-17/detail-iniscksf0365249.d.html?vt=4"
+                "link": "https://finance.sina.com.cn/stock/relnews/cn/2026-09-15/doc-inirxhzs6881857.shtml"
               }
             },
             "launch_evidence": {
               "absence_markers": [],
-              "date_basis": "first_listing",
+              "date_basis": "official_launch",
               "evidence": {
-                "checked_at": "2026-10-03T00:35:00Z",
-                "fetched_at": "2026-10-03T00:35:00Z",
-                "published_at": "2026-09-17T21:51:06Z",
+                "checked_at": "2026-11-07T12:00:00+08:00",
+                "fetched_at": "2026-11-07T12:00:00+08:00",
+                "published_at": "2026-09-15T17:13:00+08:00",
                 "supported_fields": [
-                  "price",
                   "features",
                   "buzz",
                   "brand",
@@ -9404,21 +9734,21 @@
                   "launch_date",
                   "link"
                 ],
-                "title": "「FENTY BEAUTY星尘流光商店」主题店登陆上海 星尘流光唇釉家族三款全新色号闪耀登场 - 新浪时尚",
-                "type": "product_page",
-                "url": "https://fashion.sina.cn/b/2026-09-17/detail-iniscksf0365249.d.html?vt=4"
+                "title": "Flower Knows releases the Snow Ballet collection ahead of September 19 sale",
+                "type": "launch_announcement",
+                "url": "https://finance.sina.com.cn/stock/relnews/cn/2026-09-15/doc-inirxhzs6881857.shtml"
               },
               "evidence_grade": "A",
-              "launch_date": "2026-09-17",
+              "launch_date": "2026-09-19",
               "quarantine_reason": null,
               "quarantine_status": "verified"
             },
             "market": "CN",
-            "name": "Fenty Beauty Gloss Bomb Collection - Three New Shades",
-            "name_cn": "FENTY BEAUTY星尘流光唇釉家族三款全新色号",
+            "name": "Flower Knows Snow Ballet Six-Color Satin Makeup Palette",
+            "name_cn": "花知晓雪花芭蕾六色缎光彩妆盘",
             "new_badge": "New",
             "rank": 1,
-            "score": 91,
+            "score": 94,
             "score_breakdown": {
               "components": [
                 {
@@ -9426,7 +9756,116 @@
                   "id": "sales_momentum",
                   "label": "Sales Momentum",
                   "max_points": 40,
-                  "points": 37,
+                  "points": 38,
+                  "weight": 0.4
+                },
+                {
+                  "evidence": "Social discussion, creator/editor coverage, and media visibility.",
+                  "id": "buzz_momentum",
+                  "label": "Buzz Momentum",
+                  "max_points": 30,
+                  "points": 28,
+                  "weight": 0.3
+                },
+                {
+                  "evidence": "Ratings, review volume, expert tests, vote counts, and user feedback.",
+                  "id": "review_rating",
+                  "label": "Review / Rating",
+                  "max_points": 20,
+                  "points": 18,
+                  "weight": 0.2
+                },
+                {
+                  "evidence": "Fit with the month's active trend taxonomy and new-product context.",
+                  "id": "trend_fit",
+                  "label": "Trend Fit",
+                  "max_points": 10,
+                  "points": 10,
+                  "weight": 0.1
+                }
+              ],
+              "methodology": "Weighted dashboard explanation: Sales Momentum 40% + Buzz Momentum 30% + Review/Rating 20% + Trend Fit 10%. Historical monthly scores remain non-recomputable until raw platform sales/review/social time-series are collected.",
+              "recomputable": false,
+              "total": 94
+            },
+            "tier": "MASSTIGE",
+            "trend": null,
+            "trend_badge": null
+          },
+          {
+            "category_badge": "Grip-Lock Makeup Primer Serum",
+            "data_quality": {
+              "coverage": {
+                "buzz": true,
+                "features": true,
+                "launch_evidence": true,
+                "link": true,
+                "positioning": true,
+                "price": true
+              },
+              "coverage_score": 100,
+              "link_type": "evidence_link",
+              "missing_fields": [],
+              "note": "Evidence link available; review for direct product-page upgrade.",
+              "source_type": "launch_announcement"
+            },
+            "detail": {
+              "brand": {
+                "cn": "专注亚洲骨相与专业底妆技法的中国彩妆品牌",
+                "en": "China-market professional artistry brand focused on Asian facial structure and complexion technique"
+              },
+              "buzz": {
+                "cn": "彩棠官方渠道预告该产品于9月15日上线",
+                "en": "Timage announced the product through its official channel for a September 15 release"
+              },
+              "key_features": {
+                "cn": "新品类型：全新妆前精华单品，以轻微黏附感加强护肤与底妆衔接",
+                "en": "What's new: new primer-serum SKU designed to add light grip between skincare and foundation for closer adherence"
+              },
+              "price_link": {
+                "cn": "价格及容量未公开",
+                "en": "Price and size not publicly disclosed",
+                "link": "https://weibo.com/2/detail/5343098268813071"
+              }
+            },
+            "launch_evidence": {
+              "absence_markers": [],
+              "date_basis": "official_launch",
+              "evidence": {
+                "checked_at": "2026-11-07T12:00:00+08:00",
+                "fetched_at": "2026-11-07T12:00:00+08:00",
+                "published_at": "2026-09-14T17:16:00+08:00",
+                "supported_fields": [
+                  "features",
+                  "buzz",
+                  "brand",
+                  "category",
+                  "launch_date",
+                  "link"
+                ],
+                "title": "Timage Base-Gripping Primer Serum launches September 15",
+                "type": "launch_announcement",
+                "url": "https://weibo.com/2/detail/5343098268813071"
+              },
+              "evidence_grade": "A",
+              "launch_date": "2026-09-15",
+              "quarantine_reason": null,
+              "quarantine_status": "verified"
+            },
+            "market": "CN",
+            "name": "Timage Base-Gripping Primer Serum",
+            "name_cn": "彩棠底妆黏人精妆前精华",
+            "new_badge": "New",
+            "rank": 2,
+            "score": 92,
+            "score_breakdown": {
+              "components": [
+                {
+                  "evidence": "Sales, bestseller, ranking, sell-out, restock, and platform proxy signals.",
+                  "id": "sales_momentum",
+                  "label": "Sales Momentum",
+                  "max_points": 40,
+                  "points": 38,
                   "weight": 0.4
                 },
                 {
@@ -9456,14 +9895,19 @@
               ],
               "methodology": "Weighted dashboard explanation: Sales Momentum 40% + Buzz Momentum 30% + Review/Rating 20% + Trend Fit 10%. Historical monthly scores remain non-recomputable until raw platform sales/review/social time-series are collected.",
               "recomputable": false,
-              "total": 91
+              "total": 92
             },
             "tier": "MASSTIGE",
-            "trend": null,
-            "trend_badge": null
+            "trend": {
+              "id": "skincare-foundation",
+              "rationale": "Evidence-backed category and feature copy match the Skincare Foundation taxonomy.",
+              "tag": "Skincare Foundation",
+              "tag_cn": "养肤底妆趋势"
+            },
+            "trend_badge": "Trend"
           },
           {
-            "category_badge": "Hydrating Tinted Lip Balm",
+            "category_badge": "Airy Satin Lip Cream",
             "data_quality": {
               "coverage": {
                 "buzz": true,
@@ -9477,36 +9921,35 @@
               "link_type": "evidence_link",
               "missing_fields": [],
               "note": "Evidence link available; review for direct product-page upgrade.",
-              "source_type": "product_page"
+              "source_type": "launch_announcement"
             },
             "detail": {
               "brand": {
-                "cn": "专业中高端彩妆品牌",
-                "en": "Professional prestige makeup brand"
+                "cn": "以快速剂型与色彩创新见长的大众中国彩妆品牌",
+                "en": "Accessible Chinese color cosmetics brand known for fast format and shade innovation"
               },
               "buzz": {
-                "cn": "Hypebae九月报道新品上市及NMIXX合作企划；公开销量未披露",
-                "en": "Make Up For Ever Artist Colorglow: Hypebae covered the September launch and NMIXX campaign"
+                "cn": "SocialBeta报道9月秋冬新品发布，由四款重点彩妆产品带动",
+                "en": "SocialBeta reported the September autumn-winter launch led by four hero makeup products"
               },
               "key_features": {
-                "cn": "润唇膏品类，结合专业彩妆定位与偶像合作企划",
-                "en": "Lip balm positioned through a professional-makeup identity and idol-led campaign"
+                "cn": "新品类型：唇部产品线升级，主打80%养肤精华、12小时持色与四款秋冬新色",
+                "en": "What's new: upgraded lip line with an 80% skincare-essence claim, 12-hour wear positioning and four new autumn shades"
               },
               "price_link": {
-                "cn": "Price and size not publicly disclosed",
+                "cn": "价格及容量未公开",
                 "en": "Price and size not publicly disclosed",
-                "link": "https://hypebae.com/sc/2026/9/make-up-for-ever-nmixx-artist-colorglow-lip-balm-campaign-where-to-buy"
+                "link": "https://socialbeta.com/campaign/28416"
               }
             },
             "launch_evidence": {
               "absence_markers": [],
-              "date_basis": "first_listing",
+              "date_basis": "source_publication",
               "evidence": {
-                "checked_at": "2026-10-03T00:35:00Z",
-                "fetched_at": "2026-10-03T00:35:00Z",
-                "published_at": "2026-09-02T07:00:00Z",
+                "checked_at": "2026-11-07T12:00:00+08:00",
+                "fetched_at": "2026-11-07T12:00:00+08:00",
+                "published_at": "2026-09-06T00:00:00+08:00",
                 "supported_fields": [
-                  "price",
                   "features",
                   "buzz",
                   "brand",
@@ -9514,21 +9957,130 @@
                   "launch_date",
                   "link"
                 ],
-                "title": "Make Up For Ever携手K-pop女团NMIXX，发布Artist Colorglow润唇膏企划 - Hypebae",
-                "type": "product_page",
-                "url": "https://hypebae.com/sc/2026/9/make-up-for-ever-nmixx-artist-colorglow-lip-balm-campaign-where-to-buy"
+                "title": "Judydoll introduces four autumn-winter makeup launches",
+                "type": "launch_announcement",
+                "url": "https://socialbeta.com/campaign/28416"
               },
-              "evidence_grade": "A",
+              "evidence_grade": "B",
               "launch_date": "2026-09-02",
               "quarantine_reason": null,
               "quarantine_status": "verified"
             },
             "market": "CN",
-            "name": "Make Up For Ever Artist Colorglow Lip Balm",
-            "name_cn": "玫珂菲Artist Colorglow润唇膏",
+            "name": "Judydoll Satin Glow Lip Powder Cream",
+            "name_cn": "橘朵缎光唇粉霜",
             "new_badge": "New",
-            "rank": 2,
-            "score": 89,
+            "rank": 3,
+            "score": 90,
+            "score_breakdown": {
+              "components": [
+                {
+                  "evidence": "Sales, bestseller, ranking, sell-out, restock, and platform proxy signals.",
+                  "id": "sales_momentum",
+                  "label": "Sales Momentum",
+                  "max_points": 40,
+                  "points": 36,
+                  "weight": 0.4
+                },
+                {
+                  "evidence": "Social discussion, creator/editor coverage, and media visibility.",
+                  "id": "buzz_momentum",
+                  "label": "Buzz Momentum",
+                  "max_points": 30,
+                  "points": 27,
+                  "weight": 0.3
+                },
+                {
+                  "evidence": "Ratings, review volume, expert tests, vote counts, and user feedback.",
+                  "id": "review_rating",
+                  "label": "Review / Rating",
+                  "max_points": 20,
+                  "points": 17,
+                  "weight": 0.2
+                },
+                {
+                  "evidence": "Fit with the month's active trend taxonomy and new-product context.",
+                  "id": "trend_fit",
+                  "label": "Trend Fit",
+                  "max_points": 10,
+                  "points": 10,
+                  "weight": 0.1
+                }
+              ],
+              "methodology": "Weighted dashboard explanation: Sales Momentum 40% + Buzz Momentum 30% + Review/Rating 20% + Trend Fit 10%. Historical monthly scores remain non-recomputable until raw platform sales/review/social time-series are collected.",
+              "recomputable": false,
+              "total": 90
+            },
+            "tier": "MASSTIGE",
+            "trend": null,
+            "trend_badge": null
+          },
+          {
+            "category_badge": "Limited-Edition Makeup Collection",
+            "data_quality": {
+              "coverage": {
+                "buzz": true,
+                "features": true,
+                "launch_evidence": true,
+                "link": true,
+                "positioning": true,
+                "price": true
+              },
+              "coverage_score": 100,
+              "link_type": "evidence_link",
+              "missing_fields": [],
+              "note": "Evidence link available; review for direct product-page upgrade.",
+              "source_type": "launch_announcement"
+            },
+            "detail": {
+              "brand": {
+                "cn": "在中国拥有成熟零售与快闪活动曝光的韩国大众彩妆品牌",
+                "en": "Korean masstige color cosmetics brand with established China retail and pop-up visibility"
+              },
+              "buzz": {
+                "cn": "联名系列在国庆前于上海新天地通过主题快闪集中曝光",
+                "en": "The collaboration was featured in a Shanghai Xintiandi pop-up ahead of the National Day holiday"
+              },
+              "key_features": {
+                "cn": "新品类型：3CE与酷洛米限量联名系列，采用主题包装与成套色彩设计",
+                "en": "What's new: limited-edition collaborative collection pairing 3CE color cosmetics with Kuromi-themed packaging and a coordinated color story"
+              },
+              "price_link": {
+                "cn": "价格及容量未公开",
+                "en": "Price and size not publicly disclosed",
+                "link": "https://weibo.com/2/detail/5348854637528747"
+              }
+            },
+            "launch_evidence": {
+              "absence_markers": [],
+              "date_basis": "source_publication",
+              "evidence": {
+                "checked_at": "2026-11-07T12:00:00+08:00",
+                "fetched_at": "2026-11-07T12:00:00+08:00",
+                "published_at": "2026-09-30T14:29:00+08:00",
+                "supported_fields": [
+                  "features",
+                  "buzz",
+                  "brand",
+                  "category",
+                  "launch_date",
+                  "link"
+                ],
+                "title": "3CE x Kuromi Rebel Sweetheart limited collection arrives in Shanghai",
+                "type": "launch_announcement",
+                "url": "https://weibo.com/2/detail/5348854637528747"
+              },
+              "evidence_grade": "B",
+              "launch_date": "2026-09-30",
+              "quarantine_reason": null,
+              "quarantine_status": "verified"
+            },
+            "market": "CN",
+            "name": "3CE x Kuromi Rebel Sweetheart Collection",
+            "name_cn": "3CE×酷洛米反叛甜心系列",
+            "new_badge": "New",
+            "rank": 4,
+            "score": 88,
             "score_breakdown": {
               "components": [
                 {
@@ -9544,7 +10096,7 @@
                   "id": "buzz_momentum",
                   "label": "Buzz Momentum",
                   "max_points": 30,
-                  "points": 28,
+                  "points": 27,
                   "weight": 0.3
                 },
                 {
@@ -9566,19 +10118,14 @@
               ],
               "methodology": "Weighted dashboard explanation: Sales Momentum 40% + Buzz Momentum 30% + Review/Rating 20% + Trend Fit 10%. Historical monthly scores remain non-recomputable until raw platform sales/review/social time-series are collected.",
               "recomputable": false,
-              "total": 89
+              "total": 88
             },
             "tier": "MASSTIGE",
-            "trend": {
-              "id": "functional-lip",
-              "rationale": "Evidence-backed category and feature copy match the Functional Lip taxonomy.",
-              "tag": "Functional Lip",
-              "tag_cn": "唇部功效化趋势"
-            },
-            "trend_badge": "Trend"
+            "trend": null,
+            "trend_badge": null
           },
           {
-            "category_badge": "Luminous Cushion Foundation",
+            "category_badge": "Multi-Use Face Palette",
             "data_quality": {
               "coverage": {
                 "buzz": true,
@@ -9592,36 +10139,35 @@
               "link_type": "evidence_link",
               "missing_fields": [],
               "note": "Evidence link available; review for direct product-page upgrade.",
-              "source_type": "product_page"
+              "source_type": "launch_announcement"
             },
             "detail": {
               "brand": {
-                "cn": "专业中高端彩妆品牌",
-                "en": "Professional prestige makeup brand"
+                "cn": "聚焦唇妆与多用途色彩剂型的中国大众彩妆品牌",
+                "en": "Chinese masstige makeup brand centered on expressive lip and multi-use color formats"
               },
               "buzz": {
-                "cn": "入选Vogue Taiwan九月彩妆新品盘点；公开销量未披露",
-                "en": "Make Up For Ever: Featured in Vogue Taiwan's September makeup launch roundup"
+                "cn": "ConCall对该9月联名发布的报道阅读量达2.6万",
+                "en": "ConCall logged 26,000 reads on its coverage of the September collaboration launch"
               },
               "key_features": {
-                "cn": "主打原生透光妆效的气垫粉饼",
-                "en": "Cushion foundation focused on a naturally luminous finish"
+                "cn": "新品类型：全新联名产品线，将眼影、腮红与修容分区整合，并提供两套适配肤色的配色",
+                "en": "What's new: new collaborative line combining eyeshadow, blush and contour zones in two skin-tone-oriented palette colorways"
               },
               "price_link": {
-                "cn": "Price and size not publicly disclosed",
+                "cn": "价格及容量未公开",
                 "en": "Price and size not publicly disclosed",
-                "link": "https://www.vogue.com.tw/article/2026-sep-%E7%BE%8E%E5%A6%9D%E6%96%B0%E5%93%81part3"
+                "link": "https://cn.concall.com/article/detail/article_id/5980"
               }
             },
             "launch_evidence": {
               "absence_markers": [],
-              "date_basis": "first_listing",
+              "date_basis": "source_publication",
               "evidence": {
-                "checked_at": "2026-10-03T00:35:00Z",
-                "fetched_at": "2026-10-03T00:35:00Z",
-                "published_at": "2026-09-22T07:00:00Z",
+                "checked_at": "2026-11-07T12:00:00+08:00",
+                "fetched_at": "2026-11-07T12:00:00+08:00",
+                "published_at": "2026-09-03T12:20:00+08:00",
                 "supported_fields": [
-                  "price",
                   "features",
                   "buzz",
                   "brand",
@@ -9629,20 +10175,20 @@
                   "launch_date",
                   "link"
                 ],
-                "title": "9月彩妝新品盤點：Armani天生透嫩馬卡龍腮紅、Tom Ford立體光影底妝系列、Ípsa玻光養膚精華粉底 - Vogue Taiwan",
-                "type": "product_page",
-                "url": "https://www.vogue.com.tw/article/2026-sep-%E7%BE%8E%E5%A6%9D%E6%96%B0%E5%93%81part3"
+                "title": "INTO YOU and TUNEE GOODS launch the Playful Farm collection",
+                "type": "launch_announcement",
+                "url": "https://cn.concall.com/article/detail/article_id/5980"
               },
-              "evidence_grade": "A",
-              "launch_date": "2026-09-22",
+              "evidence_grade": "B",
+              "launch_date": "2026-09-03",
               "quarantine_reason": null,
               "quarantine_status": "verified"
             },
             "market": "CN",
-            "name": "Make Up For Ever HD Skin Natural Glow Cushion Foundation",
-            "name_cn": "玫珂菲粉无痕原生透光气垫粉饼",
+            "name": "INTO YOU x TUNEE GOODS Playful Farm Face Palette",
+            "name_cn": "INTO YOU×TUNEE GOODS玩色农场面综盘",
             "new_badge": "New",
-            "rank": 3,
+            "rank": 5,
             "score": 87,
             "score_breakdown": {
               "components": [
@@ -9651,117 +10197,7 @@
                   "id": "sales_momentum",
                   "label": "Sales Momentum",
                   "max_points": 40,
-                  "points": 34,
-                  "weight": 0.4
-                },
-                {
-                  "evidence": "Social discussion, creator/editor coverage, and media visibility.",
-                  "id": "buzz_momentum",
-                  "label": "Buzz Momentum",
-                  "max_points": 30,
-                  "points": 28,
-                  "weight": 0.3
-                },
-                {
-                  "evidence": "Ratings, review volume, expert tests, vote counts, and user feedback.",
-                  "id": "review_rating",
-                  "label": "Review / Rating",
-                  "max_points": 20,
-                  "points": 15,
-                  "weight": 0.2
-                },
-                {
-                  "evidence": "Fit with the month's active trend taxonomy and new-product context.",
-                  "id": "trend_fit",
-                  "label": "Trend Fit",
-                  "max_points": 10,
-                  "points": 10,
-                  "weight": 0.1
-                }
-              ],
-              "methodology": "Weighted dashboard explanation: Sales Momentum 40% + Buzz Momentum 30% + Review/Rating 20% + Trend Fit 10%. Historical monthly scores remain non-recomputable until raw platform sales/review/social time-series are collected.",
-              "recomputable": false,
-              "total": 87
-            },
-            "tier": "MASSTIGE",
-            "trend": null,
-            "trend_badge": null
-          },
-          {
-            "category_badge": "Soft-Focus Emulsion Foundation",
-            "data_quality": {
-              "coverage": {
-                "buzz": true,
-                "features": true,
-                "launch_evidence": true,
-                "link": true,
-                "positioning": true,
-                "price": true
-              },
-              "coverage_score": 100,
-              "link_type": "evidence_link",
-              "missing_fields": [],
-              "note": "Evidence link available; review for direct product-page upgrade.",
-              "source_type": "product_page"
-            },
-            "detail": {
-              "brand": {
-                "cn": "日系中高端美妆品牌",
-                "en": "Japanese prestige beauty brand"
-              },
-              "buzz": {
-                "cn": "获得Vogue Taiwan九月彩妆新品盘点收录；公开销量未披露",
-                "en": "Albion Studio: Included in Vogue Taiwan's September makeup launch roundup"
-              },
-              "key_features": {
-                "cn": "主打柔焦与上镜妆效的乳液型粉底",
-                "en": "Emulsion foundation focused on a soft-focus, camera-ready finish"
-              },
-              "price_link": {
-                "cn": "Price and size not publicly disclosed",
-                "en": "Price and size not publicly disclosed",
-                "link": "https://www.vogue.com.tw/article/2026-sep-%E7%BE%8E%E5%A6%9D%E6%96%B0%E5%93%81part3"
-              }
-            },
-            "launch_evidence": {
-              "absence_markers": [],
-              "date_basis": "first_listing",
-              "evidence": {
-                "checked_at": "2026-10-03T00:35:00Z",
-                "fetched_at": "2026-10-03T00:35:00Z",
-                "published_at": "2026-09-22T07:00:00Z",
-                "supported_fields": [
-                  "price",
-                  "features",
-                  "buzz",
-                  "brand",
-                  "category",
-                  "launch_date",
-                  "link"
-                ],
-                "title": "9月彩妝新品盤點：Armani天生透嫩馬卡龍腮紅、Tom Ford立體光影底妝系列、Ípsa玻光養膚精華粉底 - Vogue Taiwan",
-                "type": "product_page",
-                "url": "https://www.vogue.com.tw/article/2026-sep-%E7%BE%8E%E5%A6%9D%E6%96%B0%E5%93%81part3"
-              },
-              "evidence_grade": "A",
-              "launch_date": "2026-09-22",
-              "quarantine_reason": null,
-              "quarantine_status": "verified"
-            },
-            "market": "CN",
-            "name": "Albion Studio Soft-Focus Emulsion Foundation",
-            "name_cn": "奥碧虹Studio超上镜柔焦乳液粉底",
-            "new_badge": "New",
-            "rank": 4,
-            "score": 80,
-            "score_breakdown": {
-              "components": [
-                {
-                  "evidence": "Sales, bestseller, ranking, sell-out, restock, and platform proxy signals.",
-                  "id": "sales_momentum",
-                  "label": "Sales Momentum",
-                  "max_points": 40,
-                  "points": 31,
+                  "points": 35,
                   "weight": 0.4
                 },
                 {
@@ -9777,7 +10213,7 @@
                   "id": "review_rating",
                   "label": "Review / Rating",
                   "max_points": 20,
-                  "points": 14,
+                  "points": 16,
                   "weight": 0.2
                 },
                 {
@@ -9785,13 +10221,13 @@
                   "id": "trend_fit",
                   "label": "Trend Fit",
                   "max_points": 10,
-                  "points": 9,
+                  "points": 10,
                   "weight": 0.1
                 }
               ],
               "methodology": "Weighted dashboard explanation: Sales Momentum 40% + Buzz Momentum 30% + Review/Rating 20% + Trend Fit 10%. Historical monthly scores remain non-recomputable until raw platform sales/review/social time-series are collected.",
               "recomputable": false,
-              "total": 80
+              "total": 87
             },
             "tier": "MASSTIGE",
             "trend": null,
@@ -9863,7 +10299,7 @@
             "market": "US",
             "name": "Dior New Lip Blurs",
             "name_cn": "Dior迪奥新款柔雾唇彩",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 1,
             "score": 90,
             "score_breakdown": {
@@ -9873,7 +10309,7 @@
                   "id": "sales_momentum",
                   "label": "Sales Momentum",
                   "max_points": 40,
-                  "points": 36,
+                  "points": 37,
                   "weight": 0.4
                 },
                 {
@@ -9881,7 +10317,7 @@
                   "id": "buzz_momentum",
                   "label": "Buzz Momentum",
                   "max_points": 30,
-                  "points": 27,
+                  "points": 28,
                   "weight": 0.3
                 },
                 {
@@ -9897,7 +10333,7 @@
                   "id": "trend_fit",
                   "label": "Trend Fit",
                   "max_points": 10,
-                  "points": 10,
+                  "points": 8,
                   "weight": 0.1
                 }
               ],
@@ -9973,7 +10409,7 @@
             "market": "US",
             "name": "Prada Touch Cream-To-Powder Soft Blur Longwear Blush in Dahlia",
             "name_cn": "Prada Touch柔焦持妆霜转粉腮红 Dahlia色",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 2,
             "score": 90,
             "score_breakdown": {
@@ -9983,7 +10419,7 @@
                   "id": "sales_momentum",
                   "label": "Sales Momentum",
                   "max_points": 40,
-                  "points": 34,
+                  "points": 36,
                   "weight": 0.4
                 },
                 {
@@ -10007,7 +10443,7 @@
                   "id": "trend_fit",
                   "label": "Trend Fit",
                   "max_points": 10,
-                  "points": 10,
+                  "points": 8,
                   "weight": 0.1
                 }
               ],
@@ -10083,7 +10519,7 @@
             "market": "US",
             "name": "Chanel Rouge Coco Hydra Gloss in Accessoire",
             "name_cn": "Chanel香奈儿Rouge Coco水润唇蜜 Accessoire色",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 3,
             "score": 85,
             "score_breakdown": {
@@ -10198,7 +10634,7 @@
             "market": "US",
             "name": "Hourglass Phantom Volumizing Glossy Balm",
             "name_cn": "Hourglass Phantom丰盈亮泽润唇膏",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 4,
             "score": 83,
             "score_breakdown": {
@@ -10315,7 +10751,7 @@
             "market": "US",
             "name": "Fenty Pro Filt’r Foundation",
             "name_cn": "Fenty Pro Filt’r 粉底液",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 1,
             "score": 92,
             "score_breakdown": {
@@ -10325,7 +10761,7 @@
                   "id": "sales_momentum",
                   "label": "Sales Momentum",
                   "max_points": 40,
-                  "points": 37,
+                  "points": 38,
                   "weight": 0.4
                 },
                 {
@@ -10333,7 +10769,7 @@
                   "id": "buzz_momentum",
                   "label": "Buzz Momentum",
                   "max_points": 30,
-                  "points": 28,
+                  "points": 29,
                   "weight": 0.3
                 },
                 {
@@ -10349,7 +10785,7 @@
                   "id": "trend_fit",
                   "label": "Trend Fit",
                   "max_points": 10,
-                  "points": 10,
+                  "points": 8,
                   "weight": 0.1
                 }
               ],
@@ -10425,7 +10861,7 @@
             "market": "US",
             "name": "e.l.f. Soft Glam Satin Foundation",
             "name_cn": "e.l.f. Soft Glam Satin 柔光缎面粉底液",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 2,
             "score": 90,
             "score_breakdown": {
@@ -10435,7 +10871,7 @@
                   "id": "sales_momentum",
                   "label": "Sales Momentum",
                   "max_points": 40,
-                  "points": 36,
+                  "points": 37,
                   "weight": 0.4
                 },
                 {
@@ -10443,7 +10879,7 @@
                   "id": "buzz_momentum",
                   "label": "Buzz Momentum",
                   "max_points": 30,
-                  "points": 27,
+                  "points": 28,
                   "weight": 0.3
                 },
                 {
@@ -10459,7 +10895,7 @@
                   "id": "trend_fit",
                   "label": "Trend Fit",
                   "max_points": 10,
-                  "points": 10,
+                  "points": 8,
                   "weight": 0.1
                 }
               ],
@@ -10535,7 +10971,7 @@
             "market": "US",
             "name": "Huda Beauty Liquid Matte Mousse",
             "name_cn": "Huda Beauty Liquid Matte Mousse 液体哑光唇釉",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 3,
             "score": 82,
             "score_breakdown": {
@@ -10545,7 +10981,7 @@
                   "id": "sales_momentum",
                   "label": "Sales Momentum",
                   "max_points": 40,
-                  "points": 31,
+                  "points": 33,
                   "weight": 0.4
                 },
                 {
@@ -10553,7 +10989,7 @@
                   "id": "buzz_momentum",
                   "label": "Buzz Momentum",
                   "max_points": 30,
-                  "points": 24,
+                  "points": 25,
                   "weight": 0.3
                 },
                 {
@@ -10569,7 +11005,7 @@
                   "id": "trend_fit",
                   "label": "Trend Fit",
                   "max_points": 10,
-                  "points": 10,
+                  "points": 7,
                   "weight": 0.1
                 }
               ],
@@ -10645,7 +11081,7 @@
             "market": "US",
             "name": "Kiko Milano Matte Diaries Timeless Invisible Mattifier",
             "name_cn": "Kiko Milano Matte Diaries Timeless Invisible 隐形控油产品",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 4,
             "score": 79,
             "score_breakdown": {
@@ -10663,7 +11099,7 @@
                   "id": "buzz_momentum",
                   "label": "Buzz Momentum",
                   "max_points": 30,
-                  "points": 23,
+                  "points": 24,
                   "weight": 0.3
                 },
                 {
@@ -10671,7 +11107,7 @@
                   "id": "review_rating",
                   "label": "Review / Rating",
                   "max_points": 20,
-                  "points": 16,
+                  "points": 17,
                   "weight": 0.2
                 },
                 {
@@ -10679,7 +11115,7 @@
                   "id": "trend_fit",
                   "label": "Trend Fit",
                   "max_points": 10,
-                  "points": 9,
+                  "points": 7,
                   "weight": 0.1
                 }
               ],
@@ -10755,7 +11191,7 @@
             "market": "US",
             "name": "Outside In Silk Serum Foundation",
             "name_cn": "Outside In Silk Serum 丝滑精华粉底液",
-            "new_badge": "New",
+            "new_badge": null,
             "rank": 5,
             "score": 78,
             "score_breakdown": {

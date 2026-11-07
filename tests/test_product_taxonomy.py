@@ -12,7 +12,10 @@ def _evidence(status="verified", launch_date="2026-09-12", grade="A"):
         "quarantine_status": status,
         "launch_date": launch_date,
         "evidence_grade": grade,
-        "evidence": {"url": "https://example.com/launch"},
+        "evidence": {
+            "url": "https://example.com/launch",
+            "supported_fields": ["features", "launch_date", "link"],
+        },
     }
 
 
@@ -97,7 +100,7 @@ def test_dedupe_cross_tier_panels_uses_product_identity_and_brand_tier_rules():
     assert panels["CN MASSTIGE"] == []
 
 
-def test_market_tier_policy_keeps_cn_luxury_global_and_cn_masstige_domestic_only():
+def test_market_tier_policy_keeps_cn_luxury_global_and_filters_cn_masstige_prestige():
     panels = {
         "US LUXURY": [
             _product("Prada Soft Blur Blush", "Blush", "Soft blur", score=94),
@@ -145,7 +148,6 @@ def test_market_tier_policy_keeps_cn_luxury_global_and_cn_masstige_domestic_only
     ]
     assert [row["name"] for row in panels["CN MASSTIGE"]] == [
         "Florasis West Lake Fragrance",
-        "Fenty Gloss Bomb",
     ]
 
 
@@ -153,7 +155,7 @@ def test_apply_product_labels_restores_strict_trend_and_new_badges():
     rose = _product(
         "SW19 5pm Rose Petal",
         "Eau de Parfum",
-        "Rose-petal fragrance",
+        "What's new: new fragrance SKU with a rose-petal profile",
         market="CN",
         tier="MASSTIGE",
         evidence=_evidence(),
@@ -161,7 +163,7 @@ def test_apply_product_labels_restores_strict_trend_and_new_badges():
     brand_false_positive = _product(
         "Henry Rose Rhu Berry",
         "Fragrance Collection",
-        "Editorially covered release; notes were not disclosed",
+        "What's new: new fragrance SKU; notes were not disclosed",
         tier="MASSTIGE",
         evidence=_evidence(),
     )
@@ -197,7 +199,7 @@ def test_new_badge_requires_verified_launch_inside_report_month():
     out_of_window = _product(
         "Old Launch",
         "Lip Balm",
-        "Hydrating balm",
+        "What's new: new lip balm SKU with a hydrating formula",
         evidence=_evidence(status="verified", launch_date="2026-08-30"),
     )
     unverified = _product(
@@ -229,7 +231,7 @@ def test_heat_new_badge_uses_its_own_verified_launch_evidence():
     launch = _product(
         "Verified Heat Launch",
         "Lip Balm",
-        "Hydrating balm",
+        "What's new: new lip balm SKU with a hydrating formula",
         evidence=_evidence(status="verified", launch_date="2026-09-12"),
     )
     report = {
@@ -245,6 +247,35 @@ def test_heat_new_badge_uses_its_own_verified_launch_evidence():
     apply_product_labels(report)
 
     assert launch["new_badge"] == "New"
+
+
+def test_new_badge_requires_specific_whats_new_detail():
+    vague = _product(
+        "Vague New Launch",
+        "Lip Balm",
+        "Hydrating balm launched this month",
+        evidence=_evidence(),
+    )
+    specific = _product(
+        "Specific New Launch",
+        "Lip Balm",
+        "What's new: three new shades in the existing lip balm line",
+        evidence=_evidence(),
+    )
+    report = {
+        "month": "2026-09",
+        "products": {
+            "makeup": {
+                "heat_rankings": {"US MASSTIGE": [vague, specific]},
+                "new_product_radar": {},
+            }
+        },
+    }
+
+    apply_product_labels(report)
+
+    assert vague["new_badge"] is None
+    assert specific["new_badge"] == "New"
 
 
 def test_normalize_report_removes_observation_already_present_in_formal_panels():
