@@ -5,6 +5,8 @@ import yaml
 ROOT = Path(__file__).resolve().parent.parent
 DEPLOY_PATH = ROOT / ".github" / "workflows" / "weekly-deploy.yml"
 CI_PATH = ROOT / ".github" / "workflows" / "ci.yml"
+WEEKLY_UPDATE_PATH = ROOT / "build" / "weekly_update.sh"
+WEEKLY_DEPLOY_PATH = ROOT / "build" / "deploy_pages.py"
 
 
 def load(path: Path) -> tuple[str, dict]:
@@ -56,3 +58,21 @@ def test_deploy_permissions_cannot_write_repository_contents():
     assert workflow["permissions"]["contents"] == "read"
     assert workflow["permissions"]["pages"] == "write"
     assert workflow["permissions"]["id-token"] == "write"
+
+
+def test_weekly_update_can_only_write_weekly_archives():
+    raw = WEEKLY_UPDATE_PATH.read_text(encoding="utf-8")
+
+    assert 'cp "$STAGE_DIR/$page" "$ARCHIVE_DIR/$page"' in raw
+    assert 'cp "$STAGE_DIR/$page" "$page"' not in raw
+    assert '> "$ARCHIVE_DIR/.deploy-manifest-hash"' in raw
+    assert '> ".deploy-manifest-hash"' not in raw
+
+
+def test_weekly_api_deploy_never_uploads_root_pages():
+    raw = WEEKLY_DEPLOY_PATH.read_text(encoding="utf-8")
+
+    assert "ARCHIVE_PAGES" in raw
+    assert 'remote_name = f"archive/week-{week_num}/{fname}"' in raw
+    assert "upload_file(fname, ROOT / fname)" not in raw
+    assert "monthly pipeline and is deliberately never written" in raw

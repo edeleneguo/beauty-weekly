@@ -63,13 +63,15 @@ tar --exclude=.beauty-weekly-state -cf - . | tar -xf - -C "$STAGE_DIR"
 
 echo "Staged render: OK"
 
-# Promote to production
+# Publish the weekly render to its archive only. The site root is owned by the
+# monthly pipeline and must never be replaced by a weekly run.
 WEEK_NUMBER=$((10#${TARGET_WEEK#*-W}))
 ARCHIVE_DIR="archive/week-$WEEK_NUMBER"
 mkdir -p "$ARCHIVE_DIR"
-for page in index.html fragrance.html; do
-  cp "$STAGE_DIR/$page" "$page"
-  cp "$STAGE_DIR/$page" "$ARCHIVE_DIR/$page"
+for page in index.html index-cn.html fragrance.html fragrance-cn.html; do
+  if [[ -f "$STAGE_DIR/$page" ]]; then
+    cp "$STAGE_DIR/$page" "$ARCHIVE_DIR/$page"
+  fi
 done
 
 # Save manifest hash proof for online verification (Req 6)
@@ -80,6 +82,6 @@ with open('$SOURCE_DIR/manifest.json') as f:
 print(m.get('canonical_hash', ''))
 ")
 echo "Manifest hash: $MANIFEST_HASH"
-echo "$MANIFEST_HASH" > ".deploy-manifest-hash"
+echo "$MANIFEST_HASH" > "$ARCHIVE_DIR/.deploy-manifest-hash"
 
-echo "PASS: $TARGET_WEEK rendered and promoted locally."
+echo "PASS: $TARGET_WEEK rendered to $ARCHIVE_DIR; monthly root left unchanged."

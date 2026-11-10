@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""deploy_pages.py — Deploy rendered HTML to GitHub Pages and verify.
+"""deploy_pages.py — Deploy a weekly archive to GitHub Pages and verify.
 
-Pushes the 4 root HTML files + archive to GitHub repo via Contents API,
-triggers Pages build, and verifies 3-layer consistency (raw → build → CDN).
+Pushes only archive HTML files via the GitHub Contents API, triggers a Pages
+build, and verifies raw/CDN consistency. The site root belongs exclusively to
+the monthly pipeline and is deliberately never written by this script.
 
 Environment variables:
   GITHUB_TOKEN — GitHub PAT with repo:write permission (required)
@@ -27,7 +28,8 @@ from beauty_weekly.week import resolve_week  # noqa: E402
 TOKEN = os.environ.get("GITHUB_TOKEN", "")
 REPO = "edeleneguo/beauty-weekly"
 BRANCH = "main"
-PAGES = ["index.html", "fragrance.html"]
+ARCHIVE_PAGES = ["index.html", "index-cn.html", "fragrance.html", "fragrance-cn.html"]
+REQUIRED_ARCHIVE_PAGES = {"index.html", "fragrance.html"}
 
 
 def api_request(method: str, path: str, body: dict | None = None) -> tuple[int, dict]:
@@ -82,6 +84,16 @@ def upload_file(filename: str, local_path: Path) -> bool:
         return False
 
 
+def root_is_monthly() -> bool:
+    """Fail closed if the public root no longer identifies as a monthly issue."""
+    version = verify_version("https://edeleneguo.github.io/beauty-weekly/?root-guard=1")
+    if version and version.startswith("month"):
+        print(f"  Monthly root guard: OK ({version})")
+        return True
+    print(f"  Monthly root guard: FAILED ({version})")
+    return False
+
+
 def trigger_pages_build() -> bool:
     """Trigger a GitHub Pages build."""
     status, resp = api_request("POST", f"/repos/{REPO}/pages/builds")
@@ -127,37 +139,28 @@ def main() -> int:
     print(f"Repo: {REPO}")
     print()
 
-    # Step 1: Upload 2 root HTML files
-    print("--- Step 1: Upload HTML files ---")
+    if not root_is_monthly():
+        print("DEPLOY FAILED: Public root is not monthly; refusing weekly deployment")
+        return 1
+
+    # Step 1: Upload only the weekly archive. Never write root HTML here.
+    print("--- Step 1: Upload weekly archive files ---")
     all_ok = True
-    for fname in PAGES:
-        local_path = ROOT / fname
-        if not upload_file(fname, local_path):
-            all_ok = False
-
-    # Upload archive files
     archive_dir = ROOT / "archive" / f"week-{week_num}"
-    if archive_dir.exists():
-        print("  Uploading archive files...")
-        for fname in PAGES:
-            archive_path = archive_dir / fname
-            if archive_path.exists():
-                api_path = f"/repos/{REPO}/contents/archive/week-{week_num}/{fname}"
-                status, resp = api_request("GET", api_path)
-                sha = resp.get("sha") if status == 200 else None
-                import base64
+    if not archive_dir.exists():
+        print(f"DEPLOY FAILED: Missing {archive_dir}")
+        return 1
 
-                content = base64.b64encode(archive_path.read_bytes()).decode("ascii")
-                payload = {
-                    "message": f"Archive week-{week_num}: {fname}",
-                    "content": content,
-                    "branch": BRANCH,
-                }
-                if sha:
-                    payload["sha"] = sha
-                status, resp = api_request("PUT", api_path, payload)
-                result = "OK" if status in (200, 201) else "FAIL"
-                print(f"    archive/week-{week_num}/{fname}: {result}")
+    for fname in ARCHIVE_PAGES:
+        archive_path = archive_dir / fname
+        if not archive_path.exists():
+            if fname in REQUIRED_ARCHIVE_PAGES:
+                print(f"  archive/week-{week_num}/{fname}: MISSING")
+                all_ok = False
+            continue
+        remote_name = f"archive/week-{week_num}/{fname}"
+        if not upload_file(remote_name, archive_path):
+            all_ok = False
 
     if not all_ok:
         print("\nDEPLOY FAILED: Some files failed to upload")
@@ -176,10 +179,14 @@ def main() -> int:
     # Step 4: 3-layer verification
     print("\n--- Step 4: 3-Layer Verification ---")
     all_verified = True
-    for fname in PAGES:
-        local_version = verify_version(f"file://{ROOT / fname}") or "unknown"
-        raw_url = f"https://raw.githubusercontent.com/{REPO}/{BRANCH}/{fname}?v={int(time.time())}"
-        cdn_url = f"https://edeleneguo.github.io/beauty-weekly/{fname}?v={int(time.time())}"
+    for fname in ARCHIVE_PAGES:
+        archive_path = archive_dir / fname
+        if not archive_path.exists():
+            continue
+        remote_name = f"archive/week-{week_num}/{fname}"
+        local_version = verify_version(f"file://{archive_path}") or "unknown"
+        raw_url = f"https://raw.githubusercontent.com/{REPO}/{BRANCH}/{remote_name}?v={int(time.time())}"
+        cdn_url = f"https://edeleneguo.github.io/beauty-weekly/{remote_name}?v={int(time.time())}"
 
         raw_version = verify_version(raw_url)
         cdn_version = verify_version(cdn_url)
@@ -199,10 +206,8 @@ def main() -> int:
 
     print()
     if all_verified:
-        print("=== DEPLOY VERIFIED: All 3 layers consistent ===")
-        print("\nLive URLs:")
-        print("  EN Makeup:    https://edeleneguo.github.io/beauty-weekly/")
-        print("  EN Fragrance: https://edeleneguo.github.io/beauty-weekly/fragrance.html")
+        print("=== DEPLOY VERIFIED: Weekly archive is consistent ===")
+        print(f"\nArchive: https://edeleneguo.github.io/beauty-weekly/archive/week-{week_num}/")
         return 0
     else:
         print("=== VERIFICATION FAILED: CDN may still be propagating ===")
