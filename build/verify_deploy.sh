@@ -35,7 +35,7 @@ while [[ $# -gt 0 ]]; do
     esac
 done
 
-BASE_URL="${BASE_URL:-https://edeleneguo.github.io/beauty-monthly}"
+BASE_URL="${BASE_URL:-https://edeleneguo.github.io/beauty-weekly}"
 
 ERROR_LOG=$(mktemp "${TMPDIR:-/tmp}/beauty-weekly-verify.XXXXXX")
 trap 'rm -f "$ERROR_LOG"' EXIT

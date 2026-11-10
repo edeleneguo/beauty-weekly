@@ -26,7 +26,7 @@ sys.path.insert(0, str(ROOT))
 from beauty_weekly.week import resolve_week  # noqa: E402
 
 TOKEN = os.environ.get("GITHUB_TOKEN", "")
-REPO = "edeleneguo/beauty-monthly"
+REPO = "edeleneguo/beauty-weekly"
 BRANCH = "main"
 ARCHIVE_PAGES = ["index.html", "index-cn.html", "fragrance.html", "fragrance-cn.html"]
 REQUIRED_ARCHIVE_PAGES = {"index.html", "fragrance.html"}
@@ -86,7 +86,7 @@ def upload_file(filename: str, local_path: Path) -> bool:
 
 def root_is_monthly() -> bool:
     """Fail closed if the public root no longer identifies as a monthly issue."""
-    version = verify_version("https://edeleneguo.github.io/beauty-monthly/?root-guard=1")
+    version = verify_version("https://edeleneguo.github.io/beauty-weekly/?root-guard=1")
     if version and version.startswith("month"):
         print(f"  Monthly root guard: OK ({version})")
         return True
@@ -186,7 +186,7 @@ def main() -> int:
         remote_name = f"archive/week-{week_num}/{fname}"
         local_version = verify_version(f"file://{archive_path}") or "unknown"
         raw_url = f"https://raw.githubusercontent.com/{REPO}/{BRANCH}/{remote_name}?v={int(time.time())}"
-        cdn_url = f"https://edeleneguo.github.io/beauty-monthly/{remote_name}?v={int(time.time())}"
+        cdn_url = f"https://edeleneguo.github.io/beauty-weekly/{remote_name}?v={int(time.time())}"
 
         raw_version = verify_version(raw_url)
         cdn_version = verify_version(cdn_url)
@@ -207,7 +207,7 @@ def main() -> int:
     print()
     if all_verified:
         print("=== DEPLOY VERIFIED: Weekly archive is consistent ===")
-        print(f"\nArchive: https://edeleneguo.github.io/beauty-monthly/archive/week-{week_num}/")
+        print(f"\nArchive: https://edeleneguo.github.io/beauty-weekly/archive/week-{week_num}/")
         return 0
     else:
         print("=== VERIFICATION FAILED: CDN may still be propagating ===")
