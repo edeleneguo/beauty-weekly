@@ -37,7 +37,7 @@ OUTPUT_DIR = ROOT / "data" / "months" / "2026-06"
 OUTPUT_PATH = OUTPUT_DIR / "recovered_candidates.json"
 
 HISTORICAL_COMMIT = "709c63b"
-PROVENANCE_URL = f"https://github.com/edeleneguo/beauty-weekly/commit/{HISTORICAL_COMMIT}"
+PROVENANCE_URL = f"https://github.com/edeleneguo/beauty-monthly/commit/{HISTORICAL_COMMIT}"
 
 ARCHIVE_FILES = {
     "week-23": {
