@@ -67,7 +67,7 @@ def test_accepts_product_level_urls():
 
 def test_allows_archive_evidence_url_as_explicit_fallback():
     assert _is_evidence_url(
-        "https://github.com/edeleneguo/beauty-weekly/blob/709c63b/archive/week-27/index.html"
+        "https://github.com/edeleneguo/beauty-monthly/blob/709c63b/archive/week-27/index.html"
     )
 
 
